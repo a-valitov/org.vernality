@@ -1,0 +1,59 @@
+platform :ios, '11.0'
+use_frameworks!
+install! 'cocoapods', :disable_input_output_paths => true
+
+PODS_PATH = '../../../Pods'
+MODULES_PATH = PODS_PATH + '/Modules'
+PACAKGES_PATH = PODS_PATH + '/Packages'
+SERVICES_PATH = PODS_PATH + '/Services'
+ONTOLOGY_PATH = PODS_PATH + '/Ontology'
+
+target 'TeleGuide' do
+  # modules
+  pod 'Main', :path => MODULES_PATH + '/Main.podspec'
+  pod 'Login', :path => MODULES_PATH + '/Login.podspec'
+  pod 'Folders', :path => MODULES_PATH + '/Folders.podspec'
+  pod 'Channels', :path => MODULES_PATH + '/Channels.podspec'
+  pod 'ConnectTelegram', :path => MODULES_PATH + '/ConnectTelegram.podspec'
+
+  # packages
+  pod 'LoginView', :path => PACAKGES_PATH + '/LoginView.podspec'
+  pod 'FoldersView', :path => PACAKGES_PATH + '/FoldersView.podspec'
+  pod 'ChannelsView', :path => PACAKGES_PATH + '/ChannelsView.podspec'
+  pod 'PhoneView', :path => PACAKGES_PATH + '/PhoneView.podspec'
+  pod 'CodeView', :path => PACAKGES_PATH + '/CodeView.podspec'
+  pod 'PasswordView', :path => PACAKGES_PATH + '/PasswordView.podspec'
+  pod 'RealmManager', :path => PACAKGES_PATH + '/RealmManager.podspec'
+  pod 'ErrorPresenter', :path => PACAKGES_PATH + '/ErrorPresenter.podspec'
+  pod 'ActivityPresenter', :path => PACAKGES_PATH + '/ActivityPresenter.podspec'
+  
+  # services
+  pod 'Authentication', :path => SERVICES_PATH + '/Authentication.podspec'
+  pod 'FolderReactor', :path => SERVICES_PATH + '/FolderReactor.podspec'
+  pod 'FolderStorage', :path => SERVICES_PATH + '/FolderStorage.podspec'
+  pod 'ChannelReactor', :path => SERVICES_PATH + '/ChannelReactor.podspec'
+  pod 'ChannelStorage', :path => SERVICES_PATH + '/ChannelStorage.podspec'
+
+  # ontology
+  pod 'TeleGuideModel', :path => ONTOLOGY_PATH + '/TeleGuideModel.podspec'
+  pod 'TeleGuideRealm', :path => ONTOLOGY_PATH + '/TeleGuideRealm.podspec'
+  pod 'UserModel', :path => ONTOLOGY_PATH + '/UserModel.podspec'
+
+end
+
+# Exclude all Package.swift from pods targets
+post_install do |installer|
+  puts("Excluding Package.swift from targets")
+  installer.pods_project.targets.each do |target|
+    all_filerefs = installer.pods_project.files
+    all_filerefs.each do |fileref|
+    if fileref.name == "Package.swift"
+        build_phase = target.source_build_phase
+        build_phase.remove_file_reference(fileref)
+        if build_phase.files_references.include?(fileref)
+          build_phase.remove_file_reference(fileref)
+        end
+      end
+    end
+  end
+end

@@ -1,0 +1,195 @@
+PODS:
+  - ActivityPresenter (0.0.1)
+  - Authentication (0.0.1):
+    - RealmManager
+    - RealmSwift
+    - UserModel
+  - ChannelReactor (0.0.1):
+    - RealmManager
+    - RealmSwift
+    - TeleGuideModel
+    - TeleGuideRealm
+  - Channels (0.0.1):
+    - ActivityPresenter
+    - ChannelReactor
+    - ChannelStorage
+    - ErrorPresenter
+    - TeleGuideModel
+  - ChannelStorage (0.0.1):
+    - RealmManager
+    - RealmSwift
+    - TeleGuideModel
+    - TeleGuideRealm
+  - ChannelsView (0.0.1):
+    - Channels
+  - CodeView (0.0.1)
+  - ConnectTelegram (0.0.1):
+    - ActivityPresenter
+    - CodeView
+    - ErrorPresenter
+    - PasswordView
+    - PhoneView
+  - CountryPickerSwift (1.8.2)
+  - ErrorPresenter (0.0.1)
+  - FittedSheets (2.1.1)
+  - FolderReactor (0.0.1):
+    - RealmManager
+    - RealmSwift
+    - TeleGuideModel
+    - TeleGuideRealm
+  - Folders (0.0.1):
+    - ActivityPresenter
+    - Authentication
+    - ErrorPresenter
+    - FolderReactor
+    - FolderStorage
+    - TeleGuideModel
+  - FolderStorage (0.0.1):
+    - RealmManager
+    - RealmSwift
+    - TeleGuideModel
+    - TeleGuideRealm
+  - FoldersView (0.0.1):
+    - Folders
+  - Login (0.0.1):
+    - ActivityPresenter
+    - Authentication
+    - ErrorPresenter
+    - UserModel
+  - LoginView (0.0.1):
+    - Login
+  - Main (0.0.1):
+    - FittedSheets
+  - PasswordView (0.0.1)
+  - PhoneNumberKit (3.2.0):
+    - PhoneNumberKit/PhoneNumberKitCore (= 3.2.0)
+    - PhoneNumberKit/UIKit (= 3.2.0)
+  - PhoneNumberKit/PhoneNumberKitCore (3.2.0)
+  - PhoneNumberKit/UIKit (3.2.0):
+    - PhoneNumberKit/PhoneNumberKitCore
+  - PhoneView (0.0.1):
+    - CountryPickerSwift
+    - PhoneNumberKit
+  - Realm (10.0.0-beta.2):
+    - Realm/Headers (= 10.0.0-beta.2)
+  - Realm/Headers (10.0.0-beta.2)
+  - RealmManager (0.0.1):
+    - RealmSwift (= 10.0.0-beta.2)
+  - RealmSwift (10.0.0-beta.2):
+    - Realm (= 10.0.0-beta.2)
+  - TeleGuideModel (0.0.1)
+  - TeleGuideRealm (0.0.1):
+    - RealmSwift
+    - TeleGuideModel
+  - UserModel (0.0.1)
+
+DEPENDENCIES:
+  - ActivityPresenter (from `../../../Pods/Packages/ActivityPresenter.podspec`)
+  - Authentication (from `../../../Pods/Services/Authentication.podspec`)
+  - ChannelReactor (from `../../../Pods/Services/ChannelReactor.podspec`)
+  - Channels (from `../../../Pods/Modules/Channels.podspec`)
+  - ChannelStorage (from `../../../Pods/Services/ChannelStorage.podspec`)
+  - ChannelsView (from `../../../Pods/Packages/ChannelsView.podspec`)
+  - CodeView (from `../../../Pods/Packages/CodeView.podspec`)
+  - ConnectTelegram (from `../../../Pods/Modules/ConnectTelegram.podspec`)
+  - ErrorPresenter (from `../../../Pods/Packages/ErrorPresenter.podspec`)
+  - FolderReactor (from `../../../Pods/Services/FolderReactor.podspec`)
+  - Folders (from `../../../Pods/Modules/Folders.podspec`)
+  - FolderStorage (from `../../../Pods/Services/FolderStorage.podspec`)
+  - FoldersView (from `../../../Pods/Packages/FoldersView.podspec`)
+  - Login (from `../../../Pods/Modules/Login.podspec`)
+  - LoginView (from `../../../Pods/Packages/LoginView.podspec`)
+  - Main (from `../../../Pods/Modules/Main.podspec`)
+  - PasswordView (from `../../../Pods/Packages/PasswordView.podspec`)
+  - PhoneView (from `../../../Pods/Packages/PhoneView.podspec`)
+  - RealmManager (from `../../../Pods/Packages/RealmManager.podspec`)
+  - TeleGuideModel (from `../../../Pods/Ontology/TeleGuideModel.podspec`)
+  - TeleGuideRealm (from `../../../Pods/Ontology/TeleGuideRealm.podspec`)
+  - UserModel (from `../../../Pods/Ontology/UserModel.podspec`)
+
+SPEC REPOS:
+  trunk:
+    - CountryPickerSwift
+    - FittedSheets
+    - PhoneNumberKit
+    - Realm
+    - RealmSwift
+
+EXTERNAL SOURCES:
+  ActivityPresenter:
+    :path: "../../../Pods/Packages/ActivityPresenter.podspec"
+  Authentication:
+    :path: "../../../Pods/Services/Authentication.podspec"
+  ChannelReactor:
+    :path: "../../../Pods/Services/ChannelReactor.podspec"
+  Channels:
+    :path: "../../../Pods/Modules/Channels.podspec"
+  ChannelStorage:
+    :path: "../../../Pods/Services/ChannelStorage.podspec"
+  ChannelsView:
+    :path: "../../../Pods/Packages/ChannelsView.podspec"
+  CodeView:
+    :path: "../../../Pods/Packages/CodeView.podspec"
+  ConnectTelegram:
+    :path: "../../../Pods/Modules/ConnectTelegram.podspec"
+  ErrorPresenter:
+    :path: "../../../Pods/Packages/ErrorPresenter.podspec"
+  FolderReactor:
+    :path: "../../../Pods/Services/FolderReactor.podspec"
+  Folders:
+    :path: "../../../Pods/Modules/Folders.podspec"
+  FolderStorage:
+    :path: "../../../Pods/Services/FolderStorage.podspec"
+  FoldersView:
+    :path: "../../../Pods/Packages/FoldersView.podspec"
+  Login:
+    :path: "../../../Pods/Modules/Login.podspec"
+  LoginView:
+    :path: "../../../Pods/Packages/LoginView.podspec"
+  Main:
+    :path: "../../../Pods/Modules/Main.podspec"
+  PasswordView:
+    :path: "../../../Pods/Packages/PasswordView.podspec"
+  PhoneView:
+    :path: "../../../Pods/Packages/PhoneView.podspec"
+  RealmManager:
+    :path: "../../../Pods/Packages/RealmManager.podspec"
+  TeleGuideModel:
+    :path: "../../../Pods/Ontology/TeleGuideModel.podspec"
+  TeleGuideRealm:
+    :path: "../../../Pods/Ontology/TeleGuideRealm.podspec"
+  UserModel:
+    :path: "../../../Pods/Ontology/UserModel.podspec"
+
+SPEC CHECKSUMS:
+  ActivityPresenter: 43362337d96a0ea52420fe808517fe9cd1b527a4
+  Authentication: 3d59d3d54cf04849c15722404350ae93a6d37916
+  ChannelReactor: 0a2c58d03762dc5602edff72a3a0c734d6704eb4
+  Channels: b0088e2e1f27e9c4d8822d20d10d573f5c6c3603
+  ChannelStorage: 0a6b8edef5460bf4f3bdf52e16507a7c48bdfe0d
+  ChannelsView: 0dbdf0a17c775a9346f674da2c8a4797ab907a21
+  CodeView: 33119c037ae700c13fc456dc9b9e4cb6e6eafd7a
+  ConnectTelegram: fd6af5bd8beb868369bed45ab4a2a6859e534b45
+  CountryPickerSwift: b2cd8b391a0222bd9a97d09ea30426303adac810
+  ErrorPresenter: deb60f0739744b9b79bbf7be09e7e0a473ba132b
+  FittedSheets: ec30a41b7f054891992ada0441ebe7801958f123
+  FolderReactor: bd9248c90421d9a422492c141b6b4f08a98ea5e0
+  Folders: d9af7c06a001577bd5c722811a01dc5709b3f034
+  FolderStorage: 16e833d1abd5225cb73b5a13ecd92fb9016c4dce
+  FoldersView: d90803d6f5f0bdbde0358a7e4eba32301a450fc0
+  Login: 3f46aa09148c09db2687cfdf8d20640221f50543
+  LoginView: 5793715348f0d09604436168e908c24cb99c41e8
+  Main: 5f3663f52dc9f73e8caed2af67aa325dfd64111d
+  PasswordView: b67ac650d4861fb40172cbed38dd3a76c151cfe5
+  PhoneNumberKit: df411d46177d1492da84e10b6c093846dd861452
+  PhoneView: 20a64c39ff14abd79bb7d4af57ae0fef8c0ebc2b
+  Realm: 211e32e680c354c9b1a2bdc0e3aeb01c25849641
+  RealmManager: f7eb98c0aea4c5e428d6e13da106571f77b942a2
+  RealmSwift: f9043abf9b6821ad5c3032c2a36b5ddfc90b4ce3
+  TeleGuideModel: ca2e3fa2f5df6fca86c488318323150eec10182b
+  TeleGuideRealm: bab337583c10480eb58b96cf6782bbe3d6b8c2eb
+  UserModel: bf0e8a56c8473972a1b41e723171b777a23d994c
+
+PODFILE CHECKSUM: 58d8bdf23070f42af751dce9f7440e3cfd847014
+
+COCOAPODS: 1.9.3
