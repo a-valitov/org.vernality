@@ -1,0 +1,86 @@
+PODS:
+  - ActivityPresenter (0.0.1)
+  - Authentication (0.0.1):
+    - Parse
+    - RealmManager
+    - RealmSwift (= 10.0.0-beta.2)
+    - UserModel
+  - Bolts/Tasks (1.9.1)
+  - ErrorPresenter (0.0.1)
+  - FittedSheets (2.1.1)
+  - Login (0.0.1):
+    - ActivityPresenter
+    - Authentication
+    - ErrorPresenter
+    - LoginView
+    - UserModel
+  - LoginView (0.0.1)
+  - Main (0.0.1):
+    - FittedSheets
+  - Parse (1.18.0):
+    - Parse/Core (= 1.18.0)
+  - Parse/Core (1.18.0):
+    - Bolts/Tasks (= 1.9.1)
+  - Realm (10.0.0-beta.2):
+    - Realm/Headers (= 10.0.0-beta.2)
+  - Realm/Headers (10.0.0-beta.2)
+  - RealmManager (0.0.1):
+    - RealmSwift (= 10.0.0-beta.2)
+  - RealmSwift (10.0.0-beta.2):
+    - Realm (= 10.0.0-beta.2)
+  - UserModel (0.0.1)
+
+DEPENDENCIES:
+  - ActivityPresenter (from `../../../Pods/Packages/ActivityPresenter.podspec`)
+  - Authentication (from `../../../Pods/Services/Authentication.podspec`)
+  - ErrorPresenter (from `../../../Pods/Packages/ErrorPresenter.podspec`)
+  - Login (from `../../../Pods/Modules/Login.podspec`)
+  - LoginView (from `../../../Pods/Packages/LoginView.podspec`)
+  - Main (from `../../../Pods/Modules/Main.podspec`)
+  - RealmManager (from `../../../Pods/Packages/RealmManager.podspec`)
+  - UserModel (from `../../../Pods/Ontology/UserModel.podspec`)
+
+SPEC REPOS:
+  trunk:
+    - Bolts
+    - FittedSheets
+    - Parse
+    - Realm
+    - RealmSwift
+
+EXTERNAL SOURCES:
+  ActivityPresenter:
+    :path: "../../../Pods/Packages/ActivityPresenter.podspec"
+  Authentication:
+    :path: "../../../Pods/Services/Authentication.podspec"
+  ErrorPresenter:
+    :path: "../../../Pods/Packages/ErrorPresenter.podspec"
+  Login:
+    :path: "../../../Pods/Modules/Login.podspec"
+  LoginView:
+    :path: "../../../Pods/Packages/LoginView.podspec"
+  Main:
+    :path: "../../../Pods/Modules/Main.podspec"
+  RealmManager:
+    :path: "../../../Pods/Packages/RealmManager.podspec"
+  UserModel:
+    :path: "../../../Pods/Ontology/UserModel.podspec"
+
+SPEC CHECKSUMS:
+  ActivityPresenter: 43362337d96a0ea52420fe808517fe9cd1b527a4
+  Authentication: 1d7e4661d06082c69f63438a2e78dc06dde7c2bb
+  Bolts: 8c1e8aab2f603387b8b9924f57d1d64f43d3ffdc
+  ErrorPresenter: deb60f0739744b9b79bbf7be09e7e0a473ba132b
+  FittedSheets: ec30a41b7f054891992ada0441ebe7801958f123
+  Login: 0cc554d90506df71478b1f0fe5c152c6a8bc20a2
+  LoginView: 9a1131eadfc1a3a2e9bc1f80c9344d50a51d2e65
+  Main: 5f3663f52dc9f73e8caed2af67aa325dfd64111d
+  Parse: 79bdda34fdb7eb2a707a43a951c8aae236cb3e34
+  Realm: 211e32e680c354c9b1a2bdc0e3aeb01c25849641
+  RealmManager: f7eb98c0aea4c5e428d6e13da106571f77b942a2
+  RealmSwift: f9043abf9b6821ad5c3032c2a36b5ddfc90b4ce3
+  UserModel: bf0e8a56c8473972a1b41e723171b777a23d994c
+
+PODFILE CHECKSUM: 4a373bbb5499307360a61b2cc6f1337b5e559c45
+
+COCOAPODS: 1.9.3

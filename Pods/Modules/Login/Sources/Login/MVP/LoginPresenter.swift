@@ -19,6 +19,7 @@ import UserModel
 import Authentication
 import ErrorPresenter
 import ActivityPresenter
+import LoginView
 
 final class LoginPresenter {
     weak var view: LoginViewInput?
@@ -41,29 +42,29 @@ extension LoginPresenter: LoginModule {
 }
 
 extension LoginPresenter: LoginViewOutput {
-    func userWantsToLogin(email: String?, password: String?) {
-        guard let email = email, email.isEmpty == false else {
+    func loginViewUserWantsToLogin() {
+        guard let email = self.view?.email, email.isEmpty == false else {
             self.errorPresenter.present(LoginError.emailIsEmpty)
             return
         }
-        guard let password = password, password.isEmpty == false else {
+        guard let password = self.view?.password, password.isEmpty == false else {
             self.errorPresenter.present(LoginError.passwordIsEmpty)
             return
         }
         self.login(email: email, password: password)
     }
 
-    func userWantsToRegister(email: String?, password: String?) {
-        guard let email = email, email.isEmpty == false else {
+    func loginViewUserWantsToRegister() {
+        guard let email = self.view?.email, email.isEmpty == false else {
             self.errorPresenter.present(LoginError.emailIsEmpty)
             return
         }
-        guard let password = password, password.isEmpty == false else {
+        guard let password = self.view?.password, password.isEmpty == false else {
             self.errorPresenter.present(LoginError.passwordIsEmpty)
             return
         }
         self.activityPresenter.increment()
-        self.authentication.register(email: email, password: password) { [weak self] result in
+        self.authentication.register(email: email, password: password, parameters: self.view?.parameters) { [weak self] result in
             guard let sSelf = self else { return }
             sSelf.activityPresenter.decrement()
             switch result {
@@ -79,7 +80,7 @@ extension LoginPresenter: LoginViewOutput {
 extension LoginPresenter {
     private func login(email: String, password: String) {
         self.activityPresenter.increment()
-        self.authentication.login(email: email, password: password) { [weak self] result in
+        self.authentication.login(email: email, password: password, parameters: self.view?.parameters) { [weak self] result in
             guard let sSelf = self else { return }
             sSelf.activityPresenter.decrement()
             switch result {

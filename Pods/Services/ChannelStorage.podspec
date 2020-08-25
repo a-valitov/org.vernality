@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
   end
 
   s.dependency 'RealmManager'
-  s.dependency 'RealmSwift'
+  s.dependency 'RealmSwift', '=10.0.0-beta.2'
   s.dependency 'TeleGuideModel'
   s.dependency 'TeleGuideRealm'
 end

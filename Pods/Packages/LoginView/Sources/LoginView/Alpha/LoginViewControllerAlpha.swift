@@ -17,10 +17,26 @@
 #if canImport(UIKit)
 import Foundation
 import UIKit
-import Login
 
 final class LoginViewControllerAlpha: UIViewController {
     var output: LoginViewOutput
+    var email: String? {
+        get {
+            return self.emailTextField.text
+        }
+        set {
+            self.emailTextField.text = newValue
+        }
+    }
+    var password: String? {
+        get {
+            return self.passwordTextField.text
+        }
+        set {
+            self.passwordTextField.text = newValue
+        }
+    }
+    var parameters: [String: Any]? = nil
 
     init(output: LoginViewOutput) {
         self.output = output
@@ -34,7 +50,7 @@ final class LoginViewControllerAlpha: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setupViews()
+        self.setup()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -50,7 +66,7 @@ final class LoginViewControllerAlpha: UIViewController {
     private let emailTextField = UITextField()
     private let passwordTextField = UITextField()
 
-    private func setupViews() {
+    private func setup() {
         guard let container = self.view else { return }
         container.backgroundColor = .white
 
@@ -95,14 +111,12 @@ final class LoginViewControllerAlpha: UIViewController {
 
     @objc
     private func loginButtonTouchUpInside(_ sender: Any) {
-        self.output.userWantsToLogin(email: self.emailTextField.text,
-                                     password: self.passwordTextField.text)
+        self.output.loginViewUserWantsToLogin()
     }
 
     @objc
     private func registerButtonTouchUpInside(_ sender: Any) {
-        self.output.userWantsToRegister(email: self.emailTextField.text,
-                                        password: self.passwordTextField.text)
+        self.output.loginViewUserWantsToRegister()
     }
 }
 

@@ -18,8 +18,5 @@ Pod::Spec.new do |s|
   s.test_spec 'Tests' do |test_spec|
     test_spec.source_files = 'LoginView/Tests/**/*.{swift}', 'LoginView/Tests/*.{swift}'
   end
-
-  s.ios.dependency 'Login'
-  
 end
 

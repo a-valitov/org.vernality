@@ -20,7 +20,13 @@ import UserModel
 public protocol Authentication {
     var user: AnyUser? { get }
 
-    func login(email: String, password: String, result: @escaping (Result<AnyUser, Error>) -> Void)
-    func register(email: String, password: String, result: @escaping (Result<Bool, Error>) -> Void)
+    func login(email: String,
+               password: String,
+               parameters: [String: Any]?,
+               result: @escaping (Result<AnyUser, Error>) -> Void)
+    func register(email: String,
+                  password: String,
+                  parameters: [String: Any]?,
+                  result: @escaping (Result<Bool, Error>) -> Void)
     func logout(result: @escaping (Result<Bool, Error>) -> Void)
 }

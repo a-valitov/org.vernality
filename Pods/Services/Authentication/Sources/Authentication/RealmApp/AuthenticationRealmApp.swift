@@ -32,7 +32,10 @@ final class AuthenticationRealmApp: Authentication {
         self.realmManager = realmManager
     }
 
-    func login(email: String, password: String, result: @escaping (Result<AnyUser, Error>) -> Void) {
+    func login(email: String,
+               password: String,
+               parameters: [String: Any]?,
+               result: @escaping (Result<AnyUser, Error>) -> Void) {
         self.realmManager.app.login(withCredential: AppCredentials(username: email, password: password)) { [weak self] (user, error) in
                 if let error = error {
                     DispatchQueue.main.async {
@@ -53,7 +56,10 @@ final class AuthenticationRealmApp: Authentication {
 
     }
 
-    func register(email: String, password: String, result: @escaping (Result<Bool, Error>) -> Void) {
+    func register(email: String,
+                  password: String,
+                  parameters: [String: Any]?,
+                  result: @escaping (Result<Bool, Error>) -> Void) {
         self.realmManager.app.usernamePasswordProviderClient().registerEmail(email, password: password, completion: { error in
             DispatchQueue.main.async {
                 if let error = error {

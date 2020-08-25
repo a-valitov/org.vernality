@@ -17,10 +17,10 @@
 #if canImport(UIKit)
 import UIKit
 
-public final class MainModuleFactoryMVC {
+public final class MainModuleFactoryMVC: MainModuleFactory {
     public init() {}
     
-    func make(output: MainModuleOutput) -> UINavigationController {
+    public func make(output: MainModuleOutput) -> UINavigationController {
         let viewController = MainModuleMVC(output: output)
         let navigationController = UINavigationController(rootViewController: viewController)
         navigationController.isNavigationBarHidden = true

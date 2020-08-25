@@ -1,5 +1,5 @@
 //  Copyright (C) 2020 Startup Studio Vernality
-//  Created by Rinat Enikeev on 8/21/20
+//  Created by Rinat Enikeev on 8/25/20
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -16,7 +16,10 @@
 
 import Foundation
 
-public protocol LoginViewOutput {
-    func userWantsToLogin(email: String?, password: String?)
-    func userWantsToRegister(email: String?, password: String?)
+public class LoginViewFactoryAlpha: LoginViewFactory {
+    public init() {}
+
+    public func makeView(_ output: LoginViewOutput) -> UIViewController & LoginViewInput {
+        return LoginViewControllerAlpha(output: output)
+    }
 }

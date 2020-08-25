@@ -21,6 +21,7 @@ Pod::Spec.new do |s|
 
   s.dependency 'UserModel'
   s.dependency 'RealmManager'
-  s.dependency 'RealmSwift'
+  s.dependency 'RealmSwift', '=10.0.0-beta.2'
+  s.dependency 'Parse'
 end
 

@@ -1,5 +1,5 @@
 //  Copyright (C) 2020 Startup Studio Vernality
-//  Created by Rinat Enikeev on 8/21/20
+//  Created by Rinat Enikeev on 8/24/20
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -14,21 +14,14 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#if canImport(UIKit)
 import Foundation
+import UIKit
+import Main
 
-public protocol LoginViewInput: class {
-    var email: String? { get set }
-    var password: String? { get set }
-    var parameters: [String: Any]? { get }
+final class Application {
+    func start(in window: UIWindow?) {
+        let mainViewController = Assembler.shared.main()
+        window?.rootViewController = mainViewController
+        window?.makeKeyAndVisible()
+    }
 }
-
-public protocol LoginViewOutput {
-    func loginViewUserWantsToLogin()
-    func loginViewUserWantsToRegister()
-}
-
-public protocol LoginViewFactory {
-    func makeView(_ output: LoginViewOutput) -> UIViewController & LoginViewInput
-}
-#endif

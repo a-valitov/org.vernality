@@ -1,0 +1,44 @@
+platform :ios, '11.0'
+use_frameworks!
+install! 'cocoapods', :disable_input_output_paths => true
+
+PODS_PATH = '../../../Pods'
+MODULES_PATH = PODS_PATH + '/Modules'
+PACAKGES_PATH = PODS_PATH + '/Packages'
+SERVICES_PATH = PODS_PATH + '/Services'
+ONTOLOGY_PATH = PODS_PATH + '/Ontology'
+
+target 'ProfitClub' do
+  # modules
+  pod 'Main', :path => MODULES_PATH + '/Main.podspec'
+  pod 'Login', :path => MODULES_PATH + '/Login.podspec'
+
+  # ontology
+  pod 'UserModel', :path => ONTOLOGY_PATH + '/UserModel.podspec'
+  
+  # packages
+  pod 'LoginView', :path => PACAKGES_PATH + '/LoginView.podspec'
+  pod 'ErrorPresenter', :path => PACAKGES_PATH + '/ErrorPresenter.podspec'
+  pod 'ActivityPresenter', :path => PACAKGES_PATH + '/ActivityPresenter.podspec'
+  pod 'RealmManager', :path => PACAKGES_PATH + '/RealmManager.podspec'
+  
+  # services
+  pod 'Authentication', :path => SERVICES_PATH + '/Authentication.podspec'
+end
+
+# Exclude all Package.swift from pods targets
+post_install do |installer|
+  puts("Excluding Package.swift from targets")
+  installer.pods_project.targets.each do |target|
+    all_filerefs = installer.pods_project.files
+    all_filerefs.each do |fileref|
+    if fileref.name == "Package.swift"
+        build_phase = target.source_build_phase
+        build_phase.remove_file_reference(fileref)
+        if build_phase.files_references.include?(fileref)
+          build_phase.remove_file_reference(fileref)
+        end
+      end
+    end
+  end
+end

@@ -18,8 +18,9 @@ import Foundation
 import Authentication
 import ErrorPresenter
 import ActivityPresenter
+import LoginView
 
-public final class LoginAssembler {
+public final class LoginFactory {
     public struct Dependencies {
         let authentication: Authentication
         let errorPresenter: ErrorPresenter
@@ -38,7 +39,7 @@ public final class LoginAssembler {
         self.dependencies = dependencies
     }
 
-    public func assemble(output: LoginModuleOutput) -> LoginModule & LoginViewOutput {
+    public func make(output: LoginModuleOutput) -> LoginModule & LoginViewOutput {
         let presenter = LoginPresenter(authentication: self.dependencies.authentication,
                                        errorPresenter: self.dependencies.errorPresenter,
                                        activityPresenter: self.dependencies.activityPresenter)

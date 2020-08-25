@@ -1,5 +1,5 @@
 //  Copyright (C) 2020 Startup Studio Vernality
-//  Created by Rinat Enikeev on 8/21/20
+//  Created by Rinat Enikeev on 8/24/20
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -14,28 +14,25 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#if canImport(UIKit)
 import UIKit
+import Parse
 
-public protocol MainModule: class {
-    func push(_ viewController: UIViewController, animated: Bool)
-    func raise(_ viewController: UIViewController, animated: Bool)
-    func unraise(animated: Bool, completion: (() -> Void)?)
-    func unwindToRoot()
-}
+@UIApplicationMain
+class AppDelegate: UIResponder, UIApplicationDelegate {
+    var window: UIWindow?
 
-public extension MainModule {
-    func unraise(animated: Bool) {
-        return self.unraise(animated: animated, completion: nil)
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        let parseConfig = ParseClientConfiguration {
+            $0.applicationId = Secrets.parseApplicationId
+            $0.clientKey = Secrets.parseClientKey
+            $0.server = Secrets.parseServer
+        }
+        Parse.initialize(with: parseConfig)
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        self.application.start(in: self.window)
+        return true
     }
+
+    private let application = Application()
 }
 
-public protocol MainModuleOutput {
-    func mainDidLoad(module: MainModule)
-    func mainWillAppear(module: MainModule)
-}
-
-public protocol MainModuleFactory {
-    func make(output: MainModuleOutput) -> UINavigationController
-}
-#endif

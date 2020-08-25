@@ -1,5 +1,5 @@
 //  Copyright (C) 2020 Startup Studio Vernality
-//  Created by Rinat Enikeev on 8/21/20
+//  Created by Rinat Enikeev on 8/25/20
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -16,5 +16,10 @@
 
 import Foundation
 
-public protocol LoginViewInput: class {
+public final class AuthenticationFabricFactory {
+    public init() {}
+
+    public func make() -> Authentication {
+        return AuthenticationParse()
+    }
 }
