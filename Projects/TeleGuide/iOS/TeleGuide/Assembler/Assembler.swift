@@ -56,11 +56,11 @@ final class Assembler {
         let authentication = self.assembleAuthentication()
         let errorPresenter = self.assembleErrorPresenter()
         let activityPresenter = self.assembleActivityPresenter()
-        let dependencies = LoginAssembler.Dependencies(authentication: authentication,
-                                                       errorPresenter: errorPresenter,
-                                                       activityPresenter: activityPresenter)
-        var module = LoginAssembler(dependencies: dependencies).assemble(output: output)
-        let view = LoginViewFactory().makeView(module)
+        let dependencies = LoginFactory.Dependencies(authentication: authentication,
+                                                     errorPresenter: errorPresenter,
+                                                     activityPresenter: activityPresenter)
+        var module = LoginFactory(dependencies: dependencies).make(output: output)
+        let view = LoginViewFactoryAlpha().makeView(module)
         module.view = view
         return view
     }

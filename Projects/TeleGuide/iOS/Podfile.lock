@@ -1,12 +1,14 @@
 PODS:
   - ActivityPresenter (0.0.1)
   - Authentication (0.0.1):
+    - Parse
     - RealmManager
-    - RealmSwift
+    - RealmSwift (= 10.0.0-beta.2)
     - UserModel
+  - Bolts/Tasks (1.9.1)
   - ChannelReactor (0.0.1):
     - RealmManager
-    - RealmSwift
+    - RealmSwift (= 10.0.0-beta.2)
     - TeleGuideModel
     - TeleGuideRealm
   - Channels (0.0.1):
@@ -17,7 +19,7 @@ PODS:
     - TeleGuideModel
   - ChannelStorage (0.0.1):
     - RealmManager
-    - RealmSwift
+    - RealmSwift (= 10.0.0-beta.2)
     - TeleGuideModel
     - TeleGuideRealm
   - ChannelsView (0.0.1):
@@ -34,7 +36,7 @@ PODS:
   - FittedSheets (2.1.1)
   - FolderReactor (0.0.1):
     - RealmManager
-    - RealmSwift
+    - RealmSwift (= 10.0.0-beta.2)
     - TeleGuideModel
     - TeleGuideRealm
   - Folders (0.0.1):
@@ -46,7 +48,7 @@ PODS:
     - TeleGuideModel
   - FolderStorage (0.0.1):
     - RealmManager
-    - RealmSwift
+    - RealmSwift (= 10.0.0-beta.2)
     - TeleGuideModel
     - TeleGuideRealm
   - FoldersView (0.0.1):
@@ -55,11 +57,15 @@ PODS:
     - ActivityPresenter
     - Authentication
     - ErrorPresenter
+    - LoginView
     - UserModel
-  - LoginView (0.0.1):
-    - Login
+  - LoginView (0.0.1)
   - Main (0.0.1):
     - FittedSheets
+  - Parse (1.18.0):
+    - Parse/Core (= 1.18.0)
+  - Parse/Core (1.18.0):
+    - Bolts/Tasks (= 1.9.1)
   - PasswordView (0.0.1)
   - PhoneNumberKit (3.2.0):
     - PhoneNumberKit/PhoneNumberKitCore (= 3.2.0)
@@ -79,7 +85,7 @@ PODS:
     - Realm (= 10.0.0-beta.2)
   - TeleGuideModel (0.0.1)
   - TeleGuideRealm (0.0.1):
-    - RealmSwift
+    - RealmSwift (= 10.0.0-beta.2)
     - TeleGuideModel
   - UserModel (0.0.1)
 
@@ -109,8 +115,10 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - Bolts
     - CountryPickerSwift
     - FittedSheets
+    - Parse
     - PhoneNumberKit
     - Realm
     - RealmSwift
@@ -163,23 +171,25 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   ActivityPresenter: 43362337d96a0ea52420fe808517fe9cd1b527a4
-  Authentication: 3d59d3d54cf04849c15722404350ae93a6d37916
-  ChannelReactor: 0a2c58d03762dc5602edff72a3a0c734d6704eb4
+  Authentication: 1d7e4661d06082c69f63438a2e78dc06dde7c2bb
+  Bolts: 8c1e8aab2f603387b8b9924f57d1d64f43d3ffdc
+  ChannelReactor: 9b55ddcc67113dab24c31c67304a77decc6a0f48
   Channels: b0088e2e1f27e9c4d8822d20d10d573f5c6c3603
-  ChannelStorage: 0a6b8edef5460bf4f3bdf52e16507a7c48bdfe0d
+  ChannelStorage: 2d5863bd6b87cdf2a971f2cf03c5059e866e6b6b
   ChannelsView: 0dbdf0a17c775a9346f674da2c8a4797ab907a21
   CodeView: 33119c037ae700c13fc456dc9b9e4cb6e6eafd7a
   ConnectTelegram: fd6af5bd8beb868369bed45ab4a2a6859e534b45
   CountryPickerSwift: b2cd8b391a0222bd9a97d09ea30426303adac810
   ErrorPresenter: deb60f0739744b9b79bbf7be09e7e0a473ba132b
   FittedSheets: ec30a41b7f054891992ada0441ebe7801958f123
-  FolderReactor: bd9248c90421d9a422492c141b6b4f08a98ea5e0
+  FolderReactor: 43ada11a52ea00af90ce255a38240792827041a6
   Folders: d9af7c06a001577bd5c722811a01dc5709b3f034
-  FolderStorage: 16e833d1abd5225cb73b5a13ecd92fb9016c4dce
+  FolderStorage: b59d8337d06144ae1f756824a0226b688beed282
   FoldersView: d90803d6f5f0bdbde0358a7e4eba32301a450fc0
-  Login: 3f46aa09148c09db2687cfdf8d20640221f50543
-  LoginView: 5793715348f0d09604436168e908c24cb99c41e8
+  Login: 0cc554d90506df71478b1f0fe5c152c6a8bc20a2
+  LoginView: 9a1131eadfc1a3a2e9bc1f80c9344d50a51d2e65
   Main: 5f3663f52dc9f73e8caed2af67aa325dfd64111d
+  Parse: 79bdda34fdb7eb2a707a43a951c8aae236cb3e34
   PasswordView: b67ac650d4861fb40172cbed38dd3a76c151cfe5
   PhoneNumberKit: df411d46177d1492da84e10b6c093846dd861452
   PhoneView: 20a64c39ff14abd79bb7d4af57ae0fef8c0ebc2b
@@ -187,7 +197,7 @@ SPEC CHECKSUMS:
   RealmManager: f7eb98c0aea4c5e428d6e13da106571f77b942a2
   RealmSwift: f9043abf9b6821ad5c3032c2a36b5ddfc90b4ce3
   TeleGuideModel: ca2e3fa2f5df6fca86c488318323150eec10182b
-  TeleGuideRealm: bab337583c10480eb58b96cf6782bbe3d6b8c2eb
+  TeleGuideRealm: a3f70c04d43b628269cc120a4fc33909f9eea8fa
   UserModel: bf0e8a56c8473972a1b41e723171b777a23d994c
 
 PODFILE CHECKSUM: 58d8bdf23070f42af751dce9f7440e3cfd847014
