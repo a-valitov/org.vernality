@@ -27,7 +27,7 @@ import ErrorPresenter
 final class Assembler {
     static let shared = Assembler()
     lazy var authentication: Authentication = {
-        return AuthenticationFabricFactory().make()
+        return AuthenticationParseFactory().make()
     }()
     lazy var activityPresenter: ActivityPresenter = {
         return ActivityPresenterCircleFactory().make()

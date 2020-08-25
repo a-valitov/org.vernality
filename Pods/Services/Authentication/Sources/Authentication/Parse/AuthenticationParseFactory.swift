@@ -16,7 +16,7 @@
 
 import Foundation
 
-public final class AuthenticationFabricFactory {
+public final class AuthenticationParseFactory {
     public init() {}
 
     public func make() -> Authentication {
