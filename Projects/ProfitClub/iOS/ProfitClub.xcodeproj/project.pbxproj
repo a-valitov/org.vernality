@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,6 +11,16 @@
 		0E90497124F390270061A605 /* Assembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E90497024F390270061A605 /* Assembler.swift */; };
 		0E90497424F390960061A605 /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E90497324F390960061A605 /* MainRouter.swift */; };
 		0E90497A24F39C650061A605 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E90497924F39C650061A605 /* Secrets.swift */; };
+		0E90498724F60C980061A605 /* SelectRoleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E90498624F60C980061A605 /* SelectRoleView.swift */; };
+		0E90498A24F60D250061A605 /* SelectRoleViewAlpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E90498924F60D250061A605 /* SelectRoleViewAlpha.swift */; };
+		0E90499224F6142A0061A605 /* OnboardPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E90499124F6142A0061A605 /* OnboardPresenter.swift */; };
+		0E90499424F614390061A605 /* OnboardModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E90499324F614390061A605 /* OnboardModule.swift */; };
+		0E90499624F615E80061A605 /* OnboardRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E90499524F615E80061A605 /* OnboardRouter.swift */; };
+		0E90499824F6160F0061A605 /* OnboardFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E90499724F6160F0061A605 /* OnboardFactory.swift */; };
+		0E90499A24F624770061A605 /* OnboardError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E90499924F624770061A605 /* OnboardError.swift */; };
+		0E90499C24F62A6D0061A605 /* OnboardDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E90499B24F62A6D0061A605 /* OnboardDependencies.swift */; };
+		0E90499F24F62C6C0061A605 /* OnboardSupplierView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E90499E24F62C6C0061A605 /* OnboardSupplierView.swift */; };
+		0E9049A224F62C870061A605 /* OnboardSupplierViewAlpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9049A124F62C870061A605 /* OnboardSupplierViewAlpha.swift */; };
 		0EA11EC824F2B88F00133485 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA11EC724F2B88F00133485 /* AppDelegate.swift */; };
 		0EA11ED124F2B89300133485 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0EA11ED024F2B89300133485 /* Assets.xcassets */; };
 		0EA11ED424F2B89300133485 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EA11ED224F2B89300133485 /* LaunchScreen.storyboard */; };
@@ -22,6 +32,16 @@
 		0E90497024F390270061A605 /* Assembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembler.swift; sourceTree = "<group>"; };
 		0E90497324F390960061A605 /* MainRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouter.swift; sourceTree = "<group>"; };
 		0E90497924F39C650061A605 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
+		0E90498624F60C980061A605 /* SelectRoleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRoleView.swift; sourceTree = "<group>"; };
+		0E90498924F60D250061A605 /* SelectRoleViewAlpha.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRoleViewAlpha.swift; sourceTree = "<group>"; };
+		0E90499124F6142A0061A605 /* OnboardPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardPresenter.swift; sourceTree = "<group>"; };
+		0E90499324F614390061A605 /* OnboardModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardModule.swift; sourceTree = "<group>"; };
+		0E90499524F615E80061A605 /* OnboardRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardRouter.swift; sourceTree = "<group>"; };
+		0E90499724F6160F0061A605 /* OnboardFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardFactory.swift; sourceTree = "<group>"; };
+		0E90499924F624770061A605 /* OnboardError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardError.swift; sourceTree = "<group>"; };
+		0E90499B24F62A6D0061A605 /* OnboardDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardDependencies.swift; sourceTree = "<group>"; };
+		0E90499E24F62C6C0061A605 /* OnboardSupplierView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardSupplierView.swift; sourceTree = "<group>"; };
+		0E9049A124F62C870061A605 /* OnboardSupplierViewAlpha.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardSupplierViewAlpha.swift; sourceTree = "<group>"; };
 		0EA11EC424F2B88F00133485 /* ProfitClub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProfitClub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EA11EC724F2B88F00133485 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0EA11ED024F2B89300133485 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -52,28 +72,101 @@
 			path = Plists;
 			sourceTree = "<group>";
 		};
-		0E90496F24F390180061A605 /* Assembler */ = {
-			isa = PBXGroup;
-			children = (
-				0E90497024F390270061A605 /* Assembler.swift */,
-			);
-			path = Assembler;
-			sourceTree = "<group>";
-		};
-		0E90497224F390860061A605 /* Router */ = {
-			isa = PBXGroup;
-			children = (
-				0E90497324F390960061A605 /* MainRouter.swift */,
-			);
-			path = Router;
-			sourceTree = "<group>";
-		};
 		0E90497824F39C4E0061A605 /* Secrets */ = {
 			isa = PBXGroup;
 			children = (
 				0E90497924F39C650061A605 /* Secrets.swift */,
 			);
 			path = Secrets;
+			sourceTree = "<group>";
+		};
+		0E90498424F60C740061A605 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				0E90498B24F613DF0061A605 /* Onboard */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		0E90498524F60C810061A605 /* SelectRole */ = {
+			isa = PBXGroup;
+			children = (
+				0E90498624F60C980061A605 /* SelectRoleView.swift */,
+				0E90498824F60D150061A605 /* Alpha */,
+			);
+			path = SelectRole;
+			sourceTree = "<group>";
+		};
+		0E90498824F60D150061A605 /* Alpha */ = {
+			isa = PBXGroup;
+			children = (
+				0E90498924F60D250061A605 /* SelectRoleViewAlpha.swift */,
+			);
+			path = Alpha;
+			sourceTree = "<group>";
+		};
+		0E90498B24F613DF0061A605 /* Onboard */ = {
+			isa = PBXGroup;
+			children = (
+				0E90498F24F613FF0061A605 /* Factory */,
+				0E90498D24F613F20061A605 /* Presenter */,
+				0E90498E24F613FB0061A605 /* Router */,
+				0E90499024F6140D0061A605 /* View */,
+			);
+			path = Onboard;
+			sourceTree = "<group>";
+		};
+		0E90498D24F613F20061A605 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				0E90499324F614390061A605 /* OnboardModule.swift */,
+				0E90499924F624770061A605 /* OnboardError.swift */,
+				0E90499124F6142A0061A605 /* OnboardPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		0E90498E24F613FB0061A605 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				0E90499524F615E80061A605 /* OnboardRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		0E90498F24F613FF0061A605 /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				0E90499724F6160F0061A605 /* OnboardFactory.swift */,
+				0E90499B24F62A6D0061A605 /* OnboardDependencies.swift */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
+		0E90499024F6140D0061A605 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0E90499D24F62C570061A605 /* Supplier */,
+				0E90498524F60C810061A605 /* SelectRole */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0E90499D24F62C570061A605 /* Supplier */ = {
+			isa = PBXGroup;
+			children = (
+				0E90499E24F62C6C0061A605 /* OnboardSupplierView.swift */,
+				0E9049A024F62C780061A605 /* Alpha */,
+			);
+			path = Supplier;
+			sourceTree = "<group>";
+		};
+		0E9049A024F62C780061A605 /* Alpha */ = {
+			isa = PBXGroup;
+			children = (
+				0E9049A124F62C870061A605 /* OnboardSupplierViewAlpha.swift */,
+			);
+			path = Alpha;
 			sourceTree = "<group>";
 		};
 		0EA11EBB24F2B88F00133485 = {
@@ -98,9 +191,8 @@
 			isa = PBXGroup;
 			children = (
 				0EA11EDB24F2B94400133485 /* Application */,
-				0E90496F24F390180061A605 /* Assembler */,
+				0E90498424F60C740061A605 /* Presentation */,
 				0EA11EDC24F2B94900133485 /* Resources */,
-				0E90497224F390860061A605 /* Router */,
 				0E90497824F39C4E0061A605 /* Secrets */,
 			);
 			path = ProfitClub;
@@ -111,6 +203,8 @@
 			children = (
 				0EA11EC724F2B88F00133485 /* AppDelegate.swift */,
 				0E90496D24F390070061A605 /* Application.swift */,
+				0E90497024F390270061A605 /* Assembler.swift */,
+				0E90497324F390960061A605 /* MainRouter.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -270,11 +364,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E9049A224F62C870061A605 /* OnboardSupplierViewAlpha.swift in Sources */,
+				0E90499424F614390061A605 /* OnboardModule.swift in Sources */,
 				0E90496E24F390070061A605 /* Application.swift in Sources */,
 				0E90497A24F39C650061A605 /* Secrets.swift in Sources */,
 				0E90497424F390960061A605 /* MainRouter.swift in Sources */,
+				0E90499A24F624770061A605 /* OnboardError.swift in Sources */,
 				0E90497124F390270061A605 /* Assembler.swift in Sources */,
+				0E90498724F60C980061A605 /* SelectRoleView.swift in Sources */,
+				0E90498A24F60D250061A605 /* SelectRoleViewAlpha.swift in Sources */,
+				0E90499224F6142A0061A605 /* OnboardPresenter.swift in Sources */,
+				0E90499624F615E80061A605 /* OnboardRouter.swift in Sources */,
+				0E90499824F6160F0061A605 /* OnboardFactory.swift in Sources */,
 				0EA11EC824F2B88F00133485 /* AppDelegate.swift in Sources */,
+				0E90499F24F62C6C0061A605 /* OnboardSupplierView.swift in Sources */,
+				0E90499C24F62A6D0061A605 /* OnboardDependencies.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -20,11 +20,11 @@ import UIKit
 public final class MainModuleFactoryMVC: MainModuleFactory {
     public init() {}
     
-    public func make(output: MainModuleOutput) -> UINavigationController {
-        let viewController = MainModuleMVC(output: output)
+    public func make() -> (module: MainModule, view: UIViewController) {
+        let viewController = MainModuleMVC()
         let navigationController = UINavigationController(rootViewController: viewController)
         navigationController.isNavigationBarHidden = true
-        return navigationController
+        return (module: viewController, view: navigationController)
     }
 }
 #endif

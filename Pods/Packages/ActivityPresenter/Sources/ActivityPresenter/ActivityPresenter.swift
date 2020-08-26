@@ -20,3 +20,7 @@ public protocol ActivityPresenter {
     func increment()
     func decrement()
 }
+
+public protocol ActivityPresenterFactory {
+    func make() -> ActivityPresenter
+}

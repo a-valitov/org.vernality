@@ -19,7 +19,7 @@ import Foundation
 public class LoginViewFactoryAlpha: LoginViewFactory {
     public init() {}
 
-    public func makeView(_ output: LoginViewOutput) -> UIViewController & LoginViewInput {
+    public func makeView(_ output: LoginViewOutput) -> LoginViewInput {
         return LoginViewControllerAlpha(output: output)
     }
 }

@@ -19,7 +19,7 @@ import Foundation
 public class LoginViewFactoryProfitClub: LoginViewFactory {
     public init() {}
 
-    public func makeView(_ output: LoginViewOutput) -> UIViewController & LoginViewInput {
+    public func makeView(_ output: LoginViewOutput) -> LoginViewInput {
         return LoginViewControllerProfitClub(output: output)
     }
 }

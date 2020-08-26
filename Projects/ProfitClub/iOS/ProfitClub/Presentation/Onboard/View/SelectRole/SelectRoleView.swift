@@ -1,5 +1,5 @@
 //  Copyright (C) 2020 Startup Studio Vernality
-//  Created by Rinat Enikeev on 8/21/20
+//  Created by Rinat Enikeev on 8/26/20
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -14,15 +14,13 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#if canImport(UIKit)
-import Foundation
+import UIKit
+import ProfitClubModel
 
-public final class MainModuleAssemblerMVC {
-    public typealias Factory = MainModuleFactoryMVC
-    public init() {}
-
-    public func assemble(factory: Factory, output: MainModuleOutput) -> UINavigationController {
-        return factory.make(output: output)
-    }
+protocol SelectRoleViewInput: UIViewController {
+    
 }
-#endif
+
+protocol SelectRoleViewOutput {
+    func selectRole(view: SelectRoleViewInput, didSelect role: PCRole)
+}

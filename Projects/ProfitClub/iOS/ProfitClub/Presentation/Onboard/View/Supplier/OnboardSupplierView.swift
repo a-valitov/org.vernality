@@ -1,5 +1,5 @@
 //  Copyright (C) 2020 Startup Studio Vernality
-//  Created by Rinat Enikeev on 8/24/20
+//  Created by Rinat Enikeev on 8/26/20
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -14,14 +14,15 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import Foundation
 import UIKit
-import Main
 
-final class Application {
-    func start(in window: UIWindow?) {
-        let main = Assembler.shared.main()
-        window?.rootViewController = main
-        window?.makeKeyAndVisible()
-    }
+protocol OnboardSupplierViewInput: UIViewController {
+    var name: String? { get set }
+    var inn: String? { get set }
+    var contact: String? { get set }
+    var phone: String? { get set }
+}
+
+protocol OnboardSupplierViewOutput {
+    func onboardSupplier(view: OnboardSupplierViewInput, didFinish sender: Any)
 }

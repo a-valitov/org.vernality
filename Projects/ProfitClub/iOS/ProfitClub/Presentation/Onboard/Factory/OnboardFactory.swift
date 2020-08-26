@@ -1,5 +1,5 @@
 //  Copyright (C) 2020 Startup Studio Vernality
-//  Created by Rinat Enikeev on 8/24/20
+//  Created by Rinat Enikeev on 8/26/20
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -15,13 +15,21 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import Foundation
-import UIKit
-import Main
+import ErrorPresenter
+import ActivityPresenter
 
-final class Application {
-    func start(in window: UIWindow?) {
-        let main = Assembler.shared.main()
-        window?.rootViewController = main
-        window?.makeKeyAndVisible()
+final class OnboardFactory {
+    init(presenters: OnboardPresenters) {
+        self.presenters = presenters
     }
+
+    func make(output: OnboardModuleOutput?) -> OnboardModule {
+        let router = OnboardRouter()
+        let presenter = OnboardPresenter(presenters: self.presenters)
+        presenter.output = output
+        presenter.router = router
+        return presenter
+    }
+
+    private let presenters: OnboardPresenters
 }

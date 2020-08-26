@@ -18,16 +18,15 @@
 import Foundation
 import UIKit
 import Main
-import Authentication
-import Login
 import LoginView
 import ActivityPresenter
 import ErrorPresenter
+import PCAuthentication
 
 final class Assembler {
     static let shared = Assembler()
-    lazy var authentication: Authentication = {
-        return AuthenticationParseFactory().make()
+    lazy var authentication: PCAuthentication = {
+        return PCAuthenticationParseFactory().make()
     }()
     lazy var activityPresenter: ActivityPresenter = {
         return ActivityPresenterCircleFactory().make()
@@ -40,21 +39,17 @@ final class Assembler {
 // MARK: - ViewContollers
 extension Assembler {
     func main() -> UIViewController {
-        let router = MainRouter(authentication: self.authentication)
-        let module = self.mainFactory.make(output: router)
+        let main = self.mainFactory.make()
+        let router = MainRouter(mainModule: main.module,
+                                authentication: self.authentication)
+        main.module.output = router
+        return main.view
+    }
+
+    func onboard(output: OnboardModuleOutput?) -> OnboardModule {
+        let module = self.onboardFactory.make(output: output)
         return module
     }
-
-    func login(output: LoginModuleOutput) -> UIViewController {
-        var module = self.loginFactory.make(output: output)
-        let view = self.loginViewFactory.makeView(module)
-        module.view = view
-        return view
-    }
-}
-
-// MARK: - Services
-extension Assembler {
 }
 
 // MARK: - Factories
@@ -63,15 +58,8 @@ private extension Assembler {
         return MainModuleFactoryMVC()
     }
 
-    var loginFactory: LoginFactory {
-        let dependencies = LoginFactory
-            .Dependencies(authentication: self.authentication,
-                          errorPresenter: self.errorPresenter,
-                          activityPresenter: self.activityPresenter)
-        return LoginFactory(dependencies: dependencies)
-    }
-
-    var loginViewFactory: LoginViewFactory {
-        return LoginViewFactoryProfitClub()
+    var onboardFactory: OnboardFactory {
+        return OnboardFactory(presenters: OnboardPresenters(error: self.errorPresenter,
+                                                            activity: self.activityPresenter))
     }
 }

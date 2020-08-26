@@ -17,18 +17,18 @@
 #if canImport(UIKit)
 import Foundation
 
-public protocol LoginViewInput: class {
+public protocol LoginViewInput: UIViewController {
     var email: String? { get set }
     var password: String? { get set }
     var parameters: [String: Any]? { get }
 }
 
 public protocol LoginViewOutput {
-    func loginViewUserWantsToLogin()
-    func loginViewUserWantsToRegister()
+    func loginViewUserWantsToLogin(_ view: LoginViewInput)
+    func loginViewUserWantsToRegister(_ view: LoginViewInput)
 }
 
 public protocol LoginViewFactory {
-    func makeView(_ output: LoginViewOutput) -> UIViewController & LoginViewInput
+    func makeView(_ output: LoginViewOutput) -> LoginViewInput
 }
 #endif

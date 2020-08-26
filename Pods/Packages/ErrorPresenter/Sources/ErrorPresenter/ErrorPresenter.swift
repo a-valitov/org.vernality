@@ -19,3 +19,7 @@ import Foundation
 public protocol ErrorPresenter {
     func present(_ error: Error)
 }
+
+public protocol ErrorPresenterFactory {
+    func make() -> ErrorPresenter
+}

@@ -11,10 +11,10 @@ ONTOLOGY_PATH = PODS_PATH + '/Ontology'
 target 'ProfitClub' do
   # modules
   pod 'Main', :path => MODULES_PATH + '/Main.podspec'
-  pod 'Login', :path => MODULES_PATH + '/Login.podspec'
 
   # ontology
   pod 'UserModel', :path => ONTOLOGY_PATH + '/UserModel.podspec'
+  pod 'ProfitClubModel', :path => ONTOLOGY_PATH + '/ProfitClubModel.podspec'
   
   # packages
   pod 'LoginView', :path => PACAKGES_PATH + '/LoginView.podspec'
@@ -23,7 +23,7 @@ target 'ProfitClub' do
   pod 'RealmManager', :path => PACAKGES_PATH + '/RealmManager.podspec'
   
   # services
-  pod 'Authentication', :path => SERVICES_PATH + '/Authentication.podspec'
+  pod 'PCAuthentication', :path => SERVICES_PATH + '/ProfitClub/PCAuthentication.podspec'
 end
 
 # Exclude all Package.swift from pods targets

@@ -19,10 +19,9 @@ import UIKit
 import FittedSheets
 
 final class MainModuleMVC: UIViewController {
-    var output: MainModuleOutput
+    var output: MainModuleOutput?
 
-    init(output: MainModuleOutput) {
-        self.output = output
+    init() {
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -34,13 +33,13 @@ final class MainModuleMVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = .red
-        self.output.mainDidLoad(module: self)
+        self.output?.mainDidLoad(module: self)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
-        self.output.mainWillAppear(module: self)
+        self.output?.mainWillAppear(module: self)
     }
 
     override func viewWillDisappear(_ animated: Bool) {

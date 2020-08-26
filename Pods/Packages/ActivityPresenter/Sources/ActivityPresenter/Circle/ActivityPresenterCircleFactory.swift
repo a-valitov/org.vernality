@@ -16,7 +16,7 @@
 
 import Foundation
 
-public final class ActivityPresenterCircleFactory {
+public final class ActivityPresenterCircleFactory: ActivityPresenterFactory {
     public init() {}
 
     public func make() -> ActivityPresenter {

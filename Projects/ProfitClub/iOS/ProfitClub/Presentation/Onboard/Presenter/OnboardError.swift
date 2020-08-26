@@ -1,5 +1,5 @@
 //  Copyright (C) 2020 Startup Studio Vernality
-//  Created by Rinat Enikeev on 8/24/20
+//  Created by Rinat Enikeev on 8/26/20
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -15,13 +15,13 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import Foundation
-import UIKit
-import Main
 
-final class Application {
-    func start(in window: UIWindow?) {
-        let main = Assembler.shared.main()
-        window?.rootViewController = main
-        window?.makeKeyAndVisible()
-    }
+enum OnboardError: Error {
+    case emailIsEmpty
+    case passwordIsEmpty
+    case usernameIsEmpty
+    case supplierNameIsEmpty
+    case supplierInnIsEmpty
+    case supplierContactIsEmpty
+    case supplierPhoneIsEmpty
 }

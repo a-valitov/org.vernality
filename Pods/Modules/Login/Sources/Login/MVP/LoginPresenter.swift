@@ -42,7 +42,7 @@ extension LoginPresenter: LoginModule {
 }
 
 extension LoginPresenter: LoginViewOutput {
-    func loginViewUserWantsToLogin() {
+    func loginViewUserWantsToLogin(_ view: LoginViewInput) {
         guard let email = self.view?.email, email.isEmpty == false else {
             self.errorPresenter.present(LoginError.emailIsEmpty)
             return
@@ -54,7 +54,7 @@ extension LoginPresenter: LoginViewOutput {
         self.login(email: email, password: password)
     }
 
-    func loginViewUserWantsToRegister() {
+    func loginViewUserWantsToRegister(_ view: LoginViewInput) {
         guard let email = self.view?.email, email.isEmpty == false else {
             self.errorPresenter.present(LoginError.emailIsEmpty)
             return

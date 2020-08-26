@@ -1,5 +1,5 @@
 //  Copyright (C) 2020 Startup Studio Vernality
-//  Created by Rinat Enikeev on 8/24/20
+//  Created by Rinat Enikeev on 8/26/20
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -15,13 +15,25 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import Foundation
-import UIKit
-import Main
+import Parse
+import ProfitClubModel
 
-final class Application {
-    func start(in window: UIWindow?) {
-        let main = Assembler.shared.main()
-        window?.rootViewController = main
-        window?.makeKeyAndVisible()
+final class PCAuthenticationParse: PCAuthentication {
+    var user: AnyPCUser? {
+        return nil
+    }
+
+    func register(user: PCUser, password: String, result: @escaping ((Result<AnyPCUser, Error>) -> Void)) {
+        let pfUser = PFUser()
+        pfUser.username = user.username
+        pfUser.password = password
+        pfUser.email = user.email
+        pfUser.signUpInBackground { (success, error) in
+            if let error = error {
+                result(.failure(error))
+            } else {
+                result(.success(user.any))
+            }
+        }
     }
 }

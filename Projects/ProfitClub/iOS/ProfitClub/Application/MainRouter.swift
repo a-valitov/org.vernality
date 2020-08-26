@@ -16,17 +16,18 @@
 
 import Foundation
 import Main
-import Login
-import Authentication
 import UserModel
+import PCAuthentication
 
 final class MainRouter {
-    init(authentication: Authentication) {
+    init(mainModule: MainModule,
+         authentication: PCAuthentication) {
         self.authentication = authentication
+        self.mainModule = mainModule
     }
 
     // dependencies
-    private let authentication: Authentication
+    private let authentication: PCAuthentication
 
     // modules
     private weak var mainModule: MainModule?
@@ -39,20 +40,19 @@ final class MainRouter {
 
 extension MainRouter: MainModuleOutput {
     func mainDidLoad(module: MainModule) {
-        self.mainModule = module
+        if self.isLoggedIn {
+
+        } else {
+            let onboard = Assembler.shared.onboard(output: self)
+            onboard.start(in: self.mainModule)
+        }
     }
 
     func mainWillAppear(module: MainModule) {
-        if self.isLoggedIn {
-        } else {
-            let login = Assembler.shared.login(output: self)
-            self.mainModule?.push(login, animated: true)
-        }
+
     }
 }
 
-extension MainRouter: LoginModuleOutput {
-    func login(module: LoginModule, loggedIn user: AnyUser) {
+extension MainRouter: OnboardModuleOutput {
 
-    }
 }

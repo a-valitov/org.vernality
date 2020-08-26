@@ -16,7 +16,7 @@
 
 import Foundation
 
-public final class ErrorPresenterAlertFactory {
+public final class ErrorPresenterAlertFactory: ErrorPresenterFactory {
     public init() {}
 
     public func make() -> ErrorPresenter {

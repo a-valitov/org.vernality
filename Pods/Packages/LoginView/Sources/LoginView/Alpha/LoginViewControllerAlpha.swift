@@ -111,12 +111,12 @@ final class LoginViewControllerAlpha: UIViewController {
 
     @objc
     private func loginButtonTouchUpInside(_ sender: Any) {
-        self.output.loginViewUserWantsToLogin()
+        self.output.loginViewUserWantsToLogin(self)
     }
 
     @objc
     private func registerButtonTouchUpInside(_ sender: Any) {
-        self.output.loginViewUserWantsToRegister()
+        self.output.loginViewUserWantsToRegister(self)
     }
 }
 
