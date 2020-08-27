@@ -17,6 +17,58 @@
 import Foundation
 
 public protocol PCMember {
-    var firstName: String { get }
+    var id: String? { get }
+    var username: String { get }
+    var firstName: String? { get }
     var lastName: String? { get }
 }
+
+public extension PCMember {
+    var any: AnyPCMember {
+        return AnyPCMember(object: self)
+    }
+}
+
+public struct PCMemberStruct: PCMember {
+    public var id: String?
+    public var username: String
+    public var firstName: String?
+    public var lastName: String?
+
+    public init(username: String) {
+        self.username = username
+    }
+}
+
+public struct AnyPCMember: PCMember, Equatable, Hashable {
+    public var id: String? {
+        return self.object.id
+    }
+
+    public var username: String {
+        return self.object.username
+    }
+
+    public var firstName: String? {
+        return self.object.firstName
+    }
+
+    public var lastName: String? {
+        return self.object.lastName
+    }
+
+    public init(object: PCMember) {
+        self.object = object
+    }
+
+    public static func == (lhs: AnyPCMember, rhs: AnyPCMember) -> Bool {
+        return lhs.id == rhs.id
+    }
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(self.id)
+    }
+
+    private let object: PCMember
+}
+

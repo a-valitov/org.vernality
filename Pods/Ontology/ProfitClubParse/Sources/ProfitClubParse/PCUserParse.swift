@@ -30,12 +30,59 @@ public extension PCUser {
     }
 }
 
+public extension PFUser {
+    var pc: PCUser {
+        return PCPFUserWrapper(pfUser: self)
+    }
+}
+
 public final class PCUserParse: PFUser, PCUser {
     public var id: String? {
         return self.objectId
+    }
+
+    public var isAdministrator: Bool {
+        return self[isAdministratorKey] as? Bool ?? false
     }
 
     public var member: PCMember?
     public var organization: PCOrganization?
     public var supplier: PCSupplier?
 }
+
+private final class PCPFUserWrapper: PCUser {
+    var id: String? {
+        return self.pfUser.objectId
+    }
+
+    var email: String? {
+        return self.pfUser.email
+    }
+
+    var username: String? {
+        return self.pfUser.username
+    }
+
+    var isAdministrator: Bool {
+        return self.pfUser[isAdministratorKey] as? Bool ?? false
+    }
+
+    var member: PCMember? {
+        return self.pfUser["member"] as? PCMemberParse
+    }
+
+    var organization: PCOrganization? {
+        return self.pfUser["organization"] as? PCOrganizationParse
+    }
+
+    var supplier: PCSupplier? {
+        return self.pfUser["supplier"] as? PCSupplierParse
+    }
+
+    init(pfUser: PFUser) {
+        self.pfUser = pfUser
+    }
+    private let pfUser: PFUser
+}
+
+fileprivate let isAdministratorKey = "isAdministrator"

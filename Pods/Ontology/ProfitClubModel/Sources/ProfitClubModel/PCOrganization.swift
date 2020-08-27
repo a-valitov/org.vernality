@@ -17,5 +17,6 @@
 import Foundation
 
 public protocol PCOrganization {
-    var name: String { get }
+    var id: String? { get }
+    var name: String? { get }
 }

@@ -53,6 +53,22 @@ final class OnboardPresenter: OnboardModule {
 
 extension OnboardPresenter: LoginViewOutput {
      func loginViewUserWantsToLogin(_ view: LoginViewInput) {
+        guard let password = view.password, password.isEmpty == false else {
+            self.presenters.error.present(OnboardError.passwordIsEmpty)
+            return
+        }
+        guard let username = view.parameters?["username"] as? String, username.isEmpty == false else {
+            self.presenters.error.present(OnboardError.usernameIsEmpty)
+            return
+        }
+        self.services.authentication.login(username: username, password: password) { [weak self] result in
+            switch result {
+            case .success:
+                print("Success")
+            case .failure(let error):
+                self?.presenters.error.present(error)
+            }
+        }
     }
 
     func loginViewUserWantsToRegister(_ view: LoginViewInput) {
@@ -119,6 +135,7 @@ extension OnboardPresenter: OnboardSupplierViewOutput {
 
 extension OnboardPresenter {
     private func registerSupplier() {
+        // supplier
         guard let name = self.supplierName, name.isEmpty == false else {
             self.presenters.error.present(OnboardError.supplierNameIsEmpty)
             return
@@ -137,6 +154,14 @@ extension OnboardPresenter {
         }
         let supplier = PCSupplierStruct(name: name, inn: inn, contact: contact, phone: phone)
 
+        // member
+        guard let username = self.username, username.isEmpty == false else {
+            self.presenters.error.present(OnboardError.usernameIsEmpty)
+            return
+        }
+        let member = PCMemberStruct(username: username)
+
+        // user
         guard let email = self.email, email.isEmpty == false else {
             self.presenters.error.present(OnboardError.emailIsEmpty)
             return
@@ -145,16 +170,12 @@ extension OnboardPresenter {
             self.presenters.error.present(OnboardError.passwordIsEmpty)
             return
         }
-        guard let username = self.username, username.isEmpty == false else {
-            self.presenters.error.present(OnboardError.usernameIsEmpty)
-            return
-        }
-
         var user = PCUserStruct()
         user.username = username
         user.email = email
         user.supplier = supplier
-
+        user.member = member
+        
         self.services.authentication.register(user: user, password: password) { [weak self] result in
             switch result {
             case .success:

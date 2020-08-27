@@ -1,5 +1,5 @@
 //  Copyright (C) 2020 Startup Studio Vernality
-//  Created by Rinat Enikeev on 8/26/20
+//  Created by Rinat Enikeev on 8/27/20
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -15,15 +15,28 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import Foundation
+import Parse
 import ProfitClubModel
 
-public protocol PCAuthentication {
-    var user: AnyPCUser? { get }
-
-    func login(username: String, password: String, result: @escaping ((Result<AnyPCUser, Error>) -> Void))
-    func register(user: PCUser, password: String, result: @escaping ((Result<AnyPCUser, Error>) -> Void))
+public extension PCMember {
+    var parse: PCMemberParse {
+        let result = PCMemberParse()
+        result.username = self.username
+        result.firstName = self.firstName
+        result.lastName = self.lastName
+        return result
+    }
 }
 
-public protocol PCAuthenticationFactory {
-    func make() -> PCAuthentication
+public final class PCMemberParse: PFObject, PFSubclassing, PCMember {
+    public var id: String? {
+        return self.objectId
+    }
+    @NSManaged public var username: String
+    @NSManaged public var firstName: String?
+    @NSManaged public var lastName: String?
+
+    public static func parseClassName() -> String {
+        return "Member"
+    }
 }

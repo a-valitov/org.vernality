@@ -21,12 +21,16 @@ import ProfitClubParse
 
 final class PCAuthenticationParse: PCAuthentication {
     var user: AnyPCUser? {
-        return nil
+        return PFUser.current()?.pc.any
     }
 
     func login(username: String, password: String, result: @escaping ((Result<AnyPCUser, Error>) -> Void)) {
         PFUser.logInWithUsername(inBackground: username, password: password) { (user, error) in
-
+            if let error = error {
+                result(.failure(error))
+            } else if let user = user {
+                result(.success(user.pc.any))
+            }
         }
     }
 
@@ -37,10 +41,25 @@ final class PCAuthenticationParse: PCAuthentication {
         parseUser.password = password
         group.enter()
         parseUser.signUpInBackground { (success, error) in
-            if success {
+            if let error = error {
+                finalError = error
+            } else {
                 let defaultACL = PFACL(user: parseUser)
                 defaultACL.setReadAccess(true, forRoleWithName: PCRole.administrator.rawValue)
                 PFACL.setDefault(defaultACL, withAccessForCurrentUser: true)
+
+                // member
+                if let parseMember = user.member?.parse {
+                    group.enter()
+                    parseMember.saveInBackground { (succeeded, error)  in
+                        if let error = error {
+                            finalError = error
+                        }
+                        group.leave()
+                    }
+                }
+
+                // supplier
                 if let parseSupplier = user.supplier?.parse {
                     group.enter()
                     parseSupplier.saveInBackground { (succeeded, error)  in
@@ -50,9 +69,6 @@ final class PCAuthenticationParse: PCAuthentication {
                         group.leave()
                     }
                 }
-            }
-            if let error = error {
-                finalError = error
             }
             group.leave()
         }
