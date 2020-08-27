@@ -24,36 +24,31 @@ final class PCAuthenticationParse: PCAuthentication {
         return nil
     }
 
+    func login(username: String, password: String, result: @escaping ((Result<AnyPCUser, Error>) -> Void)) {
+        PFUser.logInWithUsername(inBackground: username, password: password) { (user, error) in
+
+        }
+    }
+
     func register(user: PCUser, password: String, result: @escaping ((Result<AnyPCUser, Error>) -> Void)) {
         let group = DispatchGroup()
         var finalError: Error?
-        let pfUser = PFUser()
-        pfUser.username = user.username
-        pfUser.password = password
-        pfUser.email = user.email
+        let parseUser = user.parse
+        parseUser.password = password
         group.enter()
-        pfUser.signUpInBackground { (success, error) in
+        parseUser.signUpInBackground { (success, error) in
             if success {
-                let defaultACL = PFACL(user: pfUser)
+                let defaultACL = PFACL(user: parseUser)
                 defaultACL.setReadAccess(true, forRoleWithName: PCRole.administrator.rawValue)
                 PFACL.setDefault(defaultACL, withAccessForCurrentUser: true)
-            }
-            for role in user.roles {
-                switch role {
-                case .supplier:
-                    if let pfSupplier = user.supplier?.parse {
-                        group.enter()
-                        pfSupplier.saveInBackground { (succeeded, error)  in
-                            if let error = error {
-                                finalError = error
-                            }
-                            group.leave()
+                if let parseSupplier = user.supplier?.parse {
+                    group.enter()
+                    parseSupplier.saveInBackground { (succeeded, error)  in
+                        if let error = error {
+                            finalError = error
                         }
-                    } else {
-                        assertionFailure()
+                        group.leave()
                     }
-                default:
-                    assertionFailure("not implemented yet")
                 }
             }
             if let error = error {

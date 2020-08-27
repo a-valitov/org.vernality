@@ -18,13 +18,13 @@ import Foundation
 
 public protocol PCUser {
     var id: String? { get }
-    var roles: [PCRole] { get }
+//    var roles: [PCRole] { get }
     var email: String? { get }
     var username: String? { get }
     var member: PCMember? { get }
     var organization: PCOrganization? { get }
     var supplier: PCSupplier? { get }
-    var administrator: PCAdministrator? { get }
+//    var administrator: PCAdministrator? { get }
 }
 
 public extension PCUser {
@@ -35,17 +35,19 @@ public extension PCUser {
 
 public struct PCUserStruct: PCUser {
     public var id: String?
-    public var roles: [PCRole]
+//    public var roles: [PCRole]
     public var email: String?
     public var username: String?
     public var member: PCMember?
     public var organization: PCOrganization?
     public var supplier: PCSupplier?
-    public var administrator: PCAdministrator?
+//    public var administrator: PCAdministrator?
 
-    public init(roles: [PCRole]) {
-        self.roles = roles
-    }
+    public init() {}
+
+//    public init(roles: [PCRole]) {
+//        self.roles = roles
+//    }
 }
 
 public struct AnyPCUser: PCUser, Equatable, Hashable {
@@ -53,9 +55,9 @@ public struct AnyPCUser: PCUser, Equatable, Hashable {
         return self.object.id
     }
 
-    public var roles: [PCRole] {
-        return self.object.roles
-    }
+//    public var roles: [PCRole] {
+//        return self.object.roles
+//    }
 
     public var email: String? {
         return self.object.email
@@ -77,9 +79,9 @@ public struct AnyPCUser: PCUser, Equatable, Hashable {
         return self.object.supplier
     }
 
-    public var administrator: PCAdministrator? {
-        return self.object.administrator
-    }
+//    public var administrator: PCAdministrator? {
+//        return self.object.administrator
+//    }
 
     public init(object: PCUser) {
         self.object = object

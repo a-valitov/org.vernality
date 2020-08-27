@@ -150,10 +150,10 @@ extension OnboardPresenter {
             return
         }
 
-        var user = PCUserStruct(roles: [.supplier])
-        user.supplier = supplier
+        var user = PCUserStruct()
         user.username = username
         user.email = email
+        user.supplier = supplier
 
         self.services.authentication.register(user: user, password: password) { [weak self] result in
             switch result {
