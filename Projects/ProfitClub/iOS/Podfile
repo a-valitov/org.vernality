@@ -20,7 +20,6 @@ target 'ProfitClub' do
   pod 'LoginView', :path => PACAKGES_PATH + '/LoginView.podspec'
   pod 'ErrorPresenter', :path => PACAKGES_PATH + '/ErrorPresenter.podspec'
   pod 'ActivityPresenter', :path => PACAKGES_PATH + '/ActivityPresenter.podspec'
-  pod 'RealmManager', :path => PACAKGES_PATH + '/RealmManager.podspec'
   
   # services
   pod 'PCAuthentication', :path => SERVICES_PATH + '/ProfitClub/PCAuthentication.podspec'

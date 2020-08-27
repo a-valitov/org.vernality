@@ -18,13 +18,6 @@ PODS:
   - ProfitClubParse (0.0.1):
     - Parse
     - ProfitClubModel
-  - Realm (10.0.0-beta.2):
-    - Realm/Headers (= 10.0.0-beta.2)
-  - Realm/Headers (10.0.0-beta.2)
-  - RealmManager (0.0.1):
-    - RealmSwift (= 10.0.0-beta.2)
-  - RealmSwift (10.0.0-beta.2):
-    - Realm (= 10.0.0-beta.2)
 
 DEPENDENCIES:
   - ActivityPresenter (from `../../../Pods/Packages/ActivityPresenter.podspec`)
@@ -34,15 +27,12 @@ DEPENDENCIES:
   - PCAuthentication (from `../../../Pods/Services/ProfitClub/PCAuthentication.podspec`)
   - ProfitClubModel (from `../../../Pods/Ontology/ProfitClubModel.podspec`)
   - ProfitClubParse (from `../../../Pods/Ontology/ProfitClubParse.podspec`)
-  - RealmManager (from `../../../Pods/Packages/RealmManager.podspec`)
 
 SPEC REPOS:
   trunk:
     - Bolts
     - FittedSheets
     - Parse
-    - Realm
-    - RealmSwift
 
 EXTERNAL SOURCES:
   ActivityPresenter:
@@ -59,8 +49,6 @@ EXTERNAL SOURCES:
     :path: "../../../Pods/Ontology/ProfitClubModel.podspec"
   ProfitClubParse:
     :path: "../../../Pods/Ontology/ProfitClubParse.podspec"
-  RealmManager:
-    :path: "../../../Pods/Packages/RealmManager.podspec"
 
 SPEC CHECKSUMS:
   ActivityPresenter: 43362337d96a0ea52420fe808517fe9cd1b527a4
@@ -73,10 +61,7 @@ SPEC CHECKSUMS:
   PCAuthentication: 08d4d8b660b8f39573b8192607dd431ebdb7254f
   ProfitClubModel: 38acfa2527d8cac51c97c8494db90fdd3025d32f
   ProfitClubParse: f0319471560bd2af6fd3d2753a8980bab1656b1a
-  Realm: 211e32e680c354c9b1a2bdc0e3aeb01c25849641
-  RealmManager: f7eb98c0aea4c5e428d6e13da106571f77b942a2
-  RealmSwift: f9043abf9b6821ad5c3032c2a36b5ddfc90b4ce3
 
-PODFILE CHECKSUM: cd6b81ff907948833b766982b839436df13f14de
+PODFILE CHECKSUM: 4018e4515c8022da30fd287670f2785a8a2d1184
 
 COCOAPODS: 1.9.3
