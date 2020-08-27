@@ -15,10 +15,15 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import Foundation
+import PCAuthentication
 import ErrorPresenter
 import ActivityPresenter
 
 struct OnboardPresenters {
     let error: ErrorPresenter
     let activity: ActivityPresenter
+}
+
+struct OnboardServices {
+    let authentication: PCAuthentication
 }

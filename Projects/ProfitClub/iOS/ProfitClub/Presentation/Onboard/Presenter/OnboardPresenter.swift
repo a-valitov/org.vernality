@@ -25,8 +25,10 @@ final class OnboardPresenter: OnboardModule {
     weak var output: OnboardModuleOutput?
     var router: OnboardRouter?
 
-    init(presenters: OnboardPresenters) {
+    init(presenters: OnboardPresenters,
+         services: OnboardServices) {
         self.presenters = presenters
+        self.services = services
     }
 
     func start(in main: MainModule?) {
@@ -34,7 +36,9 @@ final class OnboardPresenter: OnboardModule {
         self.router?.openLogin(output: self)
     }
 
+    // dependencies
     private let presenters: OnboardPresenters
+    private let services: OnboardServices
 
     // persisted
     private var email: String?
@@ -109,6 +113,7 @@ extension OnboardPresenter: OnboardSupplierViewOutput {
         self.supplierInn = inn
         self.supplierContact = contact
         self.supplierPhone = phone
+        self.registerSupplier()
     }
 }
 
@@ -149,6 +154,15 @@ extension OnboardPresenter {
         user.supplier = supplier
         user.username = username
         user.email = email
+
+        self.services.authentication.register(user: user, password: password) { [weak self] result in
+            switch result {
+            case .success:
+                print("Success")
+            case .failure(let error):
+                self?.presenters.error.present(error)
+            }
+        }
         
     }
 }

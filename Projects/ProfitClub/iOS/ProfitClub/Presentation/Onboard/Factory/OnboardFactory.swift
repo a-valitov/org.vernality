@@ -19,17 +19,21 @@ import ErrorPresenter
 import ActivityPresenter
 
 final class OnboardFactory {
-    init(presenters: OnboardPresenters) {
+    init(presenters: OnboardPresenters,
+         services: OnboardServices) {
         self.presenters = presenters
+        self.services = services
     }
 
     func make(output: OnboardModuleOutput?) -> OnboardModule {
         let router = OnboardRouter()
-        let presenter = OnboardPresenter(presenters: self.presenters)
+        let presenter = OnboardPresenter(presenters: self.presenters,
+                                         services: self.services)
         presenter.output = output
         presenter.router = router
         return presenter
     }
 
+    private let services: OnboardServices
     private let presenters: OnboardPresenters
 }

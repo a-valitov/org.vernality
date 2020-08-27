@@ -24,12 +24,50 @@ final class PCAuthenticationParse: PCAuthentication {
     }
 
     func register(user: PCUser, password: String, result: @escaping ((Result<AnyPCUser, Error>) -> Void)) {
+        let group = DispatchGroup()
+        var finalError: Error?
         let pfUser = PFUser()
         pfUser.username = user.username
         pfUser.password = password
         pfUser.email = user.email
+        group.enter()
         pfUser.signUpInBackground { (success, error) in
+            if success {
+                let defaultACL = PFACL(user: pfUser)
+                defaultACL.setReadAccess(true, forRoleWithName: PCRole.administratior.rawValue)
+                PFACL.setDefault(defaultACL, withAccessForCurrentUser: true)
+            }
+            for role in user.roles {
+                switch role {
+                case .supplier:
+                    if let supplier = user.supplier {
+                        let pfSupplier = PFObject(className: "Supplier")
+                        pfSupplier["name"] = supplier.name
+                        pfSupplier["inn"] = supplier.inn
+                        pfSupplier["phone"] = supplier.phone
+                        pfSupplier["contact"] = supplier.contact
+                        group.enter()
+                        pfSupplier.saveInBackground { (succeeded, error)  in
+                            if let error = error {
+                                finalError = error
+                            }
+                            group.leave()
+                        }
+                    } else {
+                        assertionFailure()
+                    }
+                default:
+                    assertionFailure("not implemented yet")
+                }
+            }
             if let error = error {
+                finalError = error
+            }
+            group.leave()
+        }
+
+        group.notify(queue: .main) {
+            if let error = finalError {
                 result(.failure(error))
             } else {
                 result(.success(user.any))

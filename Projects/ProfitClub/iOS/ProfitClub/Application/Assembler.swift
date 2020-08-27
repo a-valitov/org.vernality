@@ -60,6 +60,7 @@ private extension Assembler {
 
     var onboardFactory: OnboardFactory {
         return OnboardFactory(presenters: OnboardPresenters(error: self.errorPresenter,
-                                                            activity: self.activityPresenter))
+                                                            activity: self.activityPresenter),
+                              services: OnboardServices(authentication: self.authentication))
     }
 }

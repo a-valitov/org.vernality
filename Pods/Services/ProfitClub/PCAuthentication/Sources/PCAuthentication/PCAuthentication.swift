@@ -19,6 +19,8 @@ import ProfitClubModel
 
 public protocol PCAuthentication {
     var user: AnyPCUser? { get }
+
+    func register(user: PCUser, password: String, result: @escaping ((Result<AnyPCUser, Error>) -> Void))
 }
 
 public protocol PCAuthenticationFactory {
