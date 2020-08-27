@@ -13,8 +13,8 @@ target 'ProfitClub' do
   pod 'Main', :path => MODULES_PATH + '/Main.podspec'
 
   # ontology
-  pod 'UserModel', :path => ONTOLOGY_PATH + '/UserModel.podspec'
   pod 'ProfitClubModel', :path => ONTOLOGY_PATH + '/ProfitClubModel.podspec'
+  pod 'ProfitClubParse', :path => ONTOLOGY_PATH + '/ProfitClubParse.podspec'
   
   # packages
   pod 'LoginView', :path => PACAKGES_PATH + '/LoginView.podspec'

@@ -85,7 +85,7 @@ extension OnboardPresenter: SelectRoleViewOutput {
             break
         case .supplier:
             self.router?.openOnboardSupplier(output: self)
-        case .administratior:
+        case .administrator:
             break
         }
     }

@@ -17,6 +17,7 @@
 import Foundation
 import Parse
 import ProfitClubModel
+import ProfitClubParse
 
 final class PCAuthenticationParse: PCAuthentication {
     var user: AnyPCUser? {
@@ -34,18 +35,13 @@ final class PCAuthenticationParse: PCAuthentication {
         pfUser.signUpInBackground { (success, error) in
             if success {
                 let defaultACL = PFACL(user: pfUser)
-                defaultACL.setReadAccess(true, forRoleWithName: PCRole.administratior.rawValue)
+                defaultACL.setReadAccess(true, forRoleWithName: PCRole.administrator.rawValue)
                 PFACL.setDefault(defaultACL, withAccessForCurrentUser: true)
             }
             for role in user.roles {
                 switch role {
                 case .supplier:
-                    if let supplier = user.supplier {
-                        let pfSupplier = PFObject(className: "Supplier")
-                        pfSupplier["name"] = supplier.name
-                        pfSupplier["inn"] = supplier.inn
-                        pfSupplier["phone"] = supplier.phone
-                        pfSupplier["contact"] = supplier.contact
+                    if let pfSupplier = user.supplier?.parse {
                         group.enter()
                         pfSupplier.saveInBackground { (succeeded, error)  in
                             if let error = error {

@@ -16,7 +16,6 @@
 
 import Foundation
 import Main
-import UserModel
 import PCAuthentication
 
 final class MainRouter {

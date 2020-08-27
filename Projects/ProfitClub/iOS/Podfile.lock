@@ -13,7 +13,11 @@ PODS:
   - PCAuthentication (0.0.1):
     - Parse
     - ProfitClubModel
+    - ProfitClubParse
   - ProfitClubModel (0.0.1)
+  - ProfitClubParse (0.0.1):
+    - Parse
+    - ProfitClubModel
   - Realm (10.0.0-beta.2):
     - Realm/Headers (= 10.0.0-beta.2)
   - Realm/Headers (10.0.0-beta.2)
@@ -21,7 +25,6 @@ PODS:
     - RealmSwift (= 10.0.0-beta.2)
   - RealmSwift (10.0.0-beta.2):
     - Realm (= 10.0.0-beta.2)
-  - UserModel (0.0.1)
 
 DEPENDENCIES:
   - ActivityPresenter (from `../../../Pods/Packages/ActivityPresenter.podspec`)
@@ -30,8 +33,8 @@ DEPENDENCIES:
   - Main (from `../../../Pods/Modules/Main.podspec`)
   - PCAuthentication (from `../../../Pods/Services/ProfitClub/PCAuthentication.podspec`)
   - ProfitClubModel (from `../../../Pods/Ontology/ProfitClubModel.podspec`)
+  - ProfitClubParse (from `../../../Pods/Ontology/ProfitClubParse.podspec`)
   - RealmManager (from `../../../Pods/Packages/RealmManager.podspec`)
-  - UserModel (from `../../../Pods/Ontology/UserModel.podspec`)
 
 SPEC REPOS:
   trunk:
@@ -54,10 +57,10 @@ EXTERNAL SOURCES:
     :path: "../../../Pods/Services/ProfitClub/PCAuthentication.podspec"
   ProfitClubModel:
     :path: "../../../Pods/Ontology/ProfitClubModel.podspec"
+  ProfitClubParse:
+    :path: "../../../Pods/Ontology/ProfitClubParse.podspec"
   RealmManager:
     :path: "../../../Pods/Packages/RealmManager.podspec"
-  UserModel:
-    :path: "../../../Pods/Ontology/UserModel.podspec"
 
 SPEC CHECKSUMS:
   ActivityPresenter: 43362337d96a0ea52420fe808517fe9cd1b527a4
@@ -67,13 +70,13 @@ SPEC CHECKSUMS:
   LoginView: 9a1131eadfc1a3a2e9bc1f80c9344d50a51d2e65
   Main: 5f3663f52dc9f73e8caed2af67aa325dfd64111d
   Parse: 79bdda34fdb7eb2a707a43a951c8aae236cb3e34
-  PCAuthentication: 634e3e6011590b1803a0ce7544667b9b70469a96
+  PCAuthentication: 08d4d8b660b8f39573b8192607dd431ebdb7254f
   ProfitClubModel: 38acfa2527d8cac51c97c8494db90fdd3025d32f
+  ProfitClubParse: f0319471560bd2af6fd3d2753a8980bab1656b1a
   Realm: 211e32e680c354c9b1a2bdc0e3aeb01c25849641
   RealmManager: f7eb98c0aea4c5e428d6e13da106571f77b942a2
   RealmSwift: f9043abf9b6821ad5c3032c2a36b5ddfc90b4ce3
-  UserModel: bf0e8a56c8473972a1b41e723171b777a23d994c
 
-PODFILE CHECKSUM: a2dfa87be276ee3aa938152266109ad0034ad2d3
+PODFILE CHECKSUM: cd6b81ff907948833b766982b839436df13f14de
 
 COCOAPODS: 1.9.3
