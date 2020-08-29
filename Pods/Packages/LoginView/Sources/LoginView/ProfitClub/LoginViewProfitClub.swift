@@ -83,6 +83,9 @@ final class LoginViewControllerProfitClub: UIViewController {
         self.view.backgroundColor = .white
         self.loginButton.setTitleColor(.black, for: .normal)
         self.registerButton.setTitleColor(.black, for: .normal)
+        self.emailTextField.borderStyle = .line
+        self.passwordTextField.borderStyle = .line
+        self.usernameTextField.borderStyle = .line
     }
 
     private func localize() {
