@@ -51,6 +51,7 @@
                     </view>
                     <connections>
                         <outlet property="descriptionLabel" destination="9TM-yQ-MLL" id="aHa-ON-MOW"/>
+                        <outlet property="statusLabel" destination="Hlp-Rj-UG4" id="KZq-6E-cct"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ukv-tm-YtR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

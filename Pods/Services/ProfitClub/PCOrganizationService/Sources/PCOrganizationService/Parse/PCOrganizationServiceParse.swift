@@ -19,7 +19,23 @@ import ProfitClubParse
 import ProfitClubModel
 import Parse
 
-final class PCOrganizationServiceParse: PCOrganizationService {
+public final class PCOrganizationServiceParse: PCOrganizationService {
+    public init() {}
     
-
+    public func reload(_ organization: PCOrganization?,
+                result: @escaping (Result<PCOrganization, Error>) -> Void) {
+        guard let organization = organization else {
+            result(.failure(PCOrganizationServiceError.inputIsNil))
+            return
+        }
+        organization.parse.fetchInBackground { (pfOrganization, error) in
+            if let error = error {
+                result(.failure(error))
+            } else if let pcOrganization = pfOrganization?.pcOrganization {
+                result(.success(pcOrganization))
+            } else {
+                result(.failure(PCOrganizationServiceError.bothResultAndErrorAreNil))
+            }
+        }
+    }
 }

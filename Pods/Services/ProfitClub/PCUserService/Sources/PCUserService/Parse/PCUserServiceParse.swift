@@ -17,15 +17,78 @@
 import Foundation
 import PCAuthentication
 import ProfitClubModel
+import Parse
+import ProfitClubParse
 
-final class PCUserServiceParse: PCUserService {
-    var user: AnyPCUser? {
+public final class PCUserServiceParse: PCUserService {
+    public var user: AnyPCUser? {
         return self.authentication.user
     }
     
-    init(authentication: PCAuthentication) {
+    public init(authentication: PCAuthentication) {
         self.authentication = authentication
     }
 
-    private let authentication: PCAuthentication
+    public func reload(result: @escaping (Result<AnyPCUser, Error>) -> Void) {
+        guard let parseUser = self.user?.parse else {
+            result(.failure(PCUserServiceError.userIsNil))
+            return
+        }
+        var finalError: Error?
+        var finalUser: PCUserParse?
+        let group = DispatchGroup()
+        group.enter()
+        parseUser.fetchInBackground { (pfObject, error) in
+            if let error = error {
+                finalError = error
+            } else {
+                if let pfUser = pfObject?.pcUser {
+                    group.enter()
+                    parseUser.relation(forKey: "member").query().getFirstObjectInBackground(block: { (pfMember, error) in
+                        if let error = error {
+                            finalError = error
+                        } else {
+                            pfUser.member = pfMember?.pcMember
+                        }
+                        group.leave()
+                    })
+                    group.enter()
+                    parseUser.relation(forKey: "organizations").query().findObjectsInBackground { (pfOrganizations, error) in
+                        if let error = error {
+                            finalError = error
+                        } else {
+                            pfUser.organizations = pfOrganizations?.map({ $0.pcOrganization })
+                        }
+                        group.leave()
+                    }
+                    group.enter()
+                    parseUser.relation(forKey: "suppliers").query().findObjectsInBackground { (pfSuppliers, error) in
+                        if let error = error {
+                            finalError = error
+                        } else {
+                            pfUser.suppliers = pfSuppliers?.map({ $0.pcSupplier })
+                        }
+                        group.leave()
+                    }
+                    finalUser = pfUser
+                } else {
+                    finalError = PCUserServiceError.userIsNotPFUser
+                }
+            }
+            group.leave()
+        }
+
+        group.notify(queue: .main) { [weak self] in
+            if let error = finalError {
+                result(.failure(error))
+            } else if let user = finalUser {
+                self?.authentication.user = user.any
+                result(.success(user.any))
+            } else {
+                result(.failure(PCUserServiceError.userIsNil))
+            }
+        }
+    }
+
+    private var authentication: PCAuthentication
 }

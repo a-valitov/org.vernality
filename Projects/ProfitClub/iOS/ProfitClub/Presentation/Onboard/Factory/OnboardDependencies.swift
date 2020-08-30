@@ -16,6 +16,7 @@
 
 import Foundation
 import PCAuthentication
+import PCOrganizationService
 import ErrorPresenter
 import ActivityPresenter
 
@@ -26,4 +27,5 @@ struct OnboardPresenters {
 
 struct OnboardServices {
     let authentication: PCAuthentication
+    let organization: PCOrganizationService
 }

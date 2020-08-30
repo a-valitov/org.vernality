@@ -22,6 +22,8 @@ import LoginView
 import ActivityPresenter
 import ErrorPresenter
 import PCAuthentication
+import PCOrganizationService
+import PCUserService
 
 final class AppFactory {
     lazy var authentication: PCAuthentication = {
@@ -34,6 +36,14 @@ final class AppFactory {
 
     func errorPresenter() -> ErrorPresenter {
         return ErrorPresenterAlertFactory().make()
+    }
+
+    func organizationService() -> PCOrganizationService {
+        return PCOrganizationServiceParse()
+    }
+
+    func userService() -> PCUserService {
+        return PCUserServiceParse(authentication: self.authentication)
     }
 }
 
@@ -64,7 +74,8 @@ private extension AppFactory {
     var onboardFactory: OnboardFactory {
         return OnboardFactory(presenters: OnboardPresenters(error: self.errorPresenter(),
                                                             activity: self.activityPresenter()),
-                              services: OnboardServices(authentication: self.authentication))
+                              services: OnboardServices(authentication: self.authentication,
+                                                        organization: self.organizationService()))
     }
 
     var interfaceFactory: InterfaceFactory {

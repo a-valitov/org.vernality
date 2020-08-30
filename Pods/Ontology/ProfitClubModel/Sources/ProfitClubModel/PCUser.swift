@@ -20,7 +20,6 @@ public protocol PCUser {
     var id: String? { get }
     var email: String? { get }
     var username: String? { get }
-    var isAdministrator: Bool { get }
 
     var member: PCMember? { get }
     var organizations: [PCOrganization]? { get }
@@ -37,7 +36,6 @@ public struct PCUserStruct: PCUser {
     public var id: String?
     public var email: String?
     public var username: String?
-    public var isAdministrator: Bool = false
     public var member: PCMember?
     public var organizations: [PCOrganization]?
     public var suppliers: [PCSupplier]?
@@ -56,10 +54,6 @@ public struct AnyPCUser: PCUser, Equatable, Hashable {
 
     public var username: String? {
         return self.object.username
-    }
-
-    public var isAdministrator: Bool {
-        return self.object.isAdministrator
     }
 
     public var member: PCMember? {

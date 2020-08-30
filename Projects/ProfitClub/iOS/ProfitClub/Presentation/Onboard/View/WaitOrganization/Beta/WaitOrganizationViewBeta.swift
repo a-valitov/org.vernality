@@ -24,11 +24,12 @@ final class WaitOrganizationViewBeta: UIViewController {
     var output: WaitOrganizationViewOutput?
     var organization: PCOrganization? {
         didSet {
-            self.updateDescription()
+            self.update()
         }
     }
     
     @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var statusLabel: UILabel!
 
     @IBAction func refreshStatusButtonTouchUpInside(_ sender: Any) {
         self.output?.waitOrganization(view: self, userWantsToRefresh: self.organization)
@@ -37,12 +38,30 @@ final class WaitOrganizationViewBeta: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.hidesBackButton = true
-        self.updateDescription()
+        self.update()
     }
 
-    private func updateDescription() {
+    private func update() {
         if self.isViewLoaded {
-            self.descriptionLabel.text = "Вы отправили запрос на вступление в клуб организации \(self.organization?.name ?? "") (ИНН \(self.organization?.inn ?? "")) с контактным лицом \(self.organization?.contact ?? "") (номер телефона \(self.organization?.phone ?? "")). Администрация клуба рассмотрит заявку и сообщит о принятом решении."
+            guard let organization = self.organization else {
+                self.descriptionLabel.text = "Ошибка"
+                return
+            }
+            self.descriptionLabel.text = "Вы отправили запрос на вступление в клуб организации \(organization.name ?? "") (ИНН \(organization.inn ?? "")) с контактным лицом \(organization.contact ?? "") (номер телефона \(organization.phone ?? "")). Администрация клуба рассмотрит заявку и сообщит о принятом решении."
+            guard let status = organization.status else {
+                self.statusLabel.text = "Ошибка"
+                return
+            }
+            switch status {
+            case .onReview:
+                self.statusLabel.text = "Статус: на рассмотрении"
+            case .approved:
+                self.statusLabel.text = "Статус: одобрено"
+            case .rejected:
+                self.statusLabel.text = "Статус: отклонено"
+            case .excluded:
+                self.statusLabel.text = "Статус: организация исключена"
+            }
         }
     }
 }

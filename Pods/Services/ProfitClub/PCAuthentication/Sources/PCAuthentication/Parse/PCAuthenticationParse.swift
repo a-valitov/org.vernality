@@ -21,15 +21,34 @@ import ProfitClubParse
 
 final class PCAuthenticationParse: PCAuthentication {
     var user: AnyPCUser? {
-        return PFUser.current()?.pc.any
+        get {
+            if let parseUser = self.parseUser {
+                return parseUser.any
+            } else {
+                self.parseUser = PFUser.current()?.pcUser
+                return self.parseUser?.any
+            }
+        }
+        set {
+            if let parseUser = newValue?.parse {
+                self.parseUser = parseUser
+            } else {
+                self.parseUser = nil
+            }
+        }
     }
 
+    private var parseUser: PCUserParse?
+
     func login(username: String, password: String, result: @escaping ((Result<AnyPCUser, Error>) -> Void)) {
-        PFUser.logInWithUsername(inBackground: username, password: password) { (user, error) in
+        PFUser.logInWithUsername(inBackground: username, password: password) { [weak self] (user, error) in
             if let error = error {
                 result(.failure(error))
-            } else if let user = user {
-                result(.success(user.pc.any))
+            } else if let user = user?.pcUser?.any {
+                self?.user = user
+                result(.success(user))
+            } else {
+                result(.failure(PCAuthenticationError.bothResultAndErrorAreNil))
             }
         }
     }
@@ -113,8 +132,10 @@ final class PCAuthenticationParse: PCAuthentication {
         group.notify(queue: .main) {
             if let error = finalError {
                 result(.failure(error))
+            } else if let user = self.user {
+                result(.success(user))
             } else {
-                result(.success(user.any))
+                result(.failure(PCAuthenticationError.userIsStillNilAfterRegistration))
             }
         }
     }

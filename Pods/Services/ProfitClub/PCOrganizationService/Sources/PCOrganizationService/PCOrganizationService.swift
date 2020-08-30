@@ -15,7 +15,9 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import Foundation
+import ProfitClubModel
 
-protocol PCOrganizationService {
-    
+public protocol PCOrganizationService {
+    func reload(_ organization: PCOrganization?,
+                result: @escaping (Result<PCOrganization, Error>) -> Void)
 }

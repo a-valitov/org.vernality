@@ -31,9 +31,16 @@ public extension PCUser {
     }
 }
 
-public extension PFUser {
-    var pc: PCUser {
-        return PCPFUserWrapper(pfUser: self)
+public extension PFObject {
+    var pcUser: PCUserParse? {
+        guard let pfUser = self as? PFUser else {
+            return nil
+        }
+        let result = PCUserParse()
+        result.objectId = pfUser.objectId
+        result.username = pfUser.username
+        result.email = pfUser.email
+        return result
     }
 }
 
@@ -42,48 +49,7 @@ public final class PCUserParse: PFUser, PCUser {
         return self.objectId
     }
 
-    public var isAdministrator: Bool {
-        return self[isAdministratorKey] as? Bool ?? false
-    }
-
     public var member: PCMember?
     public var organizations: [PCOrganization]?
     public var suppliers: [PCSupplier]?
 }
-
-private final class PCPFUserWrapper: PCUser {
-    var id: String? {
-        return self.pfUser.objectId
-    }
-
-    var email: String? {
-        return self.pfUser.email
-    }
-
-    var username: String? {
-        return self.pfUser.username
-    }
-
-    var isAdministrator: Bool {
-        return self.pfUser[isAdministratorKey] as? Bool ?? false
-    }
-
-    lazy var member: PCMember? = {
-        return try? self.pfUser.relation(forKey: "member").query().getFirstObject().pcMember
-    }()
-
-    lazy var organizations: [PCOrganization]? = {
-        return try? self.pfUser.relation(forKey: "organizations").query().findObjects().map({ $0.pcOrganization })
-    }()
-
-    lazy var suppliers: [PCSupplier]? = {
-        return try? self.pfUser.relation(forKey: "suppliers").query().findObjects().map({ $0.pcSupplier })
-    }()
-
-    init(pfUser: PFUser) {
-        self.pfUser = pfUser
-    }
-    private let pfUser: PFUser
-}
-
-fileprivate let isAdministratorKey = "isAdministrator"

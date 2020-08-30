@@ -15,10 +15,8 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import Foundation
-import ProfitClubModel
 
-public protocol PCUserService {
-    var user: AnyPCUser? { get }
-
-    func reload(result: @escaping (Result<AnyPCUser, Error>) -> Void)
+enum PCUserServiceError: Error {
+    case userIsNil
+    case userIsNotPFUser
 }

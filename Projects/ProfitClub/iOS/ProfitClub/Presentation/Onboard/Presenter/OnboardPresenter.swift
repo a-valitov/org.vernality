@@ -188,7 +188,14 @@ extension OnboardPresenter: OnboardSupplierViewOutput {
 
 extension OnboardPresenter: WaitOrganizationViewOutput {
     func waitOrganization(view: WaitOrganizationViewInput, userWantsToRefresh organization: PCOrganization?) {
-        
+        self.services.organization.reload(organization) { [weak self] result in
+            switch result {
+            case .success(let organization):
+                view.organization = organization
+            case .failure(let error):
+                self?.presenters.error.present(error)
+            }
+        }
     }
 }
 

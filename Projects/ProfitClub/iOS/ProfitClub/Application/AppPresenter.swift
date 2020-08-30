@@ -19,6 +19,8 @@ import UIKit
 import Main
 import PCAuthentication
 import ProfitClubModel
+import PCUserService
+import ErrorPresenter
 
 final class AppPresenter {
     init(factory: AppFactory) {
@@ -33,21 +35,35 @@ final class AppPresenter {
     private let factory: AppFactory
 
     // services
-    private lazy var authentication: PCAuthentication = {
-        return self.factory.authentication
+    private lazy var userService: PCUserService = {
+        return self.factory.userService()
+    }()
+
+    // presenters
+    private lazy var errorPresenter: ErrorPresenter = {
+        return self.factory.errorPresenter()
     }()
 
     // helpers
     private var isLoggedIn: Bool {
-        return self.authentication.user != nil
+        return self.userService.user != nil
     }
 }
 
 extension AppPresenter: MainModuleOutput {
     func mainDidLoad(module: MainModule) {
         if self.isLoggedIn {
-            let interface = self.factory.interface(output: self)
-            interface.start(in: module)
+            self.userService.reload { [weak self] result in
+                switch result {
+                case .success:
+                    let interface = self?.factory.interface(output: self)
+                    interface?.start(in: module)
+                case .failure(let error):
+                    self?.errorPresenter.present(error)
+                }
+            }
+
+
         } else {
             let onboard = self.factory.onboard(output: self)
             onboard.start(in: module)
