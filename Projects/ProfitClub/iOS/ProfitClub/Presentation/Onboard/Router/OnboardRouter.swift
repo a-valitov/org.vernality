@@ -17,6 +17,7 @@
 import Foundation
 import Main
 import LoginView
+import ProfitClubModel
 
 final class OnboardRouter {
     weak var main: MainModule?
@@ -69,6 +70,20 @@ final class OnboardRouter {
         onboardSupplier.output = output
         self.main?.push(onboardSupplier, animated: true)
         return onboardSupplier
+    }
+
+    @discardableResult
+    func openWaitOrganization(_ organization: PCOrganization,
+                              output: WaitOrganizationViewOutput) -> WaitOrganizationViewInput {
+        let storyboard = UIStoryboard(name: "WaitOrganizationViewBeta", bundle: nil)
+        let waitOrganization = storyboard.instantiateInitialViewController() as! WaitOrganizationViewBeta
+        waitOrganization.name = organization.name
+        waitOrganization.inn = organization.inn
+        waitOrganization.contact = organization.contact
+        waitOrganization.phone = organization.phone
+        waitOrganization.output = output
+        self.main?.push(waitOrganization, animated: true)
+        return waitOrganization
     }
 }
 

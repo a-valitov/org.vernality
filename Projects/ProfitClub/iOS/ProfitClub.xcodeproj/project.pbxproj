@@ -18,6 +18,9 @@
 		0E506BF924FBC2FC00ABA211 /* OnboardOrganizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E506BF824FBC2FC00ABA211 /* OnboardOrganizationView.swift */; };
 		0E506BFC24FBC37900ABA211 /* OnboardOrganizationViewBeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E506BFB24FBC37900ABA211 /* OnboardOrganizationViewBeta.swift */; };
 		0E506BFE24FBC39B00ABA211 /* OnboardOrganizationViewBeta.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E506BFD24FBC39B00ABA211 /* OnboardOrganizationViewBeta.storyboard */; };
+		0E506C0224FBCC8D00ABA211 /* WaitOrganizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E506C0124FBCC8D00ABA211 /* WaitOrganizationView.swift */; };
+		0E506C0524FBCE8300ABA211 /* WaitOrganizationViewBeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E506C0424FBCE8300ABA211 /* WaitOrganizationViewBeta.swift */; };
+		0E506C0724FBCEAB00ABA211 /* WaitOrganizationViewBeta.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E506C0624FBCEAB00ABA211 /* WaitOrganizationViewBeta.storyboard */; };
 		0E90496E24F390070061A605 /* AppPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E90496D24F390070061A605 /* AppPresenter.swift */; };
 		0E90497124F390270061A605 /* AppFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E90497024F390270061A605 /* AppFactory.swift */; };
 		0E90497A24F39C650061A605 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E90497924F39C650061A605 /* Secrets.swift */; };
@@ -55,6 +58,9 @@
 		0E506BF824FBC2FC00ABA211 /* OnboardOrganizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardOrganizationView.swift; sourceTree = "<group>"; };
 		0E506BFB24FBC37900ABA211 /* OnboardOrganizationViewBeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardOrganizationViewBeta.swift; sourceTree = "<group>"; };
 		0E506BFD24FBC39B00ABA211 /* OnboardOrganizationViewBeta.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OnboardOrganizationViewBeta.storyboard; sourceTree = "<group>"; };
+		0E506C0124FBCC8D00ABA211 /* WaitOrganizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitOrganizationView.swift; sourceTree = "<group>"; };
+		0E506C0424FBCE8300ABA211 /* WaitOrganizationViewBeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitOrganizationViewBeta.swift; sourceTree = "<group>"; };
+		0E506C0624FBCEAB00ABA211 /* WaitOrganizationViewBeta.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WaitOrganizationViewBeta.storyboard; sourceTree = "<group>"; };
 		0E90496D24F390070061A605 /* AppPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPresenter.swift; sourceTree = "<group>"; };
 		0E90497024F390270061A605 /* AppFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFactory.swift; sourceTree = "<group>"; };
 		0E90497924F39C650061A605 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
@@ -159,6 +165,24 @@
 			path = Beta;
 			sourceTree = "<group>";
 		};
+		0E506C0024FBCC7400ABA211 /* WaitOrganization */ = {
+			isa = PBXGroup;
+			children = (
+				0E506C0124FBCC8D00ABA211 /* WaitOrganizationView.swift */,
+				0E506C0324FBCE7800ABA211 /* Beta */,
+			);
+			path = WaitOrganization;
+			sourceTree = "<group>";
+		};
+		0E506C0324FBCE7800ABA211 /* Beta */ = {
+			isa = PBXGroup;
+			children = (
+				0E506C0424FBCE8300ABA211 /* WaitOrganizationViewBeta.swift */,
+				0E506C0624FBCEAB00ABA211 /* WaitOrganizationViewBeta.storyboard */,
+			);
+			path = Beta;
+			sourceTree = "<group>";
+		};
 		0E90494C24F2B9A00061A605 /* Plists */ = {
 			isa = PBXGroup;
 			children = (
@@ -248,6 +272,7 @@
 				0E90499D24F62C570061A605 /* OnboardSupplier */,
 				0E506BEF24FBBF3000ABA211 /* SelectOrganization */,
 				0E90498524F60C810061A605 /* SelectRole */,
+				0E506C0024FBCC7400ABA211 /* WaitOrganization */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -456,6 +481,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E506C0724FBCEAB00ABA211 /* WaitOrganizationViewBeta.storyboard in Resources */,
 				0EA11ED424F2B89300133485 /* LaunchScreen.storyboard in Resources */,
 				0E506BEE24FBB92800ABA211 /* SelectRoleViewBeta.storyboard in Resources */,
 				0E506BFE24FBC39B00ABA211 /* OnboardOrganizationViewBeta.storyboard in Resources */,
@@ -517,6 +543,7 @@
 				0E90496E24F390070061A605 /* AppPresenter.swift in Sources */,
 				0E90497A24F39C650061A605 /* Secrets.swift in Sources */,
 				0E9049D524FA9E000061A605 /* InterfacePresenter.swift in Sources */,
+				0E506C0524FBCE8300ABA211 /* WaitOrganizationViewBeta.swift in Sources */,
 				0E9049CF24F793060061A605 /* InterfaceViewAlpha.swift in Sources */,
 				0E506BE924FBB1AD00ABA211 /* OnboardMemberViewBeta.swift in Sources */,
 				0E506BF124FBBF4600ABA211 /* SelectOrganizationView.swift in Sources */,
@@ -526,6 +553,7 @@
 				0E506BF924FBC2FC00ABA211 /* OnboardOrganizationView.swift in Sources */,
 				0E9049CA24F792960061A605 /* InterfaceModule.swift in Sources */,
 				0E90498724F60C980061A605 /* SelectRoleView.swift in Sources */,
+				0E506C0224FBCC8D00ABA211 /* WaitOrganizationView.swift in Sources */,
 				0E90498A24F60D250061A605 /* SelectRoleViewAlpha.swift in Sources */,
 				0E506BF424FBBFA400ABA211 /* SelectOrganizationViewBeta.swift in Sources */,
 				0E90499224F6142A0061A605 /* OnboardPresenter.swift in Sources */,

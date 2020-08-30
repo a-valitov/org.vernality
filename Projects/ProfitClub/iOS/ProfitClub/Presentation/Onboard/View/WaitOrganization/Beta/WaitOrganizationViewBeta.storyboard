@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="X6F-6E-VeJ">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Wait Organization View Beta-->
+        <scene sceneID="H23-qV-7X9">
+            <objects>
+                <viewController id="X6F-6E-VeJ" customClass="WaitOrganizationViewBeta" customModule="ProfitClub" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="thK-8Z-zWu">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9TM-yQ-MLL">
+                                <rect key="frame" x="20" y="392" width="374" height="122"/>
+                                <string key="text">Вы отправили запрос на вступление в клуб организации ООО "Башрезина" (ИНН 1234567890) с контактным лицом Рустем Фатхуллин (номер телефона +79177777210). Администрация клуба рассмотрит заявку и сообщит о принятом решении.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jzn-XK-Df6">
+                                <rect key="frame" x="172" y="534" width="70" height="30"/>
+                                <state key="normal" title="Обновить"/>
+                                <connections>
+                                    <action selector="refreshStatusButtonTouchUpInside:" destination="X6F-6E-VeJ" eventType="touchUpInside" id="VeK-4z-Gl2"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Статус: на рассмотрении" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hlp-Rj-UG4">
+                                <rect key="frame" x="104.5" y="315" width="205" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="q4n-fe-nxS" firstAttribute="trailing" secondItem="9TM-yQ-MLL" secondAttribute="trailing" constant="20" id="0aE-Rm-fjO"/>
+                            <constraint firstItem="9TM-yQ-MLL" firstAttribute="top" secondItem="Hlp-Rj-UG4" secondAttribute="bottom" constant="56" id="LYy-Hw-fVa"/>
+                            <constraint firstItem="jzn-XK-Df6" firstAttribute="centerX" secondItem="9TM-yQ-MLL" secondAttribute="centerX" id="UOF-KJ-3Th"/>
+                            <constraint firstItem="9TM-yQ-MLL" firstAttribute="centerY" secondItem="q4n-fe-nxS" secondAttribute="centerY" id="dIX-fJ-IjU"/>
+                            <constraint firstItem="jzn-XK-Df6" firstAttribute="top" secondItem="9TM-yQ-MLL" secondAttribute="bottom" constant="20" id="fKN-8E-IV6"/>
+                            <constraint firstItem="9TM-yQ-MLL" firstAttribute="leading" secondItem="q4n-fe-nxS" secondAttribute="leading" constant="20" id="kbS-91-0ct"/>
+                            <constraint firstItem="Hlp-Rj-UG4" firstAttribute="centerX" secondItem="9TM-yQ-MLL" secondAttribute="centerX" id="yPW-lY-PLk"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="q4n-fe-nxS"/>
+                    </view>
+                    <connections>
+                        <outlet property="descriptionLabel" destination="9TM-yQ-MLL" id="aHa-ON-MOW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ukv-tm-YtR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="376.81159420289856" y="-170.08928571428569"/>
+        </scene>
+    </scenes>
+</document>
