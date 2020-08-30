@@ -93,7 +93,7 @@ extension OnboardPresenter: LoginViewOutput {
         self.email = email
         self.password = password
         self.username = username
-        self.router?.openOnboardMember(output: self)
+        self.router?.openSelectRole(output: self)
     }
 }
 
@@ -109,7 +109,7 @@ extension OnboardPresenter: OnboardMemberViewOutput {
         }
         self.firstName = firstName
         self.lastName = lastName
-        self.router?.openSelectRole(output: self)
+        self.router?.openSelectOrganization(output: self)
     }
 }
 
@@ -117,7 +117,7 @@ extension OnboardPresenter: SelectRoleViewOutput {
     func selectRole(view: SelectRoleViewInput, didSelect role: PCRole) {
         switch role {
         case .member:
-            self.router?.openSelectOrganization(output: self)
+            self.router?.openOnboardMember(output: self)
         case .supplier:
             self.router?.openOnboardSupplier(output: self)
         case .organization:
@@ -274,12 +274,8 @@ extension OnboardPresenter {
         guard let organization = self.createOrganization() else {
             return
         }
-        guard let member = self.createMember() else {
-            return
-        }
 
         user.organizations = [organization]
-        user.member = member
 
         guard let password = self.password, password.isEmpty == false else {
             self.presenters.error.present(OnboardError.passwordIsEmpty)
@@ -304,11 +300,7 @@ extension OnboardPresenter {
         guard let supplier = self.createSupplier() else {
             return
         }
-        guard let member = self.createMember() else {
-            return
-        }
         user.suppliers = [supplier]
-        user.member = member
 
         guard let password = self.password, password.isEmpty == false else {
             self.presenters.error.present(OnboardError.passwordIsEmpty)
