@@ -56,8 +56,13 @@ extension AppPresenter: MainModuleOutput {
             self.userService.reload { [weak self] result in
                 switch result {
                 case .success:
-                    let interface = self?.factory.interface(output: self)
-                    interface?.start(in: module)
+                    if self?.userService.isOnReview() ?? false {
+                        let review = self?.factory.review(output: self)
+                        review?.start(in: module)
+                    } else {
+                        let interface = self?.factory.interface(output: self)
+                        interface?.start(in: module)
+                    }
                 case .failure(let error):
                     self?.errorPresenter.present(error)
                 }
@@ -79,6 +84,10 @@ extension AppPresenter: OnboardModuleOutput {
 }
 
 extension AppPresenter: InterfaceModuleOutput {
+
+}
+
+extension AppPresenter: ReviewModuleOutput {
 
 }
 

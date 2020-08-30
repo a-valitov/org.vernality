@@ -15,11 +15,13 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import Foundation
+import Main
 import ProfitClubModel
 
-public protocol PCUserService {
-    var user: AnyPCUser? { get }
+protocol ReviewModule: class {
+    func start(in main: MainModule?)
+}
 
-    func isOnReview() -> Bool
-    func reload(result: @escaping (Result<AnyPCUser, Error>) -> Void)
+protocol ReviewModuleOutput: class {
+    
 }

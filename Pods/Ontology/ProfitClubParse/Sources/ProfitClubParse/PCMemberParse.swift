@@ -24,6 +24,9 @@ public extension PFObject {
         result.id = self.objectId
         result.firstName = self["firstName"] as? String
         result.lastName = self["lastName"] as? String
+        if let statusString = self["statusString"] as? String {
+            result.status = PCMemberStatus(rawValue: statusString)
+        }
         return result
     }
 }
@@ -34,6 +37,7 @@ public extension PCMember {
         result.objectId = self.id
         result.firstName = self.firstName
         result.lastName = self.lastName
+        result.status = self.status
         return result
     }
 }
@@ -42,9 +46,23 @@ public final class PCMemberParse: PFObject, PFSubclassing, PCMember {
     public var id: String? {
         return self.objectId
     }
+    public var status: PCMemberStatus? {
+        get {
+            if let statusString = self.statusString {
+                return PCMemberStatus(rawValue: statusString)
+            } else {
+                return nil
+            }
+        }
+        set {
+            self.statusString = newValue?.rawValue
+        }
+    }
+
     @NSManaged public var username: String
     @NSManaged public var firstName: String?
     @NSManaged public var lastName: String?
+    @NSManaged public var statusString: String?
 
     public static func parseClassName() -> String {
         return "Member"

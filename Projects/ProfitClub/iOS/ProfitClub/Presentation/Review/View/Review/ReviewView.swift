@@ -14,12 +14,15 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import Foundation
+import UIKit
 import ProfitClubModel
 
-public protocol PCUserService {
-    var user: AnyPCUser? { get }
+protocol ReviewViewInput: UIViewController {
+    var member: AnyPCMember? { get set }
+    var organizations: [AnyPCOrganization] { get set }
+    var suppliers: [AnyPCSupplier] { get set }
+}
 
-    func isOnReview() -> Bool
-    func reload(result: @escaping (Result<AnyPCUser, Error>) -> Void)
+protocol ReviewViewOutput {
+    func review(view: ReviewViewInput, userWantsToRefresh sender: Any)
 }

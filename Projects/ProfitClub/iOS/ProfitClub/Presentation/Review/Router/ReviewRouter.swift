@@ -15,11 +15,23 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import Foundation
+import Main
+import LoginView
 import ProfitClubModel
 
-public protocol PCUserService {
-    var user: AnyPCUser? { get }
+final class ReviewRouter {
+    weak var main: MainModule?
 
-    func isOnReview() -> Bool
-    func reload(result: @escaping (Result<AnyPCUser, Error>) -> Void)
+    @discardableResult
+    func openReview(_ user: AnyPCUser?, output: ReviewViewOutput?) -> ReviewViewInput {
+        let storyboard = UIStoryboard(name: "ReviewViewBeta", bundle: nil)
+        let reviewView = storyboard.instantiateInitialViewController() as! ReviewViewBeta
+        reviewView.output = output
+        reviewView.member = user?.member?.any
+        reviewView.organizations = user?.organizations?.map({ $0.any }) ?? []
+        reviewView.suppliers = user?.suppliers?.map({ $0.any }) ?? []
+        self.main?.push(reviewView, animated: true)
+        return reviewView
+    }
+
 }

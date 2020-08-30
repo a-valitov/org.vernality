@@ -29,6 +29,14 @@ public final class PCUserServiceParse: PCUserService {
         self.authentication = authentication
     }
 
+    public func isOnReview() -> Bool {
+        let isOnMemberReview = self.user?.member?.status == .onReview
+        let isOnOrganizationReview = (self.user?.organizations?.contains(where: { $0.status == .onReview })) ?? false
+        let isOnSupplierReview = (self.user?.suppliers?.contains(where: { $0.status == .onReview })) ?? false
+        return isOnMemberReview || isOnOrganizationReview || isOnSupplierReview
+
+    }
+
     public func reload(result: @escaping (Result<AnyPCUser, Error>) -> Void) {
         guard let parseUser = self.user?.parse else {
             result(.failure(PCUserServiceError.userIsNil))
@@ -44,11 +52,11 @@ public final class PCUserServiceParse: PCUserService {
             } else {
                 if let pfUser = pfObject?.pcUser {
                     group.enter()
-                    parseUser.relation(forKey: "member").query().getFirstObjectInBackground(block: { (pfMember, error) in
+                    parseUser.relation(forKey: "member").query().findObjectsInBackground(block: { (pfMembers, error) in
                         if let error = error {
                             finalError = error
                         } else {
-                            pfUser.member = pfMember?.pcMember
+                            pfUser.member = pfMembers?.first?.pcMember
                         }
                         group.leave()
                     })

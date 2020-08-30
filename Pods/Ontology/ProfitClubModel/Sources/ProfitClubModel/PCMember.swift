@@ -20,6 +20,14 @@ public protocol PCMember {
     var id: String? { get }
     var firstName: String? { get }
     var lastName: String? { get }
+    var status: PCMemberStatus? { get }
+}
+
+public enum PCMemberStatus: String {
+    case onReview
+    case approved
+    case rejected
+    case excluded
 }
 
 public extension PCMember {
@@ -32,6 +40,7 @@ public struct PCMemberStruct: PCMember {
     public var id: String?
     public var firstName: String?
     public var lastName: String?
+    public var status: PCMemberStatus?
 
     public init() {}
 }
@@ -47,6 +56,10 @@ public struct AnyPCMember: PCMember, Equatable, Hashable {
 
     public var lastName: String? {
         return self.object.lastName
+    }
+
+    public var status: PCMemberStatus? {
+        return self.object.status
     }
 
     public init(object: PCMember) {

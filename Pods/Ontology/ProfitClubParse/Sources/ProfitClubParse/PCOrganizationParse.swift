@@ -51,11 +51,17 @@ public final class PCOrganizationParse: PFObject, PFSubclassing, PCOrganization 
         return self.objectId
     }
     public var status: PCOrganizationStatus? {
-        if let statusString = self.statusString {
-            return PCOrganizationStatus(rawValue: statusString)
-        } else {
-            return nil
+        get {
+            if let statusString = self.statusString {
+                return PCOrganizationStatus(rawValue: statusString)
+            } else {
+                return nil
+            }
         }
+        set {
+            self.statusString = newValue?.rawValue
+        }
+
     }
     @NSManaged public var name: String?
     @NSManaged public var inn: String?

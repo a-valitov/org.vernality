@@ -14,12 +14,9 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import Foundation
-import ProfitClubModel
+import UIKit
 
-public protocol PCUserService {
-    var user: AnyPCUser? { get }
-
-    func isOnReview() -> Bool
-    func reload(result: @escaping (Result<AnyPCUser, Error>) -> Void)
+final class ReviewViewBetaMemberCell: UITableViewCell {
+    @IBOutlet weak var fullNameLabel: UILabel!
+    @IBOutlet weak var statusLabel: UILabel!
 }

@@ -15,11 +15,25 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import Foundation
-import ProfitClubModel
+import ErrorPresenter
+import ActivityPresenter
 
-public protocol PCUserService {
-    var user: AnyPCUser? { get }
+final class ReviewFactory {
+    init(presenters: ReviewPresenters,
+         services: ReviewServices) {
+        self.presenters = presenters
+        self.services = services
+    }
 
-    func isOnReview() -> Bool
-    func reload(result: @escaping (Result<AnyPCUser, Error>) -> Void)
+    func make(output: ReviewModuleOutput?) -> ReviewModule {
+        let router = ReviewRouter()
+        let presenter = ReviewPresenter(presenters: self.presenters,
+                                         services: self.services)
+        presenter.output = output
+        presenter.router = router
+        return presenter
+    }
+
+    private let services: ReviewServices
+    private let presenters: ReviewPresenters
 }

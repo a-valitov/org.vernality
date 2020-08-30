@@ -63,6 +63,11 @@ extension AppFactory {
         let module = self.interfaceFactory.make(output: output)
         return module
     }
+
+    func review(output: ReviewModuleOutput?) -> ReviewModule {
+        let module = self.reviewFactory.make(output: output)
+        return module
+    }
 }
 
 // MARK: - Factories
@@ -76,6 +81,12 @@ private extension AppFactory {
                                                             activity: self.activityPresenter()),
                               services: OnboardServices(authentication: self.authentication,
                                                         organization: self.organizationService()))
+    }
+
+    var reviewFactory: ReviewFactory {
+        return ReviewFactory(presenters: ReviewPresenters(error: self.errorPresenter(),
+                                                          activity: self.activityPresenter()),
+                             services: ReviewServices(userService: self.userService()))
     }
 
     var interfaceFactory: InterfaceFactory {

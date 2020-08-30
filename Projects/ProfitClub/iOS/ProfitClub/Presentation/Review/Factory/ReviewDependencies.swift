@@ -15,11 +15,15 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import Foundation
-import ProfitClubModel
+import PCUserService
+import ErrorPresenter
+import ActivityPresenter
 
-public protocol PCUserService {
-    var user: AnyPCUser? { get }
+struct ReviewPresenters {
+    let error: ErrorPresenter
+    let activity: ActivityPresenter
+}
 
-    func isOnReview() -> Bool
-    func reload(result: @escaping (Result<AnyPCUser, Error>) -> Void)
+struct ReviewServices {
+    let userService: PCUserService
 }

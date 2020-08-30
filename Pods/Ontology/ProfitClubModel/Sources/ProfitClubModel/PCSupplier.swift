@@ -22,6 +22,14 @@ public protocol PCSupplier {
     var inn: String? { get }
     var contact: String? { get }
     var phone: String? { get }
+    var status: PCSupplierStatus? { get }
+}
+
+public enum PCSupplierStatus: String {
+    case onReview
+    case approved
+    case rejected
+    case excluded
 }
 
 public extension PCSupplier {
@@ -36,6 +44,7 @@ public struct PCSupplierStruct: PCSupplier {
     public var inn: String?
     public var contact: String?
     public var phone: String?
+    public var status: PCSupplierStatus?
 
     public init() {}
 }
@@ -59,6 +68,10 @@ public struct AnyPCSupplier: PCSupplier, Equatable, Hashable {
 
     public var phone: String? {
         return self.object.phone
+    }
+
+    public var status: PCSupplierStatus? {
+        return self.object.status
     }
 
     public init(object: PCSupplier) {
