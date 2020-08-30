@@ -21,6 +21,7 @@ import PCAuthentication
 import ProfitClubModel
 import PCUserService
 import ErrorPresenter
+import ActivityPresenter
 
 final class AppPresenter {
     init(factory: AppFactory) {
@@ -42,6 +43,10 @@ final class AppPresenter {
     // presenters
     private lazy var errorPresenter: ErrorPresenter = {
         return self.factory.errorPresenter()
+    }()
+
+    private lazy var activityPresenter: ActivityPresenter = {
+        return self.factory.activityPresenter()
     }()
 
     // helpers
@@ -67,8 +72,6 @@ extension AppPresenter: MainModuleOutput {
                     self?.errorPresenter.present(error)
                 }
             }
-
-
         } else {
             let onboard = self.factory.onboard(output: self)
             onboard.start(in: module)
@@ -80,6 +83,25 @@ extension AppPresenter: OnboardModuleOutput {
     func onboard(module: OnboardModule, didLogin user: PCUser, inside main: MainModule?) {
         let interface = self.factory.interface(output: self)
         interface.start(in: main)
+    }
+
+    func onboard(module: OnboardModule, didRegister user: PCUser, inside main: MainModule?) {
+        self.activityPresenter.increment()
+        self.userService.reload { [weak self] result in
+            self?.activityPresenter.decrement()
+            switch result {
+            case .success:
+                if self?.userService.isOnReview() ?? false {
+                    let review = self?.factory.review(output: self)
+                    review?.start(in: main)
+                } else {
+                    let interface = self?.factory.interface(output: self)
+                    interface?.start(in: main)
+                }
+            case .failure(let error):
+                self?.errorPresenter.present(error)
+            }
+        }
     }
 }
 

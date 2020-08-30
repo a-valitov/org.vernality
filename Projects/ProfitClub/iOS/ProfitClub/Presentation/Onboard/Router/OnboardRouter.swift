@@ -71,17 +71,6 @@ final class OnboardRouter {
         self.main?.push(onboardSupplier, animated: true)
         return onboardSupplier
     }
-
-    @discardableResult
-    func openWaitOrganization(_ organization: PCOrganization,
-                              output: WaitOrganizationViewOutput) -> WaitOrganizationViewInput {
-        let storyboard = UIStoryboard(name: "WaitOrganizationViewBeta", bundle: nil)
-        let waitOrganization = storyboard.instantiateInitialViewController() as! WaitOrganizationViewBeta
-        waitOrganization.organization = organization
-        waitOrganization.output = output
-        self.main?.push(waitOrganization, animated: true)
-        return waitOrganization
-    }
 }
 
 // MARK: - Factory

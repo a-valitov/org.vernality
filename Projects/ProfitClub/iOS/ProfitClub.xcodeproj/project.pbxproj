@@ -18,9 +18,6 @@
 		0E506BF924FBC2FC00ABA211 /* OnboardOrganizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E506BF824FBC2FC00ABA211 /* OnboardOrganizationView.swift */; };
 		0E506BFC24FBC37900ABA211 /* OnboardOrganizationViewBeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E506BFB24FBC37900ABA211 /* OnboardOrganizationViewBeta.swift */; };
 		0E506BFE24FBC39B00ABA211 /* OnboardOrganizationViewBeta.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E506BFD24FBC39B00ABA211 /* OnboardOrganizationViewBeta.storyboard */; };
-		0E506C0224FBCC8D00ABA211 /* WaitOrganizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E506C0124FBCC8D00ABA211 /* WaitOrganizationView.swift */; };
-		0E506C0524FBCE8300ABA211 /* WaitOrganizationViewBeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E506C0424FBCE8300ABA211 /* WaitOrganizationViewBeta.swift */; };
-		0E506C0724FBCEAB00ABA211 /* WaitOrganizationViewBeta.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E506C0624FBCEAB00ABA211 /* WaitOrganizationViewBeta.storyboard */; };
 		0E506C1E24FC0DE400ABA211 /* ReviewModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E506C1D24FC0DE400ABA211 /* ReviewModule.swift */; };
 		0E506C2124FC108800ABA211 /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E506C2024FC108800ABA211 /* ReviewView.swift */; };
 		0E506C2424FC10AF00ABA211 /* ReviewViewBeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E506C2324FC10AF00ABA211 /* ReviewViewBeta.swift */; };
@@ -69,9 +66,6 @@
 		0E506BF824FBC2FC00ABA211 /* OnboardOrganizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardOrganizationView.swift; sourceTree = "<group>"; };
 		0E506BFB24FBC37900ABA211 /* OnboardOrganizationViewBeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardOrganizationViewBeta.swift; sourceTree = "<group>"; };
 		0E506BFD24FBC39B00ABA211 /* OnboardOrganizationViewBeta.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OnboardOrganizationViewBeta.storyboard; sourceTree = "<group>"; };
-		0E506C0124FBCC8D00ABA211 /* WaitOrganizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitOrganizationView.swift; sourceTree = "<group>"; };
-		0E506C0424FBCE8300ABA211 /* WaitOrganizationViewBeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaitOrganizationViewBeta.swift; sourceTree = "<group>"; };
-		0E506C0624FBCEAB00ABA211 /* WaitOrganizationViewBeta.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WaitOrganizationViewBeta.storyboard; sourceTree = "<group>"; };
 		0E506C1D24FC0DE400ABA211 /* ReviewModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewModule.swift; sourceTree = "<group>"; };
 		0E506C2024FC108800ABA211 /* ReviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
 		0E506C2324FC10AF00ABA211 /* ReviewViewBeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewBeta.swift; sourceTree = "<group>"; };
@@ -183,24 +177,6 @@
 			children = (
 				0E506BFB24FBC37900ABA211 /* OnboardOrganizationViewBeta.swift */,
 				0E506BFD24FBC39B00ABA211 /* OnboardOrganizationViewBeta.storyboard */,
-			);
-			path = Beta;
-			sourceTree = "<group>";
-		};
-		0E506C0024FBCC7400ABA211 /* WaitOrganization */ = {
-			isa = PBXGroup;
-			children = (
-				0E506C0124FBCC8D00ABA211 /* WaitOrganizationView.swift */,
-				0E506C0324FBCE7800ABA211 /* Beta */,
-			);
-			path = WaitOrganization;
-			sourceTree = "<group>";
-		};
-		0E506C0324FBCE7800ABA211 /* Beta */ = {
-			isa = PBXGroup;
-			children = (
-				0E506C0424FBCE8300ABA211 /* WaitOrganizationViewBeta.swift */,
-				0E506C0624FBCEAB00ABA211 /* WaitOrganizationViewBeta.storyboard */,
 			);
 			path = Beta;
 			sourceTree = "<group>";
@@ -361,7 +337,6 @@
 				0E90499D24F62C570061A605 /* OnboardSupplier */,
 				0E506BEF24FBBF3000ABA211 /* SelectOrganization */,
 				0E90498524F60C810061A605 /* SelectRole */,
-				0E506C0024FBCC7400ABA211 /* WaitOrganization */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -570,7 +545,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0E506C0724FBCEAB00ABA211 /* WaitOrganizationViewBeta.storyboard in Resources */,
 				0E506C2624FC10B700ABA211 /* ReviewViewBeta.storyboard in Resources */,
 				0EA11ED424F2B89300133485 /* LaunchScreen.storyboard in Resources */,
 				0E506BEE24FBB92800ABA211 /* SelectRoleViewBeta.storyboard in Resources */,
@@ -635,7 +609,6 @@
 				0E90497A24F39C650061A605 /* Secrets.swift in Sources */,
 				0E9049D524FA9E000061A605 /* InterfacePresenter.swift in Sources */,
 				0E506C3324FC1B9C00ABA211 /* ReviewDependencies.swift in Sources */,
-				0E506C0524FBCE8300ABA211 /* WaitOrganizationViewBeta.swift in Sources */,
 				0E506C2E24FC1A4600ABA211 /* ReviewPresenter.swift in Sources */,
 				0E9049CF24F793060061A605 /* InterfaceViewAlpha.swift in Sources */,
 				0E506C2C24FC184900ABA211 /* ReviewViewBetaMemberCell.swift in Sources */,
@@ -647,7 +620,6 @@
 				0E506BF924FBC2FC00ABA211 /* OnboardOrganizationView.swift in Sources */,
 				0E9049CA24F792960061A605 /* InterfaceModule.swift in Sources */,
 				0E90498724F60C980061A605 /* SelectRoleView.swift in Sources */,
-				0E506C0224FBCC8D00ABA211 /* WaitOrganizationView.swift in Sources */,
 				0E90498A24F60D250061A605 /* SelectRoleViewAlpha.swift in Sources */,
 				0E506C2824FC131700ABA211 /* ReviewViewBetaOrganizationCell.swift in Sources */,
 				0E506BF424FBBFA400ABA211 /* SelectOrganizationViewBeta.swift in Sources */,

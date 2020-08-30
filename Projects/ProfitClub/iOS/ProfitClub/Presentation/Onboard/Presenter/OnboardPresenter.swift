@@ -186,19 +186,6 @@ extension OnboardPresenter: OnboardSupplierViewOutput {
     }
 }
 
-extension OnboardPresenter: WaitOrganizationViewOutput {
-    func waitOrganization(view: WaitOrganizationViewInput, userWantsToRefresh organization: PCOrganization?) {
-        self.services.organization.reload(organization) { [weak self] result in
-            switch result {
-            case .success(let organization):
-                view.organization = organization
-            case .failure(let error):
-                self?.presenters.error.present(error)
-            }
-        }
-    }
-}
-
 extension OnboardPresenter {
     private func createUser() -> PCUserStruct? {
         guard let username = self.username, username.isEmpty == false else {
@@ -300,7 +287,7 @@ extension OnboardPresenter {
             guard let sSelf = self else { return }
             switch result {
             case .success:
-                sSelf.router?.openWaitOrganization(organization, output: sSelf)
+                sSelf.output?.onboard(module: sSelf, didRegister: user, inside: sSelf.router?.main)
             case .failure(let error):
                 sSelf.presenters.error.present(error)
             }

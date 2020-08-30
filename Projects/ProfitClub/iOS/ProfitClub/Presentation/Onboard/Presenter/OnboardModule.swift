@@ -24,4 +24,5 @@ protocol OnboardModule: class {
 
 protocol OnboardModuleOutput: class {
     func onboard(module: OnboardModule, didLogin user: PCUser, inside main: MainModule?)
+    func onboard(module: OnboardModule, didRegister user: PCUser, inside main: MainModule?)
 }
