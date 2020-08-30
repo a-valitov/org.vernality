@@ -15,21 +15,27 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import Foundation
+import UIKit
 import Main
 import PCAuthentication
+import ProfitClubModel
 
-final class MainRouter {
-    init(mainModule: MainModule,
-         authentication: PCAuthentication) {
-        self.authentication = authentication
-        self.mainModule = mainModule
+final class AppPresenter {
+    init(factory: AppFactory) {
+        self.factory = factory
     }
 
-    // dependencies
-    private let authentication: PCAuthentication
+    func present(in window: UIWindow?) {
+        window?.rootViewController = self.factory.main(output: self)
+        window?.makeKeyAndVisible()
+    }
 
-    // modules
-    private weak var mainModule: MainModule?
+    private let factory: AppFactory
+
+    // services
+    private lazy var authentication: PCAuthentication = {
+        return self.factory.authentication
+    }()
 
     // helpers
     private var isLoggedIn: Bool {
@@ -37,21 +43,26 @@ final class MainRouter {
     }
 }
 
-extension MainRouter: MainModuleOutput {
+extension AppPresenter: MainModuleOutput {
     func mainDidLoad(module: MainModule) {
         if self.isLoggedIn {
-
+            let interface = self.factory.interface(output: self)
+            interface.start(in: module)
         } else {
-            let onboard = Assembler.shared.onboard(output: self)
-            onboard.start(in: self.mainModule)
+            let onboard = self.factory.onboard(output: self)
+            onboard.start(in: module)
         }
     }
+}
 
-    func mainWillAppear(module: MainModule) {
-
+extension AppPresenter: OnboardModuleOutput {
+    func onboard(module: OnboardModule, didLogin user: PCUser, inside main: MainModule?) {
+        let interface = self.factory.interface(output: self)
+        interface.start(in: main)
     }
 }
 
-extension MainRouter: OnboardModuleOutput {
+extension AppPresenter: InterfaceModuleOutput {
 
 }
+

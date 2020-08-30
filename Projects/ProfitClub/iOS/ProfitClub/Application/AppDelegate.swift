@@ -29,10 +29,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         Parse.initialize(with: parseConfig)
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        self.application.start(in: self.window)
+        let presenter = AppPresenter(factory: AppFactory())
+        presenter.present(in: self.window)
         return true
     }
-
-    private let application = Application()
 }
 

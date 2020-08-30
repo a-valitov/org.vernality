@@ -19,4 +19,58 @@ import Foundation
 public protocol PCOrganization {
     var id: String? { get }
     var name: String? { get }
+    var inn: String? { get }
+    var contact: String? { get }
+    var phone: String? { get }
+}
+public extension PCOrganization {
+    var any: AnyPCOrganization {
+        return AnyPCOrganization(object: self)
+    }
+}
+
+public struct PCOrganizationStruct: PCOrganization {
+    public var id: String?
+    public var name: String?
+    public var inn: String?
+    public var contact: String?
+    public var phone: String?
+
+    public init() {}
+}
+
+public struct AnyPCOrganization: PCOrganization, Equatable, Hashable {
+    public var id: String? {
+        return self.object.id
+    }
+
+    public var name: String? {
+        return self.object.name
+    }
+
+    public var inn: String? {
+        return self.object.inn
+    }
+
+    public var contact: String? {
+        return self.object.contact
+    }
+
+    public var phone: String? {
+        return self.object.phone
+    }
+
+    public init(object: PCOrganization) {
+        self.object = object
+    }
+
+    public static func == (lhs: AnyPCOrganization, rhs: AnyPCOrganization) -> Bool {
+        return lhs.id == rhs.id
+    }
+
+    public func hash(into hasher: inout Hasher) {
+        hasher.combine(self.id)
+    }
+
+    private let object: PCOrganization
 }

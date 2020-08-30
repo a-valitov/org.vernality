@@ -44,11 +44,11 @@ class ActivityPresenterSpinnerView : UIView {
 
     struct Pose {
         let secondsSincePriorPose: CFTimeInterval
-        let start: CGFloat
+        let present: CGFloat
         let length: CGFloat
-        init(_ secondsSincePriorPose: CFTimeInterval, _ start: CGFloat, _ length: CGFloat) {
+        init(_ secondsSincePriorPose: CFTimeInterval, _ present: CGFloat, _ length: CGFloat) {
             self.secondsSincePriorPose = secondsSincePriorPose
-            self.start = start
+            self.present = present
             self.length = length
         }
     }
@@ -75,7 +75,7 @@ class ActivityPresenterSpinnerView : UIView {
     func animate() {
         var time: CFTimeInterval = 0
         var times = [CFTimeInterval]()
-        var start: CGFloat = 0
+        var present: CGFloat = 0
         var rotations = [CGFloat]()
         var strokeEnds = [CGFloat]()
 
@@ -85,8 +85,8 @@ class ActivityPresenterSpinnerView : UIView {
         for pose in poses {
             time += pose.secondsSincePriorPose
             times.append(time / totalSeconds)
-            start = pose.start
-            rotations.append(start * 2 * .pi)
+            present = pose.present
+            rotations.append(present * 2 * .pi)
             strokeEnds.append(pose.length)
         }
 

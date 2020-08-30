@@ -1,5 +1,5 @@
 //  Copyright (C) 2020 Startup Studio Vernality
-//  Created by Rinat Enikeev on 8/21/20
+//  Created by Rinat Enikeev on 8/29/20
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -14,18 +14,16 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#if canImport(UIKit)
-import UIKit
+import Foundation
+import ErrorPresenter
+import ActivityPresenter
+import PCAuthentication
 
-public final class MainModuleFactoryMVC: MainModuleFactory {
-    public init() {}
-    
-    public func make(output: MainModuleOutput?) -> (module: MainModule, view: UIViewController) {
-        let viewController = MainModuleMVC()
-        viewController.output = output
-        let navigationController = UINavigationController(rootViewController: viewController)
-        navigationController.isNavigationBarHidden = true
-        return (module: viewController, view: navigationController)
-    }
+struct InterfacePresenters {
+    let error: ErrorPresenter
+    let activity: ActivityPresenter
 }
-#endif
+
+struct InterfaceServices {
+    let authentication: PCAuthentication
+}

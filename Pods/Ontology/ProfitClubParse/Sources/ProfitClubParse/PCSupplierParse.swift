@@ -18,9 +18,22 @@ import Foundation
 import Parse
 import ProfitClubModel
 
+public extension PFObject {
+    var pcSupplier: PCSupplier {
+        var result = PCSupplierStruct()
+        result.id = self.objectId
+        result.name = self["name"] as? String
+        result.phone = self["phone"] as? String
+        result.contact = self["contact"] as? String
+        result.inn = self["inn"] as? String
+        return result
+    }
+}
+
 public extension PCSupplier {
     var parse: PCSupplierParse {
         let result = PCSupplierParse()
+        result.objectId = self.id
         result.name = self.name
         result.inn = self.inn
         result.contact = self.contact
@@ -33,10 +46,10 @@ public final class PCSupplierParse: PFObject, PFSubclassing, PCSupplier {
     public var id: String? {
         return self.objectId
     }
-    @NSManaged public var name: String
-    @NSManaged public var inn: String
-    @NSManaged public var contact: String
-    @NSManaged public var phone: String
+    @NSManaged public var name: String?
+    @NSManaged public var inn: String?
+    @NSManaged public var contact: String?
+    @NSManaged public var phone: String?
 
     public static func parseClassName() -> String {
         return "Supplier"

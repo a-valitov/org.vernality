@@ -34,10 +34,9 @@ public extension MainModule {
 
 public protocol MainModuleOutput {
     func mainDidLoad(module: MainModule)
-    func mainWillAppear(module: MainModule)
 }
 
 public protocol MainModuleFactory {
-    func make() -> (module: MainModule, view: UIViewController)
+    func make(output: MainModuleOutput?) -> (module: MainModule, view: UIViewController)
 }
 #endif

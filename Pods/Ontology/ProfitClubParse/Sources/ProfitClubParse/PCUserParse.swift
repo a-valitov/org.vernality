@@ -24,8 +24,8 @@ public extension PCUser {
         result.username = self.username
         result.email = self.email
         result.member = self.member
-        result.organization = self.organization
-        result.supplier = self.supplier
+        result.organizations = self.organizations
+        result.suppliers = self.suppliers
         return result
     }
 }
@@ -46,8 +46,8 @@ public final class PCUserParse: PFUser, PCUser {
     }
 
     public var member: PCMember?
-    public var organization: PCOrganization?
-    public var supplier: PCSupplier?
+    public var organizations: [PCOrganization]?
+    public var suppliers: [PCSupplier]?
 }
 
 private final class PCPFUserWrapper: PCUser {
@@ -67,17 +67,17 @@ private final class PCPFUserWrapper: PCUser {
         return self.pfUser[isAdministratorKey] as? Bool ?? false
     }
 
-    var member: PCMember? {
-        return self.pfUser["member"] as? PCMemberParse
-    }
+    lazy var member: PCMember? = {
+        return try? self.pfUser.relation(forKey: "member").query().getFirstObject().pcMember
+    }()
 
-    var organization: PCOrganization? {
-        return self.pfUser["organization"] as? PCOrganizationParse
-    }
+    lazy var organizations: [PCOrganization]? = {
+        return try? self.pfUser.relation(forKey: "organizations").query().findObjects().map({ $0.pcOrganization })
+    }()
 
-    var supplier: PCSupplier? {
-        return self.pfUser["supplier"] as? PCSupplierParse
-    }
+    lazy var suppliers: [PCSupplier]? = {
+        return try? self.pfUser.relation(forKey: "suppliers").query().findObjects().map({ $0.pcSupplier })
+    }()
 
     init(pfUser: PFUser) {
         self.pfUser = pfUser

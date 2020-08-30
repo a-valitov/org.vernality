@@ -18,7 +18,6 @@ import Foundation
 
 public protocol PCMember {
     var id: String? { get }
-    var username: String { get }
     var firstName: String? { get }
     var lastName: String? { get }
 }
@@ -31,24 +30,17 @@ public extension PCMember {
 
 public struct PCMemberStruct: PCMember {
     public var id: String?
-    public var username: String
     public var firstName: String?
     public var lastName: String?
 
-    public init(username: String) {
-        self.username = username
-    }
+    public init() {}
 }
 
 public struct AnyPCMember: PCMember, Equatable, Hashable {
     public var id: String? {
         return self.object.id
     }
-
-    public var username: String {
-        return self.object.username
-    }
-
+    
     public var firstName: String? {
         return self.object.firstName
     }

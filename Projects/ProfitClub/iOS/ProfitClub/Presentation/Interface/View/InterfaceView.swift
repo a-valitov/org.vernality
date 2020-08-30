@@ -15,8 +15,12 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import UIKit
+import ProfitClubModel
 
 protocol InterfaceViewInput: UIViewController {
+    var member: PCMember? { get set }
+    var organizations: [PCOrganization]? { get set }
+    var suppliers: [PCSupplier]? { get set }
 }
 
 protocol InterfaceViewOutput {

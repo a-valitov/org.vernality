@@ -24,16 +24,35 @@ final class OnboardRouter {
     @discardableResult
     func openLogin(output: LoginViewOutput) -> LoginViewInput {
         let loginView = self.loginViewFactory.makeView(output)
-        self.main?.push(loginView, animated: true)
+        self.main?.push(loginView, animated: false)
         return loginView
     }
 
     @discardableResult
     func openSelectRole(output: SelectRoleViewOutput) -> SelectRoleViewInput {
-        let selectRoleView = SelectRoleViewAlpha()
+        let storyboard = UIStoryboard(name: "SelectRoleViewBeta", bundle: nil)
+        let selectRoleView = storyboard.instantiateInitialViewController() as! SelectRoleViewBeta
         selectRoleView.output = output
         self.main?.push(selectRoleView, animated: true)
         return selectRoleView
+    }
+
+    @discardableResult
+    func openOnboardMember(output: OnboardMemberViewOutput) -> OnboardMemberViewInput {
+        let storyboard = UIStoryboard(name: "OnboardMemberViewBeta", bundle: nil)
+        let onboardMember = storyboard.instantiateInitialViewController() as! OnboardMemberViewBeta
+        onboardMember.output = output
+        self.main?.push(onboardMember, animated: true)
+        return onboardMember
+    }
+
+    @discardableResult
+    func openSelectOrganization(output: SelectOrganizationViewOutput) -> SelectOrganizationViewInput {
+        let storyboard = UIStoryboard(name: "SelectOrganizationViewBeta", bundle: nil)
+        let selectOrganization = storyboard.instantiateInitialViewController() as! SelectOrganizationViewBeta
+        selectOrganization.output = output
+        self.main?.push(selectOrganization, animated: true)
+        return selectOrganization
     }
 
     @discardableResult

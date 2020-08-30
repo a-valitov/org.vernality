@@ -21,9 +21,10 @@ public protocol PCUser {
     var email: String? { get }
     var username: String? { get }
     var isAdministrator: Bool { get }
+
     var member: PCMember? { get }
-    var organization: PCOrganization? { get }
-    var supplier: PCSupplier? { get }
+    var organizations: [PCOrganization]? { get }
+    var suppliers: [PCSupplier]? { get }
 }
 
 public extension PCUser {
@@ -38,8 +39,8 @@ public struct PCUserStruct: PCUser {
     public var username: String?
     public var isAdministrator: Bool = false
     public var member: PCMember?
-    public var organization: PCOrganization?
-    public var supplier: PCSupplier?
+    public var organizations: [PCOrganization]?
+    public var suppliers: [PCSupplier]?
 
     public init() {}
 }
@@ -65,12 +66,12 @@ public struct AnyPCUser: PCUser, Equatable, Hashable {
         return self.object.member
     }
 
-    public var organization: PCOrganization? {
-        return self.object.organization
+    public var organizations: [PCOrganization]? {
+        return self.object.organizations
     }
 
-    public var supplier: PCSupplier? {
-        return self.object.supplier
+    public var suppliers: [PCSupplier]? {
+        return self.object.suppliers
     }
 
     public init(object: PCUser) {

@@ -7,9 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0E90496E24F390070061A605 /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E90496D24F390070061A605 /* Application.swift */; };
-		0E90497124F390270061A605 /* Assembler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E90497024F390270061A605 /* Assembler.swift */; };
-		0E90497424F390960061A605 /* MainRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E90497324F390960061A605 /* MainRouter.swift */; };
+		0E506BE424FBB16800ABA211 /* OnboardMemberView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E506BE324FBB16800ABA211 /* OnboardMemberView.swift */; };
+		0E506BE724FBB19400ABA211 /* OnboardMemberViewBeta.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E506BE624FBB19400ABA211 /* OnboardMemberViewBeta.storyboard */; };
+		0E506BE924FBB1AD00ABA211 /* OnboardMemberViewBeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E506BE824FBB1AD00ABA211 /* OnboardMemberViewBeta.swift */; };
+		0E506BEC24FBB83700ABA211 /* SelectRoleViewBeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E506BEB24FBB83700ABA211 /* SelectRoleViewBeta.swift */; };
+		0E506BEE24FBB92800ABA211 /* SelectRoleViewBeta.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E506BED24FBB92800ABA211 /* SelectRoleViewBeta.storyboard */; };
+		0E506BF124FBBF4600ABA211 /* SelectOrganizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E506BF024FBBF4600ABA211 /* SelectOrganizationView.swift */; };
+		0E506BF424FBBFA400ABA211 /* SelectOrganizationViewBeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E506BF324FBBFA400ABA211 /* SelectOrganizationViewBeta.swift */; };
+		0E506BF624FBBFBE00ABA211 /* SelectOrganizationViewBeta.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E506BF524FBBFBE00ABA211 /* SelectOrganizationViewBeta.storyboard */; };
+		0E90496E24F390070061A605 /* AppPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E90496D24F390070061A605 /* AppPresenter.swift */; };
+		0E90497124F390270061A605 /* AppFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E90497024F390270061A605 /* AppFactory.swift */; };
 		0E90497A24F39C650061A605 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E90497924F39C650061A605 /* Secrets.swift */; };
 		0E90498724F60C980061A605 /* SelectRoleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E90498624F60C980061A605 /* SelectRoleView.swift */; };
 		0E90498A24F60D250061A605 /* SelectRoleViewAlpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E90498924F60D250061A605 /* SelectRoleViewAlpha.swift */; };
@@ -24,6 +31,9 @@
 		0E9049CA24F792960061A605 /* InterfaceModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9049C924F792960061A605 /* InterfaceModule.swift */; };
 		0E9049CC24F792D00061A605 /* InterfaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9049CB24F792D00061A605 /* InterfaceView.swift */; };
 		0E9049CF24F793060061A605 /* InterfaceViewAlpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9049CE24F793060061A605 /* InterfaceViewAlpha.swift */; };
+		0E9049D524FA9E000061A605 /* InterfacePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9049D424FA9E000061A605 /* InterfacePresenter.swift */; };
+		0E9049DA24FA9F4C0061A605 /* InterfaceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9049D924FA9F4C0061A605 /* InterfaceFactory.swift */; };
+		0E9049DC24FA9F9A0061A605 /* InterfaceDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E9049DB24FA9F9A0061A605 /* InterfaceDependencies.swift */; };
 		0EA11EC824F2B88F00133485 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA11EC724F2B88F00133485 /* AppDelegate.swift */; };
 		0EA11ED124F2B89300133485 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0EA11ED024F2B89300133485 /* Assets.xcassets */; };
 		0EA11ED424F2B89300133485 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EA11ED224F2B89300133485 /* LaunchScreen.storyboard */; };
@@ -31,9 +41,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0E90496D24F390070061A605 /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
-		0E90497024F390270061A605 /* Assembler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Assembler.swift; sourceTree = "<group>"; };
-		0E90497324F390960061A605 /* MainRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainRouter.swift; sourceTree = "<group>"; };
+		0E506BE324FBB16800ABA211 /* OnboardMemberView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardMemberView.swift; sourceTree = "<group>"; };
+		0E506BE624FBB19400ABA211 /* OnboardMemberViewBeta.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OnboardMemberViewBeta.storyboard; sourceTree = "<group>"; };
+		0E506BE824FBB1AD00ABA211 /* OnboardMemberViewBeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardMemberViewBeta.swift; sourceTree = "<group>"; };
+		0E506BEB24FBB83700ABA211 /* SelectRoleViewBeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRoleViewBeta.swift; sourceTree = "<group>"; };
+		0E506BED24FBB92800ABA211 /* SelectRoleViewBeta.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SelectRoleViewBeta.storyboard; sourceTree = "<group>"; };
+		0E506BF024FBBF4600ABA211 /* SelectOrganizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectOrganizationView.swift; sourceTree = "<group>"; };
+		0E506BF324FBBFA400ABA211 /* SelectOrganizationViewBeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectOrganizationViewBeta.swift; sourceTree = "<group>"; };
+		0E506BF524FBBFBE00ABA211 /* SelectOrganizationViewBeta.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SelectOrganizationViewBeta.storyboard; sourceTree = "<group>"; };
+		0E90496D24F390070061A605 /* AppPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPresenter.swift; sourceTree = "<group>"; };
+		0E90497024F390270061A605 /* AppFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFactory.swift; sourceTree = "<group>"; };
 		0E90497924F39C650061A605 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 		0E90498624F60C980061A605 /* SelectRoleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRoleView.swift; sourceTree = "<group>"; };
 		0E90498924F60D250061A605 /* SelectRoleViewAlpha.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRoleViewAlpha.swift; sourceTree = "<group>"; };
@@ -48,6 +65,9 @@
 		0E9049C924F792960061A605 /* InterfaceModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceModule.swift; sourceTree = "<group>"; };
 		0E9049CB24F792D00061A605 /* InterfaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceView.swift; sourceTree = "<group>"; };
 		0E9049CE24F793060061A605 /* InterfaceViewAlpha.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceViewAlpha.swift; sourceTree = "<group>"; };
+		0E9049D424FA9E000061A605 /* InterfacePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfacePresenter.swift; sourceTree = "<group>"; };
+		0E9049D924FA9F4C0061A605 /* InterfaceFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceFactory.swift; sourceTree = "<group>"; };
+		0E9049DB24FA9F9A0061A605 /* InterfaceDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceDependencies.swift; sourceTree = "<group>"; };
 		0EA11EC424F2B88F00133485 /* ProfitClub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProfitClub.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EA11EC724F2B88F00133485 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0EA11ED024F2B89300133485 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -70,6 +90,51 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E506BE224FBB14800ABA211 /* Member */ = {
+			isa = PBXGroup;
+			children = (
+				0E506BE324FBB16800ABA211 /* OnboardMemberView.swift */,
+				0E506BE524FBB18100ABA211 /* Beta */,
+			);
+			path = Member;
+			sourceTree = "<group>";
+		};
+		0E506BE524FBB18100ABA211 /* Beta */ = {
+			isa = PBXGroup;
+			children = (
+				0E506BE624FBB19400ABA211 /* OnboardMemberViewBeta.storyboard */,
+				0E506BE824FBB1AD00ABA211 /* OnboardMemberViewBeta.swift */,
+			);
+			path = Beta;
+			sourceTree = "<group>";
+		};
+		0E506BEA24FBB82400ABA211 /* Beta */ = {
+			isa = PBXGroup;
+			children = (
+				0E506BEB24FBB83700ABA211 /* SelectRoleViewBeta.swift */,
+				0E506BED24FBB92800ABA211 /* SelectRoleViewBeta.storyboard */,
+			);
+			path = Beta;
+			sourceTree = "<group>";
+		};
+		0E506BEF24FBBF3000ABA211 /* SelectOrganization */ = {
+			isa = PBXGroup;
+			children = (
+				0E506BF024FBBF4600ABA211 /* SelectOrganizationView.swift */,
+				0E506BF224FBBF8E00ABA211 /* Beta */,
+			);
+			path = SelectOrganization;
+			sourceTree = "<group>";
+		};
+		0E506BF224FBBF8E00ABA211 /* Beta */ = {
+			isa = PBXGroup;
+			children = (
+				0E506BF324FBBFA400ABA211 /* SelectOrganizationViewBeta.swift */,
+				0E506BF524FBBFBE00ABA211 /* SelectOrganizationViewBeta.storyboard */,
+			);
+			path = Beta;
+			sourceTree = "<group>";
+		};
 		0E90494C24F2B9A00061A605 /* Plists */ = {
 			isa = PBXGroup;
 			children = (
@@ -100,6 +165,7 @@
 			children = (
 				0E90498624F60C980061A605 /* SelectRoleView.swift */,
 				0E90498824F60D150061A605 /* Alpha */,
+				0E506BEA24FBB82400ABA211 /* Beta */,
 			);
 			path = SelectRole;
 			sourceTree = "<group>";
@@ -153,6 +219,8 @@
 		0E90499024F6140D0061A605 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0E506BEF24FBBF3000ABA211 /* SelectOrganization */,
+				0E506BE224FBB14800ABA211 /* Member */,
 				0E90499D24F62C570061A605 /* Supplier */,
 				0E90498524F60C810061A605 /* SelectRole */,
 			);
@@ -189,6 +257,8 @@
 		0E9049C624F792500061A605 /* Factory */ = {
 			isa = PBXGroup;
 			children = (
+				0E9049D924FA9F4C0061A605 /* InterfaceFactory.swift */,
+				0E9049DB24FA9F9A0061A605 /* InterfaceDependencies.swift */,
 			);
 			path = Factory;
 			sourceTree = "<group>";
@@ -197,6 +267,7 @@
 			isa = PBXGroup;
 			children = (
 				0E9049C924F792960061A605 /* InterfaceModule.swift */,
+				0E9049D424FA9E000061A605 /* InterfacePresenter.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -251,9 +322,8 @@
 			isa = PBXGroup;
 			children = (
 				0EA11EC724F2B88F00133485 /* AppDelegate.swift */,
-				0E90496D24F390070061A605 /* Application.swift */,
-				0E90497024F390270061A605 /* Assembler.swift */,
-				0E90497324F390960061A605 /* MainRouter.swift */,
+				0E90496D24F390070061A605 /* AppPresenter.swift */,
+				0E90497024F390270061A605 /* AppFactory.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -362,7 +432,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				0EA11ED424F2B89300133485 /* LaunchScreen.storyboard in Resources */,
+				0E506BEE24FBB92800ABA211 /* SelectRoleViewBeta.storyboard in Resources */,
+				0E506BE724FBB19400ABA211 /* OnboardMemberViewBeta.storyboard in Resources */,
 				0EA11ED124F2B89300133485 /* Assets.xcassets in Resources */,
+				0E506BF624FBBFBE00ABA211 /* SelectOrganizationViewBeta.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,20 +488,27 @@
 			files = (
 				0E9049A224F62C870061A605 /* OnboardSupplierViewAlpha.swift in Sources */,
 				0E90499424F614390061A605 /* OnboardModule.swift in Sources */,
-				0E90496E24F390070061A605 /* Application.swift in Sources */,
+				0E90496E24F390070061A605 /* AppPresenter.swift in Sources */,
 				0E90497A24F39C650061A605 /* Secrets.swift in Sources */,
-				0E90497424F390960061A605 /* MainRouter.swift in Sources */,
+				0E9049D524FA9E000061A605 /* InterfacePresenter.swift in Sources */,
 				0E9049CF24F793060061A605 /* InterfaceViewAlpha.swift in Sources */,
+				0E506BE924FBB1AD00ABA211 /* OnboardMemberViewBeta.swift in Sources */,
+				0E506BF124FBBF4600ABA211 /* SelectOrganizationView.swift in Sources */,
+				0E506BEC24FBB83700ABA211 /* SelectRoleViewBeta.swift in Sources */,
 				0E90499A24F624770061A605 /* OnboardError.swift in Sources */,
-				0E90497124F390270061A605 /* Assembler.swift in Sources */,
+				0E90497124F390270061A605 /* AppFactory.swift in Sources */,
 				0E9049CA24F792960061A605 /* InterfaceModule.swift in Sources */,
 				0E90498724F60C980061A605 /* SelectRoleView.swift in Sources */,
 				0E90498A24F60D250061A605 /* SelectRoleViewAlpha.swift in Sources */,
+				0E506BF424FBBFA400ABA211 /* SelectOrganizationViewBeta.swift in Sources */,
 				0E90499224F6142A0061A605 /* OnboardPresenter.swift in Sources */,
 				0E9049CC24F792D00061A605 /* InterfaceView.swift in Sources */,
+				0E9049DA24FA9F4C0061A605 /* InterfaceFactory.swift in Sources */,
+				0E9049DC24FA9F9A0061A605 /* InterfaceDependencies.swift in Sources */,
 				0E90499624F615E80061A605 /* OnboardRouter.swift in Sources */,
 				0E90499824F6160F0061A605 /* OnboardFactory.swift in Sources */,
 				0EA11EC824F2B88F00133485 /* AppDelegate.swift in Sources */,
+				0E506BE424FBB16800ABA211 /* OnboardMemberView.swift in Sources */,
 				0E90499F24F62C6C0061A605 /* OnboardSupplierView.swift in Sources */,
 				0E90499C24F62A6D0061A605 /* OnboardDependencies.swift in Sources */,
 			);

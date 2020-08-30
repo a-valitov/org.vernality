@@ -1,5 +1,5 @@
 //  Copyright (C) 2020 Startup Studio Vernality
-//  Created by Rinat Enikeev on 8/21/20
+//  Created by Rinat Enikeev on 8/30/20
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -14,18 +14,13 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#if canImport(UIKit)
 import UIKit
+import ProfitClubModel
 
-public final class MainModuleFactoryMVC: MainModuleFactory {
-    public init() {}
-    
-    public func make(output: MainModuleOutput?) -> (module: MainModule, view: UIViewController) {
-        let viewController = MainModuleMVC()
-        viewController.output = output
-        let navigationController = UINavigationController(rootViewController: viewController)
-        navigationController.isNavigationBarHidden = true
-        return (module: viewController, view: navigationController)
-    }
+protocol SelectOrganizationViewInput: UIViewController {
+    var organizations: [AnyPCOrganization] { get set }
 }
-#endif
+
+protocol SelectOrganizationViewOutput {
+    func selectOrganization(view: SelectOrganizationViewInput, didSelect organization: AnyPCOrganization)
+}

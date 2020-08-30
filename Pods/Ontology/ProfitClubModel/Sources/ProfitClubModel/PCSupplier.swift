@@ -18,10 +18,10 @@ import Foundation
 
 public protocol PCSupplier {
     var id: String? { get }
-    var name: String { get }
-    var inn: String { get }
-    var contact: String { get }
-    var phone: String { get }
+    var name: String? { get }
+    var inn: String? { get }
+    var contact: String? { get }
+    var phone: String? { get }
 }
 
 public extension PCSupplier {
@@ -32,17 +32,12 @@ public extension PCSupplier {
 
 public struct PCSupplierStruct: PCSupplier {
     public var id: String?
-    public var name: String
-    public var inn: String
-    public var contact: String
-    public var phone: String
+    public var name: String?
+    public var inn: String?
+    public var contact: String?
+    public var phone: String?
 
-    public init(name: String, inn: String, contact: String, phone: String) {
-        self.name = name
-        self.inn = inn
-        self.contact = contact
-        self.phone = phone
-    }
+    public init() {}
 }
 
 public struct AnyPCSupplier: PCSupplier, Equatable, Hashable {
@@ -50,19 +45,19 @@ public struct AnyPCSupplier: PCSupplier, Equatable, Hashable {
         return self.object.id
     }
 
-    public var name: String {
+    public var name: String? {
         return self.object.name
     }
 
-    public var inn: String {
+    public var inn: String? {
         return self.object.inn
     }
 
-    public var contact: String {
+    public var contact: String? {
         return self.object.contact
     }
 
-    public var phone: String {
+    public var phone: String? {
         return self.object.phone
     }
 

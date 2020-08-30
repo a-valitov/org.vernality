@@ -18,10 +18,20 @@ import Foundation
 import Parse
 import ProfitClubModel
 
+public extension PFObject {
+    var pcMember: PCMember {
+        var result = PCMemberStruct()
+        result.id = self.objectId
+        result.firstName = self["firstName"] as? String
+        result.lastName = self["lastName"] as? String
+        return result
+    }
+}
+
 public extension PCMember {
     var parse: PCMemberParse {
         let result = PCMemberParse()
-        result.username = self.username
+        result.objectId = self.id
         result.firstName = self.firstName
         result.lastName = self.lastName
         return result

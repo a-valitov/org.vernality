@@ -21,4 +21,6 @@ public enum PCRole: String {
     case member
     case organization
     case administrator
+    case moderator
+    case observer
 }

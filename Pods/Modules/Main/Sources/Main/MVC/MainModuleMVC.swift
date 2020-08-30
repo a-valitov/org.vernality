@@ -39,7 +39,6 @@ final class MainModuleMVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
-        self.output?.mainWillAppear(module: self)
     }
 
     override func viewWillDisappear(_ animated: Bool) {

@@ -20,6 +20,8 @@ enum OnboardError: Error {
     case emailIsEmpty
     case passwordIsEmpty
     case usernameIsEmpty
+    case firstNameIsEmpty
+    case lastNameIsEmpty
     case supplierNameIsEmpty
     case supplierInnIsEmpty
     case supplierContactIsEmpty

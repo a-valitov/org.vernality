@@ -44,11 +44,12 @@ final class OnboardPresenter: OnboardModule {
     private var email: String?
     private var password: String?
     private var username: String?
+    private var firstName: String?
+    private var lastName: String?
     private var supplierName: String?
     private var supplierInn: String?
     private var supplierContact: String?
     private var supplierPhone: String?
-    private var role: PCRole?
 }
 
 extension OnboardPresenter: LoginViewOutput {
@@ -62,11 +63,12 @@ extension OnboardPresenter: LoginViewOutput {
             return
         }
         self.services.authentication.login(username: username, password: password) { [weak self] result in
+            guard let sSelf = self else { return }
             switch result {
-            case .success:
-                print("Success")
+            case .success(let user):
+                sSelf.output?.onboard(module: sSelf, didLogin: user, inside: sSelf.router?.main)
             case .failure(let error):
-                self?.presenters.error.present(error)
+                sSelf.presenters.error.present(error)
             }
         }
     }
@@ -87,23 +89,42 @@ extension OnboardPresenter: LoginViewOutput {
         self.email = email
         self.password = password
         self.username = username
+        self.router?.openOnboardMember(output: self)
+    }
+}
+
+extension OnboardPresenter: OnboardMemberViewOutput {
+    func onboardMemberDidFinish(view: OnboardMemberViewInput) {
+        guard let firstName = view.firstName, firstName.isEmpty == false else {
+            self.presenters.error.present(OnboardError.firstNameIsEmpty)
+            return
+        }
+        guard let lastName = view.lastName, lastName.isEmpty == false else {
+            self.presenters.error.present(OnboardError.lastNameIsEmpty)
+            return
+        }
+        self.firstName = firstName
+        self.lastName = lastName
         self.router?.openSelectRole(output: self)
     }
 }
 
 extension OnboardPresenter: SelectRoleViewOutput {
     func selectRole(view: SelectRoleViewInput, didSelect role: PCRole) {
-        self.role = role
         switch role {
         case .member:
-            break
-        case .organization:
-            break
+            self.router?.openSelectOrganization(output: self)
         case .supplier:
             self.router?.openOnboardSupplier(output: self)
-        case .administrator:
+        default:
             break
         }
+    }
+}
+
+extension OnboardPresenter: SelectOrganizationViewOutput {
+    func selectOrganization(view: SelectOrganizationViewInput, didSelect organization: AnyPCOrganization) {
+        print(organization)
     }
 }
 
@@ -152,14 +173,18 @@ extension OnboardPresenter {
             self.presenters.error.present(OnboardError.supplierPhoneIsEmpty)
             return
         }
-        let supplier = PCSupplierStruct(name: name, inn: inn, contact: contact, phone: phone)
+        var supplier = PCSupplierStruct()
+        supplier.inn = inn
+        supplier.contact = contact
+        supplier.phone = phone
+        supplier.name = name
 
         // member
         guard let username = self.username, username.isEmpty == false else {
             self.presenters.error.present(OnboardError.usernameIsEmpty)
             return
         }
-        let member = PCMemberStruct(username: username)
+        let member = PCMemberStruct()
 
         // user
         guard let email = self.email, email.isEmpty == false else {
@@ -173,15 +198,16 @@ extension OnboardPresenter {
         var user = PCUserStruct()
         user.username = username
         user.email = email
-        user.supplier = supplier
+        user.suppliers = [supplier]
         user.member = member
         
         self.services.authentication.register(user: user, password: password) { [weak self] result in
+            guard let sSelf = self else { return }
             switch result {
             case .success:
-                print("Success")
+                sSelf.output?.onboard(module: sSelf, didLogin: user, inside: sSelf.router?.main)
             case .failure(let error):
-                self?.presenters.error.present(error)
+                sSelf.presenters.error.present(error)
             }
         }
         

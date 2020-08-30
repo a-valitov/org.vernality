@@ -1,5 +1,5 @@
 //  Copyright (C) 2020 Startup Studio Vernality
-//  Created by Rinat Enikeev on 8/27/20
+//  Created by Rinat Enikeev on 8/29/20
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -17,9 +17,25 @@
 import Foundation
 import Main
 
-protocol InterfaceModule: class {
-    func start(in main: MainModule?)
-}
+final class InterfacePresenter: InterfaceModule {
+    weak var output: InterfaceModuleOutput?
 
-protocol InterfaceModuleOutput: class {
+    init(presenters: InterfacePresenters,
+         services: InterfaceServices) {
+        self.presenters = presenters
+        self.services = services
+    }
+
+    func start(in main: MainModule?) {
+        let view = InterfaceViewAlpha()
+        let user = self.services.authentication.user
+        view.member = user?.member
+        view.suppliers = user?.suppliers
+        view.organizations = user?.organizations
+        main?.push(view, animated: false)
+    }
+
+    // dependencies
+    private let presenters: InterfacePresenters
+    private let services: InterfaceServices
 }

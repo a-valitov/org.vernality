@@ -1,5 +1,5 @@
 //  Copyright (C) 2020 Startup Studio Vernality
-//  Created by Rinat Enikeev on 8/21/20
+//  Created by Rinat Enikeev on 8/30/20
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -14,18 +14,23 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-#if canImport(UIKit)
 import UIKit
 
-public final class MainModuleFactoryMVC: MainModuleFactory {
-    public init() {}
-    
-    public func make(output: MainModuleOutput?) -> (module: MainModule, view: UIViewController) {
-        let viewController = MainModuleMVC()
-        viewController.output = output
-        let navigationController = UINavigationController(rootViewController: viewController)
-        navigationController.isNavigationBarHidden = true
-        return (module: viewController, view: navigationController)
+extension SelectRoleViewBeta: SelectRoleViewInput {
+}
+
+final class SelectRoleViewBeta: UIViewController {
+    var output: SelectRoleViewOutput?
+
+    @IBAction func memberButtonTouchUpInside(_ sender: Any) {
+        self.output?.selectRole(view: self, didSelect: .member)
+    }
+
+    @IBAction func supplierButtonTouchUpInside(_ sender: Any) {
+        self.output?.selectRole(view: self, didSelect: .supplier)
+    }
+
+    @IBAction func organizationButtonTouchUpInside(_ sender: Any) {
+        self.output?.selectRole(view: self, didSelect: .organization)
     }
 }
-#endif

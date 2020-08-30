@@ -23,26 +23,24 @@ import ActivityPresenter
 import ErrorPresenter
 import PCAuthentication
 
-final class Assembler {
-    static let shared = Assembler()
+final class AppFactory {
     lazy var authentication: PCAuthentication = {
         return PCAuthenticationParseFactory().make()
     }()
-    lazy var activityPresenter: ActivityPresenter = {
+
+    func activityPresenter() -> ActivityPresenter {
         return ActivityPresenterCircleFactory().make()
-    }()
-    lazy var errorPresenter: ErrorPresenter = {
+    }
+
+    func errorPresenter() -> ErrorPresenter {
         return ErrorPresenterAlertFactory().make()
-    }()
+    }
 }
 
 // MARK: - ViewContollers
-extension Assembler {
-    func main() -> UIViewController {
-        let main = self.mainFactory.make()
-        let router = MainRouter(mainModule: main.module,
-                                authentication: self.authentication)
-        main.module.output = router
+extension AppFactory {
+    func main(output: MainModuleOutput?) -> UIViewController {
+        let main = self.mainFactory.make(output: output)
         return main.view
     }
 
@@ -50,17 +48,28 @@ extension Assembler {
         let module = self.onboardFactory.make(output: output)
         return module
     }
+
+    func interface(output: InterfaceModuleOutput?) -> InterfaceModule {
+        let module = self.interfaceFactory.make(output: output)
+        return module
+    }
 }
 
 // MARK: - Factories
-private extension Assembler {
+private extension AppFactory {
     var mainFactory: MainModuleFactory {
         return MainModuleFactoryMVC()
     }
 
     var onboardFactory: OnboardFactory {
-        return OnboardFactory(presenters: OnboardPresenters(error: self.errorPresenter,
-                                                            activity: self.activityPresenter),
+        return OnboardFactory(presenters: OnboardPresenters(error: self.errorPresenter(),
+                                                            activity: self.activityPresenter()),
                               services: OnboardServices(authentication: self.authentication))
+    }
+
+    var interfaceFactory: InterfaceFactory {
+        return InterfaceFactory(presenters: InterfacePresenters(error: self.errorPresenter(),
+                                                                activity: self.activityPresenter()),
+                                services: InterfaceServices(authentication: self.authentication))
     }
 }

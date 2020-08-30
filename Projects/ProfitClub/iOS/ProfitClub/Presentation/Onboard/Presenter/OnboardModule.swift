@@ -16,11 +16,12 @@
 
 import Foundation
 import Main
+import ProfitClubModel
 
 protocol OnboardModule: class {
     func start(in main: MainModule?)
 }
 
 protocol OnboardModuleOutput: class {
-    
+    func onboard(module: OnboardModule, didLogin user: PCUser, inside main: MainModule?)
 }

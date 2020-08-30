@@ -48,6 +48,8 @@ final class PCAuthenticationParse: PCAuthentication {
                 defaultACL.setReadAccess(true, forRoleWithName: PCRole.administrator.rawValue)
                 PFACL.setDefault(defaultACL, withAccessForCurrentUser: true)
 
+                let currentUser = PFUser.current()
+
                 // member
                 if let parseMember = user.member?.parse {
                     group.enter()
@@ -60,13 +62,23 @@ final class PCAuthenticationParse: PCAuthentication {
                 }
 
                 // supplier
-                if let parseSupplier = user.supplier?.parse {
-                    group.enter()
-                    parseSupplier.saveInBackground { (succeeded, error)  in
-                        if let error = error {
-                            finalError = error
+                if let suppliers = user.suppliers {
+                    suppliers.forEach { (suppliers) in
+                        group.enter()
+                        let parseSupplier = suppliers.parse
+                        parseSupplier.saveInBackground { (succeeded, error)  in
+                            if let error = error {
+                                finalError = error
+                            }
+                            currentUser?.relation(forKey: "suppliers").add(parseSupplier)
+                            currentUser?.saveInBackground(block: { (result, error) in
+                                if let error = error {
+                                    finalError = error
+                                }
+                                group.leave()
+                            })
+
                         }
-                        group.leave()
                     }
                 }
             }
