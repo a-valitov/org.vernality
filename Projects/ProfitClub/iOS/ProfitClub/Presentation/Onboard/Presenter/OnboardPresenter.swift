@@ -187,7 +187,7 @@ extension OnboardPresenter: OnboardSupplierViewOutput {
 }
 
 extension OnboardPresenter: WaitOrganizationViewOutput {
-    func waitOrganization(view: WaitOrganizationViewInput, userWantsToRefreshStatus sender: Any) {
+    func waitOrganization(view: WaitOrganizationViewInput, userWantsToRefresh organization: PCOrganization?) {
         
     }
 }
@@ -270,6 +270,7 @@ extension OnboardPresenter {
         organization.inn = inn
         organization.contact = contact
         organization.phone = phone
+        organization.status = .onReview
         return organization
     }
 

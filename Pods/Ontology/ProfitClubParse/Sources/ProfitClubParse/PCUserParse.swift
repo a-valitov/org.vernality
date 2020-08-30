@@ -21,6 +21,7 @@ import ProfitClubModel
 public extension PCUser {
     var parse: PCUserParse {
         let result = PCUserParse()
+        result.objectId = self.id
         result.username = self.username
         result.email = self.email
         result.member = self.member

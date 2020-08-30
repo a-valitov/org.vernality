@@ -26,6 +26,9 @@ public extension PFObject {
         result.inn = self["inn"] as? String
         result.contact = self["contact"] as? String
         result.phone = self["phone"] as? String
+        if let statusString = self["statusString"] as? String {
+            result.status = PCOrganizationStatus(rawValue: statusString)
+        }
         return result
     }
 }
@@ -38,6 +41,7 @@ public extension PCOrganization {
         result.inn = self.inn
         result.contact = self.contact
         result.phone = self.phone
+        result.statusString = self.status?.rawValue
         return result
     }
 }
@@ -46,10 +50,18 @@ public final class PCOrganizationParse: PFObject, PFSubclassing, PCOrganization 
     public var id: String? {
         return self.objectId
     }
+    public var status: PCOrganizationStatus? {
+        if let statusString = self.statusString {
+            return PCOrganizationStatus(rawValue: statusString)
+        } else {
+            return nil
+        }
+    }
     @NSManaged public var name: String?
     @NSManaged public var inn: String?
     @NSManaged public var contact: String?
     @NSManaged public var phone: String?
+    @NSManaged public var statusString: String?
 
     public static func parseClassName() -> String {
         return "Organization"

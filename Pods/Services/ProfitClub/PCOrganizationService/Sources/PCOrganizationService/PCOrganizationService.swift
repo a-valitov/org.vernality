@@ -14,13 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import UIKit
-import ProfitClubModel
+import Foundation
 
-protocol WaitOrganizationViewInput: UIViewController {
-    var organization: PCOrganization? { get set }
-}
-
-protocol WaitOrganizationViewOutput {
-    func waitOrganization(view: WaitOrganizationViewInput, userWantsToRefresh organization: PCOrganization?)
+protocol PCOrganizationService {
+    
 }

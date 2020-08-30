@@ -15,29 +15,14 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import UIKit
+import ProfitClubModel
 
 extension WaitOrganizationViewBeta: WaitOrganizationViewInput {
 }
 
 final class WaitOrganizationViewBeta: UIViewController {
     var output: WaitOrganizationViewOutput?
-
-    var name: String? {
-        didSet {
-            self.updateDescription()
-        }
-    }
-    var inn: String? {
-        didSet {
-            self.updateDescription()
-        }
-    }
-    var contact: String? {
-        didSet {
-            self.updateDescription()
-        }
-    }
-    var phone: String? {
+    var organization: PCOrganization? {
         didSet {
             self.updateDescription()
         }
@@ -46,7 +31,7 @@ final class WaitOrganizationViewBeta: UIViewController {
     @IBOutlet weak var descriptionLabel: UILabel!
 
     @IBAction func refreshStatusButtonTouchUpInside(_ sender: Any) {
-
+        self.output?.waitOrganization(view: self, userWantsToRefresh: self.organization)
     }
 
     override func viewDidLoad() {
@@ -57,7 +42,7 @@ final class WaitOrganizationViewBeta: UIViewController {
 
     private func updateDescription() {
         if self.isViewLoaded {
-            self.descriptionLabel.text = "Вы отправили запрос на вступление в клуб организации \(self.name ?? "") (ИНН \(self.inn ?? "")) с контактным лицом \(self.contact ?? "") (номер телефона \(self.phone ?? "")). Администрация клуба рассмотрит заявку и сообщит о принятом решении."
+            self.descriptionLabel.text = "Вы отправили запрос на вступление в клуб организации \(self.organization?.name ?? "") (ИНН \(self.organization?.inn ?? "")) с контактным лицом \(self.organization?.contact ?? "") (номер телефона \(self.organization?.phone ?? "")). Администрация клуба рассмотрит заявку и сообщит о принятом решении."
         }
     }
 }

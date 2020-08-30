@@ -77,10 +77,7 @@ final class OnboardRouter {
                               output: WaitOrganizationViewOutput) -> WaitOrganizationViewInput {
         let storyboard = UIStoryboard(name: "WaitOrganizationViewBeta", bundle: nil)
         let waitOrganization = storyboard.instantiateInitialViewController() as! WaitOrganizationViewBeta
-        waitOrganization.name = organization.name
-        waitOrganization.inn = organization.inn
-        waitOrganization.contact = organization.contact
-        waitOrganization.phone = organization.phone
+        waitOrganization.organization = organization
         waitOrganization.output = output
         self.main?.push(waitOrganization, animated: true)
         return waitOrganization

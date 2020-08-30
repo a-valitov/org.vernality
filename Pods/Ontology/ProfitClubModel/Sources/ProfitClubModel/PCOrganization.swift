@@ -22,7 +22,16 @@ public protocol PCOrganization {
     var inn: String? { get }
     var contact: String? { get }
     var phone: String? { get }
+    var status: PCOrganizationStatus? { get }
 }
+
+public enum PCOrganizationStatus: String {
+    case onReview
+    case approved
+    case rejected
+    case excluded
+}
+
 public extension PCOrganization {
     var any: AnyPCOrganization {
         return AnyPCOrganization(object: self)
@@ -35,6 +44,7 @@ public struct PCOrganizationStruct: PCOrganization {
     public var inn: String?
     public var contact: String?
     public var phone: String?
+    public var status: PCOrganizationStatus?
 
     public init() {}
 }
@@ -58,6 +68,10 @@ public struct AnyPCOrganization: PCOrganization, Equatable, Hashable {
 
     public var phone: String? {
         return self.object.phone
+    }
+
+    public var status: PCOrganizationStatus? {
+        return self.object.status
     }
 
     public init(object: PCOrganization) {

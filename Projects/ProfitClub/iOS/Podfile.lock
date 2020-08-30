@@ -14,6 +14,15 @@ PODS:
     - Parse
     - ProfitClubModel
     - ProfitClubParse
+  - PCOrganizationService (0.0.1):
+    - Parse
+    - PCAuthentication
+    - ProfitClubModel
+    - ProfitClubParse
+  - PCUserService (0.0.1):
+    - Parse
+    - PCAuthentication
+    - ProfitClubModel
   - ProfitClubModel (0.0.1)
   - ProfitClubParse (0.0.1):
     - Parse
@@ -25,6 +34,8 @@ DEPENDENCIES:
   - LoginView (from `../../../Pods/Packages/LoginView.podspec`)
   - Main (from `../../../Pods/Modules/Main.podspec`)
   - PCAuthentication (from `../../../Pods/Services/ProfitClub/PCAuthentication.podspec`)
+  - PCOrganizationService (from `../../../Pods/Services/ProfitClub/PCOrganizationService.podspec`)
+  - PCUserService (from `../../../Pods/Services/ProfitClub/PCUserService.podspec`)
   - ProfitClubModel (from `../../../Pods/Ontology/ProfitClubModel.podspec`)
   - ProfitClubParse (from `../../../Pods/Ontology/ProfitClubParse.podspec`)
 
@@ -45,6 +56,10 @@ EXTERNAL SOURCES:
     :path: "../../../Pods/Modules/Main.podspec"
   PCAuthentication:
     :path: "../../../Pods/Services/ProfitClub/PCAuthentication.podspec"
+  PCOrganizationService:
+    :path: "../../../Pods/Services/ProfitClub/PCOrganizationService.podspec"
+  PCUserService:
+    :path: "../../../Pods/Services/ProfitClub/PCUserService.podspec"
   ProfitClubModel:
     :path: "../../../Pods/Ontology/ProfitClubModel.podspec"
   ProfitClubParse:
@@ -59,9 +74,11 @@ SPEC CHECKSUMS:
   Main: 5f3663f52dc9f73e8caed2af67aa325dfd64111d
   Parse: 79bdda34fdb7eb2a707a43a951c8aae236cb3e34
   PCAuthentication: 08d4d8b660b8f39573b8192607dd431ebdb7254f
+  PCOrganizationService: d3e3f936840999a102c4bfdecfdeccd327ccf9d3
+  PCUserService: 0fda50172a03145b21c939d6bbdbf12526c7e37b
   ProfitClubModel: 38acfa2527d8cac51c97c8494db90fdd3025d32f
   ProfitClubParse: f0319471560bd2af6fd3d2753a8980bab1656b1a
 
-PODFILE CHECKSUM: 4018e4515c8022da30fd287670f2785a8a2d1184
+PODFILE CHECKSUM: 6f55568bdc8d9dd2bdd145b18b547a7d80957d63
 
 COCOAPODS: 1.9.3
