@@ -26,4 +26,8 @@ enum OnboardError: Error {
     case supplierInnIsEmpty
     case supplierContactIsEmpty
     case supplierPhoneIsEmpty
+    case organizationNameIsEmpty
+    case organizationInnIsEmpty
+    case organizationContactIsEmpty
+    case organizationPhoneIsEmpty
 }

@@ -57,15 +57,41 @@ final class PCAuthenticationParse: PCAuthentication {
                         if let error = error {
                             finalError = error
                         }
-                        group.leave()
+                        currentUser?.relation(forKey: "member").add(parseMember)
+                        currentUser?.saveInBackground(block: { (result, error) in
+                            if let error = error {
+                                finalError = error
+                            }
+                            group.leave()
+                        })
+                    }
+                }
+
+                // organization
+                if let organizations = user.organizations {
+                    organizations.forEach { (organization) in
+                        group.enter()
+                        let parseOrganization = organization.parse
+                        parseOrganization.saveInBackground { (succeeded, error) in
+                            if let error = error {
+                                finalError = error
+                            }
+                            currentUser?.relation(forKey: "organizations").add(parseOrganization)
+                            currentUser?.saveInBackground(block: { (result, error) in
+                                if let error = error {
+                                    finalError = error
+                                }
+                                group.leave()
+                            })
+                        }
                     }
                 }
 
                 // supplier
                 if let suppliers = user.suppliers {
-                    suppliers.forEach { (suppliers) in
+                    suppliers.forEach { (supplier) in
                         group.enter()
-                        let parseSupplier = suppliers.parse
+                        let parseSupplier = supplier.parse
                         parseSupplier.saveInBackground { (succeeded, error)  in
                             if let error = error {
                                 finalError = error
@@ -77,7 +103,6 @@ final class PCAuthenticationParse: PCAuthentication {
                                 }
                                 group.leave()
                             })
-
                         }
                     }
                 }

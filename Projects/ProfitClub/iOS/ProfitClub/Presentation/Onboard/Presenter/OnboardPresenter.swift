@@ -50,6 +50,10 @@ final class OnboardPresenter: OnboardModule {
     private var supplierInn: String?
     private var supplierContact: String?
     private var supplierPhone: String?
+    private var organizationName: String?
+    private var organizationInn: String?
+    private var organizationContact: String?
+    private var organizationPhone: String?
 }
 
 extension OnboardPresenter: LoginViewOutput {
@@ -116,9 +120,37 @@ extension OnboardPresenter: SelectRoleViewOutput {
             self.router?.openSelectOrganization(output: self)
         case .supplier:
             self.router?.openOnboardSupplier(output: self)
+        case .organization:
+            self.router?.openOnboardOrganization(output: self)
         default:
             break
         }
+    }
+}
+
+extension OnboardPresenter: OnboardOrganizationViewOutput {
+    func onboardOrganizationDidFinish(view: OnboardOrganizationViewInput) {
+        guard let name = view.name, name.isEmpty == false else {
+            self.presenters.error.present(OnboardError.organizationNameIsEmpty)
+            return
+        }
+        guard let inn = view.inn, inn.isEmpty == false else {
+            self.presenters.error.present(OnboardError.organizationInnIsEmpty)
+            return
+        }
+        guard let contact = view.contact, contact.isEmpty == false else {
+            self.presenters.error.present(OnboardError.organizationContactIsEmpty)
+            return
+        }
+        guard let phone = view.phone, phone.isEmpty == false else {
+            self.presenters.error.present(OnboardError.organizationPhoneIsEmpty)
+            return
+        }
+        self.organizationName = name
+        self.organizationInn = inn
+        self.organizationContact = contact
+        self.organizationPhone = phone
+        self.registerOrganization()
     }
 }
 
@@ -155,52 +187,134 @@ extension OnboardPresenter: OnboardSupplierViewOutput {
 }
 
 extension OnboardPresenter {
-    private func registerSupplier() {
-        // supplier
+    private func createUser() -> PCUserStruct? {
+        guard let username = self.username, username.isEmpty == false else {
+            self.presenters.error.present(OnboardError.usernameIsEmpty)
+            return nil
+        }
+        guard let email = self.email, email.isEmpty == false else {
+            self.presenters.error.present(OnboardError.emailIsEmpty)
+            return nil
+        }
+        var user = PCUserStruct()
+        user.username = username
+        user.email = email
+        return user
+    }
+
+    private func createSupplier() -> PCSupplierStruct? {
         guard let name = self.supplierName, name.isEmpty == false else {
             self.presenters.error.present(OnboardError.supplierNameIsEmpty)
-            return
+            return nil
         }
         guard let inn = self.supplierInn, inn.isEmpty == false else {
             self.presenters.error.present(OnboardError.supplierInnIsEmpty)
-            return
+            return nil
         }
         guard let contact = self.supplierContact, contact.isEmpty == false else {
             self.presenters.error.present(OnboardError.supplierContactIsEmpty)
-            return
+            return nil
         }
         guard let phone = self.supplierPhone, phone.isEmpty == false else {
             self.presenters.error.present(OnboardError.supplierPhoneIsEmpty)
-            return
+            return nil
         }
         var supplier = PCSupplierStruct()
         supplier.inn = inn
         supplier.contact = contact
         supplier.phone = phone
         supplier.name = name
+        return supplier
+    }
 
-        // member
-        guard let username = self.username, username.isEmpty == false else {
-            self.presenters.error.present(OnboardError.usernameIsEmpty)
+    private func createMember() -> PCMemberStruct? {
+        guard let firstName = self.firstName, firstName.isEmpty == false else {
+            self.presenters.error.present(OnboardError.firstNameIsEmpty)
+            return nil
+        }
+        guard let lastName = self.lastName, lastName.isEmpty == false else {
+            self.presenters.error.present(OnboardError.lastNameIsEmpty)
+            return nil
+        }
+        var member = PCMemberStruct()
+        member.firstName = self.firstName
+        member.lastName = self.lastName
+        return member
+    }
+
+    private func createOrganization() -> PCOrganizationStruct? {
+        guard let name = self.organizationName, name.isEmpty == false else {
+            self.presenters.error.present(OnboardError.organizationNameIsEmpty)
+            return nil
+        }
+        guard let inn = self.organizationInn, inn.isEmpty == false else {
+            self.presenters.error.present(OnboardError.organizationInnIsEmpty)
+            return nil
+        }
+        guard let contact = self.organizationContact, contact.isEmpty == false else {
+            self.presenters.error.present(OnboardError.organizationContactIsEmpty)
+            return nil
+        }
+        guard let phone = self.organizationPhone, phone.isEmpty == false else {
+            self.presenters.error.present(OnboardError.organizationPhoneIsEmpty)
+            return nil
+        }
+        var organization = PCOrganizationStruct()
+        organization.name = name
+        organization.inn = inn
+        organization.contact = contact
+        organization.phone = phone
+        return organization
+    }
+
+    private func registerOrganization() {
+        guard var user = self.createUser() else {
             return
         }
-        let member = PCMemberStruct()
-
-        // user
-        guard let email = self.email, email.isEmpty == false else {
-            self.presenters.error.present(OnboardError.emailIsEmpty)
+        guard let organization = self.createOrganization() else {
             return
         }
+        guard let member = self.createMember() else {
+            return
+        }
+
+        user.organizations = [organization]
+        user.member = member
+
         guard let password = self.password, password.isEmpty == false else {
             self.presenters.error.present(OnboardError.passwordIsEmpty)
             return
         }
-        var user = PCUserStruct()
-        user.username = username
-        user.email = email
+
+        self.services.authentication.register(user: user, password: password) { [weak self] result in
+            guard let sSelf = self else { return }
+            switch result {
+            case .success:
+                sSelf.output?.onboard(module: sSelf, didLogin: user, inside: sSelf.router?.main)
+            case .failure(let error):
+                sSelf.presenters.error.present(error)
+            }
+        }
+    }
+
+    private func registerSupplier() {
+        guard var user = self.createUser() else {
+            return
+        }
+        guard let supplier = self.createSupplier() else {
+            return
+        }
+        guard let member = self.createMember() else {
+            return
+        }
         user.suppliers = [supplier]
         user.member = member
-        
+
+        guard let password = self.password, password.isEmpty == false else {
+            self.presenters.error.present(OnboardError.passwordIsEmpty)
+            return
+        }
+
         self.services.authentication.register(user: user, password: password) { [weak self] result in
             guard let sSelf = self else { return }
             switch result {

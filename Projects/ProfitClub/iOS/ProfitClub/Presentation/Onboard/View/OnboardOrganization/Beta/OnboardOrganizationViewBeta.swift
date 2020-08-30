@@ -14,4 +14,48 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import Foundation
+import UIKit
+
+extension OnboardOrganizationViewBeta: OnboardOrganizationViewInput {
+}
+
+final class OnboardOrganizationViewBeta: UIViewController {
+    var output: OnboardOrganizationViewOutput?
+    var name: String? {
+        if self.isViewLoaded {
+            return self.nameTextField.text
+        } else {
+            return nil
+        }
+    }
+    var inn: String? {
+        if self.isViewLoaded {
+            return self.innTextField.text
+        } else {
+            return nil
+        }
+    }
+    var contact: String? {
+        if self.isViewLoaded {
+            return self.contactTextField.text
+        } else {
+            return nil
+        }
+    }
+    var phone: String? {
+        if self.isViewLoaded {
+            return self.phoneTextField.text
+        } else {
+            return nil
+        }
+    }
+
+    @IBOutlet weak var nameTextField: UITextField!
+    @IBOutlet weak var innTextField: UITextField!
+    @IBOutlet weak var contactTextField: UITextField!
+    @IBOutlet weak var phoneTextField: UITextField!
+
+    @IBAction func submitButtonTouchUpInside(_ sender: Any) {
+        self.output?.onboardOrganizationDidFinish(view: self)
+    }
+}

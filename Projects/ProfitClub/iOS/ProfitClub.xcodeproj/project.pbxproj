@@ -15,6 +15,9 @@
 		0E506BF124FBBF4600ABA211 /* SelectOrganizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E506BF024FBBF4600ABA211 /* SelectOrganizationView.swift */; };
 		0E506BF424FBBFA400ABA211 /* SelectOrganizationViewBeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E506BF324FBBFA400ABA211 /* SelectOrganizationViewBeta.swift */; };
 		0E506BF624FBBFBE00ABA211 /* SelectOrganizationViewBeta.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E506BF524FBBFBE00ABA211 /* SelectOrganizationViewBeta.storyboard */; };
+		0E506BF924FBC2FC00ABA211 /* OnboardOrganizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E506BF824FBC2FC00ABA211 /* OnboardOrganizationView.swift */; };
+		0E506BFC24FBC37900ABA211 /* OnboardOrganizationViewBeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E506BFB24FBC37900ABA211 /* OnboardOrganizationViewBeta.swift */; };
+		0E506BFE24FBC39B00ABA211 /* OnboardOrganizationViewBeta.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E506BFD24FBC39B00ABA211 /* OnboardOrganizationViewBeta.storyboard */; };
 		0E90496E24F390070061A605 /* AppPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E90496D24F390070061A605 /* AppPresenter.swift */; };
 		0E90497124F390270061A605 /* AppFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E90497024F390270061A605 /* AppFactory.swift */; };
 		0E90497A24F39C650061A605 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E90497924F39C650061A605 /* Secrets.swift */; };
@@ -49,6 +52,9 @@
 		0E506BF024FBBF4600ABA211 /* SelectOrganizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectOrganizationView.swift; sourceTree = "<group>"; };
 		0E506BF324FBBFA400ABA211 /* SelectOrganizationViewBeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectOrganizationViewBeta.swift; sourceTree = "<group>"; };
 		0E506BF524FBBFBE00ABA211 /* SelectOrganizationViewBeta.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SelectOrganizationViewBeta.storyboard; sourceTree = "<group>"; };
+		0E506BF824FBC2FC00ABA211 /* OnboardOrganizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardOrganizationView.swift; sourceTree = "<group>"; };
+		0E506BFB24FBC37900ABA211 /* OnboardOrganizationViewBeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardOrganizationViewBeta.swift; sourceTree = "<group>"; };
+		0E506BFD24FBC39B00ABA211 /* OnboardOrganizationViewBeta.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OnboardOrganizationViewBeta.storyboard; sourceTree = "<group>"; };
 		0E90496D24F390070061A605 /* AppPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPresenter.swift; sourceTree = "<group>"; };
 		0E90497024F390270061A605 /* AppFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFactory.swift; sourceTree = "<group>"; };
 		0E90497924F39C650061A605 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
@@ -90,13 +96,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0E506BE224FBB14800ABA211 /* Member */ = {
+		0E506BE224FBB14800ABA211 /* OnboardMember */ = {
 			isa = PBXGroup;
 			children = (
 				0E506BE324FBB16800ABA211 /* OnboardMemberView.swift */,
 				0E506BE524FBB18100ABA211 /* Beta */,
 			);
-			path = Member;
+			path = OnboardMember;
 			sourceTree = "<group>";
 		};
 		0E506BE524FBB18100ABA211 /* Beta */ = {
@@ -131,6 +137,24 @@
 			children = (
 				0E506BF324FBBFA400ABA211 /* SelectOrganizationViewBeta.swift */,
 				0E506BF524FBBFBE00ABA211 /* SelectOrganizationViewBeta.storyboard */,
+			);
+			path = Beta;
+			sourceTree = "<group>";
+		};
+		0E506BF724FBC2D600ABA211 /* OnboardOrganization */ = {
+			isa = PBXGroup;
+			children = (
+				0E506BF824FBC2FC00ABA211 /* OnboardOrganizationView.swift */,
+				0E506BFA24FBC36600ABA211 /* Beta */,
+			);
+			path = OnboardOrganization;
+			sourceTree = "<group>";
+		};
+		0E506BFA24FBC36600ABA211 /* Beta */ = {
+			isa = PBXGroup;
+			children = (
+				0E506BFB24FBC37900ABA211 /* OnboardOrganizationViewBeta.swift */,
+				0E506BFD24FBC39B00ABA211 /* OnboardOrganizationViewBeta.storyboard */,
 			);
 			path = Beta;
 			sourceTree = "<group>";
@@ -219,21 +243,22 @@
 		0E90499024F6140D0061A605 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				0E506BE224FBB14800ABA211 /* OnboardMember */,
+				0E506BF724FBC2D600ABA211 /* OnboardOrganization */,
+				0E90499D24F62C570061A605 /* OnboardSupplier */,
 				0E506BEF24FBBF3000ABA211 /* SelectOrganization */,
-				0E506BE224FBB14800ABA211 /* Member */,
-				0E90499D24F62C570061A605 /* Supplier */,
 				0E90498524F60C810061A605 /* SelectRole */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		0E90499D24F62C570061A605 /* Supplier */ = {
+		0E90499D24F62C570061A605 /* OnboardSupplier */ = {
 			isa = PBXGroup;
 			children = (
 				0E90499E24F62C6C0061A605 /* OnboardSupplierView.swift */,
 				0E9049A024F62C780061A605 /* Alpha */,
 			);
-			path = Supplier;
+			path = OnboardSupplier;
 			sourceTree = "<group>";
 		};
 		0E9049A024F62C780061A605 /* Alpha */ = {
@@ -433,6 +458,7 @@
 			files = (
 				0EA11ED424F2B89300133485 /* LaunchScreen.storyboard in Resources */,
 				0E506BEE24FBB92800ABA211 /* SelectRoleViewBeta.storyboard in Resources */,
+				0E506BFE24FBC39B00ABA211 /* OnboardOrganizationViewBeta.storyboard in Resources */,
 				0E506BE724FBB19400ABA211 /* OnboardMemberViewBeta.storyboard in Resources */,
 				0EA11ED124F2B89300133485 /* Assets.xcassets in Resources */,
 				0E506BF624FBBFBE00ABA211 /* SelectOrganizationViewBeta.storyboard in Resources */,
@@ -497,6 +523,7 @@
 				0E506BEC24FBB83700ABA211 /* SelectRoleViewBeta.swift in Sources */,
 				0E90499A24F624770061A605 /* OnboardError.swift in Sources */,
 				0E90497124F390270061A605 /* AppFactory.swift in Sources */,
+				0E506BF924FBC2FC00ABA211 /* OnboardOrganizationView.swift in Sources */,
 				0E9049CA24F792960061A605 /* InterfaceModule.swift in Sources */,
 				0E90498724F60C980061A605 /* SelectRoleView.swift in Sources */,
 				0E90498A24F60D250061A605 /* SelectRoleViewAlpha.swift in Sources */,
@@ -510,6 +537,7 @@
 				0EA11EC824F2B88F00133485 /* AppDelegate.swift in Sources */,
 				0E506BE424FBB16800ABA211 /* OnboardMemberView.swift in Sources */,
 				0E90499F24F62C6C0061A605 /* OnboardSupplierView.swift in Sources */,
+				0E506BFC24FBC37900ABA211 /* OnboardOrganizationViewBeta.swift in Sources */,
 				0E90499C24F62A6D0061A605 /* OnboardDependencies.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

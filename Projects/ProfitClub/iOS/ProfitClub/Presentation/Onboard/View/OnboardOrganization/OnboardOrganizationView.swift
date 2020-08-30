@@ -14,4 +14,15 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import Foundation
+import UIKit
+
+protocol OnboardOrganizationViewInput: UIViewController {
+    var name: String? { get }
+    var inn: String? { get }
+    var contact: String? { get }
+    var phone: String? { get }
+}
+
+protocol OnboardOrganizationViewOutput {
+    func onboardOrganizationDidFinish(view: OnboardOrganizationViewInput)
+}

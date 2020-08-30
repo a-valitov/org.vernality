@@ -55,6 +55,14 @@ final class OnboardRouter {
         return selectOrganization
     }
 
+    @discardableResult func openOnboardOrganization(output: OnboardOrganizationViewOutput) -> OnboardOrganizationViewInput {
+        let storyboard = UIStoryboard(name: "OnboardOrganizationViewBeta", bundle: nil)
+        let onboardOrganization = storyboard.instantiateInitialViewController() as! OnboardOrganizationViewBeta
+        onboardOrganization.output = output
+        self.main?.push(onboardOrganization, animated: true)
+        return onboardOrganization
+    }
+
     @discardableResult
     func openOnboardSupplier(output: OnboardSupplierViewOutput) -> OnboardSupplierViewInput {
         let onboardSupplier = OnboardSupplierViewAlpha()
