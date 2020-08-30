@@ -57,7 +57,7 @@ final class WaitOrganizationViewBeta: UIViewController {
 
     private func updateDescription() {
         if self.isViewLoaded {
-            self.descriptionLabel.text = "Вы отправили запрос на вступление в клуб организации \(self.name ?? "") (ИНН \(self.inn ?? "") с контактным лицом \(self.contact ?? "") (номер телефона \(self.phone ?? ""). Администрация клуба рассмотрит заявку и сообщит о принятом решении."
+            self.descriptionLabel.text = "Вы отправили запрос на вступление в клуб организации \(self.name ?? "") (ИНН \(self.inn ?? "") с контактным лицом \(self.contact ?? "") (номер телефона \(self.phone ?? "")). Администрация клуба рассмотрит заявку и сообщит о принятом решении."
         }
     }
 }
