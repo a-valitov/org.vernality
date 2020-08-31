@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="sfo-Yr-mjz">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Regular.ttf">
+            <string>Montserrat-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Onboard Sign Up View Beta-->
+        <scene sceneID="wPy-We-vfQ">
+            <objects>
+                <viewController id="sfo-Yr-mjz" customClass="OnboardSignUpViewBeta" customModule="ProfitClub" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="HFS-xl-1fn">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Имя пользователя" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AUH-J9-AD3">
+                                <rect key="frame" x="20" y="44" width="374" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="nCB-lU-HRP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="v8E-BT-wG7">
+                                <rect key="frame" x="20" y="104" width="374" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="whv-Oz-mdh"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Пароль" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EZa-Zm-TRJ">
+                                <rect key="frame" x="20" y="164" width="374" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="41q-iw-y3N"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="new-password"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="122-jg-S1P">
+                                <rect key="frame" x="20" y="284" width="374" height="52"/>
+                                <color key="backgroundColor" red="0.1176470588" green="0.1137254902" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="m63-aH-V3U"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
+                                <state key="normal" title="Зарегистрироваться">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="signUpButtonTouchUpInside:" destination="sfo-Yr-mjz" eventType="touchUpInside" id="dPd-Vv-kkE"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Подтверждение пароля" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Puc-3Z-v7a">
+                                <rect key="frame" x="20" y="224" width="374" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="2pu-dI-hkm"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="new-password"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" red="0.95294117649999999" green="0.91764705879999997" blue="0.90588235289999997" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="EZa-Zm-TRJ" firstAttribute="trailing" secondItem="AUH-J9-AD3" secondAttribute="trailing" id="1Vv-XW-psx"/>
+                            <constraint firstItem="122-jg-S1P" firstAttribute="top" secondItem="Puc-3Z-v7a" secondAttribute="bottom" constant="8" id="1yM-MH-2Hi"/>
+                            <constraint firstItem="AUH-J9-AD3" firstAttribute="top" secondItem="BBC-fY-ifU" secondAttribute="top" id="2ck-v4-VjJ"/>
+                            <constraint firstItem="122-jg-S1P" firstAttribute="leading" secondItem="EZa-Zm-TRJ" secondAttribute="leading" id="BoO-JI-hEI"/>
+                            <constraint firstItem="BBC-fY-ifU" firstAttribute="trailing" secondItem="AUH-J9-AD3" secondAttribute="trailing" constant="20" id="FPE-pr-kr3"/>
+                            <constraint firstItem="v8E-BT-wG7" firstAttribute="trailing" secondItem="AUH-J9-AD3" secondAttribute="trailing" id="GwA-mM-Ix3"/>
+                            <constraint firstItem="Puc-3Z-v7a" firstAttribute="leading" secondItem="EZa-Zm-TRJ" secondAttribute="leading" id="KLM-lM-Bff"/>
+                            <constraint firstItem="v8E-BT-wG7" firstAttribute="top" secondItem="AUH-J9-AD3" secondAttribute="bottom" constant="8" id="KjS-KW-DoD"/>
+                            <constraint firstItem="Puc-3Z-v7a" firstAttribute="top" secondItem="EZa-Zm-TRJ" secondAttribute="bottom" constant="8" id="LKx-6p-uuZ"/>
+                            <constraint firstItem="EZa-Zm-TRJ" firstAttribute="top" secondItem="v8E-BT-wG7" secondAttribute="bottom" constant="8" id="MAs-Yr-FMx"/>
+                            <constraint firstItem="122-jg-S1P" firstAttribute="trailing" secondItem="EZa-Zm-TRJ" secondAttribute="trailing" id="QZj-9W-1ZG"/>
+                            <constraint firstItem="AUH-J9-AD3" firstAttribute="leading" secondItem="BBC-fY-ifU" secondAttribute="leading" constant="20" id="UbX-YE-1YC"/>
+                            <constraint firstItem="Puc-3Z-v7a" firstAttribute="trailing" secondItem="EZa-Zm-TRJ" secondAttribute="trailing" id="dJA-Dj-oXX"/>
+                            <constraint firstItem="EZa-Zm-TRJ" firstAttribute="leading" secondItem="AUH-J9-AD3" secondAttribute="leading" id="nat-Af-p0m"/>
+                            <constraint firstItem="v8E-BT-wG7" firstAttribute="leading" secondItem="AUH-J9-AD3" secondAttribute="leading" id="q8Z-du-UqW"/>
+                            <constraint firstItem="BBC-fY-ifU" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="122-jg-S1P" secondAttribute="bottom" constant="8" id="t4F-OG-4YZ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="BBC-fY-ifU"/>
+                    </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="v8E-BT-wG7" id="ljf-yN-FJ5"/>
+                        <outlet property="passwordConfirmationTextField" destination="Puc-3Z-v7a" id="EVJ-yp-IYp"/>
+                        <outlet property="passwordTextField" destination="EZa-Zm-TRJ" id="ahg-po-DCD"/>
+                        <outlet property="usernameTextField" destination="AUH-J9-AD3" id="DkM-B9-9kI"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SIw-LK-xhl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-157.97101449275362" y="162.72321428571428"/>
+        </scene>
+    </scenes>
+</document>

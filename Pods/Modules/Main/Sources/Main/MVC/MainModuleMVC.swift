@@ -53,7 +53,7 @@ extension MainModuleMVC: MainModule {
     }
 
     func raise(_ viewController: UIViewController, animated: Bool) {
-        let sheetController = SheetViewController(controller: viewController, sizes: [.percent(0.5)])
+        let sheetController = SheetViewController(controller: viewController)
         self.navigationController?.topViewController?.present(sheetController, animated: animated)
     }
 

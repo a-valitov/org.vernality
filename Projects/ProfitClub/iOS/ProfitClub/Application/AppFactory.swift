@@ -18,7 +18,6 @@
 import Foundation
 import UIKit
 import Main
-import LoginView
 import ActivityPresenter
 import ErrorPresenter
 import PCAuthentication

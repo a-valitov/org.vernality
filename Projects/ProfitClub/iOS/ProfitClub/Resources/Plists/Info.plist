@@ -37,6 +37,11 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Montserrat-Regular</string>
+		<string>PlayfairDisplay-VariableFont_wght</string>
+	</array>
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
 </dict>

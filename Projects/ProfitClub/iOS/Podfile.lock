@@ -3,7 +3,6 @@ PODS:
   - Bolts/Tasks (1.9.1)
   - ErrorPresenter (0.0.1)
   - FittedSheets (2.1.1)
-  - LoginView (0.0.1)
   - Main (0.0.1):
     - FittedSheets
   - Parse (1.18.0):
@@ -31,7 +30,6 @@ PODS:
 DEPENDENCIES:
   - ActivityPresenter (from `../../../Pods/Packages/ActivityPresenter.podspec`)
   - ErrorPresenter (from `../../../Pods/Packages/ErrorPresenter.podspec`)
-  - LoginView (from `../../../Pods/Packages/LoginView.podspec`)
   - Main (from `../../../Pods/Modules/Main.podspec`)
   - PCAuthentication (from `../../../Pods/Services/ProfitClub/PCAuthentication.podspec`)
   - PCOrganizationService (from `../../../Pods/Services/ProfitClub/PCOrganizationService.podspec`)
@@ -50,8 +48,6 @@ EXTERNAL SOURCES:
     :path: "../../../Pods/Packages/ActivityPresenter.podspec"
   ErrorPresenter:
     :path: "../../../Pods/Packages/ErrorPresenter.podspec"
-  LoginView:
-    :path: "../../../Pods/Packages/LoginView.podspec"
   Main:
     :path: "../../../Pods/Modules/Main.podspec"
   PCAuthentication:
@@ -70,7 +66,6 @@ SPEC CHECKSUMS:
   Bolts: 8c1e8aab2f603387b8b9924f57d1d64f43d3ffdc
   ErrorPresenter: deb60f0739744b9b79bbf7be09e7e0a473ba132b
   FittedSheets: ec30a41b7f054891992ada0441ebe7801958f123
-  LoginView: 9a1131eadfc1a3a2e9bc1f80c9344d50a51d2e65
   Main: 5f3663f52dc9f73e8caed2af67aa325dfd64111d
   Parse: 79bdda34fdb7eb2a707a43a951c8aae236cb3e34
   PCAuthentication: 08d4d8b660b8f39573b8192607dd431ebdb7254f
@@ -79,6 +74,6 @@ SPEC CHECKSUMS:
   ProfitClubModel: 38acfa2527d8cac51c97c8494db90fdd3025d32f
   ProfitClubParse: f0319471560bd2af6fd3d2753a8980bab1656b1a
 
-PODFILE CHECKSUM: 6f55568bdc8d9dd2bdd145b18b547a7d80957d63
+PODFILE CHECKSUM: 4303009976afbfc6450dda99d50f8fb934613137
 
 COCOAPODS: 1.9.3

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Rl1-8q-5CH">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Regular.ttf">
+            <string>Montserrat-Regular</string>
+        </array>
+        <array key="PlayfairDisplay-VariableFont_wght.ttf">
+            <string>PlayfairDisplay-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Onboard Welcome View Beta-->
+        <scene sceneID="fJt-PC-Of6">
+            <objects>
+                <viewController id="Rl1-8q-5CH" customClass="OnboardWelcomeViewBeta" customModule="ProfitClub" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ybh-Lr-07A">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1rb-4I-Inj">
+                                <rect key="frame" x="30" y="790" width="354" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="mUc-Pj-dJV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
+                                <state key="normal" title="Присоединиться">
+                                    <color key="titleColor" red="0.11764705882352941" green="0.11372549019607843" blue="0.11372549019607843" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="signUpButtonTouchUpInside:" destination="Rl1-8q-5CH" eventType="touchUpInside" id="9UA-fQ-bcf"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qa7-ya-7ni">
+                                <rect key="frame" x="30" y="730" width="354" height="52"/>
+                                <color key="backgroundColor" red="0.11764705882352941" green="0.11372549019607843" blue="0.11372549019607843" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="qsu-Jc-Sin"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
+                                <state key="normal" title="Войти">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="signInButtonTouchUpInside:" destination="Rl1-8q-5CH" eventType="touchUpInside" id="mdh-9e-bZt"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Быстрее. Прибыльнее. Лучше" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ta6-7L-iPy">
+                                <rect key="frame" x="30" y="680" width="250.5" height="20"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
+                                <color key="textColor" red="0.1176470588" green="0.1137254902" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Бизнес" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xLp-gc-tL3">
+                                <rect key="frame" x="30" y="579.5" width="191" height="77.5"/>
+                                <fontDescription key="fontDescription" name="PlayfairDisplay-Regular" family="Playfair Display" pointSize="58"/>
+                                <color key="textColor" red="0.1176470588" green="0.1137254902" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.95294117647058818" green="0.91764705882352937" blue="0.90588235294117647" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="qa7-ya-7ni" firstAttribute="top" secondItem="Ta6-7L-iPy" secondAttribute="bottom" constant="30" id="7RB-Rf-aeB"/>
+                            <constraint firstItem="1rb-4I-Inj" firstAttribute="top" secondItem="qa7-ya-7ni" secondAttribute="bottom" constant="8" id="9QV-qc-JGI"/>
+                            <constraint firstItem="m9L-yg-PPJ" firstAttribute="bottom" secondItem="1rb-4I-Inj" secondAttribute="bottom" constant="20" id="DR6-hx-aQ5"/>
+                            <constraint firstItem="xLp-gc-tL3" firstAttribute="leading" secondItem="Ta6-7L-iPy" secondAttribute="leading" id="FZd-O0-zsa"/>
+                            <constraint firstItem="Ta6-7L-iPy" firstAttribute="top" secondItem="xLp-gc-tL3" secondAttribute="bottom" constant="23" id="Jon-ZD-LEx"/>
+                            <constraint firstItem="m9L-yg-PPJ" firstAttribute="trailing" secondItem="1rb-4I-Inj" secondAttribute="trailing" constant="30" id="KIQ-L2-cJd"/>
+                            <constraint firstItem="Ta6-7L-iPy" firstAttribute="leading" secondItem="qa7-ya-7ni" secondAttribute="leading" id="P9K-SV-oaY"/>
+                            <constraint firstItem="qa7-ya-7ni" firstAttribute="trailing" secondItem="1rb-4I-Inj" secondAttribute="trailing" id="Sz0-3r-6Ja"/>
+                            <constraint firstItem="qa7-ya-7ni" firstAttribute="leading" secondItem="1rb-4I-Inj" secondAttribute="leading" id="jh8-DN-xxf"/>
+                            <constraint firstItem="1rb-4I-Inj" firstAttribute="leading" secondItem="m9L-yg-PPJ" secondAttribute="leading" constant="30" id="zcf-kt-sxc"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="m9L-yg-PPJ"/>
+                    </view>
+                    <connections>
+                        <outlet property="signUpButton" destination="1rb-4I-Inj" id="dfV-He-hFN"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QtN-na-ipL" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="318.84057971014494" y="-171.42857142857142"/>
+        </scene>
+    </scenes>
+</document>

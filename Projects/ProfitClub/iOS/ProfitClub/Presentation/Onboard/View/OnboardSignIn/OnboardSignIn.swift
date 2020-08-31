@@ -1,5 +1,5 @@
 //  Copyright (C) 2020 Startup Studio Vernality
-//  Created by Rinat Enikeev on 8/30/20
+//  Created by Rinat Enikeev on 8/31/20
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -16,25 +16,11 @@
 
 import UIKit
 
-extension SelectRoleViewBeta: SelectRoleViewInput {
+protocol OnboardSignInViewInput: UIViewController {
+    var username: String? { get }
+    var password: String? { get }
 }
 
-final class SelectRoleViewBeta: UIViewController {
-    var output: SelectRoleViewOutput?
-
-    @IBAction func memberButtonTouchUpInside(_ sender: Any) {
-        self.output?.selectRole(view: self, didSelect: .member)
-    }
-
-    @IBAction func supplierButtonTouchUpInside(_ sender: Any) {
-        self.output?.selectRole(view: self, didSelect: .supplier)
-    }
-
-    @IBAction func organizationButtonTouchUpInside(_ sender: Any) {
-        self.output?.selectRole(view: self, didSelect: .organization)
-    }
-
-    override func viewDidLoad() {
-        self.navigationItem.hidesBackButton = true
-    }
+protocol OnboardSignInViewOutput {
+    func onboardSignIn(view: OnboardSignInViewInput, userWantsToSignIn sender: Any)
 }

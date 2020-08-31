@@ -15,7 +15,6 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import Foundation
-import LoginView
 import Main
 import ErrorPresenter
 import ActivityPresenter
@@ -33,7 +32,7 @@ final class OnboardPresenter: OnboardModule {
 
     func start(in main: MainModule?) {
         self.router?.main = main
-        self.router?.openLogin(output: self)
+        self.router?.openOnboardWelcome(output: self)
     }
 
     // dependencies
@@ -56,13 +55,23 @@ final class OnboardPresenter: OnboardModule {
     private var organizationPhone: String?
 }
 
-extension OnboardPresenter: LoginViewOutput {
-     func loginViewUserWantsToLogin(_ view: LoginViewInput) {
+extension OnboardPresenter: OnboardWelcomeViewOutput {
+    func onboardWelcome(view: OnboardWelcomeViewInput, userWantsToSignIn sender: Any) {
+        self.router?.openOnboardSignIn(output: self)
+    }
+
+    func onboardWelcome(view: OnboardWelcomeViewInput, userWantsToSignUp sender: Any) {
+        self.router?.openOnboardSignUp(output: self)
+    }
+}
+
+extension OnboardPresenter: OnboardSignInViewOutput {
+    func onboardSignIn(view: OnboardSignInViewInput, userWantsToSignIn sender: Any) {
         guard let password = view.password, password.isEmpty == false else {
             self.presenters.error.present(OnboardError.passwordIsEmpty)
             return
         }
-        guard let username = view.parameters?["username"] as? String, username.isEmpty == false else {
+        guard let username = view.username, username.isEmpty == false else {
             self.presenters.error.present(OnboardError.usernameIsEmpty)
             return
         }
@@ -76,8 +85,10 @@ extension OnboardPresenter: LoginViewOutput {
             }
         }
     }
+}
 
-    func loginViewUserWantsToRegister(_ view: LoginViewInput) {
+extension OnboardPresenter: OnboardSignUpViewOutput {
+    func onboardSignUp(view: OnboardSignUpViewInput, userWantsToSignUp sender: Any) {
         guard let email = view.email, email.isEmpty == false else {
             self.presenters.error.present(OnboardError.emailIsEmpty)
             return
@@ -86,14 +97,24 @@ extension OnboardPresenter: LoginViewOutput {
             self.presenters.error.present(OnboardError.passwordIsEmpty)
             return
         }
-        guard let username = view.parameters?["username"] as? String, username.isEmpty == false else {
+        guard let passwordConfirmation = view.passwordConfirmation, passwordConfirmation.isEmpty == false else {
+            self.presenters.error.present(OnboardError.passwordIsEmpty)
+            return
+        }
+        guard password == passwordConfirmation else {
+            self.presenters.error.present(OnboardError.passwordNotMatchConfirmation)
+            return
+        }
+        guard let username = view.username, username.isEmpty == false else {
             self.presenters.error.present(OnboardError.usernameIsEmpty)
             return
         }
         self.email = email
         self.password = password
         self.username = username
-        self.router?.openSelectRole(output: self)
+        self.router?.main?.unraise(animated: true, completion: { [weak self] in
+            self?.router?.openSelectRole(output: self)
+        })
     }
 }
 

@@ -16,21 +16,40 @@
 
 import Foundation
 import Main
-import LoginView
 import ProfitClubModel
 
 final class OnboardRouter {
     weak var main: MainModule?
 
     @discardableResult
-    func openLogin(output: LoginViewOutput) -> LoginViewInput {
-        let loginView = self.loginViewFactory.makeView(output)
-        self.main?.push(loginView, animated: false)
-        return loginView
+    func openOnboardWelcome(output: OnboardWelcomeViewOutput?) -> OnboardWelcomeViewInput {
+        let storyboard = UIStoryboard(name: "OnboardWelcomeViewBeta", bundle: nil)
+        let onboardWelcome = storyboard.instantiateInitialViewController() as! OnboardWelcomeViewBeta
+        onboardWelcome.output = output
+        self.main?.push(onboardWelcome, animated: true)
+        return onboardWelcome
     }
 
     @discardableResult
-    func openSelectRole(output: SelectRoleViewOutput) -> SelectRoleViewInput {
+    func openOnboardSignIn(output: OnboardSignInViewOutput?) -> OnboardSignInViewInput {
+        let storyboard = UIStoryboard(name: "OnboardSignInViewBeta", bundle: nil)
+        let onboardSignIn = storyboard.instantiateInitialViewController() as! OnboardSignInViewBeta
+        onboardSignIn.output = output
+        self.main?.raise(onboardSignIn, animated: true)
+        return onboardSignIn
+    }
+
+    @discardableResult
+    func openOnboardSignUp(output: OnboardSignUpViewOutput?) -> OnboardSignUpViewInput {
+        let storyboard = UIStoryboard(name: "OnboardSignUpViewBeta", bundle: nil)
+        let onboardSignUp = storyboard.instantiateInitialViewController() as! OnboardSignUpViewBeta
+        onboardSignUp.output = output
+        self.main?.raise(onboardSignUp, animated: true)
+        return onboardSignUp
+    }
+
+    @discardableResult
+    func openSelectRole(output: SelectRoleViewOutput?) -> SelectRoleViewInput {
         let storyboard = UIStoryboard(name: "SelectRoleViewBeta", bundle: nil)
         let selectRoleView = storyboard.instantiateInitialViewController() as! SelectRoleViewBeta
         selectRoleView.output = output
@@ -39,7 +58,7 @@ final class OnboardRouter {
     }
 
     @discardableResult
-    func openOnboardMember(output: OnboardMemberViewOutput) -> OnboardMemberViewInput {
+    func openOnboardMember(output: OnboardMemberViewOutput?) -> OnboardMemberViewInput {
         let storyboard = UIStoryboard(name: "OnboardMemberViewBeta", bundle: nil)
         let onboardMember = storyboard.instantiateInitialViewController() as! OnboardMemberViewBeta
         onboardMember.output = output
@@ -48,7 +67,7 @@ final class OnboardRouter {
     }
 
     @discardableResult
-    func openSelectOrganization(output: SelectOrganizationViewOutput) -> SelectOrganizationViewInput {
+    func openSelectOrganization(output: SelectOrganizationViewOutput?) -> SelectOrganizationViewInput {
         let storyboard = UIStoryboard(name: "SelectOrganizationViewBeta", bundle: nil)
         let selectOrganization = storyboard.instantiateInitialViewController() as! SelectOrganizationViewBeta
         selectOrganization.output = output
@@ -56,7 +75,7 @@ final class OnboardRouter {
         return selectOrganization
     }
 
-    @discardableResult func openOnboardOrganization(output: OnboardOrganizationViewOutput) -> OnboardOrganizationViewInput {
+    @discardableResult func openOnboardOrganization(output: OnboardOrganizationViewOutput?) -> OnboardOrganizationViewInput {
         let storyboard = UIStoryboard(name: "OnboardOrganizationViewBeta", bundle: nil)
         let onboardOrganization = storyboard.instantiateInitialViewController() as! OnboardOrganizationViewBeta
         onboardOrganization.output = output
@@ -65,17 +84,10 @@ final class OnboardRouter {
     }
 
     @discardableResult
-    func openOnboardSupplier(output: OnboardSupplierViewOutput) -> OnboardSupplierViewInput {
+    func openOnboardSupplier(output: OnboardSupplierViewOutput?) -> OnboardSupplierViewInput {
         let onboardSupplier = OnboardSupplierViewAlpha()
         onboardSupplier.output = output
         self.main?.push(onboardSupplier, animated: true)
         return onboardSupplier
-    }
-}
-
-// MARK: - Factory
-extension OnboardRouter {
-    var loginViewFactory: LoginViewFactory {
-        return LoginViewFactoryProfitClub()
     }
 }

@@ -19,6 +19,7 @@ import Foundation
 enum OnboardError: Error {
     case emailIsEmpty
     case passwordIsEmpty
+    case passwordNotMatchConfirmation
     case usernameIsEmpty
     case firstNameIsEmpty
     case lastNameIsEmpty

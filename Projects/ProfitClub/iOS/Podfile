@@ -17,7 +17,6 @@ target 'ProfitClub' do
   pod 'ProfitClubParse', :path => ONTOLOGY_PATH + '/ProfitClubParse.podspec'
   
   # packages
-  pod 'LoginView', :path => PACAKGES_PATH + '/LoginView.podspec'
   pod 'ErrorPresenter', :path => PACAKGES_PATH + '/ErrorPresenter.podspec'
   pod 'ActivityPresenter', :path => PACAKGES_PATH + '/ActivityPresenter.podspec'
   

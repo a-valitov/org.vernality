@@ -17,32 +17,38 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pu8-0H-huL">
-                                <rect key="frame" x="42" y="832" width="330" height="30"/>
-                                <state key="normal" title="Я хочу вступить в клуб от имени организации"/>
+                                <rect key="frame" x="42" y="812" width="330" height="30"/>
+                                <state key="normal" title="Я хочу вступить в клуб от имени организации">
+                                    <color key="titleColor" red="0.1176470588" green="0.1137254902" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="organizationButtonTouchUpInside:" destination="aeT-PZ-I0E" eventType="touchUpInside" id="S1l-ui-wAZ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W3Q-mu-8Ky">
-                                <rect key="frame" x="35.5" y="794" width="343" height="30"/>
-                                <state key="normal" title="Я хочу сделать предложение участникам клуба"/>
+                                <rect key="frame" x="35.5" y="774" width="343" height="30"/>
+                                <state key="normal" title="Я хочу сделать предложение участникам клуба">
+                                    <color key="titleColor" red="0.1176470588" green="0.1137254902" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="supplierButtonTouchUpInside:" destination="aeT-PZ-I0E" eventType="touchUpInside" id="tnj-MA-V33"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WYO-A1-kdK">
-                                <rect key="frame" x="63" y="756" width="288" height="30"/>
-                                <state key="normal" title="Я сотрудник организации - члена клуба"/>
+                                <rect key="frame" x="63" y="736" width="288" height="30"/>
+                                <state key="normal" title="Я сотрудник организации - члена клуба">
+                                    <color key="titleColor" red="0.1176470588" green="0.1137254902" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="memberButtonTouchUpInside:" destination="aeT-PZ-I0E" eventType="touchUpInside" id="8Da-Hv-jUO"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.95294117649999999" green="0.91764705879999997" blue="0.90588235289999997" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="W3Q-mu-8Ky" firstAttribute="top" secondItem="WYO-A1-kdK" secondAttribute="bottom" constant="8" id="Gus-WO-JZH"/>
                             <constraint firstItem="WYO-A1-kdK" firstAttribute="centerX" secondItem="W3Q-mu-8Ky" secondAttribute="centerX" id="dzK-3p-ueN"/>
-                            <constraint firstItem="W1e-cm-RWG" firstAttribute="bottom" secondItem="Pu8-0H-huL" secondAttribute="bottom" id="e7d-m2-gNB"/>
+                            <constraint firstItem="W1e-cm-RWG" firstAttribute="bottom" secondItem="Pu8-0H-huL" secondAttribute="bottom" constant="20" id="e7d-m2-gNB"/>
                             <constraint firstItem="Pu8-0H-huL" firstAttribute="top" secondItem="W3Q-mu-8Ky" secondAttribute="bottom" constant="8" id="hgo-98-lXt"/>
                             <constraint firstItem="Pu8-0H-huL" firstAttribute="centerX" secondItem="W1e-cm-RWG" secondAttribute="centerX" id="j3N-Qj-izh"/>
                             <constraint firstItem="W3Q-mu-8Ky" firstAttribute="centerX" secondItem="Pu8-0H-huL" secondAttribute="centerX" id="qoX-vn-d9h"/>
