@@ -251,6 +251,7 @@ extension OnboardPresenter {
         supplier.contact = contact
         supplier.phone = phone
         supplier.name = name
+        supplier.status = .onReview
         return supplier
     }
 
