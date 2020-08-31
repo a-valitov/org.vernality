@@ -29,6 +29,10 @@ final class AppFactory {
         return PCAuthenticationParseFactory().make()
     }()
 
+    lazy var userService: PCUserService = {
+        return PCUserServiceParse(authentication: self.authentication)
+    }()
+
     func activityPresenter() -> ActivityPresenter {
         return ActivityPresenterCircleFactory().make()
     }
@@ -39,10 +43,6 @@ final class AppFactory {
 
     func organizationService() -> PCOrganizationService {
         return PCOrganizationServiceParse()
-    }
-
-    func userService() -> PCUserService {
-        return PCUserServiceParse(authentication: self.authentication)
     }
 }
 
@@ -80,6 +80,6 @@ private extension AppFactory {
     var reviewFactory: ReviewFactory {
         return ReviewFactory(presenters: ReviewPresenters(error: self.errorPresenter(),
                                                           activity: self.activityPresenter()),
-                             services: ReviewServices(userService: self.userService()))
+                             services: ReviewServices(userService: self.userService))
     }
 }

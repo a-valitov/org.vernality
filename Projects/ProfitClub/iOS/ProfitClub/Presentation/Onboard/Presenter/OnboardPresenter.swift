@@ -310,8 +310,10 @@ extension OnboardPresenter {
             return
         }
 
+        self.presenters.activity.increment()
         self.services.authentication.register(user: user, password: password) { [weak self] result in
             guard let sSelf = self else { return }
+            sSelf.presenters.activity.decrement()
             switch result {
             case .success:
                 sSelf.output?.onboard(module: sSelf, didRegister: user, inside: sSelf.router?.main)

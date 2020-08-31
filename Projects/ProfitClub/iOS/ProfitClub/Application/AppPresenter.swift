@@ -37,7 +37,7 @@ final class AppPresenter {
 
     // services
     private lazy var userService: PCUserService = {
-        return self.factory.userService()
+        return self.factory.userService
     }()
 
     // presenters

@@ -38,10 +38,11 @@ public final class PCUserServiceParse: PCUserService {
     }
 
     public func logout(result: @escaping (Result<Bool, Error>) -> Void) {
-        PFUser.logOutInBackground { error in
+        PFUser.logOutInBackground { [weak self] error in
             if let error = error {
                 result(.failure(error))
             } else {
+                self?.authentication.user = nil
                 result(.success(true))
             }
         }
