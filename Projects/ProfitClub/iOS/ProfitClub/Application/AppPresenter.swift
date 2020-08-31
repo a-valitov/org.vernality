@@ -58,15 +58,8 @@ final class AppPresenter {
 extension AppPresenter: MainModuleOutput {
     func mainDidLoad(module: MainModule) {
         if self.isLoggedIn {
-            self.userService.reload { [weak self] result in
-                switch result {
-                case .success:
-                    let review = self?.factory.review(output: self)
-                    review?.start(in: module)
-                case .failure(let error):
-                    self?.errorPresenter.present(error)
-                }
-            }
+            let review = self.factory.review(output: self)
+            review.start(in: module)
         } else {
             let onboard = self.factory.onboard(output: self)
             onboard.start(in: module)
@@ -76,25 +69,13 @@ extension AppPresenter: MainModuleOutput {
 
 extension AppPresenter: OnboardModuleOutput {
     func onboard(module: OnboardModule, didLogin user: PCUser, inside main: MainModule?) {
-        self.navigateToReview(in: main)
+        let review = self.factory.review(output: self)
+        review.start(in: main)
     }
 
     func onboard(module: OnboardModule, didRegister user: PCUser, inside main: MainModule?) {
-        self.navigateToReview(in: main)
-    }
-
-    private func navigateToReview(in main: MainModule?) {
-        self.activityPresenter.increment()
-        self.userService.reload { [weak self] result in
-            self?.activityPresenter.decrement()
-            switch result {
-            case .success:
-                let review = self?.factory.review(output: self)
-                review?.start(in: main)
-            case .failure(let error):
-                self?.errorPresenter.present(error)
-            }
-        }
+        let review = self.factory.review(output: self)
+        review.start(in: main)
     }
 }
 

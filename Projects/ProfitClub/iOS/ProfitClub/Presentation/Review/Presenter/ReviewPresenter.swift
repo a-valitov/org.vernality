@@ -29,7 +29,16 @@ final class ReviewPresenter: ReviewModule {
 
     func start(in main: MainModule?) {
         self.router?.main = main
-        self.router?.openReview(self.services.userService.user, output: self)
+        self.presenters.activity.increment()
+        self.services.userService.reload { result in
+            self.presenters.activity.decrement()
+            switch result {
+            case .success(let user):
+                self.router?.openReview(user, output: self)
+            case .failure(let error):
+                self.presenters.error.present(error)
+            }
+        }
     }
 
     private let presenters: ReviewPresenters

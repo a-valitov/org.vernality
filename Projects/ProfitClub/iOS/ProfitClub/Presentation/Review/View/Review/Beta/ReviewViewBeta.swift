@@ -22,6 +22,11 @@ extension ReviewViewBeta: ReviewViewInput {
 
 final class ReviewViewBeta: UITableViewController {
     var output: ReviewViewOutput?
+    var username: String? {
+        didSet {
+            self.navigationItem.title = self.username
+        }
+    }
     var member: AnyPCMember? {
         didSet {
             if self.isViewLoaded {
@@ -47,7 +52,6 @@ final class ReviewViewBeta: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.hidesBackButton = true
-        self.title = "Рассмотрение"
     }
 
     @IBAction func pullToRefreshValueChanged(_ sender: UIRefreshControl) {

@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Рассмотрение-->
+        <!--username-->
         <scene sceneID="Z8U-JL-YFx">
             <objects>
                 <tableViewController id="FI8-UX-LAe" customClass="ReviewViewBeta" customModule="ProfitClub" customModuleProvider="target" sceneMemberID="viewController">
@@ -237,7 +237,7 @@
                             <outlet property="delegate" destination="FI8-UX-LAe" id="giI-QV-q84"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Рассмотрение" id="uPa-rw-goP">
+                    <navigationItem key="navigationItem" title="username" id="uPa-rw-goP">
                         <barButtonItem key="leftBarButtonItem" systemItem="stop" id="GjO-5Y-xIW">
                             <connections>
                                 <action selector="logoutBarButtonAction:" destination="FI8-UX-LAe" id="fsI-ZK-AEW"/>

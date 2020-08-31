@@ -26,6 +26,7 @@ final class ReviewRouter {
         let storyboard = UIStoryboard(name: "ReviewViewBeta", bundle: nil)
         let reviewView = storyboard.instantiateInitialViewController() as! ReviewViewBeta
         reviewView.output = output
+        reviewView.username = user?.username
         reviewView.member = user?.member?.any
         reviewView.organizations = user?.organizations?.map({ $0.any }) ?? []
         reviewView.suppliers = user?.suppliers?.map({ $0.any }) ?? []
