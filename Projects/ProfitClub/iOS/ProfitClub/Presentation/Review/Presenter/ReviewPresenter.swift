@@ -49,4 +49,12 @@ extension ReviewPresenter: ReviewViewOutput {
             }
         }
     }
+
+    func review(view: ReviewViewInput, userWantsToAdd sender: Any) {
+
+    }
+
+    func review(view: ReviewViewInput, userWantsToLogout sender: Any) {
+        self.output?.review(module: self, userWantsToLogoutInside: self.router?.main)
+    }
 }

@@ -75,11 +75,17 @@ extension OnboardPresenter: OnboardSignInViewOutput {
             self.presenters.error.present(OnboardError.usernameIsEmpty)
             return
         }
+        self.presenters.activity.increment()
         self.services.authentication.login(username: username, password: password) { [weak self] result in
             guard let sSelf = self else { return }
+            sSelf.presenters.activity.decrement()
             switch result {
             case .success(let user):
-                sSelf.output?.onboard(module: sSelf, didLogin: user, inside: sSelf.router?.main)
+                sSelf.router?.main?.unraise(animated: true, completion: { [weak sSelf] in
+                    guard let ssSelf = sSelf else { return }
+                    ssSelf.output?.onboard(module: ssSelf, didLogin: user, inside: ssSelf.router?.main)
+                })
+
             case .failure(let error):
                 sSelf.presenters.error.present(error)
             }

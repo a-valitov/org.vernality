@@ -25,4 +25,6 @@ protocol ReviewViewInput: UIViewController {
 
 protocol ReviewViewOutput {
     func review(view: ReviewViewInput, userWantsToRefresh sender: Any)
+    func review(view: ReviewViewInput, userWantsToLogout sender: Any)
+    func review(view: ReviewViewInput, userWantsToAdd sender: Any)
 }

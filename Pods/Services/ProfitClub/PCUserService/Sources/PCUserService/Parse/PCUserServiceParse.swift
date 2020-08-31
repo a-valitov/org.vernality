@@ -37,6 +37,16 @@ public final class PCUserServiceParse: PCUserService {
 
     }
 
+    public func logout(result: @escaping (Result<Bool, Error>) -> Void) {
+        PFUser.logOutInBackground { error in
+            if let error = error {
+                result(.failure(error))
+            } else {
+                result(.success(true))
+            }
+        }
+    }
+
     public func reload(result: @escaping (Result<AnyPCUser, Error>) -> Void) {
         guard let parseUser = self.user?.parse else {
             result(.failure(PCUserServiceError.userIsNil))

@@ -55,6 +55,14 @@ final class ReviewViewBeta: UITableViewController {
         sender.endRefreshing()
     }
 
+    @IBAction func logoutBarButtonAction(_ sender: Any) {
+        self.output?.review(view: self, userWantsToLogout: sender)
+    }
+
+    @IBAction func addBarButtonAction(_ sender: Any) {
+        self.output?.review(view: self, userWantsToAdd: sender)
+    }
+
     private let organizationCellReuseIdentifier = "ReviewViewBetaOrganizationCellReuseIdentifier"
     private let memberCellReuseIdentifier = "ReviewViewBetaMemberCellReuseIdentifier"
     private let supplierCellReuseIdentifier = "ReviewViewBetaSupplierCellReuseIdentifier"

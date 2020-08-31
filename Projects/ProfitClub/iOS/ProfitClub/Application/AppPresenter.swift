@@ -61,13 +61,8 @@ extension AppPresenter: MainModuleOutput {
             self.userService.reload { [weak self] result in
                 switch result {
                 case .success:
-                    if self?.userService.isOnReview() ?? false {
-                        let review = self?.factory.review(output: self)
-                        review?.start(in: module)
-                    } else {
-                        let interface = self?.factory.interface(output: self)
-                        interface?.start(in: module)
-                    }
+                    let review = self?.factory.review(output: self)
+                    review?.start(in: module)
                 case .failure(let error):
                     self?.errorPresenter.present(error)
                 }
@@ -81,23 +76,21 @@ extension AppPresenter: MainModuleOutput {
 
 extension AppPresenter: OnboardModuleOutput {
     func onboard(module: OnboardModule, didLogin user: PCUser, inside main: MainModule?) {
-        let interface = self.factory.interface(output: self)
-        interface.start(in: main)
+        self.navigateToReview(in: main)
     }
 
     func onboard(module: OnboardModule, didRegister user: PCUser, inside main: MainModule?) {
+        self.navigateToReview(in: main)
+    }
+
+    private func navigateToReview(in main: MainModule?) {
         self.activityPresenter.increment()
         self.userService.reload { [weak self] result in
             self?.activityPresenter.decrement()
             switch result {
             case .success:
-                if self?.userService.isOnReview() ?? false {
-                    let review = self?.factory.review(output: self)
-                    review?.start(in: main)
-                } else {
-                    let interface = self?.factory.interface(output: self)
-                    interface?.start(in: main)
-                }
+                let review = self?.factory.review(output: self)
+                review?.start(in: main)
             case .failure(let error):
                 self?.errorPresenter.present(error)
             }
@@ -105,11 +98,18 @@ extension AppPresenter: OnboardModuleOutput {
     }
 }
 
-extension AppPresenter: InterfaceModuleOutput {
-
-}
-
 extension AppPresenter: ReviewModuleOutput {
-
+    func review(module: ReviewModule, userWantsToLogoutInside main: MainModule?) {
+        self.userService.logout { [weak self] result in
+            switch result {
+            case .failure(let error):
+                self?.errorPresenter.present(error)
+            case .success:
+                main?.unwindToRoot()
+                let onboard = self?.factory.onboard(output: self)
+                onboard?.start(in: main)
+            }
+        }
+    }
 }
 

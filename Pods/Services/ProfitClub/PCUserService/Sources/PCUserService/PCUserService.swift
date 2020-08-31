@@ -21,5 +21,6 @@ public protocol PCUserService {
     var user: AnyPCUser? { get }
 
     func isOnReview() -> Bool
+    func logout(result: @escaping (Result<Bool, Error>) -> Void)
     func reload(result: @escaping (Result<AnyPCUser, Error>) -> Void)
 }

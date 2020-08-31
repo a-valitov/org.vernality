@@ -58,11 +58,6 @@ extension AppFactory {
         return module
     }
 
-    func interface(output: InterfaceModuleOutput?) -> InterfaceModule {
-        let module = self.interfaceFactory.make(output: output)
-        return module
-    }
-
     func review(output: ReviewModuleOutput?) -> ReviewModule {
         let module = self.reviewFactory.make(output: output)
         return module
@@ -86,11 +81,5 @@ private extension AppFactory {
         return ReviewFactory(presenters: ReviewPresenters(error: self.errorPresenter(),
                                                           activity: self.activityPresenter()),
                              services: ReviewServices(userService: self.userService()))
-    }
-
-    var interfaceFactory: InterfaceFactory {
-        return InterfaceFactory(presenters: InterfacePresenters(error: self.errorPresenter(),
-                                                                activity: self.activityPresenter()),
-                                services: InterfaceServices(authentication: self.authentication))
     }
 }
