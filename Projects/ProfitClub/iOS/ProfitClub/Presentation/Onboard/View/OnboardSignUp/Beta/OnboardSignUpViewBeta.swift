@@ -66,7 +66,8 @@ final class OnboardSignUpViewBeta: UIViewController {
         self.passwordConfirmationTextField.layer.sublayerTransform = CATransform3DMakeTranslation(15, 0, 0)
         self.emailTextField.layer.sublayerTransform = CATransform3DMakeTranslation(15, 0, 0)
 
-        let placeholderColor = UIColor(red: 0.953, green: 0.918, blue: 0.906, alpha: 1)
+        let textColor = UIColor(red: 0.953, green: 0.918, blue: 0.906, alpha: 1)
+        let placeholderColor = textColor.withAlphaComponent(0.5)
         self.usernameTextField.attributedPlaceholder = NSAttributedString(string: "Имя пользователя",
                                                                           attributes:[.foregroundColor: placeholderColor])
         self.emailTextField.attributedPlaceholder = NSAttributedString(string: "Электронная почта",
@@ -75,10 +76,15 @@ final class OnboardSignUpViewBeta: UIViewController {
                                                                           attributes:[.foregroundColor: placeholderColor])
         self.passwordConfirmationTextField.attributedPlaceholder = NSAttributedString(string: "Подтверждение пароля",
                                                                                       attributes:[.foregroundColor: placeholderColor])
-        self.usernameTextField.tintColor = placeholderColor
-        self.emailTextField.tintColor = placeholderColor
-        self.passwordTextField.tintColor = placeholderColor
-        self.passwordConfirmationTextField.tintColor = placeholderColor
+        self.usernameTextField.tintColor = textColor
+        self.emailTextField.tintColor = textColor
+        self.passwordTextField.tintColor = textColor
+        self.passwordConfirmationTextField.tintColor = textColor
+
+        self.usernameTextField.textColor = textColor
+        self.emailTextField.textColor = textColor
+        self.passwordTextField.textColor = textColor
+        self.passwordConfirmationTextField.textColor = textColor
     }
 
     @IBAction func signUpButtonTouchUpInside(_ sender: Any) {

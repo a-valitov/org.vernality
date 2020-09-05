@@ -53,6 +53,7 @@ extension MainModuleMVC: MainModule {
     }
 
     func raise(_ viewController: UIViewController, animated: Bool) {
+        SheetTransition.transitionDuration = 0.5
         let options = SheetOptions(
             pullBarHeight: 24,
             presentingViewCornerRadius: 20,
@@ -63,8 +64,6 @@ extension MainModuleMVC: MainModule {
             useInlineMode: false
         )
         let sheetController = SheetViewController(controller: viewController, options: options)
-//        sheetController.hasBlurBackground = true
-//        sheetController.blurEffect = .init(style: .dark)
         viewController.view.superview?.backgroundColor = .clear
         self.navigationController?.topViewController?.present(sheetController, animated: animated)
     }
