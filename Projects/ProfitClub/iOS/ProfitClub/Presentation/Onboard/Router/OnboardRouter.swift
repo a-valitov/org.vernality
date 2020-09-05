@@ -26,7 +26,7 @@ final class OnboardRouter {
         let storyboard = UIStoryboard(name: "OnboardWelcomeViewBeta", bundle: nil)
         let onboardWelcome = storyboard.instantiateInitialViewController() as! OnboardWelcomeViewBeta
         onboardWelcome.output = output
-        self.main?.push(onboardWelcome, animated: true)
+        self.main?.push(onboardWelcome, animated: false)
         return onboardWelcome
     }
 

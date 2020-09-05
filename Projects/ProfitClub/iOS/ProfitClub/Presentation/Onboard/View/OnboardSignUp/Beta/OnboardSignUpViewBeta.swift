@@ -58,7 +58,29 @@ final class OnboardSignUpViewBeta: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var passwordConfirmationTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
-    
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.usernameTextField.layer.sublayerTransform = CATransform3DMakeTranslation(15, 0, 0)
+        self.passwordTextField.layer.sublayerTransform = CATransform3DMakeTranslation(15, 0, 0)
+        self.passwordConfirmationTextField.layer.sublayerTransform = CATransform3DMakeTranslation(15, 0, 0)
+        self.emailTextField.layer.sublayerTransform = CATransform3DMakeTranslation(15, 0, 0)
+
+        let placeholderColor = UIColor(red: 0.953, green: 0.918, blue: 0.906, alpha: 1)
+        self.usernameTextField.attributedPlaceholder = NSAttributedString(string: "Имя пользователя",
+                                                                          attributes:[.foregroundColor: placeholderColor])
+        self.emailTextField.attributedPlaceholder = NSAttributedString(string: "Электронная почта",
+                                                                       attributes:[.foregroundColor: placeholderColor])
+        self.passwordTextField.attributedPlaceholder = NSAttributedString(string: "Пароль",
+                                                                          attributes:[.foregroundColor: placeholderColor])
+        self.passwordConfirmationTextField.attributedPlaceholder = NSAttributedString(string: "Подтверждение пароля",
+                                                                                      attributes:[.foregroundColor: placeholderColor])
+        self.usernameTextField.tintColor = placeholderColor
+        self.emailTextField.tintColor = placeholderColor
+        self.passwordTextField.tintColor = placeholderColor
+        self.passwordConfirmationTextField.tintColor = placeholderColor
+    }
+
     @IBAction func signUpButtonTouchUpInside(_ sender: Any) {
         self.output?.onboardSignUp(view: self, userWantsToSignUp: sender)
     }

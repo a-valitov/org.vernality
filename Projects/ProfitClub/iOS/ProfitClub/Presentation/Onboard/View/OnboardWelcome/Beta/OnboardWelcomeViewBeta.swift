@@ -32,12 +32,6 @@ final class OnboardWelcomeViewBeta: UIViewController {
         self.output?.onboardWelcome(view: self, userWantsToSignUp: sender)
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        self.signUpButton.layer.borderWidth = 1
-        self.signUpButton.layer.borderColor = UIColor(red: 0.118, green: 0.114, blue: 0.114, alpha: 1).cgColor
-    }
-
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
