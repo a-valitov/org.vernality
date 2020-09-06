@@ -74,11 +74,11 @@ extension MainModuleMVC: MainModule {
 
     func unwindToRoot() {
         if let presented = self.navigationController?.topViewController?.presentedViewController {
-            presented.dismiss(animated: true) {
-                self.navigationController?.popToRootViewController(animated: true)
+            presented.dismiss(animated: false) {
+                self.navigationController?.popToRootViewController(animated: false)
             }
         } else {
-            self.navigationController?.popToRootViewController(animated: true)
+            self.navigationController?.popToRootViewController(animated: false)
         }
     }
 }
