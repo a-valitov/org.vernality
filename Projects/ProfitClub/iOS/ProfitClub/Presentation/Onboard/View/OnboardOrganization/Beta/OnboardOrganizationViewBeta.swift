@@ -62,6 +62,10 @@ final class OnboardOrganizationViewBeta: UIViewController {
 
     @IBAction func policyCheckboxTouchUpInside(_ sender: UIButton) {
         sender.isSelected.toggle()
+        self.nameTextField.resignFirstResponder()
+        self.innTextField.resignFirstResponder()
+        self.contactTextField.resignFirstResponder()
+        self.phoneTextField.resignFirstResponder()
     }
 
     override func viewDidLoad() {

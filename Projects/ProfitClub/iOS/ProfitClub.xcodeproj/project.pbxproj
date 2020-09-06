@@ -95,6 +95,7 @@
 		0E506C4824FCA78100ABA211 /* OnboardSignInViewBeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardSignInViewBeta.swift; sourceTree = "<group>"; };
 		0E506C4A24FCA78C00ABA211 /* OnboardSignInViewBeta.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OnboardSignInViewBeta.storyboard; sourceTree = "<group>"; };
 		0E772A8C2504D39000D677E6 /* PlayfairDisplay-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlayfairDisplay-Bold.ttf"; sourceTree = "<group>"; };
+		0E772A8E2505174D00D677E6 /* ProfitClub.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ProfitClub.entitlements; sourceTree = "<group>"; };
 		0E90496D24F390070061A605 /* AppPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPresenter.swift; sourceTree = "<group>"; };
 		0E90497024F390270061A605 /* AppFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFactory.swift; sourceTree = "<group>"; };
 		0E90497924F39C650061A605 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
@@ -457,6 +458,7 @@
 		0EA11EC624F2B88F00133485 /* ProfitClub */ = {
 			isa = PBXGroup;
 			children = (
+				0E772A8E2505174D00D677E6 /* ProfitClub.entitlements */,
 				0EA11EDB24F2B94400133485 /* Application */,
 				0E90498424F60C740061A605 /* Presentation */,
 				0EA11EDC24F2B94900133485 /* Resources */,
@@ -815,6 +817,7 @@
 			baseConfigurationReference = 64F87290C9FD04EC19DEE33B /* Pods-ProfitClub.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ProfitClub/ProfitClub.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5V5EUT3ZXJ;
 				INFOPLIST_FILE = ProfitClub/Resources/Plists/Info.plist;
@@ -834,6 +837,7 @@
 			baseConfigurationReference = 17770C4311DB6F99F7CDDD46 /* Pods-ProfitClub.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = ProfitClub/ProfitClub.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 5V5EUT3ZXJ;
 				INFOPLIST_FILE = ProfitClub/Resources/Plists/Info.plist;

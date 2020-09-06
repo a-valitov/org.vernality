@@ -22,14 +22,6 @@ extension OnboardSignUpViewBeta: OnboardSignUpViewInput {
 final class OnboardSignUpViewBeta: UIViewController {
     var output: OnboardSignUpViewOutput?
 
-    var username: String? {
-        if self.isViewLoaded {
-            return self.usernameTextField.text
-        } else {
-            return nil
-        }
-    }
-
     var password: String? {
         if self.isViewLoaded {
             return self.passwordTextField.text
@@ -54,34 +46,28 @@ final class OnboardSignUpViewBeta: UIViewController {
         }
     }
 
-    @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var passwordConfirmationTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.usernameTextField.layer.sublayerTransform = CATransform3DMakeTranslation(15, 0, 0)
         self.passwordTextField.layer.sublayerTransform = CATransform3DMakeTranslation(15, 0, 0)
         self.passwordConfirmationTextField.layer.sublayerTransform = CATransform3DMakeTranslation(15, 0, 0)
         self.emailTextField.layer.sublayerTransform = CATransform3DMakeTranslation(15, 0, 0)
 
         let textColor = UIColor(red: 0.953, green: 0.918, blue: 0.906, alpha: 1)
         let placeholderColor = textColor.withAlphaComponent(0.5)
-        self.usernameTextField.attributedPlaceholder = NSAttributedString(string: "Имя пользователя",
-                                                                          attributes:[.foregroundColor: placeholderColor])
         self.emailTextField.attributedPlaceholder = NSAttributedString(string: "Электронная почта",
                                                                        attributes:[.foregroundColor: placeholderColor])
         self.passwordTextField.attributedPlaceholder = NSAttributedString(string: "Пароль",
                                                                           attributes:[.foregroundColor: placeholderColor])
         self.passwordConfirmationTextField.attributedPlaceholder = NSAttributedString(string: "Подтверждение пароля",
                                                                                       attributes:[.foregroundColor: placeholderColor])
-        self.usernameTextField.tintColor = textColor
         self.emailTextField.tintColor = textColor
         self.passwordTextField.tintColor = textColor
         self.passwordConfirmationTextField.tintColor = textColor
 
-        self.usernameTextField.textColor = textColor
         self.emailTextField.textColor = textColor
         self.passwordTextField.textColor = textColor
         self.passwordConfirmationTextField.textColor = textColor

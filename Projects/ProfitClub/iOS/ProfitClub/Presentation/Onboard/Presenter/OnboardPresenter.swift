@@ -42,7 +42,6 @@ final class OnboardPresenter: OnboardModule {
     // persisted
     private var email: String?
     private var password: String?
-    private var username: String?
     private var firstName: String?
     private var lastName: String?
     private var supplierName: String?
@@ -111,13 +110,8 @@ extension OnboardPresenter: OnboardSignUpViewOutput {
             self.presenters.error.present(OnboardError.passwordNotMatchConfirmation)
             return
         }
-        guard let username = view.username, username.isEmpty == false else {
-            self.presenters.error.present(OnboardError.usernameIsEmpty)
-            return
-        }
         self.email = email
         self.password = password
-        self.username = username
         self.router?.main?.unraise(animated: true, completion: { [weak self] in
             self?.router?.openSelectRole(output: self)
         })
@@ -215,16 +209,12 @@ extension OnboardPresenter: OnboardSupplierViewOutput {
 
 extension OnboardPresenter {
     private func createUser() -> PCUserStruct? {
-        guard let username = self.username, username.isEmpty == false else {
-            self.presenters.error.present(OnboardError.usernameIsEmpty)
-            return nil
-        }
         guard let email = self.email, email.isEmpty == false else {
             self.presenters.error.present(OnboardError.emailIsEmpty)
             return nil
         }
         var user = PCUserStruct()
-        user.username = username
+        user.username = email
         user.email = email
         return user
     }

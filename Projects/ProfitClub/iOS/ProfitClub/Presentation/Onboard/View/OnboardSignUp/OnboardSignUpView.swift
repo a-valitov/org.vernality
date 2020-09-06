@@ -17,10 +17,9 @@
 import UIKit
 
 protocol OnboardSignUpViewInput: UIViewController {
-    var username: String? { get }
+    var email: String? { get }
     var password: String? { get }
     var passwordConfirmation: String? { get }
-    var email: String? { get }
 }
 
 protocol OnboardSignUpViewOutput {
