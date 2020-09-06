@@ -5,6 +5,7 @@ PODS:
   - FittedSheets (2.1.1)
   - Main (0.0.1):
     - FittedSheets
+  - Nantes (0.1.1)
   - Parse (1.18.0):
     - Parse/Core (= 1.18.0)
   - Parse/Core (1.18.0):
@@ -31,6 +32,7 @@ DEPENDENCIES:
   - ActivityPresenter (from `../../../Pods/Packages/ActivityPresenter.podspec`)
   - ErrorPresenter (from `../../../Pods/Packages/ErrorPresenter.podspec`)
   - Main (from `../../../Pods/Modules/Main.podspec`)
+  - Nantes
   - PCAuthentication (from `../../../Pods/Services/ProfitClub/PCAuthentication.podspec`)
   - PCOrganizationService (from `../../../Pods/Services/ProfitClub/PCOrganizationService.podspec`)
   - PCUserService (from `../../../Pods/Services/ProfitClub/PCUserService.podspec`)
@@ -41,6 +43,7 @@ SPEC REPOS:
   trunk:
     - Bolts
     - FittedSheets
+    - Nantes
     - Parse
 
 EXTERNAL SOURCES:
@@ -67,6 +70,7 @@ SPEC CHECKSUMS:
   ErrorPresenter: deb60f0739744b9b79bbf7be09e7e0a473ba132b
   FittedSheets: ec30a41b7f054891992ada0441ebe7801958f123
   Main: 5f3663f52dc9f73e8caed2af67aa325dfd64111d
+  Nantes: e11fbe0b6214de8c09cc8b763dbf61f70fbbf885
   Parse: 79bdda34fdb7eb2a707a43a951c8aae236cb3e34
   PCAuthentication: 08d4d8b660b8f39573b8192607dd431ebdb7254f
   PCOrganizationService: d3e3f936840999a102c4bfdecfdeccd327ccf9d3
@@ -74,6 +78,6 @@ SPEC CHECKSUMS:
   ProfitClubModel: 38acfa2527d8cac51c97c8494db90fdd3025d32f
   ProfitClubParse: f0319471560bd2af6fd3d2753a8980bab1656b1a
 
-PODFILE CHECKSUM: 4303009976afbfc6450dda99d50f8fb934613137
+PODFILE CHECKSUM: 56a2617e8525fdbffb5c2fef67cbe6a7ce699826
 
 COCOAPODS: 1.9.3

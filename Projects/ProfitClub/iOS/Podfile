@@ -9,6 +9,8 @@ SERVICES_PATH = PODS_PATH + '/Services'
 ONTOLOGY_PATH = PODS_PATH + '/Ontology'
 
 target 'ProfitClub' do
+  pod 'Nantes'
+
   # modules
   pod 'Main', :path => MODULES_PATH + '/Main.podspec'
 

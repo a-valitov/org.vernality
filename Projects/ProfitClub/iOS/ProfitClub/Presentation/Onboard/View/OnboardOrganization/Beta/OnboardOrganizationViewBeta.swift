@@ -50,6 +50,7 @@ final class OnboardOrganizationViewBeta: UIViewController {
         }
     }
 
+    @IBOutlet weak var policyCheckbox: UIButton!
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var innTextField: UITextField!
     @IBOutlet weak var contactTextField: UITextField!
@@ -57,5 +58,49 @@ final class OnboardOrganizationViewBeta: UIViewController {
 
     @IBAction func submitButtonTouchUpInside(_ sender: Any) {
         self.output?.onboardOrganizationDidFinish(view: self)
+    }
+
+    @IBAction func policyCheckboxTouchUpInside(_ sender: UIButton) {
+        sender.isSelected.toggle()
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.nameTextField.layer.sublayerTransform = CATransform3DMakeTranslation(15, 0, 0)
+        self.innTextField.layer.sublayerTransform = CATransform3DMakeTranslation(15, 0, 0)
+        self.contactTextField.layer.sublayerTransform = CATransform3DMakeTranslation(15, 0, 0)
+        self.phoneTextField.layer.sublayerTransform = CATransform3DMakeTranslation(15, 0, 0)
+
+        let textColor = UIColor(red: 0.953, green: 0.918, blue: 0.906, alpha: 1)
+        let placeholderColor = textColor.withAlphaComponent(0.5)
+        self.nameTextField.attributedPlaceholder = NSAttributedString(string: "Наименование",
+                                                                          attributes:[.foregroundColor: placeholderColor])
+        self.phoneTextField.attributedPlaceholder = NSAttributedString(string: "Телефон",
+                                                                       attributes:[.foregroundColor: placeholderColor])
+        self.innTextField.attributedPlaceholder = NSAttributedString(string: "ИНН",
+                                                                          attributes:[.foregroundColor: placeholderColor])
+        self.contactTextField.attributedPlaceholder = NSAttributedString(string: "ФИО",
+                                                                                      attributes:[.foregroundColor: placeholderColor])
+        self.nameTextField.tintColor = textColor
+        self.phoneTextField.tintColor = textColor
+        self.innTextField.tintColor = textColor
+        self.contactTextField.tintColor = textColor
+
+        self.nameTextField.textColor = textColor
+        self.phoneTextField.textColor = textColor
+        self.innTextField.textColor = textColor
+        self.contactTextField.textColor = textColor
+
+        self.nameTextField.delegate = self
+        self.phoneTextField.delegate = self
+        self.innTextField.delegate = self
+        self.contactTextField.delegate = self
+    }
+}
+
+extension OnboardOrganizationViewBeta: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
