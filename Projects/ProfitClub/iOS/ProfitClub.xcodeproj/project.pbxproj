@@ -40,6 +40,7 @@
 		0E506C4624FCA6E300ABA211 /* OnboardSignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E506C4524FCA6E300ABA211 /* OnboardSignIn.swift */; };
 		0E506C4924FCA78100ABA211 /* OnboardSignInViewBeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E506C4824FCA78100ABA211 /* OnboardSignInViewBeta.swift */; };
 		0E506C4B24FCA78C00ABA211 /* OnboardSignInViewBeta.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E506C4A24FCA78C00ABA211 /* OnboardSignInViewBeta.storyboard */; };
+		0E772A8D2504D39000D677E6 /* PlayfairDisplay-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0E772A8C2504D39000D677E6 /* PlayfairDisplay-Bold.ttf */; };
 		0E90496E24F390070061A605 /* AppPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E90496D24F390070061A605 /* AppPresenter.swift */; };
 		0E90497124F390270061A605 /* AppFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E90497024F390270061A605 /* AppFactory.swift */; };
 		0E90497A24F39C650061A605 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E90497924F39C650061A605 /* Secrets.swift */; };
@@ -93,6 +94,7 @@
 		0E506C4524FCA6E300ABA211 /* OnboardSignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardSignIn.swift; sourceTree = "<group>"; };
 		0E506C4824FCA78100ABA211 /* OnboardSignInViewBeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardSignInViewBeta.swift; sourceTree = "<group>"; };
 		0E506C4A24FCA78C00ABA211 /* OnboardSignInViewBeta.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OnboardSignInViewBeta.storyboard; sourceTree = "<group>"; };
+		0E772A8C2504D39000D677E6 /* PlayfairDisplay-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlayfairDisplay-Bold.ttf"; sourceTree = "<group>"; };
 		0E90496D24F390070061A605 /* AppPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPresenter.swift; sourceTree = "<group>"; };
 		0E90497024F390270061A605 /* AppFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFactory.swift; sourceTree = "<group>"; };
 		0E90497924F39C650061A605 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
@@ -296,6 +298,7 @@
 		0E506C3F24FC9F5700ABA211 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				0E772A8C2504D39000D677E6 /* PlayfairDisplay-Bold.ttf */,
 				0E506C4224FC9FCA00ABA211 /* PlayfairDisplay-VariableFont_wght.ttf */,
 				0E506C4024FC9F6500ABA211 /* Montserrat-Regular.ttf */,
 			);
@@ -586,6 +589,7 @@
 				0E506BFE24FBC39B00ABA211 /* OnboardOrganizationViewBeta.storyboard in Resources */,
 				0E506C4B24FCA78C00ABA211 /* OnboardSignInViewBeta.storyboard in Resources */,
 				0E506BE724FBB19400ABA211 /* OnboardMemberViewBeta.storyboard in Resources */,
+				0E772A8D2504D39000D677E6 /* PlayfairDisplay-Bold.ttf in Resources */,
 				0EA11ED124F2B89300133485 /* Assets.xcassets in Resources */,
 				0E506BF624FBBFBE00ABA211 /* SelectOrganizationViewBeta.storyboard in Resources */,
 			);

@@ -15,6 +15,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import UIKit
+import ProfitClubModel
 
 extension SelectRoleViewBeta: SelectRoleViewInput {
 }
@@ -22,19 +23,50 @@ extension SelectRoleViewBeta: SelectRoleViewInput {
 final class SelectRoleViewBeta: UIViewController {
     var output: SelectRoleViewOutput?
 
-    @IBAction func memberButtonTouchUpInside(_ sender: Any) {
-        self.output?.selectRole(view: self, didSelect: .member)
+    @IBOutlet weak var supplierCheckbox: UIButton!
+    @IBOutlet weak var organizationCheckbox: UIButton!
+    @IBOutlet weak var memberCheckbox: UIButton!
+    @IBOutlet var checkboxes: [UIButton]!
+    @IBOutlet weak var continueButton: UIButton!
+
+
+    @IBAction func continueButtonTouchUpInside(_ sender: Any) {
+        if let role = self.selectedRole {
+            self.output?.selectRole(view: self, didSelect: role)
+        }
+    } 
+
+    @IBAction func memberButtonTouchUpInside(_ sender: UIButton) {
+        self.checkboxes.forEach({ $0.isSelected = false })
+        self.memberCheckbox.isSelected.toggle()
+        if self.memberCheckbox.isSelected {
+            self.selectedRole = .member
+        }
     }
 
-    @IBAction func supplierButtonTouchUpInside(_ sender: Any) {
-        self.output?.selectRole(view: self, didSelect: .supplier)
+    @IBAction func supplierButtonTouchUpInside(_ sender: UIButton) {
+        self.checkboxes.forEach({ $0.isSelected = false })
+        self.supplierCheckbox.isSelected.toggle()
+        if self.supplierCheckbox.isSelected {
+            self.selectedRole = .supplier
+        }
     }
 
-    @IBAction func organizationButtonTouchUpInside(_ sender: Any) {
-        self.output?.selectRole(view: self, didSelect: .organization)
+    @IBAction func organizationButtonTouchUpInside(_ sender: UIButton) {
+        self.checkboxes.forEach({ $0.isSelected = false })
+        self.organizationCheckbox.isSelected.toggle()
+        if self.organizationCheckbox.isSelected {
+            self.selectedRole = .organization
+        }
     }
 
     override func viewDidLoad() {
-        self.navigationItem.hidesBackButton = true
+        self.navigationController?.navigationBar.barStyle = .blackTranslucent
+    }
+
+    private var selectedRole: PCRole? {
+        didSet {
+            self.continueButton.isEnabled = self.selectedRole != nil
+        }
     }
 }

@@ -41,6 +41,7 @@
 	<array>
 		<string>Montserrat-Regular</string>
 		<string>PlayfairDisplay-VariableFont_wght</string>
+		<string>PlayfairDisplay-Bold</string>
 	</array>
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>

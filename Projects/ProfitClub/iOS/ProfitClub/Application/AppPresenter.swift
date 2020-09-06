@@ -29,6 +29,7 @@ final class AppPresenter {
     }
 
     func present(in window: UIWindow?) {
+        UINavigationBar.appearance().tintColor = .white
         window?.rootViewController = self.factory.main(output: self)
         window?.makeKeyAndVisible()
     }

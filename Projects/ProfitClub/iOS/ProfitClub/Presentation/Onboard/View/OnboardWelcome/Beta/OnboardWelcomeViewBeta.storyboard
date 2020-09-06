@@ -13,7 +13,7 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Onboard Welcome View Beta-->
+        <!-- -->
         <scene sceneID="fJt-PC-Of6">
             <objects>
                 <viewController id="Rl1-8q-5CH" customClass="OnboardWelcomeViewBeta" customModule="ProfitClub" customModuleProvider="target" sceneMemberID="viewController">
@@ -68,6 +68,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="m9L-yg-PPJ"/>
                     </view>
+                    <navigationItem key="navigationItem" title=" " id="ZGR-LW-Rzc">
+                        <barButtonItem key="backBarButtonItem" title=" " id="l8A-Ls-dvh"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="signUpButton" destination="1rb-4I-Inj" id="dfV-He-hFN"/>
                     </connections>
