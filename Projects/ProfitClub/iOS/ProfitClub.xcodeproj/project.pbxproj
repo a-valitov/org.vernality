@@ -109,7 +109,7 @@
 		0E90499B24F62A6D0061A605 /* OnboardDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardDependencies.swift; sourceTree = "<group>"; };
 		0E90499E24F62C6C0061A605 /* OnboardSupplierView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardSupplierView.swift; sourceTree = "<group>"; };
 		0E9049A124F62C870061A605 /* OnboardSupplierViewAlpha.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardSupplierViewAlpha.swift; sourceTree = "<group>"; };
-		0EA11EC424F2B88F00133485 /* ProfitClub.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProfitClub.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0EA11EC424F2B88F00133485 /* Profit Club.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Profit Club.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EA11EC724F2B88F00133485 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0EA11ED024F2B89300133485 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0EA11ED324F2B89300133485 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -450,7 +450,7 @@
 		0EA11EC524F2B88F00133485 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				0EA11EC424F2B88F00133485 /* ProfitClub.app */,
+				0EA11EC424F2B88F00133485 /* Profit Club.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -540,7 +540,7 @@
 			);
 			name = ProfitClub;
 			productName = ProfitClub;
-			productReference = 0EA11EC424F2B88F00133485 /* ProfitClub.app */;
+			productReference = 0EA11EC424F2B88F00133485 /* Profit Club.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -826,7 +826,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.vernality.profitclub.ios;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Profit Club";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -846,7 +846,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = org.vernality.profitclub.ios;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Profit Club";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

@@ -43,7 +43,6 @@
       "size" : "60x60"
     },
     {
-      "filename" : "180pt @3x.png",
       "idiom" : "iphone",
       "scale" : "3x",
       "size" : "60x60"
@@ -79,13 +78,12 @@
       "size" : "40x40"
     },
     {
-      "filename" : "80pt @2x.png",
+      "filename" : "40pt @2x-1.png",
       "idiom" : "ipad",
       "scale" : "2x",
       "size" : "40x40"
     },
     {
-      "filename" : "76pt @1x.png",
       "idiom" : "ipad",
       "scale" : "1x",
       "size" : "76x76"
@@ -103,7 +101,7 @@
       "size" : "83.5x83.5"
     },
     {
-      "filename" : "EDIT ICON.png",
+      "filename" : "1024pt @1x.png",
       "idiom" : "ios-marketing",
       "scale" : "1x",
       "size" : "1024x1024"
