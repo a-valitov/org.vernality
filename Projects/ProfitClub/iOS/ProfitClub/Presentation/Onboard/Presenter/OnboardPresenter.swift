@@ -135,7 +135,15 @@ extension OnboardPresenter: OnboardMemberViewOutput {
         }
         self.firstName = firstName
         self.lastName = lastName
-        self.router?.openSelectOrganization(output: self)
+        let selectOrganization = self.router?.openSelectOrganization(output: self)
+        self.services.organization.fetchApproved { [weak self] (result) in
+            switch result {
+            case .success(let organizations):
+                selectOrganization?.organizations = organizations
+            case .failure(let error):
+                self?.presenters.error.present(error)
+            }
+        }
     }
 }
 
@@ -181,8 +189,21 @@ extension OnboardPresenter: OnboardOrganizationViewOutput {
 }
 
 extension OnboardPresenter: SelectOrganizationViewOutput {
+    func selectOrganization(view: SelectOrganizationViewInput, userWantsToRefresh sender: Any) {
+        self.presenters.activity.increment()
+        self.services.organization.fetchApproved { [weak self] (result) in
+            self?.presenters.activity.decrement()
+            switch result {
+            case .success(let organizations):
+                view.organizations = organizations
+            case .failure(let error):
+                self?.presenters.error.present(error)
+            }
+        }
+    }
+
     func selectOrganization(view: SelectOrganizationViewInput, didSelect organization: AnyPCOrganization) {
-        print(organization)
+        self.registerMember(in: organization)
     }
 }
 
@@ -290,13 +311,12 @@ extension OnboardPresenter {
         return organization
     }
 
-    private func registerOrganization() {
-        guard let organization = self.createOrganization() else {
+    private func registerMember(in organization: PCOrganization) {
+        guard let member = self.createMember() else {
             return
         }
-        if var user = self.createUser() {
-            user.organizations = [organization]
 
+        if var user = self.createUser() {
             guard let password = self.password, password.isEmpty == false else {
                 self.presenters.error.present(OnboardError.passwordIsEmpty)
                 return
@@ -308,7 +328,60 @@ extension OnboardPresenter {
                 sSelf.presenters.activity.decrement()
                 switch result {
                 case .success:
-                    sSelf.output?.onboard(module: sSelf, didRegister: user, inside: sSelf.router?.main)
+                    sSelf.services.authentication.add(member: member, in: organization) { [weak sSelf] (result) in
+                        guard let ssSelf = sSelf else { return }
+                        switch result {
+                        case .success:
+                            ssSelf.output?.onboard(module: ssSelf, didRegister: user, inside: ssSelf.router?.main)
+                        case .failure(let error):
+                            ssSelf.presenters.error.present(error)
+                        }
+                    }
+
+                case .failure(let error):
+                    sSelf.presenters.error.present(error)
+                }
+            }
+        } else {
+            self.presenters.activity.increment()
+            self.services.authentication.add(member: member, in: organization) { [weak self] (result) in
+                guard let sSelf = self else { return }
+                sSelf.presenters.activity.decrement()
+                switch result {
+                case .success:
+                    sSelf.output?.onboard(module: sSelf, didAddMember: member, inside: sSelf.router?.main)
+                case .failure(let error):
+                    sSelf.presenters.error.present(error)
+                }
+            }
+        }
+    }
+
+    private func registerOrganization() {
+        guard let organization = self.createOrganization() else {
+            return
+        }
+        if var user = self.createUser() {
+            guard let password = self.password, password.isEmpty == false else {
+                self.presenters.error.present(OnboardError.passwordIsEmpty)
+                return
+            }
+
+            self.presenters.activity.increment()
+            self.services.authentication.register(user: user, password: password) { [weak self] result in
+                guard let sSelf = self else { return }
+                switch result {
+                case .success:
+                    sSelf.services.authentication.add(organization: organization) { [weak sSelf] (result) in
+                        guard let ssSelf = sSelf else { return }
+                        ssSelf.presenters.activity.decrement()
+                        switch result {
+                        case .success:
+                            ssSelf.output?.onboard(module: ssSelf, didRegister: user, inside: ssSelf.router?.main)
+                        case .failure(let error):
+                            ssSelf.presenters.error.present(error)
+                        }
+                    }
                 case .failure(let error):
                     sSelf.presenters.error.present(error)
                 }
@@ -333,8 +406,7 @@ extension OnboardPresenter {
             return
         }
 
-        if var user = self.createUser() {
-            user.suppliers = [supplier]
+        if let user = self.createUser() {
             guard let password = self.password, password.isEmpty == false else {
                 self.presenters.error.present(OnboardError.passwordIsEmpty)
                 return
@@ -342,10 +414,19 @@ extension OnboardPresenter {
             self.presenters.activity.increment()
             self.services.authentication.register(user: user, password: password) { [weak self] result in
                 guard let sSelf = self else { return }
-                sSelf.presenters.activity.decrement()
                 switch result {
                 case .success:
-                    sSelf.output?.onboard(module: sSelf, didLogin: user, inside: sSelf.router?.main)
+                    sSelf.services.authentication.add(supplier: supplier) { [weak sSelf] (result) in
+                        guard let ssSelf = sSelf else { return }
+                        ssSelf.presenters.activity.decrement()
+                        switch result {
+                        case .success:
+                            ssSelf.output?.onboard(module: ssSelf, didLogin: user, inside: ssSelf.router?.main)
+                        case .failure(let error):
+                            ssSelf.presenters.error.present(error)
+                        }
+                    }
+
                 case .failure(let error):
                     sSelf.presenters.error.present(error)
                 }

@@ -49,4 +49,40 @@ final class OnboardMemberViewBeta: UIViewController {
     @IBAction func submitButtonTouchUpInside(_ sender: Any) {
         self.output?.onboardMemberDidFinish(view: self)
     }
+
+    @IBAction func policyCheckboxTouchUpInside(_ sender: UIButton) {
+        sender.isSelected.toggle()
+        self.firstNameTextField.resignFirstResponder()
+        self.lastNameTextField.resignFirstResponder()
+    }
+
+     override func viewDidLoad() {
+        super.viewDidLoad()
+        self.firstNameTextField.layer.sublayerTransform = CATransform3DMakeTranslation(15, 0, 0)
+        self.lastNameTextField.layer.sublayerTransform = CATransform3DMakeTranslation(15, 0, 0)
+
+        let textColor = UIColor(red: 0.953, green: 0.918, blue: 0.906, alpha: 1)
+        let placeholderColor = textColor.withAlphaComponent(0.5)
+        self.firstNameTextField.attributedPlaceholder = NSAttributedString(string: "Имя",
+                                                                          attributes:[.foregroundColor: placeholderColor])
+        self.lastNameTextField.attributedPlaceholder = NSAttributedString(string: "Фамилия",
+                                                                          attributes:[.foregroundColor: placeholderColor])
+
+        self.firstNameTextField.tintColor = textColor
+
+        self.lastNameTextField.tintColor = textColor
+
+        self.firstNameTextField.textColor = textColor
+        self.lastNameTextField.textColor = textColor
+
+        self.firstNameTextField.delegate = self
+        self.lastNameTextField.delegate = self
+    }
+}
+
+extension OnboardMemberViewBeta: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }

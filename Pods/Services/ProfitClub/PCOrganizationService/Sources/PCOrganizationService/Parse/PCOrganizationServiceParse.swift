@@ -38,4 +38,16 @@ public final class PCOrganizationServiceParse: PCOrganizationService {
             }
         }
     }
+
+    public func fetchApproved(result: @escaping (Result<[AnyPCOrganization], Error>) -> Void) {
+        let query = PFQuery(className: "Organization")
+        query.whereKey("statusString", equalTo: "approved")
+        query.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
+            if let error = error {
+                result(.failure(error))
+            } else if let objects = objects {
+                result(.success(objects.map({ $0.pcOrganization.any })))
+            }
+        }
+    }
 }

@@ -56,6 +56,16 @@ final class PCAuthenticationParse: PCAuthentication {
     func add(supplier: PCSupplier, result: @escaping ((Result<PCSupplier, Error>) -> Void)) {
         let parseSupplier = supplier.parse
         let currentUser = PFUser.current()
+        if let currentUser = currentUser {
+            let acl = PFACL(user: currentUser)
+            acl.hasPublicReadAccess = false
+            acl.hasPublicWriteAccess = false
+            acl.setReadAccess(true, forRoleWithName: PCRole.administrator.rawValue)
+            acl.setWriteAccess(true, forRoleWithName: PCRole.administrator.rawValue)
+            acl.setWriteAccess(true, for: currentUser)
+            acl.setReadAccess(true, for: currentUser)
+            parseSupplier.acl = acl
+        }
         parseSupplier.saveInBackground { (succeeded, error) in
             if let error = error {
                 result(.failure(error))
@@ -73,9 +83,20 @@ final class PCAuthenticationParse: PCAuthentication {
         }
     }
 
-    func add(member: PCMember, result: @escaping ((Result<PCMember, Error>) -> Void)) {
+    func add(member: PCMember, in organization: PCOrganization, result: @escaping ((Result<PCMember, Error>) -> Void)) {
         let parseMember = member.parse
+        let parseOrganization = organization.parse
         let currentUser = PFUser.current()
+        if let currentUser = currentUser {
+            let acl = PFACL(user: currentUser)
+            acl.hasPublicReadAccess = false
+            acl.hasPublicWriteAccess = false
+            acl.setReadAccess(true, forRoleWithName: PCRole.administrator.rawValue)
+            acl.setWriteAccess(true, forRoleWithName: PCRole.administrator.rawValue)
+            acl.setWriteAccess(true, for: currentUser)
+            acl.setReadAccess(true, for: currentUser)
+            parseMember.acl = acl
+        }
         parseMember.saveInBackground { (succeeded, error)  in
             if let error = error {
                 result(.failure(error))
@@ -85,7 +106,14 @@ final class PCAuthenticationParse: PCAuthentication {
                     if let error = error {
                         result(.failure(error))
                     } else {
-                        result(.success(member))
+                        parseOrganization.relation(forKey: "members").add(parseMember)
+                        parseOrganization.saveInBackground { (succeeded, error) in
+                            if let error = error {
+                                result(.failure(error))
+                            } else {
+                                result(.success(member))
+                            }
+                        }
                     }
                 })
             }
@@ -95,6 +123,16 @@ final class PCAuthenticationParse: PCAuthentication {
     func add(organization: PCOrganization, result: @escaping ((Result<PCOrganization, Error>) -> Void)) {
         let parseOrganization = organization.parse
         let currentUser = PFUser.current()
+        if let currentUser = currentUser {
+            let acl = PFACL(user: currentUser)
+            acl.hasPublicReadAccess = true
+            acl.hasPublicWriteAccess = false
+            acl.setReadAccess(true, forRoleWithName: PCRole.administrator.rawValue)
+            acl.setWriteAccess(true, forRoleWithName: PCRole.administrator.rawValue)
+            acl.setWriteAccess(true, for: currentUser)
+            acl.setReadAccess(true, for: currentUser)
+            parseOrganization.acl = acl
+        }
         parseOrganization.saveInBackground { (succeeded, error) in
             if let error = error {
                 result(.failure(error))
@@ -112,77 +150,16 @@ final class PCAuthenticationParse: PCAuthentication {
     }
 
     func register(user: PCUser, password: String, result: @escaping ((Result<AnyPCUser, Error>) -> Void)) {
-        let group = DispatchGroup()
-        var finalError: Error?
         let parseUser = user.parse
         parseUser.password = password
-        group.enter()
-        parseUser.signUpInBackground { [weak self] (success, error) in
+        parseUser.signUpInBackground { (success, error) in
             if let error = error {
-                finalError = error
+                result(.failure(error))
             } else {
                 let defaultACL = PFACL(user: parseUser)
                 defaultACL.setReadAccess(true, forRoleWithName: PCRole.administrator.rawValue)
                 PFACL.setDefault(defaultACL, withAccessForCurrentUser: true)
-
-                // member
-                if let members = user.members {
-                    members.forEach { (member) in
-                        group.enter()
-                        self?.add(member: member, result: { (result) in
-                            switch result {
-                            case .success:
-                                break
-                            case .failure(let error):
-                                finalError = error
-                            }
-                            group.leave()
-                        })
-                    }
-                }
-
-                // organization
-                if let organizations = user.organizations {
-                    organizations.forEach { (organization) in
-                        group.enter()
-                        self?.add(organization: organization, result: { (result) in
-                            switch result {
-                            case .success:
-                                break
-                            case .failure(let error):
-                                finalError = error
-                            }
-                            group.leave()
-                        })
-                    }
-                }
-
-                // supplier
-                if let suppliers = user.suppliers {
-                    suppliers.forEach { (supplier) in
-                        group.enter()
-                        self?.add(supplier: supplier, result: { (result) in
-                            switch result {
-                            case .success:
-                                break
-                            case .failure(let error):
-                                finalError = error
-                            }
-                            group.leave()
-                        })
-                    }
-                }
-            }
-            group.leave()
-        }
-
-        group.notify(queue: .main) {
-            if let error = finalError {
-                result(.failure(error))
-            } else if let user = self.user {
-                result(.success(user))
-            } else {
-                result(.failure(PCAuthenticationError.userIsStillNilAfterRegistration))
+                result(.success(user.any))
             }
         }
     }

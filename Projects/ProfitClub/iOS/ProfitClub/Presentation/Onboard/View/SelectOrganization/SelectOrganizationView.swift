@@ -23,4 +23,5 @@ protocol SelectOrganizationViewInput: UIViewController {
 
 protocol SelectOrganizationViewOutput {
     func selectOrganization(view: SelectOrganizationViewInput, didSelect organization: AnyPCOrganization)
+    func selectOrganization(view: SelectOrganizationViewInput, userWantsToRefresh sender: Any)
 }

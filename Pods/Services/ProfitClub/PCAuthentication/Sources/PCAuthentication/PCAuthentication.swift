@@ -23,7 +23,7 @@ public protocol PCAuthentication {
     func login(username: String, password: String, result: @escaping ((Result<AnyPCUser, Error>) -> Void))
     func register(user: PCUser, password: String, result: @escaping ((Result<AnyPCUser, Error>) -> Void))
 
-    func add(member: PCMember, result: @escaping ((Result<PCMember, Error>) -> Void))
+    func add(member: PCMember, in organization: PCOrganization, result: @escaping ((Result<PCMember, Error>) -> Void))
     func add(supplier: PCSupplier, result: @escaping ((Result<PCSupplier, Error>) -> Void)) 
     func add(organization: PCOrganization, result: @escaping ((Result<PCOrganization, Error>) -> Void))
 }

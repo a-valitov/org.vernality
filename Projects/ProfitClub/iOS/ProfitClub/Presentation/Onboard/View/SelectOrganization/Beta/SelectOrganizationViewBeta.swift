@@ -31,6 +31,19 @@ final class SelectOrganizationViewBeta: UITableViewController {
     }
 
     private let cellReuseIdentifier = "SelectOrganizationViewBetaTableViewCellReuseIdentifier"
+
+    @IBAction func refreshControlValueChanged(_ sender: UIRefreshControl) {
+        sender.endRefreshing()
+        self.output?.selectOrganization(view: self, userWantsToRefresh: sender)
+    }
+
+}
+
+extension SelectOrganizationViewBeta {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let organization = self.organizations[indexPath.row]
+        self.output?.selectOrganization(view: self, didSelect: organization)
+    }
 }
 
 extension SelectOrganizationViewBeta {
