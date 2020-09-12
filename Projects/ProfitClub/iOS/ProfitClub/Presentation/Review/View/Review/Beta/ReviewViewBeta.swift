@@ -124,10 +124,10 @@ extension ReviewViewBeta {
                     cell.statusLabel.text = "На рассмотрении"
                     cell.statusLabel.textColor = .systemOrange
                 case .approved:
-                    cell.statusLabel.text = "Одобрен"
+                    cell.statusLabel.text = "Одобрено"
                     cell.statusLabel.textColor = .systemGreen
                 case .excluded:
-                    cell.statusLabel.text = "Исключен"
+                    cell.statusLabel.text = "Исключено"
                     cell.statusLabel.textColor = .systemRed
                 case .rejected:
                     cell.statusLabel.text = "Отклонено"
@@ -148,10 +148,10 @@ extension ReviewViewBeta {
                     cell.statusLabel.text = "На рассмотрении"
                     cell.statusLabel.textColor = .systemOrange
                 case .approved:
-                    cell.statusLabel.text = "Одобрен"
+                    cell.statusLabel.text = "Одобрено"
                     cell.statusLabel.textColor = .systemGreen
                 case .excluded:
-                    cell.statusLabel.text = "Исключен"
+                    cell.statusLabel.text = "Исключено"
                     cell.statusLabel.textColor = .systemRed
                 case .rejected:
                     cell.statusLabel.text = "Отклонено"
@@ -172,10 +172,10 @@ extension ReviewViewBeta {
                     cell.statusLabel.text = "На рассмотрении"
                     cell.statusLabel.textColor = .systemOrange
                 case .approved:
-                    cell.statusLabel.text = "Одобрен"
+                    cell.statusLabel.text = "Одобрено"
                     cell.statusLabel.textColor = .systemGreen
                 case .excluded:
-                    cell.statusLabel.text = "Исключен"
+                    cell.statusLabel.text = "Исключено"
                     cell.statusLabel.textColor = .systemRed
                 case .rejected:
                     cell.statusLabel.text = "Отклонено"
