@@ -21,7 +21,7 @@ public protocol PCUser {
     var email: String? { get }
     var username: String? { get }
 
-    var member: PCMember? { get }
+    var members: [PCMember]? { get }
     var organizations: [PCOrganization]? { get }
     var suppliers: [PCSupplier]? { get }
 }
@@ -36,7 +36,7 @@ public struct PCUserStruct: PCUser {
     public var id: String?
     public var email: String?
     public var username: String?
-    public var member: PCMember?
+    public var members: [PCMember]?
     public var organizations: [PCOrganization]?
     public var suppliers: [PCSupplier]?
 
@@ -56,8 +56,8 @@ public struct AnyPCUser: PCUser, Equatable, Hashable {
         return self.object.username
     }
 
-    public var member: PCMember? {
-        return self.object.member
+    public var members: [PCMember]? {
+        return self.object.members
     }
 
     public var organizations: [PCOrganization]? {

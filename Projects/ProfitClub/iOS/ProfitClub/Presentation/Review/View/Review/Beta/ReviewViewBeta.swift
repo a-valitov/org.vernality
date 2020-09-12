@@ -27,7 +27,7 @@ final class ReviewViewBeta: UITableViewController {
             self.navigationItem.title = self.username
         }
     }
-    var member: AnyPCMember? {
+    var members = [AnyPCMember]() {
         didSet {
             if self.isViewLoaded {
                 self.tableView.reloadData()
@@ -76,7 +76,7 @@ extension ReviewViewBeta {
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
-            return self.member != nil ? "Участник" : nil
+            return self.members.isEmpty ? nil : "Участник"
         case 1:
             return self.organizations.isEmpty ? nil : "Организации"
         case 2:
@@ -93,11 +93,7 @@ extension ReviewViewBeta {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         switch section {
         case 0:
-            if self.member != nil {
-                return 1
-            } else {
-                return 0
-            }
+            return self.members.count
         case 1:
             return self.organizations.count
         case 2:
@@ -111,8 +107,9 @@ extension ReviewViewBeta {
         switch indexPath.section {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: self.memberCellReuseIdentifier, for: indexPath) as! ReviewViewBetaMemberCell
-            cell.fullNameLabel.text = (self.member?.firstName ?? "") + (self.member?.lastName ?? "")
-            if let status = self.member?.status {
+            let member = self.members[indexPath.row]
+            cell.fullNameLabel.text = (member.firstName ?? "") + (member.lastName ?? "")
+            if let status = member.status {
                 switch status {
                 case .onReview:
                     cell.statusLabel.text = "На рассмотрении"

@@ -24,7 +24,7 @@ public extension PCUser {
         result.objectId = self.id
         result.username = self.username
         result.email = self.email
-        result.member = self.member
+        result.members = self.members
         result.organizations = self.organizations
         result.suppliers = self.suppliers
         return result
@@ -49,7 +49,7 @@ public final class PCUserParse: PFUser, PCUser {
         return self.objectId
     }
 
-    public var member: PCMember?
+    public var members: [PCMember]?
     public var organizations: [PCOrganization]?
     public var suppliers: [PCSupplier]?
 }

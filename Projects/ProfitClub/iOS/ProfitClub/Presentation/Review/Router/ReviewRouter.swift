@@ -27,7 +27,7 @@ final class ReviewRouter {
         let reviewView = storyboard.instantiateInitialViewController() as! ReviewViewBeta
         reviewView.output = output
         reviewView.username = user?.username
-        reviewView.member = user?.member?.any
+        reviewView.members = user?.members?.map({ $0.any }) ?? []
         reviewView.organizations = user?.organizations?.map({ $0.any }) ?? []
         reviewView.suppliers = user?.suppliers?.map({ $0.any }) ?? []
         self.main?.push(reviewView, animated: true)

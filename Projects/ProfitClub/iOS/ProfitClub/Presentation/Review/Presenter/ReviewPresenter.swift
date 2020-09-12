@@ -50,7 +50,7 @@ extension ReviewPresenter: ReviewViewOutput {
         self.services.userService.reload { [weak self] result in
             switch result {
             case .success(let user):
-                view.member = user.member?.any
+                view.members = user.members?.map({ $0.any }) ?? []
                 view.organizations = user.organizations?.map({ $0.any }) ?? []
                 view.suppliers = user.suppliers?.map({ $0.any }) ?? []
             case .failure(let error):

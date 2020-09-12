@@ -70,19 +70,22 @@ final class PCAuthenticationParse: PCAuthentication {
                 let currentUser = PFUser.current()
 
                 // member
-                if let parseMember = user.member?.parse {
-                    group.enter()
-                    parseMember.saveInBackground { (succeeded, error)  in
-                        if let error = error {
-                            finalError = error
-                        }
-                        currentUser?.relation(forKey: "member").add(parseMember)
-                        currentUser?.saveInBackground(block: { (result, error) in
+                if let members = user.members {
+                    members.forEach { (member) in
+                        let parseMember = member.parse
+                        group.enter()
+                        parseMember.saveInBackground { (succeeded, error)  in
                             if let error = error {
                                 finalError = error
                             }
-                            group.leave()
-                        })
+                            currentUser?.relation(forKey: "member").add(parseMember)
+                            currentUser?.saveInBackground(block: { (result, error) in
+                                if let error = error {
+                                    finalError = error
+                                }
+                                group.leave()
+                            })
+                        }
                     }
                 }
 

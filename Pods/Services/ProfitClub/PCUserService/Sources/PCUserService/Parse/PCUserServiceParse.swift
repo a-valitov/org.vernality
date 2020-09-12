@@ -30,7 +30,7 @@ public final class PCUserServiceParse: PCUserService {
     }
 
     public func isOnReview() -> Bool {
-        let isOnMemberReview = self.user?.member?.status == .onReview
+        let isOnMemberReview = (self.user?.members?.contains(where: { $0.status == .onReview })) ?? false
         let isOnOrganizationReview = (self.user?.organizations?.contains(where: { $0.status == .onReview })) ?? false
         let isOnSupplierReview = (self.user?.suppliers?.contains(where: { $0.status == .onReview })) ?? false
         return isOnMemberReview || isOnOrganizationReview || isOnSupplierReview
@@ -67,7 +67,7 @@ public final class PCUserServiceParse: PCUserService {
                         if let error = error {
                             finalError = error
                         } else {
-                            pfUser.member = pfMembers?.first?.pcMember
+                            pfUser.members = pfMembers?.map({ $0.pcMember })
                         }
                         group.leave()
                     })
