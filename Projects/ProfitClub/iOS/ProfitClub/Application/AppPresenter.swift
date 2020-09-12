@@ -76,12 +76,12 @@ extension AppPresenter: OnboardModuleOutput {
         review.start(in: main)
     }
 
-    func onboard(module: OnboardModule, didAddOrganization organization: PCSupplier, inside main: MainModule?) {
+    func onboard(module: OnboardModule, didAddOrganization organization: PCOrganization, inside main: MainModule?) {
         let review = self.factory.review(output: self)
         review.start(in: main)
     }
 
-    func onboard(module: OnboardModule, didAddMember member: PCSupplier, inside main: MainModule?) {
+    func onboard(module: OnboardModule, didAddMember member: PCMember, inside main: MainModule?) {
         let review = self.factory.review(output: self)
         review.start(in: main)
     }

@@ -27,6 +27,6 @@ protocol OnboardModuleOutput: class {
     func onboard(module: OnboardModule, didLogin user: PCUser, inside main: MainModule?)
     func onboard(module: OnboardModule, didRegister user: PCUser, inside main: MainModule?)
     func onboard(module: OnboardModule, didAddSupplier supplier: PCSupplier, inside main: MainModule?)
-    func onboard(module: OnboardModule, didAddOrganization organization: PCSupplier, inside main: MainModule?)
-    func onboard(module: OnboardModule, didAddMember member: PCSupplier, inside main: MainModule?)
+    func onboard(module: OnboardModule, didAddOrganization organization: PCOrganization, inside main: MainModule?)
+    func onboard(module: OnboardModule, didAddMember member: PCMember, inside main: MainModule?)
 }
