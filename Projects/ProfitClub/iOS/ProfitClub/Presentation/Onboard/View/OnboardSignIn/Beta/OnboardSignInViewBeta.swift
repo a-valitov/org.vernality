@@ -41,6 +41,24 @@ final class OnboardSignInViewBeta: UIViewController {
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.passwordTextField.layer.sublayerTransform = CATransform3DMakeTranslation(15, 0, 0)
+        self.usernameTextField.layer.sublayerTransform = CATransform3DMakeTranslation(15, 0, 0)
+
+        let textColor = UIColor(red: 0.953, green: 0.918, blue: 0.906, alpha: 1)
+        let placeholderColor = textColor.withAlphaComponent(0.5)
+        self.usernameTextField.attributedPlaceholder = NSAttributedString(string: "Электронная почта",
+                                                                       attributes:[.foregroundColor: placeholderColor])
+        self.passwordTextField.attributedPlaceholder = NSAttributedString(string: "Пароль",
+                                                                          attributes:[.foregroundColor: placeholderColor])
+        self.usernameTextField.tintColor = textColor
+        self.passwordTextField.tintColor = textColor
+
+        self.usernameTextField.textColor = textColor
+        self.passwordTextField.textColor = textColor
+    }
+
     @IBAction func signInButtonTouchUpInside(_ sender: Any) {
         self.output?.onboardSignIn(view: self, userWantsToSignIn: sender)
     }
