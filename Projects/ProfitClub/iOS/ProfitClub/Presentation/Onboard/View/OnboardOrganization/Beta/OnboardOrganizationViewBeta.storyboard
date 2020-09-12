@@ -19,7 +19,7 @@
         <!--Onboard Organization View Beta-->
         <scene sceneID="zMf-PJ-VX0">
             <objects>
-                <viewController id="KtP-eJ-lMK" customClass="OnboardOrganizationViewBeta" customModule="ProfitClub" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="KtP-eJ-lMK" customClass="OnboardOrganizationViewBeta" customModule="Profit_Club" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TuK-xn-wNy">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

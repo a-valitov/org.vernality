@@ -18,6 +18,15 @@ import UIKit
 import ProfitClubModel
 
 extension ReviewViewBeta: ReviewViewInput {
+    func showLogoutConfirmationDialog() {
+        let controller = UIAlertController(title: "Подтвердите выход", message: "Вы уверены что хотите выйти?", preferredStyle: .alert)
+        controller.addAction(UIAlertAction(title: "Выйти", style: .destructive, handler: { [weak self] _ in
+            guard let sSelf = self else { return }
+            self?.output?.review(view: sSelf, userConfirmToLogout: controller)
+        }))
+        controller.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: nil))
+        self.present(controller, animated: true)
+    }
 }
 
 final class ReviewViewBeta: UITableViewController {

@@ -64,6 +64,10 @@ extension ReviewPresenter: ReviewViewOutput {
     }
 
     func review(view: ReviewViewInput, userWantsToLogout sender: Any) {
+        view.showLogoutConfirmationDialog()
+    }
+
+    func review(view: ReviewViewInput, userConfirmToLogout sender: Any) {
         self.output?.review(module: self, userWantsToLogoutInside: self.router?.main)
     }
 }
