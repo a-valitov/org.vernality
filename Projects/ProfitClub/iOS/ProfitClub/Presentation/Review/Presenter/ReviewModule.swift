@@ -24,4 +24,5 @@ protocol ReviewModule: class {
 
 protocol ReviewModuleOutput: class {
     func review(module: ReviewModule, userWantsToLogoutInside main: MainModule?)
+    func review(module: ReviewModule, userWantsToAddRoleInside main: MainModule?)
 }

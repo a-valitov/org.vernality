@@ -71,6 +71,21 @@ extension AppPresenter: MainModuleOutput {
 }
 
 extension AppPresenter: OnboardModuleOutput {
+    func onboard(module: OnboardModule, didAddSupplier supplier: PCSupplier, inside main: MainModule?) {
+        let review = self.factory.review(output: self)
+        review.start(in: main)
+    }
+
+    func onboard(module: OnboardModule, didAddOrganization organization: PCSupplier, inside main: MainModule?) {
+        let review = self.factory.review(output: self)
+        review.start(in: main)
+    }
+
+    func onboard(module: OnboardModule, didAddMember member: PCSupplier, inside main: MainModule?) {
+        let review = self.factory.review(output: self)
+        review.start(in: main)
+    }
+
     func onboard(module: OnboardModule, didLogin user: PCUser, inside main: MainModule?) {
         let review = self.factory.review(output: self)
         review.start(in: main)
@@ -94,6 +109,11 @@ extension AppPresenter: ReviewModuleOutput {
                 onboard?.start(in: main)
             }
         }
+    }
+
+    func review(module: ReviewModule, userWantsToAddRoleInside main: MainModule?) {
+        let onboard = self.factory.onboard(output: self)
+        onboard.onboard(in: main)
     }
 }
 

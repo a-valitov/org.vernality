@@ -53,13 +53,71 @@ final class PCAuthenticationParse: PCAuthentication {
         }
     }
 
+    func add(supplier: PCSupplier, result: @escaping ((Result<PCSupplier, Error>) -> Void)) {
+        let parseSupplier = supplier.parse
+        let currentUser = PFUser.current()
+        parseSupplier.saveInBackground { (succeeded, error) in
+            if let error = error {
+                result(.failure(error))
+            } else {
+                currentUser?.relation(forKey: "suppliers").add(parseSupplier)
+                currentUser?.saveInBackground(block: { (succeeded, error) in
+                    if let error = error {
+                        result(.failure(error))
+                    } else {
+                        result(.success(supplier))
+                    }
+                })
+            }
+
+        }
+    }
+
+    func add(member: PCMember, result: @escaping ((Result<PCMember, Error>) -> Void)) {
+        let parseMember = member.parse
+        let currentUser = PFUser.current()
+        parseMember.saveInBackground { (succeeded, error)  in
+            if let error = error {
+                result(.failure(error))
+            } else {
+                currentUser?.relation(forKey: "member").add(parseMember)
+                currentUser?.saveInBackground(block: { (succeeded, error) in
+                    if let error = error {
+                        result(.failure(error))
+                    } else {
+                        result(.success(member))
+                    }
+                })
+            }
+        }
+    }
+
+    func add(organization: PCOrganization, result: @escaping ((Result<PCOrganization, Error>) -> Void)) {
+        let parseOrganization = organization.parse
+        let currentUser = PFUser.current()
+        parseOrganization.saveInBackground { (succeeded, error) in
+            if let error = error {
+                result(.failure(error))
+            } else {
+                currentUser?.relation(forKey: "organizations").add(parseOrganization)
+                currentUser?.saveInBackground(block: { (succeeded, error) in
+                    if let error = error {
+                        result(.failure(error))
+                    } else {
+                        result(.success(organization))
+                    }
+                })
+            }
+        }
+    }
+
     func register(user: PCUser, password: String, result: @escaping ((Result<AnyPCUser, Error>) -> Void)) {
         let group = DispatchGroup()
         var finalError: Error?
         let parseUser = user.parse
         parseUser.password = password
         group.enter()
-        parseUser.signUpInBackground { (success, error) in
+        parseUser.signUpInBackground { [weak self] (success, error) in
             if let error = error {
                 finalError = error
             } else {
@@ -67,25 +125,19 @@ final class PCAuthenticationParse: PCAuthentication {
                 defaultACL.setReadAccess(true, forRoleWithName: PCRole.administrator.rawValue)
                 PFACL.setDefault(defaultACL, withAccessForCurrentUser: true)
 
-                let currentUser = PFUser.current()
-
                 // member
                 if let members = user.members {
                     members.forEach { (member) in
-                        let parseMember = member.parse
                         group.enter()
-                        parseMember.saveInBackground { (succeeded, error)  in
-                            if let error = error {
+                        self?.add(member: member, result: { (result) in
+                            switch result {
+                            case .success:
+                                break
+                            case .failure(let error):
                                 finalError = error
                             }
-                            currentUser?.relation(forKey: "member").add(parseMember)
-                            currentUser?.saveInBackground(block: { (result, error) in
-                                if let error = error {
-                                    finalError = error
-                                }
-                                group.leave()
-                            })
-                        }
+                            group.leave()
+                        })
                     }
                 }
 
@@ -93,19 +145,15 @@ final class PCAuthenticationParse: PCAuthentication {
                 if let organizations = user.organizations {
                     organizations.forEach { (organization) in
                         group.enter()
-                        let parseOrganization = organization.parse
-                        parseOrganization.saveInBackground { (succeeded, error) in
-                            if let error = error {
+                        self?.add(organization: organization, result: { (result) in
+                            switch result {
+                            case .success:
+                                break
+                            case .failure(let error):
                                 finalError = error
                             }
-                            currentUser?.relation(forKey: "organizations").add(parseOrganization)
-                            currentUser?.saveInBackground(block: { (result, error) in
-                                if let error = error {
-                                    finalError = error
-                                }
-                                group.leave()
-                            })
-                        }
+                            group.leave()
+                        })
                     }
                 }
 
@@ -113,19 +161,15 @@ final class PCAuthenticationParse: PCAuthentication {
                 if let suppliers = user.suppliers {
                     suppliers.forEach { (supplier) in
                         group.enter()
-                        let parseSupplier = supplier.parse
-                        parseSupplier.saveInBackground { (succeeded, error)  in
-                            if let error = error {
+                        self?.add(supplier: supplier, result: { (result) in
+                            switch result {
+                            case .success:
+                                break
+                            case .failure(let error):
                                 finalError = error
                             }
-                            currentUser?.relation(forKey: "suppliers").add(parseSupplier)
-                            currentUser?.saveInBackground(block: { (result, error) in
-                                if let error = error {
-                                    finalError = error
-                                }
-                                group.leave()
-                            })
-                        }
+                            group.leave()
+                        })
                     }
                 }
             }

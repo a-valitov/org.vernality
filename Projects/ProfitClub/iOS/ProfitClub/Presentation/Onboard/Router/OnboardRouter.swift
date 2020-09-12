@@ -85,9 +85,11 @@ final class OnboardRouter {
 
     @discardableResult
     func openOnboardSupplier(output: OnboardSupplierViewOutput?) -> OnboardSupplierViewInput {
-        let onboardSupplier = OnboardSupplierViewAlpha()
+        let storyboard = UIStoryboard(name: "OnboardSupplierViewBeta", bundle: nil)
+        let onboardSupplier = storyboard.instantiateInitialViewController() as! OnboardSupplierViewBeta
         onboardSupplier.output = output
         self.main?.push(onboardSupplier, animated: true)
         return onboardSupplier
+
     }
 }

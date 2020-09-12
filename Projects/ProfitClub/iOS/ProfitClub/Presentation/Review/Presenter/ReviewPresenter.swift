@@ -60,7 +60,7 @@ extension ReviewPresenter: ReviewViewOutput {
     }
 
     func review(view: ReviewViewInput, userWantsToAdd sender: Any) {
-
+        self.output?.review(module: self, userWantsToAddRoleInside: self.router?.main)
     }
 
     func review(view: ReviewViewInput, userWantsToLogout sender: Any) {

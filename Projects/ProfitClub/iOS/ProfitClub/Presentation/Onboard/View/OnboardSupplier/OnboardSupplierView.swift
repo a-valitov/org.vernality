@@ -17,10 +17,10 @@
 import UIKit
 
 protocol OnboardSupplierViewInput: UIViewController {
-    var name: String? { get set }
-    var inn: String? { get set }
-    var contact: String? { get set }
-    var phone: String? { get set }
+    var name: String? { get }
+    var inn: String? { get }
+    var contact: String? { get }
+    var phone: String? { get }
 }
 
 protocol OnboardSupplierViewOutput {

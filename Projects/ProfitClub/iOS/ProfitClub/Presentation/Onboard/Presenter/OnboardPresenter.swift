@@ -35,6 +35,11 @@ final class OnboardPresenter: OnboardModule {
         self.router?.openOnboardWelcome(output: self)
     }
 
+    func onboard(in main: MainModule?) {
+        self.router?.main = main
+        self.router?.openSelectRole(output: self)
+    }
+
     // dependencies
     private let presenters: OnboardPresenters
     private let services: OnboardServices
@@ -210,7 +215,7 @@ extension OnboardPresenter: OnboardSupplierViewOutput {
 extension OnboardPresenter {
     private func createUser() -> PCUserStruct? {
         guard let email = self.email, email.isEmpty == false else {
-            self.presenters.error.present(OnboardError.emailIsEmpty)
+//            self.presenters.error.present(OnboardError.emailIsEmpty)
             return nil
         }
         var user = PCUserStruct()
@@ -315,28 +320,35 @@ extension OnboardPresenter {
     }
 
     private func registerSupplier() {
-        guard var user = self.createUser() else {
-            return
-        }
         guard let supplier = self.createSupplier() else {
             return
         }
-        user.suppliers = [supplier]
 
-        guard let password = self.password, password.isEmpty == false else {
-            self.presenters.error.present(OnboardError.passwordIsEmpty)
-            return
-        }
-
-        self.services.authentication.register(user: user, password: password) { [weak self] result in
-            guard let sSelf = self else { return }
-            switch result {
-            case .success:
-                sSelf.output?.onboard(module: sSelf, didLogin: user, inside: sSelf.router?.main)
-            case .failure(let error):
-                sSelf.presenters.error.present(error)
+        if var user = self.createUser() {
+            user.suppliers = [supplier]
+            guard let password = self.password, password.isEmpty == false else {
+                self.presenters.error.present(OnboardError.passwordIsEmpty)
+                return
+            }
+            self.services.authentication.register(user: user, password: password) { [weak self] result in
+                guard let sSelf = self else { return }
+                switch result {
+                case .success:
+                    sSelf.output?.onboard(module: sSelf, didLogin: user, inside: sSelf.router?.main)
+                case .failure(let error):
+                    sSelf.presenters.error.present(error)
+                }
+            }
+        } else {
+            self.services.authentication.add(supplier: supplier) { [weak self] result in
+                guard let sSelf = self else { return }
+                switch result {
+                case .success:
+                    sSelf.output?.onboard(module: sSelf, didAddSupplier: supplier, inside: sSelf.router?.main)
+                case .failure(let error):
+                    sSelf.presenters.error.present(error)
+                }
             }
         }
-        
     }
 }
