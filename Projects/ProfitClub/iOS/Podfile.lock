@@ -6,9 +6,9 @@ PODS:
   - Main (0.0.1):
     - FittedSheets
   - Nantes (0.1.1)
-  - Parse (1.18.0):
-    - Parse/Core (= 1.18.0)
-  - Parse/Core (1.18.0):
+  - Parse (1.19.0):
+    - Parse/Core (= 1.19.0)
+  - Parse/Core (1.19.0):
     - Bolts/Tasks (= 1.9.1)
   - PCAuthentication (0.0.1):
     - Parse
@@ -71,7 +71,7 @@ SPEC CHECKSUMS:
   FittedSheets: ec30a41b7f054891992ada0441ebe7801958f123
   Main: 5f3663f52dc9f73e8caed2af67aa325dfd64111d
   Nantes: e11fbe0b6214de8c09cc8b763dbf61f70fbbf885
-  Parse: 79bdda34fdb7eb2a707a43a951c8aae236cb3e34
+  Parse: 0fb5c7cc7ee5900f2434e24607d0496155b8d04f
   PCAuthentication: 08d4d8b660b8f39573b8192607dd431ebdb7254f
   PCOrganizationService: d3e3f936840999a102c4bfdecfdeccd327ccf9d3
   PCUserService: 0fda50172a03145b21c939d6bbdbf12526c7e37b

@@ -62,7 +62,7 @@ final class PCAuthenticationParse: PCAuthentication {
             acl.hasPublicWriteAccess = false
             acl.setReadAccess(true, forRoleWithName: PCRole.administrator.rawValue)
             acl.setWriteAccess(true, forRoleWithName: PCRole.administrator.rawValue)
-            acl.setWriteAccess(true, for: currentUser)
+            acl.setWriteAccess(false, for: currentUser)
             acl.setReadAccess(true, for: currentUser)
             parseSupplier.acl = acl
         }
@@ -93,7 +93,7 @@ final class PCAuthenticationParse: PCAuthentication {
             acl.hasPublicWriteAccess = false
             acl.setReadAccess(true, forRoleWithName: PCRole.administrator.rawValue)
             acl.setWriteAccess(true, forRoleWithName: PCRole.administrator.rawValue)
-            acl.setWriteAccess(true, for: currentUser)
+            acl.setWriteAccess(false, for: currentUser)
             acl.setReadAccess(true, for: currentUser)
             parseMember.acl = acl
         }
@@ -129,7 +129,7 @@ final class PCAuthenticationParse: PCAuthentication {
             acl.hasPublicWriteAccess = false
             acl.setReadAccess(true, forRoleWithName: PCRole.administrator.rawValue)
             acl.setWriteAccess(true, forRoleWithName: PCRole.administrator.rawValue)
-            acl.setWriteAccess(true, for: currentUser)
+            acl.setWriteAccess(false, for: currentUser)
             acl.setReadAccess(true, for: currentUser)
             parseOrganization.acl = acl
         }
