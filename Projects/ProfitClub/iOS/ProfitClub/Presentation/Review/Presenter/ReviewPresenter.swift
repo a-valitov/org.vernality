@@ -16,6 +16,7 @@
 
 import Foundation
 import Main
+import ProfitClubModel
 
 final class ReviewPresenter: ReviewModule {
     var router: ReviewRouter?
@@ -69,5 +70,19 @@ extension ReviewPresenter: ReviewViewOutput {
 
     func review(view: ReviewViewInput, userConfirmToLogout sender: Any) {
         self.output?.review(module: self, userWantsToLogoutInside: self.router?.main)
+    }
+
+    func review(view: ReviewViewInput, userTappedOn supplier: PCSupplier) {
+
+    }
+
+    func review(view: ReviewViewInput, userTappedOn organization: PCOrganization) {
+        if organization.status == .approved {
+            self.output?.review(module: self, userWantsToEnter: organization, inside: self.router?.main)
+        }
+    }
+
+    func review(view: ReviewViewInput, userTappedOn member: PCMember) {
+
     }
 }

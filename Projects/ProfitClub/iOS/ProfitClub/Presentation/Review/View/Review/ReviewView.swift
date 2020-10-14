@@ -31,4 +31,8 @@ protocol ReviewViewOutput {
     func review(view: ReviewViewInput, userWantsToLogout sender: Any)
     func review(view: ReviewViewInput, userWantsToAdd sender: Any)
     func review(view: ReviewViewInput, userConfirmToLogout sender: Any)
+    func review(view: ReviewViewInput, userTappedOn supplier: PCSupplier)
+    func review(view: ReviewViewInput, userTappedOn organization: PCOrganization)
+    func review(view: ReviewViewInput, userTappedOn member: PCMember)
+    
 }

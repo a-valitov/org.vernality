@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Hjl-gC-Ajt">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Акции-->
+        <scene sceneID="SZ9-YK-AYf">
+            <objects>
+                <viewController id="Hjl-gC-Ajt" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="h7T-S2-UeM">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="uxb-Hy-3Pb">
+                                <rect key="frame" x="0.0" y="44" width="414" height="32"/>
+                                <segments>
+                                    <segment title="Текущие"/>
+                                    <segment title="Прошедшие"/>
+                                </segments>
+                            </segmentedControl>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kh7-8d-kGn">
+                                <rect key="frame" x="0.0" y="75" width="414" height="821"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="fdx-Dt-g2p" kind="embed" id="zct-Dv-PK3"/>
+                                </connections>
+                            </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L8q-sl-mpy">
+                                <rect key="frame" x="0.0" y="75" width="414" height="821"/>
+                                <connections>
+                                    <segue destination="nxV-3n-Xk0" kind="embed" id="oNJ-rr-lKn"/>
+                                </connections>
+                            </containerView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="IVW-Ms-veO"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="uxb-Hy-3Pb" firstAttribute="top" secondItem="IVW-Ms-veO" secondAttribute="top" id="5Yg-KI-5GS"/>
+                            <constraint firstItem="uxb-Hy-3Pb" firstAttribute="leading" secondItem="IVW-Ms-veO" secondAttribute="leading" id="6gq-Qu-BIy"/>
+                            <constraint firstItem="L8q-sl-mpy" firstAttribute="trailing" secondItem="IVW-Ms-veO" secondAttribute="trailing" id="8L1-y8-AUM"/>
+                            <constraint firstItem="uxb-Hy-3Pb" firstAttribute="leading" secondItem="IVW-Ms-veO" secondAttribute="leading" id="9jo-I5-Yxj"/>
+                            <constraint firstItem="IVW-Ms-veO" firstAttribute="trailing" secondItem="uxb-Hy-3Pb" secondAttribute="trailing" id="MZF-qM-FV0"/>
+                            <constraint firstAttribute="bottom" secondItem="L8q-sl-mpy" secondAttribute="bottom" id="PGx-f9-yOq"/>
+                            <constraint firstItem="uxb-Hy-3Pb" firstAttribute="top" secondItem="IVW-Ms-veO" secondAttribute="top" id="QON-yy-Oq0"/>
+                            <constraint firstItem="uxb-Hy-3Pb" firstAttribute="top" secondItem="IVW-Ms-veO" secondAttribute="top" id="RA9-UI-c6q"/>
+                            <constraint firstItem="L8q-sl-mpy" firstAttribute="leading" secondItem="IVW-Ms-veO" secondAttribute="leading" id="TeI-sc-OMM"/>
+                            <constraint firstItem="IVW-Ms-veO" firstAttribute="trailing" secondItem="uxb-Hy-3Pb" secondAttribute="trailing" id="ctN-bT-F6v"/>
+                            <constraint firstItem="IVW-Ms-veO" firstAttribute="trailing" secondItem="uxb-Hy-3Pb" secondAttribute="trailing" id="hOA-oU-ZTa"/>
+                            <constraint firstItem="uxb-Hy-3Pb" firstAttribute="leading" secondItem="IVW-Ms-veO" secondAttribute="leading" id="p1L-96-4b3"/>
+                            <constraint firstItem="L8q-sl-mpy" firstAttribute="top" secondItem="uxb-Hy-3Pb" secondAttribute="bottom" id="vYf-A9-vDp"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Акции" id="z5b-5v-rqR"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rlG-kp-8uz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="224.63768115942031" y="85.714285714285708"/>
+        </scene>
+        <!--CurrentActionsViewBeta-->
+        <scene sceneID="Xx1-QI-wXb">
+            <objects>
+                <viewControllerPlaceholder storyboardName="CurrentActionsViewBeta" id="nxV-3n-Xk0" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ePE-Lo-AAC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="815" y="69"/>
+        </scene>
+        <!--PastActionsViewBeta-->
+        <scene sceneID="nC1-fG-dFa">
+            <objects>
+                <viewControllerPlaceholder storyboardName="PastActionsViewBeta" id="fdx-Dt-g2p" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="22H-gO-Y92" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="801" y="103"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

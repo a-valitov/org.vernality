@@ -1,5 +1,5 @@
 //  Copyright (C) 2020 Startup Studio Vernality
-//  Created by Rinat Enikeev on 8/30/20
+//  Created by Rinat Enikeev on 10/14/20
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -14,16 +14,8 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import Foundation
-import Main
-import ProfitClubModel
+import UIKit
 
-protocol ReviewModule: class {
-    func start(in main: MainModule?)
-}
-
-protocol ReviewModuleOutput: class {
-    func review(module: ReviewModule, userWantsToLogoutInside main: MainModule?)
-    func review(module: ReviewModule, userWantsToAddRoleInside main: MainModule?)
-    func review(module: ReviewModule, userWantsToEnter organization: PCOrganization, inside main: MainModule?)
+final class ActionsContainerViewBeta: UIViewController {
+    
 }

@@ -82,6 +82,25 @@ final class ReviewViewBeta: UITableViewController {
 }
 
 extension ReviewViewBeta {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        switch indexPath.section {
+        case 0:
+            let member = self.members[indexPath.row]
+            self.output?.review(view: self, userTappedOn: member)
+        case 1:
+            let organization = self.organizations[indexPath.row]
+            self.output?.review(view: self, userTappedOn: organization)
+        case 2:
+            let supplier = self.suppliers[indexPath.row]
+            self.output?.review(view: self, userTappedOn: supplier)
+        default:
+            break
+        }
+    }
+}
+
+extension ReviewViewBeta {
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:

@@ -115,5 +115,14 @@ extension AppPresenter: ReviewModuleOutput {
         let onboard = self.factory.onboard(output: self)
         onboard.onboard(in: main)
     }
+
+    func review(module: ReviewModule, userWantsToEnter organization: PCOrganization, inside main: MainModule?) {
+        assert(organization.status == .approved)
+        let organization = self.factory.organization(output: self)
+        organization.open(in: main)
+    }
 }
 
+extension AppPresenter: OrganizationModuleOutput {
+
+}

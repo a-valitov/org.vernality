@@ -42,6 +42,23 @@
 		0E506C4624FCA6E300ABA211 /* OnboardSignIn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E506C4524FCA6E300ABA211 /* OnboardSignIn.swift */; };
 		0E506C4924FCA78100ABA211 /* OnboardSignInViewBeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E506C4824FCA78100ABA211 /* OnboardSignInViewBeta.swift */; };
 		0E506C4B24FCA78C00ABA211 /* OnboardSignInViewBeta.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E506C4A24FCA78C00ABA211 /* OnboardSignInViewBeta.storyboard */; };
+		0E56172725372A25005DF4F3 /* OrganizationTabBarViewBeta.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E56172625372A25005DF4F3 /* OrganizationTabBarViewBeta.storyboard */; };
+		0E56172E25372AF1005DF4F3 /* ActionsContainerViewBeta.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E56172D25372AF1005DF4F3 /* ActionsContainerViewBeta.storyboard */; };
+		0E56173625372B60005DF4F3 /* CurrentActionsViewBeta.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E56173525372B60005DF4F3 /* CurrentActionsViewBeta.storyboard */; };
+		0E56173925372B88005DF4F3 /* CurrentActionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E56173825372B88005DF4F3 /* CurrentActionsView.swift */; };
+		0E56173C25372BC5005DF4F3 /* CurrentActionsViewBeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E56173B25372BC5005DF4F3 /* CurrentActionsViewBeta.swift */; };
+		0E56174025372BF3005DF4F3 /* ActionsContainerViewBeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E56173F25372BF3005DF4F3 /* ActionsContainerViewBeta.swift */; };
+		0E56174525372BFD005DF4F3 /* ActionsContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E56174425372BFD005DF4F3 /* ActionsContainerView.swift */; };
+		0E56174C25372D95005DF4F3 /* PastActionsViewBeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E56174B25372D95005DF4F3 /* PastActionsViewBeta.swift */; };
+		0E56175025372D9D005DF4F3 /* PastActionsViewBeta.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E56174F25372D9D005DF4F3 /* PastActionsViewBeta.storyboard */; };
+		0E56175325372DC1005DF4F3 /* PastActionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E56175225372DC1005DF4F3 /* PastActionsView.swift */; };
+		0E561757253731CD005DF4F3 /* OrganizationFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E561756253731CD005DF4F3 /* OrganizationFactory.swift */; };
+		0E56175A253731ED005DF4F3 /* OrganizationModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E561759253731ED005DF4F3 /* OrganizationModule.swift */; };
+		0E56175D2537321C005DF4F3 /* OrganizationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E56175C2537321C005DF4F3 /* OrganizationPresenter.swift */; };
+		0E5617602537324E005DF4F3 /* OrganizationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E56175F2537324E005DF4F3 /* OrganizationRouter.swift */; };
+		0E5617632537327C005DF4F3 /* OrganizationDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5617622537327C005DF4F3 /* OrganizationDependencies.swift */; };
+		0E56176725373305005DF4F3 /* OrganizationTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E56176625373305005DF4F3 /* OrganizationTabBarView.swift */; };
+		0E56176B25373349005DF4F3 /* OrganizationTabBarViewBeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E56176A25373349005DF4F3 /* OrganizationTabBarViewBeta.swift */; };
 		0E772A8D2504D39000D677E6 /* PlayfairDisplay-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0E772A8C2504D39000D677E6 /* PlayfairDisplay-Bold.ttf */; };
 		0E90496E24F390070061A605 /* AppPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E90496D24F390070061A605 /* AppPresenter.swift */; };
 		0E90497124F390270061A605 /* AppFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E90497024F390270061A605 /* AppFactory.swift */; };
@@ -98,6 +115,23 @@
 		0E506C4524FCA6E300ABA211 /* OnboardSignIn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardSignIn.swift; sourceTree = "<group>"; };
 		0E506C4824FCA78100ABA211 /* OnboardSignInViewBeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardSignInViewBeta.swift; sourceTree = "<group>"; };
 		0E506C4A24FCA78C00ABA211 /* OnboardSignInViewBeta.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OnboardSignInViewBeta.storyboard; sourceTree = "<group>"; };
+		0E56172625372A25005DF4F3 /* OrganizationTabBarViewBeta.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OrganizationTabBarViewBeta.storyboard; sourceTree = "<group>"; };
+		0E56172D25372AF1005DF4F3 /* ActionsContainerViewBeta.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ActionsContainerViewBeta.storyboard; sourceTree = "<group>"; };
+		0E56173525372B60005DF4F3 /* CurrentActionsViewBeta.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CurrentActionsViewBeta.storyboard; sourceTree = "<group>"; };
+		0E56173825372B88005DF4F3 /* CurrentActionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentActionsView.swift; sourceTree = "<group>"; };
+		0E56173B25372BC5005DF4F3 /* CurrentActionsViewBeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentActionsViewBeta.swift; sourceTree = "<group>"; };
+		0E56173F25372BF3005DF4F3 /* ActionsContainerViewBeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsContainerViewBeta.swift; sourceTree = "<group>"; };
+		0E56174425372BFD005DF4F3 /* ActionsContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsContainerView.swift; sourceTree = "<group>"; };
+		0E56174B25372D95005DF4F3 /* PastActionsViewBeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastActionsViewBeta.swift; sourceTree = "<group>"; };
+		0E56174F25372D9D005DF4F3 /* PastActionsViewBeta.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PastActionsViewBeta.storyboard; sourceTree = "<group>"; };
+		0E56175225372DC1005DF4F3 /* PastActionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastActionsView.swift; sourceTree = "<group>"; };
+		0E561756253731CD005DF4F3 /* OrganizationFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationFactory.swift; sourceTree = "<group>"; };
+		0E561759253731ED005DF4F3 /* OrganizationModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationModule.swift; sourceTree = "<group>"; };
+		0E56175C2537321C005DF4F3 /* OrganizationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationPresenter.swift; sourceTree = "<group>"; };
+		0E56175F2537324E005DF4F3 /* OrganizationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationRouter.swift; sourceTree = "<group>"; };
+		0E5617622537327C005DF4F3 /* OrganizationDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationDependencies.swift; sourceTree = "<group>"; };
+		0E56176625373305005DF4F3 /* OrganizationTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationTabBarView.swift; sourceTree = "<group>"; };
+		0E56176A25373349005DF4F3 /* OrganizationTabBarViewBeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationTabBarViewBeta.swift; sourceTree = "<group>"; };
 		0E772A8C2504D39000D677E6 /* PlayfairDisplay-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlayfairDisplay-Bold.ttf"; sourceTree = "<group>"; };
 		0E772A8E2505174D00D677E6 /* ProfitClub.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ProfitClub.entitlements; sourceTree = "<group>"; };
 		0E90496D24F390070061A605 /* AppPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPresenter.swift; sourceTree = "<group>"; };
@@ -337,6 +371,157 @@
 			path = Beta;
 			sourceTree = "<group>";
 		};
+		0E56171F253729AC005DF4F3 /* Organization */ = {
+			isa = PBXGroup;
+			children = (
+				0E561720253729BA005DF4F3 /* Factory */,
+				0E561721253729BF005DF4F3 /* Presenter */,
+				0E561722253729C5005DF4F3 /* Router */,
+				0E561723253729C9005DF4F3 /* View */,
+			);
+			path = Organization;
+			sourceTree = "<group>";
+		};
+		0E561720253729BA005DF4F3 /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				0E561756253731CD005DF4F3 /* OrganizationFactory.swift */,
+				0E5617622537327C005DF4F3 /* OrganizationDependencies.swift */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
+		0E561721253729BF005DF4F3 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				0E561759253731ED005DF4F3 /* OrganizationModule.swift */,
+				0E56175C2537321C005DF4F3 /* OrganizationPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		0E561722253729C5005DF4F3 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				0E56175F2537324E005DF4F3 /* OrganizationRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		0E561723253729C9005DF4F3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0E561724253729F1005DF4F3 /* OrganizationTabBar */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0E561724253729F1005DF4F3 /* OrganizationTabBar */ = {
+			isa = PBXGroup;
+			children = (
+				0E56176625373305005DF4F3 /* OrganizationTabBarView.swift */,
+				0E56172525372A13005DF4F3 /* Beta */,
+			);
+			path = OrganizationTabBar;
+			sourceTree = "<group>";
+		};
+		0E56172525372A13005DF4F3 /* Beta */ = {
+			isa = PBXGroup;
+			children = (
+				0E56176A25373349005DF4F3 /* OrganizationTabBarViewBeta.swift */,
+				0E56172625372A25005DF4F3 /* OrganizationTabBarViewBeta.storyboard */,
+			);
+			path = Beta;
+			sourceTree = "<group>";
+		};
+		0E56172925372AD0005DF4F3 /* Actions */ = {
+			isa = PBXGroup;
+			children = (
+				0E56172A25372AD6005DF4F3 /* View */,
+			);
+			path = Actions;
+			sourceTree = "<group>";
+		};
+		0E56172A25372AD6005DF4F3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0E56173225372B42005DF4F3 /* PastActions */,
+				0E56173125372B2D005DF4F3 /* CurrentActions */,
+				0E56172B25372AD9005DF4F3 /* ActionsContainer */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0E56172B25372AD9005DF4F3 /* ActionsContainer */ = {
+			isa = PBXGroup;
+			children = (
+				0E56174425372BFD005DF4F3 /* ActionsContainerView.swift */,
+				0E56172C25372AE7005DF4F3 /* Beta */,
+			);
+			path = ActionsContainer;
+			sourceTree = "<group>";
+		};
+		0E56172C25372AE7005DF4F3 /* Beta */ = {
+			isa = PBXGroup;
+			children = (
+				0E56173F25372BF3005DF4F3 /* ActionsContainerViewBeta.swift */,
+				0E56172D25372AF1005DF4F3 /* ActionsContainerViewBeta.storyboard */,
+			);
+			path = Beta;
+			sourceTree = "<group>";
+		};
+		0E56173125372B2D005DF4F3 /* CurrentActions */ = {
+			isa = PBXGroup;
+			children = (
+				0E56173325372B47005DF4F3 /* View */,
+			);
+			path = CurrentActions;
+			sourceTree = "<group>";
+		};
+		0E56173225372B42005DF4F3 /* PastActions */ = {
+			isa = PBXGroup;
+			children = (
+				0E56174925372D78005DF4F3 /* View */,
+			);
+			path = PastActions;
+			sourceTree = "<group>";
+		};
+		0E56173325372B47005DF4F3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0E56173825372B88005DF4F3 /* CurrentActionsView.swift */,
+				0E56173425372B4F005DF4F3 /* Beta */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0E56173425372B4F005DF4F3 /* Beta */ = {
+			isa = PBXGroup;
+			children = (
+				0E56173B25372BC5005DF4F3 /* CurrentActionsViewBeta.swift */,
+				0E56173525372B60005DF4F3 /* CurrentActionsViewBeta.storyboard */,
+			);
+			path = Beta;
+			sourceTree = "<group>";
+		};
+		0E56174925372D78005DF4F3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0E56175225372DC1005DF4F3 /* PastActionsView.swift */,
+				0E56174A25372D7E005DF4F3 /* Beta */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0E56174A25372D7E005DF4F3 /* Beta */ = {
+			isa = PBXGroup;
+			children = (
+				0E56174B25372D95005DF4F3 /* PastActionsViewBeta.swift */,
+				0E56174F25372D9D005DF4F3 /* PastActionsViewBeta.storyboard */,
+			);
+			path = Beta;
+			sourceTree = "<group>";
+		};
 		0E90494C24F2B9A00061A605 /* Plists */ = {
 			isa = PBXGroup;
 			children = (
@@ -356,7 +541,9 @@
 		0E90498424F60C740061A605 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				0E56172925372AD0005DF4F3 /* Actions */,
 				0E90498B24F613DF0061A605 /* Onboard */,
+				0E56171F253729AC005DF4F3 /* Organization */,
 				0E506C1824FC0D7300ABA211 /* Review */,
 			);
 			path = Presentation;
@@ -596,6 +783,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E506C4124FC9F6600ABA211 /* Montserrat-Regular.ttf in Resources */,
+				0E56173625372B60005DF4F3 /* CurrentActionsViewBeta.storyboard in Resources */,
 				0E506C3C24FC9CDE00ABA211 /* OnboardWelcomeViewBeta.storyboard in Resources */,
 				0E506C4324FC9FCB00ABA211 /* PlayfairDisplay-VariableFont_wght.ttf in Resources */,
 				0E506C2624FC10B700ABA211 /* ReviewViewBeta.storyboard in Resources */,
@@ -605,6 +793,9 @@
 				0E506BFE24FBC39B00ABA211 /* OnboardOrganizationViewBeta.storyboard in Resources */,
 				0E506C4B24FCA78C00ABA211 /* OnboardSignInViewBeta.storyboard in Resources */,
 				0E506BE724FBB19400ABA211 /* OnboardMemberViewBeta.storyboard in Resources */,
+				0E56172E25372AF1005DF4F3 /* ActionsContainerViewBeta.storyboard in Resources */,
+				0E56172725372A25005DF4F3 /* OrganizationTabBarViewBeta.storyboard in Resources */,
+				0E56175025372D9D005DF4F3 /* PastActionsViewBeta.storyboard in Resources */,
 				0E772A8D2504D39000D677E6 /* PlayfairDisplay-Bold.ttf in Resources */,
 				0E4BD1E4250CF8FE00F8D4C8 /* OnboardSupplierViewBeta.storyboard in Resources */,
 				0EA11ED124F2B89300133485 /* Assets.xcassets in Resources */,
@@ -659,9 +850,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0E56175D2537321C005DF4F3 /* OrganizationPresenter.swift in Sources */,
 				0E506C3124FC1AAB00ABA211 /* ReviewRouter.swift in Sources */,
+				0E56176B25373349005DF4F3 /* OrganizationTabBarViewBeta.swift in Sources */,
 				0E9049A224F62C870061A605 /* OnboardSupplierViewAlpha.swift in Sources */,
 				0E90499424F614390061A605 /* OnboardModule.swift in Sources */,
+				0E56174C25372D95005DF4F3 /* PastActionsViewBeta.swift in Sources */,
+				0E56174025372BF3005DF4F3 /* ActionsContainerViewBeta.swift in Sources */,
 				0E506C3924FC9CC400ABA211 /* OnboardWelcomeView.swift in Sources */,
 				0E90496E24F390070061A605 /* AppPresenter.swift in Sources */,
 				0E90497A24F39C650061A605 /* Secrets.swift in Sources */,
@@ -675,12 +870,14 @@
 				0E506BF124FBBF4600ABA211 /* SelectOrganizationView.swift in Sources */,
 				0E506BEC24FBB83700ABA211 /* SelectRoleViewBeta.swift in Sources */,
 				0E90499A24F624770061A605 /* OnboardError.swift in Sources */,
+				0E5617632537327C005DF4F3 /* OrganizationDependencies.swift in Sources */,
 				0E90497124F390270061A605 /* AppFactory.swift in Sources */,
 				0E506BF924FBC2FC00ABA211 /* OnboardOrganizationView.swift in Sources */,
 				0E90498724F60C980061A605 /* SelectRoleView.swift in Sources */,
 				0E90498A24F60D250061A605 /* SelectRoleViewAlpha.swift in Sources */,
 				0E506C2824FC131700ABA211 /* ReviewViewBetaOrganizationCell.swift in Sources */,
 				0E506BF424FBBFA400ABA211 /* SelectOrganizationViewBeta.swift in Sources */,
+				0E56175325372DC1005DF4F3 /* PastActionsView.swift in Sources */,
 				0E506C3E24FC9CE700ABA211 /* OnboardWelcomeViewBeta.swift in Sources */,
 				0E90499224F6142A0061A605 /* OnboardPresenter.swift in Sources */,
 				0E506C1E24FC0DE400ABA211 /* ReviewModule.swift in Sources */,
@@ -688,12 +885,19 @@
 				0E506C2A24FC180300ABA211 /* ReviewViewBetaSupplierCell.swift in Sources */,
 				0E90499624F615E80061A605 /* OnboardRouter.swift in Sources */,
 				0E39664324FCABAD0008266D /* OnboardSignUpView.swift in Sources */,
+				0E56175A253731ED005DF4F3 /* OrganizationModule.swift in Sources */,
+				0E56176725373305005DF4F3 /* OrganizationTabBarView.swift in Sources */,
+				0E561757253731CD005DF4F3 /* OrganizationFactory.swift in Sources */,
 				0E506C2424FC10AF00ABA211 /* ReviewViewBeta.swift in Sources */,
 				0E90499824F6160F0061A605 /* OnboardFactory.swift in Sources */,
 				0E506C2124FC108800ABA211 /* ReviewView.swift in Sources */,
 				0EA11EC824F2B88F00133485 /* AppDelegate.swift in Sources */,
 				0E506C3524FC1BA700ABA211 /* ReviewFactory.swift in Sources */,
+				0E56173C25372BC5005DF4F3 /* CurrentActionsViewBeta.swift in Sources */,
+				0E5617602537324E005DF4F3 /* OrganizationRouter.swift in Sources */,
+				0E56173925372B88005DF4F3 /* CurrentActionsView.swift in Sources */,
 				0E506BE424FBB16800ABA211 /* OnboardMemberView.swift in Sources */,
+				0E56174525372BFD005DF4F3 /* ActionsContainerView.swift in Sources */,
 				0E90499F24F62C6C0061A605 /* OnboardSupplierView.swift in Sources */,
 				0E506BFC24FBC37900ABA211 /* OnboardOrganizationViewBeta.swift in Sources */,
 				0E90499C24F62A6D0061A605 /* OnboardDependencies.swift in Sources */,
