@@ -544,6 +544,7 @@
 				0E56172925372AD0005DF4F3 /* Actions */,
 				0E90498B24F613DF0061A605 /* Onboard */,
 				0E56171F253729AC005DF4F3 /* Organization */,
+				FA56637A253F33FE00D19D4E /* Supplier */,
 				0E506C1824FC0D7300ABA211 /* Review */,
 			);
 			path = Presentation;
@@ -720,6 +721,45 @@
 				17770C4311DB6F99F7CDDD46 /* Pods-ProfitClub.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		FA56637A253F33FE00D19D4E /* Supplier */ = {
+			isa = PBXGroup;
+			children = (
+				FA56637B253F341300D19D4E /* Factory */,
+				FA56637C253F342100D19D4E /* Presenter */,
+				FA56637D253F342B00D19D4E /* Router */,
+				FA56637E253F343000D19D4E /* View */,
+			);
+			path = Supplier;
+			sourceTree = "<group>";
+		};
+		FA56637B253F341300D19D4E /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
+		FA56637C253F342100D19D4E /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		FA56637D253F342B00D19D4E /* Router */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		FA56637E253F343000D19D4E /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
