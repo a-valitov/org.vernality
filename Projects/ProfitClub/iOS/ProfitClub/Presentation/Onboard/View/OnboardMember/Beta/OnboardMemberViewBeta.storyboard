@@ -64,6 +64,9 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WK7-gx-c1A">
                                 <rect key="frame" x="45" y="329.5" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="24" id="bJ3-Q8-y6f"/>
+                                </constraints>
                                 <state key="normal" image="checkmark"/>
                                 <state key="selected" image="checkmark-selected"/>
                                 <connections>
@@ -118,7 +121,7 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wEq-0U-dr6">
-                                <rect key="frame" x="77" y="324.5" width="260" height="34.5"/>
+                                <rect key="frame" x="77" y="324.5" width="307" height="34.5"/>
                                 <string key="text">Я согласен с условиями 
 политики конфиденциальности</string>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
@@ -135,11 +138,11 @@
                             <constraint firstItem="nvj-w1-k6d" firstAttribute="top" secondItem="R6u-iQ-u41" secondAttribute="top" id="7yz-j6-jK9"/>
                             <constraint firstItem="U5K-n8-E0C" firstAttribute="leading" secondItem="45C-62-D4g" secondAttribute="leading" id="Oqf-AB-oKg"/>
                             <constraint firstItem="U5K-n8-E0C" firstAttribute="top" secondItem="R6u-iQ-u41" secondAttribute="top" id="PAB-gd-tC0"/>
+                            <constraint firstItem="wEq-0U-dr6" firstAttribute="trailing" secondItem="n4h-C2-124" secondAttribute="trailing" id="RZQ-W0-9q9"/>
                             <constraint firstItem="WK7-gx-c1A" firstAttribute="leading" secondItem="45C-62-D4g" secondAttribute="leading" constant="45" id="Rj3-du-T4C"/>
                             <constraint firstItem="Hyo-Of-5qh" firstAttribute="leading" secondItem="45C-62-D4g" secondAttribute="leading" constant="20" id="S7I-r4-I7u"/>
                             <constraint firstItem="n4h-C2-124" firstAttribute="top" secondItem="HxX-j0-IJg" secondAttribute="bottom" constant="21" id="Tcl-cr-OYt"/>
                             <constraint firstAttribute="bottom" secondItem="nvj-w1-k6d" secondAttribute="bottom" id="Zss-CX-x9L"/>
-                            <constraint firstItem="wEq-0U-dr6" firstAttribute="centerX" secondItem="n4h-C2-124" secondAttribute="centerX" id="a3V-Di-Y9N"/>
                             <constraint firstItem="wEq-0U-dr6" firstAttribute="leading" secondItem="WK7-gx-c1A" secondAttribute="trailing" constant="8" id="aRO-rP-2sP"/>
                             <constraint firstItem="qX8-CY-XtE" firstAttribute="top" secondItem="45C-62-D4g" secondAttribute="top" constant="30" id="dFx-Ta-2im"/>
                             <constraint firstItem="n4h-C2-124" firstAttribute="leading" secondItem="45C-62-D4g" secondAttribute="leading" constant="30" id="dnt-R6-mE4"/>
