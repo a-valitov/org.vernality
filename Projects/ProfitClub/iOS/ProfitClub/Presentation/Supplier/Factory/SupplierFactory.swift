@@ -1,5 +1,5 @@
 //  Copyright (C) 2020 Startup Studio Vernality
-//  Created by Rinat Enikeev on 8/30/20
+//  Created by Macbook on 20.10.2020
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -15,16 +15,25 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import Foundation
-import Main
-import ProfitClubModel
+import ErrorPresenter
+import ActivityPresenter
 
-protocol ReviewModule: class {
-    func start(in main: MainModule?)
-}
-
-protocol ReviewModuleOutput: class {
-    func review(module: ReviewModule, userWantsToLogoutInside main: MainModule?)
-    func review(module: ReviewModule, userWantsToAddRoleInside main: MainModule?)
-    func review(module: ReviewModule, userWantsToEnter organization: PCOrganization, inside main: MainModule?)
-    func review(module: ReviewModule, userWantsToEnter supplier: PCSupplier, inside main: MainModule?)
+final class SupplierFactory {
+    init(presenters: SupplierPresenters,
+         services: SupplierServices) {
+        self.presenters = presenters
+        self.services = services
+    }
+    
+    func make(output: SupplierModuleOutput?) -> SupplierModule {
+        let router = SupplierRouter()
+        let presenter = SupplierPresenter(presenters: self.presenters,
+                                              services: self.services)
+        presenter.output = output
+        presenter.router = router
+        return presenter
+    }
+    
+    private let services: SupplierServices
+    private let presenters: SupplierPresenters
 }

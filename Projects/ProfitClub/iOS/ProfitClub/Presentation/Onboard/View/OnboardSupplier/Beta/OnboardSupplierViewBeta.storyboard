@@ -64,6 +64,9 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SkV-uN-1HF">
                                 <rect key="frame" x="45" y="464" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="24" id="KFJ-Ea-8Ey"/>
+                                </constraints>
                                 <state key="normal" image="checkmark"/>
                                 <state key="selected" image="checkmark-selected"/>
                                 <connections>
@@ -148,7 +151,7 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o0T-4p-Lxi">
-                                <rect key="frame" x="77" y="459" width="260" height="34.5"/>
+                                <rect key="frame" x="77" y="459" width="307" height="34.5"/>
                                 <string key="text">Я согласен с условиями 
 политики конфиденциальности</string>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
@@ -158,6 +161,7 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="o0T-4p-Lxi" firstAttribute="trailing" secondItem="LOu-vY-gLX" secondAttribute="trailing" id="1bI-Z9-v5q"/>
                             <constraint firstItem="DJM-QL-EKF" firstAttribute="leading" secondItem="Vz1-qQ-E29" secondAttribute="leading" id="233-Eu-b0d"/>
                             <constraint firstItem="wu6-YI-djO" firstAttribute="top" secondItem="Vz1-qQ-E29" secondAttribute="top" constant="30" id="2AM-BD-xl2"/>
                             <constraint firstAttribute="bottom" secondItem="XtJ-Js-cch" secondAttribute="bottom" id="2Cg-wi-5LL"/>
@@ -169,7 +173,6 @@
                             <constraint firstItem="o0T-4p-Lxi" firstAttribute="leading" secondItem="SkV-uN-1HF" secondAttribute="trailing" constant="8" id="A40-zr-JdN"/>
                             <constraint firstItem="hMm-9D-LCi" firstAttribute="leading" secondItem="wu6-YI-djO" secondAttribute="leading" id="BS3-7u-7yN"/>
                             <constraint firstItem="DJM-QL-EKF" firstAttribute="trailing" secondItem="Vz1-qQ-E29" secondAttribute="trailing" id="EbA-rR-5OO"/>
-                            <constraint firstItem="o0T-4p-Lxi" firstAttribute="centerX" secondItem="LOu-vY-gLX" secondAttribute="centerX" id="IP5-8v-5YZ"/>
                             <constraint firstItem="Vz1-qQ-E29" firstAttribute="trailing" secondItem="JCH-i6-AhM" secondAttribute="trailing" constant="20" id="MDy-0w-XCS"/>
                             <constraint firstItem="XtJ-Js-cch" firstAttribute="leading" secondItem="Vz1-qQ-E29" secondAttribute="leading" id="Spn-Ps-IcP"/>
                             <constraint firstItem="DJM-QL-EKF" firstAttribute="top" secondItem="0wf-6c-kLQ" secondAttribute="top" id="Y1B-V2-NE8"/>

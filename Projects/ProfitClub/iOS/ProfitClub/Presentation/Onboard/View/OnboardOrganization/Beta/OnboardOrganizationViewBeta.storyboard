@@ -64,6 +64,9 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3EQ-vF-VFl">
                                 <rect key="frame" x="45" y="464" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="24" id="kds-DD-wYV"/>
+                                </constraints>
                                 <state key="normal" image="checkmark"/>
                                 <state key="selected" image="checkmark-selected"/>
                                 <connections>
@@ -148,7 +151,7 @@
                                 </subviews>
                             </stackView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Loo-g7-Ys8">
-                                <rect key="frame" x="77" y="459" width="260" height="34.5"/>
+                                <rect key="frame" x="77" y="459" width="307" height="34.5"/>
                                 <string key="text">Я согласен с условиями 
 политики конфиденциальности</string>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
@@ -169,7 +172,6 @@
                             <constraint firstItem="fC8-M5-4al" firstAttribute="trailing" secondItem="oFq-ik-XlP" secondAttribute="trailing" constant="20" id="Rk2-CT-v8b"/>
                             <constraint firstAttribute="bottom" secondItem="Exs-NN-gFv" secondAttribute="bottom" id="TgN-Hw-yKu"/>
                             <constraint firstItem="F0w-iB-FhS" firstAttribute="centerX" secondItem="AoU-Vp-WvL" secondAttribute="centerX" id="Zrh-9X-IPN"/>
-                            <constraint firstItem="Loo-g7-Ys8" firstAttribute="centerX" secondItem="AoU-Vp-WvL" secondAttribute="centerX" id="b1d-gf-Fi7"/>
                             <constraint firstItem="Exs-NN-gFv" firstAttribute="top" secondItem="TuK-xn-wNy" secondAttribute="top" id="bWi-kH-H95"/>
                             <constraint firstItem="AoU-Vp-WvL" firstAttribute="top" secondItem="F0w-iB-FhS" secondAttribute="bottom" constant="21" id="cOA-a9-Qyv"/>
                             <constraint firstItem="gv5-tn-Nt7" firstAttribute="top" secondItem="TuK-xn-wNy" secondAttribute="top" id="gKy-lJ-X6D"/>
@@ -178,6 +180,7 @@
                             <constraint firstItem="gv5-tn-Nt7" firstAttribute="trailing" secondItem="fC8-M5-4al" secondAttribute="trailing" id="kQS-bY-Wj4"/>
                             <constraint firstItem="Loo-g7-Ys8" firstAttribute="centerY" secondItem="3EQ-vF-VFl" secondAttribute="centerY" id="laD-p9-2ei"/>
                             <constraint firstAttribute="bottom" secondItem="gv5-tn-Nt7" secondAttribute="bottom" id="leE-Nr-Ahh"/>
+                            <constraint firstItem="Loo-g7-Ys8" firstAttribute="trailing" secondItem="AoU-Vp-WvL" secondAttribute="trailing" id="nL8-f6-tWx"/>
                             <constraint firstItem="fC8-M5-4al" firstAttribute="bottom" secondItem="oFq-ik-XlP" secondAttribute="bottom" constant="20" id="nvb-mZ-oeB"/>
                             <constraint firstItem="3FE-hx-adv" firstAttribute="leading" secondItem="fC8-M5-4al" secondAttribute="leading" constant="35" id="ta1-pW-2LJ"/>
                             <constraint firstItem="F0w-iB-FhS" firstAttribute="leading" secondItem="3FE-hx-adv" secondAttribute="leading" id="xPc-V0-YLv"/>
