@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="JXQ-aI-JQr">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Supplier View Beta-->
+        <scene sceneID="aOf-4a-cis">
+            <objects>
+                <viewController id="JXQ-aI-JQr" customClass="SupplierViewBeta" customModule="Profit_Club" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="eAf-Va-59y">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IRr-cI-kr0">
+                                <rect key="frame" x="20" y="790" width="374" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="Yqv-Gp-SmK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
+                                <state key="normal" title="Создать акцию">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="layer.borderColor">
+                                        <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CFr-Be-5ls">
+                                <rect key="frame" x="20" y="723" width="374" height="52"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="HwO-l3-ApZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
+                                <state key="normal" title="Создать комерческое предложение"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="LTO-3R-drG" firstAttribute="trailing" secondItem="CFr-Be-5ls" secondAttribute="trailing" constant="20" id="6m5-U9-hQj"/>
+                            <constraint firstItem="LTO-3R-drG" firstAttribute="trailing" secondItem="IRr-cI-kr0" secondAttribute="trailing" constant="20" id="Htf-aX-ZGs"/>
+                            <constraint firstItem="IRr-cI-kr0" firstAttribute="leading" secondItem="LTO-3R-drG" secondAttribute="leading" constant="20" id="Ke5-EL-rDN"/>
+                            <constraint firstItem="IRr-cI-kr0" firstAttribute="top" secondItem="CFr-Be-5ls" secondAttribute="bottom" constant="15" id="Soe-zE-bR0"/>
+                            <constraint firstItem="LTO-3R-drG" firstAttribute="bottom" secondItem="IRr-cI-kr0" secondAttribute="bottom" constant="20" id="gzF-cx-bdh"/>
+                            <constraint firstItem="CFr-Be-5ls" firstAttribute="leading" secondItem="LTO-3R-drG" secondAttribute="leading" constant="20" id="p4m-5o-LDG"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="LTO-3R-drG"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tuz-FS-XXx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-378" y="-194"/>
+        </scene>
+    </scenes>
+</document>

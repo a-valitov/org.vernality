@@ -73,7 +73,9 @@ extension ReviewPresenter: ReviewViewOutput {
     }
 
     func review(view: ReviewViewInput, userTappedOn supplier: PCSupplier) {
-
+        if supplier.status == .approved {
+            self.output?.review(module: self, userWantsToEnter: supplier, inside: self.router?.main)
+        }
     }
 
     func review(view: ReviewViewInput, userTappedOn organization: PCOrganization) {

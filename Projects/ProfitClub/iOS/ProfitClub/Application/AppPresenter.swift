@@ -98,6 +98,7 @@ extension AppPresenter: OnboardModuleOutput {
 }
 
 extension AppPresenter: ReviewModuleOutput {
+    
     func review(module: ReviewModule, userWantsToLogoutInside main: MainModule?) {
         self.userService.logout { [weak self] result in
             switch result {
@@ -121,8 +122,19 @@ extension AppPresenter: ReviewModuleOutput {
         let organization = self.factory.organization(output: self)
         organization.open(in: main)
     }
+    
+    func review(module: ReviewModule, userWantsToEnter supplier: PCSupplier, inside main: MainModule?) {
+        assert(supplier.status == .approved)
+        let supplier = self.factory.supplier(output: self)
+        supplier.open(in: main)
+    }
+
 }
 
 extension AppPresenter: OrganizationModuleOutput {
 
+}
+
+extension AppPresenter: SupplierModuleOutput {
+    
 }

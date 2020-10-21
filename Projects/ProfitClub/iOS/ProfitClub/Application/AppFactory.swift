@@ -28,19 +28,19 @@ final class AppFactory {
     lazy var authentication: PCAuthentication = {
         return PCAuthenticationParseFactory().make()
     }()
-
+    
     lazy var userService: PCUserService = {
         return PCUserServiceParse(authentication: self.authentication)
     }()
-
+    
     func activityPresenter() -> ActivityPresenter {
         return ActivityPresenterCircleFactory().make()
     }
-
+    
     func errorPresenter() -> ErrorPresenter {
         return ErrorPresenterAlertFactory().make()
     }
-
+    
     func organizationService() -> PCOrganizationService {
         return PCOrganizationServiceParse()
     }
@@ -52,19 +52,24 @@ extension AppFactory {
         let main = self.mainFactory.make(output: output)
         return main.view
     }
-
+    
     func onboard(output: OnboardModuleOutput?) -> OnboardModule {
         let module = self.onboardFactory.make(output: output)
         return module
     }
-
+    
     func review(output: ReviewModuleOutput?) -> ReviewModule {
         let module = self.reviewFactory.make(output: output)
         return module
     }
-
+    
     func organization(output: OrganizationModuleOutput?) -> OrganizationModule {
         let module = self.organizationFactory.make(output: output)
+        return module
+    }
+    
+    func supplier(output: SupplierModuleOutput?) -> SupplierModule {
+        let module = self.supplierFactory.make(output: output)
         return module
     }
 }
@@ -74,22 +79,27 @@ private extension AppFactory {
     var mainFactory: MainModuleFactory {
         return MainModuleFactoryMVC()
     }
-
+    
     var onboardFactory: OnboardFactory {
         return OnboardFactory(presenters: OnboardPresenters(error: self.errorPresenter(),
                                                             activity: self.activityPresenter()),
                               services: OnboardServices(authentication: self.authentication,
                                                         organization: self.organizationService()))
     }
-
+    
     var reviewFactory: ReviewFactory {
         return ReviewFactory(presenters: ReviewPresenters(error: self.errorPresenter(),
                                                           activity: self.activityPresenter()),
                              services: ReviewServices(userService: self.userService))
     }
-
+    
     var organizationFactory: OrganizationFactory {
         return OrganizationFactory(presenters: OrganizationPresenters(error: self.errorPresenter(), activity: self.activityPresenter()),
                                    services: OrganizationServices(authentication: self.authentication, organization: self.organizationService()))
+    }
+    
+    var supplierFactory: SupplierFactory {
+        return SupplierFactory(presenters: SupplierPresenters(error: self.errorPresenter(), activity: self.activityPresenter()),
+                               services: SupplierServices(authentication: self.authentication, organization: self.organizationService()))
     }
 }
