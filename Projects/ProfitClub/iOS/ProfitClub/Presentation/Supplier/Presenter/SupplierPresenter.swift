@@ -38,6 +38,11 @@ final class SupplierPresenter: SupplierModule {
     // dependencies
     private let presenters: SupplierPresenters
     private let services: SupplierServices
+
+    // persisted
+    private var actionMessage: String?
+    private var actionDescriptionOf: String?
+    private var actionLink: String?
 }
 
 extension SupplierPresenter: SupplierViewOutput {
@@ -48,7 +53,46 @@ extension SupplierPresenter: SupplierViewOutput {
 
 extension SupplierPresenter: SupplierActionsOutput {
     func supplierActionsDidFinish(view: SupplierActionsInput) {
+        guard let message = view.message, !message.isEmpty else {
+            self.presenters.error.present(SupplierError.actionMessageIsEmpty)
+            return
+        }
+        guard let descriptionOf = view.descriptionOf, !descriptionOf.isEmpty else {
+            self.presenters.error.present(SupplierError.actionDescriptionOfIsEmpty)
+            return
+        }
+        guard let link = view.link, !link.isEmpty else {
+            self.presenters.error.present(SupplierError.actionLinkIsEmpty)
+            return
+        }
+        self.actionMessage = message
+        self.actionDescriptionOf = descriptionOf
+        self.actionLink = link
+        //        self.registerAction
+    }
 
+}
+
+extension SupplierPresenter {
+    private func createAction() -> PCActionStruct? {
+        guard let message = self.actionMessage, !message.isEmpty else {
+            self.presenters.error.present(SupplierError.actionMessageIsEmpty)
+            return nil
+        }
+        guard let descriptionOf = self.actionDescriptionOf, !descriptionOf.isEmpty else {
+            self.presenters.error.present(SupplierError.actionDescriptionOfIsEmpty)
+            return nil
+        }
+        guard let link = self.actionLink, !link.isEmpty else {
+            self.presenters.error.present(SupplierError.actionLinkIsEmpty)
+            return nil
+        }
+        var action = PCActionStruct()
+        action.message = message
+        action.descriptionOf = descriptionOf
+        action.link = link
+        action.status = .onReview
+        return action
     }
 
 }
