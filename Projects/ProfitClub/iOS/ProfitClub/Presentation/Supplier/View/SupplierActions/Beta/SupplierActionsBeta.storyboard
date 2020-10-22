@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tP1-8L-cTG">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Regular.ttf">
+            <string>Montserrat-Regular</string>
+        </array>
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Supplier Actions Beta-->
+        <scene sceneID="r4X-xe-MnN">
+            <objects>
+                <viewController id="tP1-8L-cTG" customClass="SupplierActionsBeta" customModule="Profit_Club" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="uuf-PJ-vMw">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BTx-UJ-H6s">
+                                <rect key="frame" x="20" y="790" width="374" height="52"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="0Mi-4s-NoF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
+                                <state key="normal" title="Создать акцию"/>
+                                <connections>
+                                    <action selector="createActionTouchUpInside:" destination="tP1-8L-cTG" eventType="touchUpInside" id="ad8-w1-IIz"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="QNK-ZC-cf7">
+                                <rect key="frame" x="20" y="64" width="374" height="431"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zeB-ZN-vgO">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="178"/>
+                                        <color key="backgroundColor" red="0.53333333329999999" green="0.53333333329999999" blue="0.53333333329999999" alpha="0.1544038955479452" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="178" id="mod-ba-egb"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </imageView>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Введите сообщение" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="N6V-a2-E0A">
+                                        <rect key="frame" x="0.0" y="194" width="374" height="48"/>
+                                        <color key="backgroundColor" red="0.53333333329999999" green="0.53333333329999999" blue="0.53333333329999999" alpha="0.14607234589041093" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="re9-fa-F6k"/>
+                                        </constraints>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Введите описание акции" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6cJ-1E-3cN">
+                                        <rect key="frame" x="0.0" y="258" width="374" height="109"/>
+                                        <color key="backgroundColor" red="0.53333333329999999" green="0.53333333329999999" blue="0.53333333329999999" alpha="0.14861408390410955" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="109" id="4GB-Mu-2aI"/>
+                                        </constraints>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Вставьте ссылку на акцию" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5Mn-un-esz">
+                                        <rect key="frame" x="0.0" y="383" width="374" height="48"/>
+                                        <color key="backgroundColor" red="0.53333333329999999" green="0.53333333329999999" blue="0.53333333329999999" alpha="0.15433968321917804" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="3DF-dT-deW"/>
+                                        </constraints>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                <integer key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </textField>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q5E-SW-iyL">
+                                <rect key="frame" x="199.5" y="144" width="15" height="18"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <state key="normal" image="add"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.69999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Добавьте фото" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FhJ-11-wQe">
+                                <rect key="frame" x="154" y="175" width="106.5" height="17.5"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="q5E-SW-iyL" firstAttribute="centerY" secondItem="zeB-ZN-vgO" secondAttribute="centerY" id="0n7-EO-DSM"/>
+                            <constraint firstItem="FhJ-11-wQe" firstAttribute="centerX" secondItem="zeB-ZN-vgO" secondAttribute="centerX" id="51x-eF-C2G"/>
+                            <constraint firstItem="ZMf-tz-yYD" firstAttribute="bottom" secondItem="BTx-UJ-H6s" secondAttribute="bottom" constant="20" id="6aU-ds-4GP"/>
+                            <constraint firstAttribute="trailing" secondItem="BTx-UJ-H6s" secondAttribute="trailing" constant="20" id="8xF-Pf-wdM"/>
+                            <constraint firstItem="QNK-ZC-cf7" firstAttribute="top" secondItem="ZMf-tz-yYD" secondAttribute="top" constant="20" id="FyF-td-fhe"/>
+                            <constraint firstItem="BTx-UJ-H6s" firstAttribute="leading" secondItem="ZMf-tz-yYD" secondAttribute="leading" constant="20" id="Z3o-ei-Kcu"/>
+                            <constraint firstItem="QNK-ZC-cf7" firstAttribute="leading" secondItem="ZMf-tz-yYD" secondAttribute="leading" constant="20" id="bSz-Rr-QbW"/>
+                            <constraint firstItem="FhJ-11-wQe" firstAttribute="top" secondItem="q5E-SW-iyL" secondAttribute="bottom" constant="13" id="g3m-7L-4YF"/>
+                            <constraint firstItem="q5E-SW-iyL" firstAttribute="centerX" secondItem="zeB-ZN-vgO" secondAttribute="centerX" id="v3v-ht-2zY"/>
+                            <constraint firstItem="ZMf-tz-yYD" firstAttribute="trailing" secondItem="QNK-ZC-cf7" secondAttribute="trailing" constant="20" id="y5t-aZ-D4R"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ZMf-tz-yYD"/>
+                    </view>
+                    <connections>
+                        <outlet property="descriptionTextField" destination="6cJ-1E-3cN" id="Dqo-lS-R0e"/>
+                        <outlet property="linkTextField" destination="5Mn-un-esz" id="BjP-vC-85M"/>
+                        <outlet property="messageTextField" destination="N6V-a2-E0A" id="tr6-QH-G2B"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L0C-jw-D25" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="60.869565217391312" y="95.758928571428569"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="add" width="15" height="15"/>
+    </resources>
+</document>
