@@ -22,6 +22,6 @@ import Parse
 final class PCActionServiceParse: PCActionService {
 
     func addAction(message: String, descriptionOf: String, link: String, result: @escaping (Result<PCAction, Error>) -> Void) {
-        
+
     }
 }
