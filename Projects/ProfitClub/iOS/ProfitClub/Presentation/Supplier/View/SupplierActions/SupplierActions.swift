@@ -1,5 +1,5 @@
 //  Copyright (C) 2020 Startup Studio Vernality
-//  Created by Macbook on 20.10.2020
+//  Created by Macbook on 21.10.2020
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -16,10 +16,12 @@
 
 import UIKit
 
-protocol SupplierViewInput: UIViewController {
+protocol SupplierActionsInput: UIViewController {
+    var message: String? { get }
+    var descriptionOf: String? { get }
+    var link: String? { get }
 }
 
-protocol SupplierViewOutput {
-    func supplierView(view: SupplierViewInput, supplierWantsToCreateAction sender: Any)
+protocol SupplierActionsOutput {
+    func supplierActionsDidFinish(view: SupplierActionsInput)
 }
-

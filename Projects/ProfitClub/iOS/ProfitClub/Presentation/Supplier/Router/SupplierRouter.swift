@@ -30,5 +30,14 @@ final class SupplierRouter {
         return supplierView
     }
 
+    @discardableResult
+    func openSupplierActions(output: SupplierActionsOutput?) -> SupplierActionsInput {
+        let storyboard = UIStoryboard(name: "SupplierActionsBeta", bundle: nil)
+        let supplierActions = storyboard.instantiateInitialViewController() as! SupplierActionsBeta
+        supplierActions.output = output
+        self.main?.push(supplierActions, animated: true)
+        return supplierActions
+    }
+
 }
 

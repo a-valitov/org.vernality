@@ -35,6 +35,9 @@
                                         <color key="value" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="createActionTouchUpInside:" destination="JXQ-aI-JQr" eventType="touchUpInside" id="Ydr-dQ-f8J"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CFr-Be-5ls">
                                 <rect key="frame" x="20" y="723" width="374" height="52"/>
@@ -57,6 +60,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="LTO-3R-drG"/>
                     </view>
+                    <connections>
+                        <outlet property="createAction" destination="IRr-cI-kr0" id="x8e-GR-zzg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tuz-FS-XXx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

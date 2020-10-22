@@ -16,10 +16,22 @@
 
 import UIKit
 
-final class SupplierViewBeta: UIViewController {
-    var output: SupplierViewOutput?
-}
-
 extension SupplierViewBeta: SupplierViewInput {
     
+}
+
+final class SupplierViewBeta: UIViewController {
+    var output: SupplierViewOutput?
+
+    @IBOutlet weak var createAction: UIButton!
+    
+    @IBAction func createActionTouchUpInside(_ sender: Any) {
+        self.output?.supplierView(view: self, supplierWantsToCreateAction: sender)
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        createAction.layer.borderWidth = 1
+        createAction.layer.borderColor = UIColor.black.cgColor
+    }
 }

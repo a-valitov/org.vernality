@@ -41,5 +41,14 @@ final class SupplierPresenter: SupplierModule {
 }
 
 extension SupplierPresenter: SupplierViewOutput {
-    
+    func supplierView(view: SupplierViewInput, supplierWantsToCreateAction sender: Any) {
+        self.router?.openSupplierActions(output: self)
+    }
+}
+
+extension SupplierPresenter: SupplierActionsOutput {
+    func supplierActionsDidFinish(view: SupplierActionsInput) {
+
+    }
+
 }
