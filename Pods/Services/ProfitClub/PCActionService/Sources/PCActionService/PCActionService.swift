@@ -4,5 +4,5 @@ import Foundation
 import ProfitClubModel
 
 public protocol PCActionService {
-    func addAction(message: String, descriptionOf: String, link: String, result: @escaping (Result<PCAction, Error>) -> Void)
+    func add(action: PCAction, result: @escaping (Result<PCAction, Error>) -> Void)
 }

@@ -19,9 +19,32 @@ import ProfitClubModel
 import ProfitClubParse
 import Parse
 
-final class PCActionServiceParse: PCActionService {
+public final class PCActionServiceParse: PCActionService {
+    public init() {}
 
-    func addAction(message: String, descriptionOf: String, link: String, result: @escaping (Result<PCAction, Error>) -> Void) {
-
+    public func add(action: PCAction, result: @escaping (Result<PCAction, Error>) -> Void) {
+        let parseAction = action.parse
+        let currentUser = PFUser.current()
+        if let currentUser = currentUser {
+            let acl = PFACL(user: currentUser)
+            acl.hasPublicReadAccess = false
+            acl.hasPublicWriteAccess = false
+            acl.setReadAccess(true, forRoleWithName: PCRole.administrator.rawValue)
+            acl.setWriteAccess(true, forRoleWithName: PCRole.administrator.rawValue)
+            acl.setWriteAccess(false, for: currentUser)
+            acl.setReadAccess(true, for: currentUser)
+            parseAction.acl = acl
+            parseAction.relation(forKey: "user").add(currentUser)
+        }
+        if let supplier = action.supplier?.parse {
+            parseAction.relation(forKey: "supplier").add(supplier)
+        }
+        parseAction.saveInBackground { (succeeded, error) in
+            if let error = error {
+                result(.failure(error))
+            } else {
+                result(.success(action))
+            }
+        }
     }
 }

@@ -24,8 +24,10 @@ final class SupplierPresenter: SupplierModule {
     weak var output: SupplierModuleOutput?
     var router: SupplierRouter?
 
-    init(presenters: SupplierPresenters,
+    init(supplier: PCSupplier,
+         presenters: SupplierPresenters,
          services: SupplierServices) {
+        self.supplier = supplier
         self.presenters = presenters
         self.services = services
     }
@@ -35,14 +37,12 @@ final class SupplierPresenter: SupplierModule {
         self.router?.openSupplierView(output: self)
     }
 
+    // state
+    private let supplier: PCSupplier
+
     // dependencies
     private let presenters: SupplierPresenters
     private let services: SupplierServices
-
-    // persisted
-    private var actionMessage: String?
-    private var actionDescriptionOf: String?
-    private var actionLink: String?
 }
 
 extension SupplierPresenter: SupplierViewOutput {
@@ -65,34 +65,21 @@ extension SupplierPresenter: SupplierActionsOutput {
             self.presenters.error.present(SupplierError.actionLinkIsEmpty)
             return
         }
-        self.actionMessage = message
-        self.actionDescriptionOf = descriptionOf
-        self.actionLink = link
-        //        self.registerAction
-    }
 
-}
-
-extension SupplierPresenter {
-    private func createAction() -> PCActionStruct? {
-        guard let message = self.actionMessage, !message.isEmpty else {
-            self.presenters.error.present(SupplierError.actionMessageIsEmpty)
-            return nil
-        }
-        guard let descriptionOf = self.actionDescriptionOf, !descriptionOf.isEmpty else {
-            self.presenters.error.present(SupplierError.actionDescriptionOfIsEmpty)
-            return nil
-        }
-        guard let link = self.actionLink, !link.isEmpty else {
-            self.presenters.error.present(SupplierError.actionLinkIsEmpty)
-            return nil
-        }
         var action = PCActionStruct()
         action.message = message
         action.descriptionOf = descriptionOf
         action.link = link
         action.status = .onReview
-        return action
-    }
+        action.supplier = self.supplier
 
+        self.services.action.add(action: action) { [weak self] result in
+            switch result {
+            case .success:
+                self?.router?.pop()
+            case .failure(let error):
+                self?.presenters.error.present(error)
+            }
+        }
+    }
 }

@@ -23,5 +23,4 @@ protocol SupplierModule: class {
 }
 
 protocol SupplierModuleOutput: class {
-    func supplier(module: SupplierModule, didAddAction action: PCAction, inside main: MainModule?)
 }

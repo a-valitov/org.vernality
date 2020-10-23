@@ -18,6 +18,8 @@ import Foundation
 
 public protocol PCAction {
     var id: String? { get }
+    var supplier: PCSupplier? { get }
+    var createdAt: Date? { get }
     var message: String? { get }
     var descriptionOf: String? { get }
     var link: String? { get }
@@ -28,7 +30,6 @@ public enum PCActionStatus: String {
     case onReview
     case approved
     case rejected
-    case excluded
 }
 
 public extension PCAction {
@@ -39,6 +40,8 @@ public extension PCAction {
 
 public struct PCActionStruct: PCAction {
     public var id: String?
+    public var supplier: PCSupplier?
+    public var createdAt: Date?
     public var message: String?
     public var descriptionOf: String?
     public var link: String?
@@ -50,6 +53,14 @@ public struct PCActionStruct: PCAction {
 public struct AnyPCAction: PCAction, Equatable, Hashable {
     public var id: String? {
         return self.object.id
+    }
+
+    public var supplier: PCSupplier? {
+        return self.object.supplier
+    }
+
+    public var createdAt: Date? {
+        return self.object.createdAt
     }
 
     public var message: String? {

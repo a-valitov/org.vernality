@@ -62,6 +62,8 @@ public final class PCActionParse: PFObject, PFSubclassing, PCAction {
         }
     }
 
+    public var supplier: PCSupplier?
+
     @NSManaged public var message: String?
     @NSManaged public var descriptionOf: String?
     @NSManaged public var link: String?

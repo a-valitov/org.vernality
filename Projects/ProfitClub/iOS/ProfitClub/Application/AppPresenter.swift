@@ -125,21 +125,13 @@ extension AppPresenter: ReviewModuleOutput {
     
     func review(module: ReviewModule, userWantsToEnter supplier: PCSupplier, inside main: MainModule?) {
         assert(supplier.status == .approved)
-        let supplier = self.factory.supplier(output: self)
-        supplier.open(in: main)
+        let supplierModule = self.factory.supplier(supplier: supplier, output: self)
+        supplierModule.open(in: main)
     }
-
 }
 
 extension AppPresenter: OrganizationModuleOutput {
-
 }
 
 extension AppPresenter: SupplierModuleOutput {
-    func supplier(module: SupplierModule, didAddAction action: PCAction, inside main: MainModule?) {
-        assert(action.status == .approved)
-        let review = self.factory.review(output: self)
-        review.start(in: main)
-    }
-
 }
