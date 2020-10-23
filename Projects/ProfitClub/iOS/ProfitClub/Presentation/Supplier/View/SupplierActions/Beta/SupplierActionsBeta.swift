@@ -43,17 +43,59 @@ final class SupplierActionsBeta: UIViewController {
             return nil
         }
     }
+    var image: UIImageView? {
+        if self.isViewLoaded {
+            return self.actionImageView
+        } else {
+            return nil
+        }
+    }
     
     var activeTextField : UITextField? = nil
 
+    @IBOutlet weak var actionImageView: UIImageView!
     @IBOutlet weak var messageTextField: UITextField!
     @IBOutlet weak var descriptionTextField: UITextField!
     @IBOutlet weak var linkTextField: UITextField!
+
+    @IBOutlet weak var addActionImageView: UIButton!
 
     @IBAction func createActionTouchUpInside(_ sender: Any) {
         self.output?.supplierActionsDidFinish(view: self)
     }
 
+    @IBAction func addActionImageViewTouchUpInside(_ sender: UIButton) {
+
+        let cameraIcon = #imageLiteral(resourceName: "camera")
+        let photoIcon = #imageLiteral(resourceName: "photo")
+
+        let actionSheet = UIAlertController(title: nil,
+                                            message: nil,
+                                            preferredStyle: .actionSheet)
+
+        let camera = UIAlertAction(title: "Camera", style: .default) { _ in
+            self.chooseImagePicker(source: .camera)
+        }
+
+        camera.setValue(cameraIcon, forKey: "image")
+        camera.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+
+        let photo = UIAlertAction(title: "Photo", style: .default) { _ in
+            self.chooseImagePicker(source: .photoLibrary)
+        }
+
+        photo.setValue(photoIcon, forKey: "image")
+        photo.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+
+        actionSheet.addAction(camera)
+        actionSheet.addAction(photo)
+        actionSheet.addAction(cancel)
+
+        present(actionSheet, animated: true)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.messageTextField.layer.sublayerTransform = CATransform3DMakeTranslation(15, 0, 0)
@@ -75,6 +117,15 @@ final class SupplierActionsBeta: UIViewController {
 
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if actionImageView.image != nil {
+            addActionImageView.setTitle("Заменить фото", for: .normal)
+            addActionImageView.setTitleColor(.white, for: .normal)
+            addActionImageView.imageView?.isHidden = true
+        }
     }
 
     @objc func keyboardWillShow(notification: NSNotification) {
@@ -114,5 +165,28 @@ extension SupplierActionsBeta: UITextFieldDelegate {
 
     func textFieldDidEndEditing(_ textField: UITextField) {
         self.activeTextField = nil
+    }
+}
+
+extension SupplierActionsBeta: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+
+    func chooseImagePicker(source: UIImagePickerController.SourceType) {
+        if UIImagePickerController.isSourceTypeAvailable(source) {
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.allowsEditing = true
+            imagePicker.sourceType = source
+            imagePicker.modalPresentationStyle = .fullScreen
+            present(imagePicker, animated: true)
+        }
+    }
+
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+
+        actionImageView.image = info[.editedImage] as? UIImage
+        actionImageView.contentMode = .scaleAspectFill
+        actionImageView.clipsToBounds = true
+
+        dismiss(animated: true)
     }
 }
