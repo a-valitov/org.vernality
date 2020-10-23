@@ -20,4 +20,5 @@ enum SupplierError: Error {
     case actionMessageIsEmpty
     case actionDescriptionOfIsEmpty
     case actionLinkIsEmpty
+    case actionImageIsNil
 }

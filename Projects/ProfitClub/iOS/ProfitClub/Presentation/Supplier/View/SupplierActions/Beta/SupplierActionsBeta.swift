@@ -43,16 +43,15 @@ final class SupplierActionsBeta: UIViewController {
             return nil
         }
     }
-    var image: UIImageView? {
+    var image: Data? {
         if self.isViewLoaded {
-            return self.actionImageView
+            return self.actionImageView.image?.pngData()
         } else {
             return nil
         }
     }
     
     var activeTextField : UITextField? = nil
-
     @IBOutlet weak var actionImageView: UIImageView!
     @IBOutlet weak var messageTextField: UITextField!
     @IBOutlet weak var descriptionTextField: UITextField!

@@ -23,6 +23,7 @@ public protocol PCAction {
     var message: String? { get }
     var descriptionOf: String? { get }
     var link: String? { get }
+    var image: Data? { get }
     var status: PCActionStatus? { get }
 }
 
@@ -45,6 +46,7 @@ public struct PCActionStruct: PCAction {
     public var message: String?
     public var descriptionOf: String?
     public var link: String?
+    public var image: Data?
     public var status: PCActionStatus?
 
     public init() {}
@@ -73,6 +75,10 @@ public struct AnyPCAction: PCAction, Equatable, Hashable {
 
     public var link: String? {
         return self.object.link
+    }
+
+    public var image: Data? {
+        return self.object.image
     }
 
     public var status: PCActionStatus? {
