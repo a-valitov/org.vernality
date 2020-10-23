@@ -23,6 +23,8 @@ import ErrorPresenter
 import PCAuthentication
 import PCOrganizationService
 import PCUserService
+import PCActionService
+import ProfitClubModel
 
 final class AppFactory {
     lazy var authentication: PCAuthentication = {
@@ -43,6 +45,10 @@ final class AppFactory {
     
     func organizationService() -> PCOrganizationService {
         return PCOrganizationServiceParse()
+    }
+
+    func actionService() -> PCActionService {
+        return PCActionServiceParse()
     }
 }
 
@@ -68,8 +74,8 @@ extension AppFactory {
         return module
     }
     
-    func supplier(output: SupplierModuleOutput?) -> SupplierModule {
-        let module = self.supplierFactory.make(output: output)
+    func supplier(supplier: PCSupplier, output: SupplierModuleOutput?) -> SupplierModule {
+        let module = self.supplierFactory.make(supplier: supplier, output: output)
         return module
     }
 }
@@ -100,6 +106,6 @@ private extension AppFactory {
     
     var supplierFactory: SupplierFactory {
         return SupplierFactory(presenters: SupplierPresenters(error: self.errorPresenter(), activity: self.activityPresenter()),
-                               services: SupplierServices(authentication: self.authentication, organization: self.organizationService()))
+                               services: SupplierServices(authentication: self.authentication, action: self.actionService()))
     }
 }

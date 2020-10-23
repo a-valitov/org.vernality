@@ -52,6 +52,10 @@ extension MainModuleMVC: MainModule {
         self.navigationController?.pushViewController(viewController, animated: animated)
     }
 
+    func pop() {
+        self.navigationController?.popViewController(animated: true)
+    }
+
     func raise(_ viewController: UIViewController, animated: Bool) {
         SheetTransition.transitionDuration = 0.5
         let options = SheetOptions(

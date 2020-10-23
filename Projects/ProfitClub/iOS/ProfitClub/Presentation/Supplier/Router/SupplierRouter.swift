@@ -39,5 +39,10 @@ final class SupplierRouter {
         return supplierActions
     }
 
+    @discardableResult
+    func pop() {
+        self.main?.pop()
+    }
+
 }
 

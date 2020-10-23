@@ -1,5 +1,5 @@
 //  Copyright (C) 2020 Startup Studio Vernality
-//  Created by Macbook on 20.10.2020
+//  Created by Macbook on 22.10.2020
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -15,17 +15,9 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import Foundation
-import PCAuthentication
-import PCActionService
-import ErrorPresenter
-import ActivityPresenter
 
-struct SupplierPresenters {
-    let error: ErrorPresenter
-    let activity: ActivityPresenter
-}
-
-struct SupplierServices {
-    let authentication: PCAuthentication
-    let action: PCActionService
+enum SupplierError: Error {
+    case actionMessageIsEmpty
+    case actionDescriptionOfIsEmpty
+    case actionLinkIsEmpty
 }

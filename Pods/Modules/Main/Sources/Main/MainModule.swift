@@ -21,6 +21,7 @@ public protocol MainModule: UIViewController {
     var output: MainModuleOutput? { get set }
 
     func push(_ viewController: UIViewController, animated: Bool)
+    func pop()
     func raise(_ viewController: UIViewController, animated: Bool)
     func unraise(animated: Bool, completion: (() -> Void)?)
     func unwindToRoot()

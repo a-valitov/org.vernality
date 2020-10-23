@@ -24,8 +24,10 @@ final class SupplierPresenter: SupplierModule {
     weak var output: SupplierModuleOutput?
     var router: SupplierRouter?
 
-    init(presenters: SupplierPresenters,
+    init(supplier: PCSupplier,
+         presenters: SupplierPresenters,
          services: SupplierServices) {
+        self.supplier = supplier
         self.presenters = presenters
         self.services = services
     }
@@ -34,6 +36,9 @@ final class SupplierPresenter: SupplierModule {
         self.router?.main = main
         self.router?.openSupplierView(output: self)
     }
+
+    // state
+    private let supplier: PCSupplier
 
     // dependencies
     private let presenters: SupplierPresenters
@@ -48,7 +53,33 @@ extension SupplierPresenter: SupplierViewOutput {
 
 extension SupplierPresenter: SupplierActionsOutput {
     func supplierActionsDidFinish(view: SupplierActionsInput) {
+        guard let message = view.message, !message.isEmpty else {
+            self.presenters.error.present(SupplierError.actionMessageIsEmpty)
+            return
+        }
+        guard let descriptionOf = view.descriptionOf, !descriptionOf.isEmpty else {
+            self.presenters.error.present(SupplierError.actionDescriptionOfIsEmpty)
+            return
+        }
+        guard let link = view.link, !link.isEmpty else {
+            self.presenters.error.present(SupplierError.actionLinkIsEmpty)
+            return
+        }
 
+        var action = PCActionStruct()
+        action.message = message
+        action.descriptionOf = descriptionOf
+        action.link = link
+        action.status = .onReview
+        action.supplier = self.supplier
+
+        self.services.action.add(action: action) { [weak self] result in
+            switch result {
+            case .success:
+                self?.router?.pop()
+            case .failure(let error):
+                self?.presenters.error.present(error)
+            }
+        }
     }
-
 }

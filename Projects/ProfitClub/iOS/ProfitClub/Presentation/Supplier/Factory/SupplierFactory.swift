@@ -17,6 +17,7 @@
 import Foundation
 import ErrorPresenter
 import ActivityPresenter
+import ProfitClubModel
 
 final class SupplierFactory {
     init(presenters: SupplierPresenters,
@@ -25,10 +26,11 @@ final class SupplierFactory {
         self.services = services
     }
     
-    func make(output: SupplierModuleOutput?) -> SupplierModule {
+    func make(supplier: PCSupplier, output: SupplierModuleOutput?) -> SupplierModule {
         let router = SupplierRouter()
-        let presenter = SupplierPresenter(presenters: self.presenters,
-                                              services: self.services)
+        let presenter = SupplierPresenter(supplier: supplier,
+                                          presenters: self.presenters,
+                                          services: self.services)
         presenter.output = output
         presenter.router = router
         return presenter

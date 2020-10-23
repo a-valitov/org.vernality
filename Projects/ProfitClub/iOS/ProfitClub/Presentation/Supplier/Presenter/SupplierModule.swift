@@ -16,6 +16,7 @@
 
 import Foundation
 import Main
+import ProfitClubModel
 
 protocol SupplierModule: class {
     func open(in main: MainModule?)
