@@ -25,7 +25,6 @@ public extension PFObject {
         result.message = self["message"] as? String
         result.descriptionOf = self["descriptionOf"] as? String
         result.link = self["link"] as? String
-        result.image = self["image"] as? Data
         if let statusString = self["statusString"] as? String {
             result.status = PCActionStatus(rawValue: statusString)
         }
@@ -70,7 +69,8 @@ public final class PCActionParse: PFObject, PFSubclassing, PCAction {
     @NSManaged public var descriptionOf: String?
     @NSManaged public var link: String?
     @NSManaged public var statusString: String?
-    @NSManaged public var image: Data?
+    @NSManaged public var imageFile: PFFileObject?
+    public var image: UIImage?
 
     public static func parseClassName() -> String {
         return "Action"

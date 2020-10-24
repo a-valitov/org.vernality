@@ -43,9 +43,9 @@ final class SupplierActionsBeta: UIViewController {
             return nil
         }
     }
-    var image: Data? {
+    var image: UIImage? {
         if self.isViewLoaded {
-            return self.actionImageView.image?.pngData()
+            return self.actionImageView.image
         } else {
             return nil
         }
