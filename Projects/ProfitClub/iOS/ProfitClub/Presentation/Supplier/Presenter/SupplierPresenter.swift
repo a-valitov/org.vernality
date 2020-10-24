@@ -78,7 +78,9 @@ extension SupplierPresenter: SupplierActionsOutput {
         action.status = .onReview
         action.supplier = self.supplier
 
+        self.presenters.activity.increment()
         self.services.action.add(action: action) { [weak self] result in
+            self?.presenters.activity.decrement()
             switch result {
             case .success:
                 self?.router?.pop()
