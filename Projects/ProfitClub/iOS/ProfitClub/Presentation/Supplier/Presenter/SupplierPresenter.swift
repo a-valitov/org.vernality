@@ -65,15 +65,22 @@ extension SupplierPresenter: SupplierActionsOutput {
             self.presenters.error.present(SupplierError.actionLinkIsEmpty)
             return
         }
+        guard let image = view.image else {
+            self.presenters.error.present(SupplierError.actionImageIsNil)
+            return
+        }
 
         var action = PCActionStruct()
         action.message = message
         action.descriptionOf = descriptionOf
         action.link = link
+        action.image = image
         action.status = .onReview
         action.supplier = self.supplier
 
+        self.presenters.activity.increment()
         self.services.action.add(action: action) { [weak self] result in
+            self?.presenters.activity.decrement()
             switch result {
             case .success:
                 self?.router?.pop()

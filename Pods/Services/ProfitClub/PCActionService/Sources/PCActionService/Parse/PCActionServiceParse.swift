@@ -39,6 +39,10 @@ public final class PCActionServiceParse: PCActionService {
         if let supplier = action.supplier?.parse {
             parseAction.relation(forKey: "supplier").add(supplier)
         }
+        if let image = action.image, let imageData = image.pngData() {
+            let imageFile = PFFileObject(name: "image.png", data: imageData)
+            parseAction.imageFile = imageFile
+        }
         parseAction.saveInBackground { (succeeded, error) in
             if let error = error {
                 result(.failure(error))

@@ -39,6 +39,7 @@ public extension PCAction {
         result.message = self.message
         result.descriptionOf = self.descriptionOf
         result.link = self.link
+        result.image = self.image
         result.status = self.status
         return result
     }
@@ -68,6 +69,8 @@ public final class PCActionParse: PFObject, PFSubclassing, PCAction {
     @NSManaged public var descriptionOf: String?
     @NSManaged public var link: String?
     @NSManaged public var statusString: String?
+    @NSManaged public var imageFile: PFFileObject?
+    public var image: UIImage?
 
     public static func parseClassName() -> String {
         return "Action"

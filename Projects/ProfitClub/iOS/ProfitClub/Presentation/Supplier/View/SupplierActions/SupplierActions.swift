@@ -20,6 +20,7 @@ protocol SupplierActionsInput: UIViewController {
     var message: String? { get }
     var descriptionOf: String? { get }
     var link: String? { get }
+    var image: UIImage? { get }
 }
 
 protocol SupplierActionsOutput {
