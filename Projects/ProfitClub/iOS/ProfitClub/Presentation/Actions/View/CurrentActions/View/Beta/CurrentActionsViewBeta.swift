@@ -15,9 +15,17 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import UIKit
+import ProfitClubModel
 
 final class CurrentActionsViewBeta: UITableViewController {
     var output: CurrentActionsViewOutput?
+    var actions = [AnyPCAction]() {
+        didSet {
+            if self.isViewLoaded {
+                self.tableView.reloadData()
+            }
+        }
+    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 2
@@ -30,8 +38,8 @@ final class CurrentActionsViewBeta: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "currentActionsCell", for: indexPath) as! CurrentActionsTableViewCell
 
-        
-        
+
+
         return cell
     }
 }

@@ -51,4 +51,17 @@ public final class PCActionServiceParse: PCActionService {
             }
         }
     }
+
+    public func fetchApproved(result: @escaping (Result<[AnyPCAction], Error>) -> Void) {
+        let query = PFQuery(className: "Action")
+        query.whereKey("statusString", equalTo: "approved")
+        query.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
+            if let error = error {
+                result(.failure(error))
+            } else if let objects = objects {
+                result(.success(objects.map({ $0.pcAction.any })))
+            }
+        }
+    }
+
 }
