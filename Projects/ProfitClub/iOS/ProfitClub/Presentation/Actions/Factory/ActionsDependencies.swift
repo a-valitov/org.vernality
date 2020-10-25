@@ -1,5 +1,5 @@
 //  Copyright (C) 2020 Startup Studio Vernality
-//  Created by Rinat Enikeev on 10/14/20
+//  Created by Rinat Enikeev on 25.10.2020
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -14,11 +14,17 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import UIKit
+import Foundation
+import PCAuthentication
+import PCActionService
+import ErrorPresenter
+import ActivityPresenter
 
-final class PastActionsViewBeta: UITableViewController {
-    var output: PastActionsViewOutput?
+struct ActionsPresenters {
+    let error: ErrorPresenter
+    let activity: ActivityPresenter
 }
 
-extension PastActionsViewBeta: PastActionsViewInput {
+struct ActionsServices {
+    let action: PCActionService
 }

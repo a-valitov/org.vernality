@@ -27,8 +27,18 @@ final class CurrentActionsViewBeta: UITableViewController {
         }
     }
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.output?.currentActionsDidLoad(view: self)
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let action = self.actions[indexPath.row]
+        self.output?.currentActions(view: self, didSelect: action)
+    }
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return self.actions.count
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -42,4 +52,7 @@ final class CurrentActionsViewBeta: UITableViewController {
 
         return cell
     }
+}
+
+extension CurrentActionsViewBeta: CurrentActionsViewInput {
 }
