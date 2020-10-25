@@ -34,4 +34,18 @@ final class ActionsRouter {
         }
         return actionsContainer
     }
+
+    func buildCurrentActions(output: CurrentActionsViewOutput?) -> UIViewController {
+        let storyboard = UIStoryboard(name: "CurrentActionsViewBeta", bundle: nil)
+        let controller = storyboard.instantiateInitialViewController() as! CurrentActionsViewBeta
+        controller.output = output
+        return controller
+    }
+
+    func buildPastActions(output: PastActionsViewOutput?) -> UIViewController {
+        let storyboard = UIStoryboard(name: "PastActionsViewBeta", bundle: nil)
+        let controller = storyboard.instantiateInitialViewController() as! PastActionsViewBeta
+        controller.output = output
+        return controller
+    }
 }

@@ -17,4 +17,8 @@
 import UIKit
 
 final class PastActionsViewBeta: UITableViewController {
+    var output: PastActionsViewOutput?
+}
+
+extension PastActionsViewBeta: PastActionsViewInput {
 }

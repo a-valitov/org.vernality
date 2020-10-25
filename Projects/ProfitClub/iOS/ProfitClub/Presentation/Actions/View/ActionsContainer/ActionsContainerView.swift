@@ -16,10 +16,18 @@
 
 import UIKit
 
-protocol ActionsContainerViewInput: UIViewController {
+enum ActionsContainerState {
+    case current
+    case past
+}
 
+protocol ActionsContainerViewInput: UIViewController {
+    var state: ActionsContainerState { get set }
+    var current: UIViewController? { get set }
+    var past: UIViewController? { get set }
 }
 
 protocol ActionsContainerViewOutput {
-    
+    func actionsContainerDidLoad(view: ActionsContainerViewInput)
+    func actionsContainer(view: ActionsContainerViewInput, didChangeState state: ActionsContainerState)
 }

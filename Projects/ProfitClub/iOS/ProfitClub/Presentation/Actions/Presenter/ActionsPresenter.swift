@@ -41,5 +41,18 @@ final class ActionsPresenter: ActionsModule {
 }
 
 extension ActionsPresenter: ActionsContainerViewOutput {
+    func actionsContainerDidLoad(view: ActionsContainerViewInput) {
+        view.current = router?.buildCurrentActions(output: self)
+        view.past = router?.buildPastActions(output: self)
+    }
 
+    func actionsContainer(view: ActionsContainerViewInput, didChangeState state: ActionsContainerState) {
+        view.state = state
+    }
+}
+
+extension ActionsPresenter: CurrentActionsViewOutput {
+}
+
+extension ActionsPresenter: PastActionsViewOutput {
 }
