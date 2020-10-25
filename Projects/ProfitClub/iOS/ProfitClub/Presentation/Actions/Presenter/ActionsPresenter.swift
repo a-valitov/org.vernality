@@ -1,5 +1,5 @@
 //  Copyright (C) 2020 Startup Studio Vernality
-//  Created by Rinat Enikeev on 10/14/20
+//  Created by Rinat Enikeev on 25.10.2020
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -15,28 +15,31 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import Foundation
+import Main
 import ErrorPresenter
 import ActivityPresenter
+import ProfitClubModel
 
-final class OrganizationFactory {
-    init(presenters: OrganizationPresenters,
-         services: OrganizationServices,
-         factories: OrganizationFactories) {
+final class ActionsPresenter: ActionsModule {
+    weak var output: ActionsModuleOutput?
+    var router: ActionsRouter?
+
+    init(presenters: ActionsPresenters,
+         services: ActionsServices) {
         self.presenters = presenters
         self.services = services
-        self.factories = factories
     }
 
-    func make(output: OrganizationModuleOutput?) -> OrganizationModule {
-        let router = OrganizationRouter(factories: self.factories)
-        let presenter = OrganizationPresenter(presenters: self.presenters,
-                                              services: self.services)
-        presenter.output = output
-        presenter.router = router
-        return presenter
+    func embed(in tabBarController: UITabBarController, main: MainModule?) {
+        self.router?.main = main
+        self.router?.embed(in: tabBarController, output: self)
     }
 
-    private let services: OrganizationServices
-    private let presenters: OrganizationPresenters
-    private let factories: OrganizationFactories
+    // dependencies
+    private let presenters: ActionsPresenters
+    private let services: ActionsServices
+}
+
+extension ActionsPresenter: ActionsContainerViewOutput {
+
 }

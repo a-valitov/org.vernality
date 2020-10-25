@@ -101,11 +101,17 @@ private extension AppFactory {
     
     var organizationFactory: OrganizationFactory {
         return OrganizationFactory(presenters: OrganizationPresenters(error: self.errorPresenter(), activity: self.activityPresenter()),
-                                   services: OrganizationServices(authentication: self.authentication, organization: self.organizationService()))
+                                   services: OrganizationServices(authentication: self.authentication, organization: self.organizationService()),
+                                   factories: OrganizationFactories(actions: self.actionsFactory))
     }
     
     var supplierFactory: SupplierFactory {
         return SupplierFactory(presenters: SupplierPresenters(error: self.errorPresenter(), activity: self.activityPresenter()),
                                services: SupplierServices(authentication: self.authentication, action: self.actionService()))
+    }
+
+    var actionsFactory: ActionsFactory {
+        return ActionsFactory(presenters: ActionsPresenters(error: self.errorPresenter(), activity: self.activityPresenter()),
+                              services: ActionsServices(action: self.actionService()))
     }
 }

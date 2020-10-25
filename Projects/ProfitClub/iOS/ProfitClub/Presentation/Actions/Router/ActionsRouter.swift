@@ -1,5 +1,5 @@
 //  Copyright (C) 2020 Startup Studio Vernality
-//  Created by Rinat Enikeev on 10/14/20
+//  Created by Rinat Enikeev on 25.10.2020
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -18,23 +18,20 @@ import Foundation
 import Main
 import ProfitClubModel
 
-final class OrganizationRouter {
+final class ActionsRouter {
     weak var main: MainModule?
 
-    init(factories: OrganizationFactories) {
-        self.factories = factories
-    }
-
     @discardableResult
-    func openOrganizationTabBar(output: OrganizationTabBarViewOutput & ActionsModuleOutput) -> OrganizationTabBarViewInput {
-        let storyboard = UIStoryboard(name: "OrganizationTabBarViewBeta", bundle: nil)
-        let organizationTabBar = storyboard.instantiateInitialViewController() as! OrganizationTabBarViewBeta
-        organizationTabBar.output = output
-        let actions = self.factories.actions.make(output: output)
-        actions.embed(in: organizationTabBar, main: self.main)
-        self.main?.push(organizationTabBar, animated: true)
-        return organizationTabBar
+    func embed(in tabBarController: UITabBarController, output: ActionsContainerViewOutput?) -> ActionsContainerViewInput {
+        let storyboard = UIStoryboard(name: "ActionsContainerViewBeta", bundle: nil)
+        let actionsContainer = storyboard.instantiateInitialViewController() as! ActionsContainerViewBeta
+        actionsContainer.output = output
+        if var viewControllers = tabBarController.viewControllers {
+            viewControllers.append(actionsContainer)
+            tabBarController.setViewControllers(viewControllers, animated: false)
+        } else {
+            tabBarController.setViewControllers([actionsContainer], animated: false)
+        }
+        return actionsContainer
     }
-
-    private let factories: OrganizationFactories
 }

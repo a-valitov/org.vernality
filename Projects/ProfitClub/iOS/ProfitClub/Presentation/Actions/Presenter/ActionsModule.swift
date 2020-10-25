@@ -1,5 +1,5 @@
 //  Copyright (C) 2020 Startup Studio Vernality
-//  Created by Rinat Enikeev on 10/14/20
+//  Created by Rinat Enikeev on 25.10.2020
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -14,11 +14,13 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import Foundation
+import Main
 import UIKit
 
-final class ActionsContainerViewBeta: UIViewController {
-    var output: ActionsContainerViewOutput?
+protocol ActionsModule: class {
+    func embed(in tabBarController: UITabBarController, main: MainModule?)
 }
 
-extension ActionsContainerViewBeta: ActionsContainerViewInput {
+protocol ActionsModuleOutput: class {
 }

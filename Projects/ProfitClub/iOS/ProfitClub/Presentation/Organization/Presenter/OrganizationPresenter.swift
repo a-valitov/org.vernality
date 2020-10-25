@@ -43,3 +43,7 @@ final class OrganizationPresenter: OrganizationModule {
 extension OrganizationPresenter: OrganizationTabBarViewOutput {
     
 }
+
+extension OrganizationPresenter: ActionsModuleOutput {
+
+}

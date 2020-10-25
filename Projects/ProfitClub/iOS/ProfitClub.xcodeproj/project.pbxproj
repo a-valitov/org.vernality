@@ -59,6 +59,11 @@
 		0E5617632537327C005DF4F3 /* OrganizationDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5617622537327C005DF4F3 /* OrganizationDependencies.swift */; };
 		0E56176725373305005DF4F3 /* OrganizationTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E56176625373305005DF4F3 /* OrganizationTabBarView.swift */; };
 		0E56176B25373349005DF4F3 /* OrganizationTabBarViewBeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E56176A25373349005DF4F3 /* OrganizationTabBarViewBeta.swift */; };
+		0E6FBA582545ABAF00A2B882 /* ActionsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6FBA572545ABAF00A2B882 /* ActionsRouter.swift */; };
+		0E6FBA5C2545ABEF00A2B882 /* ActionsModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6FBA5B2545ABEF00A2B882 /* ActionsModule.swift */; };
+		0E6FBA5F2545AC3900A2B882 /* ActionsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6FBA5E2545AC3900A2B882 /* ActionsPresenter.swift */; };
+		0E6FBA622545AC7C00A2B882 /* ActionsDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6FBA612545AC7C00A2B882 /* ActionsDependencies.swift */; };
+		0E6FBA652545AC9B00A2B882 /* ActionsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6FBA642545AC9B00A2B882 /* ActionsFactory.swift */; };
 		0E772A8D2504D39000D677E6 /* PlayfairDisplay-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0E772A8C2504D39000D677E6 /* PlayfairDisplay-Bold.ttf */; };
 		0E90496E24F390070061A605 /* AppPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E90496D24F390070061A605 /* AppPresenter.swift */; };
 		0E90497124F390270061A605 /* AppFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E90497024F390270061A605 /* AppFactory.swift */; };
@@ -147,6 +152,11 @@
 		0E5617622537327C005DF4F3 /* OrganizationDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationDependencies.swift; sourceTree = "<group>"; };
 		0E56176625373305005DF4F3 /* OrganizationTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationTabBarView.swift; sourceTree = "<group>"; };
 		0E56176A25373349005DF4F3 /* OrganizationTabBarViewBeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationTabBarViewBeta.swift; sourceTree = "<group>"; };
+		0E6FBA572545ABAF00A2B882 /* ActionsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsRouter.swift; sourceTree = "<group>"; };
+		0E6FBA5B2545ABEF00A2B882 /* ActionsModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsModule.swift; sourceTree = "<group>"; };
+		0E6FBA5E2545AC3900A2B882 /* ActionsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsPresenter.swift; sourceTree = "<group>"; };
+		0E6FBA612545AC7C00A2B882 /* ActionsDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsDependencies.swift; sourceTree = "<group>"; };
+		0E6FBA642545AC9B00A2B882 /* ActionsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsFactory.swift; sourceTree = "<group>"; };
 		0E772A8C2504D39000D677E6 /* PlayfairDisplay-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlayfairDisplay-Bold.ttf"; sourceTree = "<group>"; };
 		0E772A8E2505174D00D677E6 /* ProfitClub.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ProfitClub.entitlements; sourceTree = "<group>"; };
 		0E90496D24F390070061A605 /* AppPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPresenter.swift; sourceTree = "<group>"; };
@@ -469,6 +479,9 @@
 		0E56172925372AD0005DF4F3 /* Actions */ = {
 			isa = PBXGroup;
 			children = (
+				0E6FBA562545A9F100A2B882 /* Factory */,
+				0E6FBA542545A9E400A2B882 /* Presenter */,
+				0E6FBA552545A9EA00A2B882 /* Router */,
 				0E56172A25372AD6005DF4F3 /* View */,
 			);
 			path = Actions;
@@ -553,6 +566,32 @@
 				0E56174F25372D9D005DF4F3 /* PastActionsViewBeta.storyboard */,
 			);
 			path = Beta;
+			sourceTree = "<group>";
+		};
+		0E6FBA542545A9E400A2B882 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				0E6FBA5B2545ABEF00A2B882 /* ActionsModule.swift */,
+				0E6FBA5E2545AC3900A2B882 /* ActionsPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		0E6FBA552545A9EA00A2B882 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				0E6FBA572545ABAF00A2B882 /* ActionsRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		0E6FBA562545A9F100A2B882 /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				0E6FBA642545AC9B00A2B882 /* ActionsFactory.swift */,
+				0E6FBA612545AC7C00A2B882 /* ActionsDependencies.swift */,
+			);
+			path = Factory;
 			sourceTree = "<group>";
 		};
 		0E90494C24F2B9A00061A605 /* Plists */ = {
@@ -975,6 +1014,7 @@
 				FA393C1C254064E700C29F7D /* SupplierActions.swift in Sources */,
 				FA566382253F39A400D19D4E /* SupplierDependencies.swift in Sources */,
 				FABB6F0225455EA700B93FB8 /* CurrentActionsTableViewCell.swift in Sources */,
+				0E6FBA652545AC9B00A2B882 /* ActionsFactory.swift in Sources */,
 				0E56175D2537321C005DF4F3 /* OrganizationPresenter.swift in Sources */,
 				0E506C3124FC1AAB00ABA211 /* ReviewRouter.swift in Sources */,
 				0E56176B25373349005DF4F3 /* OrganizationTabBarViewBeta.swift in Sources */,
@@ -995,11 +1035,13 @@
 				0E506BF124FBBF4600ABA211 /* SelectOrganizationView.swift in Sources */,
 				0E506BEC24FBB83700ABA211 /* SelectRoleViewBeta.swift in Sources */,
 				0E90499A24F624770061A605 /* OnboardError.swift in Sources */,
+				0E6FBA582545ABAF00A2B882 /* ActionsRouter.swift in Sources */,
 				0E5617632537327C005DF4F3 /* OrganizationDependencies.swift in Sources */,
 				0E90497124F390270061A605 /* AppFactory.swift in Sources */,
 				FA393C1F2540650900C29F7D /* SupplierActionsBeta.swift in Sources */,
 				0E506BF924FBC2FC00ABA211 /* OnboardOrganizationView.swift in Sources */,
 				0E90498724F60C980061A605 /* SelectRoleView.swift in Sources */,
+				0E6FBA622545AC7C00A2B882 /* ActionsDependencies.swift in Sources */,
 				0E90498A24F60D250061A605 /* SelectRoleViewAlpha.swift in Sources */,
 				0E506C2824FC131700ABA211 /* ReviewViewBetaOrganizationCell.swift in Sources */,
 				0E506BF424FBBFA400ABA211 /* SelectOrganizationViewBeta.swift in Sources */,
@@ -1007,6 +1049,7 @@
 				0E506C3E24FC9CE700ABA211 /* OnboardWelcomeViewBeta.swift in Sources */,
 				0E90499224F6142A0061A605 /* OnboardPresenter.swift in Sources */,
 				0E506C1E24FC0DE400ABA211 /* ReviewModule.swift in Sources */,
+				0E6FBA5C2545ABEF00A2B882 /* ActionsModule.swift in Sources */,
 				0E506C4924FCA78100ABA211 /* OnboardSignInViewBeta.swift in Sources */,
 				0E506C2A24FC180300ABA211 /* ReviewViewBetaSupplierCell.swift in Sources */,
 				FA566384253F39C200D19D4E /* SupplierModule.swift in Sources */,
@@ -1025,6 +1068,7 @@
 				0E56173C25372BC5005DF4F3 /* CurrentActionsViewBeta.swift in Sources */,
 				0E5617602537324E005DF4F3 /* OrganizationRouter.swift in Sources */,
 				FA56638F253F3B2C00D19D4E /* SupplierViewBeta.swift in Sources */,
+				0E6FBA5F2545AC3900A2B882 /* ActionsPresenter.swift in Sources */,
 				0E56173925372B88005DF4F3 /* CurrentActionsView.swift in Sources */,
 				0E506BE424FBB16800ABA211 /* OnboardMemberView.swift in Sources */,
 				0E56174525372BFD005DF4F3 /* ActionsContainerView.swift in Sources */,
@@ -1171,7 +1215,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ProfitClub/ProfitClub.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 839DV86SJC;
+				DEVELOPMENT_TEAM = 5V5EUT3ZXJ;
 				INFOPLIST_FILE = ProfitClub/Resources/Plists/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1191,7 +1235,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = ProfitClub/ProfitClub.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 839DV86SJC;
+				DEVELOPMENT_TEAM = 5V5EUT3ZXJ;
 				INFOPLIST_FILE = ProfitClub/Resources/Plists/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

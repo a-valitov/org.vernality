@@ -1,5 +1,5 @@
 //  Copyright (C) 2020 Startup Studio Vernality
-//  Created by Rinat Enikeev on 10/14/20
+//  Created by Rinat Enikeev on 25.10.2020
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -18,25 +18,22 @@ import Foundation
 import ErrorPresenter
 import ActivityPresenter
 
-final class OrganizationFactory {
-    init(presenters: OrganizationPresenters,
-         services: OrganizationServices,
-         factories: OrganizationFactories) {
+final class ActionsFactory {
+    init(presenters: ActionsPresenters,
+         services: ActionsServices) {
         self.presenters = presenters
         self.services = services
-        self.factories = factories
     }
 
-    func make(output: OrganizationModuleOutput?) -> OrganizationModule {
-        let router = OrganizationRouter(factories: self.factories)
-        let presenter = OrganizationPresenter(presenters: self.presenters,
-                                              services: self.services)
+    func make(output: ActionsModuleOutput?) -> ActionsModule {
+        let router = ActionsRouter()
+        let presenter = ActionsPresenter(presenters: self.presenters,
+                                         services: self.services)
         presenter.output = output
         presenter.router = router
         return presenter
     }
 
-    private let services: OrganizationServices
-    private let presenters: OrganizationPresenters
-    private let factories: OrganizationFactories
+    private let services: ActionsServices
+    private let presenters: ActionsPresenters
 }

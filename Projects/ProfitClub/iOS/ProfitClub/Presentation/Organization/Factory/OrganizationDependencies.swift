@@ -29,3 +29,7 @@ struct OrganizationServices {
     let authentication: PCAuthentication
     let organization: PCOrganizationService
 }
+
+struct OrganizationFactories {
+    let actions: ActionsFactory
+}
