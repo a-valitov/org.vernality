@@ -90,6 +90,8 @@
 		FA566391253F3B4800D19D4E /* SupplierViewBeta.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA566390253F3B4800D19D4E /* SupplierViewBeta.storyboard */; };
 		FA56639C253F4F1400D19D4E /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA56639B253F4F0200D19D4E /* Roboto-Regular.ttf */; };
 		FA69BCE6254193DB001FEC2D /* SupplierError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA69BCE5254193DB001FEC2D /* SupplierError.swift */; };
+		FABB6F002544902A00B93FB8 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FABB6EFF2544902A00B93FB8 /* Montserrat-Medium.ttf */; };
+		FABB6F0225455EA700B93FB8 /* CurrentActionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABB6F0125455EA700B93FB8 /* CurrentActionsTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -181,6 +183,8 @@
 		FA566390253F3B4800D19D4E /* SupplierViewBeta.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SupplierViewBeta.storyboard; sourceTree = "<group>"; };
 		FA56639B253F4F0200D19D4E /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		FA69BCE5254193DB001FEC2D /* SupplierError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplierError.swift; sourceTree = "<group>"; };
+		FABB6EFF2544902A00B93FB8 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
+		FABB6F0125455EA700B93FB8 /* CurrentActionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentActionsTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -376,6 +380,7 @@
 				0E506C4224FC9FCA00ABA211 /* PlayfairDisplay-VariableFont_wght.ttf */,
 				0E506C4024FC9F6500ABA211 /* Montserrat-Regular.ttf */,
 				FA56639B253F4F0200D19D4E /* Roboto-Regular.ttf */,
+				FABB6EFF2544902A00B93FB8 /* Montserrat-Medium.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -526,6 +531,7 @@
 			isa = PBXGroup;
 			children = (
 				0E56173B25372BC5005DF4F3 /* CurrentActionsViewBeta.swift */,
+				FABB6F0125455EA700B93FB8 /* CurrentActionsTableViewCell.swift */,
 				0E56173525372B60005DF4F3 /* CurrentActionsViewBeta.storyboard */,
 			);
 			path = Beta;
@@ -913,6 +919,7 @@
 				0E772A8D2504D39000D677E6 /* PlayfairDisplay-Bold.ttf in Resources */,
 				0E4BD1E4250CF8FE00F8D4C8 /* OnboardSupplierViewBeta.storyboard in Resources */,
 				0EA11ED124F2B89300133485 /* Assets.xcassets in Resources */,
+				FABB6F002544902A00B93FB8 /* Montserrat-Medium.ttf in Resources */,
 				0E506BF624FBBFBE00ABA211 /* SelectOrganizationViewBeta.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -967,6 +974,7 @@
 				FA566380253F397600D19D4E /* SupplierFactory.swift in Sources */,
 				FA393C1C254064E700C29F7D /* SupplierActions.swift in Sources */,
 				FA566382253F39A400D19D4E /* SupplierDependencies.swift in Sources */,
+				FABB6F0225455EA700B93FB8 /* CurrentActionsTableViewCell.swift in Sources */,
 				0E56175D2537321C005DF4F3 /* OrganizationPresenter.swift in Sources */,
 				0E506C3124FC1AAB00ABA211 /* ReviewRouter.swift in Sources */,
 				0E56176B25373349005DF4F3 /* OrganizationTabBarViewBeta.swift in Sources */,

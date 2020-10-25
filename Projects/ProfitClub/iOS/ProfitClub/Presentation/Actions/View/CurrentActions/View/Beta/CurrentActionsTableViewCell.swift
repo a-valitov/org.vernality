@@ -1,5 +1,5 @@
 //  Copyright (C) 2020 Startup Studio Vernality
-//  Created by Rinat Enikeev on 10/14/20
+//  Created by Macbook on 25.10.2020
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -16,22 +16,17 @@
 
 import UIKit
 
-final class CurrentActionsViewBeta: UITableViewController {
-    var output: CurrentActionsViewOutput?
+class CurrentActionsTableViewCell: UITableViewCell {
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+    @IBOutlet weak var actionImageView: UIImageView! {
+        didSet {
+            actionImageView.layer.cornerRadius = actionImageView.frame.height / 2
+            actionImageView.clipsToBounds = true
+        }
     }
+    @IBOutlet weak var actionMessageLabel: UILabel!
+    @IBOutlet weak var actionDescriptionOfLabel: UILabel!
+    @IBOutlet weak var actionLinkLabel: UILabel!
+    
 
-    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 108
-    }
-
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "currentActionsCell", for: indexPath) as! CurrentActionsTableViewCell
-
-        
-        
-        return cell
-    }
 }
