@@ -17,10 +17,12 @@
 import Foundation
 import Main
 import UIKit
+import ProfitClubModel
 
 protocol ActionsModule: class {
     func embed(in tabBarController: UITabBarController, main: MainModule?)
 }
 
 protocol ActionsModuleOutput: class {
+    func actions(module: ActionsModule, didSelect action: PCAction)
 }

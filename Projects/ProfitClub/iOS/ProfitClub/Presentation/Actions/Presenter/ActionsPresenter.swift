@@ -52,6 +52,20 @@ extension ActionsPresenter: ActionsContainerViewOutput {
 }
 
 extension ActionsPresenter: CurrentActionsViewOutput {
+    func currentActionsDidLoad(view: CurrentActionsViewInput) {
+        self.services.action.fetchApproved { [weak self] (result) in
+            switch result {
+            case .success(let actions):
+                view.actions = actions
+            case .failure(let error):
+                self?.presenters.error.present(error)
+            }
+        }
+    }
+
+    func currentActions(view: CurrentActionsViewInput, didSelect action: PCAction) {
+        self.output?.actions(module: self, didSelect: action)
+    }
 }
 
 extension ActionsPresenter: PastActionsViewOutput {
