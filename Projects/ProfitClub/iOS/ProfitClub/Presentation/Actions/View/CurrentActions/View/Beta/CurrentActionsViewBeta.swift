@@ -48,7 +48,11 @@ final class CurrentActionsViewBeta: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "currentActionsCell", for: indexPath) as! CurrentActionsTableViewCell
 
-
+        let action = actions[indexPath.row]
+        cell.actionMessageLabel.text = action.message
+        cell.actionDescriptionOfLabel.text = action.descriptionOf
+        cell.actionLinkLabel.text = action.link
+        cell.actionImageView.image = action.image
 
         return cell
     }

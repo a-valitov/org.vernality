@@ -36,5 +36,14 @@ final class OrganizationRouter {
         return organizationTabBar
     }
 
+    @discardableResult
+    func openApproveCurrentAction(output: ApproveCurrentActionViewOutput?) -> ApproveCurrentActionViewInput {
+        let storyboard = UIStoryboard(name: "ApproveCurrentActionViewBeta", bundle: nil)
+        let approveCurrentAction = storyboard.instantiateInitialViewController() as! ApproveCurrentActionViewBeta
+        approveCurrentAction.output = output
+        self.main?.raise(approveCurrentAction, animated: true)
+        return approveCurrentAction
+    }
+
     private let factories: OrganizationFactories
 }

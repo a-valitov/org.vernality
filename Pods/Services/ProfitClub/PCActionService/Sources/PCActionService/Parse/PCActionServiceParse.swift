@@ -59,6 +59,17 @@ public final class PCActionServiceParse: PCActionService {
             if let error = error {
                 result(.failure(error))
             } else if let objects = objects {
+//                for object in objects {
+//                    let imageFile = object["image.png"] as? PFFileObject
+//                    imageFile?.getDataInBackground(block: { (imageData: Data?, error: Error?) in
+//                        if let error = error {
+//                            result(.failure(error))
+//                        } else if let imageData = imageData {
+//                            let image = UIImage(data: imageData)
+//                            object.pcAction.any.image = image
+//                        }
+//                    })
+//                }
                 result(.success(objects.map({ $0.pcAction.any })))
             }
         }

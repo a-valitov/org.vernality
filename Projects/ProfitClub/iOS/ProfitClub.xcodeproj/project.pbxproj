@@ -97,6 +97,10 @@
 		FA69BCE6254193DB001FEC2D /* SupplierError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA69BCE5254193DB001FEC2D /* SupplierError.swift */; };
 		FABB6F002544902A00B93FB8 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FABB6EFF2544902A00B93FB8 /* Montserrat-Medium.ttf */; };
 		FABB6F0225455EA700B93FB8 /* CurrentActionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABB6F0125455EA700B93FB8 /* CurrentActionsTableViewCell.swift */; };
+		FABB6F06254682FD00B93FB8 /* ApproveCurrentActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABB6F05254682FD00B93FB8 /* ApproveCurrentActionView.swift */; };
+		FABB6F092546831800B93FB8 /* ApproveCurrentActionViewBeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABB6F082546831800B93FB8 /* ApproveCurrentActionViewBeta.swift */; };
+		FABB6F0B2546834800B93FB8 /* ApproveCurrentActionViewBeta.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FABB6F0A2546834800B93FB8 /* ApproveCurrentActionViewBeta.storyboard */; };
+		FABB6F0D2546860700B93FB8 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FABB6F0C2546860700B93FB8 /* Montserrat-Bold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -195,6 +199,10 @@
 		FA69BCE5254193DB001FEC2D /* SupplierError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplierError.swift; sourceTree = "<group>"; };
 		FABB6EFF2544902A00B93FB8 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
 		FABB6F0125455EA700B93FB8 /* CurrentActionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentActionsTableViewCell.swift; sourceTree = "<group>"; };
+		FABB6F05254682FD00B93FB8 /* ApproveCurrentActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApproveCurrentActionView.swift; sourceTree = "<group>"; };
+		FABB6F082546831800B93FB8 /* ApproveCurrentActionViewBeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApproveCurrentActionViewBeta.swift; sourceTree = "<group>"; };
+		FABB6F0A2546834800B93FB8 /* ApproveCurrentActionViewBeta.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ApproveCurrentActionViewBeta.storyboard; sourceTree = "<group>"; };
+		FABB6F0C2546860700B93FB8 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -391,6 +399,7 @@
 				0E506C4024FC9F6500ABA211 /* Montserrat-Regular.ttf */,
 				FA56639B253F4F0200D19D4E /* Roboto-Regular.ttf */,
 				FABB6EFF2544902A00B93FB8 /* Montserrat-Medium.ttf */,
+				FABB6F0C2546860700B93FB8 /* Montserrat-Bold.ttf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -490,6 +499,7 @@
 		0E56172A25372AD6005DF4F3 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FABB6F03254682B600B93FB8 /* ApproveCurrentAction */,
 				0E56173225372B42005DF4F3 /* PastActions */,
 				0E56173125372B2D005DF4F3 /* CurrentActions */,
 				0E56172B25372AD9005DF4F3 /* ActionsContainer */,
@@ -878,6 +888,32 @@
 			path = Beta;
 			sourceTree = "<group>";
 		};
+		FABB6F03254682B600B93FB8 /* ApproveCurrentAction */ = {
+			isa = PBXGroup;
+			children = (
+				FABB6F04254682DC00B93FB8 /* View */,
+			);
+			path = ApproveCurrentAction;
+			sourceTree = "<group>";
+		};
+		FABB6F04254682DC00B93FB8 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FABB6F05254682FD00B93FB8 /* ApproveCurrentActionView.swift */,
+				FABB6F072546830500B93FB8 /* Beta */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FABB6F072546830500B93FB8 /* Beta */ = {
+			isa = PBXGroup;
+			children = (
+				FABB6F082546831800B93FB8 /* ApproveCurrentActionViewBeta.swift */,
+				FABB6F0A2546834800B93FB8 /* ApproveCurrentActionViewBeta.storyboard */,
+			);
+			path = Beta;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -945,6 +981,7 @@
 				0E506C3C24FC9CDE00ABA211 /* OnboardWelcomeViewBeta.storyboard in Resources */,
 				0E506C4324FC9FCB00ABA211 /* PlayfairDisplay-VariableFont_wght.ttf in Resources */,
 				FA566391253F3B4800D19D4E /* SupplierViewBeta.storyboard in Resources */,
+				FABB6F0B2546834800B93FB8 /* ApproveCurrentActionViewBeta.storyboard in Resources */,
 				0E506C2624FC10B700ABA211 /* ReviewViewBeta.storyboard in Resources */,
 				0EA11ED424F2B89300133485 /* LaunchScreen.storyboard in Resources */,
 				0E506BEE24FBB92800ABA211 /* SelectRoleViewBeta.storyboard in Resources */,
@@ -957,6 +994,7 @@
 				0E56175025372D9D005DF4F3 /* PastActionsViewBeta.storyboard in Resources */,
 				0E772A8D2504D39000D677E6 /* PlayfairDisplay-Bold.ttf in Resources */,
 				0E4BD1E4250CF8FE00F8D4C8 /* OnboardSupplierViewBeta.storyboard in Resources */,
+				FABB6F0D2546860700B93FB8 /* Montserrat-Bold.ttf in Resources */,
 				0EA11ED124F2B89300133485 /* Assets.xcassets in Resources */,
 				FABB6F002544902A00B93FB8 /* Montserrat-Medium.ttf in Resources */,
 				0E506BF624FBBFBE00ABA211 /* SelectOrganizationViewBeta.storyboard in Resources */,
@@ -1028,6 +1066,7 @@
 				0E4BD1E2250CF1E300F8D4C8 /* OnboardSupplierViewBeta.swift in Sources */,
 				0E506C3324FC1B9C00ABA211 /* ReviewDependencies.swift in Sources */,
 				0E506C2E24FC1A4600ABA211 /* ReviewPresenter.swift in Sources */,
+				FABB6F06254682FD00B93FB8 /* ApproveCurrentActionView.swift in Sources */,
 				0E506C2C24FC184900ABA211 /* ReviewViewBetaMemberCell.swift in Sources */,
 				0E506C4624FCA6E300ABA211 /* OnboardSignIn.swift in Sources */,
 				0E39664624FCABD70008266D /* OnboardSignUpViewBeta.swift in Sources */,
@@ -1048,6 +1087,7 @@
 				0E56175325372DC1005DF4F3 /* PastActionsView.swift in Sources */,
 				0E506C3E24FC9CE700ABA211 /* OnboardWelcomeViewBeta.swift in Sources */,
 				0E90499224F6142A0061A605 /* OnboardPresenter.swift in Sources */,
+				FABB6F092546831800B93FB8 /* ApproveCurrentActionViewBeta.swift in Sources */,
 				0E506C1E24FC0DE400ABA211 /* ReviewModule.swift in Sources */,
 				0E6FBA5C2545ABEF00A2B882 /* ActionsModule.swift in Sources */,
 				0E506C4924FCA78100ABA211 /* OnboardSignInViewBeta.swift in Sources */,

@@ -46,6 +46,7 @@
 		<string>PlayfairDisplay-Bold</string>
 		<string>Roboto-Regular</string>
 		<string>Montserrat-Medium</string>
+		<string>Montserrat-Bold</string>
 	</array>
 	<key>UIUserInterfaceStyle</key>
 	<string>Light</string>
