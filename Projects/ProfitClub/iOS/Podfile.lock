@@ -3,6 +3,9 @@ PODS:
   - Bolts/Tasks (1.9.1)
   - ErrorPresenter (0.0.1)
   - FittedSheets (2.1.1)
+  - Kingfisher (5.15.0):
+    - Kingfisher/Core (= 5.15.0)
+  - Kingfisher/Core (5.15.0)
   - Main (0.0.1):
     - FittedSheets
   - Nantes (0.1.1)
@@ -36,6 +39,7 @@ PODS:
 DEPENDENCIES:
   - ActivityPresenter (from `../../../Pods/Packages/ActivityPresenter.podspec`)
   - ErrorPresenter (from `../../../Pods/Packages/ErrorPresenter.podspec`)
+  - Kingfisher
   - Main (from `../../../Pods/Modules/Main.podspec`)
   - Nantes
   - PCActionService (from `../../../Pods/Services/ProfitClub/PCActionService.podspec`)
@@ -49,6 +53,7 @@ SPEC REPOS:
   trunk:
     - Bolts
     - FittedSheets
+    - Kingfisher
     - Nantes
     - Parse
 
@@ -77,6 +82,7 @@ SPEC CHECKSUMS:
   Bolts: 8c1e8aab2f603387b8b9924f57d1d64f43d3ffdc
   ErrorPresenter: deb60f0739744b9b79bbf7be09e7e0a473ba132b
   FittedSheets: ec30a41b7f054891992ada0441ebe7801958f123
+  Kingfisher: 1acb67597a520c2d0310677e66d6e0af455ef757
   Main: 5f3663f52dc9f73e8caed2af67aa325dfd64111d
   Nantes: e11fbe0b6214de8c09cc8b763dbf61f70fbbf885
   Parse: 0fb5c7cc7ee5900f2434e24607d0496155b8d04f
@@ -87,6 +93,6 @@ SPEC CHECKSUMS:
   ProfitClubModel: 38acfa2527d8cac51c97c8494db90fdd3025d32f
   ProfitClubParse: f0319471560bd2af6fd3d2753a8980bab1656b1a
 
-PODFILE CHECKSUM: 5b9bdb6223dae1ea38b97dd67a118272ef28089c
+PODFILE CHECKSUM: ae4e6d76cb43e203722badf7a0819c69406fdc28
 
 COCOAPODS: 1.9.3

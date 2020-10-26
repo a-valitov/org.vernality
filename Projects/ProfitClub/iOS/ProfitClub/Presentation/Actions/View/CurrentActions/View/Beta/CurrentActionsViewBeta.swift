@@ -16,6 +16,7 @@
 
 import UIKit
 import ProfitClubModel
+import Kingfisher
 
 final class CurrentActionsViewBeta: UITableViewController {
     var output: CurrentActionsViewOutput?
@@ -52,7 +53,7 @@ final class CurrentActionsViewBeta: UITableViewController {
         cell.actionMessageLabel.text = action.message
         cell.actionDescriptionOfLabel.text = action.descriptionOf
         cell.actionLinkLabel.text = action.link
-        cell.actionImageView.image = action.image
+        cell.actionImageView.kf.setImage(with: action.imageUrl)
 
         return cell
     }
