@@ -18,12 +18,23 @@ import UIKit
 
 final class ApproveCurrentActionViewBeta: UIViewController {
     var output: ApproveCurrentActionViewOutput?
+    var actionImage: UIImage? {
+        didSet {
+            self.actionImageView.image = self.actionImage
+        }
+    }
 
     @IBOutlet weak var rejectAction: UIButton! {
         didSet {
             rejectAction.layer.borderWidth = 1
             rejectAction.layer.borderColor = UIColor.black.cgColor
         }
+    }
+
+    @IBOutlet weak var actionImageView: UIImageView!
+    
+    @IBAction func cancelTouchUpInside(_ sender: Any) {
+        dismiss(animated: true)
     }
 }
 
