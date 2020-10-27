@@ -32,4 +32,5 @@ struct OrganizationServices {
 
 struct OrganizationFactories {
     let actions: ActionsFactory
+    let action: ActionFactory
 }

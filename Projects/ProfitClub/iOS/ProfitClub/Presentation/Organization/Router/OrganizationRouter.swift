@@ -36,5 +36,12 @@ final class OrganizationRouter {
         return organizationTabBar
     }
 
+    @discardableResult
+    func open(action: PCAction, output: ActionModuleOutput?) -> ActionModule {
+        let actionModule = self.factories.action.make(output: output)
+        actionModule.open(in: self.main)
+        return actionModule
+    }
+
     private let factories: OrganizationFactories
 }

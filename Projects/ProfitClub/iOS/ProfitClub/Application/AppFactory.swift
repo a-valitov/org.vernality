@@ -102,7 +102,7 @@ private extension AppFactory {
     var organizationFactory: OrganizationFactory {
         return OrganizationFactory(presenters: OrganizationPresenters(error: self.errorPresenter(), activity: self.activityPresenter()),
                                    services: OrganizationServices(authentication: self.authentication, organization: self.organizationService()),
-                                   factories: OrganizationFactories(actions: self.actionsFactory))
+                                   factories: OrganizationFactories(actions: self.actionsFactory, action: self.actionFactory))
     }
     
     var supplierFactory: SupplierFactory {
@@ -113,5 +113,10 @@ private extension AppFactory {
     var actionsFactory: ActionsFactory {
         return ActionsFactory(presenters: ActionsPresenters(error: self.errorPresenter(), activity: self.activityPresenter()),
                               services: ActionsServices(action: self.actionService()))
+    }
+
+    var actionFactory: ActionFactory {
+        return ActionFactory(presenters: ActionPresenters(error: self.errorPresenter(), activity: self.activityPresenter()),
+                             services: ActionServices(action: self.actionService()))
     }
 }
