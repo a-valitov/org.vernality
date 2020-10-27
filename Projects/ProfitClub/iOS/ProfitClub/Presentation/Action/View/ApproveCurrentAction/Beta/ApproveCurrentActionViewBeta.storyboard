@@ -103,10 +103,10 @@
                             <constraint firstItem="gMW-nf-V9o" firstAttribute="trailing" secondItem="IUP-Yd-XZT" secondAttribute="trailing" id="4a4-v3-xYR"/>
                             <constraint firstItem="lqg-Te-l3C" firstAttribute="top" secondItem="T1R-Rs-VzA" secondAttribute="bottom" constant="10" id="6IN-Rj-v1d"/>
                             <constraint firstItem="pfj-JA-iby" firstAttribute="leading" secondItem="lqg-Te-l3C" secondAttribute="leading" id="9Px-D1-k9P"/>
-                            <constraint firstItem="gMW-nf-V9o" firstAttribute="height" secondItem="Sgd-fp-VAg" secondAttribute="height" multiplier="0.198661" id="F3Y-LL-qNV"/>
                             <constraint firstItem="T1R-Rs-VzA" firstAttribute="leading" secondItem="Rr5-H2-9eI" secondAttribute="leading" id="Gjk-RM-Zmc"/>
                             <constraint firstItem="00V-Tv-FHl" firstAttribute="top" secondItem="3AQ-fK-dCi" secondAttribute="bottom" constant="15" id="JcM-UD-54h"/>
                             <constraint firstItem="IUP-Yd-XZT" firstAttribute="trailing" secondItem="T1R-Rs-VzA" secondAttribute="trailing" constant="20" id="NQz-Wx-Uwf"/>
+                            <constraint firstItem="IUP-Yd-XZT" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="00V-Tv-FHl" secondAttribute="bottom" constant="20" id="UX4-sP-HDz"/>
                             <constraint firstItem="lEf-yh-P6C" firstAttribute="top" secondItem="gMW-nf-V9o" secondAttribute="bottom" constant="26" id="VPF-Qk-VTJ"/>
                             <constraint firstItem="Rr5-H2-9eI" firstAttribute="leading" secondItem="IUP-Yd-XZT" secondAttribute="leading" constant="20" id="Zy3-VD-Yff"/>
                             <constraint firstItem="3AQ-fK-dCi" firstAttribute="top" secondItem="pfj-JA-iby" secondAttribute="bottom" constant="30" id="ac1-3k-7JL"/>
