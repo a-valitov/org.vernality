@@ -82,6 +82,11 @@
 		0EA11ED124F2B89300133485 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0EA11ED024F2B89300133485 /* Assets.xcassets */; };
 		0EA11ED424F2B89300133485 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EA11ED224F2B89300133485 /* LaunchScreen.storyboard */; };
 		BAC5B692AE8ABE81C3298271 /* Pods_ProfitClub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D881FD37132A41374982A032 /* Pods_ProfitClub.framework */; };
+		FA15B70525473D1D00D29835 /* ActionFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA15B70425473D1D00D29835 /* ActionFactory.swift */; };
+		FA15B70725473D3A00D29835 /* ActionDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA15B70625473D3A00D29835 /* ActionDependencies.swift */; };
+		FA15B70925473D5A00D29835 /* ActionModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA15B70825473D5A00D29835 /* ActionModule.swift */; };
+		FA15B70B25473D6A00D29835 /* ActionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA15B70A25473D6A00D29835 /* ActionPresenter.swift */; };
+		FA15B70D25473D7A00D29835 /* ActionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA15B70C25473D7A00D29835 /* ActionRouter.swift */; };
 		FA393C1C254064E700C29F7D /* SupplierActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA393C1B254064E700C29F7D /* SupplierActions.swift */; };
 		FA393C1F2540650900C29F7D /* SupplierActionsBeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA393C1E2540650900C29F7D /* SupplierActionsBeta.swift */; };
 		FA393C212540651C00C29F7D /* SupplierActionsBeta.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA393C202540651C00C29F7D /* SupplierActionsBeta.storyboard */; };
@@ -184,6 +189,11 @@
 		17770C4311DB6F99F7CDDD46 /* Pods-ProfitClub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProfitClub.release.xcconfig"; path = "Target Support Files/Pods-ProfitClub/Pods-ProfitClub.release.xcconfig"; sourceTree = "<group>"; };
 		64F87290C9FD04EC19DEE33B /* Pods-ProfitClub.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProfitClub.debug.xcconfig"; path = "Target Support Files/Pods-ProfitClub/Pods-ProfitClub.debug.xcconfig"; sourceTree = "<group>"; };
 		D881FD37132A41374982A032 /* Pods_ProfitClub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProfitClub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA15B70425473D1D00D29835 /* ActionFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionFactory.swift; sourceTree = "<group>"; };
+		FA15B70625473D3A00D29835 /* ActionDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionDependencies.swift; sourceTree = "<group>"; };
+		FA15B70825473D5A00D29835 /* ActionModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionModule.swift; sourceTree = "<group>"; };
+		FA15B70A25473D6A00D29835 /* ActionPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionPresenter.swift; sourceTree = "<group>"; };
+		FA15B70C25473D7A00D29835 /* ActionRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionRouter.swift; sourceTree = "<group>"; };
 		FA393C1B254064E700C29F7D /* SupplierActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplierActions.swift; sourceTree = "<group>"; };
 		FA393C1E2540650900C29F7D /* SupplierActionsBeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplierActionsBeta.swift; sourceTree = "<group>"; };
 		FA393C202540651C00C29F7D /* SupplierActionsBeta.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SupplierActionsBeta.storyboard; sourceTree = "<group>"; };
@@ -499,7 +509,6 @@
 		0E56172A25372AD6005DF4F3 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				FABB6F03254682B600B93FB8 /* ApproveCurrentAction */,
 				0E56173225372B42005DF4F3 /* PastActions */,
 				0E56173125372B2D005DF4F3 /* CurrentActions */,
 				0E56172B25372AD9005DF4F3 /* ActionsContainer */,
@@ -623,6 +632,7 @@
 		0E90498424F60C740061A605 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				FABB6F03254682B600B93FB8 /* Action */,
 				0E56172925372AD0005DF4F3 /* Actions */,
 				0E90498B24F613DF0061A605 /* Onboard */,
 				0E56171F253729AC005DF4F3 /* Organization */,
@@ -805,6 +815,41 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		FA15B70125473C4000D29835 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				FA15B70C25473D7A00D29835 /* ActionRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		FA15B70225473C4900D29835 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				FA15B70825473D5A00D29835 /* ActionModule.swift */,
+				FA15B70A25473D6A00D29835 /* ActionPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		FA15B70325473C5200D29835 /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				FA15B70425473D1D00D29835 /* ActionFactory.swift */,
+				FA15B70625473D3A00D29835 /* ActionDependencies.swift */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
+		FA15B70E25475D7F00D29835 /* ApproveCurrentAction */ = {
+			isa = PBXGroup;
+			children = (
+				FABB6F05254682FD00B93FB8 /* ApproveCurrentActionView.swift */,
+				FABB6F072546830500B93FB8 /* Beta */,
+			);
+			path = ApproveCurrentAction;
+			sourceTree = "<group>";
+		};
 		FA393C1A254064A400C29F7D /* SupplierActions */ = {
 			isa = PBXGroup;
 			children = (
@@ -888,19 +933,21 @@
 			path = Beta;
 			sourceTree = "<group>";
 		};
-		FABB6F03254682B600B93FB8 /* ApproveCurrentAction */ = {
+		FABB6F03254682B600B93FB8 /* Action */ = {
 			isa = PBXGroup;
 			children = (
+				FA15B70325473C5200D29835 /* Factory */,
+				FA15B70225473C4900D29835 /* Presenter */,
+				FA15B70125473C4000D29835 /* Router */,
 				FABB6F04254682DC00B93FB8 /* View */,
 			);
-			path = ApproveCurrentAction;
+			path = Action;
 			sourceTree = "<group>";
 		};
 		FABB6F04254682DC00B93FB8 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				FABB6F05254682FD00B93FB8 /* ApproveCurrentActionView.swift */,
-				FABB6F072546830500B93FB8 /* Beta */,
+				FA15B70E25475D7F00D29835 /* ApproveCurrentAction */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1049,19 +1096,23 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA566380253F397600D19D4E /* SupplierFactory.swift in Sources */,
+				FA15B70B25473D6A00D29835 /* ActionPresenter.swift in Sources */,
 				FA393C1C254064E700C29F7D /* SupplierActions.swift in Sources */,
 				FA566382253F39A400D19D4E /* SupplierDependencies.swift in Sources */,
 				FABB6F0225455EA700B93FB8 /* CurrentActionsTableViewCell.swift in Sources */,
 				0E6FBA652545AC9B00A2B882 /* ActionsFactory.swift in Sources */,
+				FA15B70D25473D7A00D29835 /* ActionRouter.swift in Sources */,
 				0E56175D2537321C005DF4F3 /* OrganizationPresenter.swift in Sources */,
 				0E506C3124FC1AAB00ABA211 /* ReviewRouter.swift in Sources */,
 				0E56176B25373349005DF4F3 /* OrganizationTabBarViewBeta.swift in Sources */,
 				0E9049A224F62C870061A605 /* OnboardSupplierViewAlpha.swift in Sources */,
 				0E90499424F614390061A605 /* OnboardModule.swift in Sources */,
 				0E56174C25372D95005DF4F3 /* PastActionsViewBeta.swift in Sources */,
+				FA15B70725473D3A00D29835 /* ActionDependencies.swift in Sources */,
 				0E56174025372BF3005DF4F3 /* ActionsContainerViewBeta.swift in Sources */,
 				0E506C3924FC9CC400ABA211 /* OnboardWelcomeView.swift in Sources */,
 				0E90496E24F390070061A605 /* AppPresenter.swift in Sources */,
+				FA15B70525473D1D00D29835 /* ActionFactory.swift in Sources */,
 				0E90497A24F39C650061A605 /* Secrets.swift in Sources */,
 				0E4BD1E2250CF1E300F8D4C8 /* OnboardSupplierViewBeta.swift in Sources */,
 				0E506C3324FC1B9C00ABA211 /* ReviewDependencies.swift in Sources */,
@@ -1100,6 +1151,7 @@
 				0E56176725373305005DF4F3 /* OrganizationTabBarView.swift in Sources */,
 				0E561757253731CD005DF4F3 /* OrganizationFactory.swift in Sources */,
 				0E506C2424FC10AF00ABA211 /* ReviewViewBeta.swift in Sources */,
+				FA15B70925473D5A00D29835 /* ActionModule.swift in Sources */,
 				FA56638B253F3AF500D19D4E /* SupplierView.swift in Sources */,
 				0E90499824F6160F0061A605 /* OnboardFactory.swift in Sources */,
 				0E506C2124FC108800ABA211 /* ReviewView.swift in Sources */,

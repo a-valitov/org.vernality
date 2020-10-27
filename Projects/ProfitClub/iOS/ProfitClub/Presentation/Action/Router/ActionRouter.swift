@@ -14,12 +14,19 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import UIKit
+import Foundation
+import Main
+import ProfitClubModel
 
-protocol ApproveCurrentActionViewInput: UIViewController {
-
-}
-
-protocol ApproveCurrentActionViewOutput {
-
+final class ActionRouter {
+    weak var main: MainModule?
+    
+    @discardableResult
+    func openActionView(output: ApproveCurrentActionViewOutput?) -> ApproveCurrentActionViewInput {
+        let storyboard = UIStoryboard(name: "ApproveCurrentActionViewBeta", bundle: nil)
+        let approveCurrentActionView = storyboard.instantiateInitialViewController() as! ApproveCurrentActionViewBeta
+        approveCurrentActionView.output = output
+        self.main?.raise(approveCurrentActionView, animated: true)
+        return approveCurrentActionView
+    }
 }
