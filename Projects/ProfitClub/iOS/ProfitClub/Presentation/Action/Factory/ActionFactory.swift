@@ -17,6 +17,7 @@
 import Foundation
 import ErrorPresenter
 import ActivityPresenter
+import ProfitClubModel
 
 final class ActionFactory {
     init(presenters: ActionPresenters,
@@ -25,10 +26,11 @@ final class ActionFactory {
         self.services = services
     }
 
-    func make(output: ActionModuleOutput?) -> ActionModule {
+    func make(action: PCAction, output: ActionModuleOutput?) -> ActionModule {
         let router = ActionRouter()
-        let presenter = ActionPresenter(presenters: self.presenters,
-                                                      services: self.services)
+        let presenter = ActionPresenter(action: action,
+                                        presenters: self.presenters,
+                                        services: self.services)
         presenter.output = output
         presenter.router = router
         return presenter

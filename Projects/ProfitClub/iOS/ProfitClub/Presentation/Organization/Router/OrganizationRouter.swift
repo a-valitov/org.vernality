@@ -38,7 +38,7 @@ final class OrganizationRouter {
 
     @discardableResult
     func open(action: PCAction, output: ActionModuleOutput?) -> ActionModule {
-        let actionModule = self.factories.action.make(output: output)
+        let actionModule = self.factories.action.make(action: action, output: output)
         actionModule.open(in: self.main)
         return actionModule
     }

@@ -17,9 +17,9 @@
 import UIKit
 
 protocol ApproveCurrentActionViewInput: UIViewController {
-    var actionImage: UIImage? { get set }
+    var actionImageUrl: URL? { get set }
 }
 
 protocol ApproveCurrentActionViewOutput {
-    
+    func approveCurrentActionDidLoad(view: ApproveCurrentActionViewInput)
 }

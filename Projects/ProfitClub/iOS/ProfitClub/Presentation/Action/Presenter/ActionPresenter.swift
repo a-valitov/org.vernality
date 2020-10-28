@@ -24,8 +24,10 @@ final class ActionPresenter: ActionModule {
     weak var output: ActionModuleOutput?
     var router: ActionRouter?
     
-    init(presenters: ActionPresenters,
+    init(action: PCAction,
+         presenters: ActionPresenters,
          services: ActionServices) {
+        self.action = action
         self.presenters = presenters
         self.services = services
     }
@@ -34,12 +36,16 @@ final class ActionPresenter: ActionModule {
         self.router?.main = main
         self.router?.openActionView(output: self)
     }
-    
+
+    private let action: PCAction
+
     // dependencies
     private let presenters: ActionPresenters
     private let services: ActionServices
 }
 
 extension ActionPresenter: ApproveCurrentActionViewOutput {
-    
+    func approveCurrentActionDidLoad(view: ApproveCurrentActionViewInput) {
+        view.actionImageUrl = self.action.imageUrl
+    }
 }
