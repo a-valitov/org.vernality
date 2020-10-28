@@ -15,12 +15,15 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import UIKit
+import Kingfisher
 
 final class ApproveCurrentActionViewBeta: UIViewController {
     var output: ApproveCurrentActionViewOutput?
-    var actionImage: UIImage? {
+    var actionImageUrl: URL? {
         didSet {
-            self.actionImageView.image = self.actionImage
+            if self.isViewLoaded {
+                self.actionImageView.kf.setImage(with: actionImageUrl)
+            }
         }
     }
 
@@ -35,6 +38,11 @@ final class ApproveCurrentActionViewBeta: UIViewController {
     
     @IBAction func cancelTouchUpInside(_ sender: Any) {
         dismiss(animated: true)
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.output?.approveCurrentActionDidLoad(view: self)
     }
 }
 
