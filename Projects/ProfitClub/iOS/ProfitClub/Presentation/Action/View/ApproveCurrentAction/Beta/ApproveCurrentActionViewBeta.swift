@@ -41,6 +41,8 @@ final class ApproveCurrentActionViewBeta: UIViewController {
         }
     }
     var actionLink: String?
+    var actionStartDate: String?
+    var actionEndDate: String?
 
     @IBOutlet weak var rejectAction: UIButton! {
         didSet {
@@ -48,7 +50,8 @@ final class ApproveCurrentActionViewBeta: UIViewController {
             rejectAction.layer.borderColor = UIColor.black.cgColor
         }
     }
-
+    @IBOutlet weak var actionStartAndEndDateLabel: UILabel!
+    
     @IBOutlet weak var actionImageView: UIImageView!
     @IBOutlet weak var actionMessageLabel: UILabel!
     @IBOutlet weak var actionDescriptionLabel: UILabel!
@@ -66,6 +69,7 @@ final class ApproveCurrentActionViewBeta: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.output?.approveCurrentActionDidLoad(view: self)
+        actionStartAndEndDateLabel.text = "\(actionStartDate ?? "0")-\(actionEndDate ?? "0")"
     }
 }
 

@@ -142,6 +142,7 @@
                         <outlet property="actionDescriptionLabel" destination="lqg-Te-l3C" id="2Wz-EQ-Fc0"/>
                         <outlet property="actionImageView" destination="gMW-nf-V9o" id="ISe-Q1-Feo"/>
                         <outlet property="actionMessageLabel" destination="T1R-Rs-VzA" id="qpg-sQ-qss"/>
+                        <outlet property="actionStartAndEndDateLabel" destination="pfj-JA-iby" id="tkP-fF-ZSb"/>
                         <outlet property="rejectAction" destination="00V-Tv-FHl" id="4uO-61-12h"/>
                     </connections>
                 </viewController>

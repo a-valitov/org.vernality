@@ -21,6 +21,8 @@ protocol ApproveCurrentActionViewInput: UIViewController {
     var actionMessage: String? { get set }
     var actionDescription: String? { get set }
     var actionLink: String? { get set }
+    var actionStartDate: String? { get set }
+    var actionEndDate: String? { get set } 
 }
 
 protocol ApproveCurrentActionViewOutput {

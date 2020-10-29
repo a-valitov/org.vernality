@@ -50,5 +50,7 @@ extension ActionPresenter: ApproveCurrentActionViewOutput {
         view.actionMessage = self.action.message
         view.actionDescription = self.action.descriptionOf
         view.actionLink = self.action.link
+        view.actionStartDate = self.action.startDate
+        view.actionEndDate = self.action.endDate
     }
 }
