@@ -115,9 +115,9 @@ final class SupplierActionsBeta: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.messageTextField.layer.sublayerTransform = CATransform3DMakeTranslation(15, 0, 0)
-        self.descriptionTextField.layer.sublayerTransform = CATransform3DMakeTranslation(15, -30, 0)
-        self.linkTextField.layer.sublayerTransform = CATransform3DMakeTranslation(15, 0, 0)
+        addPadding(to: messageTextField)
+        addPadding(to: descriptionTextField)
+        addPadding(to: linkTextField)
 
         let textColor = UIColor(red: 0.098, green: 0.094, blue: 0.094, alpha: 1)
         let placeholderColor = textColor.withAlphaComponent(0.5)
@@ -173,6 +173,12 @@ final class SupplierActionsBeta: UIViewController {
 
     @objc func keyboardWillHide(notification: NSNotification) {
         self.view.frame.origin.y = 0
+    }
+
+    func addPadding(to textField: UITextField) {
+        let leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: 0))
+        textField.leftView = leftView
+        textField.leftViewMode = .always
     }
 }
 
