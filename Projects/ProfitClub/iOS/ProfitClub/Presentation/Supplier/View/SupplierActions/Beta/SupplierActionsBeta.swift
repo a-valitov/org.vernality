@@ -50,6 +50,20 @@ final class SupplierActionsBeta: UIViewController {
             return nil
         }
     }
+    var startDate: String? {
+        if self.isViewLoaded {
+            return self.actionStartDateTextField.text
+        } else {
+            return nil
+        }
+    }
+    var endDate: String? {
+        if self.isViewLoaded {
+            return self.actionEndDataTextField.text
+        } else {
+            return nil
+        }
+    }
     
     var activeTextField : UITextField? = nil
     let datePicker = UIDatePicker()
@@ -113,6 +127,10 @@ final class SupplierActionsBeta: UIViewController {
                                                                              attributes:[.foregroundColor: placeholderColor])
         self.linkTextField.attributedPlaceholder = NSAttributedString(string: "Вставьте ссылку на акцию",
                                                                       attributes:[.foregroundColor: placeholderColor])
+        self.actionStartDateTextField.attributedPlaceholder = NSAttributedString(string: "Старт акции",
+                                                                                 attributes:[.foregroundColor: placeholderColor])
+        self.actionEndDataTextField.attributedPlaceholder = NSAttributedString(string: "Конец акции",
+                                                                               attributes:[.foregroundColor: placeholderColor])
 
         self.messageTextField.delegate = self
         self.descriptionTextField.delegate = self
@@ -184,6 +202,7 @@ extension SupplierActionsBeta: UITextFieldDelegate {
 
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
+        toolbar.backgroundColor = .white
         let doneButton = UIBarButtonItem(title: "Готово", style: .plain, target: self, action: #selector(doneDatePicker))
         let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let cancelButton = UIBarButtonItem(title: "Отменить", style: .plain, target: self, action: #selector(cancelDatePicker))

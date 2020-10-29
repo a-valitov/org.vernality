@@ -69,12 +69,22 @@ extension SupplierPresenter: SupplierActionsOutput {
             self.presenters.error.present(SupplierError.actionImageIsNil)
             return
         }
+        guard let startDate = view.startDate else {
+            self.presenters.error.present(SupplierError.actionStartDateIsEmpty)
+            return
+        }
+        guard let endDate = view.endDate else {
+            self.presenters.error.present(SupplierError.actionEndDateIsEmpty)
+            return
+        }
 
         var action = PCActionStruct()
         action.message = message
         action.descriptionOf = descriptionOf
         action.link = link
         action.image = image
+        action.startDate = startDate
+        action.endDate = endDate
         action.status = .onReview
         action.supplier = self.supplier
 

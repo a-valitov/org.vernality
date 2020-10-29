@@ -25,6 +25,8 @@ public protocol PCAction {
     var link: String? { get }
     var image: UIImage? { get }
     var imageUrl: URL? { get }
+    var startDate: String? { get }
+    var endDate: String? { get }
     var status: PCActionStatus? { get }
 }
 
@@ -49,6 +51,8 @@ public struct PCActionStruct: PCAction {
     public var link: String?
     public var image: UIImage?
     public var imageUrl: URL?
+    public var startDate: String?
+    public var endDate: String?
     public var status: PCActionStatus?
 
     public init() {}
@@ -85,6 +89,14 @@ public struct AnyPCAction: PCAction, Equatable, Hashable {
 
     public var imageUrl: URL? {
         return self.object.imageUrl
+    }
+
+    public var startDate: String? {
+        return self.object.startDate
+    }
+
+    public var endDate: String? {
+        return self.object.endDate
     }
 
     public var status: PCActionStatus? {
