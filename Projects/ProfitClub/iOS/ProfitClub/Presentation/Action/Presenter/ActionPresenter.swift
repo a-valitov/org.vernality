@@ -47,5 +47,8 @@ final class ActionPresenter: ActionModule {
 extension ActionPresenter: ApproveCurrentActionViewOutput {
     func approveCurrentActionDidLoad(view: ApproveCurrentActionViewInput) {
         view.actionImageUrl = self.action.imageUrl
+        view.actionMessage = self.action.message
+        view.actionDescription = self.action.descriptionOf
+        view.actionLink = self.action.link
     }
 }

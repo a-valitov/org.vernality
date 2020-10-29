@@ -18,6 +18,9 @@ import UIKit
 
 protocol ApproveCurrentActionViewInput: UIViewController {
     var actionImageUrl: URL? { get set }
+    var actionMessage: String? { get set }
+    var actionDescription: String? { get set }
+    var actionLink: String? { get set }
 }
 
 protocol ApproveCurrentActionViewOutput {

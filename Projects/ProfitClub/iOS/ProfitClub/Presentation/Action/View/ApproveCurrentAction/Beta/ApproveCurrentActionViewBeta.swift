@@ -26,6 +26,21 @@ final class ApproveCurrentActionViewBeta: UIViewController {
             }
         }
     }
+    var actionMessage: String? {
+        didSet {
+            if self.isViewLoaded {
+                self.actionMessageLabel.text = self.actionMessage
+            }
+        }
+    }
+    var actionDescription: String? {
+        didSet {
+            if self.isViewLoaded {
+                self.actionDescriptionLabel.text = self.actionDescription
+            }
+        }
+    }
+    var actionLink: String?
 
     @IBOutlet weak var rejectAction: UIButton! {
         didSet {
@@ -35,9 +50,17 @@ final class ApproveCurrentActionViewBeta: UIViewController {
     }
 
     @IBOutlet weak var actionImageView: UIImageView!
-    
+    @IBOutlet weak var actionMessageLabel: UILabel!
+    @IBOutlet weak var actionDescriptionLabel: UILabel!
+
     @IBAction func cancelTouchUpInside(_ sender: Any) {
         dismiss(animated: true)
+    }
+    
+    @IBAction func actionLinkTouchUpInside(_ sender: Any) {
+        if let url = URL(string: actionLink!) {
+            UIApplication.shared.open(url)
+        }
     }
 
     override func viewDidLoad() {
