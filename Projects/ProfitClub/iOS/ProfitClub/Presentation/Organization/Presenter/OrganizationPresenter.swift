@@ -43,3 +43,13 @@ final class OrganizationPresenter: OrganizationModule {
 extension OrganizationPresenter: OrganizationTabBarViewOutput {
     
 }
+
+extension OrganizationPresenter: ActionsModuleOutput {
+    func actions(module: ActionsModule, didSelect action: PCAction) {
+        self.router?.open(action: action, output: self)
+    }
+}
+
+extension OrganizationPresenter: ActionModuleOutput {
+
+}

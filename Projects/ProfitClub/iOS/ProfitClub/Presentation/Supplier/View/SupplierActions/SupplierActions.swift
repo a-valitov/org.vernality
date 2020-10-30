@@ -21,6 +21,8 @@ protocol SupplierActionsInput: UIViewController {
     var descriptionOf: String? { get }
     var link: String? { get }
     var image: UIImage? { get }
+    var startDate: String? { get }
+    var endDate: String? { get }
 }
 
 protocol SupplierActionsOutput {

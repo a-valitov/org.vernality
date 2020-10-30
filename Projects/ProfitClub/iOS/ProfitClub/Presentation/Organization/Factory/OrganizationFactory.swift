@@ -20,13 +20,15 @@ import ActivityPresenter
 
 final class OrganizationFactory {
     init(presenters: OrganizationPresenters,
-         services: OrganizationServices) {
+         services: OrganizationServices,
+         factories: OrganizationFactories) {
         self.presenters = presenters
         self.services = services
+        self.factories = factories
     }
 
     func make(output: OrganizationModuleOutput?) -> OrganizationModule {
-        let router = OrganizationRouter()
+        let router = OrganizationRouter(factories: self.factories)
         let presenter = OrganizationPresenter(presenters: self.presenters,
                                               services: self.services)
         presenter.output = output
@@ -36,4 +38,5 @@ final class OrganizationFactory {
 
     private let services: OrganizationServices
     private let presenters: OrganizationPresenters
+    private let factories: OrganizationFactories
 }

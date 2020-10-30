@@ -50,13 +50,31 @@ final class SupplierActionsBeta: UIViewController {
             return nil
         }
     }
+    var startDate: String? {
+        if self.isViewLoaded {
+            return self.actionStartDateTextField.text
+        } else {
+            return nil
+        }
+    }
+    var endDate: String? {
+        if self.isViewLoaded {
+            return self.actionEndDataTextField.text
+        } else {
+            return nil
+        }
+    }
     
     var activeTextField : UITextField? = nil
+    let datePicker = UIDatePicker()
+
     @IBOutlet weak var actionImageView: UIImageView!
     @IBOutlet weak var messageTextField: UITextField!
     @IBOutlet weak var descriptionTextField: UITextField!
     @IBOutlet weak var linkTextField: UITextField!
-
+    @IBOutlet weak var actionStartDateTextField: UITextField!
+    @IBOutlet weak var actionEndDataTextField: UITextField!
+    
     @IBOutlet weak var addActionImageView: UIButton!
 
     @IBAction func createActionTouchUpInside(_ sender: Any) {
@@ -97,9 +115,9 @@ final class SupplierActionsBeta: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.messageTextField.layer.sublayerTransform = CATransform3DMakeTranslation(15, 0, 0)
-        self.descriptionTextField.layer.sublayerTransform = CATransform3DMakeTranslation(15, -30, 0)
-        self.linkTextField.layer.sublayerTransform = CATransform3DMakeTranslation(15, 0, 0)
+        addPadding(to: messageTextField)
+        addPadding(to: descriptionTextField)
+        addPadding(to: linkTextField)
 
         let textColor = UIColor(red: 0.098, green: 0.094, blue: 0.094, alpha: 1)
         let placeholderColor = textColor.withAlphaComponent(0.5)
@@ -109,10 +127,16 @@ final class SupplierActionsBeta: UIViewController {
                                                                              attributes:[.foregroundColor: placeholderColor])
         self.linkTextField.attributedPlaceholder = NSAttributedString(string: "Вставьте ссылку на акцию",
                                                                       attributes:[.foregroundColor: placeholderColor])
+        self.actionStartDateTextField.attributedPlaceholder = NSAttributedString(string: "Старт акции",
+                                                                                 attributes:[.foregroundColor: placeholderColor])
+        self.actionEndDataTextField.attributedPlaceholder = NSAttributedString(string: "Конец акции",
+                                                                               attributes:[.foregroundColor: placeholderColor])
 
         self.messageTextField.delegate = self
         self.descriptionTextField.delegate = self
         self.linkTextField.delegate = self
+        self.actionStartDateTextField.delegate = self
+        self.actionEndDataTextField.delegate = self
 
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -150,6 +174,12 @@ final class SupplierActionsBeta: UIViewController {
     @objc func keyboardWillHide(notification: NSNotification) {
         self.view.frame.origin.y = 0
     }
+
+    func addPadding(to textField: UITextField) {
+        let leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: 0))
+        textField.leftView = leftView
+        textField.leftViewMode = .always
+    }
 }
 
 extension SupplierActionsBeta: UITextFieldDelegate {
@@ -159,11 +189,46 @@ extension SupplierActionsBeta: UITextFieldDelegate {
     }
 
     func textFieldDidBeginEditing(_ textField: UITextField) {
-        self.activeTextField = textField
+        activeTextField = textField
+        if activeTextField == actionStartDateTextField {
+            setDatePicker(forField: actionStartDateTextField)
+        }
+        if activeTextField == actionEndDataTextField {
+            setDatePicker(forField: actionEndDataTextField)
+        }
     }
 
     func textFieldDidEndEditing(_ textField: UITextField) {
-        self.activeTextField = nil
+        activeTextField = nil
+    }
+
+    func setDatePicker(forField textField: UITextField) {
+        datePicker.datePickerMode = .date
+        datePicker.backgroundColor = .white
+
+        let toolbar = UIToolbar()
+        toolbar.sizeToFit()
+        toolbar.backgroundColor = .white
+        let doneButton = UIBarButtonItem(title: "Готово", style: .plain, target: self, action: #selector(doneDatePicker))
+        let spaceButton = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let cancelButton = UIBarButtonItem(title: "Отменить", style: .plain, target: self, action: #selector(cancelDatePicker))
+
+        toolbar.setItems([cancelButton, spaceButton, doneButton], animated: false)
+
+        textField.inputAccessoryView = toolbar
+        textField.inputView = datePicker
+    }
+
+    @objc func doneDatePicker() {
+        let formatter = DateFormatter()
+        formatter.locale = Locale.autoupdatingCurrent
+        formatter.dateFormat = "dd.MM.yyyy"
+        activeTextField!.text = formatter.string(from: datePicker.date)
+        self.view.endEditing(true)
+    }
+
+    @objc func cancelDatePicker() {
+        self.view.endEditing(true)
     }
 }
 

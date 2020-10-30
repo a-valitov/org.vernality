@@ -1,31 +1,111 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="uSl-td-6Jp">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="uSl-td-6Jp">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Medium.ttf">
+            <string>Montserrat-Medium</string>
+        </array>
+        <array key="Montserrat-Regular.ttf">
+            <string>Montserrat-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
-        <!--Table View Controller-->
+        <!--Current Actions View Beta-->
         <scene sceneID="Cqh-6R-TT0">
             <objects>
-                <tableViewController id="uSl-td-6Jp" sceneMemberID="viewController">
+                <tableViewController id="uSl-td-6Jp" customClass="CurrentActionsViewBeta" customModule="Profit_Club" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="7pU-Bl-xwL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="g9e-rP-uuJ">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="currentActionsCell" rowHeight="108" id="g9e-rP-uuJ" customClass="CurrentActionsTableViewCell" customModule="Profit_Club" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="108"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="g9e-rP-uuJ" id="Qbu-sB-uUn">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="108"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="example" translatesAutoresizingMaskIntoConstraints="NO" id="p67-Js-FEh">
+                                            <rect key="frame" x="20" y="18" width="45" height="45"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="45" id="MHV-DS-aBj"/>
+                                                <constraint firstAttribute="width" constant="45" id="rA5-1R-5HN"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                    <integer key="value" value="10"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ООО «Газпром»" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bsG-9n-6F6">
+                                            <rect key="frame" x="77" y="11" width="194" height="23"/>
+                                            <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="18"/>
+                                            <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="G15-uW-5Qd">
+                                            <rect key="frame" x="332" y="15" width="62" height="15"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Сегодня" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dZz-yz-C4G">
+                                                    <rect key="frame" x="0.0" y="0.0" width="52" height="15"/>
+                                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
+                                                    <color key="textColor" red="0.45882352941176469" green="0.45490196078431372" blue="0.45490196078431372" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon" translatesAutoresizingMaskIntoConstraints="NO" id="GU6-Zg-cep">
+                                                    <rect key="frame" x="57" y="0.0" width="5" height="15"/>
+                                                </imageView>
+                                            </subviews>
+                                        </stackView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Мы предлагаем вам купить по акции сообщение в 1-2 строки" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X19-ey-qve">
+                                            <rect key="frame" x="77" y="34" width="305" height="40"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="40" id="Gk7-dd-f4y"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
+                                            <color key="textColor" red="0.45882352941176469" green="0.45490196078431372" blue="0.45490196078431372" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="material.io/resources/icons/?icon=work&amp;style..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hI8-fw-0dy">
+                                            <rect key="frame" x="77" y="79" width="307" height="18"/>
+                                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
+                                            <color key="textColor" red="0.45882352939999999" green="0.4549019608" blue="0.4549019608" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="p67-Js-FEh" firstAttribute="top" secondItem="Qbu-sB-uUn" secondAttribute="topMargin" constant="7" id="1Su-Ih-WyJ"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="X19-ey-qve" secondAttribute="trailing" constant="12" id="4yu-Ox-cdi"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="hI8-fw-0dy" secondAttribute="trailing" constant="10" id="5ok-tn-Voi"/>
+                                        <constraint firstItem="bsG-9n-6F6" firstAttribute="width" secondItem="Qbu-sB-uUn" secondAttribute="width" multiplier="0.46875" id="B2S-oD-l8B"/>
+                                        <constraint firstItem="bsG-9n-6F6" firstAttribute="leading" secondItem="p67-Js-FEh" secondAttribute="trailing" constant="12" id="BL2-TL-ZEL"/>
+                                        <constraint firstItem="G15-uW-5Qd" firstAttribute="trailing" secondItem="Qbu-sB-uUn" secondAttribute="trailingMargin" id="BNW-FF-UUb"/>
+                                        <constraint firstItem="bsG-9n-6F6" firstAttribute="top" secondItem="Qbu-sB-uUn" secondAttribute="topMargin" id="HrY-r5-NxT"/>
+                                        <constraint firstItem="p67-Js-FEh" firstAttribute="leading" secondItem="Qbu-sB-uUn" secondAttribute="leadingMargin" id="I8O-ju-xuH"/>
+                                        <constraint firstItem="X19-ey-qve" firstAttribute="top" secondItem="bsG-9n-6F6" secondAttribute="bottom" id="Izk-kv-xqn"/>
+                                        <constraint firstItem="hI8-fw-0dy" firstAttribute="leading" secondItem="X19-ey-qve" secondAttribute="leading" id="MwA-sa-pty"/>
+                                        <constraint firstItem="hI8-fw-0dy" firstAttribute="top" secondItem="X19-ey-qve" secondAttribute="bottom" constant="5" id="Sjn-M6-5q7"/>
+                                        <constraint firstItem="G15-uW-5Qd" firstAttribute="top" secondItem="Qbu-sB-uUn" secondAttribute="topMargin" constant="4" id="WJ7-5G-gyg"/>
+                                        <constraint firstItem="X19-ey-qve" firstAttribute="leading" secondItem="p67-Js-FEh" secondAttribute="trailing" constant="12" id="X2O-2O-gCz"/>
+                                        <constraint firstItem="G15-uW-5Qd" firstAttribute="centerY" secondItem="bsG-9n-6F6" secondAttribute="centerY" id="YJw-TJ-bAT"/>
+                                        <constraint firstItem="hI8-fw-0dy" firstAttribute="bottom" secondItem="Qbu-sB-uUn" secondAttribute="bottomMargin" id="xxa-ET-iyi"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="actionDescriptionOfLabel" destination="X19-ey-qve" id="qYJ-ip-1me"/>
+                                    <outlet property="actionImageView" destination="p67-Js-FEh" id="71s-OD-3An"/>
+                                    <outlet property="actionLinkLabel" destination="hI8-fw-0dy" id="lBQ-3w-1W8"/>
+                                    <outlet property="actionMessageLabel" destination="bsG-9n-6F6" id="aBP-4A-4Dh"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
+                        <sections/>
                         <connections>
                             <outlet property="dataSource" destination="uSl-td-6Jp" id="jEV-t5-M89"/>
                             <outlet property="delegate" destination="uSl-td-6Jp" id="WFk-c5-KbR"/>
@@ -34,12 +114,11 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LA0-hm-AdH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="288" y="156"/>
+            <point key="canvasLocation" x="285" y="154.22535211267606"/>
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <image name="Icon" width="5" height="8"/>
+        <image name="example" width="354" height="178"/>
     </resources>
 </document>

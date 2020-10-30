@@ -89,7 +89,7 @@
                                         </constraints>
                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                                 <integer key="value" value="5"/>
@@ -98,7 +98,7 @@
                                     </textField>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q5E-SW-iyL">
+                            <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q5E-SW-iyL">
                                 <rect key="frame" x="27.5" y="72" width="359" height="162"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
@@ -110,12 +110,44 @@
                                 <inset key="titleEdgeInsets" minX="0.0" minY="60" maxX="25" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="96" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <state key="normal" title="Добавьте фото" image="add">
-                                    <color key="titleColor" white="0.0" alpha="0.7049711044520548" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
                                     <action selector="addActionImageViewTouchUpInside:" destination="tP1-8L-cTG" eventType="touchUpInside" id="LNO-ht-83h"/>
                                 </connections>
                             </button>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Старт акции" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cXL-Tu-x4s">
+                                <rect key="frame" x="20" y="511" width="100" height="28"/>
+                                <color key="backgroundColor" red="0.53333333333333333" green="0.53333333333333333" blue="0.53333333333333333" alpha="0.14624357876712329" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="3cX-Sp-Krp"/>
+                                    <constraint firstAttribute="width" constant="100" id="YyF-9C-C6f"/>
+                                </constraints>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Конец акции" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="AZg-Yl-Tr2">
+                                <rect key="frame" x="294" y="511" width="100" height="28"/>
+                                <color key="backgroundColor" red="0.53333333329999999" green="0.53333333329999999" blue="0.53333333329999999" alpha="0.1462435788" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="cgZ-p9-9Qo"/>
+                                    <constraint firstAttribute="height" constant="28" id="umh-bB-ufi"/>
+                                </constraints>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -123,15 +155,21 @@
                             <constraint firstAttribute="trailing" secondItem="BTx-UJ-H6s" secondAttribute="trailing" constant="20" id="8xF-Pf-wdM"/>
                             <constraint firstItem="QNK-ZC-cf7" firstAttribute="top" secondItem="ZMf-tz-yYD" secondAttribute="top" constant="20" id="FyF-td-fhe"/>
                             <constraint firstItem="q5E-SW-iyL" firstAttribute="centerX" secondItem="zeB-ZN-vgO" secondAttribute="centerX" id="OPu-uq-HYr"/>
+                            <constraint firstItem="cXL-Tu-x4s" firstAttribute="top" secondItem="QNK-ZC-cf7" secondAttribute="bottom" constant="16" id="UCr-l9-GS6"/>
+                            <constraint firstItem="AZg-Yl-Tr2" firstAttribute="trailing" secondItem="QNK-ZC-cf7" secondAttribute="trailing" id="Xou-5x-FKD"/>
                             <constraint firstItem="BTx-UJ-H6s" firstAttribute="leading" secondItem="ZMf-tz-yYD" secondAttribute="leading" constant="20" id="Z3o-ei-Kcu"/>
                             <constraint firstItem="QNK-ZC-cf7" firstAttribute="leading" secondItem="ZMf-tz-yYD" secondAttribute="leading" constant="20" id="bSz-Rr-QbW"/>
+                            <constraint firstItem="AZg-Yl-Tr2" firstAttribute="top" secondItem="QNK-ZC-cf7" secondAttribute="bottom" constant="16" id="j4g-oQ-Jb0"/>
+                            <constraint firstItem="cXL-Tu-x4s" firstAttribute="leading" secondItem="QNK-ZC-cf7" secondAttribute="leading" id="vIb-lK-bv9"/>
                             <constraint firstItem="ZMf-tz-yYD" firstAttribute="trailing" secondItem="QNK-ZC-cf7" secondAttribute="trailing" constant="20" id="y5t-aZ-D4R"/>
                             <constraint firstItem="q5E-SW-iyL" firstAttribute="centerY" secondItem="zeB-ZN-vgO" secondAttribute="centerY" id="zXv-Xh-ajb"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="ZMf-tz-yYD"/>
                     </view>
                     <connections>
+                        <outlet property="actionEndDataTextField" destination="AZg-Yl-Tr2" id="HRU-IB-jZb"/>
                         <outlet property="actionImageView" destination="zeB-ZN-vgO" id="2Mh-IM-fPV"/>
+                        <outlet property="actionStartDateTextField" destination="cXL-Tu-x4s" id="zZ5-Wf-2Bo"/>
                         <outlet property="addActionImageView" destination="q5E-SW-iyL" id="hrt-WR-mrX"/>
                         <outlet property="descriptionTextField" destination="6cJ-1E-3cN" id="Dqo-lS-R0e"/>
                         <outlet property="linkTextField" destination="5Mn-un-esz" id="BjP-vC-85M"/>
@@ -144,6 +182,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="add" width="15" height="15"/>
+        <image name="add" width="26" height="25"/>
     </resources>
 </document>

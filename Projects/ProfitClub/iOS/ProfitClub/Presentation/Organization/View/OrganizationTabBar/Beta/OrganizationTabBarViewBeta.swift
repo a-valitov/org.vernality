@@ -16,10 +16,17 @@
 
 import UIKit
 
-final class OrganizationTabBarViewBeta: UITabBarController {
-    var output: OrganizationTabBarViewOutput?
-}
-
 extension OrganizationTabBarViewBeta: OrganizationTabBarViewInput {
     
+}
+
+final class OrganizationTabBarViewBeta: UITabBarController {
+    var output: OrganizationTabBarViewOutput?
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let appearance = UITabBarItem.appearance()
+        let attributes = [NSAttributedString.Key.font:UIFont(name: "Montserrat-Regular", size: 12)]
+        appearance.setTitleTextAttributes(attributes as [NSAttributedString.Key : Any], for: .normal)
+    }
 }

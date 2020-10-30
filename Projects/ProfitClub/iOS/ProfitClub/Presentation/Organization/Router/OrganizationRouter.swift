@@ -21,13 +21,27 @@ import ProfitClubModel
 final class OrganizationRouter {
     weak var main: MainModule?
 
+    init(factories: OrganizationFactories) {
+        self.factories = factories
+    }
+
     @discardableResult
-    func openOrganizationTabBar(output: OrganizationTabBarViewOutput?) -> OrganizationTabBarViewInput {
+    func openOrganizationTabBar(output: OrganizationTabBarViewOutput & ActionsModuleOutput) -> OrganizationTabBarViewInput {
         let storyboard = UIStoryboard(name: "OrganizationTabBarViewBeta", bundle: nil)
         let organizationTabBar = storyboard.instantiateInitialViewController() as! OrganizationTabBarViewBeta
         organizationTabBar.output = output
+        let actions = self.factories.actions.make(output: output)
+        actions.embed(in: organizationTabBar, main: self.main)
         self.main?.push(organizationTabBar, animated: true)
         return organizationTabBar
     }
 
+    @discardableResult
+    func open(action: PCAction, output: ActionModuleOutput?) -> ActionModule {
+        let actionModule = self.factories.action.make(action: action, output: output)
+        actionModule.open(in: self.main)
+        return actionModule
+    }
+
+    private let factories: OrganizationFactories
 }

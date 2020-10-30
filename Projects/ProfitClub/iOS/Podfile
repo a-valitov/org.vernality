@@ -10,6 +10,7 @@ ONTOLOGY_PATH = PODS_PATH + '/Ontology'
 
 target 'ProfitClub' do
   pod 'Nantes'
+  pod 'Kingfisher'
 
   # modules
   pod 'Main', :path => MODULES_PATH + '/Main.podspec'
