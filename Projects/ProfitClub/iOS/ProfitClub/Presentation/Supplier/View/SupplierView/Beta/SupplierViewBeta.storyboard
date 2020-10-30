@@ -47,6 +47,9 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                                 <state key="normal" title="Создать комерческое предложение"/>
+                                <connections>
+                                    <action selector="createCommercialOfferTouchUpInside:" destination="JXQ-aI-JQr" eventType="touchUpInside" id="htp-Y8-yAa"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>

@@ -1,5 +1,5 @@
 //  Copyright (C) 2020 Startup Studio Vernality
-//  Created by Macbook on 20.10.2020
+//  Created by Macbook on 30.10.2020
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -16,26 +16,10 @@
 
 import UIKit
 
-extension SupplierViewBeta: SupplierViewInput {
+protocol SupplierCommercialOfferInput: UIViewController {
     
 }
 
-final class SupplierViewBeta: UIViewController {
-    var output: SupplierViewOutput?
-
-    @IBOutlet weak var createAction: UIButton!
+protocol SupplierCommercialOfferOutput {
     
-    @IBAction func createActionTouchUpInside(_ sender: Any) {
-        self.output?.supplierView(view: self, supplierWantsToCreateAction: sender)
-    }
-
-    @IBAction func createCommercialOfferTouchUpInside(_ sender: Any) {
-        self.output?.supplier(view: self, wantsToCreateCommercialOffer: sender)
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        createAction.layer.borderWidth = 1
-        createAction.layer.borderColor = UIColor.black.cgColor
-    }
 }

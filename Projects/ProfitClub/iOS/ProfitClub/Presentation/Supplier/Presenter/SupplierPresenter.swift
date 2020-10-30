@@ -49,6 +49,10 @@ extension SupplierPresenter: SupplierViewOutput {
     func supplierView(view: SupplierViewInput, supplierWantsToCreateAction sender: Any) {
         self.router?.openSupplierActions(output: self)
     }
+
+    func supplier(view: SupplierViewInput, wantsToCreateCommercialOffer sender: Any) {
+        self.router?.openSupplierCommercialOffer(output: self)
+    }
 }
 
 extension SupplierPresenter: SupplierActionsOutput {
@@ -99,4 +103,8 @@ extension SupplierPresenter: SupplierActionsOutput {
             }
         }
     }
+}
+
+extension SupplierPresenter: SupplierCommercialOfferOutput {
+    
 }

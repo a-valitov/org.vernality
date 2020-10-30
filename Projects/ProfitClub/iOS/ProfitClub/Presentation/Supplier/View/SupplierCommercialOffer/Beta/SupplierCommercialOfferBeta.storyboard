@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pV0-jB-TvK">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Regular.ttf">
+            <string>Montserrat-Regular</string>
+        </array>
+        <array key="Roboto-Medium.ttf">
+            <string>Roboto-Medium</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Supplier Commercial Offer Beta-->
+        <scene sceneID="60I-Ut-VC8">
+            <objects>
+                <viewController id="pV0-jB-TvK" customClass="SupplierCommercialOfferBeta" customModule="Profit_Club" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="JKM-dI-B66">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="NZr-R1-1jl">
+                                <rect key="frame" x="20" y="64" width="374" height="178"/>
+                                <color key="backgroundColor" red="0.53333333329999999" green="0.53333333329999999" blue="0.53333333329999999" alpha="0.1544038955479452" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="178" id="klW-Z7-0Ra"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u8G-Rs-w3E">
+                                <rect key="frame" x="27.5" y="72" width="359" height="162"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="162" id="ASk-TN-5BF"/>
+                                    <constraint firstAttribute="width" constant="359" id="usz-T1-XVV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                                <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="25"/>
+                                <inset key="titleEdgeInsets" minX="0.0" minY="60" maxX="25" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="104" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Добавьте фото" image="add">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Введите сообщение" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="Tjy-WC-bEz">
+                                <rect key="frame" x="20" y="257" width="374" height="109"/>
+                                <color key="backgroundColor" red="0.53333333333333333" green="0.53333333333333333" blue="0.53333333333333333" alpha="0.1502033390410959" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="109" id="MKF-Gd-i58"/>
+                                </constraints>
+                                <color key="textColor" red="0.098039215690000001" green="0.098039215690000001" blue="0.094117647060000004" alpha="0.99515732020000003" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B3M-Ym-Ghg">
+                                <rect key="frame" x="372" y="263" width="14" height="22"/>
+                                <state key="normal" image="attach"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aIy-CU-zT3">
+                                <rect key="frame" x="20" y="790" width="374" height="52"/>
+                                <color key="backgroundColor" red="0.098039215690000001" green="0.098039215690000001" blue="0.094117647060000004" alpha="0.99515732020000003" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="i7b-fK-wy6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="15"/>
+                                <state key="normal" title="Создать коммерческое предложение">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Tjy-WC-bEz" firstAttribute="top" secondItem="NZr-R1-1jl" secondAttribute="bottom" constant="15" id="3UC-TD-Wev"/>
+                            <constraint firstItem="XCT-fg-yWs" firstAttribute="bottom" secondItem="aIy-CU-zT3" secondAttribute="bottom" constant="20" id="BSv-Sz-Upx"/>
+                            <constraint firstItem="XCT-fg-yWs" firstAttribute="trailing" secondItem="Tjy-WC-bEz" secondAttribute="trailing" constant="20" id="E89-MJ-sfk"/>
+                            <constraint firstItem="Tjy-WC-bEz" firstAttribute="leading" secondItem="XCT-fg-yWs" secondAttribute="leading" constant="20" id="Frr-Q6-LWw"/>
+                            <constraint firstItem="u8G-Rs-w3E" firstAttribute="centerX" secondItem="NZr-R1-1jl" secondAttribute="centerX" id="Ipl-yt-8VK"/>
+                            <constraint firstItem="XCT-fg-yWs" firstAttribute="trailing" secondItem="NZr-R1-1jl" secondAttribute="trailing" constant="20" id="Jg5-dH-QIr"/>
+                            <constraint firstItem="B3M-Ym-Ghg" firstAttribute="leading" secondItem="Tjy-WC-bEz" secondAttribute="trailing" constant="-22" id="Qg8-lU-zGr"/>
+                            <constraint firstItem="NZr-R1-1jl" firstAttribute="leading" secondItem="XCT-fg-yWs" secondAttribute="leading" constant="20" id="R86-Vo-8mL"/>
+                            <constraint firstItem="aIy-CU-zT3" firstAttribute="leading" secondItem="XCT-fg-yWs" secondAttribute="leading" constant="20" id="dNK-BM-hox"/>
+                            <constraint firstItem="NZr-R1-1jl" firstAttribute="top" secondItem="XCT-fg-yWs" secondAttribute="top" constant="20" id="kYv-tB-c9Z"/>
+                            <constraint firstItem="u8G-Rs-w3E" firstAttribute="centerY" secondItem="NZr-R1-1jl" secondAttribute="centerY" id="kc3-33-EEE"/>
+                            <constraint firstItem="XCT-fg-yWs" firstAttribute="trailing" secondItem="aIy-CU-zT3" secondAttribute="trailing" constant="20" id="oqT-MR-ZDv"/>
+                            <constraint firstItem="Tjy-WC-bEz" firstAttribute="top" secondItem="B3M-Ym-Ghg" secondAttribute="bottom" constant="-28" id="x6J-J2-WUE"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="XCT-fg-yWs"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YlJ-lR-M4p" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-171.01449275362319" y="59.598214285714285"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="add" width="26" height="25"/>
+        <image name="attach" width="14" height="16"/>
+    </resources>
+</document>

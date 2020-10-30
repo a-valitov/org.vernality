@@ -11,8 +11,8 @@
         <array key="Montserrat-Regular.ttf">
             <string>Montserrat-Regular</string>
         </array>
-        <array key="Roboto-Regular.ttf">
-            <string>Roboto-Regular</string>
+        <array key="Roboto-Medium.ttf">
+            <string>Roboto-Medium</string>
         </array>
     </customFonts>
     <scenes>
@@ -30,7 +30,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="52" id="0Mi-4s-NoF"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="15"/>
                                 <state key="normal" title="Создать акцию"/>
                                 <connections>
                                     <action selector="createActionTouchUpInside:" destination="tP1-8L-cTG" eventType="touchUpInside" id="ad8-w1-IIz"/>
