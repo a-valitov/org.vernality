@@ -20,10 +20,29 @@ import MobileCoreServices
 final class SupplierCommercialOfferBeta: UIViewController {
     var output: SupplierCommercialOfferOutput?
 
+    var message: String? {
+        if self.isViewLoaded {
+            return self.messageTextView.text
+        } else {
+            return nil
+        }
+    }
+
+    var image: UIImage? {
+        if self.isViewLoaded {
+            return self.commercialOfferImageView.image
+        } else {
+            return nil
+        }
+    }
+
+    var attachment: Data?
+    
     @IBOutlet weak var messageTextView: UITextView!
     @IBOutlet weak var commercialOfferImageView: UIImageView!
     @IBOutlet weak var addCommercialOfferImage: UIButton!
-
+    @IBOutlet weak var attachmentLabel: UILabel!
+    
     @IBAction func addCommercialOfferImageTouchUpInside(_ sender: Any) {
 
         let cameraIcon = #imageLiteral(resourceName: "camera")
@@ -130,7 +149,12 @@ extension SupplierCommercialOfferBeta: UIDocumentPickerDelegate {
         guard let url = urls.first else {
             return
         }
-        print(url)
+        guard let data = try? Data(contentsOf: url) else {
+            return
+        }
+        self.attachment = data
+        self.attachmentLabel.text = "Приложение: " + url.lastPathComponent
+        self.attachmentLabel.isHidden = false
     }
 
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {

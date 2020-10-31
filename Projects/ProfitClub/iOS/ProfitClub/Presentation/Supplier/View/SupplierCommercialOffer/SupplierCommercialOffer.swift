@@ -17,7 +17,9 @@
 import UIKit
 
 protocol SupplierCommercialOfferInput: UIViewController {
-    
+    var message: String? { get }
+    var image: UIImage? { get }
+    var attachment: Data? { get }
 }
 
 protocol SupplierCommercialOfferOutput {
