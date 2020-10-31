@@ -80,6 +80,9 @@
                                 <state key="normal" title="Создать коммерческое предложение">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="createCommerialOfferButtonTouchUpInside:" destination="pV0-jB-TvK" eventType="touchUpInside" id="9Z2-Kb-MKM"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B3M-Ym-Ghg">
                                 <rect key="frame" x="358" y="261" width="28" height="22"/>

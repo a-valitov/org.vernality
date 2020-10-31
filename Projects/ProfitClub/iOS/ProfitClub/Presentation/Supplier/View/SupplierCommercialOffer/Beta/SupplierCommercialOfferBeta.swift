@@ -36,6 +36,8 @@ final class SupplierCommercialOfferBeta: UIViewController {
         }
     }
 
+    var attachmentName: String?
+
     var attachment: Data?
     
     @IBOutlet weak var messageTextView: UITextView!
@@ -72,6 +74,10 @@ final class SupplierCommercialOfferBeta: UIViewController {
         actionSheet.addAction(cancel)
 
         present(actionSheet, animated: true)
+    }
+
+    @IBAction func createCommerialOfferButtonTouchUpInside(_ sender: Any) {
+        self.output?.supplierCommercialOfferDidFinish(view: self)
     }
 
     @IBAction func attachFileTouchUpInside(_ sender: UIButton) {
@@ -155,6 +161,7 @@ extension SupplierCommercialOfferBeta: UIDocumentPickerDelegate {
         self.attachment = data
         self.attachmentLabel.text = "Приложение: " + url.lastPathComponent
         self.attachmentLabel.isHidden = false
+        self.attachmentName = url.lastPathComponent
     }
 
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
