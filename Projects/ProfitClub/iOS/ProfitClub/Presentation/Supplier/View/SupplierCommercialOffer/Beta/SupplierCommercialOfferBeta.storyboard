@@ -69,13 +69,6 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B3M-Ym-Ghg">
-                                <rect key="frame" x="372" y="263" width="14" height="22"/>
-                                <state key="normal" image="attach"/>
-                                <connections>
-                                    <action selector="attachFileTouchUpInside:" destination="pV0-jB-TvK" eventType="touchUpInside" id="1SW-xg-fnJ"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aIy-CU-zT3">
                                 <rect key="frame" x="20" y="790" width="374" height="52"/>
                                 <color key="backgroundColor" red="0.098039215690000001" green="0.098039215690000001" blue="0.094117647060000004" alpha="0.99515732020000003" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -87,6 +80,17 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B3M-Ym-Ghg">
+                                <rect key="frame" x="358" y="261" width="28" height="22"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="28" id="8V2-gf-1ZA"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" image="attach"/>
+                                <connections>
+                                    <action selector="attachFileTouchUpInside:" destination="pV0-jB-TvK" eventType="touchUpInside" id="1SW-xg-fnJ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -96,13 +100,13 @@
                             <constraint firstItem="Tjy-WC-bEz" firstAttribute="leading" secondItem="XCT-fg-yWs" secondAttribute="leading" constant="20" id="Frr-Q6-LWw"/>
                             <constraint firstItem="u8G-Rs-w3E" firstAttribute="centerX" secondItem="NZr-R1-1jl" secondAttribute="centerX" id="Ipl-yt-8VK"/>
                             <constraint firstItem="XCT-fg-yWs" firstAttribute="trailing" secondItem="NZr-R1-1jl" secondAttribute="trailing" constant="20" id="Jg5-dH-QIr"/>
-                            <constraint firstItem="B3M-Ym-Ghg" firstAttribute="leading" secondItem="Tjy-WC-bEz" secondAttribute="trailing" constant="-22" id="Qg8-lU-zGr"/>
                             <constraint firstItem="NZr-R1-1jl" firstAttribute="leading" secondItem="XCT-fg-yWs" secondAttribute="leading" constant="20" id="R86-Vo-8mL"/>
+                            <constraint firstItem="B3M-Ym-Ghg" firstAttribute="leading" secondItem="Tjy-WC-bEz" secondAttribute="trailing" constant="-36" id="aqs-Eg-Fc0"/>
                             <constraint firstItem="aIy-CU-zT3" firstAttribute="leading" secondItem="XCT-fg-yWs" secondAttribute="leading" constant="20" id="dNK-BM-hox"/>
                             <constraint firstItem="NZr-R1-1jl" firstAttribute="top" secondItem="XCT-fg-yWs" secondAttribute="top" constant="20" id="kYv-tB-c9Z"/>
                             <constraint firstItem="u8G-Rs-w3E" firstAttribute="centerY" secondItem="NZr-R1-1jl" secondAttribute="centerY" id="kc3-33-EEE"/>
                             <constraint firstItem="XCT-fg-yWs" firstAttribute="trailing" secondItem="aIy-CU-zT3" secondAttribute="trailing" constant="20" id="oqT-MR-ZDv"/>
-                            <constraint firstItem="Tjy-WC-bEz" firstAttribute="top" secondItem="B3M-Ym-Ghg" secondAttribute="bottom" constant="-28" id="x6J-J2-WUE"/>
+                            <constraint firstItem="Tjy-WC-bEz" firstAttribute="top" secondItem="B3M-Ym-Ghg" secondAttribute="bottom" constant="-26" id="vRl-pP-kIx"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="XCT-fg-yWs"/>
                     </view>

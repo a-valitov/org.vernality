@@ -58,7 +58,8 @@ final class SupplierCommercialOfferBeta: UIViewController {
     @IBAction func attachFileTouchUpInside(_ sender: UIButton) {
         let documentPicker = UIDocumentPickerViewController(documentTypes: [String(kUTTypePDF)], in: .import)
         documentPicker.delegate = self
-        documentPicker.modalPresentationStyle = .formSheet
+        documentPicker.modalPresentationStyle = .fullScreen
+        UINavigationBar.appearance().tintColor = .blue
         self.present(documentPicker, animated: true)
     }
 
@@ -75,6 +76,7 @@ final class SupplierCommercialOfferBeta: UIViewController {
             addCommercialOfferImage.setTitleColor(.white, for: .normal)
             addCommercialOfferImage.imageView?.isHidden = true
         }
+        UINavigationBar.appearance().tintColor = .white
     }
 }
 
