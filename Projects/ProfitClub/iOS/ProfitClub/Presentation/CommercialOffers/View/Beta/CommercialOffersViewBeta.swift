@@ -47,6 +47,7 @@ final class CommercialOffersViewBeta: UITableViewController {
         let commercialOffer = commercialOffers[indexPath.row]
         cell.commercialOfferMessageLabel.text = commercialOffer.message
         cell.commercialOfferImageView.kf.setImage(with: commercialOffer.imageUrl)
+        cell.supplierNameLabel.text = commercialOffer.supplier?.contact
 
         return cell
     }

@@ -76,6 +76,7 @@
                                 <connections>
                                     <outlet property="commercialOfferImageView" destination="ygT-FK-Rr3" id="kPc-4R-SPI"/>
                                     <outlet property="commercialOfferMessageLabel" destination="yxa-f6-Ep5" id="NxP-sc-yfu"/>
+                                    <outlet property="supplierNameLabel" destination="D3r-vO-CEp" id="Jrs-Gp-RJS"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

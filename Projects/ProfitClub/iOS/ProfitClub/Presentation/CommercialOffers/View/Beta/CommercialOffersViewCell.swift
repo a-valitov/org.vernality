@@ -25,6 +25,7 @@ class CommercialOffersViewCell: UITableViewCell {
         }
     }
     @IBOutlet weak var commercialOfferMessageLabel: UILabel!
+    @IBOutlet weak var supplierNameLabel: UILabel!
     
 
 }
