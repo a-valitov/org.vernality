@@ -1,5 +1,5 @@
 //  Copyright (C) 2020 Startup Studio Vernality
-//  Created by Macbook on 22.10.2020
+//  Created by Rinat Enikeev on 10/31/20
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -19,11 +19,11 @@ import ProfitClubModel
 import ProfitClubParse
 import Parse
 
-public final class PCActionServiceParse: PCActionService {
+public final class PCCommercialOfferServiceParse: PCCommercialOfferService {
     public init() {}
 
-    public func add(action: PCAction, result: @escaping (Result<PCAction, Error>) -> Void) {
-        let parseAction = action.parse
+    public func add(offer: PCCommercialOffer, result: @escaping (Result<PCCommercialOffer, Error>) -> Void) {
+        let parseOffer = offer.parse
         let currentUser = PFUser.current()
         if let currentUser = currentUser {
             let acl = PFACL(user: currentUser)
@@ -33,33 +33,25 @@ public final class PCActionServiceParse: PCActionService {
             acl.setWriteAccess(true, forRoleWithName: PCRole.administrator.rawValue)
             acl.setWriteAccess(false, for: currentUser)
             acl.setReadAccess(true, for: currentUser)
-            parseAction.acl = acl
-            parseAction.relation(forKey: "user").add(currentUser)
+            parseOffer.acl = acl
+            parseOffer.relation(forKey: "user").add(currentUser)
         }
-        if let supplier = action.supplier?.parse {
-            parseAction.relation(forKey: "supplier").add(supplier)
+        if let supplier = offer.supplier?.parse {
+            parseOffer.relation(forKey: "supplier").add(supplier)
         }
-        if let image = action.image, let imageData = image.pngData() {
+        if let image = offer.image, let imageData = image.pngData() {
             let imageFile = PFFileObject(name: "image.png", data: imageData)
-            parseAction.imageFile = imageFile
+            parseOffer.imageFile = imageFile
         }
-        parseAction.saveInBackground { (succeeded, error) in
+        if let attachmentData = offer.attachment, let name = offer.attachmentName {
+            let attachmentFile = PFFileObject(name: name, data: attachmentData)
+            parseOffer.attachmentFile = attachmentFile
+        }
+        parseOffer.saveInBackground { (succeeded, error) in
             if let error = error {
                 result(.failure(error))
             } else {
-                result(.success(action))
-            }
-        }
-    }
-
-    public func fetchApproved(result: @escaping (Result<[AnyPCAction], Error>) -> Void) {
-        let query = PFQuery(className: "Action")
-        query.whereKey("statusString", equalTo: "approved")
-        query.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
-            if let error = error {
-                result(.failure(error))
-            } else if let objects = objects {
-                result(.success(objects.map({ $0.pcAction.any })))
+                result(.success(offer))
             }
         }
     }

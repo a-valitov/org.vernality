@@ -19,6 +19,7 @@ import PCAuthentication
 import PCActionService
 import ErrorPresenter
 import ActivityPresenter
+import PCCommercialOfferService
 
 struct SupplierPresenters {
     let error: ErrorPresenter
@@ -28,4 +29,5 @@ struct SupplierPresenters {
 struct SupplierServices {
     let authentication: PCAuthentication
     let action: PCActionService
+    let commercialOffer: PCCommercialOfferService
 }

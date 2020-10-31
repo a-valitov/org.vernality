@@ -1,5 +1,5 @@
 //  Copyright (C) 2020 Startup Studio Vernality
-//  Created by Macbook on 30.10.2020
+//  Created by Rinat Enikeev on 10/31/20
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -14,15 +14,4 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import UIKit
-
-protocol SupplierCommercialOfferInput: UIViewController {
-    var message: String? { get }
-    var image: UIImage? { get }
-    var attachment: Data? { get }
-    var attachmentName: String? { get }
-}
-
-protocol SupplierCommercialOfferOutput {
-    func supplierCommercialOfferDidFinish(view: SupplierCommercialOfferInput)
-}
+import Foundation

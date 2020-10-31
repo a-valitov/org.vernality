@@ -22,6 +22,11 @@ PODS:
     - Parse
     - ProfitClubModel
     - ProfitClubParse
+  - PCCommercialOfferService (0.0.1):
+    - Parse
+    - PCAuthentication
+    - ProfitClubModel
+    - ProfitClubParse
   - PCOrganizationService (0.0.1):
     - Parse
     - PCAuthentication
@@ -44,6 +49,7 @@ DEPENDENCIES:
   - Nantes
   - PCActionService (from `../../../Pods/Services/ProfitClub/PCActionService.podspec`)
   - PCAuthentication (from `../../../Pods/Services/ProfitClub/PCAuthentication.podspec`)
+  - PCCommercialOfferService (from `../../../Pods/Services/ProfitClub/PCCommercialOfferService.podspec`)
   - PCOrganizationService (from `../../../Pods/Services/ProfitClub/PCOrganizationService.podspec`)
   - PCUserService (from `../../../Pods/Services/ProfitClub/PCUserService.podspec`)
   - ProfitClubModel (from `../../../Pods/Ontology/ProfitClubModel.podspec`)
@@ -68,6 +74,8 @@ EXTERNAL SOURCES:
     :path: "../../../Pods/Services/ProfitClub/PCActionService.podspec"
   PCAuthentication:
     :path: "../../../Pods/Services/ProfitClub/PCAuthentication.podspec"
+  PCCommercialOfferService:
+    :path: "../../../Pods/Services/ProfitClub/PCCommercialOfferService.podspec"
   PCOrganizationService:
     :path: "../../../Pods/Services/ProfitClub/PCOrganizationService.podspec"
   PCUserService:
@@ -88,11 +96,12 @@ SPEC CHECKSUMS:
   Parse: 0fb5c7cc7ee5900f2434e24607d0496155b8d04f
   PCActionService: 57c4d47fb324bc6d6f0de36d037f8ee04e2f52dd
   PCAuthentication: 08d4d8b660b8f39573b8192607dd431ebdb7254f
+  PCCommercialOfferService: 6ec41c8d76b385dbe02f6b7900f546863ba3559b
   PCOrganizationService: d3e3f936840999a102c4bfdecfdeccd327ccf9d3
   PCUserService: 0fda50172a03145b21c939d6bbdbf12526c7e37b
   ProfitClubModel: 38acfa2527d8cac51c97c8494db90fdd3025d32f
   ProfitClubParse: f0319471560bd2af6fd3d2753a8980bab1656b1a
 
-PODFILE CHECKSUM: ae4e6d76cb43e203722badf7a0819c69406fdc28
+PODFILE CHECKSUM: 8f4bc80c6f7b493aac4fba315aad96552a273500
 
 COCOAPODS: 1.9.3

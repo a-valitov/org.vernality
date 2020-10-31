@@ -106,5 +106,27 @@ extension SupplierPresenter: SupplierActionsOutput {
 }
 
 extension SupplierPresenter: SupplierCommercialOfferOutput {
-    
+    func supplierCommercialOfferDidFinish(view: SupplierCommercialOfferInput) {
+        guard let message = view.message, !message.isEmpty else {
+            self.presenters.error.present(SupplierError.actionMessageIsEmpty)
+            return
+        }
+        var offer = PCCommercialOfferStruct()
+        offer.message = message
+        offer.image = view.image
+        offer.attachment = view.attachment
+        offer.supplier = self.supplier
+        offer.attachmentName = view.attachmentName
+        
+        self.presenters.activity.increment()
+        self.services.commercialOffer.add(offer: offer) { [weak self] result in
+            self?.presenters.activity.decrement()
+            switch result {
+            case .success:
+                self?.router?.pop()
+            case .failure(let error):
+                self?.presenters.error.present(error)
+            }
+        }
+    }
 }
