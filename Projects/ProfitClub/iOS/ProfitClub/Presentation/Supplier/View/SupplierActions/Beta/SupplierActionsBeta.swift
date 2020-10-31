@@ -90,21 +90,21 @@ final class SupplierActionsBeta: UIViewController {
                                             message: nil,
                                             preferredStyle: .actionSheet)
 
-        let camera = UIAlertAction(title: "Camera", style: .default) { _ in
+        let camera = UIAlertAction(title: "Камера", style: .default) { _ in
             self.chooseImagePicker(source: .camera)
         }
 
         camera.setValue(cameraIcon, forKey: "image")
         camera.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
 
-        let photo = UIAlertAction(title: "Photo", style: .default) { _ in
+        let photo = UIAlertAction(title: "Фото", style: .default) { _ in
             self.chooseImagePicker(source: .photoLibrary)
         }
 
         photo.setValue(photoIcon, forKey: "image")
         photo.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
 
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
+        let cancel = UIAlertAction(title: "Отменить", style: .cancel)
 
         actionSheet.addAction(camera)
         actionSheet.addAction(photo)
