@@ -34,6 +34,9 @@ public extension PFObject {
             let attachmentUrl = URL(string: urlString) {
             result.attachmentUrl = attachmentUrl
         }
+        if let supplier = self["supplier"] as? PFObject {
+            result.supplier = supplier.pcSupplier.any
+        }
         return result
     }
 }
