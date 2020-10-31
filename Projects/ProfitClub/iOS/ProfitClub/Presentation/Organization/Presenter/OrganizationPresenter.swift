@@ -53,3 +53,7 @@ extension OrganizationPresenter: ActionsModuleOutput {
 extension OrganizationPresenter: ActionModuleOutput {
 
 }
+
+extension OrganizationPresenter: CommercialOffersModuleOutput {
+
+}

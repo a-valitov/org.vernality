@@ -1,5 +1,5 @@
 //  Copyright (C) 2020 Startup Studio Vernality
-//  Created by Macbook on 22.10.2020
+//  Created by Macbook on 31.10.2020
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -14,10 +14,14 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import Foundation
+import UIKit
+import Main
 import ProfitClubModel
 
-public protocol PCCommercialOfferService {
-    func add(offer: PCCommercialOffer, result: @escaping (Result<PCCommercialOffer, Error>) -> Void)
-    func fetchApproved(result: @escaping (Result<[AnyPCCommercialOffer], Error>) -> Void)
+protocol CommercialOffersModule: class {
+    func embed(in tabBarController: UITabBarController, main: MainModule?)
+}
+
+protocol CommercialOffersModuleOutput: class {
+    
 }

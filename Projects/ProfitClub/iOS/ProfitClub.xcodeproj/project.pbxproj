@@ -104,6 +104,15 @@
 		FA566391253F3B4800D19D4E /* SupplierViewBeta.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA566390253F3B4800D19D4E /* SupplierViewBeta.storyboard */; };
 		FA56639C253F4F1400D19D4E /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA56639B253F4F0200D19D4E /* Roboto-Regular.ttf */; };
 		FA69BCE6254193DB001FEC2D /* SupplierError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA69BCE5254193DB001FEC2D /* SupplierError.swift */; };
+		FA6E8BBC254D96A2007B8B4E /* CommercialOffersFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6E8BBB254D96A2007B8B4E /* CommercialOffersFactory.swift */; };
+		FA6E8BBE254D96FE007B8B4E /* CommercialOffersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6E8BBD254D96FE007B8B4E /* CommercialOffersView.swift */; };
+		FA6E8BC1254D9726007B8B4E /* CommercialOffersViewBeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6E8BC0254D9726007B8B4E /* CommercialOffersViewBeta.swift */; };
+		FA6E8BC3254D9732007B8B4E /* CommercialOffersViewBeta.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA6E8BC2254D9732007B8B4E /* CommercialOffersViewBeta.storyboard */; };
+		FA6E8BC5254D9877007B8B4E /* CommercialOffersRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6E8BC4254D9877007B8B4E /* CommercialOffersRouter.swift */; };
+		FA6E8BC7254D997E007B8B4E /* CommercialOffersModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6E8BC6254D997E007B8B4E /* CommercialOffersModule.swift */; };
+		FA6E8BC9254D99D1007B8B4E /* CommercialOffersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6E8BC8254D99D1007B8B4E /* CommercialOffersPresenter.swift */; };
+		FA6E8BCB254D9B3B007B8B4E /* CommercialOffersDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6E8BCA254D9B3B007B8B4E /* CommercialOffersDependencies.swift */; };
+		FA6E8BCD254DABDB007B8B4E /* CommercialOffersViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6E8BCC254DABDB007B8B4E /* CommercialOffersViewCell.swift */; };
 		FABB6F002544902A00B93FB8 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FABB6EFF2544902A00B93FB8 /* Montserrat-Medium.ttf */; };
 		FABB6F0225455EA700B93FB8 /* CurrentActionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABB6F0125455EA700B93FB8 /* CurrentActionsTableViewCell.swift */; };
 		FABB6F06254682FD00B93FB8 /* ApproveCurrentActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABB6F05254682FD00B93FB8 /* ApproveCurrentActionView.swift */; };
@@ -215,6 +224,15 @@
 		FA566390253F3B4800D19D4E /* SupplierViewBeta.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SupplierViewBeta.storyboard; sourceTree = "<group>"; };
 		FA56639B253F4F0200D19D4E /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		FA69BCE5254193DB001FEC2D /* SupplierError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplierError.swift; sourceTree = "<group>"; };
+		FA6E8BBB254D96A2007B8B4E /* CommercialOffersFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommercialOffersFactory.swift; sourceTree = "<group>"; };
+		FA6E8BBD254D96FE007B8B4E /* CommercialOffersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommercialOffersView.swift; sourceTree = "<group>"; };
+		FA6E8BC0254D9726007B8B4E /* CommercialOffersViewBeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommercialOffersViewBeta.swift; sourceTree = "<group>"; };
+		FA6E8BC2254D9732007B8B4E /* CommercialOffersViewBeta.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CommercialOffersViewBeta.storyboard; sourceTree = "<group>"; };
+		FA6E8BC4254D9877007B8B4E /* CommercialOffersRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommercialOffersRouter.swift; sourceTree = "<group>"; };
+		FA6E8BC6254D997E007B8B4E /* CommercialOffersModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommercialOffersModule.swift; sourceTree = "<group>"; };
+		FA6E8BC8254D99D1007B8B4E /* CommercialOffersPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommercialOffersPresenter.swift; sourceTree = "<group>"; };
+		FA6E8BCA254D9B3B007B8B4E /* CommercialOffersDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommercialOffersDependencies.swift; sourceTree = "<group>"; };
+		FA6E8BCC254DABDB007B8B4E /* CommercialOffersViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommercialOffersViewCell.swift; sourceTree = "<group>"; };
 		FABB6EFF2544902A00B93FB8 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
 		FABB6F0125455EA700B93FB8 /* CurrentActionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentActionsTableViewCell.swift; sourceTree = "<group>"; };
 		FABB6F05254682FD00B93FB8 /* ApproveCurrentActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApproveCurrentActionView.swift; sourceTree = "<group>"; };
@@ -641,6 +659,7 @@
 		0E90498424F60C740061A605 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				FA6E8BB6254D9617007B8B4E /* CommercialOffers */,
 				FABB6F03254682B600B93FB8 /* Action */,
 				0E56172925372AD0005DF4F3 /* Actions */,
 				0E90498B24F613DF0061A605 /* Onboard */,
@@ -961,6 +980,62 @@
 			path = Beta;
 			sourceTree = "<group>";
 		};
+		FA6E8BB6254D9617007B8B4E /* CommercialOffers */ = {
+			isa = PBXGroup;
+			children = (
+				FA6E8BBA254D965E007B8B4E /* Factory */,
+				FA6E8BB9254D9655007B8B4E /* Presenter */,
+				FA6E8BB8254D964D007B8B4E /* Router */,
+				FA6E8BB7254D9646007B8B4E /* View */,
+			);
+			path = CommercialOffers;
+			sourceTree = "<group>";
+		};
+		FA6E8BB7254D9646007B8B4E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FA6E8BBD254D96FE007B8B4E /* CommercialOffersView.swift */,
+				FA6E8BBF254D9716007B8B4E /* Beta */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FA6E8BB8254D964D007B8B4E /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				FA6E8BC4254D9877007B8B4E /* CommercialOffersRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		FA6E8BB9254D9655007B8B4E /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				FA6E8BC6254D997E007B8B4E /* CommercialOffersModule.swift */,
+				FA6E8BC8254D99D1007B8B4E /* CommercialOffersPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		FA6E8BBA254D965E007B8B4E /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				FA6E8BBB254D96A2007B8B4E /* CommercialOffersFactory.swift */,
+				FA6E8BCA254D9B3B007B8B4E /* CommercialOffersDependencies.swift */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
+		FA6E8BBF254D9716007B8B4E /* Beta */ = {
+			isa = PBXGroup;
+			children = (
+				FA6E8BC0254D9726007B8B4E /* CommercialOffersViewBeta.swift */,
+				FA6E8BCC254DABDB007B8B4E /* CommercialOffersViewCell.swift */,
+				FA6E8BC2254D9732007B8B4E /* CommercialOffersViewBeta.storyboard */,
+			);
+			path = Beta;
+			sourceTree = "<group>";
+		};
 		FABB6F03254682B600B93FB8 /* Action */ = {
 			isa = PBXGroup;
 			children = (
@@ -1049,6 +1124,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA6E8BC3254D9732007B8B4E /* CommercialOffersViewBeta.storyboard in Resources */,
 				FA0955F3254C427700FFF835 /* Roboto-Medium.ttf in Resources */,
 				FA393C212540651C00C29F7D /* SupplierActionsBeta.storyboard in Resources */,
 				0E506C4124FC9F6600ABA211 /* Montserrat-Regular.ttf in Resources */,
@@ -1126,6 +1202,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA566380253F397600D19D4E /* SupplierFactory.swift in Sources */,
+				FA6E8BCD254DABDB007B8B4E /* CommercialOffersViewCell.swift in Sources */,
 				FA15B70B25473D6A00D29835 /* ActionPresenter.swift in Sources */,
 				FA393C1C254064E700C29F7D /* SupplierActions.swift in Sources */,
 				FA566382253F39A400D19D4E /* SupplierDependencies.swift in Sources */,
@@ -1133,16 +1210,20 @@
 				0E6FBA652545AC9B00A2B882 /* ActionsFactory.swift in Sources */,
 				FA15B70D25473D7A00D29835 /* ActionRouter.swift in Sources */,
 				0E56175D2537321C005DF4F3 /* OrganizationPresenter.swift in Sources */,
+				FA6E8BBC254D96A2007B8B4E /* CommercialOffersFactory.swift in Sources */,
 				0E506C3124FC1AAB00ABA211 /* ReviewRouter.swift in Sources */,
 				FA0955EC254C364F00FFF835 /* SupplierCommercialOffer.swift in Sources */,
 				0E56176B25373349005DF4F3 /* OrganizationTabBarViewBeta.swift in Sources */,
 				0E9049A224F62C870061A605 /* OnboardSupplierViewAlpha.swift in Sources */,
 				0E90499424F614390061A605 /* OnboardModule.swift in Sources */,
 				0E56174C25372D95005DF4F3 /* PastActionsViewBeta.swift in Sources */,
+				FA6E8BCB254D9B3B007B8B4E /* CommercialOffersDependencies.swift in Sources */,
 				FA15B70725473D3A00D29835 /* ActionDependencies.swift in Sources */,
+				FA6E8BC1254D9726007B8B4E /* CommercialOffersViewBeta.swift in Sources */,
 				0E56174025372BF3005DF4F3 /* ActionsContainerViewBeta.swift in Sources */,
 				0E506C3924FC9CC400ABA211 /* OnboardWelcomeView.swift in Sources */,
 				0E90496E24F390070061A605 /* AppPresenter.swift in Sources */,
+				FA6E8BBE254D96FE007B8B4E /* CommercialOffersView.swift in Sources */,
 				FA15B70525473D1D00D29835 /* ActionFactory.swift in Sources */,
 				0E4BD1E2250CF1E300F8D4C8 /* OnboardSupplierViewBeta.swift in Sources */,
 				0E506C3324FC1B9C00ABA211 /* ReviewDependencies.swift in Sources */,
@@ -1183,6 +1264,7 @@
 				0E561757253731CD005DF4F3 /* OrganizationFactory.swift in Sources */,
 				0E506C2424FC10AF00ABA211 /* ReviewViewBeta.swift in Sources */,
 				0E6B9723254D656500055570 /* Secrets.swift in Sources */,
+				FA6E8BC7254D997E007B8B4E /* CommercialOffersModule.swift in Sources */,
 				FA15B70925473D5A00D29835 /* ActionModule.swift in Sources */,
 				FA56638B253F3AF500D19D4E /* SupplierView.swift in Sources */,
 				0E90499824F6160F0061A605 /* OnboardFactory.swift in Sources */,
@@ -1195,10 +1277,12 @@
 				0E6FBA5F2545AC3900A2B882 /* ActionsPresenter.swift in Sources */,
 				0E56173925372B88005DF4F3 /* CurrentActionsView.swift in Sources */,
 				0E506BE424FBB16800ABA211 /* OnboardMemberView.swift in Sources */,
+				FA6E8BC5254D9877007B8B4E /* CommercialOffersRouter.swift in Sources */,
 				0E56174525372BFD005DF4F3 /* ActionsContainerView.swift in Sources */,
 				FA69BCE6254193DB001FEC2D /* SupplierError.swift in Sources */,
 				0E90499F24F62C6C0061A605 /* OnboardSupplierView.swift in Sources */,
 				0E506BFC24FBC37900ABA211 /* OnboardOrganizationViewBeta.swift in Sources */,
+				FA6E8BC9254D99D1007B8B4E /* CommercialOffersPresenter.swift in Sources */,
 				FA566386253F39D400D19D4E /* SupplierPresenter.swift in Sources */,
 				0E90499C24F62A6D0061A605 /* OnboardDependencies.swift in Sources */,
 			);

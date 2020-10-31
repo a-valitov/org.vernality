@@ -56,4 +56,15 @@ public final class PCCommercialOfferServiceParse: PCCommercialOfferService {
         }
     }
 
+    public func fetchApproved(result: @escaping (Result<[AnyPCCommercialOffer], Error>) -> Void) {
+        let query = PFQuery(className: "CommercialOffer")
+        query.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
+            if let error = error {
+                result(.failure(error))
+            } else if let objects = objects {
+                result(.success(objects.map({ $0.pcCommercialOffer.any })))
+            }
+        }
+    }
+
 }
