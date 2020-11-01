@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Iad-w0-v8K">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Bold.ttf">
+            <string>Montserrat-Bold</string>
+        </array>
+        <array key="Montserrat-Medium.ttf">
+            <string>Montserrat-Medium</string>
+        </array>
+        <array key="Montserrat-Regular.ttf">
+            <string>Montserrat-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Approve Commercial Offer View Beta-->
+        <scene sceneID="83b-5Q-8Md">
+            <objects>
+                <viewController id="Iad-w0-v8K" customClass="ApproveCommercialOfferViewBeta" customModule="Profit_Club" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XOb-SL-115">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="example" translatesAutoresizingMaskIntoConstraints="NO" id="8sb-0k-co5">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="178"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="8sb-0k-co5" secondAttribute="height" multiplier="207:89" id="7Fg-hU-qYH"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Алина Ермолаева" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JJC-XN-sep">
+                                <rect key="frame" x="15" y="198" width="214.5" height="27"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="22"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xuh-UF-aTb">
+                                <rect key="frame" x="15" y="235" width="379" height="73.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="100" id="kDv-Xq-At9"/>
+                                </constraints>
+                                <string key="text">это текст-"рыба", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя</string>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24.03.2020" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="670-O6-nbM">
+                                <rect key="frame" x="339" y="205" width="65" height="15"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="12"/>
+                                <color key="textColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.60453232020547942" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="final.pdf" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rz7-yI-Nr2">
+                                <rect key="frame" x="15" y="313.5" width="379" height="15"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
+                                <color key="textColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.60453232020000003" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8xu-QC-Wdk">
+                                <rect key="frame" x="15" y="348.5" width="379" height="52"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="FgZ-w3-euX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="15"/>
+                                <state key="normal" title="Одобрить">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cYp-Ip-7U8">
+                                <rect key="frame" x="15" y="415.5" width="379" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="WVo-NL-IMX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="15"/>
+                                <state key="normal" title="Отклонить">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xWW-XK-4sY">
+                                <rect key="frame" x="377" y="14" width="17" height="22"/>
+                                <state key="normal" image="X"/>
+                                <connections>
+                                    <action selector="cancelTouchUpInside:" destination="Iad-w0-v8K" eventType="touchUpInside" id="2cq-hW-036"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="M9e-Hn-sY9" firstAttribute="trailing" secondItem="670-O6-nbM" secondAttribute="trailing" constant="10" id="0Ld-wi-nsi"/>
+                            <constraint firstItem="M9e-Hn-sY9" firstAttribute="trailing" secondItem="xuh-UF-aTb" secondAttribute="trailing" constant="20" id="4fq-e5-nBY"/>
+                            <constraint firstItem="670-O6-nbM" firstAttribute="top" secondItem="8sb-0k-co5" secondAttribute="bottom" constant="27" id="7aA-Af-Vqf"/>
+                            <constraint firstItem="JJC-XN-sep" firstAttribute="leading" secondItem="M9e-Hn-sY9" secondAttribute="leading" constant="15" id="Cqb-xW-fSW"/>
+                            <constraint firstItem="xWW-XK-4sY" firstAttribute="top" secondItem="XOb-SL-115" secondAttribute="top" constant="14" id="D7s-3Y-nXt"/>
+                            <constraint firstAttribute="trailing" secondItem="xWW-XK-4sY" secondAttribute="trailing" constant="20" id="F9d-16-Hg6"/>
+                            <constraint firstItem="xuh-UF-aTb" firstAttribute="top" secondItem="JJC-XN-sep" secondAttribute="bottom" constant="10" id="Hmv-GN-2cX"/>
+                            <constraint firstItem="8sb-0k-co5" firstAttribute="top" secondItem="XOb-SL-115" secondAttribute="top" id="JcT-qN-vnK"/>
+                            <constraint firstItem="8xu-QC-Wdk" firstAttribute="top" secondItem="rz7-yI-Nr2" secondAttribute="bottom" constant="20" id="LNJ-qm-stu"/>
+                            <constraint firstItem="xuh-UF-aTb" firstAttribute="leading" secondItem="JJC-XN-sep" secondAttribute="leading" id="Lap-za-PwF"/>
+                            <constraint firstItem="cYp-Ip-7U8" firstAttribute="trailing" secondItem="8xu-QC-Wdk" secondAttribute="trailing" id="LbQ-C1-F8z"/>
+                            <constraint firstItem="rz7-yI-Nr2" firstAttribute="top" secondItem="xuh-UF-aTb" secondAttribute="bottom" constant="5" id="PFx-ch-e2q"/>
+                            <constraint firstItem="rz7-yI-Nr2" firstAttribute="trailing" secondItem="xuh-UF-aTb" secondAttribute="trailing" id="PIb-Uc-kpC"/>
+                            <constraint firstItem="8sb-0k-co5" firstAttribute="trailing" secondItem="M9e-Hn-sY9" secondAttribute="trailing" id="Re9-cK-3Bh"/>
+                            <constraint firstItem="rz7-yI-Nr2" firstAttribute="leading" secondItem="xuh-UF-aTb" secondAttribute="leading" id="Ri6-ED-Tfc"/>
+                            <constraint firstItem="8sb-0k-co5" firstAttribute="leading" secondItem="M9e-Hn-sY9" secondAttribute="leading" id="WP4-oM-oGa"/>
+                            <constraint firstItem="M9e-Hn-sY9" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="cYp-Ip-7U8" secondAttribute="bottom" constant="20" id="fN6-yy-24W"/>
+                            <constraint firstItem="8xu-QC-Wdk" firstAttribute="leading" secondItem="xuh-UF-aTb" secondAttribute="leading" id="fXO-AT-X6w"/>
+                            <constraint firstItem="cYp-Ip-7U8" firstAttribute="leading" secondItem="8xu-QC-Wdk" secondAttribute="leading" id="fn6-YV-Go0"/>
+                            <constraint firstItem="JJC-XN-sep" firstAttribute="top" secondItem="8sb-0k-co5" secondAttribute="bottom" constant="20" id="mlZ-bm-X6Y"/>
+                            <constraint firstItem="cYp-Ip-7U8" firstAttribute="top" secondItem="8xu-QC-Wdk" secondAttribute="bottom" constant="15" id="oEz-uG-1jx"/>
+                            <constraint firstItem="8xu-QC-Wdk" firstAttribute="trailing" secondItem="xuh-UF-aTb" secondAttribute="trailing" id="y6f-F4-QY6"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="M9e-Hn-sY9"/>
+                    </view>
+                    <connections>
+                        <outlet property="commercialOfferImageView" destination="8sb-0k-co5" id="Ahk-Qj-qSK"/>
+                        <outlet property="commercialOfferMessageLabel" destination="xuh-UF-aTb" id="5xn-Gl-Jh7"/>
+                        <outlet property="rejectCommercialOffer" destination="cYp-Ip-7U8" id="Ynk-hJ-mxw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fue-gr-F9d" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="366.66666666666669" y="-176.11607142857142"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="X" width="17" height="18"/>
+        <image name="example" width="354" height="178"/>
+    </resources>
+</document>

@@ -51,4 +51,8 @@ extension CommercialOffersPresenter: CommercialOffersViewOutput {
             }
         }
     }
+
+    func commercialOffers(view: CommercialOffersViewInput, didSelect commercialOffer: PCCommercialOffer) {
+        self.output?.commercialOffers(module: self, didSelect: commercialOffer)
+    }
 }

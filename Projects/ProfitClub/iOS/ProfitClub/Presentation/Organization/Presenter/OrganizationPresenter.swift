@@ -55,5 +55,11 @@ extension OrganizationPresenter: ActionModuleOutput {
 }
 
 extension OrganizationPresenter: CommercialOffersModuleOutput {
+    func commercialOffers(module: CommercialOffersModule, didSelect commercialOffer: PCCommercialOffer) {
+        self.router?.open(commercialOffer: commercialOffer, output: self)
+    }
+}
 
+extension OrganizationPresenter: CommercialOfferModuleOutput {
+    
 }

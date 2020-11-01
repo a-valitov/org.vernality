@@ -119,6 +119,14 @@
 		FABB6F092546831800B93FB8 /* ApproveCurrentActionViewBeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABB6F082546831800B93FB8 /* ApproveCurrentActionViewBeta.swift */; };
 		FABB6F0B2546834800B93FB8 /* ApproveCurrentActionViewBeta.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FABB6F0A2546834800B93FB8 /* ApproveCurrentActionViewBeta.storyboard */; };
 		FABB6F0D2546860700B93FB8 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FABB6F0C2546860700B93FB8 /* Montserrat-Bold.ttf */; };
+		FAD70484254E892F00DE8AD7 /* ApproveCommercialOfferView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD70483254E892F00DE8AD7 /* ApproveCommercialOfferView.swift */; };
+		FAD70487254E894C00DE8AD7 /* ApproveCommercialOfferViewBeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD70486254E894C00DE8AD7 /* ApproveCommercialOfferViewBeta.swift */; };
+		FAD70489254E895800DE8AD7 /* ApproveCommercialOfferViewBeta.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAD70488254E895800DE8AD7 /* ApproveCommercialOfferViewBeta.storyboard */; };
+		FAD7048B254E89AC00DE8AD7 /* CommercialOfferFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD7048A254E89AC00DE8AD7 /* CommercialOfferFactory.swift */; };
+		FAD7048D254E89BB00DE8AD7 /* CommercialOfferDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD7048C254E89BB00DE8AD7 /* CommercialOfferDependencies.swift */; };
+		FAD7048F254E89C400DE8AD7 /* CommercialOfferModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD7048E254E89C400DE8AD7 /* CommercialOfferModule.swift */; };
+		FAD70491254E89D000DE8AD7 /* CommercialOfferPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD70490254E89D000DE8AD7 /* CommercialOfferPresenter.swift */; };
+		FAD70493254E89DA00DE8AD7 /* CommercialOfferRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD70492254E89DA00DE8AD7 /* CommercialOfferRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -239,6 +247,14 @@
 		FABB6F082546831800B93FB8 /* ApproveCurrentActionViewBeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApproveCurrentActionViewBeta.swift; sourceTree = "<group>"; };
 		FABB6F0A2546834800B93FB8 /* ApproveCurrentActionViewBeta.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ApproveCurrentActionViewBeta.storyboard; sourceTree = "<group>"; };
 		FABB6F0C2546860700B93FB8 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
+		FAD70483254E892F00DE8AD7 /* ApproveCommercialOfferView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApproveCommercialOfferView.swift; sourceTree = "<group>"; };
+		FAD70486254E894C00DE8AD7 /* ApproveCommercialOfferViewBeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApproveCommercialOfferViewBeta.swift; sourceTree = "<group>"; };
+		FAD70488254E895800DE8AD7 /* ApproveCommercialOfferViewBeta.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ApproveCommercialOfferViewBeta.storyboard; sourceTree = "<group>"; };
+		FAD7048A254E89AC00DE8AD7 /* CommercialOfferFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommercialOfferFactory.swift; sourceTree = "<group>"; };
+		FAD7048C254E89BB00DE8AD7 /* CommercialOfferDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommercialOfferDependencies.swift; sourceTree = "<group>"; };
+		FAD7048E254E89C400DE8AD7 /* CommercialOfferModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommercialOfferModule.swift; sourceTree = "<group>"; };
+		FAD70490254E89D000DE8AD7 /* CommercialOfferPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommercialOfferPresenter.swift; sourceTree = "<group>"; };
+		FAD70492254E89DA00DE8AD7 /* CommercialOfferRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommercialOfferRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -659,6 +675,7 @@
 		0E90498424F60C740061A605 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				FAD7047D254E824900DE8AD7 /* CommercialOffer */,
 				FA6E8BB6254D9617007B8B4E /* CommercialOffers */,
 				FABB6F03254682B600B93FB8 /* Action */,
 				0E56172925372AD0005DF4F3 /* Actions */,
@@ -1064,6 +1081,69 @@
 			path = Beta;
 			sourceTree = "<group>";
 		};
+		FAD7047D254E824900DE8AD7 /* CommercialOffer */ = {
+			isa = PBXGroup;
+			children = (
+				FAD70481254E884E00DE8AD7 /* Factory */,
+				FAD70480254E884800DE8AD7 /* Presenter */,
+				FAD7047F254E884200DE8AD7 /* Router */,
+				FAD7047E254E883D00DE8AD7 /* View */,
+			);
+			path = CommercialOffer;
+			sourceTree = "<group>";
+		};
+		FAD7047E254E883D00DE8AD7 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FAD70482254E890000DE8AD7 /* ApproveCommercialOffer */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FAD7047F254E884200DE8AD7 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				FAD70492254E89DA00DE8AD7 /* CommercialOfferRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		FAD70480254E884800DE8AD7 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				FAD7048E254E89C400DE8AD7 /* CommercialOfferModule.swift */,
+				FAD70490254E89D000DE8AD7 /* CommercialOfferPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		FAD70481254E884E00DE8AD7 /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				FAD7048A254E89AC00DE8AD7 /* CommercialOfferFactory.swift */,
+				FAD7048C254E89BB00DE8AD7 /* CommercialOfferDependencies.swift */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
+		FAD70482254E890000DE8AD7 /* ApproveCommercialOffer */ = {
+			isa = PBXGroup;
+			children = (
+				FAD70483254E892F00DE8AD7 /* ApproveCommercialOfferView.swift */,
+				FAD70485254E893300DE8AD7 /* Beta */,
+			);
+			path = ApproveCommercialOffer;
+			sourceTree = "<group>";
+		};
+		FAD70485254E893300DE8AD7 /* Beta */ = {
+			isa = PBXGroup;
+			children = (
+				FAD70486254E894C00DE8AD7 /* ApproveCommercialOfferViewBeta.swift */,
+				FAD70488254E895800DE8AD7 /* ApproveCommercialOfferViewBeta.storyboard */,
+			);
+			path = Beta;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1150,6 +1230,7 @@
 				FABB6F0D2546860700B93FB8 /* Montserrat-Bold.ttf in Resources */,
 				0EA11ED124F2B89300133485 /* Assets.xcassets in Resources */,
 				FABB6F002544902A00B93FB8 /* Montserrat-Medium.ttf in Resources */,
+				FAD70489254E895800DE8AD7 /* ApproveCommercialOfferViewBeta.storyboard in Resources */,
 				0E506BF624FBBFBE00ABA211 /* SelectOrganizationViewBeta.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1208,8 +1289,10 @@
 				FA566382253F39A400D19D4E /* SupplierDependencies.swift in Sources */,
 				FABB6F0225455EA700B93FB8 /* CurrentActionsTableViewCell.swift in Sources */,
 				0E6FBA652545AC9B00A2B882 /* ActionsFactory.swift in Sources */,
+				FAD70491254E89D000DE8AD7 /* CommercialOfferPresenter.swift in Sources */,
 				FA15B70D25473D7A00D29835 /* ActionRouter.swift in Sources */,
 				0E56175D2537321C005DF4F3 /* OrganizationPresenter.swift in Sources */,
+				FAD70493254E89DA00DE8AD7 /* CommercialOfferRouter.swift in Sources */,
 				FA6E8BBC254D96A2007B8B4E /* CommercialOffersFactory.swift in Sources */,
 				0E506C3124FC1AAB00ABA211 /* ReviewRouter.swift in Sources */,
 				FA0955EC254C364F00FFF835 /* SupplierCommercialOffer.swift in Sources */,
@@ -1228,6 +1311,7 @@
 				0E4BD1E2250CF1E300F8D4C8 /* OnboardSupplierViewBeta.swift in Sources */,
 				0E506C3324FC1B9C00ABA211 /* ReviewDependencies.swift in Sources */,
 				0E506C2E24FC1A4600ABA211 /* ReviewPresenter.swift in Sources */,
+				FAD7048D254E89BB00DE8AD7 /* CommercialOfferDependencies.swift in Sources */,
 				FABB6F06254682FD00B93FB8 /* ApproveCurrentActionView.swift in Sources */,
 				0E506C2C24FC184900ABA211 /* ReviewViewBetaMemberCell.swift in Sources */,
 				0E506C4624FCA6E300ABA211 /* OnboardSignIn.swift in Sources */,
@@ -1243,6 +1327,7 @@
 				0E506BF924FBC2FC00ABA211 /* OnboardOrganizationView.swift in Sources */,
 				0E90498724F60C980061A605 /* SelectRoleView.swift in Sources */,
 				0E6FBA622545AC7C00A2B882 /* ActionsDependencies.swift in Sources */,
+				FAD7048B254E89AC00DE8AD7 /* CommercialOfferFactory.swift in Sources */,
 				0E90498A24F60D250061A605 /* SelectRoleViewAlpha.swift in Sources */,
 				0E506C2824FC131700ABA211 /* ReviewViewBetaOrganizationCell.swift in Sources */,
 				0E506BF424FBBFA400ABA211 /* SelectOrganizationViewBeta.swift in Sources */,
@@ -1254,12 +1339,14 @@
 				0E6FBA5C2545ABEF00A2B882 /* ActionsModule.swift in Sources */,
 				0E506C4924FCA78100ABA211 /* OnboardSignInViewBeta.swift in Sources */,
 				0E506C2A24FC180300ABA211 /* ReviewViewBetaSupplierCell.swift in Sources */,
+				FAD7048F254E89C400DE8AD7 /* CommercialOfferModule.swift in Sources */,
 				FA566384253F39C200D19D4E /* SupplierModule.swift in Sources */,
 				FA0955EF254C369300FFF835 /* SupplierCommercialOfferBeta.swift in Sources */,
 				FA566388253F39E500D19D4E /* SupplierRouter.swift in Sources */,
 				0E90499624F615E80061A605 /* OnboardRouter.swift in Sources */,
 				0E39664324FCABAD0008266D /* OnboardSignUpView.swift in Sources */,
 				0E56175A253731ED005DF4F3 /* OrganizationModule.swift in Sources */,
+				FAD70484254E892F00DE8AD7 /* ApproveCommercialOfferView.swift in Sources */,
 				0E56176725373305005DF4F3 /* OrganizationTabBarView.swift in Sources */,
 				0E561757253731CD005DF4F3 /* OrganizationFactory.swift in Sources */,
 				0E506C2424FC10AF00ABA211 /* ReviewViewBeta.swift in Sources */,
@@ -1269,6 +1356,7 @@
 				FA56638B253F3AF500D19D4E /* SupplierView.swift in Sources */,
 				0E90499824F6160F0061A605 /* OnboardFactory.swift in Sources */,
 				0E506C2124FC108800ABA211 /* ReviewView.swift in Sources */,
+				FAD70487254E894C00DE8AD7 /* ApproveCommercialOfferViewBeta.swift in Sources */,
 				0EA11EC824F2B88F00133485 /* AppDelegate.swift in Sources */,
 				0E506C3524FC1BA700ABA211 /* ReviewFactory.swift in Sources */,
 				0E56173C25372BC5005DF4F3 /* CurrentActionsViewBeta.swift in Sources */,

@@ -45,5 +45,12 @@ final class OrganizationRouter {
         return actionModule
     }
 
+    @discardableResult
+    func open(commercialOffer: PCCommercialOffer, output: CommercialOfferModuleOutput?) -> CommercialOfferModule {
+        let commercialOfferModule = self.factories.commercialOffer.make(commercialOffer: commercialOffer, output: output)
+        commercialOfferModule.open(in: self.main)
+        return commercialOfferModule
+    }
+
     private let factories: OrganizationFactories
 }

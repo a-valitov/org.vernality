@@ -1,5 +1,5 @@
 //  Copyright (C) 2020 Startup Studio Vernality
-//  Created by Macbook on 31.10.2020
+//  Created by Macbook on 01.11.2020
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -18,10 +18,10 @@ import UIKit
 import Main
 import ProfitClubModel
 
-protocol CommercialOffersModule: class {
-    func embed(in tabBarController: UITabBarController, main: MainModule?)
+protocol CommercialOfferModule: class {
+    func open(in main: MainModule?)
 }
 
-protocol CommercialOffersModuleOutput: class {
-    func commercialOffers(module: CommercialOffersModule, didSelect commercialOffer: PCCommercialOffer)
+protocol CommercialOfferModuleOutput: class {
+    
 }

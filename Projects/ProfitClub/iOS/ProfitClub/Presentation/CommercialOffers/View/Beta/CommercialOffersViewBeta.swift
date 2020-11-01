@@ -33,6 +33,11 @@ final class CommercialOffersViewBeta: UITableViewController {
         self.output?.commercialOffersDidLoad(view: self)
     }
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let commercialOffer = commercialOffers[indexPath.row]
+        self.output?.commercialOffers(view: self, didSelect: commercialOffer)
+    }
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.commercialOffers.count
     }
