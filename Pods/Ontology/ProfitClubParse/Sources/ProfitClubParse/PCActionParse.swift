@@ -53,6 +53,7 @@ public extension PCAction {
         result.startDate = self.startDate
         result.endDate = self.endDate
         result.status = self.status
+        result.supplier = self.supplier
         return result
     }
     
