@@ -49,6 +49,8 @@ extension CommercialOfferPresenter: ApproveCommercialOfferViewOutput {
         view.commercialOfferImageUrl = self.commercialOffer.imageUrl
         view.commercialOfferMessage = self.commercialOffer.message
         view.organizationName = self.commercialOffer.supplier?.name
+        view.attachmentName = self.commercialOffer.attachmentName
+        view.attachmentUrl = self.commercialOffer.attachmentUrl
     }
 
 }

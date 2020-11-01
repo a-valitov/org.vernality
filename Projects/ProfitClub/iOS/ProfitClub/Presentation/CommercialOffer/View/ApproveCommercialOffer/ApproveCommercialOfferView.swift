@@ -20,6 +20,8 @@ protocol ApproveCommercialOfferViewInput: UIViewController {
     var commercialOfferImageUrl: URL? { get set }
     var commercialOfferMessage: String? { get set }
     var organizationName: String? { get set }
+    var attachmentName: String? { get set }
+    var attachmentUrl: URL? { get set }
 }
 
 protocol ApproveCommercialOfferViewOutput {

@@ -40,6 +40,14 @@ final class ApproveCommercialOfferViewBeta: UIViewController {
             }
         }
     }
+    var attachmentName: String? {
+        didSet {
+            if self.isViewLoaded {
+                self.openFile.setTitle(attachmentName, for: .normal)
+            }
+        }
+    }
+    var attachmentUrl: URL?
 
     @IBOutlet weak var organizationNameLabel: UILabel!
     @IBOutlet weak var commercialOfferImageView: UIImageView!
@@ -50,9 +58,14 @@ final class ApproveCommercialOfferViewBeta: UIViewController {
             rejectCommercialOffer.layer.borderColor = UIColor.black.cgColor
         }
     }
+    @IBOutlet weak var openFile: UIButton!
     
     @IBAction func cancelTouchUpInside(_ sender: Any) {
         dismiss(animated: true)
+    }
+
+    @IBAction func openFileTouchUpInside(_ sender: UIButton) {
+        
     }
 
     override func viewDidLoad() {
