@@ -16,6 +16,7 @@
 
 import UIKit
 import Kingfisher
+import QuickLook
 
 final class ApproveCommercialOfferViewBeta: UIViewController {
     var output: ApproveCommercialOfferViewOutput?
@@ -47,7 +48,8 @@ final class ApproveCommercialOfferViewBeta: UIViewController {
             }
         }
     }
-    var attachmentUrl: URL?
+
+    var attachmentFileUrl: URL?
 
     @IBOutlet weak var organizationNameLabel: UILabel!
     @IBOutlet weak var commercialOfferImageView: UIImageView!
@@ -65,7 +67,7 @@ final class ApproveCommercialOfferViewBeta: UIViewController {
     }
 
     @IBAction func openFileTouchUpInside(_ sender: UIButton) {
-        
+        self.output?.approveCommercialOfferDidTapOnAttachment(view: self)
     }
 
     override func viewDidLoad() {
@@ -75,5 +77,24 @@ final class ApproveCommercialOfferViewBeta: UIViewController {
 }
 
 extension ApproveCommercialOfferViewBeta: ApproveCommercialOfferViewInput {
-    
+    func showAttachment() {
+        assert(self.attachmentFileUrl != nil)
+        let quickLookViewController = QLPreviewController()
+        quickLookViewController.dataSource = self
+        self.present(quickLookViewController, animated: true)
+    }
+}
+
+// MARK: - QLPreviewControllerDataSource
+extension ApproveCommercialOfferViewBeta: QLPreviewControllerDataSource {
+    func numberOfPreviewItems(in controller: QLPreviewController) -> Int {
+        return self.attachmentFileUrl == nil ? 0 : 1
+    }
+
+    func previewController(_ controller: QLPreviewController, previewItemAt index: Int) -> QLPreviewItem {
+        guard let fileUrl = self.attachmentFileUrl else {
+            fatalError()
+        }
+        return fileUrl as NSURL
+    }
 }

@@ -56,6 +56,24 @@ public final class PCCommercialOfferServiceParse: PCCommercialOfferService {
         }
     }
 
+    public func loadAttachment(for offer: PCCommercialOffer, result: @escaping (Result<URL, Error>) -> Void) {
+        offer.parse.fetchInBackground { (object, error) in
+            if let error = error {
+                result(.failure(error))
+            } else if let object = object, let fileObject = object["attachmentFile"] as? PFFileObject {
+                fileObject.getFilePathInBackground { (filePath, error) in
+                    if let error = error {
+                        result(.failure(error))
+                    } else if let filePath = filePath {
+                        result(.success(URL(fileURLWithPath: filePath)))
+                    }
+                }
+            } else {
+                result(.failure(PCCommercialOfferServiceError.failedToGetFileObject))
+            }
+        }
+    }
+
     public func fetchApproved(result: @escaping (Result<[AnyPCCommercialOffer], Error>) -> Void) {
         let query = PFQuery(className: "CommercialOffer")
         query.order(byDescending: "createdAt")

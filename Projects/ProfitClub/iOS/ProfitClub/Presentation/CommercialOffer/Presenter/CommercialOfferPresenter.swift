@@ -50,7 +50,26 @@ extension CommercialOfferPresenter: ApproveCommercialOfferViewOutput {
         view.commercialOfferMessage = self.commercialOffer.message
         view.organizationName = self.commercialOffer.supplier?.name
         view.attachmentName = self.commercialOffer.attachmentName
-        view.attachmentUrl = self.commercialOffer.attachmentUrl
+    }
+
+    func approveCommercialOfferDidTapOnAttachment(view: ApproveCommercialOfferViewInput) {
+        if view.attachmentFileUrl != nil {
+            view.showAttachment()
+        } else {
+            self.presenters.activity.increment()
+            self.services.commercialOffer.loadAttachment(for: self.commercialOffer) { [weak self] result in
+                self?.presenters.activity.decrement()
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success(let fileUrl):
+                        view.attachmentFileUrl = fileUrl
+                        view.showAttachment()
+                    case .failure(let error):
+                        self?.presenters.error.present(error)
+                    }
+                }
+            }
+        }
     }
 
 }
