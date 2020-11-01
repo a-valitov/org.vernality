@@ -21,5 +21,6 @@ protocol SupplierViewInput: UIViewController {
 
 protocol SupplierViewOutput {
     func supplierView(view: SupplierViewInput, supplierWantsToCreateAction sender: Any)
+    func supplier(view: SupplierViewInput, wantsToCreateCommercialOffer sender: Any)
 }
 

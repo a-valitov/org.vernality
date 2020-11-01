@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bem-HT-Av8">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16097.3"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Medium.ttf">
+            <string>Montserrat-Medium</string>
+        </array>
+        <array key="Montserrat-Regular.ttf">
+            <string>Montserrat-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Поставки-->
+        <scene sceneID="bSU-yY-HZ8">
+            <objects>
+                <tableViewController id="bem-HT-Av8" customClass="CommercialOffersViewBeta" customModule="Profit_Club" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="DWf-4Z-Z4f">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="commercialOfferCell" rowHeight="110" id="hdE-90-ECa" customClass="CommercialOffersViewCell" customModule="Profit_Club" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="110"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hdE-90-ECa" id="LAn-Ms-mwj">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="110"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="example" translatesAutoresizingMaskIntoConstraints="NO" id="ygT-FK-Rr3">
+                                            <rect key="frame" x="15" y="22" width="55" height="55"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="55" id="Rtc-f2-Y4u"/>
+                                                <constraint firstAttribute="width" constant="55" id="urT-Fc-uS4"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Елена Коновалова" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="D3r-vO-CEp">
+                                            <rect key="frame" x="82" y="11" width="197" height="25"/>
+                                            <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="20"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="это текст-&quot;рыба&quot;, часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандарт рыбой&quot; для текстов..." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yxa-f6-Ep5">
+                                            <rect key="frame" x="82" y="36" width="312" height="62"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="62" id="8x7-7M-I77"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
+                                            <color key="textColor" red="0.45882352941176469" green="0.45882352941176469" blue="0.45490196078431372" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="02.03.2020" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="alL-FF-bmY">
+                                            <rect key="frame" x="340" y="17" width="54" height="13"/>
+                                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="10"/>
+                                            <color key="textColor" red="0.45882352939999999" green="0.45882352939999999" blue="0.4549019608" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="alL-FF-bmY" firstAttribute="trailing" secondItem="LAn-Ms-mwj" secondAttribute="trailingMargin" id="1vG-ww-lJd"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="yxa-f6-Ep5" secondAttribute="trailing" id="2a3-P7-ZEk"/>
+                                        <constraint firstItem="ygT-FK-Rr3" firstAttribute="top" secondItem="LAn-Ms-mwj" secondAttribute="topMargin" constant="11" id="9vE-B8-EOQ"/>
+                                        <constraint firstItem="D3r-vO-CEp" firstAttribute="top" secondItem="LAn-Ms-mwj" secondAttribute="topMargin" id="9xl-lK-vdO"/>
+                                        <constraint firstItem="yxa-f6-Ep5" firstAttribute="top" secondItem="D3r-vO-CEp" secondAttribute="bottom" id="DBM-EO-4AC"/>
+                                        <constraint firstItem="yxa-f6-Ep5" firstAttribute="leading" secondItem="ygT-FK-Rr3" secondAttribute="trailing" constant="12" id="OW2-NW-ZeK"/>
+                                        <constraint firstItem="alL-FF-bmY" firstAttribute="centerY" secondItem="D3r-vO-CEp" secondAttribute="centerY" id="Rht-04-YoF"/>
+                                        <constraint firstItem="D3r-vO-CEp" firstAttribute="leading" secondItem="ygT-FK-Rr3" secondAttribute="trailing" constant="12" id="Rw8-J8-eKn"/>
+                                        <constraint firstItem="ygT-FK-Rr3" firstAttribute="leading" secondItem="LAn-Ms-mwj" secondAttribute="leading" constant="15" id="pfO-Ee-5Vh"/>
+                                        <constraint firstItem="D3r-vO-CEp" firstAttribute="width" secondItem="LAn-Ms-mwj" secondAttribute="width" multiplier="0.475845" id="xVX-OD-8JG"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="commercialOfferImageView" destination="ygT-FK-Rr3" id="kPc-4R-SPI"/>
+                                    <outlet property="commercialOfferMessageLabel" destination="yxa-f6-Ep5" id="NxP-sc-yfu"/>
+                                    <outlet property="supplierNameLabel" destination="D3r-vO-CEp" id="Jrs-Gp-RJS"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="bem-HT-Av8" id="4AV-t8-WbY"/>
+                            <outlet property="delegate" destination="bem-HT-Av8" id="Vik-ms-D7J"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="Поставки" image="commercialOfferItem" id="67Z-Yv-Sf9"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="egI-xB-HET" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="873.91304347826099" y="125.89285714285714"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="commercialOfferItem" width="22" height="20"/>
+        <image name="example" width="354" height="178"/>
+    </resources>
+</document>

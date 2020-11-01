@@ -29,6 +29,10 @@ final class SupplierViewBeta: UIViewController {
         self.output?.supplierView(view: self, supplierWantsToCreateAction: sender)
     }
 
+    @IBAction func createCommercialOfferTouchUpInside(_ sender: Any) {
+        self.output?.supplier(view: self, wantsToCreateCommercialOffer: sender)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         createAction.layer.borderWidth = 1

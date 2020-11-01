@@ -40,6 +40,13 @@ final class ApproveCurrentActionViewBeta: UIViewController {
             }
         }
     }
+    var organizationName: String? {
+        didSet {
+            if self.isViewLoaded {
+                self.organizationNameLabel.text = self.organizationName
+            }
+        }
+    }
     var actionLink: String?
     var actionStartDate: String?
     var actionEndDate: String?
@@ -55,7 +62,8 @@ final class ApproveCurrentActionViewBeta: UIViewController {
     @IBOutlet weak var actionImageView: UIImageView!
     @IBOutlet weak var actionMessageLabel: UILabel!
     @IBOutlet weak var actionDescriptionLabel: UILabel!
-
+    @IBOutlet weak var organizationNameLabel: UILabel!
+    
     @IBAction func cancelTouchUpInside(_ sender: Any) {
         dismiss(animated: true)
     }

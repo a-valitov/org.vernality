@@ -28,6 +28,7 @@ target 'ProfitClub' do
   pod 'PCUserService', :path => SERVICES_PATH + '/ProfitClub/PCUserService.podspec'
   pod 'PCOrganizationService', :path => SERVICES_PATH + '/ProfitClub/PCOrganizationService.podspec'
   pod 'PCActionService', :path => SERVICES_PATH + '/ProfitClub/PCActionService.podspec'
+  pod 'PCCommercialOfferService', :path => SERVICES_PATH + '/ProfitClub/PCCommercialOfferService.podspec'
 end
 
 # Exclude all Package.swift from pods targets

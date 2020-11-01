@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="uSl-td-6Jp">
-    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
@@ -20,19 +20,19 @@
             <objects>
                 <tableViewController id="uSl-td-6Jp" customClass="CurrentActionsViewBeta" customModule="Profit_Club" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="7pU-Bl-xwL">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="currentActionsCell" rowHeight="108" id="g9e-rP-uuJ" customClass="CurrentActionsTableViewCell" customModule="Profit_Club" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="414" height="108"/>
+                                <rect key="frame" x="0.0" y="28" width="320" height="108"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="g9e-rP-uuJ" id="Qbu-sB-uUn">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="108"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="108"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="example" translatesAutoresizingMaskIntoConstraints="NO" id="p67-Js-FEh">
-                                            <rect key="frame" x="20" y="18" width="45" height="45"/>
+                                            <rect key="frame" x="16" y="18" width="45" height="45"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="45" id="MHV-DS-aBj"/>
                                                 <constraint firstAttribute="width" constant="45" id="rA5-1R-5HN"/>
@@ -44,13 +44,13 @@
                                             </userDefinedRuntimeAttributes>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ООО «Газпром»" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bsG-9n-6F6">
-                                            <rect key="frame" x="77" y="11" width="194" height="23"/>
+                                            <rect key="frame" x="73" y="11" width="150" height="23"/>
                                             <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="18"/>
                                             <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="G15-uW-5Qd">
-                                            <rect key="frame" x="332" y="15" width="62" height="15"/>
+                                            <rect key="frame" x="242" y="15" width="62" height="15"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Сегодня" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dZz-yz-C4G">
                                                     <rect key="frame" x="0.0" y="0.0" width="52" height="15"/>
@@ -64,7 +64,7 @@
                                             </subviews>
                                         </stackView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Мы предлагаем вам купить по акции сообщение в 1-2 строки" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X19-ey-qve">
-                                            <rect key="frame" x="77" y="34" width="305" height="40"/>
+                                            <rect key="frame" x="73" y="34" width="219" height="40"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="40" id="Gk7-dd-f4y"/>
                                             </constraints>
@@ -73,7 +73,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="material.io/resources/icons/?icon=work&amp;style..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hI8-fw-0dy">
-                                            <rect key="frame" x="77" y="79" width="307" height="18"/>
+                                            <rect key="frame" x="73" y="79" width="221" height="18"/>
                                             <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
                                             <color key="textColor" red="0.45882352939999999" green="0.4549019608" blue="0.4549019608" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>

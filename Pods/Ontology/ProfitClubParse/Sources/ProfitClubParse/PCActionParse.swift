@@ -35,6 +35,9 @@ public extension PFObject {
         if let statusString = self["statusString"] as? String {
             result.status = PCActionStatus(rawValue: statusString)
         }
+        if let supplier = self["supplier"] as? PFObject {
+            result.supplier = supplier.pcSupplier.any
+        }
         return result
     }
 }
@@ -50,6 +53,7 @@ public extension PCAction {
         result.startDate = self.startDate
         result.endDate = self.endDate
         result.status = self.status
+        result.supplier = self.supplier
         return result
     }
     

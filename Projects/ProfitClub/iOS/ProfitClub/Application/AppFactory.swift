@@ -25,6 +25,7 @@ import PCOrganizationService
 import PCUserService
 import PCActionService
 import ProfitClubModel
+import PCCommercialOfferService
 
 final class AppFactory {
     lazy var authentication: PCAuthentication = {
@@ -49,6 +50,10 @@ final class AppFactory {
 
     func actionService() -> PCActionService {
         return PCActionServiceParse()
+    }
+
+    func commercialOfferService() -> PCCommercialOfferService {
+        return PCCommercialOfferServiceParse()
     }
 }
 
@@ -102,12 +107,12 @@ private extension AppFactory {
     var organizationFactory: OrganizationFactory {
         return OrganizationFactory(presenters: OrganizationPresenters(error: self.errorPresenter(), activity: self.activityPresenter()),
                                    services: OrganizationServices(authentication: self.authentication, organization: self.organizationService()),
-                                   factories: OrganizationFactories(actions: self.actionsFactory, action: self.actionFactory))
+                                   factories: OrganizationFactories(actions: self.actionsFactory, action: self.actionFactory, commercialOffers: self.commercialOffersFactory, commercialOffer: self.commercialOfferFactory))
     }
     
     var supplierFactory: SupplierFactory {
         return SupplierFactory(presenters: SupplierPresenters(error: self.errorPresenter(), activity: self.activityPresenter()),
-                               services: SupplierServices(authentication: self.authentication, action: self.actionService()))
+                               services: SupplierServices(authentication: self.authentication, action: self.actionService(), commercialOffer: self.commercialOfferService()))
     }
 
     var actionsFactory: ActionsFactory {
@@ -118,5 +123,13 @@ private extension AppFactory {
     var actionFactory: ActionFactory {
         return ActionFactory(presenters: ActionPresenters(error: self.errorPresenter(), activity: self.activityPresenter()),
                              services: ActionServices(action: self.actionService()))
+    }
+
+    var commercialOffersFactory: CommercialOffersFactory {
+        return CommercialOffersFactory(presenters: CommercialOffersPresenters(error: self.errorPresenter(), activity: self.activityPresenter()), services: CommercialOffersServices(commercialOffer: self.commercialOfferService()))
+    }
+
+    var commercialOfferFactory: CommercialOfferFactory {
+        return CommercialOfferFactory(presenters: CommercialOfferPresenters(error: self.errorPresenter(), activity: self.activityPresenter()), services: CommercialOfferServices(commercialOffer: self.commercialOfferService()))
     }
 }

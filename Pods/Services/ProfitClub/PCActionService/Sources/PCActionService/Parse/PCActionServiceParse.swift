@@ -36,8 +36,8 @@ public final class PCActionServiceParse: PCActionService {
             parseAction.acl = acl
             parseAction.relation(forKey: "user").add(currentUser)
         }
-        if let supplier = action.supplier?.parse {
-            parseAction.relation(forKey: "supplier").add(supplier)
+        if let supplier = parseAction.supplier {
+            parseAction["supplier"] = PFObject(withoutDataWithClassName: "Supplier", objectId: supplier.id)
         }
         if let image = action.image, let imageData = image.pngData() {
             let imageFile = PFFileObject(name: "image.png", data: imageData)
@@ -54,22 +54,13 @@ public final class PCActionServiceParse: PCActionService {
 
     public func fetchApproved(result: @escaping (Result<[AnyPCAction], Error>) -> Void) {
         let query = PFQuery(className: "Action")
+        query.order(byDescending: "createdAt")
+        query.includeKey("supplier")
         query.whereKey("statusString", equalTo: "approved")
         query.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
             if let error = error {
                 result(.failure(error))
             } else if let objects = objects {
-//                for object in objects {
-//                    let imageFile = object["image.png"] as? PFFileObject
-//                    imageFile?.getDataInBackground(block: { (imageData: Data?, error: Error?) in
-//                        if let error = error {
-//                            result(.failure(error))
-//                        } else if let imageData = imageData {
-//                            let image = UIImage(data: imageData)
-//                            object.pcAction.any.image = image
-//                        }
-//                    })
-//                }
                 result(.success(objects.map({ $0.pcAction.any })))
             }
         }

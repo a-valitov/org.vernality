@@ -40,6 +40,15 @@ final class SupplierRouter {
     }
 
     @discardableResult
+    func openSupplierCommercialOffer(output: SupplierCommercialOfferOutput?) -> SupplierCommercialOfferInput {
+        let storyboard = UIStoryboard(name: "SupplierCommercialOfferBeta", bundle: nil)
+        let supplierCommercialOffer = storyboard.instantiateInitialViewController() as! SupplierCommercialOfferBeta
+        supplierCommercialOffer.output = output
+        self.main?.push(supplierCommercialOffer, animated: true)
+        return supplierCommercialOffer
+    }
+
+    @discardableResult
     func pop() {
         self.main?.pop()
     }
