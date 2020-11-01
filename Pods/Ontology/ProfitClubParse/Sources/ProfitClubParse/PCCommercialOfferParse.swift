@@ -37,6 +37,9 @@ public extension PFObject {
         if let supplier = self["supplier"] as? PFObject {
             result.supplier = supplier.pcSupplier.any
         }
+        if let organization = self["organization"] as? PFObject {
+            result.organization = organization.pcOrganization.any
+        }
         return result
     }
 }
@@ -59,6 +62,7 @@ public final class PCCommercialOfferParse: PFObject, PFSubclassing, PCCommercial
         return self.objectId
     }
     public var supplier: PCSupplier?
+    public var organization: PCOrganization?
     @NSManaged public var message: String?
     @NSManaged public var attachmentName: String?
     @NSManaged public var imageFile: PFFileObject?

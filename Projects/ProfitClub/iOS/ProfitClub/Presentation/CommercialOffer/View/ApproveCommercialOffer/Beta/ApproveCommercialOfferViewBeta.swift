@@ -33,6 +33,15 @@ final class ApproveCommercialOfferViewBeta: UIViewController {
             }
         }
     }
+    var organizationName: String? {
+        didSet {
+            if self.isViewLoaded {
+                self.organizationNameLabel.text = self.organizationName
+            }
+        }
+    }
+
+    @IBOutlet weak var organizationNameLabel: UILabel!
     @IBOutlet weak var commercialOfferImageView: UIImageView!
     @IBOutlet weak var commercialOfferMessageLabel: UILabel!
     @IBOutlet weak var rejectCommercialOffer: UIButton! {

@@ -19,6 +19,7 @@ import UIKit
 protocol ApproveCommercialOfferViewInput: UIViewController {
     var commercialOfferImageUrl: URL? { get set }
     var commercialOfferMessage: String? { get set }
+    var organizationName: String? { get set }
 }
 
 protocol ApproveCommercialOfferViewOutput {

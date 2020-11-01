@@ -39,6 +39,9 @@ public final class PCCommercialOfferServiceParse: PCCommercialOfferService {
         if let supplier = offer.supplier {
             parseOffer["supplier"] = PFObject(withoutDataWithClassName: "Supplier", objectId: supplier.id)
         }
+        if let organization = offer.organization {
+            parseOffer["organization"] = PFObject(withoutDataWithClassName: "Organization", objectId: organization.id)
+        }
         if let image = offer.image, let imageData = image.pngData() {
             let imageFile = PFFileObject(name: "image.png", data: imageData)
             parseOffer.imageFile = imageFile
@@ -59,7 +62,7 @@ public final class PCCommercialOfferServiceParse: PCCommercialOfferService {
     public func fetchApproved(result: @escaping (Result<[AnyPCCommercialOffer], Error>) -> Void) {
         let query = PFQuery(className: "CommercialOffer")
         query.order(byDescending: "createdAt")
-        query.includeKey("supplier")
+        query.includeKeys(["supplier", "organization"])
         query.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
             if let error = error {
                 result(.failure(error))

@@ -120,6 +120,7 @@
                     <connections>
                         <outlet property="commercialOfferImageView" destination="8sb-0k-co5" id="Ahk-Qj-qSK"/>
                         <outlet property="commercialOfferMessageLabel" destination="xuh-UF-aTb" id="5xn-Gl-Jh7"/>
+                        <outlet property="organizationNameLabel" destination="JJC-XN-sep" id="gym-5U-PpU"/>
                         <outlet property="rejectCommercialOffer" destination="cYp-Ip-7U8" id="Ynk-hJ-mxw"/>
                     </connections>
                 </viewController>

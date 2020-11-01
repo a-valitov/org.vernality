@@ -19,6 +19,7 @@ import Foundation
 public protocol PCCommercialOffer {
     var id: String? { get }
     var supplier: PCSupplier? { get }
+    var organization: PCOrganization? { get }
     var attachment: Data? { get }
     var attachmentUrl: URL? { get }
     var attachmentName: String? { get }
@@ -37,6 +38,7 @@ public extension PCCommercialOffer {
 public struct PCCommercialOfferStruct: PCCommercialOffer {
     public var id: String?
     public var supplier: PCSupplier?
+    public var organization: PCOrganization?
     public var attachment: Data?
     public var attachmentUrl: URL?
     public var attachmentName: String?
@@ -56,6 +58,10 @@ public struct AnyPCCommercialOffer: PCCommercialOffer, Equatable, Hashable {
 
     public var supplier: PCSupplier? {
         return self.object.supplier
+    }
+
+    public var organization: PCOrganization? {
+        return self.object.organization
     }
 
     public var attachment: Data? {
