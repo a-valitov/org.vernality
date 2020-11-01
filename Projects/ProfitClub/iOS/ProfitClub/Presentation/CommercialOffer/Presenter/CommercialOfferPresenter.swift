@@ -48,7 +48,7 @@ extension CommercialOfferPresenter: ApproveCommercialOfferViewOutput {
     func approveCommercialOfferDidLoad(view: ApproveCommercialOfferViewInput) {
         view.commercialOfferImageUrl = self.commercialOffer.imageUrl
         view.commercialOfferMessage = self.commercialOffer.message
-        view.organizationName = self.commercialOffer.organization?.contact
+        view.organizationName = self.commercialOffer.supplier?.name
     }
 
 }

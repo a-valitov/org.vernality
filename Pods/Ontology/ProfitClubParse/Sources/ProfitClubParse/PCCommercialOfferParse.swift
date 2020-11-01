@@ -37,9 +37,6 @@ public extension PFObject {
         if let supplier = self["supplier"] as? PFObject {
             result.supplier = supplier.pcSupplier.any
         }
-        if let organization = self["organization"] as? PFObject {
-            result.organization = organization.pcOrganization.any
-        }
         return result
     }
 }
