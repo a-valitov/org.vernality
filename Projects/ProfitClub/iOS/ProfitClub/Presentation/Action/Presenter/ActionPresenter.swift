@@ -52,5 +52,6 @@ extension ActionPresenter: ApproveCurrentActionViewOutput {
         view.actionLink = self.action.link
         view.actionStartDate = self.action.startDate
         view.actionEndDate = self.action.endDate
+        view.organizationName = self.action.supplier?.name
     }
 }
