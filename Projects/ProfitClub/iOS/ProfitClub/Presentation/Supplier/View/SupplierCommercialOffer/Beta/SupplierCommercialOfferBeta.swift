@@ -36,10 +36,13 @@ final class SupplierCommercialOfferBeta: UIViewController {
         }
     }
 
-    var attachmentName: String?
-
-    var attachment: Data?
+//    var attachmentName: String?
+//
+//    var attachment: Data?
+    var attachments: [Data]?
+    var attachmentsName: [String]?
     
+    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var messageTextView: UITextView!
     @IBOutlet weak var commercialOfferImageView: UIImageView!
     @IBOutlet weak var addCommercialOfferImage: UIButton!
@@ -158,14 +161,32 @@ extension SupplierCommercialOfferBeta: UIDocumentPickerDelegate {
         guard let data = try? Data(contentsOf: url) else {
             return
         }
-        self.attachment = data
-        self.attachmentLabel.text = "Приложение: " + url.lastPathComponent
-        self.attachmentLabel.isHidden = false
-        self.attachmentName = url.lastPathComponent
+//        self.attachment = data
+        self.attachments?.append(data)
+//        self.attachmentLabel.text = "Приложение: " + url.lastPathComponent
+//        self.attachmentLabel.isHidden = false
+        self.attachmentsName?.append(url.lastPathComponent)
+        collectionView.reloadData()
+        print(attachments?.count)
+//        self.attachmentName = url.lastPathComponent
     }
 
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
         dismiss(animated: true)
+    }
+}
+
+extension SupplierCommercialOfferBeta: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return attachments?.count ?? 0
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "fileCell", for: indexPath) as! FileCollectionViewCell
+
+        cell.fileNameLabel.text = attachmentsName?[indexPath.row]
+
+        return cell
     }
 }
 

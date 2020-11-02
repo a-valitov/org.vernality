@@ -1,5 +1,5 @@
 //  Copyright (C) 2020 Startup Studio Vernality
-//  Created by Macbook on 30.10.2020
+//  Created by Macbook on 01.11.2020
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -16,15 +16,7 @@
 
 import UIKit
 
-protocol SupplierCommercialOfferInput: UIViewController {
-    var message: String? { get }
-    var image: UIImage? { get }
-//    var attachment: Data? { get }
-//    var attachmentName: String? { get }
-    var attachments: [Data]? { get }
-    var attachmentsName: [String]? { get }
-}
-
-protocol SupplierCommercialOfferOutput {
-    func supplierCommercialOfferDidFinish(view: SupplierCommercialOfferInput)
+class FileCollectionViewCell: UICollectionViewCell {
+    
+    @IBOutlet weak var fileNameLabel: UILabel!
 }

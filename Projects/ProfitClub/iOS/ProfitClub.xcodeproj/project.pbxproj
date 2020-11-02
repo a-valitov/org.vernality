@@ -127,6 +127,7 @@
 		FAD7048F254E89C400DE8AD7 /* CommercialOfferModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD7048E254E89C400DE8AD7 /* CommercialOfferModule.swift */; };
 		FAD70491254E89D000DE8AD7 /* CommercialOfferPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD70490254E89D000DE8AD7 /* CommercialOfferPresenter.swift */; };
 		FAD70493254E89DA00DE8AD7 /* CommercialOfferRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD70492254E89DA00DE8AD7 /* CommercialOfferRouter.swift */; };
+		FAD70495254F392D00DE8AD7 /* FileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD70494254F392D00DE8AD7 /* FileCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -255,6 +256,7 @@
 		FAD7048E254E89C400DE8AD7 /* CommercialOfferModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommercialOfferModule.swift; sourceTree = "<group>"; };
 		FAD70490254E89D000DE8AD7 /* CommercialOfferPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommercialOfferPresenter.swift; sourceTree = "<group>"; };
 		FAD70492254E89DA00DE8AD7 /* CommercialOfferRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommercialOfferRouter.swift; sourceTree = "<group>"; };
+		FAD70494254F392D00DE8AD7 /* FileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -873,6 +875,7 @@
 			isa = PBXGroup;
 			children = (
 				FA0955EE254C369300FFF835 /* SupplierCommercialOfferBeta.swift */,
+				FAD70494254F392D00DE8AD7 /* FileCollectionViewCell.swift */,
 				FA0955F0254C369D00FFF835 /* SupplierCommercialOfferBeta.storyboard */,
 			);
 			path = Beta;
@@ -1300,6 +1303,7 @@
 				0E9049A224F62C870061A605 /* OnboardSupplierViewAlpha.swift in Sources */,
 				0E90499424F614390061A605 /* OnboardModule.swift in Sources */,
 				0E56174C25372D95005DF4F3 /* PastActionsViewBeta.swift in Sources */,
+				FAD70495254F392D00DE8AD7 /* FileCollectionViewCell.swift in Sources */,
 				FA6E8BCB254D9B3B007B8B4E /* CommercialOffersDependencies.swift in Sources */,
 				FA15B70725473D3A00D29835 /* ActionDependencies.swift in Sources */,
 				FA6E8BC1254D9726007B8B4E /* CommercialOffersViewBeta.swift in Sources */,
