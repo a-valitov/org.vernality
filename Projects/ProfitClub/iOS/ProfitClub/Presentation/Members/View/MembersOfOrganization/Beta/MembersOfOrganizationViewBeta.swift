@@ -18,6 +18,20 @@ import UIKit
 
 final class MembersOfOrganizationViewBeta: UITableViewController {
     var output: MembersOfOrganizationViewOutput?
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        3
+    }
+
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        81
+    }
+
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "membersCell", for: indexPath) as! MemberViewCell
+
+        return cell
+    }
 }
 
 extension MembersOfOrganizationViewBeta: MembersOfOrganizationViewInput {

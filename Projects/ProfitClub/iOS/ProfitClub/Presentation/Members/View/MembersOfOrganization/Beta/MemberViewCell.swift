@@ -16,20 +16,15 @@
 
 import UIKit
 
-final class ApplicationsViewBeta: UITableViewController {
-    var output: ApplicationsViewOutput?
+class MemberViewCell: UITableViewCell {
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        3
+    @IBOutlet weak var memberImageView: UIImageView! {
+        didSet {
+            memberImageView.layer.cornerRadius = memberImageView.frame.height / 2
+            memberImageView.clipsToBounds = true
+        }
     }
+    @IBOutlet weak var memberNameLabel: UILabel!
 
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "applicationsCell", for: indexPath)
 
-        return cell
-    }
-}
-
-extension ApplicationsViewBeta: ApplicationsViewInput {
-    
 }

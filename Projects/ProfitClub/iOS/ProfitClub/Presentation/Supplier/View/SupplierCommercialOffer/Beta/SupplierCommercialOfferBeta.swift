@@ -157,9 +157,22 @@ extension SupplierCommercialOfferBeta: UIDocumentPickerDelegate {
         guard let data = try? Data(contentsOf: url) else {
             return
         }
-        self.attachments.append(data)
-        self.attachmentsName.append(url.lastPathComponent)
-        collectionView.reloadData()
+        do {
+            let resources = try url.resourceValues(forKeys: [.fileSizeKey])
+            let fileSize = resources.fileSize!
+            if fileSize <= 10000000 {
+                self.attachments.append(data)
+                self.attachmentsName.append(url.lastPathComponent)
+                collectionView.reloadData()
+            } else {
+                let alert = UIAlertController(title: "Error", message: "Your file is exceeds 10mb", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK", style: .default)
+                alert.addAction(okAction)
+                present(alert, animated: true)
+            }
+        } catch {
+            print("Error")
+        }
     }
 
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {

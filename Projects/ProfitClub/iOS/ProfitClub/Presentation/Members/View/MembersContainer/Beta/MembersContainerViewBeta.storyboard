@@ -26,11 +26,11 @@
                                     <action selector="membersSegmentedControlValueChanged:" destination="UL3-bS-6Oa" eventType="valueChanged" id="iAu-Ap-UOm"/>
                                 </connections>
                             </segmentedControl>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IY8-3z-NJr">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fbg-YU-yc7">
                                 <rect key="frame" x="0.0" y="75" width="414" height="821"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fbg-YU-yc7">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IY8-3z-NJr">
                                 <rect key="frame" x="0.0" y="75" width="414" height="821"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </view>
