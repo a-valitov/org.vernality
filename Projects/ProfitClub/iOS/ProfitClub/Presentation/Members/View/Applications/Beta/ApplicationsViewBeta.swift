@@ -1,5 +1,5 @@
 //  Copyright (C) 2020 Startup Studio Vernality
-//  Created by Rinat Enikeev on 10/14/20
+//  Created by Macbook on 02.11.2020
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -14,26 +14,12 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import Foundation
-import PCAuthentication
-import PCOrganizationService
-import ErrorPresenter
-import ActivityPresenter
+import UIKit
 
-struct OrganizationPresenters {
-    let error: ErrorPresenter
-    let activity: ActivityPresenter
+final class ApplicationsViewBeta: UITableViewController {
+    var output: ApplicationsViewOutput?
 }
 
-struct OrganizationServices {
-    let authentication: PCAuthentication
-    let organization: PCOrganizationService
-}
-
-struct OrganizationFactories {
-    let actions: ActionsFactory
-    let action: ActionFactory
-    let commercialOffers: CommercialOffersFactory
-    let commercialOffer: CommercialOfferFactory
-    let members: MembersFactory
+extension ApplicationsViewBeta: ApplicationsViewInput {
+    
 }

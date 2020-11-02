@@ -1,5 +1,5 @@
 //  Copyright (C) 2020 Startup Studio Vernality
-//  Created by Rinat Enikeev on 10/14/20
+//  Created by Macbook on 02.11.2020
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -15,25 +15,25 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import Foundation
-import PCAuthentication
-import PCOrganizationService
 import ErrorPresenter
 import ActivityPresenter
 
-struct OrganizationPresenters {
-    let error: ErrorPresenter
-    let activity: ActivityPresenter
-}
+final class MembersFactory {
+    init(presenters: MembersPresenters,
+         services: MembersServices) {
+        self.presenters = presenters
+        self.services = services
+    }
 
-struct OrganizationServices {
-    let authentication: PCAuthentication
-    let organization: PCOrganizationService
-}
+    func make(output: MembersModuleOutput?) -> MembersModule {
+        let router = MembersRouter()
+        let presenter = MembersPresenter(presenters: self.presenters,
+                                         services: self.services)
+        presenter.output = output
+        presenter.router = router
+        return presenter
+    }
 
-struct OrganizationFactories {
-    let actions: ActionsFactory
-    let action: ActionFactory
-    let commercialOffers: CommercialOffersFactory
-    let commercialOffer: CommercialOfferFactory
-    let members: MembersFactory
+    private let services: MembersServices
+    private let presenters: MembersPresenters
 }

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="UL3-bS-6Oa">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Участники-->
+        <scene sceneID="Ekd-aJ-fJy">
+            <objects>
+                <viewController id="UL3-bS-6Oa" customClass="MembersContainerViewBeta" customModule="Profit_Club" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VkH-RJ-n6H">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="xiP-0n-Kvq">
+                                <rect key="frame" x="0.0" y="44" width="414" height="32"/>
+                                <segments>
+                                    <segment title="Участники организации"/>
+                                    <segment title="Заявки"/>
+                                </segments>
+                                <connections>
+                                    <action selector="membersSegmentedControlValueChanged:" destination="UL3-bS-6Oa" eventType="valueChanged" id="iAu-Ap-UOm"/>
+                                </connections>
+                            </segmentedControl>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IY8-3z-NJr">
+                                <rect key="frame" x="0.0" y="75" width="414" height="821"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fbg-YU-yc7">
+                                <rect key="frame" x="0.0" y="75" width="414" height="821"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="xiP-0n-Kvq" firstAttribute="top" secondItem="qvZ-Xn-1NR" secondAttribute="top" id="9Z6-3r-LLp"/>
+                            <constraint firstItem="fbg-YU-yc7" firstAttribute="top" secondItem="xiP-0n-Kvq" secondAttribute="bottom" id="E59-pe-Vfm"/>
+                            <constraint firstItem="xiP-0n-Kvq" firstAttribute="leading" secondItem="qvZ-Xn-1NR" secondAttribute="leading" id="ZvC-pw-xCo"/>
+                            <constraint firstItem="IY8-3z-NJr" firstAttribute="trailing" secondItem="qvZ-Xn-1NR" secondAttribute="trailing" id="cpq-HB-cvO"/>
+                            <constraint firstItem="qvZ-Xn-1NR" firstAttribute="trailing" secondItem="fbg-YU-yc7" secondAttribute="trailing" id="deX-wo-ZzB"/>
+                            <constraint firstItem="qvZ-Xn-1NR" firstAttribute="trailing" secondItem="xiP-0n-Kvq" secondAttribute="trailing" id="dqU-1X-BCA"/>
+                            <constraint firstAttribute="bottom" secondItem="IY8-3z-NJr" secondAttribute="bottom" id="hbG-o3-agc"/>
+                            <constraint firstAttribute="bottom" secondItem="fbg-YU-yc7" secondAttribute="bottom" id="jwD-PJ-kYA"/>
+                            <constraint firstItem="IY8-3z-NJr" firstAttribute="top" secondItem="xiP-0n-Kvq" secondAttribute="bottom" id="k6x-zA-2Yn"/>
+                            <constraint firstItem="IY8-3z-NJr" firstAttribute="leading" secondItem="qvZ-Xn-1NR" secondAttribute="leading" id="sLP-Bv-AKh"/>
+                            <constraint firstItem="fbg-YU-yc7" firstAttribute="leading" secondItem="qvZ-Xn-1NR" secondAttribute="leading" id="sOm-Ff-Wkf"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="qvZ-Xn-1NR"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Участники" image="MembersItem" id="PWX-GT-bEC"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="applicationsContainer" destination="fbg-YU-yc7" id="TmX-eY-Khw"/>
+                        <outlet property="membersOfOrganizationContainer" destination="IY8-3z-NJr" id="EYt-Nz-Puk"/>
+                        <outlet property="segmentedControl" destination="xiP-0n-Kvq" id="1bY-4e-Vuj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2eA-Ve-fTa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="111.59420289855073" y="99.776785714285708"/>
+        </scene>
+        <!--MembersOfOrganizationViewBeta-->
+        <scene sceneID="SbG-1f-FTg">
+            <objects>
+                <viewControllerPlaceholder storyboardName="MembersOfOrganizationViewBeta" id="GQg-Pn-ZKs" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="F07-8h-0V2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="708" y="36"/>
+        </scene>
+        <!--ApplicationsViewBeta-->
+        <scene sceneID="Rq8-Nb-vJ6">
+            <objects>
+                <viewControllerPlaceholder storyboardName="ApplicationsViewBeta" id="YiV-Jg-wy0" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NVM-Ul-tCW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="702" y="85"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="MembersItem" width="22" height="21"/>
+    </resources>
+</document>
