@@ -19,6 +19,11 @@ import UIKit
 final class MembersOfOrganizationViewBeta: UITableViewController {
     var output: MembersOfOrganizationViewOutput?
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.tableFooterView = UIView()
+    }
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         3
     }

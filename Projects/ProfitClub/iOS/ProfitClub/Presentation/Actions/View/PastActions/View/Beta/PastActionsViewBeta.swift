@@ -18,6 +18,11 @@ import UIKit
 
 final class PastActionsViewBeta: UITableViewController {
     var output: PastActionsViewOutput?
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.tableFooterView = UIView()
+    }
 }
 
 extension PastActionsViewBeta: PastActionsViewInput {

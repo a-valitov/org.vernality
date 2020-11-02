@@ -31,6 +31,7 @@ final class CurrentActionsViewBeta: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.output?.currentActionsDidLoad(view: self)
+        tableView.tableFooterView = UIView()
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

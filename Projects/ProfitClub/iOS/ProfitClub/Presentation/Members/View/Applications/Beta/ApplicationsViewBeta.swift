@@ -19,6 +19,11 @@ import UIKit
 final class ApplicationsViewBeta: UITableViewController {
     var output: ApplicationsViewOutput?
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        tableView.tableFooterView = UIView()
+    }
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         3
     }
