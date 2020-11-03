@@ -23,6 +23,20 @@ final class PastActionsViewBeta: UITableViewController {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
     }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        3
+    }
+
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        83
+    }
+
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "pastActionsCell", for: indexPath)
+
+        return cell
+    }
 }
 
 extension PastActionsViewBeta: PastActionsViewInput {
