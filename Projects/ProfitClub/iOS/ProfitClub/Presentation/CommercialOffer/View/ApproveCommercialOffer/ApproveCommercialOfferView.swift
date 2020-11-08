@@ -27,5 +27,5 @@ protocol ApproveCommercialOfferViewInput: UIViewController {
 
 protocol ApproveCommercialOfferViewOutput {
     func approveCommercialOfferDidLoad(view: ApproveCommercialOfferViewInput)
-    func approveCommercialOffer(view: ApproveCommercialOfferViewInput, didTapOOnAttachmentAtIndex index: Int)
+    func approveCommercialOffer(view: ApproveCommercialOfferViewInput, didTapOnAttachmentAtIndex index: Int)
 }

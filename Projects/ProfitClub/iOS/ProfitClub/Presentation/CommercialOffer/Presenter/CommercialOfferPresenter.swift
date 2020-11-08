@@ -55,7 +55,7 @@ extension CommercialOfferPresenter: ApproveCommercialOfferViewOutput {
         view.attachmentNames = self.commercialOffer.attachmentNames
     }
 
-    func approveCommercialOffer(view: ApproveCommercialOfferViewInput, didTapOOnAttachmentAtIndex index: Int) {
+    func approveCommercialOffer(view: ApproveCommercialOfferViewInput, didTapOnAttachmentAtIndex index: Int) {
         if let fileUrl = self.fileUrls[index] {
             view.showAttachment(fileUrl: fileUrl)
         } else {

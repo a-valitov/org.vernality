@@ -98,7 +98,7 @@ extension ApproveCommercialOfferViewBeta: QLPreviewControllerDataSource {
 // MARK: - UICollectionViewDelegate
 extension ApproveCommercialOfferViewBeta: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.output?.approveCommercialOffer(view: self, didTapOOnAttachmentAtIndex: indexPath.row)
+        self.output?.approveCommercialOffer(view: self, didTapOnAttachmentAtIndex: indexPath.row)
     }
 }
 
