@@ -52,6 +52,11 @@ final class MemberCurrentActionViewBeta: UIViewController {
     var actionEndDate: String?
 
     @IBOutlet weak var organizationNameLabel: UILabel!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.output?.memberCurrentActionDidLoad(view: self)
+    }
 }
 
 extension MemberCurrentActionViewBeta: MemberCurrentActionViewInput {

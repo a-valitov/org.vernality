@@ -57,5 +57,7 @@ extension MemberPresenter: MemberCurrentActionsViewOutput {
 }
 
 extension MemberPresenter: MemberCurrentActionViewOutput {
+    func memberCurrentActionDidLoad(view: MemberCurrentActionViewInput) {
 
+    }
 }

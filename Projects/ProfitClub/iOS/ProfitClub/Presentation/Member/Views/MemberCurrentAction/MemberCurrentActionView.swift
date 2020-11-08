@@ -27,5 +27,5 @@ protocol MemberCurrentActionViewInput: UIViewController {
 }
 
 protocol MemberCurrentActionViewOutput {
-//    func memberCurrentActionDidLoad(view: MemberCurrentActionViewInput)
+    func memberCurrentActionDidLoad(view: MemberCurrentActionViewInput)
 }
