@@ -42,6 +42,9 @@ final class CommercialOfferPresenter: CommercialOfferModule {
     // dependencies
     private let presenters: CommercialOfferPresenters
     private let services: CommercialOfferServices
+
+    // state
+    private var fileUrls = [Int: URL]()
 }
 
 extension CommercialOfferPresenter: ApproveCommercialOfferViewOutput {
@@ -49,21 +52,21 @@ extension CommercialOfferPresenter: ApproveCommercialOfferViewOutput {
         view.commercialOfferImageUrl = self.commercialOffer.imageUrl
         view.commercialOfferMessage = self.commercialOffer.message
         view.organizationName = self.commercialOffer.supplier?.name
-        view.attachmentName = self.commercialOffer.attachmentName
+        view.attachmentNames = self.commercialOffer.attachmentNames
     }
 
-    func approveCommercialOfferDidTapOnAttachment(view: ApproveCommercialOfferViewInput) {
-        if view.attachmentFileUrl != nil {
-            view.showAttachment()
+    func approveCommercialOffer(view: ApproveCommercialOfferViewInput, didTapOOnAttachmentAtIndex index: Int) {
+        if let fileUrl = self.fileUrls[index] {
+            view.showAttachment(fileUrl: fileUrl)
         } else {
             self.presenters.activity.increment()
-            self.services.commercialOffer.loadAttachment(for: self.commercialOffer) { [weak self] result in
+            self.services.commercialOffer.loadAttachment(at: index, for: self.commercialOffer) { [weak self] result in
                 self?.presenters.activity.decrement()
                 DispatchQueue.main.async {
                     switch result {
                     case .success(let fileUrl):
-                        view.attachmentFileUrl = fileUrl
-                        view.showAttachment()
+                        self?.fileUrls[index] = fileUrl
+                        view.showAttachment(fileUrl: fileUrl)
                     case .failure(let error):
                         self?.presenters.error.present(error)
                     }

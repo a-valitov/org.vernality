@@ -43,9 +43,13 @@ public final class PCCommercialOfferServiceParse: PCCommercialOfferService {
             let imageFile = PFFileObject(name: "image.png", data: imageData)
             parseOffer.imageFile = imageFile
         }
-        if let attachmentData = offer.attachment, let name = offer.attachmentName {
-            let attachmentFile = PFFileObject(name: name, data: attachmentData)
-            parseOffer.attachmentFile = attachmentFile
+
+        parseOffer.attachmentFiles = []
+        for (i, attachmentData) in offer.attachments.enumerated() {
+            let attachmentName = offer.attachmentNames[i]
+            if let attachmentFile = PFFileObject(name: attachmentName, data: attachmentData) {
+                parseOffer.attachmentFiles.append(attachmentFile)
+            }
         }
         parseOffer.saveInBackground { (succeeded, error) in
             if let error = error {
@@ -56,12 +60,12 @@ public final class PCCommercialOfferServiceParse: PCCommercialOfferService {
         }
     }
 
-    public func loadAttachment(for offer: PCCommercialOffer, result: @escaping (Result<URL, Error>) -> Void) {
+    public func loadAttachment(at index: Int, for offer: PCCommercialOffer, result: @escaping (Result<URL, Error>) -> Void) {
         offer.parse.fetchInBackground { (object, error) in
             if let error = error {
                 result(.failure(error))
-            } else if let object = object, let fileObject = object["attachmentFile"] as? PFFileObject {
-                fileObject.getFilePathInBackground { (filePath, error) in
+            } else if let object = object, let fileObjects = object["attachmentFiles"] as? [PFFileObject], fileObjects.count > index {
+                fileObjects[index].getFilePathInBackground { (filePath, error) in
                     if let error = error {
                         result(.failure(error))
                     } else if let filePath = filePath {

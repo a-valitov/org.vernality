@@ -37,7 +37,7 @@ final class SupplierCommercialOfferBeta: UIViewController {
     }
 
     var attachments: [Data] = []
-    var attachmentsName: [String] = []
+    var attachmentNames: [String] = []
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var messageTextView: UITextView!
@@ -162,7 +162,7 @@ extension SupplierCommercialOfferBeta: UIDocumentPickerDelegate {
             let fileSize = resources.fileSize!
             if fileSize <= 10000000 {
                 self.attachments.append(data)
-                self.attachmentsName.append(url.lastPathComponent)
+                self.attachmentNames.append(url.lastPathComponent)
                 collectionView.reloadData()
             } else {
                 let alert = UIAlertController(title: "Error", message: "Your file is exceeds 10mb", preferredStyle: .alert)
@@ -188,7 +188,7 @@ extension SupplierCommercialOfferBeta: UICollectionViewDelegate, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "fileCell", for: indexPath) as! FileCollectionViewCell
 
-        cell.fileNameLabel.text = attachmentsName[indexPath.row]
+        cell.fileNameLabel.text = attachmentNames[indexPath.row]
 
         return cell
     }
