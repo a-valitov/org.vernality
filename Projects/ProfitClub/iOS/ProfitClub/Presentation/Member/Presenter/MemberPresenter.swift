@@ -40,5 +40,22 @@ final class MemberPresenter: MemberModule {
 }
 
 extension MemberPresenter: MemberCurrentActionsViewOutput {
-    
+    func memberCurrentActionsDidLoad(view: MemberCurrentActionsViewInput) {
+        self.services.action.fetchApproved { [weak self] result in
+            switch result {
+            case .success(let actions):
+                view.actions = actions
+            case .failure(let error):
+                self?.presenters.error.present(error)
+            }
+        }
+    }
+
+    func memberCurrentActions(view: MemberCurrentActionsViewInput, didSelect action: PCAction) {
+        self.router?.openMemberCurrentAction(output: self)
+    }
+}
+
+extension MemberPresenter: MemberCurrentActionViewOutput {
+
 }

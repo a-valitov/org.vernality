@@ -29,4 +29,13 @@ final class MemberRouter {
         self.main?.push(actions, animated: true)
         return actions
     }
+
+    @discardableResult
+    func openMemberCurrentAction(output: MemberCurrentActionViewOutput?) -> MemberCurrentActionViewInput {
+        let storyboard = UIStoryboard(name: "MemberCurrentActionViewBeta", bundle: nil)
+        let memberCurrenAction = storyboard.instantiateInitialViewController() as! MemberCurrentActionViewBeta
+        memberCurrenAction.output = output
+        self.main?.raise(memberCurrenAction, animated: true)
+        return memberCurrenAction
+    }
 }

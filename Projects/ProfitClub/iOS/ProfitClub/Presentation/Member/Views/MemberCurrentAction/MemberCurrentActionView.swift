@@ -15,13 +15,17 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import UIKit
-import ProfitClubModel
 
-protocol MemberCurrentActionsViewInput: UIViewController {
-    var actions: [AnyPCAction] { get set }
+protocol MemberCurrentActionViewInput: UIViewController {
+    var actionImageUrl: URL? { get set }
+    var actionMessage: String? { get set }
+    var actionDescription: String? { get set }
+    var actionLink: String? { get set }
+    var actionStartDate: String? { get set }
+    var actionEndDate: String? { get set }
+    var organizationName: String? { get set }
 }
 
-protocol MemberCurrentActionsViewOutput {
-    func memberCurrentActionsDidLoad(view: MemberCurrentActionsViewInput)
-    func memberCurrentActions(view: MemberCurrentActionsViewInput, didSelect action: PCAction)
+protocol MemberCurrentActionViewOutput {
+//    func memberCurrentActionDidLoad(view: MemberCurrentActionViewInput)
 }

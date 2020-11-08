@@ -15,13 +15,18 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import UIKit
-import ProfitClubModel
 
-protocol MemberCurrentActionsViewInput: UIViewController {
-    var actions: [AnyPCAction] { get set }
-}
+class MemberCurrentActionsTableViewCell: UITableViewCell {
 
-protocol MemberCurrentActionsViewOutput {
-    func memberCurrentActionsDidLoad(view: MemberCurrentActionsViewInput)
-    func memberCurrentActions(view: MemberCurrentActionsViewInput, didSelect action: PCAction)
+    @IBOutlet var actionImageView: UIImageView! {
+        didSet {
+            actionImageView.layer.cornerRadius = actionImageView.frame.height / 2
+            actionImageView.clipsToBounds = true
+        }
+    }
+    @IBOutlet var actionMessageLabel: UILabel!
+    @IBOutlet var actionDescriptionLabel: UILabel!
+    @IBOutlet var actionLinkLabel: UILabel!
+    
+
 }

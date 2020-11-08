@@ -16,6 +16,7 @@
 
 import UIKit
 import ProfitClubModel
+import Kingfisher
 
 final class MemberCurrentActionsViewBeta: UITableViewController {
     var output: MemberCurrentActionsViewOutput?
@@ -26,6 +27,38 @@ final class MemberCurrentActionsViewBeta: UITableViewController {
             }
         }
     }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.output?.memberCurrentActionsDidLoad(view: self)
+        tableView.tableFooterView = UIView()
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let action = actions[indexPath.row]
+        self.output?.memberCurrentActions(view: self, didSelect: action)
+    }
+
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return actions.count
+    }
+
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        108
+    }
+
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "actionsCell", for: indexPath) as! MemberCurrentActionsTableViewCell
+
+        let action = actions[indexPath.row]
+        cell.actionMessageLabel.text = action.message
+        cell.actionDescriptionLabel.text = action.descriptionOf
+        cell.actionLinkLabel.text = action.link
+        cell.actionImageView.kf.setImage(with: action.imageUrl)
+
+        return cell
+    }
+
 }
 
 extension MemberCurrentActionsViewBeta: MemberCurrentActionsViewInput {
