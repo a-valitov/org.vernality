@@ -59,6 +59,9 @@
                                 <state key="normal" title="Ссылка" image="Icon">
                                     <color key="titleColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59957380640000002" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 </state>
+                                <connections>
+                                    <action selector="actionLinkTouchUpInside:" destination="dU8-SH-OYS" eventType="touchUpInside" id="Rq0-9O-Mjv"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tM7-2a-D6c">
                                 <rect key="frame" x="20" y="275" width="374" height="73.5"/>
@@ -100,6 +103,10 @@
                         <viewLayoutGuide key="safeArea" id="3Pv-7G-SLx"/>
                     </view>
                     <connections>
+                        <outlet property="actionDescriptionLabel" destination="tM7-2a-D6c" id="BMz-h3-9aZ"/>
+                        <outlet property="actionImageView" destination="3uS-u4-Cag" id="eZr-f6-SLD"/>
+                        <outlet property="actionMessageLabel" destination="6uA-El-1LH" id="oKg-6i-hFL"/>
+                        <outlet property="actionStartAndEndDate" destination="Hu0-RW-zSZ" id="Hop-bb-AWr"/>
                         <outlet property="organizationNameLabel" destination="CdQ-k2-1gT" id="wUw-xw-Eei"/>
                     </connections>
                 </viewController>

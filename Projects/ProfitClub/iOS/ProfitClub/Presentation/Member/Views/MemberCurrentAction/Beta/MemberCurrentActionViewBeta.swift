@@ -22,21 +22,21 @@ final class MemberCurrentActionViewBeta: UIViewController {
     var actionImageUrl: URL? {
         didSet {
             if isViewLoaded {
-
+                self.actionImageView.kf.setImage(with: actionImageUrl)
             }
         }
     }
     var actionMessage: String? {
         didSet {
             if isViewLoaded {
-
+                self.actionMessageLabel.text = self.actionMessage
             }
         }
     }
     var actionDescription: String? {
         didSet {
             if isViewLoaded {
-
+                self.actionDescriptionLabel.text = self.actionDescription
             }
         }
     }
@@ -51,11 +51,22 @@ final class MemberCurrentActionViewBeta: UIViewController {
     var actionStartDate: String?
     var actionEndDate: String?
 
+    @IBOutlet weak var actionImageView: UIImageView!
     @IBOutlet weak var organizationNameLabel: UILabel!
+    @IBOutlet weak var actionMessageLabel: UILabel!
+    @IBOutlet weak var actionDescriptionLabel: UILabel!
+    @IBOutlet weak var actionStartAndEndDate: UILabel!
+    
+    @IBAction func actionLinkTouchUpInside(_ sender: UIButton) {
+        if let url = URL(string: actionLink!) {
+            UIApplication.shared.open(url)
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.output?.memberCurrentActionDidLoad(view: self)
+        actionStartAndEndDate.text = "\(actionStartDate ?? "0")-\(actionEndDate ?? "0")"
     }
 }
 

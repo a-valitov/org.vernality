@@ -52,7 +52,7 @@ extension MemberPresenter: MemberCurrentActionsViewOutput {
     }
 
     func memberCurrentActions(view: MemberCurrentActionsViewInput, didSelect action: PCAction) {
-        self.router?.openMemberCurrentAction(output: self)
+        self.router?.openMemberCurrentAction(action: action, output: self)
     }
 }
 
