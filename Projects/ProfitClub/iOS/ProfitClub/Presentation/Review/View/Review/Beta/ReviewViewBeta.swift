@@ -136,7 +136,7 @@ extension ReviewViewBeta {
         case 0:
             let cell = tableView.dequeueReusableCell(withIdentifier: self.memberCellReuseIdentifier, for: indexPath) as! ReviewViewBetaMemberCell
             let member = self.members[indexPath.row]
-            cell.fullNameLabel.text = (member.firstName ?? "") + (member.lastName ?? "")
+            cell.fullNameLabel.text = (member.firstName ?? "") + " " + (member.lastName ?? "")
             if let status = member.status {
                 switch status {
                 case .onReview:

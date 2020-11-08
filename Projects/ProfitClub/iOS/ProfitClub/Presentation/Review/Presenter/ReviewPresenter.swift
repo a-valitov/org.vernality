@@ -85,6 +85,8 @@ extension ReviewPresenter: ReviewViewOutput {
     }
 
     func review(view: ReviewViewInput, userTappedOn member: PCMember) {
-
+        if member.status == .approved {
+            self.output?.review(module: self, userWantsToEnter: member, inside: self.router?.main)
+        }
     }
 }

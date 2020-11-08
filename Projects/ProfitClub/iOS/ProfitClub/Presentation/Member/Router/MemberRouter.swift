@@ -1,5 +1,5 @@
 //  Copyright (C) 2020 Startup Studio Vernality
-//  Created by Rinat Enikeev on 8/30/20
+//  Created by Macbook on 08.11.2020
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -18,14 +18,15 @@ import Foundation
 import Main
 import ProfitClubModel
 
-protocol ReviewModule: class {
-    func start(in main: MainModule?)
-}
+final class MemberRouter {
+    weak var main: MainModule?
 
-protocol ReviewModuleOutput: class {
-    func review(module: ReviewModule, userWantsToLogoutInside main: MainModule?)
-    func review(module: ReviewModule, userWantsToAddRoleInside main: MainModule?)
-    func review(module: ReviewModule, userWantsToEnter organization: PCOrganization, inside main: MainModule?)
-    func review(module: ReviewModule, userWantsToEnter supplier: PCSupplier, inside main: MainModule?)
-    func review(module: ReviewModule, userWantsToEnter member: PCMember, inside main: MainModule?)
+    @discardableResult
+    func openMemberCurrentActions(output: MemberCurrentActionsViewOutput?) -> MemberCurrentActionsViewInput {
+        let storyboard = UIStoryboard(name: "MemberCurrentActionsViewBeta", bundle: nil)
+        let actions = storyboard.instantiateInitialViewController() as! MemberCurrentActionsViewBeta
+        actions.output = output
+        self.main?.push(actions, animated: true)
+        return actions
+    }
 }

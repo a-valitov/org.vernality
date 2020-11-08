@@ -128,10 +128,20 @@ extension AppPresenter: ReviewModuleOutput {
         let supplierModule = self.factory.supplier(supplier: supplier, output: self)
         supplierModule.open(in: main)
     }
+
+    func review(module: ReviewModule, userWantsToEnter member: PCMember, inside main: MainModule?) {
+        assert(member.status == .approved)
+        let memberModule = self.factory.member(output: self)
+        memberModule.open(in: main)
+    }
 }
 
 extension AppPresenter: OrganizationModuleOutput {
 }
 
 extension AppPresenter: SupplierModuleOutput {
+}
+
+extension AppPresenter: MemberModuleOutput {
+
 }

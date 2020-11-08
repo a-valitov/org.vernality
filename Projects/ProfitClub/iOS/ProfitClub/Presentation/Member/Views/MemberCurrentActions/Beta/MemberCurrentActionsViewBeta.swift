@@ -1,5 +1,5 @@
 //  Copyright (C) 2020 Startup Studio Vernality
-//  Created by Rinat Enikeev on 8/30/20
+//  Created by Macbook on 08.11.2020
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -14,18 +14,20 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import Foundation
-import Main
+import UIKit
 import ProfitClubModel
 
-protocol ReviewModule: class {
-    func start(in main: MainModule?)
+final class MemberCurrentActionsViewBeta: UITableViewController {
+    var output: MemberCurrentActionsViewOutput?
+    var actions = [AnyPCAction]() {
+        didSet {
+            if self.isViewLoaded {
+                self.tableView.reloadData()
+            }
+        }
+    }
 }
 
-protocol ReviewModuleOutput: class {
-    func review(module: ReviewModule, userWantsToLogoutInside main: MainModule?)
-    func review(module: ReviewModule, userWantsToAddRoleInside main: MainModule?)
-    func review(module: ReviewModule, userWantsToEnter organization: PCOrganization, inside main: MainModule?)
-    func review(module: ReviewModule, userWantsToEnter supplier: PCSupplier, inside main: MainModule?)
-    func review(module: ReviewModule, userWantsToEnter member: PCMember, inside main: MainModule?)
+extension MemberCurrentActionsViewBeta: MemberCurrentActionsViewInput {
+
 }

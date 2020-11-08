@@ -282,6 +282,7 @@ extension OnboardPresenter {
         var member = PCMemberStruct()
         member.firstName = self.firstName
         member.lastName = self.lastName
+        member.status = .onReview
         return member
     }
 

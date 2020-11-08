@@ -83,6 +83,11 @@ extension AppFactory {
         let module = self.supplierFactory.make(supplier: supplier, output: output)
         return module
     }
+
+    func member(output: MemberModuleOutput?) -> MemberModule {
+        let module = self.memberFactory.make(output: output)
+        return module
+    }
 }
 
 // MARK: - Factories
@@ -113,6 +118,10 @@ private extension AppFactory {
     var supplierFactory: SupplierFactory {
         return SupplierFactory(presenters: SupplierPresenters(error: self.errorPresenter(), activity: self.activityPresenter()),
                                services: SupplierServices(authentication: self.authentication, action: self.actionService(), commercialOffer: self.commercialOfferService()))
+    }
+
+    var memberFactory: MemberFactory {
+        return MemberFactory(presenters: MemberPresenters(error: self.errorPresenter(), activity: self.activityPresenter()), services: MemberServices(action: self.actionService()))
     }
 
     var actionsFactory: ActionsFactory {
