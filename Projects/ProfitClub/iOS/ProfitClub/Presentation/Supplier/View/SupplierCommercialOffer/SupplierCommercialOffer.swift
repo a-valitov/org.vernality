@@ -20,7 +20,7 @@ protocol SupplierCommercialOfferInput: UIViewController {
     var message: String? { get }
     var image: UIImage? { get }
     var attachments: [Data] { get }
-    var attachmentsName: [String] { get }
+    var attachmentNames: [String] { get }
 }
 
 protocol SupplierCommercialOfferOutput {

@@ -41,16 +41,17 @@ final class ApproveCommercialOfferViewBeta: UIViewController {
             }
         }
     }
-    var attachmentName: String? {
+    var attachmentNames: [String] = [] {
         didSet {
             if self.isViewLoaded {
-                self.openFile.setTitle(attachmentName, for: .normal)
+
             }
         }
     }
 
     var attachmentFileUrl: URL?
 
+    @IBOutlet weak var attachmentsCollectionView: UICollectionView!
     @IBOutlet weak var organizationNameLabel: UILabel!
     @IBOutlet weak var commercialOfferImageView: UIImageView!
     @IBOutlet weak var commercialOfferMessageLabel: UILabel!
@@ -60,14 +61,9 @@ final class ApproveCommercialOfferViewBeta: UIViewController {
             rejectCommercialOffer.layer.borderColor = UIColor.black.cgColor
         }
     }
-    @IBOutlet weak var openFile: UIButton!
     
     @IBAction func cancelTouchUpInside(_ sender: Any) {
         dismiss(animated: true)
-    }
-
-    @IBAction func openFileTouchUpInside(_ sender: UIButton) {
-        self.output?.approveCommercialOfferDidTapOnAttachment(view: self)
     }
 
     override func viewDidLoad() {
@@ -77,8 +73,8 @@ final class ApproveCommercialOfferViewBeta: UIViewController {
 }
 
 extension ApproveCommercialOfferViewBeta: ApproveCommercialOfferViewInput {
-    func showAttachment() {
-        assert(self.attachmentFileUrl != nil)
+    func showAttachment(fileUrl: URL) {
+        self.attachmentFileUrl = fileUrl
         let quickLookViewController = QLPreviewController()
         quickLookViewController.dataSource = self
         self.present(quickLookViewController, animated: true)
@@ -96,5 +92,27 @@ extension ApproveCommercialOfferViewBeta: QLPreviewControllerDataSource {
             fatalError()
         }
         return fileUrl as NSURL
+    }
+}
+
+// MARK: - UICollectionViewDelegate
+extension ApproveCommercialOfferViewBeta: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.output?.approveCommercialOffer(view: self, didTapOOnAttachmentAtIndex: indexPath.row)
+    }
+}
+
+// MARK: - UICollectionViewDataSource
+extension ApproveCommercialOfferViewBeta: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.attachmentNames.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "fileCell", for: indexPath) as! FileCollectionViewCell
+
+        cell.fileNameLabel.text = self.attachmentNames[indexPath.row]
+
+        return cell
     }
 }

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pV0-jB-TvK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="pV0-jB-TvK">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -70,7 +71,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aIy-CU-zT3">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aIy-CU-zT3">
                                 <rect key="frame" x="20" y="790" width="374" height="52"/>
                                 <color key="backgroundColor" red="0.098039215690000001" green="0.098039215690000001" blue="0.094117647060000004" alpha="0.99515732020000003" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <constraints>
@@ -97,7 +98,7 @@
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dhH-T0-FWI">
                                 <rect key="frame" x="20" y="381" width="374" height="70"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="2bS-jo-gnz"/>
                                 </constraints>
@@ -139,7 +140,8 @@
                                 </connections>
                             </collectionView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="XCT-fg-yWs"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Tjy-WC-bEz" firstAttribute="top" secondItem="NZr-R1-1jl" secondAttribute="bottom" constant="15" id="3UC-TD-Wev"/>
                             <constraint firstItem="XCT-fg-yWs" firstAttribute="bottom" secondItem="aIy-CU-zT3" secondAttribute="bottom" constant="20" id="BSv-Sz-Upx"/>
@@ -158,7 +160,6 @@
                             <constraint firstItem="XCT-fg-yWs" firstAttribute="trailing" secondItem="aIy-CU-zT3" secondAttribute="trailing" constant="20" id="oqT-MR-ZDv"/>
                             <constraint firstItem="Tjy-WC-bEz" firstAttribute="top" secondItem="B3M-Ym-Ghg" secondAttribute="bottom" constant="-26" id="vRl-pP-kIx"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="XCT-fg-yWs"/>
                     </view>
                     <connections>
                         <outlet property="addCommercialOfferImage" destination="u8G-Rs-w3E" id="voe-ug-5kw"/>
@@ -176,5 +177,8 @@
         <image name="add" width="26" height="25"/>
         <image name="attach" width="14" height="16"/>
         <image name="pdf" width="50" height="50"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>
