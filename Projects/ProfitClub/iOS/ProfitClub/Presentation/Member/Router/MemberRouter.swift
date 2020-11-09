@@ -42,7 +42,6 @@ final class MemberRouter {
         memberCurrenAction.actionLink = action.link
         memberCurrenAction.actionStartDate = action.startDate
         memberCurrenAction.actionEndDate = action.endDate
-        print(memberCurrenAction.actionMessage)
         self.main?.raise(memberCurrenAction, animated: true)
         return memberCurrenAction
     }

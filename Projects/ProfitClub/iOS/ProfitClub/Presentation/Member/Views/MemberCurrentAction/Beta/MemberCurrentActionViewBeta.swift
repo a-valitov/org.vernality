@@ -21,30 +21,22 @@ final class MemberCurrentActionViewBeta: UIViewController {
     var output: MemberCurrentActionViewOutput?
     var actionImageUrl: URL? {
         didSet {
-            if isViewLoaded {
-                self.actionImageView.kf.setImage(with: actionImageUrl)
-            }
+            self.updateUIActionImageUrl()
         }
     }
     var actionMessage: String? {
         didSet {
-            if isViewLoaded {
-                self.actionMessageLabel.text = self.actionMessage
-            }
+            self.updateUIActionMessage()
         }
     }
     var actionDescription: String? {
         didSet {
-            if isViewLoaded {
-                self.actionDescriptionLabel.text = self.actionDescription
-            }
+            self.updateUIActionDescription()
         }
     }
     var organizationName: String? {
         didSet {
-            if self.isViewLoaded {
-                self.organizationNameLabel.text = self.organizationName
-            }
+            self.updateUIOrganizationName()
         }
     }
     var actionLink: String?
@@ -65,6 +57,7 @@ final class MemberCurrentActionViewBeta: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.updateUI()
         self.output?.memberCurrentActionDidLoad(view: self)
         actionStartAndEndDate.text = "\(actionStartDate ?? "0")-\(actionEndDate ?? "0")"
     }
@@ -72,4 +65,38 @@ final class MemberCurrentActionViewBeta: UIViewController {
 
 extension MemberCurrentActionViewBeta: MemberCurrentActionViewInput {
     
+}
+
+// MARK: - Update UI
+extension MemberCurrentActionViewBeta {
+    private func updateUI() {
+        self.updateUIActionImageUrl()
+        self.updateUIActionMessage()
+        self.updateUIActionDescription()
+        self.updateUIOrganizationName()
+    }
+
+    private func updateUIActionImageUrl() {
+        if isViewLoaded {
+            self.actionImageView.kf.setImage(with: actionImageUrl)
+        }
+    }
+
+    private func updateUIActionMessage() {
+        if isViewLoaded {
+            self.actionMessageLabel.text = self.actionMessage
+        }
+    }
+
+    private func updateUIActionDescription() {
+        if isViewLoaded {
+            self.actionDescriptionLabel.text = self.actionDescription
+        }
+    }
+
+    private func updateUIOrganizationName() {
+        if self.isViewLoaded {
+            self.organizationNameLabel.text = self.organizationName
+        }
+    }
 }
