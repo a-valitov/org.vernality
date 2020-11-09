@@ -54,6 +54,9 @@ final class MemberCurrentActionViewBeta: UIViewController {
             UIApplication.shared.open(url)
         }
     }
+    @IBAction func cancelTouchUpInside() {
+        dismiss(animated: true)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

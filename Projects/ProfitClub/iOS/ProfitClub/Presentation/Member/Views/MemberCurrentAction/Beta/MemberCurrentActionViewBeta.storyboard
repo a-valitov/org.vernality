@@ -79,6 +79,13 @@
                                 <color key="textColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59957380640000002" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hcV-dS-Q1v">
+                                <rect key="frame" x="377" y="14" width="17" height="22"/>
+                                <state key="normal" image="X"/>
+                                <connections>
+                                    <action selector="cancelTouchUpInside" destination="dU8-SH-OYS" eventType="touchUpInside" id="efx-vG-b0i"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -91,9 +98,11 @@
                             <constraint firstItem="tM7-2a-D6c" firstAttribute="leading" secondItem="6uA-El-1LH" secondAttribute="leading" id="IKb-u3-YEm"/>
                             <constraint firstItem="CdQ-k2-1gT" firstAttribute="leading" secondItem="3Pv-7G-SLx" secondAttribute="leading" constant="20" id="J0q-HE-xtT"/>
                             <constraint firstItem="Hu0-RW-zSZ" firstAttribute="leading" secondItem="tM7-2a-D6c" secondAttribute="leading" id="KiO-Bu-v2P"/>
+                            <constraint firstItem="hcV-dS-Q1v" firstAttribute="top" secondItem="9f4-bk-00b" secondAttribute="top" constant="14" id="Tqa-aI-f7L"/>
                             <constraint firstItem="Hu0-RW-zSZ" firstAttribute="top" secondItem="tM7-2a-D6c" secondAttribute="bottom" constant="10" id="X1v-Au-xhU"/>
                             <constraint firstItem="3Pv-7G-SLx" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Hu0-RW-zSZ" secondAttribute="bottom" constant="20" id="X4h-sd-7ol"/>
                             <constraint firstItem="3Pv-7G-SLx" firstAttribute="trailing" secondItem="6uA-El-1LH" secondAttribute="trailing" constant="20" id="Xms-vG-RWR"/>
+                            <constraint firstAttribute="trailing" secondItem="hcV-dS-Q1v" secondAttribute="trailing" constant="20" id="Ycb-Ik-0Ww"/>
                             <constraint firstItem="6uA-El-1LH" firstAttribute="top" secondItem="CdQ-k2-1gT" secondAttribute="bottom" constant="3" id="Ykl-0c-Cch"/>
                             <constraint firstItem="tM7-2a-D6c" firstAttribute="top" secondItem="6uA-El-1LH" secondAttribute="bottom" constant="10" id="cBy-b8-ZfJ"/>
                             <constraint firstItem="3uS-u4-Cag" firstAttribute="trailing" secondItem="3Pv-7G-SLx" secondAttribute="trailing" id="koC-ug-Va0"/>
@@ -117,6 +126,7 @@
     </scenes>
     <resources>
         <image name="Icon" width="5" height="8"/>
+        <image name="X" width="17" height="18"/>
         <image name="example" width="354" height="178"/>
     </resources>
 </document>
