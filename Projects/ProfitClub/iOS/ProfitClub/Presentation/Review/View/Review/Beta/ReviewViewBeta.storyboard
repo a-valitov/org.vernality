@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="VgP-Np-nUH">
-                            <rect key="frame" x="0.0" y="585.5" width="414" height="1"/>
+                            <rect key="frame" x="0.0" y="701.5" width="414" height="1"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         </view>
@@ -229,6 +229,40 @@
                                     <outlet property="nameLabel" destination="0pJ-28-ItD" id="h52-H1-e2S"/>
                                     <outlet property="phoneLabel" destination="wcK-uA-fVU" id="AKi-yX-nKX"/>
                                     <outlet property="statusLabel" destination="CBs-Nb-6qi" id="AMY-W5-Xnm"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ReviewViewBetaAdminCellReuseIdentifier" rowHeight="116" id="QzT-0r-KgJ" customClass="ReviewViewBetaAdminCell" customModule="Profit_Club" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="567.5" width="414" height="116"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="QzT-0r-KgJ" id="XRC-Aq-mDz">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="116"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="253" verticalHuggingPriority="253" text="Admin" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m6T-PY-hQ5">
+                                            <rect key="frame" x="20" y="11" width="374" height="20.5"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="На рассмотрении" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wwj-Wi-F8f">
+                                            <rect key="frame" x="135.5" y="51.5" width="143" height="44.5"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="m6T-PY-hQ5" firstAttribute="leading" secondItem="XRC-Aq-mDz" secondAttribute="leadingMargin" id="O6z-Li-tin"/>
+                                        <constraint firstItem="m6T-PY-hQ5" firstAttribute="top" secondItem="XRC-Aq-mDz" secondAttribute="topMargin" id="OoX-He-Sqd"/>
+                                        <constraint firstItem="wwj-Wi-F8f" firstAttribute="top" secondItem="m6T-PY-hQ5" secondAttribute="bottom" constant="20" id="RcF-8y-BRW"/>
+                                        <constraint firstItem="wwj-Wi-F8f" firstAttribute="centerX" secondItem="XRC-Aq-mDz" secondAttribute="centerX" id="bB0-3f-zAh"/>
+                                        <constraint firstAttribute="bottom" secondItem="wwj-Wi-F8f" secondAttribute="bottom" constant="20" id="oi3-GB-s66"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="m6T-PY-hQ5" secondAttribute="trailing" id="viC-rK-tZy"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="nameLabel" destination="m6T-PY-hQ5" id="CqF-Zf-TGF"/>
+                                    <outlet property="statusLabel" destination="wwj-Wi-F8f" id="ers-Yl-lul"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

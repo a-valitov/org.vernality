@@ -127,6 +127,7 @@
 		FA8CB82825583E0800D09B1D /* MemberCurrentActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8CB82725583E0800D09B1D /* MemberCurrentActionView.swift */; };
 		FA8CB82B25583E1900D09B1D /* MemberCurrentActionViewBeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8CB82A25583E1900D09B1D /* MemberCurrentActionViewBeta.swift */; };
 		FA8CB82D25583E2700D09B1D /* MemberCurrentActionViewBeta.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA8CB82C25583E2700D09B1D /* MemberCurrentActionViewBeta.storyboard */; };
+		FA8CB831255991FB00D09B1D /* ReviewViewBetaAdminCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8CB830255991FB00D09B1D /* ReviewViewBetaAdminCell.swift */; };
 		FABB6F002544902A00B93FB8 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FABB6EFF2544902A00B93FB8 /* Montserrat-Medium.ttf */; };
 		FABB6F0225455EA700B93FB8 /* CurrentActionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABB6F0125455EA700B93FB8 /* CurrentActionsTableViewCell.swift */; };
 		FABB6F06254682FD00B93FB8 /* ApproveCurrentActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FABB6F05254682FD00B93FB8 /* ApproveCurrentActionView.swift */; };
@@ -284,6 +285,7 @@
 		FA8CB82725583E0800D09B1D /* MemberCurrentActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberCurrentActionView.swift; sourceTree = "<group>"; };
 		FA8CB82A25583E1900D09B1D /* MemberCurrentActionViewBeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberCurrentActionViewBeta.swift; sourceTree = "<group>"; };
 		FA8CB82C25583E2700D09B1D /* MemberCurrentActionViewBeta.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MemberCurrentActionViewBeta.storyboard; sourceTree = "<group>"; };
+		FA8CB830255991FB00D09B1D /* ReviewViewBetaAdminCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewBetaAdminCell.swift; sourceTree = "<group>"; };
 		FABB6EFF2544902A00B93FB8 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
 		FABB6F0125455EA700B93FB8 /* CurrentActionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentActionsTableViewCell.swift; sourceTree = "<group>"; };
 		FABB6F05254682FD00B93FB8 /* ApproveCurrentActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApproveCurrentActionView.swift; sourceTree = "<group>"; };
@@ -470,6 +472,7 @@
 				0E506C2724FC131700ABA211 /* ReviewViewBetaOrganizationCell.swift */,
 				0E506C2924FC180300ABA211 /* ReviewViewBetaSupplierCell.swift */,
 				0E506C2B24FC184900ABA211 /* ReviewViewBetaMemberCell.swift */,
+				FA8CB830255991FB00D09B1D /* ReviewViewBetaAdminCell.swift */,
 				0E506C2524FC10B700ABA211 /* ReviewViewBeta.storyboard */,
 			);
 			path = Beta;
@@ -1592,6 +1595,7 @@
 				0E90498724F60C980061A605 /* SelectRoleView.swift in Sources */,
 				0E6FBA622545AC7C00A2B882 /* ActionsDependencies.swift in Sources */,
 				FAD7048B254E89AC00DE8AD7 /* CommercialOfferFactory.swift in Sources */,
+				FA8CB831255991FB00D09B1D /* ReviewViewBetaAdminCell.swift in Sources */,
 				0E90498A24F60D250061A605 /* SelectRoleViewAlpha.swift in Sources */,
 				0E506C2824FC131700ABA211 /* ReviewViewBetaOrganizationCell.swift in Sources */,
 				FAD704B3255013FD00DE8AD7 /* MembersOfOrganizationViewBeta.swift in Sources */,
