@@ -35,4 +35,5 @@ struct OrganizationFactories {
     let action: ActionFactory
     let commercialOffers: CommercialOffersFactory
     let commercialOffer: CommercialOfferFactory
+    let members: MembersFactory
 }

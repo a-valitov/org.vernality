@@ -27,4 +27,5 @@ protocol ReviewModuleOutput: class {
     func review(module: ReviewModule, userWantsToAddRoleInside main: MainModule?)
     func review(module: ReviewModule, userWantsToEnter organization: PCOrganization, inside main: MainModule?)
     func review(module: ReviewModule, userWantsToEnter supplier: PCSupplier, inside main: MainModule?)
+    func review(module: ReviewModule, userWantsToEnter member: PCMember, inside main: MainModule?)
 }

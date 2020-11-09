@@ -114,9 +114,9 @@ extension SupplierPresenter: SupplierCommercialOfferOutput {
         var offer = PCCommercialOfferStruct()
         offer.message = message
         offer.image = view.image
-        offer.attachment = view.attachment
         offer.supplier = self.supplier
-        offer.attachmentName = view.attachmentName
+        offer.attachments = view.attachments
+        offer.attachmentNames = view.attachmentNames
         
         self.presenters.activity.increment()
         self.services.commercialOffer.add(offer: offer) { [weak self] result in

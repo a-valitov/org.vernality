@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fsv-7r-DQd">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16097.3"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Medium.ttf">
+            <string>Montserrat-Medium</string>
+        </array>
+        <array key="Montserrat-Regular.ttf">
+            <string>Montserrat-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Members Of Organization View Beta-->
+        <scene sceneID="mXy-mN-ZuX">
+            <objects>
+                <tableViewController id="fsv-7r-DQd" customClass="MembersOfOrganizationViewBeta" customModule="Profit_Club" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="zNf-SU-788">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="membersCell" rowHeight="81" id="DEn-g1-dzO" customClass="MemberViewCell" customModule="Profit_Club" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="81"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DEn-g1-dzO" id="mhA-6B-nE4">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="81"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="🧑 Persona" translatesAutoresizingMaskIntoConstraints="NO" id="IYm-fB-Suj">
+                                            <rect key="frame" x="20" y="10" width="60" height="60"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="60" id="88u-sy-wrQ"/>
+                                                <constraint firstAttribute="width" constant="60" id="l6q-Od-N7C"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Елена Коновалова" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fSG-Sj-VTY">
+                                            <rect key="frame" x="95" y="20" width="197" height="25"/>
+                                            <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="20"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="02.03.2020" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KUK-Eh-pIU">
+                                            <rect key="frame" x="95" y="53" width="197" height="13"/>
+                                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="10"/>
+                                            <color key="textColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.60453232020000003" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="KUK-Eh-pIU" firstAttribute="leading" secondItem="fSG-Sj-VTY" secondAttribute="leading" id="0An-cj-DVd"/>
+                                        <constraint firstItem="KUK-Eh-pIU" firstAttribute="trailing" secondItem="fSG-Sj-VTY" secondAttribute="trailing" id="15F-4B-KKE"/>
+                                        <constraint firstItem="fSG-Sj-VTY" firstAttribute="top" secondItem="mhA-6B-nE4" secondAttribute="top" constant="20" id="2MH-wO-y9x"/>
+                                        <constraint firstItem="IYm-fB-Suj" firstAttribute="leading" secondItem="mhA-6B-nE4" secondAttribute="leading" constant="20" id="A01-f6-6WY"/>
+                                        <constraint firstItem="IYm-fB-Suj" firstAttribute="top" secondItem="mhA-6B-nE4" secondAttribute="top" constant="10" id="JWV-D7-mJ3"/>
+                                        <constraint firstItem="KUK-Eh-pIU" firstAttribute="top" secondItem="fSG-Sj-VTY" secondAttribute="bottom" constant="8" id="Qx5-OR-MNO"/>
+                                        <constraint firstItem="fSG-Sj-VTY" firstAttribute="leading" secondItem="IYm-fB-Suj" secondAttribute="trailing" constant="15" id="SSu-cG-jbB"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="memberImageView" destination="IYm-fB-Suj" id="UaS-mT-iH9"/>
+                                    <outlet property="memberNameLabel" destination="fSG-Sj-VTY" id="zBO-BM-QxO"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="fsv-7r-DQd" id="pHl-mu-7Sj"/>
+                            <outlet property="delegate" destination="fsv-7r-DQd" id="lA8-TY-sJM"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Moq-aA-nw4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="141" y="132"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="🧑 Persona" width="61" height="60"/>
+    </resources>
+</document>

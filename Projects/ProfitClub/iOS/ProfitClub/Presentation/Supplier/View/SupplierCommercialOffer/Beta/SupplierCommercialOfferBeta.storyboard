@@ -6,6 +6,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -95,12 +96,49 @@
                                     <action selector="attachFileTouchUpInside:" destination="pV0-jB-TvK" eventType="touchUpInside" id="1SW-xg-fnJ"/>
                                 </connections>
                             </button>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Приложение: price.pdf" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JSi-KP-EFY">
-                                <rect key="frame" x="20" y="374" width="153" height="16"/>
-                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="13"/>
-                                <color key="textColor" red="0.098039215690000001" green="0.094117647060000004" blue="0.094117647060000004" alpha="0.5" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="dhH-T0-FWI">
+                                <rect key="frame" x="20" y="381" width="374" height="70"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="2bS-jo-gnz"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="15" minimumInteritemSpacing="10" id="kPb-3P-q6b">
+                                    <size key="itemSize" width="50" height="70"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="15" minY="0.0" maxX="15" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="fileCell" id="hS4-Sy-mpg" customClass="FileCollectionViewCell" customModule="Profit_Club" customModuleProvider="target">
+                                        <rect key="frame" x="15" y="0.0" width="50" height="70"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="7vL-VM-2Dj">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="70"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pdf" translatesAutoresizingMaskIntoConstraints="NO" id="5th-Sj-zKl">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="final.pdf" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ied-kC-xJm">
+                                                    <rect key="frame" x="0.0" y="50" width="50" height="20"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="9"/>
+                                                    <color key="textColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="fileNameLabel" destination="Ied-kC-xJm" id="aK5-ZB-5X1"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="pV0-jB-TvK" id="4Fq-KI-Age"/>
+                                    <outlet property="delegate" destination="pV0-jB-TvK" id="Ksq-Uk-zce"/>
+                                </connections>
+                            </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="XCT-fg-yWs"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -110,21 +148,22 @@
                             <constraint firstItem="XCT-fg-yWs" firstAttribute="trailing" secondItem="Tjy-WC-bEz" secondAttribute="trailing" constant="20" id="E89-MJ-sfk"/>
                             <constraint firstItem="Tjy-WC-bEz" firstAttribute="leading" secondItem="XCT-fg-yWs" secondAttribute="leading" constant="20" id="Frr-Q6-LWw"/>
                             <constraint firstItem="u8G-Rs-w3E" firstAttribute="centerX" secondItem="NZr-R1-1jl" secondAttribute="centerX" id="Ipl-yt-8VK"/>
+                            <constraint firstItem="dhH-T0-FWI" firstAttribute="trailing" secondItem="Tjy-WC-bEz" secondAttribute="trailing" id="JLL-5k-ekr"/>
                             <constraint firstItem="XCT-fg-yWs" firstAttribute="trailing" secondItem="NZr-R1-1jl" secondAttribute="trailing" constant="20" id="Jg5-dH-QIr"/>
+                            <constraint firstItem="dhH-T0-FWI" firstAttribute="leading" secondItem="Tjy-WC-bEz" secondAttribute="leading" id="OLx-QE-eUd"/>
                             <constraint firstItem="NZr-R1-1jl" firstAttribute="leading" secondItem="XCT-fg-yWs" secondAttribute="leading" constant="20" id="R86-Vo-8mL"/>
                             <constraint firstItem="B3M-Ym-Ghg" firstAttribute="leading" secondItem="Tjy-WC-bEz" secondAttribute="trailing" constant="-36" id="aqs-Eg-Fc0"/>
-                            <constraint firstItem="JSi-KP-EFY" firstAttribute="leading" secondItem="Tjy-WC-bEz" secondAttribute="leading" id="cD1-o4-s3o"/>
                             <constraint firstItem="aIy-CU-zT3" firstAttribute="leading" secondItem="XCT-fg-yWs" secondAttribute="leading" constant="20" id="dNK-BM-hox"/>
+                            <constraint firstItem="dhH-T0-FWI" firstAttribute="top" secondItem="Tjy-WC-bEz" secondAttribute="bottom" constant="15" id="efp-hj-1j1"/>
                             <constraint firstItem="NZr-R1-1jl" firstAttribute="top" secondItem="XCT-fg-yWs" secondAttribute="top" constant="20" id="kYv-tB-c9Z"/>
                             <constraint firstItem="u8G-Rs-w3E" firstAttribute="centerY" secondItem="NZr-R1-1jl" secondAttribute="centerY" id="kc3-33-EEE"/>
-                            <constraint firstItem="JSi-KP-EFY" firstAttribute="top" secondItem="Tjy-WC-bEz" secondAttribute="bottom" constant="8" symbolic="YES" id="ke8-Db-GmX"/>
                             <constraint firstItem="XCT-fg-yWs" firstAttribute="trailing" secondItem="aIy-CU-zT3" secondAttribute="trailing" constant="20" id="oqT-MR-ZDv"/>
                             <constraint firstItem="Tjy-WC-bEz" firstAttribute="top" secondItem="B3M-Ym-Ghg" secondAttribute="bottom" constant="-26" id="vRl-pP-kIx"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="addCommercialOfferImage" destination="u8G-Rs-w3E" id="voe-ug-5kw"/>
-                        <outlet property="attachmentLabel" destination="JSi-KP-EFY" id="fq9-20-aK0"/>
+                        <outlet property="collectionView" destination="dhH-T0-FWI" id="aEx-ds-S5a"/>
                         <outlet property="commercialOfferImageView" destination="NZr-R1-1jl" id="FZB-ai-8RA"/>
                         <outlet property="messageTextView" destination="Tjy-WC-bEz" id="iUd-Wj-Cr4"/>
                     </connections>
@@ -137,6 +176,7 @@
     <resources>
         <image name="add" width="26" height="25"/>
         <image name="attach" width="14" height="16"/>
+        <image name="pdf" width="50" height="50"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

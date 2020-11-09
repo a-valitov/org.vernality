@@ -3,9 +3,17 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16097.3"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Medium.ttf">
+            <string>Montserrat-Medium</string>
+        </array>
+        <array key="Montserrat-Regular.ttf">
+            <string>Montserrat-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Past Actions View Beta-->
         <scene sceneID="YqC-xu-NcD">
@@ -16,13 +24,68 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="pastActionsCell" id="q6M-74-vvu">
-                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="pastActionsCell" rowHeight="83" id="q6M-74-vvu" customClass="PasActionsTableViewCell" customModule="Profit_Club" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="83"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="q6M-74-vvu" id="MFq-ct-iYU">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="83"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="example" translatesAutoresizingMaskIntoConstraints="NO" id="zKl-Qk-qw6">
+                                            <rect key="frame" x="20" y="18" width="45" height="45"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="45" id="KOw-gf-y6I"/>
+                                                <constraint firstAttribute="width" constant="45" id="u2g-l5-37u"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ООО «Газпром»" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aTC-AL-UJg">
+                                            <rect key="frame" x="77" y="11" width="194" height="22"/>
+                                            <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="18"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Мы предлагаем вам купить по акции сообщение в 1-2 строки" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Frr-5z-Dot">
+                                            <rect key="frame" x="77" y="33" width="325" height="40"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="40" id="FMy-Lq-iAg"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
+                                            <color key="textColor" red="0.45882352941176469" green="0.45882352941176469" blue="0.45490196078431372" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="lvv-S4-i0J">
+                                            <rect key="frame" x="332" y="15" width="62" height="15"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Сегодня" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v3V-9V-U5X">
+                                                    <rect key="frame" x="0.0" y="0.0" width="52" height="15"/>
+                                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
+                                                    <color key="textColor" red="0.45882352939999999" green="0.4549019608" blue="0.4549019608" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon" translatesAutoresizingMaskIntoConstraints="NO" id="gqO-dw-EgO">
+                                                    <rect key="frame" x="57" y="0.0" width="5" height="15"/>
+                                                </imageView>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="zKl-Qk-qw6" firstAttribute="leading" secondItem="MFq-ct-iYU" secondAttribute="leadingMargin" id="0TJ-u1-5WM"/>
+                                        <constraint firstItem="Frr-5z-Dot" firstAttribute="leading" secondItem="zKl-Qk-qw6" secondAttribute="trailing" constant="12" id="AOT-LJ-VsR"/>
+                                        <constraint firstItem="zKl-Qk-qw6" firstAttribute="top" secondItem="MFq-ct-iYU" secondAttribute="topMargin" constant="7" id="KiG-6h-1AG"/>
+                                        <constraint firstItem="aTC-AL-UJg" firstAttribute="top" secondItem="MFq-ct-iYU" secondAttribute="topMargin" id="RHG-yc-P7b"/>
+                                        <constraint firstAttribute="trailing" secondItem="Frr-5z-Dot" secondAttribute="trailing" constant="12" id="Vx9-fw-E7d"/>
+                                        <constraint firstItem="aTC-AL-UJg" firstAttribute="leading" secondItem="zKl-Qk-qw6" secondAttribute="trailing" constant="12" id="WIA-Tr-Z5F"/>
+                                        <constraint firstItem="lvv-S4-i0J" firstAttribute="trailing" secondItem="MFq-ct-iYU" secondAttribute="trailingMargin" id="q5S-iD-BLr"/>
+                                        <constraint firstItem="aTC-AL-UJg" firstAttribute="width" secondItem="MFq-ct-iYU" secondAttribute="width" multiplier="0.468599" id="qQB-Pj-aMH"/>
+                                        <constraint firstItem="lvv-S4-i0J" firstAttribute="top" secondItem="MFq-ct-iYU" secondAttribute="topMargin" constant="4" id="qQs-8S-cvj"/>
+                                        <constraint firstItem="Frr-5z-Dot" firstAttribute="top" secondItem="aTC-AL-UJg" secondAttribute="bottom" id="yp0-31-gdz"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="pastActionDescriptionOfLabel" destination="Frr-5z-Dot" id="GY6-IV-X19"/>
+                                    <outlet property="pastActionImageView" destination="zKl-Qk-qw6" id="Qwk-BQ-kz3"/>
+                                    <outlet property="pastActionNameLabel" destination="aTC-AL-UJg" id="ArS-nX-zL3"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -33,7 +96,11 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BmW-Ha-jbv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="288" y="156"/>
+            <point key="canvasLocation" x="286.95652173913044" y="155.35714285714286"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Icon" width="5" height="8"/>
+        <image name="example" width="354" height="178"/>
+    </resources>
 </document>

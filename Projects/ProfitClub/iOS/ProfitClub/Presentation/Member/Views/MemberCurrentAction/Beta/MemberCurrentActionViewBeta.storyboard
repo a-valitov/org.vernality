@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="dU8-SH-OYS">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Bold.ttf">
+            <string>Montserrat-Bold</string>
+        </array>
+        <array key="Montserrat-Medium.ttf">
+            <string>Montserrat-Medium</string>
+        </array>
+        <array key="Montserrat-Regular.ttf">
+            <string>Montserrat-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Member Current Action View Beta-->
+        <scene sceneID="7yj-L1-YTs">
+            <objects>
+                <viewController id="dU8-SH-OYS" customClass="MemberCurrentActionViewBeta" customModule="Profit_Club" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9f4-bk-00b">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="example" translatesAutoresizingMaskIntoConstraints="NO" id="3uS-u4-Cag">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="178"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="3uS-u4-Cag" secondAttribute="height" multiplier="207:89" id="xgd-N5-2gt"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Алина Ермолаева" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CdQ-k2-1gT">
+                                <rect key="frame" x="20" y="198" width="214.5" height="27"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="22"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Мы предлагаем вам купить по акции сообщение в 1-2 строки" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6uA-El-1LH">
+                                <rect key="frame" x="20" y="228" width="374" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="40" id="t8i-RU-vad"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="15"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cm7-Vu-fIF">
+                                <rect key="frame" x="333" y="204" width="61" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="16" id="880-vx-aDW"/>
+                                    <constraint firstAttribute="width" constant="61" id="GUq-Xa-hRV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="12"/>
+                                <inset key="imageEdgeInsets" minX="55" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Ссылка" image="Icon">
+                                    <color key="titleColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59957380640000002" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="actionLinkTouchUpInside:" destination="dU8-SH-OYS" eventType="touchUpInside" id="Rq0-9O-Mjv"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tM7-2a-D6c">
+                                <rect key="frame" x="20" y="275" width="374" height="73.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="100" id="iOJ-P6-DqT"/>
+                                </constraints>
+                                <string key="text">это текст-"рыба", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя</string>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24.03.2020 - 26.03.2020" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hu0-RW-zSZ">
+                                <rect key="frame" x="20" y="358.5" width="374" height="15"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="12"/>
+                                <color key="textColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59957380640000002" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hcV-dS-Q1v">
+                                <rect key="frame" x="377" y="14" width="17" height="22"/>
+                                <state key="normal" image="X"/>
+                                <connections>
+                                    <action selector="cancelTouchUpInside" destination="dU8-SH-OYS" eventType="touchUpInside" id="efx-vG-b0i"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="cm7-Vu-fIF" firstAttribute="top" secondItem="3uS-u4-Cag" secondAttribute="bottom" constant="26" id="0Oa-1s-xcM"/>
+                            <constraint firstItem="3Pv-7G-SLx" firstAttribute="trailing" secondItem="Hu0-RW-zSZ" secondAttribute="trailing" constant="20" id="28q-yT-nEL"/>
+                            <constraint firstItem="CdQ-k2-1gT" firstAttribute="top" secondItem="3uS-u4-Cag" secondAttribute="bottom" constant="20" id="5NC-mp-etY"/>
+                            <constraint firstItem="3Pv-7G-SLx" firstAttribute="trailing" secondItem="tM7-2a-D6c" secondAttribute="trailing" constant="20" id="9TE-3N-L8T"/>
+                            <constraint firstItem="3uS-u4-Cag" firstAttribute="top" secondItem="9f4-bk-00b" secondAttribute="top" id="A6Z-wR-YQz"/>
+                            <constraint firstItem="3uS-u4-Cag" firstAttribute="leading" secondItem="3Pv-7G-SLx" secondAttribute="leading" id="B3V-Kx-Dnc"/>
+                            <constraint firstItem="tM7-2a-D6c" firstAttribute="leading" secondItem="6uA-El-1LH" secondAttribute="leading" id="IKb-u3-YEm"/>
+                            <constraint firstItem="CdQ-k2-1gT" firstAttribute="leading" secondItem="3Pv-7G-SLx" secondAttribute="leading" constant="20" id="J0q-HE-xtT"/>
+                            <constraint firstItem="Hu0-RW-zSZ" firstAttribute="leading" secondItem="tM7-2a-D6c" secondAttribute="leading" id="KiO-Bu-v2P"/>
+                            <constraint firstItem="hcV-dS-Q1v" firstAttribute="top" secondItem="9f4-bk-00b" secondAttribute="top" constant="14" id="Tqa-aI-f7L"/>
+                            <constraint firstItem="Hu0-RW-zSZ" firstAttribute="top" secondItem="tM7-2a-D6c" secondAttribute="bottom" constant="10" id="X1v-Au-xhU"/>
+                            <constraint firstItem="3Pv-7G-SLx" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Hu0-RW-zSZ" secondAttribute="bottom" constant="20" id="X4h-sd-7ol"/>
+                            <constraint firstItem="3Pv-7G-SLx" firstAttribute="trailing" secondItem="6uA-El-1LH" secondAttribute="trailing" constant="20" id="Xms-vG-RWR"/>
+                            <constraint firstAttribute="trailing" secondItem="hcV-dS-Q1v" secondAttribute="trailing" constant="20" id="Ycb-Ik-0Ww"/>
+                            <constraint firstItem="6uA-El-1LH" firstAttribute="top" secondItem="CdQ-k2-1gT" secondAttribute="bottom" constant="3" id="Ykl-0c-Cch"/>
+                            <constraint firstItem="tM7-2a-D6c" firstAttribute="top" secondItem="6uA-El-1LH" secondAttribute="bottom" constant="10" id="cBy-b8-ZfJ"/>
+                            <constraint firstItem="3uS-u4-Cag" firstAttribute="trailing" secondItem="3Pv-7G-SLx" secondAttribute="trailing" id="koC-ug-Va0"/>
+                            <constraint firstItem="6uA-El-1LH" firstAttribute="leading" secondItem="CdQ-k2-1gT" secondAttribute="leading" id="mn3-Pg-dld"/>
+                            <constraint firstItem="6uA-El-1LH" firstAttribute="trailing" secondItem="cm7-Vu-fIF" secondAttribute="trailing" id="sbg-Cm-wHK"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="3Pv-7G-SLx"/>
+                    </view>
+                    <connections>
+                        <outlet property="actionDescriptionLabel" destination="tM7-2a-D6c" id="BMz-h3-9aZ"/>
+                        <outlet property="actionImageView" destination="3uS-u4-Cag" id="eZr-f6-SLD"/>
+                        <outlet property="actionMessageLabel" destination="6uA-El-1LH" id="oKg-6i-hFL"/>
+                        <outlet property="actionStartAndEndDate" destination="Hu0-RW-zSZ" id="Hop-bb-AWr"/>
+                        <outlet property="organizationNameLabel" destination="CdQ-k2-1gT" id="wUw-xw-Eei"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ttg-7m-cZ0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="34.782608695652179" y="146.65178571428569"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Icon" width="5" height="8"/>
+        <image name="X" width="17" height="18"/>
+        <image name="example" width="354" height="178"/>
+    </resources>
+</document>

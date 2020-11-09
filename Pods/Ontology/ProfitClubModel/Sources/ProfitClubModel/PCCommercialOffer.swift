@@ -19,9 +19,9 @@ import Foundation
 public protocol PCCommercialOffer {
     var id: String? { get }
     var supplier: PCSupplier? { get }
-    var attachment: Data? { get }
-    var attachmentUrl: URL? { get }
-    var attachmentName: String? { get }
+    var attachments: [Data] { get }
+    var attachmentUrls: [URL] { get }
+    var attachmentNames: [String] { get }
     var createdAt: Date? { get }
     var message: String? { get }
     var image: UIImage? { get }
@@ -37,9 +37,9 @@ public extension PCCommercialOffer {
 public struct PCCommercialOfferStruct: PCCommercialOffer {
     public var id: String?
     public var supplier: PCSupplier?
-    public var attachment: Data?
-    public var attachmentUrl: URL?
-    public var attachmentName: String?
+    public var attachments = [Data]()
+    public var attachmentUrls = [URL]()
+    public var attachmentNames = [String]()
     public var createdAt: Date?
     public var message: String?
     public var link: String?
@@ -58,16 +58,16 @@ public struct AnyPCCommercialOffer: PCCommercialOffer, Equatable, Hashable {
         return self.object.supplier
     }
 
-    public var attachment: Data? {
-        return self.object.attachment
+    public var attachments: [Data] {
+        return self.object.attachments
     }
 
-    public var attachmentUrl: URL? {
-        return self.object.attachmentUrl
+    public var attachmentUrls: [URL] {
+        return self.object.attachmentUrls
     }
 
-    public var attachmentName: String? {
-        return self.object.attachmentName
+    public var attachmentNames: [String] {
+        return self.object.attachmentNames
     }
 
     public var createdAt: Date? {

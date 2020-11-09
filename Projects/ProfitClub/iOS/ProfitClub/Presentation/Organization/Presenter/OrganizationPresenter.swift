@@ -63,3 +63,7 @@ extension OrganizationPresenter: CommercialOffersModuleOutput {
 extension OrganizationPresenter: CommercialOfferModuleOutput {
     
 }
+
+extension OrganizationPresenter: MembersModuleOutput {
+    
+}

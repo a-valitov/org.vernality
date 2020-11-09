@@ -20,8 +20,12 @@ protocol ApproveCommercialOfferViewInput: UIViewController {
     var commercialOfferImageUrl: URL? { get set }
     var commercialOfferMessage: String? { get set }
     var organizationName: String? { get set }
+    var attachmentNames: [String] { get set }
+
+    func showAttachment(fileUrl: URL)
 }
 
 protocol ApproveCommercialOfferViewOutput {
     func approveCommercialOfferDidLoad(view: ApproveCommercialOfferViewInput)
+    func approveCommercialOffer(view: ApproveCommercialOfferViewInput, didTapOnAttachmentAtIndex index: Int)
 }

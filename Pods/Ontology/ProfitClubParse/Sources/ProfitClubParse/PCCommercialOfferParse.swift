@@ -23,16 +23,21 @@ public extension PFObject {
         var result = PCCommercialOfferStruct()
         result.id = self.objectId
         result.message = self["message"] as? String
-        result.attachmentName = self["attachmentName"] as? String
+        result.attachmentNames = self["attachmentNames"] as? [String] ?? []
         if let fileObject = self["imageFile"] as? PFFileObject,
             let urlString = fileObject.url,
             let imageUrl = URL(string: urlString) {
             result.imageUrl = imageUrl
         }
-        if let fileObject = self["attachmentFile"] as? PFFileObject,
-            let urlString = fileObject.url,
-            let attachmentUrl = URL(string: urlString) {
-            result.attachmentUrl = attachmentUrl
+        if let fileObjects = self["attachmentFiles"] as? [PFFileObject] {
+            result.attachmentUrls = fileObjects.compactMap({ fileObject -> URL? in
+                if let urlString = fileObject.url,
+                   let attachmentUrl = URL(string: urlString) {
+                    return attachmentUrl
+                } else {
+                    return nil
+                }
+            })
         }
         if let supplier = self["supplier"] as? PFObject {
             result.supplier = supplier.pcSupplier.any
@@ -47,8 +52,8 @@ public extension PCCommercialOffer {
         result.objectId = self.id
         result.message = self.message
         result.image = self.image
-        result.attachment = self.attachment
-        result.attachmentName = self.attachmentName
+        result.attachments = self.attachments
+        result.attachmentNames = self.attachmentNames
         return result
     }
 
@@ -61,13 +66,13 @@ public final class PCCommercialOfferParse: PFObject, PFSubclassing, PCCommercial
     public var supplier: PCSupplier?
     public var organization: PCOrganization?
     @NSManaged public var message: String?
-    @NSManaged public var attachmentName: String?
+    @NSManaged public var attachmentNames: [String]
     @NSManaged public var imageFile: PFFileObject?
-    @NSManaged public var attachmentFile: PFFileObject?
+    @NSManaged public var attachmentFiles: [PFFileObject]
     public var image: UIImage?
     public var imageUrl: URL?
-    public var attachmentUrl: URL?
-    public var attachment: Data?
+    public var attachments = [Data]()
+    public var attachmentUrls = [URL]()
 
     public static func parseClassName() -> String {
         return "CommercialOffer"

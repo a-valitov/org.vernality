@@ -31,6 +31,7 @@ final class CommercialOffersViewBeta: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.output?.commercialOffersDidLoad(view: self)
+        tableView.tableFooterView = UIView()
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

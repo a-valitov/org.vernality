@@ -20,4 +20,5 @@ import ProfitClubModel
 public protocol PCCommercialOfferService {
     func add(offer: PCCommercialOffer, result: @escaping (Result<PCCommercialOffer, Error>) -> Void)
     func fetchApproved(result: @escaping (Result<[AnyPCCommercialOffer], Error>) -> Void)
+    func loadAttachment(at index: Int, for offer: PCCommercialOffer, result: @escaping (Result<URL, Error>) -> Void)
 }

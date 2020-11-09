@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -55,14 +56,8 @@
                                 <color key="textColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.60453232020547942" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="final.pdf" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rz7-yI-Nr2">
-                                <rect key="frame" x="15" y="313.5" width="379" height="15"/>
-                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
-                                <color key="textColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.60453232020000003" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8xu-QC-Wdk">
-                                <rect key="frame" x="15" y="348.5" width="379" height="52"/>
+                                <rect key="frame" x="15" y="404.5" width="379" height="52"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="52" id="FgZ-w3-euX"/>
@@ -73,7 +68,7 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cYp-Ip-7U8">
-                                <rect key="frame" x="15" y="415.5" width="379" height="52"/>
+                                <rect key="frame" x="15" y="471.5" width="379" height="52"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="52" id="WVo-NL-IMX"/>
                                 </constraints>
@@ -89,6 +84,50 @@
                                     <action selector="cancelTouchUpInside:" destination="Iad-w0-v8K" eventType="touchUpInside" id="2cq-hW-036"/>
                                 </connections>
                             </button>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="gFd-oG-ZAd">
+                                <rect key="frame" x="15" y="317" width="379" height="80"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="EZd-Iu-BHY"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="KIw-ay-AMS">
+                                    <size key="itemSize" width="50" height="66"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="fileCell" id="ANc-uz-cPl" customClass="FileCollectionViewCell" customModule="Profit_Club" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="66"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="WoP-0X-tbG">
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="66"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="pdf" translatesAutoresizingMaskIntoConstraints="NO" id="ErG-p1-1VD">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="final.pdf" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t7U-KK-gxv">
+                                                    <rect key="frame" x="0.0" y="50" width="50" height="16"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="9"/>
+                                                    <color key="textColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="50" height="66"/>
+                                        <connections>
+                                            <outlet property="fileNameLabel" destination="t7U-KK-gxv" id="cAU-Rd-7i2"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="Iad-w0-v8K" id="mN9-K9-49w"/>
+                                    <outlet property="delegate" destination="Iad-w0-v8K" id="f17-6Y-3JH"/>
+                                </connections>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
@@ -100,24 +139,25 @@
                             <constraint firstAttribute="trailing" secondItem="xWW-XK-4sY" secondAttribute="trailing" constant="20" id="F9d-16-Hg6"/>
                             <constraint firstItem="xuh-UF-aTb" firstAttribute="top" secondItem="JJC-XN-sep" secondAttribute="bottom" constant="10" id="Hmv-GN-2cX"/>
                             <constraint firstItem="8sb-0k-co5" firstAttribute="top" secondItem="XOb-SL-115" secondAttribute="top" id="JcT-qN-vnK"/>
-                            <constraint firstItem="8xu-QC-Wdk" firstAttribute="top" secondItem="rz7-yI-Nr2" secondAttribute="bottom" constant="20" id="LNJ-qm-stu"/>
                             <constraint firstItem="xuh-UF-aTb" firstAttribute="leading" secondItem="JJC-XN-sep" secondAttribute="leading" id="Lap-za-PwF"/>
                             <constraint firstItem="cYp-Ip-7U8" firstAttribute="trailing" secondItem="8xu-QC-Wdk" secondAttribute="trailing" id="LbQ-C1-F8z"/>
-                            <constraint firstItem="rz7-yI-Nr2" firstAttribute="top" secondItem="xuh-UF-aTb" secondAttribute="bottom" constant="5" id="PFx-ch-e2q"/>
-                            <constraint firstItem="rz7-yI-Nr2" firstAttribute="trailing" secondItem="xuh-UF-aTb" secondAttribute="trailing" id="PIb-Uc-kpC"/>
+                            <constraint firstItem="gFd-oG-ZAd" firstAttribute="leading" secondItem="xuh-UF-aTb" secondAttribute="leading" id="Oy8-zH-JuY"/>
                             <constraint firstItem="8sb-0k-co5" firstAttribute="trailing" secondItem="M9e-Hn-sY9" secondAttribute="trailing" id="Re9-cK-3Bh"/>
-                            <constraint firstItem="rz7-yI-Nr2" firstAttribute="leading" secondItem="xuh-UF-aTb" secondAttribute="leading" id="Ri6-ED-Tfc"/>
+                            <constraint firstItem="gFd-oG-ZAd" firstAttribute="top" secondItem="xuh-UF-aTb" secondAttribute="bottom" constant="8.5" id="TxQ-ic-5qV"/>
                             <constraint firstItem="8sb-0k-co5" firstAttribute="leading" secondItem="M9e-Hn-sY9" secondAttribute="leading" id="WP4-oM-oGa"/>
+                            <constraint firstItem="8xu-QC-Wdk" firstAttribute="top" secondItem="gFd-oG-ZAd" secondAttribute="bottom" constant="7.5" id="Wy8-8U-hZ1"/>
                             <constraint firstItem="M9e-Hn-sY9" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="cYp-Ip-7U8" secondAttribute="bottom" constant="20" id="fN6-yy-24W"/>
                             <constraint firstItem="8xu-QC-Wdk" firstAttribute="leading" secondItem="xuh-UF-aTb" secondAttribute="leading" id="fXO-AT-X6w"/>
                             <constraint firstItem="cYp-Ip-7U8" firstAttribute="leading" secondItem="8xu-QC-Wdk" secondAttribute="leading" id="fn6-YV-Go0"/>
                             <constraint firstItem="JJC-XN-sep" firstAttribute="top" secondItem="8sb-0k-co5" secondAttribute="bottom" constant="20" id="mlZ-bm-X6Y"/>
                             <constraint firstItem="cYp-Ip-7U8" firstAttribute="top" secondItem="8xu-QC-Wdk" secondAttribute="bottom" constant="15" id="oEz-uG-1jx"/>
+                            <constraint firstItem="gFd-oG-ZAd" firstAttribute="trailing" secondItem="xuh-UF-aTb" secondAttribute="trailing" id="raZ-pa-Lig"/>
                             <constraint firstItem="8xu-QC-Wdk" firstAttribute="trailing" secondItem="xuh-UF-aTb" secondAttribute="trailing" id="y6f-F4-QY6"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="M9e-Hn-sY9"/>
                     </view>
                     <connections>
+                        <outlet property="attachmentsCollectionView" destination="gFd-oG-ZAd" id="wFb-RF-ffk"/>
                         <outlet property="commercialOfferImageView" destination="8sb-0k-co5" id="Ahk-Qj-qSK"/>
                         <outlet property="commercialOfferMessageLabel" destination="xuh-UF-aTb" id="5xn-Gl-Jh7"/>
                         <outlet property="organizationNameLabel" destination="JJC-XN-sep" id="gym-5U-PpU"/>
@@ -132,5 +172,6 @@
     <resources>
         <image name="X" width="17" height="18"/>
         <image name="example" width="354" height="178"/>
+        <image name="pdf" width="50" height="50"/>
     </resources>
 </document>

@@ -16,6 +16,7 @@
 
 import UIKit
 import Kingfisher
+import QuickLook
 
 final class ApproveCommercialOfferViewBeta: UIViewController {
     var output: ApproveCommercialOfferViewOutput?
@@ -40,7 +41,17 @@ final class ApproveCommercialOfferViewBeta: UIViewController {
             }
         }
     }
+    var attachmentNames: [String] = [] {
+        didSet {
+            if self.isViewLoaded {
 
+            }
+        }
+    }
+
+    var attachmentFileUrl: URL?
+
+    @IBOutlet weak var attachmentsCollectionView: UICollectionView!
     @IBOutlet weak var organizationNameLabel: UILabel!
     @IBOutlet weak var commercialOfferImageView: UIImageView!
     @IBOutlet weak var commercialOfferMessageLabel: UILabel!
@@ -62,5 +73,46 @@ final class ApproveCommercialOfferViewBeta: UIViewController {
 }
 
 extension ApproveCommercialOfferViewBeta: ApproveCommercialOfferViewInput {
-    
+    func showAttachment(fileUrl: URL) {
+        self.attachmentFileUrl = fileUrl
+        let quickLookViewController = QLPreviewController()
+        quickLookViewController.dataSource = self
+        self.present(quickLookViewController, animated: true)
+    }
+}
+
+// MARK: - QLPreviewControllerDataSource
+extension ApproveCommercialOfferViewBeta: QLPreviewControllerDataSource {
+    func numberOfPreviewItems(in controller: QLPreviewController) -> Int {
+        return self.attachmentFileUrl == nil ? 0 : 1
+    }
+
+    func previewController(_ controller: QLPreviewController, previewItemAt index: Int) -> QLPreviewItem {
+        guard let fileUrl = self.attachmentFileUrl else {
+            fatalError()
+        }
+        return fileUrl as NSURL
+    }
+}
+
+// MARK: - UICollectionViewDelegate
+extension ApproveCommercialOfferViewBeta: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.output?.approveCommercialOffer(view: self, didTapOnAttachmentAtIndex: indexPath.row)
+    }
+}
+
+// MARK: - UICollectionViewDataSource
+extension ApproveCommercialOfferViewBeta: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.attachmentNames.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "fileCell", for: indexPath) as! FileCollectionViewCell
+
+        cell.fileNameLabel.text = self.attachmentNames[indexPath.row]
+
+        return cell
+    }
 }

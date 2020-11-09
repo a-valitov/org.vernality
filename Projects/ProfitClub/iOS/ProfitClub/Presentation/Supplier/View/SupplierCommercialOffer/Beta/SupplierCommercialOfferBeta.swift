@@ -36,14 +36,13 @@ final class SupplierCommercialOfferBeta: UIViewController {
         }
     }
 
-    var attachmentName: String?
-
-    var attachment: Data?
+    var attachments: [Data] = []
+    var attachmentNames: [String] = []
     
+    @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var messageTextView: UITextView!
     @IBOutlet weak var commercialOfferImageView: UIImageView!
     @IBOutlet weak var addCommercialOfferImage: UIButton!
-    @IBOutlet weak var attachmentLabel: UILabel!
     
     @IBAction func addCommercialOfferImageTouchUpInside(_ sender: Any) {
 
@@ -158,14 +157,40 @@ extension SupplierCommercialOfferBeta: UIDocumentPickerDelegate {
         guard let data = try? Data(contentsOf: url) else {
             return
         }
-        self.attachment = data
-        self.attachmentLabel.text = "Приложение: " + url.lastPathComponent
-        self.attachmentLabel.isHidden = false
-        self.attachmentName = url.lastPathComponent
+        do {
+            let resources = try url.resourceValues(forKeys: [.fileSizeKey])
+            let fileSize = resources.fileSize!
+            if fileSize <= 10000000 {
+                self.attachments.append(data)
+                self.attachmentNames.append(url.lastPathComponent)
+                collectionView.reloadData()
+            } else {
+                let alert = UIAlertController(title: "Error", message: "Your file is exceeds 10mb", preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK", style: .default)
+                alert.addAction(okAction)
+                present(alert, animated: true)
+            }
+        } catch {
+            print("Error")
+        }
     }
 
     func documentPickerWasCancelled(_ controller: UIDocumentPickerViewController) {
         dismiss(animated: true)
+    }
+}
+
+extension SupplierCommercialOfferBeta: UICollectionViewDelegate, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return attachments.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "fileCell", for: indexPath) as! FileCollectionViewCell
+
+        cell.fileNameLabel.text = attachmentNames[indexPath.row]
+
+        return cell
     }
 }
 
