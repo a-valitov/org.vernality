@@ -124,6 +124,14 @@ private extension AppFactory {
         return MemberFactory(presenters: MemberPresenters(error: self.errorPresenter(), activity: self.activityPresenter()), services: MemberServices(action: self.actionService()))
     }
 
+    var adminFactory: AdminFactory {
+        return AdminFactory(presenters: AdminPresenters(error: self.errorPresenter(), activity: self.activityPresenter()), services: AdminServices(), factories: AdminFactories(adminOrganizations: self.adminOrganizationsFactory))
+    }
+
+    var adminOrganizationsFactory: AdminOrganizationsFactory {
+        return AdminOrganizationsFactory(presenters: AdminOrganizationsPresenters(error: self.errorPresenter(), activity: self.activityPresenter()), services: AdminOrganizationsServices())
+    }
+
     var actionsFactory: ActionsFactory {
         return ActionsFactory(presenters: ActionsPresenters(error: self.errorPresenter(), activity: self.activityPresenter()),
                               services: ActionsServices(action: self.actionService()))

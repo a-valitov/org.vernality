@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="N4T-AY-4rG">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Medium.ttf">
+            <string>Montserrat-Medium</string>
+        </array>
+        <array key="Montserrat-Regular.ttf">
+            <string>Montserrat-Regular</string>
+        </array>
+        <array key="Roboto-Regular.ttf">
+            <string>Roboto-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Admin Organizations Applications View Beta-->
+        <scene sceneID="ySV-eD-Jew">
+            <objects>
+                <tableViewController id="N4T-AY-4rG" customClass="AdminOrganizationsApplicationsViewBeta" customModule="Profit_Club" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="FFb-2T-99n">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="applicationsCell" rowHeight="84" id="hVL-WG-1vm">
+                                <rect key="frame" x="0.0" y="28" width="414" height="84"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hVL-WG-1vm" id="U85-Rk-yzc">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="84"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="🧑 Persona" translatesAutoresizingMaskIntoConstraints="NO" id="Y0k-Ne-mJL">
+                                            <rect key="frame" x="16" y="10" width="61" height="60"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="60" id="1On-wr-RgH"/>
+                                                <constraint firstAttribute="width" constant="61" id="mRz-4I-psW"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ООО «Газпромнефтебизнесс»" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75" translatesAutoresizingMaskIntoConstraints="NO" id="ChY-0X-Y88">
+                                            <rect key="frame" x="89" y="10" width="310" height="22"/>
+                                            <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="18"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Водонаева Елена Олеговна" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dc2-el-6PK">
+                                            <rect key="frame" x="89" y="32" width="310" height="18"/>
+                                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                                            <color key="textColor" red="0.45882352941176469" green="0.45490196078431372" blue="0.45490196078431372" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="02.03.2020" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O9l-sF-Jai">
+                                            <rect key="frame" x="89" y="58" width="290" height="12"/>
+                                            <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="10"/>
+                                            <color key="textColor" red="0.72549019607843135" green="0.72549019607843135" blue="0.72549019607843135" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="O9l-sF-Jai" firstAttribute="top" secondItem="dc2-el-6PK" secondAttribute="bottom" constant="8" id="8Jt-vd-oSp"/>
+                                        <constraint firstItem="ChY-0X-Y88" firstAttribute="leading" secondItem="Y0k-Ne-mJL" secondAttribute="trailing" constant="12" id="A9w-Et-7Cu"/>
+                                        <constraint firstItem="ChY-0X-Y88" firstAttribute="top" secondItem="U85-Rk-yzc" secondAttribute="top" constant="10" id="FgN-uv-aL3"/>
+                                        <constraint firstAttribute="trailing" secondItem="dc2-el-6PK" secondAttribute="trailing" constant="15" id="GLY-iG-mFy"/>
+                                        <constraint firstItem="dc2-el-6PK" firstAttribute="top" secondItem="ChY-0X-Y88" secondAttribute="bottom" id="KDv-Ef-kfo"/>
+                                        <constraint firstItem="dc2-el-6PK" firstAttribute="leading" secondItem="Y0k-Ne-mJL" secondAttribute="trailing" constant="12" id="LcN-Zu-ttm"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="O9l-sF-Jai" secondAttribute="trailing" constant="15" id="QfR-OJ-QCs"/>
+                                        <constraint firstAttribute="trailing" secondItem="ChY-0X-Y88" secondAttribute="trailing" constant="15" id="dpg-aJ-4uY"/>
+                                        <constraint firstItem="O9l-sF-Jai" firstAttribute="leading" secondItem="Y0k-Ne-mJL" secondAttribute="trailing" constant="12" id="jRX-29-Icf"/>
+                                        <constraint firstItem="Y0k-Ne-mJL" firstAttribute="top" secondItem="U85-Rk-yzc" secondAttribute="top" constant="10" id="mdO-S3-J5K"/>
+                                        <constraint firstItem="Y0k-Ne-mJL" firstAttribute="leading" secondItem="U85-Rk-yzc" secondAttribute="leading" constant="16" id="rb8-Oh-5Z3"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="N4T-AY-4rG" id="ghO-03-Lh2"/>
+                            <outlet property="delegate" destination="N4T-AY-4rG" id="dth-ZE-G7m"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oqj-mL-0RW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="227.536231884058" y="-117.85714285714285"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="🧑 Persona" width="61" height="60"/>
+    </resources>
+</document>

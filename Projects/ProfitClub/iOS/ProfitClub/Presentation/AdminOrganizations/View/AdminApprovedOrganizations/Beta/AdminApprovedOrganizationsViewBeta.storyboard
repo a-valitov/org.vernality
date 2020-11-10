@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Jbd-ek-0iS">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16097.3"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Medium.ttf">
+            <string>Montserrat-Medium</string>
+        </array>
+        <array key="Montserrat-Regular.ttf">
+            <string>Montserrat-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Admin Approved Organizations View Beta-->
+        <scene sceneID="kRH-sY-yMb">
+            <objects>
+                <tableViewController id="Jbd-ek-0iS" customClass="AdminApprovedOrganizationsViewBeta" customModule="Profit_Club" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="CHd-nz-4wo">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="approvedOrganizationCell" rowHeight="76" id="gwe-p3-aVM">
+                                <rect key="frame" x="0.0" y="28" width="414" height="76"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gwe-p3-aVM" id="gRG-IH-nOe">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="76"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="🧑 Persona" translatesAutoresizingMaskIntoConstraints="NO" id="EkE-Pq-ZIT">
+                                            <rect key="frame" x="16" y="10" width="54" height="54"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="54" id="hbt-Sv-Ed8"/>
+                                                <constraint firstAttribute="height" constant="54" id="uw9-7n-raw"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ООО «Газпромнефтебизнесс»" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75" translatesAutoresizingMaskIntoConstraints="NO" id="FbU-BX-euX">
+                                            <rect key="frame" x="82" y="17" width="317" height="22"/>
+                                            <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="18"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="02.03.2020" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="evx-GL-soc">
+                                            <rect key="frame" x="82" y="49" width="317" height="12.5"/>
+                                            <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="10"/>
+                                            <color key="textColor" red="0.72549019609999998" green="0.72549019609999998" blue="0.72549019609999998" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="evx-GL-soc" firstAttribute="leading" secondItem="EkE-Pq-ZIT" secondAttribute="trailing" constant="12" id="OwM-zt-gRI"/>
+                                        <constraint firstItem="evx-GL-soc" firstAttribute="top" secondItem="FbU-BX-euX" secondAttribute="bottom" constant="10" id="WjH-cF-Wv3"/>
+                                        <constraint firstAttribute="trailing" secondItem="FbU-BX-euX" secondAttribute="trailing" constant="15" id="Xct-yo-FYW"/>
+                                        <constraint firstItem="FbU-BX-euX" firstAttribute="leading" secondItem="EkE-Pq-ZIT" secondAttribute="trailing" constant="12" id="aIQ-cp-oV1"/>
+                                        <constraint firstAttribute="trailing" secondItem="evx-GL-soc" secondAttribute="trailing" constant="15" id="eus-3T-s3b"/>
+                                        <constraint firstItem="EkE-Pq-ZIT" firstAttribute="leading" secondItem="gRG-IH-nOe" secondAttribute="leading" constant="16" id="orS-sO-eb3"/>
+                                        <constraint firstItem="FbU-BX-euX" firstAttribute="top" secondItem="gRG-IH-nOe" secondAttribute="top" constant="17" id="usa-ea-Z8d"/>
+                                        <constraint firstItem="EkE-Pq-ZIT" firstAttribute="top" secondItem="gRG-IH-nOe" secondAttribute="top" constant="10" id="yxY-RM-d1K"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Jbd-ek-0iS" id="fkT-76-G6E"/>
+                            <outlet property="delegate" destination="Jbd-ek-0iS" id="meH-x6-lWH"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xJZ-Ji-7Fm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="109" y="-86"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="🧑 Persona" width="61" height="60"/>
+    </resources>
+</document>
