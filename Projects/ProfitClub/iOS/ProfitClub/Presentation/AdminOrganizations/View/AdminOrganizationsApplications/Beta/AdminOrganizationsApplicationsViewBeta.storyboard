@@ -27,7 +27,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="applicationsCell" rowHeight="84" id="hVL-WG-1vm">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="applicationsCell" rowHeight="84" id="hVL-WG-1vm" customClass="AdminOrganizationsApplicationsTableViewCell" customModule="Profit_Club" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="414" height="84"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hVL-WG-1vm" id="U85-Rk-yzc">
@@ -74,6 +74,12 @@
                                         <constraint firstItem="Y0k-Ne-mJL" firstAttribute="leading" secondItem="U85-Rk-yzc" secondAttribute="leading" constant="16" id="rb8-Oh-5Z3"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="applicationDate" destination="O9l-sF-Jai" id="OT6-CX-Xbl"/>
+                                    <outlet property="organizationContactNameLabel" destination="dc2-el-6PK" id="fsZ-5q-lJT"/>
+                                    <outlet property="organizationImageView" destination="Y0k-Ne-mJL" id="kwT-zk-Xhg"/>
+                                    <outlet property="organizationNameLabel" destination="ChY-0X-Y88" id="m4D-UG-y7C"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

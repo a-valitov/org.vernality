@@ -24,6 +24,10 @@ final class AdminOrganizationsApplicationsViewBeta: UITableViewController {
         tableView.tableFooterView = UIView()
     }
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+    }
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         3
     }
@@ -33,7 +37,7 @@ final class AdminOrganizationsApplicationsViewBeta: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "applicationsCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "applicationsCell", for: indexPath) as! AdminOrganizationsApplicationsTableViewCell
 
         return cell
     }

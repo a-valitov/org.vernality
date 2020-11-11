@@ -14,20 +14,14 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import Foundation
-import ErrorPresenter
-import ActivityPresenter
+import UIKit
+import Main
+import ProfitClubModel
 
-struct AdminPresenters {
-    let error: ErrorPresenter
-    let activity: ActivityPresenter
+protocol AdminOrganizationModule: class {
+    func open(in main: MainModule?)
 }
 
-struct AdminServices {
-
-}
-
-struct AdminFactories {
-    let adminOrganizations: AdminOrganizationsFactory
-    let adminOrganization: AdminOrganizationFactory
+protocol AdminOrganizationModuleOutput: class {
+    
 }

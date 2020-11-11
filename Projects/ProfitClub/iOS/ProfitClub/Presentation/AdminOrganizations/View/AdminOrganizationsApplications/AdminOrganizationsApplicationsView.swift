@@ -21,5 +21,5 @@ protocol AdminOrganizationsApplicationsViewInput: UIViewController {
 }
 
 protocol AdminOrganizationsApplicationsViewOutput {
-    
+
 }

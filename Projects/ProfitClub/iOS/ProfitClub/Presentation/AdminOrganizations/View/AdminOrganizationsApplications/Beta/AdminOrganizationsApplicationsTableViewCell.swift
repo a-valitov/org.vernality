@@ -1,5 +1,5 @@
 //  Copyright (C) 2020 Startup Studio Vernality
-//  Created by Macbook on 10.11.2020
+//  Created by Macbook on 11.11.2020
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -14,20 +14,19 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import Foundation
-import ErrorPresenter
-import ActivityPresenter
+import UIKit
 
-struct AdminPresenters {
-    let error: ErrorPresenter
-    let activity: ActivityPresenter
-}
+class AdminOrganizationsApplicationsTableViewCell: UITableViewCell {
 
-struct AdminServices {
+    @IBOutlet weak var organizationImageView: UIImageView! {
+        didSet {
+            organizationImageView.layer.cornerRadius = organizationImageView.frame.height / 2
+            organizationImageView.clipsToBounds = true
+        }
+    }
+    @IBOutlet weak var organizationNameLabel: UILabel!
+    @IBOutlet weak var organizationContactNameLabel: UILabel!
+    @IBOutlet weak var applicationDate: UILabel!
 
-}
 
-struct AdminFactories {
-    let adminOrganizations: AdminOrganizationsFactory
-    let adminOrganization: AdminOrganizationFactory
 }

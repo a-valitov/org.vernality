@@ -15,19 +15,18 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import Foundation
-import ErrorPresenter
-import ActivityPresenter
+import Main
+import ProfitClubModel
 
-struct AdminPresenters {
-    let error: ErrorPresenter
-    let activity: ActivityPresenter
-}
+final class AdminOrganizationRouter {
+    weak var main: MainModule?
 
-struct AdminServices {
-
-}
-
-struct AdminFactories {
-    let adminOrganizations: AdminOrganizationsFactory
-    let adminOrganization: AdminOrganizationFactory
+    @discardableResult
+    func openApplication(output: OrganizationApplicationViewOutput?) -> OrganizationApplicationViewInput {
+        let storyboard = UIStoryboard(name: "OrganizationApplicationViewBeta", bundle: nil)
+        let applicationView = storyboard.instantiateInitialViewController() as! OrganizationApplicationViewBeta
+        applicationView.output = output
+        self.main?.raise(applicationView, animated: true)
+        return applicationView
+    }
 }

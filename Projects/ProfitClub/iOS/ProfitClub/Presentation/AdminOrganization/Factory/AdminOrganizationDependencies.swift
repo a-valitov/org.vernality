@@ -17,17 +17,13 @@
 import Foundation
 import ErrorPresenter
 import ActivityPresenter
+import PCOrganizationService
 
-struct AdminPresenters {
+struct AdminOrganizationPresenters {
     let error: ErrorPresenter
     let activity: ActivityPresenter
 }
 
-struct AdminServices {
-
-}
-
-struct AdminFactories {
-    let adminOrganizations: AdminOrganizationsFactory
-    let adminOrganization: AdminOrganizationFactory
+struct AdminOrganizationServices {
+    let organization: PCOrganizationService
 }

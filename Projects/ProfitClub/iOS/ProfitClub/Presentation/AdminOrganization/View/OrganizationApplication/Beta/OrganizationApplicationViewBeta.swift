@@ -14,20 +14,13 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import Foundation
-import ErrorPresenter
-import ActivityPresenter
+import UIKit
 
-struct AdminPresenters {
-    let error: ErrorPresenter
-    let activity: ActivityPresenter
-}
-
-struct AdminServices {
+final class OrganizationApplicationViewBeta: UIViewController {
+    var output: OrganizationApplicationViewOutput?
 
 }
 
-struct AdminFactories {
-    let adminOrganizations: AdminOrganizationsFactory
-    let adminOrganization: AdminOrganizationFactory
+extension OrganizationApplicationViewBeta: OrganizationApplicationViewInput {
+    
 }

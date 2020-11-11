@@ -15,39 +15,27 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import Foundation
-import Main
 import ErrorPresenter
 import ActivityPresenter
 import ProfitClubModel
 
-final class AdminPresenter: AdminModule {
-    weak var output: AdminModuleOutput?
-    var router: AdminRouter?
-
-    init(presenters: AdminPresenters,
-         services: AdminServices) {
+final class AdminOrganizationFactory {
+    init(presenters: AdminOrganizationPresenters,
+         services: AdminOrganizationServices) {
         self.presenters = presenters
         self.services = services
     }
 
-    func open(in main: MainModule?) {
-        self.router?.main = main
-        self.router?.openAdminTabBar(output: self)
+    func make(organization: PCOrganization, output: AdminOrganizationModuleOutput?) -> AdminOrganizationModule {
+        let router = AdminOrganizationRouter()
+        let presenter = AdminOrganizationPresenter(organization: organization,
+                                                   presenters: self.presenters,
+                                                   services: self.services)
+        presenter.output = output
+        presenter.router = router
+        return presenter
     }
 
-    // dependencies
-    private let presenters: AdminPresenters
-    private let services: AdminServices
-}
-
-extension AdminPresenter: AdminTabBarViewOutput {
-    
-}
-
-extension AdminPresenter: AdminOrganizationsModuleOutput {
-
-}
-
-extension AdminPresenter: AdminOrganizationModuleOutput {
-
+    private let presenters: AdminOrganizationPresenters
+    private let services: AdminOrganizationServices
 }

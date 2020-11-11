@@ -20,34 +20,30 @@ import ErrorPresenter
 import ActivityPresenter
 import ProfitClubModel
 
-final class AdminPresenter: AdminModule {
-    weak var output: AdminModuleOutput?
-    var router: AdminRouter?
+final class AdminOrganizationPresenter: AdminOrganizationModule {
+    weak var output: AdminOrganizationModuleOutput?
+    var router: AdminOrganizationRouter?
 
-    init(presenters: AdminPresenters,
-         services: AdminServices) {
+    init(organization: PCOrganization,
+         presenters: AdminOrganizationPresenters,
+         services: AdminOrganizationServices) {
+        self.organization = organization
         self.presenters = presenters
         self.services = services
     }
 
     func open(in main: MainModule?) {
         self.router?.main = main
-        self.router?.openAdminTabBar(output: self)
+        self.router?.openApplication(output: self)
     }
 
+    private let organization: PCOrganization
+
     // dependencies
-    private let presenters: AdminPresenters
-    private let services: AdminServices
+    private let presenters: AdminOrganizationPresenters
+    private let services: AdminOrganizationServices
 }
 
-extension AdminPresenter: AdminTabBarViewOutput {
+extension AdminOrganizationPresenter: OrganizationApplicationViewOutput {
     
-}
-
-extension AdminPresenter: AdminOrganizationsModuleOutput {
-
-}
-
-extension AdminPresenter: AdminOrganizationModuleOutput {
-
 }
