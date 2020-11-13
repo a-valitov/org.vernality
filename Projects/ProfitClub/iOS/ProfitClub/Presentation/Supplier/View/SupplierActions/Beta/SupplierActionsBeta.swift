@@ -118,6 +118,7 @@ final class SupplierActionsBeta: UIViewController {
         addPadding(to: messageTextField)
         addPadding(to: descriptionTextField)
         addPadding(to: linkTextField)
+        self.descriptionTextField.layer.sublayerTransform = CATransform3DMakeTranslation(0, 15, 0)
 
         let textColor = UIColor(red: 0.098, green: 0.094, blue: 0.094, alpha: 1)
         let placeholderColor = textColor.withAlphaComponent(0.5)
