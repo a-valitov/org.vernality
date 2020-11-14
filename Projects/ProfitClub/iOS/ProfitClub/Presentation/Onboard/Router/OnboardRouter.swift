@@ -101,4 +101,9 @@ final class OnboardRouter {
         return onboardSupplier
 
     }
+
+    @discardableResult
+    func pop() {
+        self.main?.pop()
+    }
 }

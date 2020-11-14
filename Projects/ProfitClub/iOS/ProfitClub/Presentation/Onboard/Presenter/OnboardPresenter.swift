@@ -147,7 +147,18 @@ extension OnboardPresenter: OnboardResetPasswordViewOutput {
             self.presenters.error.present(OnboardError.emailIsEmpty)
             return
         }
+        self.email = email
 
+        self.presenters.activity.increment()
+        self.services.authentication.resetPassword(email: email) { [weak self] result in
+            self?.presenters.activity.decrement()
+            switch result {
+            case .success:
+                self?.router?.pop()
+            case .failure(let error):
+                self?.presenters.error.present(error)
+            }
+        }
     }
 
 }

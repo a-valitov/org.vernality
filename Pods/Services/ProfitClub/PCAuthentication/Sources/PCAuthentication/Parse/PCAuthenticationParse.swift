@@ -53,6 +53,16 @@ final class PCAuthenticationParse: PCAuthentication {
         }
     }
 
+    func resetPassword(email: String, result: @escaping ((Result<Bool, Error>) -> Void)) {
+        PFUser.requestPasswordResetForEmail(inBackground: email) { (succeeded, error) in
+            if let error = error {
+                result(.failure(error))
+            } else {
+                result(.success(succeeded))
+            }
+        }
+    }
+
     func add(supplier: PCSupplier, result: @escaping ((Result<PCSupplier, Error>) -> Void)) {
         let parseSupplier = supplier.parse
         let currentUser = PFUser.current()

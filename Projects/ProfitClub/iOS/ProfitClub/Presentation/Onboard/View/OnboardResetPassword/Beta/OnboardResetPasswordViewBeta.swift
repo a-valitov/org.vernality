@@ -29,7 +29,8 @@ final class OnboardResetPasswordViewBeta: UIViewController {
     
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var resetPasswordButton: UIButton!
-    
+    @IBOutlet weak var errorLabel: UILabel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.emailTextField.layer.sublayerTransform = CATransform3DMakeTranslation(15, 0, 0)
@@ -44,6 +45,8 @@ final class OnboardResetPasswordViewBeta: UIViewController {
 
         emailTextField.delegate = self
 
+        errorLabel.isHidden = true
+
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
@@ -53,10 +56,8 @@ final class OnboardResetPasswordViewBeta: UIViewController {
     }
 
     @objc func keyboardWillShow(notification: NSNotification) {
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            self.resetPasswordButton.frame.origin.y = self.resetPasswordButton.frame.origin.y - keyboardSize.height
-        }
-
+        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
+        self.resetPasswordButton.frame.origin.y = self.resetPasswordButton.frame.origin.y - keyboardSize.height
     }
 
     @objc func keyboardWillHide(notification: NSNotification) {
