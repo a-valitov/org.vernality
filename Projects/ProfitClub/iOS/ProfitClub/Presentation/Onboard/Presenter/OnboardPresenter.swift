@@ -95,6 +95,12 @@ extension OnboardPresenter: OnboardSignInViewOutput {
             }
         }
     }
+
+    func onboardSingUp(view: OnboardSignInViewInput, userWantsToSignUp sender: Any) {
+        self.router?.main?.unraise(animated: true, completion: { [weak self] in
+            self?.router?.openOnboardSignUp(output: self)
+        })
+    }
 }
 
 extension OnboardPresenter: OnboardSignUpViewOutput {
@@ -119,6 +125,12 @@ extension OnboardPresenter: OnboardSignUpViewOutput {
         self.password = password
         self.router?.main?.unraise(animated: true, completion: { [weak self] in
             self?.router?.openSelectRole(output: self)
+        })
+    }
+
+    func onboardSignIn(view: OnboardSignUpViewInput, userWantsToSignIp sender: Any) {
+        self.router?.main?.unraise(animated: true, completion: { [weak self] in
+            self?.router?.openOnboardSignIn(output: self)
         })
     }
 }

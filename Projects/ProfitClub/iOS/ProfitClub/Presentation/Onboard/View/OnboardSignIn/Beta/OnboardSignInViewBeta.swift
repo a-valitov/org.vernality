@@ -40,6 +40,7 @@ final class OnboardSignInViewBeta: UIViewController {
 
     @IBOutlet weak var usernameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var signUpButton: UIButton!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,10 +58,29 @@ final class OnboardSignInViewBeta: UIViewController {
 
         self.usernameTextField.textColor = textColor
         self.passwordTextField.textColor = textColor
+
+        let attributesForTitle1: [NSAttributedString.Key: Any] = [
+            NSAttributedString.Key.underlineStyle: NSUnderlineStyle.thick.rawValue,
+            NSAttributedString.Key.foregroundColor: UIColor(red: 245/255, green: 200/255, blue: 145/255, alpha: 1)
+        ]
+        let attributesForTitle2: [NSAttributedString.Key: Any] = [
+            NSAttributedString.Key.foregroundColor: UIColor(red: 243/255, green: 234/255, blue: 231/255, alpha: 1)
+        ]
+        let title1 = NSAttributedString(string: "Зарегистрироваться", attributes: attributesForTitle1)
+        let title2 = NSAttributedString(string: "Нет аккаунта? ", attributes: attributesForTitle2)
+
+        let combination = NSMutableAttributedString()
+        combination.append(title2)
+        combination.append(title1)
+        signUpButton.setAttributedTitle(combination, for: .normal)
     }
 
     @IBAction func signInButtonTouchUpInside(_ sender: Any) {
         self.output?.onboardSignIn(view: self, userWantsToSignIn: sender)
+    }
+
+    @IBAction func signUpButtonTouchUpInside(_ sender: Any) {
+        self.output?.onboardSingUp(view: self, userWantsToSignUp: sender)
     }
 }
 

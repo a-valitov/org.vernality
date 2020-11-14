@@ -11,6 +11,9 @@
         <array key="Montserrat-Regular.ttf">
             <string>Montserrat-Regular</string>
         </array>
+        <array key="Montserrat-SemiBold.ttf">
+            <string>Montserrat-SemiBold</string>
+        </array>
         <array key="PlayfairDisplay-VariableFont_wght.ttf">
             <string>PlayfairDisplay-Regular</string>
         </array>
@@ -92,7 +95,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="52" id="2Uu-Mk-QeC"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="15"/>
                                 <state key="normal" title="Войти">
                                     <color key="titleColor" red="0.1176470588" green="0.1137254902" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -100,19 +103,36 @@
                                     <action selector="signInButtonTouchUpInside:" destination="m0H-y9-jge" eventType="touchUpInside" id="fUr-eW-TkZ"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NYa-9R-W1B">
+                                <rect key="frame" x="20" y="336" width="374" height="30"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="WJm-xf-ZFA"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
+                                <state key="normal" title="Нет аккаунта? Зарегистрироваться">
+                                    <color key="titleColor" red="0.1176470588" green="0.1137254902" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="signUpButtonTouchUpInside:" destination="m0H-y9-jge" eventType="touchUpInside" id="E1V-dy-N8R"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
                             <constraint firstItem="vBz-9h-7aY" firstAttribute="leading" secondItem="UIj-sr-jXR" secondAttribute="leading" id="46d-KH-q0l"/>
-                            <constraint firstItem="UIj-sr-jXR" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="2Ed-E1-4Gl" secondAttribute="bottom" constant="16" id="6Ah-nN-y4h"/>
                             <constraint firstItem="vBz-9h-7aY" firstAttribute="trailing" secondItem="UIj-sr-jXR" secondAttribute="trailing" id="6Iu-f7-qLD"/>
                             <constraint firstItem="2Ed-E1-4Gl" firstAttribute="leading" secondItem="Kws-xZ-CYA" secondAttribute="leading" id="BEA-WW-eHA"/>
+                            <constraint firstItem="NYa-9R-W1B" firstAttribute="leading" secondItem="2Ed-E1-4Gl" secondAttribute="leading" id="Cq1-Wv-GTx"/>
                             <constraint firstAttribute="bottom" secondItem="vBz-9h-7aY" secondAttribute="bottom" id="Dlm-2O-oYO"/>
                             <constraint firstItem="Kws-xZ-CYA" firstAttribute="top" secondItem="wbc-qi-qqH" secondAttribute="bottom" constant="30" id="FFx-9E-MjU"/>
                             <constraint firstItem="2Ed-E1-4Gl" firstAttribute="trailing" secondItem="Kws-xZ-CYA" secondAttribute="trailing" id="Lk2-jm-3A4"/>
                             <constraint firstItem="wbc-qi-qqH" firstAttribute="leading" secondItem="UIj-sr-jXR" secondAttribute="leading" constant="20" id="RJY-yw-bHu"/>
+                            <constraint firstItem="NYa-9R-W1B" firstAttribute="trailing" secondItem="2Ed-E1-4Gl" secondAttribute="trailing" id="UAg-xL-is5"/>
                             <constraint firstItem="2Ed-E1-4Gl" firstAttribute="top" secondItem="Kws-xZ-CYA" secondAttribute="bottom" constant="25" id="VOr-gc-6Yu"/>
+                            <constraint firstItem="UIj-sr-jXR" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="NYa-9R-W1B" secondAttribute="bottom" constant="10" id="Vwv-lB-sso"/>
                             <constraint firstItem="UIj-sr-jXR" firstAttribute="trailing" secondItem="Kws-xZ-CYA" secondAttribute="trailing" constant="20" id="hOa-VY-XmW"/>
                             <constraint firstItem="Kws-xZ-CYA" firstAttribute="leading" secondItem="UIj-sr-jXR" secondAttribute="leading" constant="20" id="hro-72-CO3"/>
+                            <constraint firstItem="NYa-9R-W1B" firstAttribute="top" secondItem="2Ed-E1-4Gl" secondAttribute="bottom" constant="10" id="owg-DH-9Xn"/>
                             <constraint firstItem="vBz-9h-7aY" firstAttribute="top" secondItem="S4V-Jg-nnm" secondAttribute="top" id="wwB-OK-vu1"/>
                             <constraint firstItem="wbc-qi-qqH" firstAttribute="top" secondItem="UIj-sr-jXR" secondAttribute="top" constant="8" id="x3V-Bu-jLO"/>
                         </constraints>
@@ -120,6 +140,7 @@
                     </view>
                     <connections>
                         <outlet property="passwordTextField" destination="sMf-tP-2P8" id="5rD-fu-919"/>
+                        <outlet property="signUpButton" destination="NYa-9R-W1B" id="4RH-2c-JzK"/>
                         <outlet property="usernameTextField" destination="LCa-B9-uZt" id="xTM-l3-zZb"/>
                     </connections>
                 </viewController>

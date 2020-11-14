@@ -11,6 +11,9 @@
         <array key="Montserrat-Regular.ttf">
             <string>Montserrat-Regular</string>
         </array>
+        <array key="Montserrat-SemiBold.ttf">
+            <string>Montserrat-SemiBold</string>
+        </array>
         <array key="PlayfairDisplay-VariableFont_wght.ttf">
             <string>PlayfairDisplay-Regular</string>
         </array>
@@ -107,7 +110,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="52" id="m63-aH-V3U"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="15"/>
                                 <state key="normal" title="Зарегистрироваться">
                                     <color key="titleColor" red="0.11764705882352941" green="0.11372549019607843" blue="0.11372549019607843" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -115,21 +118,38 @@
                                     <action selector="signUpButtonTouchUpInside:" destination="sfo-Yr-mjz" eventType="touchUpInside" id="dPd-Vv-kkE"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ycl-C0-zNm">
+                                <rect key="frame" x="20" y="403" width="374" height="30"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="K0z-lL-V7b"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="15"/>
+                                <state key="normal" title="Уже есть аккаунт? Войти">
+                                    <color key="titleColor" red="0.1176470588" green="0.1137254902" blue="0.1137254902" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="signInButtonTouchUpInside:" destination="sfo-Yr-mjz" eventType="touchUpInside" id="oZL-IT-JLi"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="122-jg-S1P" firstAttribute="trailing" secondItem="wQX-pB-0tJ" secondAttribute="trailing" id="0gd-wu-bii"/>
                             <constraint firstItem="BBC-fY-ifU" firstAttribute="trailing" secondItem="wQX-pB-0tJ" secondAttribute="trailing" constant="20" id="3Oj-62-mT1"/>
+                            <constraint firstItem="ycl-C0-zNm" firstAttribute="leading" secondItem="122-jg-S1P" secondAttribute="leading" id="3eL-so-jz5"/>
                             <constraint firstItem="Qw8-UE-ETf" firstAttribute="trailing" secondItem="BBC-fY-ifU" secondAttribute="trailing" id="6Yo-TS-XYG"/>
                             <constraint firstItem="Qw8-UE-ETf" firstAttribute="top" secondItem="HFS-xl-1fn" secondAttribute="top" id="8Fq-lg-Vaj"/>
                             <constraint firstAttribute="bottom" secondItem="Qw8-UE-ETf" secondAttribute="bottom" id="Knm-RD-K1s"/>
+                            <constraint firstItem="ycl-C0-zNm" firstAttribute="top" secondItem="122-jg-S1P" secondAttribute="bottom" constant="10" id="OmC-FO-Vgl"/>
                             <constraint firstItem="wQX-pB-0tJ" firstAttribute="leading" secondItem="BBC-fY-ifU" secondAttribute="leading" constant="20" id="P4J-Kq-OjW"/>
                             <constraint firstItem="122-jg-S1P" firstAttribute="top" secondItem="wQX-pB-0tJ" secondAttribute="bottom" constant="25" id="Qmk-Nm-7z3"/>
                             <constraint firstItem="47F-KZ-5Ko" firstAttribute="top" secondItem="BBC-fY-ifU" secondAttribute="top" constant="8" id="WWb-Ne-uqj"/>
                             <constraint firstItem="122-jg-S1P" firstAttribute="leading" secondItem="wQX-pB-0tJ" secondAttribute="leading" id="azk-bM-UJS"/>
+                            <constraint firstItem="BBC-fY-ifU" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="ycl-C0-zNm" secondAttribute="bottom" constant="10" id="c3O-xR-QXH"/>
                             <constraint firstItem="47F-KZ-5Ko" firstAttribute="leading" secondItem="BBC-fY-ifU" secondAttribute="leading" constant="20" id="htZ-EO-d03"/>
+                            <constraint firstItem="ycl-C0-zNm" firstAttribute="trailing" secondItem="122-jg-S1P" secondAttribute="trailing" id="hto-gy-Vqu"/>
                             <constraint firstItem="wQX-pB-0tJ" firstAttribute="top" secondItem="47F-KZ-5Ko" secondAttribute="bottom" constant="30" id="nzn-Wb-Tpd"/>
-                            <constraint firstItem="BBC-fY-ifU" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="122-jg-S1P" secondAttribute="bottom" constant="16" id="t4F-OG-4YZ"/>
                             <constraint firstItem="Qw8-UE-ETf" firstAttribute="leading" secondItem="BBC-fY-ifU" secondAttribute="leading" id="wW4-2K-vjU"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="BBC-fY-ifU"/>
@@ -138,6 +158,7 @@
                         <outlet property="emailTextField" destination="v8E-BT-wG7" id="ljf-yN-FJ5"/>
                         <outlet property="passwordConfirmationTextField" destination="zPT-p5-IZg" id="1Xd-gD-kZD"/>
                         <outlet property="passwordTextField" destination="EZa-Zm-TRJ" id="ahg-po-DCD"/>
+                        <outlet property="signInButton" destination="ycl-C0-zNm" id="vDj-l2-XaR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SIw-LK-xhl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
