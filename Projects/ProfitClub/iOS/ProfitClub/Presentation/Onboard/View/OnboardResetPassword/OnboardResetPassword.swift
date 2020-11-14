@@ -1,5 +1,5 @@
 //  Copyright (C) 2020 Startup Studio Vernality
-//  Created by Rinat Enikeev on 8/31/20
+//  Created by Macbook on 14.11.2020
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -16,13 +16,10 @@
 
 import UIKit
 
-protocol OnboardSignInViewInput: UIViewController {
-    var username: String? { get }
-    var password: String? { get }
+protocol OnboardResetPasswordViewInput: UIViewController {
+    var email: String? { get }
 }
 
-protocol OnboardSignInViewOutput {
-    func onboardSignIn(view: OnboardSignInViewInput, userWantsToSignIn sender: Any)
-    func onboardSingUp(view: OnboardSignInViewInput, userWantsToSignUp sender: Any)
-    func onboardResetPassword(view: OnboardSignInViewInput, userWantsToResetPassword sender: Any)
+protocol OnboardResetPasswordViewOutput {
+    func onboardResetPasswordDidFinish(view: OnboardResetPasswordViewInput)
 }

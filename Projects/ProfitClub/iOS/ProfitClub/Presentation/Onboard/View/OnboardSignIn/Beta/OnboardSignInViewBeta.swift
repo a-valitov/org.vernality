@@ -82,6 +82,11 @@ final class OnboardSignInViewBeta: UIViewController {
     @IBAction func signUpButtonTouchUpInside(_ sender: Any) {
         self.output?.onboardSingUp(view: self, userWantsToSignUp: sender)
     }
+
+    @IBAction func forgetPasswordButtonTouchUpInside(_ sender: Any) {
+        self.output?.onboardResetPassword(view: self, userWantsToResetPassword: sender)
+    }
+
 }
 
 

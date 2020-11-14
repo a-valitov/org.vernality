@@ -101,6 +101,12 @@ extension OnboardPresenter: OnboardSignInViewOutput {
             self?.router?.openOnboardSignUp(output: self)
         })
     }
+
+    func onboardResetPassword(view: OnboardSignInViewInput, userWantsToResetPassword sender: Any) {
+        self.router?.main?.unraise(animated: true, completion: { [weak self] in
+            self?.router?.openResetPassword(output: self)
+        })
+    }
 }
 
 extension OnboardPresenter: OnboardSignUpViewOutput {
@@ -133,6 +139,17 @@ extension OnboardPresenter: OnboardSignUpViewOutput {
             self?.router?.openOnboardSignIn(output: self)
         })
     }
+}
+
+extension OnboardPresenter: OnboardResetPasswordViewOutput {
+    func onboardResetPasswordDidFinish(view: OnboardResetPasswordViewInput) {
+        guard let email = view.email, email.isEmpty == false else {
+            self.presenters.error.present(OnboardError.emailIsEmpty)
+            return
+        }
+
+    }
+
 }
 
 extension OnboardPresenter: OnboardMemberViewOutput {

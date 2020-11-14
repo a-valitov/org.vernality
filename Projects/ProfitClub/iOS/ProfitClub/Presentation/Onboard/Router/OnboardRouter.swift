@@ -49,6 +49,15 @@ final class OnboardRouter {
     }
 
     @discardableResult
+    func openResetPassword(output: OnboardResetPasswordViewOutput?) -> OnboardResetPasswordViewInput {
+        let storyboard = UIStoryboard(name: "OnboardResetPasswordViewBeta", bundle: nil)
+        let onboardResetPassword = storyboard.instantiateInitialViewController() as! OnboardResetPasswordViewBeta
+        onboardResetPassword.output = output
+        self.main?.push(onboardResetPassword, animated: true)
+        return onboardResetPassword
+    }
+
+    @discardableResult
     func openSelectRole(output: SelectRoleViewOutput?) -> SelectRoleViewInput {
         let storyboard = UIStoryboard(name: "SelectRoleViewBeta", bundle: nil)
         let selectRoleView = storyboard.instantiateInitialViewController() as! SelectRoleViewBeta

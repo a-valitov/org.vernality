@@ -189,6 +189,9 @@
 		FAD704BA2550156400DE8AD7 /* ApplicationsViewBeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD704B92550156400DE8AD7 /* ApplicationsViewBeta.swift */; };
 		FAD704BC2550156F00DE8AD7 /* ApplicationsViewBeta.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAD704BB2550156F00DE8AD7 /* ApplicationsViewBeta.storyboard */; };
 		FAE888C1256005450023C232 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FAE888C0256005450023C232 /* Montserrat-SemiBold.ttf */; };
+		FAE888C425601D7D0023C232 /* OnboardResetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE888C325601D7D0023C232 /* OnboardResetPassword.swift */; };
+		FAE888C725601D960023C232 /* OnboardResetPasswordViewBeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE888C625601D960023C232 /* OnboardResetPasswordViewBeta.swift */; };
+		FAE888C925601DA70023C232 /* OnboardResetPasswordViewBeta.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAE888C825601DA70023C232 /* OnboardResetPasswordViewBeta.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -379,6 +382,9 @@
 		FAD704B92550156400DE8AD7 /* ApplicationsViewBeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationsViewBeta.swift; sourceTree = "<group>"; };
 		FAD704BB2550156F00DE8AD7 /* ApplicationsViewBeta.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ApplicationsViewBeta.storyboard; sourceTree = "<group>"; };
 		FAE888C0256005450023C232 /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
+		FAE888C325601D7D0023C232 /* OnboardResetPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardResetPassword.swift; sourceTree = "<group>"; };
+		FAE888C625601D960023C232 /* OnboardResetPasswordViewBeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardResetPasswordViewBeta.swift; sourceTree = "<group>"; };
+		FAE888C825601DA70023C232 /* OnboardResetPasswordViewBeta.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OnboardResetPasswordViewBeta.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -878,6 +884,7 @@
 		0E90499024F6140D0061A605 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FAE888C225601D190023C232 /* OnboardResetPassword */,
 				0E506C4424FCA6B800ABA211 /* OnboardSignIn */,
 				0E39664124FCAB750008266D /* OnboardSignUp */,
 				0E506C3724FC9C9A00ABA211 /* OnboardWelcome */,
@@ -1690,6 +1697,24 @@
 			path = Beta;
 			sourceTree = "<group>";
 		};
+		FAE888C225601D190023C232 /* OnboardResetPassword */ = {
+			isa = PBXGroup;
+			children = (
+				FAE888C325601D7D0023C232 /* OnboardResetPassword.swift */,
+				FAE888C525601D800023C232 /* Beta */,
+			);
+			path = OnboardResetPassword;
+			sourceTree = "<group>";
+		};
+		FAE888C525601D800023C232 /* Beta */ = {
+			isa = PBXGroup;
+			children = (
+				FAE888C625601D960023C232 /* OnboardResetPasswordViewBeta.swift */,
+				FAE888C825601DA70023C232 /* OnboardResetPasswordViewBeta.storyboard */,
+			);
+			path = Beta;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1774,6 +1799,7 @@
 				0E506BE724FBB19400ABA211 /* OnboardMemberViewBeta.storyboard in Resources */,
 				FA8CB888255AD8A700D09B1D /* OrganizationApplicationViewBeta.storyboard in Resources */,
 				0E56172E25372AF1005DF4F3 /* ActionsContainerViewBeta.storyboard in Resources */,
+				FAE888C925601DA70023C232 /* OnboardResetPasswordViewBeta.storyboard in Resources */,
 				FAD704BC2550156F00DE8AD7 /* ApplicationsViewBeta.storyboard in Resources */,
 				FA8CB869255A867200D09B1D /* AdminOrganizationsApplicationsViewBeta.storyboard in Resources */,
 				FA8CB870255A87F000D09B1D /* AdminApprovedOrganizationsViewBeta.storyboard in Resources */,
@@ -1882,6 +1908,7 @@
 				0E4BD1E2250CF1E300F8D4C8 /* OnboardSupplierViewBeta.swift in Sources */,
 				0E506C3324FC1B9C00ABA211 /* ReviewDependencies.swift in Sources */,
 				FA8CB867255A866500D09B1D /* AdminOrganizationsApplicationsViewBeta.swift in Sources */,
+				FAE888C725601D960023C232 /* OnboardResetPasswordViewBeta.swift in Sources */,
 				FAD7049E25500F8000DE8AD7 /* MembersFactory.swift in Sources */,
 				0E506C2E24FC1A4600ABA211 /* ReviewPresenter.swift in Sources */,
 				FA8CB89A255ADA6E00D09B1D /* AdminOrganizationFactory.swift in Sources */,
@@ -1913,6 +1940,7 @@
 				0E90498A24F60D250061A605 /* SelectRoleViewAlpha.swift in Sources */,
 				FA8CB89C255ADA7800D09B1D /* AdminOrganizationDependencies.swift in Sources */,
 				0E506C2824FC131700ABA211 /* ReviewViewBetaOrganizationCell.swift in Sources */,
+				FAE888C425601D7D0023C232 /* OnboardResetPassword.swift in Sources */,
 				FAD704B3255013FD00DE8AD7 /* MembersOfOrganizationViewBeta.swift in Sources */,
 				FA8CB82825583E0800D09B1D /* MemberCurrentActionView.swift in Sources */,
 				FAD704A22550104000DE8AD7 /* MembersPresenter.swift in Sources */,
