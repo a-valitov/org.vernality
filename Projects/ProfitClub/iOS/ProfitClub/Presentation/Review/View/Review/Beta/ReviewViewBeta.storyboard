@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--username-->
+        <!--Review View Beta-->
         <scene sceneID="Z8U-JL-YFx">
             <objects>
                 <tableViewController id="FI8-UX-LAe" customClass="ReviewViewBeta" customModule="Profit_Club" customModuleProvider="target" sceneMemberID="viewController">
@@ -271,17 +271,20 @@
                             <outlet property="delegate" destination="FI8-UX-LAe" id="giI-QV-q84"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="username" id="uPa-rw-goP">
+                    <navigationItem key="navigationItem" id="uPa-rw-goP">
                         <barButtonItem key="leftBarButtonItem" systemItem="stop" id="GjO-5Y-xIW">
                             <connections>
                                 <action selector="logoutBarButtonAction:" destination="FI8-UX-LAe" id="fsI-ZK-AEW"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="QZq-o1-SGz">
-                            <connections>
-                                <action selector="addBarButtonAction:" destination="FI8-UX-LAe" id="T1W-FI-Le5"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem image="barItem" id="23L-dg-iwh"/>
+                            <barButtonItem systemItem="add" id="QZq-o1-SGz">
+                                <connections>
+                                    <action selector="addBarButtonAction:" destination="FI8-UX-LAe" id="T1W-FI-Le5"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="mlV-sh-wkF">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -296,4 +299,7 @@
             <point key="canvasLocation" x="586.95652173913049" y="-455.35714285714283"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="barItem" width="25" height="5"/>
+    </resources>
 </document>

@@ -19,23 +19,31 @@ import ProfitClubModel
 
 extension ReviewViewBeta: ReviewViewInput {
     func showLogoutConfirmationDialog() {
+        var blurEffect = UIBlurEffect()
+        blurEffect = UIBlurEffect(style: .dark)
+        let blurVisualEffectView = UIVisualEffectView(effect: blurEffect)
+        blurVisualEffectView.frame = view.bounds
+        blurVisualEffectView.alpha = 0.9
+        self.view.addSubview(blurVisualEffectView)
         let controller = UIAlertController(title: "Подтвердите выход", message: "Вы уверены что хотите выйти?", preferredStyle: .alert)
+
         controller.addAction(UIAlertAction(title: "Выйти", style: .destructive, handler: { [weak self] _ in
             guard let sSelf = self else { return }
             self?.output?.review(view: sSelf, userConfirmToLogout: controller)
+            blurVisualEffectView.removeFromSuperview()
         }))
-        controller.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: nil))
+
+        controller.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: { _ in
+            blurVisualEffectView.removeFromSuperview()
+        }))
+        
         self.present(controller, animated: true)
     }
 }
 
 final class ReviewViewBeta: UITableViewController {
     var output: ReviewViewOutput?
-    var username: String? {
-        didSet {
-            self.navigationItem.title = self.username
-        }
-    }
+    var username: String?
     var members = [AnyPCMember]() {
         didSet {
             if self.isViewLoaded {
@@ -57,10 +65,16 @@ final class ReviewViewBeta: UITableViewController {
             }
         }
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.hidesBackButton = true
+
+        let label = UILabel()
+        label.textColor = UIColor.white
+        label.text = "Profit Club"
+        label.font = UIFont(name: "PlayfairDisplay-Bold", size: 25)
+//        self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: label)
     }
 
     @IBAction func pullToRefreshValueChanged(_ sender: UIRefreshControl) {
