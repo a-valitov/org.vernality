@@ -154,7 +154,7 @@ extension OnboardPresenter: OnboardResetPasswordViewOutput {
                 self?.presenters.activity.decrement()
                 switch result {
                 case .success:
-                    self?.router?.pop()
+                    view.finishAlert()
                 case .failure(let error):
                     self?.presenters.error.present(error)
                 }
@@ -162,6 +162,10 @@ extension OnboardPresenter: OnboardResetPasswordViewOutput {
         } else {
             view.alert()
         }
+    }
+
+    func onboardResetPasswordFinish(view: OnboardResetPasswordViewInput) {
+        self.router?.pop()
     }
 
 }

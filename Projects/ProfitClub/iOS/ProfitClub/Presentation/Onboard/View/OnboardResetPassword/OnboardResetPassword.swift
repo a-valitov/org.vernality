@@ -20,8 +20,10 @@ protocol OnboardResetPasswordViewInput: UIViewController {
     var email: String? { get }
 
     func alert()
+    func finishAlert()
 }
 
 protocol OnboardResetPasswordViewOutput {
     func onboardResetPasswordDidFinish(view: OnboardResetPasswordViewInput)
+    func onboardResetPasswordFinish(view: OnboardResetPasswordViewInput)
 }
