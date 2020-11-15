@@ -148,16 +148,19 @@ extension OnboardPresenter: OnboardResetPasswordViewOutput {
             return
         }
         self.email = email
-
-        self.presenters.activity.increment()
-        self.services.authentication.resetPassword(email: email) { [weak self] result in
-            self?.presenters.activity.decrement()
-            switch result {
-            case .success:
-                self?.router?.pop()
-            case .failure(let error):
-                self?.presenters.error.present(error)
+        if self.isValid(email: email) {
+            self.presenters.activity.increment()
+            self.services.authentication.resetPassword(email: email) { [weak self] result in
+                self?.presenters.activity.decrement()
+                switch result {
+                case .success:
+                    self?.router?.pop()
+                case .failure(let error):
+                    self?.presenters.error.present(error)
+                }
             }
+        } else {
+            view.alert()
         }
     }
 
@@ -485,5 +488,12 @@ extension OnboardPresenter {
                 }
             }
         }
+    }
+
+    private func isValid(email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluate(with: email)
     }
 }

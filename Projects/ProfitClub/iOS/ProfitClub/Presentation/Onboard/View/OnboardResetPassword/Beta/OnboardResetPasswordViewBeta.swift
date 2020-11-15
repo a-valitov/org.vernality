@@ -73,5 +73,12 @@ extension OnboardResetPasswordViewBeta: UITextFieldDelegate {
 }
 
 extension OnboardResetPasswordViewBeta: OnboardResetPasswordViewInput {
-    
+    func alert() {
+        let alertController = UIAlertController(title: "Invalid Email", message: "Please check your email", preferredStyle: .alert)
+
+        let okAction = UIAlertAction(title: "Хорошо", style: .default)
+
+        alertController.addAction(okAction)
+        present(alertController, animated: true)
+    }
 }

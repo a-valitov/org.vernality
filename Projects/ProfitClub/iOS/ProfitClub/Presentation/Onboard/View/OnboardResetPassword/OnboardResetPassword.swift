@@ -18,6 +18,8 @@ import UIKit
 
 protocol OnboardResetPasswordViewInput: UIViewController {
     var email: String? { get }
+
+    func alert()
 }
 
 protocol OnboardResetPasswordViewOutput {
