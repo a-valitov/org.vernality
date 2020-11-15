@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MkX-Gm-Mdz">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Medium.ttf">
+            <string>Montserrat-Medium</string>
+        </array>
+        <array key="Montserrat-SemiBold.ttf">
+            <string>Montserrat-SemiBold</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Member Profile View Beta-->
+        <scene sceneID="rSE-iV-GTS">
+            <objects>
+                <viewController id="MkX-Gm-Mdz" customClass="MemberProfileViewBeta" customModule="Profit_Club" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="X1I-CX-Bs0">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="exampleProfile" translatesAutoresizingMaskIntoConstraints="NO" id="7e7-6B-KNs">
+                                <rect key="frame" x="132" y="94" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="6Fz-RQ-yFR"/>
+                                    <constraint firstAttribute="width" constant="150" id="MfU-i1-A7A"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W6t-yA-v2Z">
+                                <rect key="frame" x="247" y="201" width="35" height="35"/>
+                                <color key="backgroundColor" red="0.92941176470588238" green="0.92941176470588238" blue="0.92941176470588238" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="35" id="8wE-cn-xvy"/>
+                                    <constraint firstAttribute="width" constant="35" id="JJh-98-D5i"/>
+                                </constraints>
+                                <state key="normal" image="addFoto"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Елена Коновалова" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W4c-2Z-ERP">
+                                <rect key="frame" x="30" y="264" width="354" height="42"/>
+                                <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="36"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ООО «Газпромнефть»" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZJq-vK-mFS">
+                                <rect key="frame" x="30" y="306" width="354" height="19"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Kl-qH-a9W">
+                                <rect key="frame" x="0.0" y="355" width="414" height="105"/>
+                                <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="105" id="heK-hm-FPR"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HHi-Eh-fgN">
+                                <rect key="frame" x="25" y="355" width="389" height="0.5"/>
+                                <color key="backgroundColor" red="0.32941176470588235" green="0.32941176470588235" blue="0.34509803921568627" alpha="0.6545109160958904" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="0.5" id="xYd-nD-H53"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MYl-w0-uwV">
+                                <rect key="frame" x="25" y="407.5" width="389" height="0.5"/>
+                                <color key="backgroundColor" red="0.3294117647" green="0.3294117647" blue="0.34509803919999998" alpha="0.65451091610000001" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="0.5" id="mdt-KY-Fbw"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bZz-8T-hQh">
+                                <rect key="frame" x="25" y="460" width="389" height="0.5"/>
+                                <color key="backgroundColor" red="0.3294117647" green="0.3294117647" blue="0.34509803919999998" alpha="0.65451091610000001" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="0.5" id="6QI-Fv-lYY"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IML-2I-H68">
+                                <rect key="frame" x="141" y="799" width="132" height="33"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="Удалить аккаунт">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="ZJq-vK-mFS" firstAttribute="top" secondItem="W4c-2Z-ERP" secondAttribute="bottom" id="581-eb-sYv"/>
+                            <constraint firstItem="W6t-yA-v2Z" firstAttribute="trailing" secondItem="7e7-6B-KNs" secondAttribute="trailing" id="5YL-mf-tKk"/>
+                            <constraint firstItem="HHi-Eh-fgN" firstAttribute="top" secondItem="ZJq-vK-mFS" secondAttribute="bottom" constant="30" id="5h3-Y3-cfq"/>
+                            <constraint firstItem="5Kl-qH-a9W" firstAttribute="leading" secondItem="rZA-e9-Xze" secondAttribute="leading" id="6ra-Bc-RhM"/>
+                            <constraint firstItem="HHi-Eh-fgN" firstAttribute="leading" secondItem="X1I-CX-Bs0" secondAttribute="leadingMargin" constant="5" id="7Ej-4O-rMn"/>
+                            <constraint firstItem="7e7-6B-KNs" firstAttribute="centerX" secondItem="X1I-CX-Bs0" secondAttribute="centerX" id="9nW-Y9-Buz"/>
+                            <constraint firstItem="W4c-2Z-ERP" firstAttribute="top" secondItem="7e7-6B-KNs" secondAttribute="bottom" constant="20" id="Gbk-5c-U4E"/>
+                            <constraint firstItem="5Kl-qH-a9W" firstAttribute="top" secondItem="ZJq-vK-mFS" secondAttribute="bottom" constant="30" id="ILn-uU-zfX"/>
+                            <constraint firstItem="W6t-yA-v2Z" firstAttribute="bottom" secondItem="7e7-6B-KNs" secondAttribute="bottom" constant="-8" id="LNP-KT-F3r"/>
+                            <constraint firstItem="IML-2I-H68" firstAttribute="centerX" secondItem="X1I-CX-Bs0" secondAttribute="centerX" id="NJQ-Qc-qbr"/>
+                            <constraint firstItem="7e7-6B-KNs" firstAttribute="top" secondItem="rZA-e9-Xze" secondAttribute="top" constant="50" id="PSf-DZ-2cV"/>
+                            <constraint firstItem="ZJq-vK-mFS" firstAttribute="leading" secondItem="W4c-2Z-ERP" secondAttribute="leading" id="QRB-NA-H7c"/>
+                            <constraint firstItem="rZA-e9-Xze" firstAttribute="trailing" secondItem="W4c-2Z-ERP" secondAttribute="trailing" constant="30" id="QZC-83-Uje"/>
+                            <constraint firstItem="rZA-e9-Xze" firstAttribute="bottom" secondItem="IML-2I-H68" secondAttribute="bottom" constant="30" id="TLe-hI-5yR"/>
+                            <constraint firstAttribute="trailing" secondItem="HHi-Eh-fgN" secondAttribute="trailing" id="ZSv-MM-dE1"/>
+                            <constraint firstItem="W4c-2Z-ERP" firstAttribute="leading" secondItem="rZA-e9-Xze" secondAttribute="leading" constant="30" id="Zqo-Ga-ulu"/>
+                            <constraint firstAttribute="trailing" secondItem="MYl-w0-uwV" secondAttribute="trailing" id="cXp-T3-fsH"/>
+                            <constraint firstItem="bZz-8T-hQh" firstAttribute="leading" secondItem="X1I-CX-Bs0" secondAttribute="leading" constant="25" id="qEs-Vc-B8B"/>
+                            <constraint firstItem="MYl-w0-uwV" firstAttribute="top" secondItem="HHi-Eh-fgN" secondAttribute="bottom" constant="52" id="sbX-WB-kW6"/>
+                            <constraint firstItem="bZz-8T-hQh" firstAttribute="top" secondItem="MYl-w0-uwV" secondAttribute="bottom" constant="52" id="slI-hB-MZu"/>
+                            <constraint firstItem="ZJq-vK-mFS" firstAttribute="trailing" secondItem="W4c-2Z-ERP" secondAttribute="trailing" id="t15-rK-4jn"/>
+                            <constraint firstAttribute="trailing" secondItem="bZz-8T-hQh" secondAttribute="trailing" id="tOF-ew-kFI"/>
+                            <constraint firstItem="MYl-w0-uwV" firstAttribute="leading" secondItem="X1I-CX-Bs0" secondAttribute="leading" constant="25" id="ug9-ke-vDL"/>
+                            <constraint firstItem="5Kl-qH-a9W" firstAttribute="trailing" secondItem="rZA-e9-Xze" secondAttribute="trailing" id="xLz-kU-ErW"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="rZA-e9-Xze"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="m6y-dy-MqO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="289.85507246376812" y="-163.39285714285714"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="addFoto" width="12" height="12"/>
+        <image name="exampleProfile" width="150" height="150"/>
+    </resources>
+</document>

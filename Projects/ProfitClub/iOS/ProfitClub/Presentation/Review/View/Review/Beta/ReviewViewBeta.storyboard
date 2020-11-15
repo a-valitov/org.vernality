@@ -278,7 +278,11 @@
                             </connections>
                         </barButtonItem>
                         <rightBarButtonItems>
-                            <barButtonItem image="barItem" id="23L-dg-iwh"/>
+                            <barButtonItem image="barItem" id="23L-dg-iwh">
+                                <connections>
+                                    <action selector="actionsButtonAction:" destination="FI8-UX-LAe" id="H2X-YY-8gI"/>
+                                </connections>
+                            </barButtonItem>
                             <barButtonItem systemItem="add" id="QZq-o1-SGz">
                                 <connections>
                                     <action selector="addBarButtonAction:" destination="FI8-UX-LAe" id="T1W-FI-Le5"/>

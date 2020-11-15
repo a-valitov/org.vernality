@@ -157,4 +157,8 @@ private extension AppFactory {
     var membersFactory: MembersFactory {
         return MembersFactory(presenters: MembersPresenters(error: self.errorPresenter(), activity: self.activityPresenter()), services: MembersServices())
     }
+
+    var memberProfileFactory: MemberProfileFactory {
+        return MemberProfileFactory(presenters: MemberProfilePresenters(error: self.errorPresenter(), activity: self.activityPresenter()), services: MemberProfileServices())
+    }
 }

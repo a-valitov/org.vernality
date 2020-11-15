@@ -192,6 +192,14 @@
 		FAE888C425601D7D0023C232 /* OnboardResetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE888C325601D7D0023C232 /* OnboardResetPassword.swift */; };
 		FAE888C725601D960023C232 /* OnboardResetPasswordViewBeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE888C625601D960023C232 /* OnboardResetPasswordViewBeta.swift */; };
 		FAE888C925601DA70023C232 /* OnboardResetPasswordViewBeta.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAE888C825601DA70023C232 /* OnboardResetPasswordViewBeta.storyboard */; };
+		FAE888D3256141710023C232 /* MemberProfileFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE888D2256141710023C232 /* MemberProfileFactory.swift */; };
+		FAE888D52561418B0023C232 /* MemberProfileDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE888D42561418B0023C232 /* MemberProfileDependencies.swift */; };
+		FAE888D72561419D0023C232 /* MemberProfileModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE888D62561419D0023C232 /* MemberProfileModule.swift */; };
+		FAE888D9256141A90023C232 /* MemberProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE888D8256141A90023C232 /* MemberProfilePresenter.swift */; };
+		FAE888DB256141B70023C232 /* MemberProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE888DA256141B70023C232 /* MemberProfileRouter.swift */; };
+		FAE888DD256141C90023C232 /* MemberProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE888DC256141C90023C232 /* MemberProfileView.swift */; };
+		FAE888E0256141DD0023C232 /* MemberProfileViewBeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE888DF256141DD0023C232 /* MemberProfileViewBeta.swift */; };
+		FAE888E2256141E90023C232 /* MemberProfileViewBeta.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAE888E1256141E90023C232 /* MemberProfileViewBeta.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -385,6 +393,14 @@
 		FAE888C325601D7D0023C232 /* OnboardResetPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardResetPassword.swift; sourceTree = "<group>"; };
 		FAE888C625601D960023C232 /* OnboardResetPasswordViewBeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardResetPasswordViewBeta.swift; sourceTree = "<group>"; };
 		FAE888C825601DA70023C232 /* OnboardResetPasswordViewBeta.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OnboardResetPasswordViewBeta.storyboard; sourceTree = "<group>"; };
+		FAE888D2256141710023C232 /* MemberProfileFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberProfileFactory.swift; sourceTree = "<group>"; };
+		FAE888D42561418B0023C232 /* MemberProfileDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberProfileDependencies.swift; sourceTree = "<group>"; };
+		FAE888D62561419D0023C232 /* MemberProfileModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberProfileModule.swift; sourceTree = "<group>"; };
+		FAE888D8256141A90023C232 /* MemberProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberProfilePresenter.swift; sourceTree = "<group>"; };
+		FAE888DA256141B70023C232 /* MemberProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberProfileRouter.swift; sourceTree = "<group>"; };
+		FAE888DC256141C90023C232 /* MemberProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberProfileView.swift; sourceTree = "<group>"; };
+		FAE888DF256141DD0023C232 /* MemberProfileViewBeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberProfileViewBeta.swift; sourceTree = "<group>"; };
+		FAE888E1256141E90023C232 /* MemberProfileViewBeta.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MemberProfileViewBeta.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -808,6 +824,7 @@
 		0E90498424F60C740061A605 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				FAE888CC256141040023C232 /* MemberProfile */,
 				FA8CB872255AD30C00D09B1D /* AdminOrganization */,
 				FA8CB849255A7B1000D09B1D /* AdminOrganizations */,
 				FA8CB832255A5B6000D09B1D /* Admin */,
@@ -1715,6 +1732,69 @@
 			path = Beta;
 			sourceTree = "<group>";
 		};
+		FAE888CC256141040023C232 /* MemberProfile */ = {
+			isa = PBXGroup;
+			children = (
+				FAE888D0256141310023C232 /* Factory */,
+				FAE888CF2561412B0023C232 /* Presenter */,
+				FAE888CE256141260023C232 /* Router */,
+				FAE888CD256141210023C232 /* View */,
+			);
+			path = MemberProfile;
+			sourceTree = "<group>";
+		};
+		FAE888CD256141210023C232 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FAE888D1256141400023C232 /* MemberProfile */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FAE888CE256141260023C232 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				FAE888DA256141B70023C232 /* MemberProfileRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		FAE888CF2561412B0023C232 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				FAE888D62561419D0023C232 /* MemberProfileModule.swift */,
+				FAE888D8256141A90023C232 /* MemberProfilePresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		FAE888D0256141310023C232 /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				FAE888D2256141710023C232 /* MemberProfileFactory.swift */,
+				FAE888D42561418B0023C232 /* MemberProfileDependencies.swift */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
+		FAE888D1256141400023C232 /* MemberProfile */ = {
+			isa = PBXGroup;
+			children = (
+				FAE888DC256141C90023C232 /* MemberProfileView.swift */,
+				FAE888DE256141CE0023C232 /* Beta */,
+			);
+			path = MemberProfile;
+			sourceTree = "<group>";
+		};
+		FAE888DE256141CE0023C232 /* Beta */ = {
+			isa = PBXGroup;
+			children = (
+				FAE888DF256141DD0023C232 /* MemberProfileViewBeta.swift */,
+				FAE888E1256141E90023C232 /* MemberProfileViewBeta.storyboard */,
+			);
+			path = Beta;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1801,6 +1881,7 @@
 				0E56172E25372AF1005DF4F3 /* ActionsContainerViewBeta.storyboard in Resources */,
 				FAE888C925601DA70023C232 /* OnboardResetPasswordViewBeta.storyboard in Resources */,
 				FAD704BC2550156F00DE8AD7 /* ApplicationsViewBeta.storyboard in Resources */,
+				FAE888E2256141E90023C232 /* MemberProfileViewBeta.storyboard in Resources */,
 				FA8CB869255A867200D09B1D /* AdminOrganizationsApplicationsViewBeta.storyboard in Resources */,
 				FA8CB870255A87F000D09B1D /* AdminApprovedOrganizationsViewBeta.storyboard in Resources */,
 				0E56172725372A25005DF4F3 /* OrganizationTabBarViewBeta.storyboard in Resources */,
@@ -1887,6 +1968,7 @@
 				0E9049A224F62C870061A605 /* OnboardSupplierViewAlpha.swift in Sources */,
 				FA8CB896255ADA5800D09B1D /* AdminOrganizationModule.swift in Sources */,
 				FA8CB886255AD89D00D09B1D /* OrganizationApplicationViewBeta.swift in Sources */,
+				FAE888D52561418B0023C232 /* MemberProfileDependencies.swift in Sources */,
 				0E90499424F614390061A605 /* OnboardModule.swift in Sources */,
 				0E56174C25372D95005DF4F3 /* PastActionsViewBeta.swift in Sources */,
 				FA8CB851255A7B9300D09B1D /* AdminOrganizationsDependencies.swift in Sources */,
@@ -1907,12 +1989,14 @@
 				FA8CB8242558386600D09B1D /* MemberCurrentActionsTableViewCell.swift in Sources */,
 				0E4BD1E2250CF1E300F8D4C8 /* OnboardSupplierViewBeta.swift in Sources */,
 				0E506C3324FC1B9C00ABA211 /* ReviewDependencies.swift in Sources */,
+				FAE888D3256141710023C232 /* MemberProfileFactory.swift in Sources */,
 				FA8CB867255A866500D09B1D /* AdminOrganizationsApplicationsViewBeta.swift in Sources */,
 				FAE888C725601D960023C232 /* OnboardResetPasswordViewBeta.swift in Sources */,
 				FAD7049E25500F8000DE8AD7 /* MembersFactory.swift in Sources */,
 				0E506C2E24FC1A4600ABA211 /* ReviewPresenter.swift in Sources */,
 				FA8CB89A255ADA6E00D09B1D /* AdminOrganizationFactory.swift in Sources */,
 				FAD7048D254E89BB00DE8AD7 /* CommercialOfferDependencies.swift in Sources */,
+				FAE888DB256141B70023C232 /* MemberProfileRouter.swift in Sources */,
 				FABB6F06254682FD00B93FB8 /* ApproveCurrentActionView.swift in Sources */,
 				0E506C2C24FC184900ABA211 /* ReviewViewBetaMemberCell.swift in Sources */,
 				0E506C4624FCA6E300ABA211 /* OnboardSignIn.swift in Sources */,
@@ -1933,6 +2017,7 @@
 				FA8CB86B255A87D500D09B1D /* AdminApprovedOrganizationsView.swift in Sources */,
 				FA8CB82B25583E1900D09B1D /* MemberCurrentActionViewBeta.swift in Sources */,
 				FA8CB855255A7BB000D09B1D /* AdminOrganizationsPresenter.swift in Sources */,
+				FAE888D9256141A90023C232 /* MemberProfilePresenter.swift in Sources */,
 				0E90498724F60C980061A605 /* SelectRoleView.swift in Sources */,
 				0E6FBA622545AC7C00A2B882 /* ActionsDependencies.swift in Sources */,
 				FAD7048B254E89AC00DE8AD7 /* CommercialOfferFactory.swift in Sources */,
@@ -1940,6 +2025,7 @@
 				0E90498A24F60D250061A605 /* SelectRoleViewAlpha.swift in Sources */,
 				FA8CB89C255ADA7800D09B1D /* AdminOrganizationDependencies.swift in Sources */,
 				0E506C2824FC131700ABA211 /* ReviewViewBetaOrganizationCell.swift in Sources */,
+				FAE888E0256141DD0023C232 /* MemberProfileViewBeta.swift in Sources */,
 				FAE888C425601D7D0023C232 /* OnboardResetPassword.swift in Sources */,
 				FAD704B3255013FD00DE8AD7 /* MembersOfOrganizationViewBeta.swift in Sources */,
 				FA8CB82825583E0800D09B1D /* MemberCurrentActionView.swift in Sources */,
@@ -1959,6 +2045,7 @@
 				FAD7048F254E89C400DE8AD7 /* CommercialOfferModule.swift in Sources */,
 				FA8CB860255A7F2000D09B1D /* AdminOrganizationsContainerViewBeta.swift in Sources */,
 				FA566384253F39C200D19D4E /* SupplierModule.swift in Sources */,
+				FAE888DD256141C90023C232 /* MemberProfileView.swift in Sources */,
 				FA8CB85D255A7F0D00D09B1D /* AdminOrganizationsContainerView.swift in Sources */,
 				FA1C2BF125516652008F3994 /* PasActionsTableViewCell.swift in Sources */,
 				FA0955EF254C369300FFF835 /* SupplierCommercialOfferBeta.swift in Sources */,
@@ -1980,6 +2067,7 @@
 				FA15B70925473D5A00D29835 /* ActionModule.swift in Sources */,
 				FA56638B253F3AF500D19D4E /* SupplierView.swift in Sources */,
 				0E90499824F6160F0061A605 /* OnboardFactory.swift in Sources */,
+				FAE888D72561419D0023C232 /* MemberProfileModule.swift in Sources */,
 				FA8CB83A255A5BE600D09B1D /* AdminDependencies.swift in Sources */,
 				0E506C2124FC108800ABA211 /* ReviewView.swift in Sources */,
 				FAD70487254E894C00DE8AD7 /* ApproveCommercialOfferViewBeta.swift in Sources */,

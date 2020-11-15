@@ -89,7 +89,22 @@ final class ReviewViewBeta: UITableViewController {
     @IBAction func addBarButtonAction(_ sender: Any) {
         self.output?.review(view: self, userWantsToAdd: sender)
     }
-
+    @IBAction func actionsButtonAction(_ sender: Any) {
+//        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+//
+//        let logoutIcon = #imageLiteral(resourceName: "logout")
+//
+//        let logoutAction = UIAlertAction(title: "Выход", style: .default) { _ in
+//            self.output?.review(view: self, userWantsToLogout: sender)
+//        }
+//
+//        logoutAction.setValue(logoutIcon, forKey: "image")
+//        logoutAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+//
+//        alertController.addAction(logoutAction)
+//        present(alertController, animated: true)
+    }
+    
     private let organizationCellReuseIdentifier = "ReviewViewBetaOrganizationCellReuseIdentifier"
     private let memberCellReuseIdentifier = "ReviewViewBetaMemberCellReuseIdentifier"
     private let supplierCellReuseIdentifier = "ReviewViewBetaSupplierCellReuseIdentifier"
