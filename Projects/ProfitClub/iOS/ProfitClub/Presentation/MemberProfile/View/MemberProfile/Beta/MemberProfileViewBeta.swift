@@ -18,6 +18,24 @@ import UIKit
 
 final class MemberProfileViewBeta: UIViewController {
     var output: MemberProfileViewOutput?
+
+    @IBOutlet weak var memberImageView: UIImageView!
+    @IBOutlet weak var memberNameLabel: UILabel!
+    @IBOutlet weak var memberOrganizationNameLabel: UILabel!
+    @IBOutlet weak var memberEmailLabel: UILabel!
+    @IBOutlet weak var memberPhoneNumberLabel: UILabel!
+    @IBOutlet weak var addPhotoButton: UIButton!
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        memberNameLabel.adjustsFontSizeToFitWidth = true
+    }
+
+    @IBAction func addPhotoButtonTouchUpInside() {
+    }
+    
+    @IBAction func deleteAccountTouchUpInside(_ sender: Any) {
+    }
 }
 
 extension MemberProfileViewBeta: MemberProfileViewInput {

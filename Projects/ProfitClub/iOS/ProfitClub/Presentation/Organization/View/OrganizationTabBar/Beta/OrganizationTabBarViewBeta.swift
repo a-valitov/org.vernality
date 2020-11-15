@@ -28,5 +28,18 @@ final class OrganizationTabBarViewBeta: UITabBarController {
         let appearance = UITabBarItem.appearance()
         let attributes = [NSAttributedString.Key.font:UIFont(name: "Montserrat-Regular", size: 12)]
         appearance.setTitleTextAttributes(attributes as [NSAttributedString.Key : Any], for: .normal)
+
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named:"barItem"), style: .plain, target: self, action: #selector(editBarButtonItemAction))
+    }
+
+    @objc private func editBarButtonItemAction(_ sender: Any) {
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+
+        let profileAction = UIAlertAction(title: "Профиль", style: .default) { _ in
+            
+        }
+
+        alertController.addAction(profileAction)
+        present(alertController, animated: true)
     }
 }
