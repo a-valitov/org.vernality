@@ -33,13 +33,34 @@ final class OrganizationTabBarViewBeta: UITabBarController {
     }
 
     @objc private func editBarButtonItemAction(_ sender: Any) {
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        actionSheet.view.tintColor = .black
 
-        let profileAction = UIAlertAction(title: "Профиль", style: .default) { _ in
-            
+        let logoutIcon = #imageLiteral(resourceName: "logout")
+        let changeRoleIcon = #imageLiteral(resourceName: "refresh")
+        let profileIcon = #imageLiteral(resourceName: "profile")
+
+        let logout = UIAlertAction(title: "Выйти", style: .destructive) { _ in
+
         }
 
-        alertController.addAction(profileAction)
-        present(alertController, animated: true)
+        logout.setValue(logoutIcon.withRenderingMode(.alwaysOriginal), forKey: "image")
+
+        let changeRole = UIAlertAction(title: "Сменить роль", style: .default) { _ in
+
+        }
+
+        changeRole.setValue(changeRoleIcon.withRenderingMode(.alwaysOriginal), forKey: "image")
+
+        let profileAction = UIAlertAction(title: "Профиль", style: .default) { _ in
+            self.output?.organizationTabBar(view: self, tappedOn: sender)
+        }
+
+        profileAction.setValue(profileIcon.withRenderingMode(.alwaysOriginal), forKey: "image")
+
+        actionSheet.addAction(profileAction)
+        actionSheet.addAction(changeRole)
+        actionSheet.addAction(logout)
+        present(actionSheet, animated: true)
     }
 }

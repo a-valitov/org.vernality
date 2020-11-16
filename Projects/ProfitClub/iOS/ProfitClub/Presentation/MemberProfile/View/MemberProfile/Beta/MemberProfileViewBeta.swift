@@ -31,10 +31,67 @@ final class MemberProfileViewBeta: UIViewController {
         memberNameLabel.adjustsFontSizeToFitWidth = true
     }
 
+    override func viewWillLayoutSubviews() {
+        addPhotoButton.layer.cornerRadius = addPhotoButton.frame.height / 2
+        memberImageView.layer.cornerRadius = memberImageView.frame.height / 2
+    }
+
     @IBAction func addPhotoButtonTouchUpInside() {
+        let cameraIcon = #imageLiteral(resourceName: "camera")
+        let photoIcon = #imageLiteral(resourceName: "photo")
+
+        let actionSheet = UIAlertController(title: nil,
+                                            message: nil,
+                                            preferredStyle: .actionSheet)
+        actionSheet.view.tintColor = .black
+
+        let camera = UIAlertAction(title: "Камера", style: .default) { _ in
+            self.chooseImagePicker(source: .camera)
+        }
+
+        camera.setValue(cameraIcon, forKey: "image")
+        camera.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+
+        let photo = UIAlertAction(title: "Фото", style: .default) { _ in
+            self.chooseImagePicker(source: .photoLibrary)
+        }
+
+        photo.setValue(photoIcon, forKey: "image")
+        photo.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
+
+        let cancel = UIAlertAction(title: "Отменить", style: .cancel)
+
+        actionSheet.addAction(camera)
+        actionSheet.addAction(photo)
+        actionSheet.addAction(cancel)
+
+        present(actionSheet, animated: true)
     }
     
     @IBAction func deleteAccountTouchUpInside(_ sender: Any) {
+    }
+}
+
+extension MemberProfileViewBeta: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+
+    func chooseImagePicker(source: UIImagePickerController.SourceType) {
+        if UIImagePickerController.isSourceTypeAvailable(source) {
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            imagePicker.allowsEditing = true
+            imagePicker.sourceType = source
+            imagePicker.modalPresentationStyle = .fullScreen
+            present(imagePicker, animated: true)
+        }
+    }
+
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+
+        memberImageView.image = info[.editedImage] as? UIImage
+        memberImageView.contentMode = .scaleAspectFill
+        memberImageView.clipsToBounds = true
+
+        dismiss(animated: true)
     }
 }
 

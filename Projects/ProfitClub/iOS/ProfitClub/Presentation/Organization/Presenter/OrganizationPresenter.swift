@@ -41,7 +41,10 @@ final class OrganizationPresenter: OrganizationModule {
 }
 
 extension OrganizationPresenter: OrganizationTabBarViewOutput {
-    
+    func organizationTabBar(view: OrganizationTabBarViewInput, tappedOn profile: Any) {
+        self.output?.organization(module: self, userWantsToEnterProfile: self.router?.main)
+    }
+
 }
 
 extension OrganizationPresenter: ActionsModuleOutput {

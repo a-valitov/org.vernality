@@ -88,6 +88,11 @@ extension AppFactory {
         let module = self.memberFactory.make(output: output)
         return module
     }
+
+    func memberProfile(output: MemberProfileModuleOutput?) -> MemberProfileModule {
+        let module = self.memberProfileFactory.make(output: output)
+        return module
+    }
 }
 
 // MARK: - Factories

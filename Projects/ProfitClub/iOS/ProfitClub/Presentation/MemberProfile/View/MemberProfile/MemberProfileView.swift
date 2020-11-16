@@ -21,5 +21,5 @@ protocol MemberProfileViewInput: UIViewController {
 }
 
 protocol MemberProfileViewOutput {
-    
+
 }

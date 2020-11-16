@@ -20,4 +20,5 @@ protocol OrganizationTabBarViewInput: UIViewController {
 }
 
 protocol OrganizationTabBarViewOutput {
+    func organizationTabBar(view: OrganizationTabBarViewInput, tappedOn profile: Any)
 }
