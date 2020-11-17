@@ -25,4 +25,5 @@ protocol SupplierCommercialOfferInput: UIViewController {
 
 protocol SupplierCommercialOfferOutput {
     func supplierCommercialOfferDidFinish(view: SupplierCommercialOfferInput)
+    func supplierNavigationBar(view: SupplierCommercialOfferInput, tappedOn profile: Any)
 }

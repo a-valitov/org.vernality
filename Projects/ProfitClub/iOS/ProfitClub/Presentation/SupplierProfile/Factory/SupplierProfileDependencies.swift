@@ -1,5 +1,5 @@
 //  Copyright (C) 2020 Startup Studio Vernality
-//  Created by Macbook on 20.10.2020
+//  Created by Macbook on 17.11.2020
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -15,13 +15,14 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import Foundation
-import Main
-import ProfitClubModel
+import ErrorPresenter
+import ActivityPresenter
 
-protocol SupplierModule: class {
-    func open(in main: MainModule?)
+struct SupplierProfilePresenters {
+    let error: ErrorPresenter
+    let activity: ActivityPresenter
 }
 
-protocol SupplierModuleOutput: class {
-    func supplier(module: SupplierModule, userWantsToEnterProfileInside main: MainModule?)
+struct SupplierProfileServices {
+    
 }

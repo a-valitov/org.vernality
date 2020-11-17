@@ -141,6 +141,8 @@ final class SupplierActionsBeta: UIViewController {
 
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "barItem"), style: .plain, target: self, action: #selector(menuBarButtonItemAction))
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -150,6 +152,38 @@ final class SupplierActionsBeta: UIViewController {
             addActionImageView.setTitleColor(.white, for: .normal)
             addActionImageView.imageView?.isHidden = true
         }
+    }
+
+    @objc private func menuBarButtonItemAction(_ sender: Any) {
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        actionSheet.view.tintColor = .black
+
+        let logoutIcon = #imageLiteral(resourceName: "logout")
+        let changeRoleIcon = #imageLiteral(resourceName: "refresh")
+        let profileIcon = #imageLiteral(resourceName: "profile")
+
+        let logout = UIAlertAction(title: "Выйти", style: .cancel) { _ in
+
+        }
+
+        logout.setValue(logoutIcon.withRenderingMode(.alwaysOriginal), forKey: "image")
+
+        let changeRole = UIAlertAction(title: "Сменить роль", style: .default) { _ in
+
+        }
+
+        changeRole.setValue(changeRoleIcon.withRenderingMode(.alwaysOriginal), forKey: "image")
+
+        let profileAction = UIAlertAction(title: "Профиль", style: .default) { _ in
+            self.output?.supplierNavigationBar(view: self, tappedOn: sender)
+        }
+
+        profileAction.setValue(profileIcon.withRenderingMode(.alwaysOriginal), forKey: "image")
+
+        actionSheet.addAction(profileAction)
+        actionSheet.addAction(changeRole)
+        actionSheet.addAction(logout)
+        present(actionSheet, animated: true)
     }
 
     @objc func keyboardWillShow(notification: NSNotification) {

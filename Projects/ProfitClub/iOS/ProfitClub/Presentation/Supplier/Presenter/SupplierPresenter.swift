@@ -53,9 +53,17 @@ extension SupplierPresenter: SupplierViewOutput {
     func supplier(view: SupplierViewInput, wantsToCreateCommercialOffer sender: Any) {
         self.router?.openSupplierCommercialOffer(output: self)
     }
+
+    func supplierNavigationBar(view: SupplierViewInput, tappedOn profile: Any) {
+        self.output?.supplier(module: self, userWantsToEnterProfileInside: self.router?.main)
+    }
 }
 
 extension SupplierPresenter: SupplierActionsOutput {
+    func supplierNavigationBar(view: SupplierActionsInput, tappedOn profile: Any) {
+        self.output?.supplier(module: self, userWantsToEnterProfileInside: self.router?.main)
+    }
+
     func supplierActionsDidFinish(view: SupplierActionsInput) {
         guard let message = view.message, !message.isEmpty else {
             self.presenters.error.present(SupplierError.actionMessageIsEmpty)
@@ -106,6 +114,10 @@ extension SupplierPresenter: SupplierActionsOutput {
 }
 
 extension SupplierPresenter: SupplierCommercialOfferOutput {
+    func supplierNavigationBar(view: SupplierCommercialOfferInput, tappedOn profile: Any) {
+        self.output?.supplier(module: self, userWantsToEnterProfileInside: self.router?.main)
+    }
+    
     func supplierCommercialOfferDidFinish(view: SupplierCommercialOfferInput) {
         guard let message = view.message, !message.isEmpty else {
             self.presenters.error.present(SupplierError.actionMessageIsEmpty)

@@ -91,6 +91,8 @@ final class SupplierCommercialOfferBeta: UIViewController {
         super.viewDidLoad()
         messageTextView.delegate = self
         messageTextView.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 20)
+
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "barItem"), style: .plain, target: self, action: #selector(menuBarButtonItemAction))
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -101,6 +103,38 @@ final class SupplierCommercialOfferBeta: UIViewController {
             addCommercialOfferImage.imageView?.isHidden = true
         }
         UINavigationBar.appearance().tintColor = .white
+    }
+
+    @objc private func menuBarButtonItemAction(_ sender: Any) {
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        actionSheet.view.tintColor = .black
+
+        let logoutIcon = #imageLiteral(resourceName: "logout")
+        let changeRoleIcon = #imageLiteral(resourceName: "refresh")
+        let profileIcon = #imageLiteral(resourceName: "profile")
+
+        let logout = UIAlertAction(title: "Выйти", style: .cancel) { _ in
+
+        }
+
+        logout.setValue(logoutIcon.withRenderingMode(.alwaysOriginal), forKey: "image")
+
+        let changeRole = UIAlertAction(title: "Сменить роль", style: .default) { _ in
+
+        }
+
+        changeRole.setValue(changeRoleIcon.withRenderingMode(.alwaysOriginal), forKey: "image")
+
+        let profileAction = UIAlertAction(title: "Профиль", style: .default) { _ in
+            self.output?.supplierNavigationBar(view: self, tappedOn: sender)
+        }
+
+        profileAction.setValue(profileIcon.withRenderingMode(.alwaysOriginal), forKey: "image")
+
+        actionSheet.addAction(profileAction)
+        actionSheet.addAction(changeRole)
+        actionSheet.addAction(logout)
+        present(actionSheet, animated: true)
     }
 }
 

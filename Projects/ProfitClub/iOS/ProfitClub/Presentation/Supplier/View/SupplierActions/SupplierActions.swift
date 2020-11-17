@@ -27,4 +27,5 @@ protocol SupplierActionsInput: UIViewController {
 
 protocol SupplierActionsOutput {
     func supplierActionsDidFinish(view: SupplierActionsInput)
+    func supplierNavigationBar(view: SupplierActionsInput, tappedOn profile: Any)
 }

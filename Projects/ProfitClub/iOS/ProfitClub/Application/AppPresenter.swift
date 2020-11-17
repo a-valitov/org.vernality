@@ -145,6 +145,11 @@ extension AppPresenter: OrganizationModuleOutput {
 }
 
 extension AppPresenter: SupplierModuleOutput {
+    func supplier(module: SupplierModule, userWantsToEnterProfileInside main: MainModule?) {
+        let profile = self.factory.supplierProfile(output: self)
+        profile.open(in: main)
+    }
+
 }
 
 extension AppPresenter: MemberModuleOutput {
@@ -159,5 +164,9 @@ extension AppPresenter: MemberProfileModuleOutput {
 }
 
 extension AppPresenter: OrganizationProfileModuleOutput {
+
+}
+
+extension AppPresenter: SupplierProfileModuleOutput {
 
 }

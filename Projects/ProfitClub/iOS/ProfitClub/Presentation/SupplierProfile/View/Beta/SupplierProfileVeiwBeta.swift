@@ -16,19 +16,19 @@
 
 import UIKit
 
-final class OrganizationProfileViewBeta: UIViewController {
-    var output: OrganizationProfileViewOutput?
-    @IBOutlet weak var organizationImageView: UIImageView!
-    @IBOutlet weak var organizationNameLabel: UILabel!
-    @IBOutlet weak var organizationINNLabel: UILabel!
-    @IBOutlet weak var organizationContactNameLabel: UILabel!
-    @IBOutlet weak var organizationEmailLabel: UILabel!
-    @IBOutlet weak var organizationPhoneNumberLabel: UILabel!
+final class SupplierProfileViewBeta: UIViewController {
+    var output: SupplierProfileViewOutput?
+    @IBOutlet weak var supplierImageView: UIImageView!
+    @IBOutlet weak var supplierNameLabel: UILabel!
+    @IBOutlet weak var suplierINNLabel: UILabel!
+    @IBOutlet weak var supplierContactNameLabel: UILabel!
+    @IBOutlet weak var supplierEmailLabel: UILabel!
+    @IBOutlet weak var supplierPhoneNumberLabel: UILabel!
     @IBOutlet weak var addPhotoButton: UIButton!
 
     override func viewWillLayoutSubviews() {
         addPhotoButton.layer.cornerRadius = addPhotoButton.frame.height / 2
-        organizationImageView.layer.cornerRadius = organizationImageView.frame.height / 2
+        supplierImageView.layer.cornerRadius = supplierImageView.frame.height / 2
     }
 
     @IBAction func addPhotoButtonTouchUpInside() {
@@ -64,11 +64,10 @@ final class OrganizationProfileViewBeta: UIViewController {
     }
 
     @IBAction func deleteAccountTouchUpInside(_ sender: Any) {
-
     }
 }
 
-extension OrganizationProfileViewBeta: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension SupplierProfileViewBeta: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     func chooseImagePicker(source: UIImagePickerController.SourceType) {
         if UIImagePickerController.isSourceTypeAvailable(source) {
@@ -83,14 +82,14 @@ extension OrganizationProfileViewBeta: UIImagePickerControllerDelegate, UINaviga
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
 
-        organizationImageView.image = info[.editedImage] as? UIImage
-        organizationImageView.contentMode = .scaleAspectFill
-        organizationImageView.clipsToBounds = true
+        supplierImageView.image = info[.editedImage] as? UIImage
+        supplierImageView.contentMode = .scaleAspectFill
+        supplierImageView.clipsToBounds = true
 
         dismiss(animated: true)
     }
 }
 
-extension OrganizationProfileViewBeta: OrganizationProfileViewInput {
-    
+extension SupplierProfileViewBeta: SupplierProfileViewInput {
+
 }
