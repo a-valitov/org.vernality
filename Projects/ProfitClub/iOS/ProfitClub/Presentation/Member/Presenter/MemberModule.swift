@@ -24,4 +24,5 @@ protocol MemberModule: class {
 
 protocol MemberModuleOutput: class {
     func member(module: MemberModule, userWantsToEnterProfileInside main: MainModule?)
+    func member(module: MemberModule, userWantsToLogoutInside main: MainModule?)
 }

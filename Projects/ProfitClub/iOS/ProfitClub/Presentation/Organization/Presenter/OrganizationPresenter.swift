@@ -45,6 +45,14 @@ extension OrganizationPresenter: OrganizationTabBarViewOutput {
         self.output?.organization(module: self, userWantsToEnterProfile: self.router?.main)
     }
 
+    func organizationTabBar(view: OrganizationTabBarViewInput, userWantsToLogout sender: Any) {
+        view.showLogoutConfirmationDialog()
+    }
+
+    func organizationTabBar(view: OrganizationTabBarViewInput, userConfirmToLogout sender: Any) {
+        self.output?.organization(module: self, userWantsToLogoutInside: self.router?.main)
+    }
+
 }
 
 extension OrganizationPresenter: ActionsModuleOutput {

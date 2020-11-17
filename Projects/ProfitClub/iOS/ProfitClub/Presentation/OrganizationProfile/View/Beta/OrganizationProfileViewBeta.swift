@@ -25,7 +25,13 @@ final class OrganizationProfileViewBeta: UIViewController {
     @IBOutlet weak var organizationEmailLabel: UILabel!
     @IBOutlet weak var organizationPhoneNumberLabel: UILabel!
     @IBOutlet weak var addPhotoButton: UIButton!
+    @IBOutlet weak var deleteAccountButton: UIButton!
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        deleteAccountButton.titleLabel?.attributedText = NSAttributedString(string: "Удалить аккаунт", attributes: [.underlineStyle: NSUnderlineStyle.thick.rawValue])
+    }
+    
     override func viewWillLayoutSubviews() {
         addPhotoButton.layer.cornerRadius = addPhotoButton.frame.height / 2
         organizationImageView.layer.cornerRadius = organizationImageView.frame.height / 2

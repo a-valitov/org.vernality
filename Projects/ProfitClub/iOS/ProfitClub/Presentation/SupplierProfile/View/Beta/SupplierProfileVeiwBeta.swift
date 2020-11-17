@@ -25,6 +25,11 @@ final class SupplierProfileViewBeta: UIViewController {
     @IBOutlet weak var supplierEmailLabel: UILabel!
     @IBOutlet weak var supplierPhoneNumberLabel: UILabel!
     @IBOutlet weak var addPhotoButton: UIButton!
+    @IBOutlet weak var deleteAccountButton: UIButton!
+
+    override func viewDidLoad() {
+        deleteAccountButton.titleLabel?.attributedText = NSAttributedString(string: "Удалить аккаунт", attributes: [.underlineStyle: NSUnderlineStyle.thick.rawValue])
+    }
 
     override func viewWillLayoutSubviews() {
         addPhotoButton.layer.cornerRadius = addPhotoButton.frame.height / 2

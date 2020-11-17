@@ -24,4 +24,5 @@ protocol SupplierModule: class {
 
 protocol SupplierModuleOutput: class {
     func supplier(module: SupplierModule, userWantsToEnterProfileInside main: MainModule?)
+    func supplier(module: SupplierModule, userWantsToLogoutInside main: MainModule?)
 }

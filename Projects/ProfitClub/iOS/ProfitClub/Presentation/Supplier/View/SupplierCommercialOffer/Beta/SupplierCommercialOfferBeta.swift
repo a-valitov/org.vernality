@@ -113,8 +113,8 @@ final class SupplierCommercialOfferBeta: UIViewController {
         let changeRoleIcon = #imageLiteral(resourceName: "refresh")
         let profileIcon = #imageLiteral(resourceName: "profile")
 
-        let logout = UIAlertAction(title: "Выйти", style: .cancel) { _ in
-
+        let logout = UIAlertAction(title: "Выйти", style: .default) { _ in
+            self.output?.supplierCommercialOffer(view: self, userWantsToLogout: sender)
         }
 
         logout.setValue(logoutIcon.withRenderingMode(.alwaysOriginal), forKey: "image")
@@ -131,9 +131,12 @@ final class SupplierCommercialOfferBeta: UIViewController {
 
         profileAction.setValue(profileIcon.withRenderingMode(.alwaysOriginal), forKey: "image")
 
+        let cancelAction = UIAlertAction(title: "Отменить", style: .cancel)
+
         actionSheet.addAction(profileAction)
         actionSheet.addAction(changeRole)
         actionSheet.addAction(logout)
+        actionSheet.addAction(cancelAction)
         present(actionSheet, animated: true)
     }
 }
@@ -229,5 +232,25 @@ extension SupplierCommercialOfferBeta: UICollectionViewDelegate, UICollectionVie
 }
 
 extension SupplierCommercialOfferBeta: SupplierCommercialOfferInput {
-    
+    func showLogoutConfirmationDialog() {
+        var blurEffect = UIBlurEffect()
+        blurEffect = UIBlurEffect(style: .dark)
+        let blurVisualEffectView = UIVisualEffectView(effect: blurEffect)
+        blurVisualEffectView.frame = view.bounds
+        blurVisualEffectView.alpha = 0.9
+        self.view.addSubview(blurVisualEffectView)
+        let controller = UIAlertController(title: "Подтвердите выход", message: "Вы уверены что хотите выйти?", preferredStyle: .alert)
+
+        controller.addAction(UIAlertAction(title: "Выйти", style: .destructive, handler: { [weak self] _ in
+            guard let sSelf = self else { return }
+            self?.output?.supplierCommercialOffer(view: sSelf, userConfirmToLogout: controller)
+            blurVisualEffectView.removeFromSuperview()
+        }))
+
+        controller.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: { _ in
+            blurVisualEffectView.removeFromSuperview()
+        }))
+
+        self.present(controller, animated: true)
+    }
 }

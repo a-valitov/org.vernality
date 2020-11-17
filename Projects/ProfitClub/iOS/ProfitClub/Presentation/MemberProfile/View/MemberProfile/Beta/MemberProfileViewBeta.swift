@@ -25,9 +25,12 @@ final class MemberProfileViewBeta: UIViewController {
     @IBOutlet weak var memberEmailLabel: UILabel!
     @IBOutlet weak var memberPhoneNumberLabel: UILabel!
     @IBOutlet weak var addPhotoButton: UIButton!
+    @IBOutlet weak var deleteAccountButton: UIButton!
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        deleteAccountButton.titleLabel?.attributedText = NSAttributedString(string: "Удалить аккаунт", attributes: [.underlineStyle: NSUnderlineStyle.thick.rawValue])
 
     }
 

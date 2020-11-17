@@ -164,6 +164,7 @@
                     </view>
                     <connections>
                         <outlet property="addPhotoButton" destination="W6t-yA-v2Z" id="VWQ-1R-z1A"/>
+                        <outlet property="deleteAccountButton" destination="IML-2I-H68" id="Q60-Oa-6hR"/>
                         <outlet property="memberEmailLabel" destination="blb-n8-1PX" id="zd4-Sy-Eud"/>
                         <outlet property="memberImageView" destination="7e7-6B-KNs" id="tnY-Q6-BSQ"/>
                         <outlet property="memberNameLabel" destination="W4c-2Z-ERP" id="VG5-uZ-woE"/>

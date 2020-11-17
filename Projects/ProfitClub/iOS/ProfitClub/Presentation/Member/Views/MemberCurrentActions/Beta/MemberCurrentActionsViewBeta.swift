@@ -34,6 +34,17 @@ final class MemberCurrentActionsViewBeta: UITableViewController {
         tableView.tableFooterView = UIView()
 
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "barItem"), style: .plain, target: self, action: #selector(menuBarButtonItemAction))
+
+        let label = UILabel()
+        label.textColor = UIColor.white
+        label.text = "Profit Club"
+        label.font = UIFont(name: "PlayfairDisplay-Bold", size: 25)
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: label)
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.barTintColor = .black
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -69,8 +80,8 @@ final class MemberCurrentActionsViewBeta: UITableViewController {
         let changeRoleIcon = #imageLiteral(resourceName: "refresh")
         let profileIcon = #imageLiteral(resourceName: "profile")
 
-        let logout = UIAlertAction(title: "Выйти", style: .cancel) { _ in
-
+        let logout = UIAlertAction(title: "Выйти", style: .default) { _ in
+            self.output?.memberCurrentActions(view: self, userWantsToLogout: sender)
         }
 
         logout.setValue(logoutIcon.withRenderingMode(.alwaysOriginal), forKey: "image")
@@ -87,14 +98,37 @@ final class MemberCurrentActionsViewBeta: UITableViewController {
 
         profileAction.setValue(profileIcon.withRenderingMode(.alwaysOriginal), forKey: "image")
 
+        let cancelAction = UIAlertAction(title: "Отменить", style: .cancel)
+
         actionSheet.addAction(profileAction)
         actionSheet.addAction(changeRole)
         actionSheet.addAction(logout)
+        actionSheet.addAction(cancelAction)
         present(actionSheet, animated: true)
     }
 
 }
 
 extension MemberCurrentActionsViewBeta: MemberCurrentActionsViewInput {
+    func showLogoutConfirmationDialog() {
+        var blurEffect = UIBlurEffect()
+        blurEffect = UIBlurEffect(style: .dark)
+        let blurVisualEffectView = UIVisualEffectView(effect: blurEffect)
+        blurVisualEffectView.frame = view.bounds
+        blurVisualEffectView.alpha = 0.9
+        self.view.addSubview(blurVisualEffectView)
+        let controller = UIAlertController(title: "Подтвердите выход", message: "Вы уверены что хотите выйти?", preferredStyle: .alert)
 
+        controller.addAction(UIAlertAction(title: "Выйти", style: .destructive, handler: { [weak self] _ in
+            guard let sSelf = self else { return }
+            self?.output?.memberCurrentActions(view: sSelf, userConfirmToLogout: controller)
+            blurVisualEffectView.removeFromSuperview()
+        }))
+
+        controller.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: { _ in
+            blurVisualEffectView.removeFromSuperview()
+        }))
+
+        self.present(controller, animated: true)
+    }
 }

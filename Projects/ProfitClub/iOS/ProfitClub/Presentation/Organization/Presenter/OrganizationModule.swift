@@ -23,4 +23,5 @@ protocol OrganizationModule: class {
 
 protocol OrganizationModuleOutput: class {
     func organization(module: OrganizationModule, userWantsToEnterProfile profile: MainModule?)
+    func organization(module: OrganizationModule, userWantsToLogoutInside main: MainModule?)
 }

@@ -40,6 +40,14 @@ final class MemberPresenter: MemberModule {
 }
 
 extension MemberPresenter: MemberCurrentActionsViewOutput {
+    func memberCurrentActions(view: MemberCurrentActionsViewInput, userWantsToLogout sender: Any) {
+        view.showLogoutConfirmationDialog()
+    }
+
+    func memberCurrentActions(view: MemberCurrentActionsViewInput, userConfirmToLogout sender: Any) {
+        self.output?.member(module: self, userWantsToLogoutInside: self.router?.main)
+    }
+
     func memberCurrentActionsDidLoad(view: MemberCurrentActionsViewInput) {
         self.services.action.fetchApproved { [weak self] result in
             switch result {

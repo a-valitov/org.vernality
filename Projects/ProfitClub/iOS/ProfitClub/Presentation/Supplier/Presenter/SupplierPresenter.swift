@@ -57,6 +57,14 @@ extension SupplierPresenter: SupplierViewOutput {
     func supplierNavigationBar(view: SupplierViewInput, tappedOn profile: Any) {
         self.output?.supplier(module: self, userWantsToEnterProfileInside: self.router?.main)
     }
+
+    func supplier(view: SupplierViewInput, userWantsToLogout sender: Any) {
+        view.showLogoutConfirmationDialog()
+    }
+
+    func supplier(view: SupplierViewInput, userConfirmToLogout sender: Any) {
+        self.output?.supplier(module: self, userWantsToLogoutInside: self.router?.main)
+    }
 }
 
 extension SupplierPresenter: SupplierActionsOutput {
@@ -111,6 +119,14 @@ extension SupplierPresenter: SupplierActionsOutput {
             }
         }
     }
+
+    func supplierActions(view: SupplierActionsInput, userWantsToLogout sender: Any) {
+        view.showLogoutConfirmationDialog()
+    }
+
+    func supplierActions(view: SupplierActionsInput, userConfirmLogout sender: Any) {
+        self.output?.supplier(module: self, userWantsToLogoutInside: self.router?.main)
+    }
 }
 
 extension SupplierPresenter: SupplierCommercialOfferOutput {
@@ -140,5 +156,13 @@ extension SupplierPresenter: SupplierCommercialOfferOutput {
                 self?.presenters.error.present(error)
             }
         }
+    }
+
+    func supplierCommercialOffer(view: SupplierCommercialOfferInput, userWantsToLogout sender: Any) {
+        view.showLogoutConfirmationDialog()
+    }
+
+    func supplierCommercialOffer(view: SupplierCommercialOfferInput, userConfirmToLogout sender: Any) {
+        self.output?.supplier(module: self, userWantsToLogoutInside: self.router?.main)
     }
 }

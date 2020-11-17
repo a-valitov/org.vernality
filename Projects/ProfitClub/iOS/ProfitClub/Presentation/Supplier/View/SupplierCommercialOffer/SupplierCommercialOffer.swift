@@ -21,9 +21,13 @@ protocol SupplierCommercialOfferInput: UIViewController {
     var image: UIImage? { get }
     var attachments: [Data] { get }
     var attachmentNames: [String] { get }
+
+    func showLogoutConfirmationDialog()
 }
 
 protocol SupplierCommercialOfferOutput {
     func supplierCommercialOfferDidFinish(view: SupplierCommercialOfferInput)
     func supplierNavigationBar(view: SupplierCommercialOfferInput, tappedOn profile: Any)
+    func supplierCommercialOffer(view: SupplierCommercialOfferInput, userWantsToLogout sender: Any)
+    func supplierCommercialOffer(view: SupplierCommercialOfferInput, userConfirmToLogout sender: Any)
 }

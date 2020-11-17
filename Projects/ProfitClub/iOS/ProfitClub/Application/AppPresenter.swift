@@ -142,9 +142,34 @@ extension AppPresenter: OrganizationModuleOutput {
         profile.open(in: main)
     }
 
+    func organization(module: OrganizationModule, userWantsToLogoutInside main: MainModule?) {
+        self.userService.logout { [weak self] result in
+            switch result {
+            case .failure(let error):
+                self?.errorPresenter.present(error)
+            case .success:
+                main?.unwindToRoot()
+                let onboard = self?.factory.onboard(output: self)
+                onboard?.start(in: main)
+            }
+        }
+    }
 }
 
 extension AppPresenter: SupplierModuleOutput {
+    func supplier(module: SupplierModule, userWantsToLogoutInside main: MainModule?) {
+        self.userService.logout { [weak self] result in
+            switch result {
+            case .failure(let error):
+                self?.errorPresenter.present(error)
+            case .success:
+                main?.unwindToRoot()
+                let onboard = self?.factory.onboard(output: self)
+                onboard?.start(in: main)
+            }
+        }
+    }
+
     func supplier(module: SupplierModule, userWantsToEnterProfileInside main: MainModule?) {
         let profile = self.factory.supplierProfile(output: self)
         profile.open(in: main)
@@ -156,6 +181,19 @@ extension AppPresenter: MemberModuleOutput {
     func member(module: MemberModule, userWantsToEnterProfileInside main: MainModule?) {
         let profile = self.factory.memberProfile(output: self)
         profile.open(in: main)
+    }
+
+    func member(module: MemberModule, userWantsToLogoutInside main: MainModule?) {
+        self.userService.logout { [weak self] result in
+            switch result {
+            case .failure(let error):
+                self?.errorPresenter.present(error)
+            case .success:
+                main?.unwindToRoot()
+                let onboard = self?.factory.onboard(output: self)
+                onboard?.start(in: main)
+            }
+        }
     }
 }
 

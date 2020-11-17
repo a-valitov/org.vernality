@@ -77,6 +77,11 @@ final class ReviewViewBeta: UITableViewController {
 //        self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: label)
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.barTintColor = .black
+    }
+
     @IBAction func pullToRefreshValueChanged(_ sender: UIRefreshControl) {
         self.output?.review(view: self, userWantsToRefresh: sender)
         sender.endRefreshing()

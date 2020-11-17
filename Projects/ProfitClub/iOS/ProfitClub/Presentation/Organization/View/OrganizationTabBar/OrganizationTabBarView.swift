@@ -17,8 +17,11 @@
 import UIKit
 
 protocol OrganizationTabBarViewInput: UIViewController {
+    func showLogoutConfirmationDialog()
 }
 
 protocol OrganizationTabBarViewOutput {
     func organizationTabBar(view: OrganizationTabBarViewInput, tappedOn profile: Any)
+    func organizationTabBar(view: OrganizationTabBarViewInput, userWantsToLogout sender: Any)
+    func organizationTabBar(view: OrganizationTabBarViewInput, userConfirmToLogout sender: Any)
 }

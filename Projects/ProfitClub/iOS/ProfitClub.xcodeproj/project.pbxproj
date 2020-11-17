@@ -862,7 +862,6 @@
 				FA8CB872255AD30C00D09B1D /* AdminOrganization */,
 				FA8CB849255A7B1000D09B1D /* AdminOrganizations */,
 				FA8CB832255A5B6000D09B1D /* Admin */,
-				FA8CB8042558048B00D09B1D /* Member */,
 				FAD7049625500EE100DE8AD7 /* Members */,
 				FAD7047D254E824900DE8AD7 /* CommercialOffer */,
 				FA6E8BB6254D9617007B8B4E /* CommercialOffers */,
@@ -871,6 +870,7 @@
 				0E90498B24F613DF0061A605 /* Onboard */,
 				0E56171F253729AC005DF4F3 /* Organization */,
 				FA56637A253F33FE00D19D4E /* Supplier */,
+				FA8CB8042558048B00D09B1D /* Member */,
 				0E506C1824FC0D7300ABA211 /* Review */,
 			);
 			path = Presentation;

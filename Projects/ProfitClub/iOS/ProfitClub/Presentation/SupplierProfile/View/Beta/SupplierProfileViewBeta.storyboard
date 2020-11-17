@@ -206,6 +206,7 @@
                     </view>
                     <connections>
                         <outlet property="addPhotoButton" destination="kwY-BR-gpt" id="kTL-Mo-TsX"/>
+                        <outlet property="deleteAccountButton" destination="gEe-58-b8T" id="bfP-ND-ahJ"/>
                         <outlet property="suplierINNLabel" destination="7eB-EO-EyM" id="yMf-QX-TR7"/>
                         <outlet property="supplierContactNameLabel" destination="js6-qf-eNe" id="haC-CF-74G"/>
                         <outlet property="supplierEmailLabel" destination="4tP-Mp-hIP" id="Nac-DX-eJB"/>
