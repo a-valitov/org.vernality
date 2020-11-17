@@ -31,13 +31,13 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ООО «Газпромнефть»" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="feg-va-6tU">
-                                <rect key="frame" x="30" y="264" width="354" height="88"/>
+                                <rect key="frame" x="30" y="264" width="354" height="84"/>
                                 <fontDescription key="fontDescription" name="Montserrat-SemiBold" family="Montserrat" pointSize="36"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="chU-tH-y3O">
-                                <rect key="frame" x="0.0" y="382" width="414" height="210"/>
+                                <rect key="frame" x="0.0" y="378" width="414" height="210"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fsm-1Q-iiH">
                                         <rect key="frame" x="25" y="0.0" width="389" height="0.5"/>
@@ -75,49 +75,49 @@
                                         </constraints>
                                     </view>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ИНН:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lw8-qW-6xC">
-                                        <rect key="frame" x="25" y="16.5" width="43" height="20"/>
+                                        <rect key="frame" x="25" y="16.5" width="39.5" height="19"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
                                         <color key="textColor" red="0.098039215690000001" green="0.094117647060000004" blue="0.094117647060000004" alpha="0.69729238010000005" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ФИО:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nVL-5r-vjz">
-                                        <rect key="frame" x="25" y="69" width="45" height="20"/>
+                                        <rect key="frame" x="25" y="69" width="42.5" height="19"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
                                         <color key="textColor" red="0.098039215690000001" green="0.094117647060000004" blue="0.094117647060000004" alpha="0.69729238010000005" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Почта:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dLg-u5-P5v">
-                                        <rect key="frame" x="25" y="121.5" width="54" height="20"/>
+                                        <rect key="frame" x="25" y="121.5" width="49.5" height="19"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
                                         <color key="textColor" red="0.098039215690000001" green="0.094117647060000004" blue="0.094117647060000004" alpha="0.69729238010000005" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Телефон:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2gp-kk-3mN">
-                                        <rect key="frame" x="25" y="174" width="76" height="20"/>
+                                        <rect key="frame" x="25" y="174" width="71" height="19"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="16"/>
                                         <color key="textColor" red="0.098039215690000001" green="0.094117647060000004" blue="0.094117647060000004" alpha="0.69729238010000005" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="123124324213242" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h8e-g3-ACs">
-                                        <rect key="frame" x="248" y="15.5" width="146" height="22"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="123124324213242" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h8e-g3-ACs">
+                                        <rect key="frame" x="243.5" y="15.5" width="150.5" height="21"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Кремний Андрей Викторович" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oUx-io-fp3">
-                                        <rect key="frame" x="110.5" y="68" width="283.5" height="22"/>
+                                        <rect key="frame" x="144.5" y="68" width="249.5" height="21"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lena.Kon@yandex.ru" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CsM-Wr-gNI">
-                                        <rect key="frame" x="203" y="120.5" width="191" height="22"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lena.Kon@yandex.ru" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CsM-Wr-gNI">
+                                        <rect key="frame" x="223.5" y="120.5" width="170.5" height="21"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+99507770707" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O2d-se-zIy">
-                                        <rect key="frame" x="263" y="173" width="131" height="22"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+99507770707" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O2d-se-zIy">
+                                        <rect key="frame" x="273" y="173" width="121" height="21"/>
                                         <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -164,29 +164,55 @@
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AsW-Ve-2IX">
-                                <rect key="frame" x="147" y="802" width="120" height="30"/>
+                                <rect key="frame" x="152" y="803" width="110" height="29"/>
                                 <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="14"/>
                                 <state key="normal" title="Удалить аккаунт">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="deleteAccountTouchUpInside:" destination="CgV-Ac-x2E" eventType="touchUpInside" id="pMp-JC-vPw"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qqI-fc-Sbc">
+                                <rect key="frame" x="247" y="201" width="35" height="35"/>
+                                <color key="backgroundColor" red="0.92941176470588238" green="0.92941176470588238" blue="0.92941176470588238" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="qqI-fc-Sbc" secondAttribute="height" multiplier="1:1" id="2th-Qf-HGC"/>
+                                </constraints>
+                                <state key="normal" image="addFoto"/>
+                                <connections>
+                                    <action selector="addPhotoButtonTouchUpInside" destination="CgV-Ac-x2E" eventType="touchUpInside" id="CeR-sd-fcI"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="1Tm-XO-HSg" firstAttribute="trailing" secondItem="chU-tH-y3O" secondAttribute="trailing" id="0Jx-Oi-ffJ"/>
                             <constraint firstItem="4I2-O2-uuM" firstAttribute="top" secondItem="1Tm-XO-HSg" secondAttribute="top" constant="50" id="6KF-fS-qnS"/>
+                            <constraint firstItem="qqI-fc-Sbc" firstAttribute="width" secondItem="6d9-a3-pdD" secondAttribute="height" multiplier="5:128" id="7el-7D-pGN"/>
                             <constraint firstItem="AsW-Ve-2IX" firstAttribute="centerX" secondItem="6d9-a3-pdD" secondAttribute="centerX" id="9ch-eD-cYX"/>
                             <constraint firstItem="4I2-O2-uuM" firstAttribute="width" secondItem="6d9-a3-pdD" secondAttribute="height" multiplier="75:448" id="Fkq-tB-IHW"/>
                             <constraint firstItem="1Tm-XO-HSg" firstAttribute="trailing" secondItem="feg-va-6tU" secondAttribute="trailing" constant="30" id="GyH-Kb-BI0"/>
+                            <constraint firstItem="qqI-fc-Sbc" firstAttribute="bottom" secondItem="4I2-O2-uuM" secondAttribute="bottom" constant="-8" id="K5J-ro-fjT"/>
                             <constraint firstItem="feg-va-6tU" firstAttribute="leading" secondItem="1Tm-XO-HSg" secondAttribute="leading" constant="30" id="OXv-9O-KXc"/>
                             <constraint firstItem="4I2-O2-uuM" firstAttribute="centerX" secondItem="6d9-a3-pdD" secondAttribute="centerX" id="RLK-EG-KJq"/>
                             <constraint firstItem="1Tm-XO-HSg" firstAttribute="bottom" secondItem="AsW-Ve-2IX" secondAttribute="bottom" constant="30" id="RSy-cZ-xI2"/>
                             <constraint firstItem="feg-va-6tU" firstAttribute="top" secondItem="4I2-O2-uuM" secondAttribute="bottom" constant="20" id="muQ-qA-bzq"/>
                             <constraint firstItem="chU-tH-y3O" firstAttribute="leading" secondItem="1Tm-XO-HSg" secondAttribute="leading" id="rgJ-y1-Zzw"/>
                             <constraint firstItem="chU-tH-y3O" firstAttribute="top" secondItem="feg-va-6tU" secondAttribute="bottom" constant="30" id="vVv-zl-d5U"/>
+                            <constraint firstItem="qqI-fc-Sbc" firstAttribute="trailing" secondItem="4I2-O2-uuM" secondAttribute="trailing" id="x01-wT-B0p"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="1Tm-XO-HSg"/>
                     </view>
+                    <connections>
+                        <outlet property="addPhotoButton" destination="qqI-fc-Sbc" id="qOj-UD-db1"/>
+                        <outlet property="organizationContactNameLabel" destination="oUx-io-fp3" id="QIS-H6-ljL"/>
+                        <outlet property="organizationEmailLabel" destination="CsM-Wr-gNI" id="s1j-0E-LvM"/>
+                        <outlet property="organizationINNLabel" destination="h8e-g3-ACs" id="0WE-od-6CP"/>
+                        <outlet property="organizationImageView" destination="4I2-O2-uuM" id="plY-Ge-wP9"/>
+                        <outlet property="organizationNameLabel" destination="feg-va-6tU" id="RU9-P5-PPU"/>
+                        <outlet property="organizationPhoneNumberLabel" destination="O2d-se-zIy" id="6yu-Wl-Cff"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="haE-H1-tYq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -194,6 +220,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="addFoto" width="12" height="12"/>
         <image name="exmapleOrgProfile" width="150" height="150"/>
     </resources>
 </document>

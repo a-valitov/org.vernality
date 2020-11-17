@@ -28,7 +28,7 @@ final class MemberProfileViewBeta: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        memberNameLabel.adjustsFontSizeToFitWidth = true
+
     }
 
     override func viewWillLayoutSubviews() {
