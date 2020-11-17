@@ -32,6 +32,8 @@ final class MemberCurrentActionsViewBeta: UITableViewController {
         super.viewDidLoad()
         self.output?.memberCurrentActionsDidLoad(view: self)
         tableView.tableFooterView = UIView()
+
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "barItem"), style: .plain, target: self, action: #selector(menuBarButtonItemAction))
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -57,6 +59,38 @@ final class MemberCurrentActionsViewBeta: UITableViewController {
         cell.actionImageView.kf.setImage(with: action.imageUrl)
 
         return cell
+    }
+
+    @objc private func menuBarButtonItemAction(_ sender: Any) {
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        actionSheet.view.tintColor = .black
+
+        let logoutIcon = #imageLiteral(resourceName: "logout")
+        let changeRoleIcon = #imageLiteral(resourceName: "refresh")
+        let profileIcon = #imageLiteral(resourceName: "profile")
+
+        let logout = UIAlertAction(title: "Выйти", style: .cancel) { _ in
+
+        }
+
+        logout.setValue(logoutIcon.withRenderingMode(.alwaysOriginal), forKey: "image")
+
+        let changeRole = UIAlertAction(title: "Сменить роль", style: .default) { _ in
+
+        }
+
+        changeRole.setValue(changeRoleIcon.withRenderingMode(.alwaysOriginal), forKey: "image")
+
+        let profileAction = UIAlertAction(title: "Профиль", style: .default) { _ in
+            self.output?.memberNavigtaionBar(view: self, tappedOn: sender)
+        }
+
+        profileAction.setValue(profileIcon.withRenderingMode(.alwaysOriginal), forKey: "image")
+
+        actionSheet.addAction(profileAction)
+        actionSheet.addAction(changeRole)
+        actionSheet.addAction(logout)
+        present(actionSheet, animated: true)
     }
 
 }

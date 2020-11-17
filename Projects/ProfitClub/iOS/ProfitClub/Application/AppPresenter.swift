@@ -138,7 +138,7 @@ extension AppPresenter: ReviewModuleOutput {
 
 extension AppPresenter: OrganizationModuleOutput {
     func organization(module: OrganizationModule, userWantsToEnterProfile main: MainModule?) {
-        let profile = self.factory.memberProfile(output: self)
+        let profile = self.factory.organizationProfile(output: self)
         profile.open(in: main)
     }
 
@@ -148,9 +148,16 @@ extension AppPresenter: SupplierModuleOutput {
 }
 
 extension AppPresenter: MemberModuleOutput {
-
+    func member(module: MemberModule, userWantsToEnterProfileInside main: MainModule?) {
+        let profile = self.factory.memberProfile(output: self)
+        profile.open(in: main)
+    }
 }
 
 extension AppPresenter: MemberProfileModuleOutput {
+
+}
+
+extension AppPresenter: OrganizationProfileModuleOutput {
 
 }

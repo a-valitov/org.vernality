@@ -29,10 +29,10 @@ final class OrganizationTabBarViewBeta: UITabBarController {
         let attributes = [NSAttributedString.Key.font:UIFont(name: "Montserrat-Regular", size: 12)]
         appearance.setTitleTextAttributes(attributes as [NSAttributedString.Key : Any], for: .normal)
 
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named:"barItem"), style: .plain, target: self, action: #selector(editBarButtonItemAction))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named:"barItem"), style: .plain, target: self, action: #selector(menuBarButtonItemAction))
     }
 
-    @objc private func editBarButtonItemAction(_ sender: Any) {
+    @objc private func menuBarButtonItemAction(_ sender: Any) {
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         actionSheet.view.tintColor = .black
 
@@ -40,7 +40,7 @@ final class OrganizationTabBarViewBeta: UITabBarController {
         let changeRoleIcon = #imageLiteral(resourceName: "refresh")
         let profileIcon = #imageLiteral(resourceName: "profile")
 
-        let logout = UIAlertAction(title: "Выйти", style: .destructive) { _ in
+        let logout = UIAlertAction(title: "Выйти", style: .cancel) { _ in
 
         }
 

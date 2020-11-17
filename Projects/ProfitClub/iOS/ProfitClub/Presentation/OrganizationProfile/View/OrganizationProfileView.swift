@@ -1,5 +1,5 @@
 //  Copyright (C) 2020 Startup Studio Vernality
-//  Created by Macbook on 08.11.2020
+//  Created by Macbook on 17.11.2020
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -14,14 +14,12 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import Foundation
-import Main
-import ProfitClubModel
+import UIKit
 
-protocol MemberModule: class {
-    func open(in main: MainModule?)
+protocol OrganizationProfileViewInput: UIViewController {
+
 }
 
-protocol MemberModuleOutput: class {
-    func member(module: MemberModule, userWantsToEnterProfileInside main: MainModule?)
+protocol OrganizationProfileViewOutput {
+    
 }

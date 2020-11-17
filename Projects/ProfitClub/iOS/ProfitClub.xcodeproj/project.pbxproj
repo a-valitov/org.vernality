@@ -115,6 +115,14 @@
 		FA6E8BC9254D99D1007B8B4E /* CommercialOffersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6E8BC8254D99D1007B8B4E /* CommercialOffersPresenter.swift */; };
 		FA6E8BCB254D9B3B007B8B4E /* CommercialOffersDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6E8BCA254D9B3B007B8B4E /* CommercialOffersDependencies.swift */; };
 		FA6E8BCD254DABDB007B8B4E /* CommercialOffersViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6E8BCC254DABDB007B8B4E /* CommercialOffersViewCell.swift */; };
+		FA7ACD252563C2FA0097800D /* OrganizationProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7ACD242563C2FA0097800D /* OrganizationProfileView.swift */; };
+		FA7ACD282563C3170097800D /* OrganizationProfileViewBeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7ACD272563C3170097800D /* OrganizationProfileViewBeta.swift */; };
+		FA7ACD2A2563C31F0097800D /* OrganizationProfileViewBeta.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA7ACD292563C31F0097800D /* OrganizationProfileViewBeta.storyboard */; };
+		FA7ACD2C2563C3A70097800D /* OrganizationProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7ACD2B2563C3A70097800D /* OrganizationProfileRouter.swift */; };
+		FA7ACD2E2563C3B20097800D /* OrganizationProfileModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7ACD2D2563C3B20097800D /* OrganizationProfileModule.swift */; };
+		FA7ACD302563C3BA0097800D /* OrganizationProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7ACD2F2563C3BA0097800D /* OrganizationProfilePresenter.swift */; };
+		FA7ACD322563C3C40097800D /* OrganizationProfileFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7ACD312563C3C40097800D /* OrganizationProfileFactory.swift */; };
+		FA7ACD342563C3CE0097800D /* OrganizationProfileDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7ACD332563C3CE0097800D /* OrganizationProfileDependencies.swift */; };
 		FA8CB80A255804F900D09B1D /* MemberDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8CB809255804F900D09B1D /* MemberDependencies.swift */; };
 		FA8CB80C2558050500D09B1D /* MemberFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8CB80B2558050500D09B1D /* MemberFactory.swift */; };
 		FA8CB80E2558051A00D09B1D /* MemberModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8CB80D2558051A00D09B1D /* MemberModule.swift */; };
@@ -316,6 +324,14 @@
 		FA6E8BC8254D99D1007B8B4E /* CommercialOffersPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommercialOffersPresenter.swift; sourceTree = "<group>"; };
 		FA6E8BCA254D9B3B007B8B4E /* CommercialOffersDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommercialOffersDependencies.swift; sourceTree = "<group>"; };
 		FA6E8BCC254DABDB007B8B4E /* CommercialOffersViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommercialOffersViewCell.swift; sourceTree = "<group>"; };
+		FA7ACD242563C2FA0097800D /* OrganizationProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationProfileView.swift; sourceTree = "<group>"; };
+		FA7ACD272563C3170097800D /* OrganizationProfileViewBeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationProfileViewBeta.swift; sourceTree = "<group>"; };
+		FA7ACD292563C31F0097800D /* OrganizationProfileViewBeta.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OrganizationProfileViewBeta.storyboard; sourceTree = "<group>"; };
+		FA7ACD2B2563C3A70097800D /* OrganizationProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationProfileRouter.swift; sourceTree = "<group>"; };
+		FA7ACD2D2563C3B20097800D /* OrganizationProfileModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationProfileModule.swift; sourceTree = "<group>"; };
+		FA7ACD2F2563C3BA0097800D /* OrganizationProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationProfilePresenter.swift; sourceTree = "<group>"; };
+		FA7ACD312563C3C40097800D /* OrganizationProfileFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationProfileFactory.swift; sourceTree = "<group>"; };
+		FA7ACD332563C3CE0097800D /* OrganizationProfileDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationProfileDependencies.swift; sourceTree = "<group>"; };
 		FA8CB809255804F900D09B1D /* MemberDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberDependencies.swift; sourceTree = "<group>"; };
 		FA8CB80B2558050500D09B1D /* MemberFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberFactory.swift; sourceTree = "<group>"; };
 		FA8CB80D2558051A00D09B1D /* MemberModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberModule.swift; sourceTree = "<group>"; };
@@ -824,6 +840,7 @@
 		0E90498424F60C740061A605 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				FA7ACD1F25632D400097800D /* OrganizationProfile */,
 				FAE888CC256141040023C232 /* MemberProfile */,
 				FA8CB872255AD30C00D09B1D /* AdminOrganization */,
 				FA8CB849255A7B1000D09B1D /* AdminOrganizations */,
@@ -1206,6 +1223,61 @@
 				FA6E8BC0254D9726007B8B4E /* CommercialOffersViewBeta.swift */,
 				FA6E8BCC254DABDB007B8B4E /* CommercialOffersViewCell.swift */,
 				FA6E8BC2254D9732007B8B4E /* CommercialOffersViewBeta.storyboard */,
+			);
+			path = Beta;
+			sourceTree = "<group>";
+		};
+		FA7ACD1F25632D400097800D /* OrganizationProfile */ = {
+			isa = PBXGroup;
+			children = (
+				FA7ACD2325632DF10097800D /* Factory */,
+				FA7ACD2225632DEC0097800D /* Presenter */,
+				FA7ACD2125632DDE0097800D /* Router */,
+				FA7ACD2025632DDA0097800D /* View */,
+			);
+			path = OrganizationProfile;
+			sourceTree = "<group>";
+		};
+		FA7ACD2025632DDA0097800D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FA7ACD242563C2FA0097800D /* OrganizationProfileView.swift */,
+				FA7ACD262563C2FD0097800D /* Beta */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FA7ACD2125632DDE0097800D /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				FA7ACD2B2563C3A70097800D /* OrganizationProfileRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		FA7ACD2225632DEC0097800D /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				FA7ACD2D2563C3B20097800D /* OrganizationProfileModule.swift */,
+				FA7ACD2F2563C3BA0097800D /* OrganizationProfilePresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		FA7ACD2325632DF10097800D /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				FA7ACD312563C3C40097800D /* OrganizationProfileFactory.swift */,
+				FA7ACD332563C3CE0097800D /* OrganizationProfileDependencies.swift */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
+		FA7ACD262563C2FD0097800D /* Beta */ = {
+			isa = PBXGroup;
+			children = (
+				FA7ACD272563C3170097800D /* OrganizationProfileViewBeta.swift */,
+				FA7ACD292563C31F0097800D /* OrganizationProfileViewBeta.storyboard */,
 			);
 			path = Beta;
 			sourceTree = "<group>";
@@ -1883,6 +1955,7 @@
 				FAD704BC2550156F00DE8AD7 /* ApplicationsViewBeta.storyboard in Resources */,
 				FAE888E2256141E90023C232 /* MemberProfileViewBeta.storyboard in Resources */,
 				FA8CB869255A867200D09B1D /* AdminOrganizationsApplicationsViewBeta.storyboard in Resources */,
+				FA7ACD2A2563C31F0097800D /* OrganizationProfileViewBeta.storyboard in Resources */,
 				FA8CB870255A87F000D09B1D /* AdminApprovedOrganizationsViewBeta.storyboard in Resources */,
 				0E56172725372A25005DF4F3 /* OrganizationTabBarViewBeta.storyboard in Resources */,
 				0E56175025372D9D005DF4F3 /* PastActionsViewBeta.storyboard in Resources */,
@@ -1952,6 +2025,7 @@
 				FA393C1C254064E700C29F7D /* SupplierActions.swift in Sources */,
 				FA566382253F39A400D19D4E /* SupplierDependencies.swift in Sources */,
 				FABB6F0225455EA700B93FB8 /* CurrentActionsTableViewCell.swift in Sources */,
+				FA7ACD322563C3C40097800D /* OrganizationProfileFactory.swift in Sources */,
 				0E6FBA652545AC9B00A2B882 /* ActionsFactory.swift in Sources */,
 				FAD70491254E89D000DE8AD7 /* CommercialOfferPresenter.swift in Sources */,
 				FA8CB83E255A5C0D00D09B1D /* AdminPresenter.swift in Sources */,
@@ -1959,11 +2033,13 @@
 				0E56175D2537321C005DF4F3 /* OrganizationPresenter.swift in Sources */,
 				FA1C2BEF2550547D008F3994 /* MemberViewCell.swift in Sources */,
 				FAD704A42550104E00DE8AD7 /* MembersRouter.swift in Sources */,
+				FA7ACD2C2563C3A70097800D /* OrganizationProfileRouter.swift in Sources */,
 				FAD70493254E89DA00DE8AD7 /* CommercialOfferRouter.swift in Sources */,
 				FA6E8BBC254D96A2007B8B4E /* CommercialOffersFactory.swift in Sources */,
 				FAD704AC2550114A00DE8AD7 /* MembersContainerViewBeta.swift in Sources */,
 				0E506C3124FC1AAB00ABA211 /* ReviewRouter.swift in Sources */,
 				FA0955EC254C364F00FFF835 /* SupplierCommercialOffer.swift in Sources */,
+				FA7ACD302563C3BA0097800D /* OrganizationProfilePresenter.swift in Sources */,
 				0E56176B25373349005DF4F3 /* OrganizationTabBarViewBeta.swift in Sources */,
 				0E9049A224F62C870061A605 /* OnboardSupplierViewAlpha.swift in Sources */,
 				FA8CB896255ADA5800D09B1D /* AdminOrganizationModule.swift in Sources */,
@@ -1996,8 +2072,10 @@
 				0E506C2E24FC1A4600ABA211 /* ReviewPresenter.swift in Sources */,
 				FA8CB89A255ADA6E00D09B1D /* AdminOrganizationFactory.swift in Sources */,
 				FAD7048D254E89BB00DE8AD7 /* CommercialOfferDependencies.swift in Sources */,
+				FA7ACD282563C3170097800D /* OrganizationProfileViewBeta.swift in Sources */,
 				FAE888DB256141B70023C232 /* MemberProfileRouter.swift in Sources */,
 				FABB6F06254682FD00B93FB8 /* ApproveCurrentActionView.swift in Sources */,
+				FA7ACD2E2563C3B20097800D /* OrganizationProfileModule.swift in Sources */,
 				0E506C2C24FC184900ABA211 /* ReviewViewBetaMemberCell.swift in Sources */,
 				0E506C4624FCA6E300ABA211 /* OnboardSignIn.swift in Sources */,
 				0E39664624FCABD70008266D /* OnboardSignUpViewBeta.swift in Sources */,
@@ -2011,6 +2089,7 @@
 				0E6FBA582545ABAF00A2B882 /* ActionsRouter.swift in Sources */,
 				0E5617632537327C005DF4F3 /* OrganizationDependencies.swift in Sources */,
 				0E90497124F390270061A605 /* AppFactory.swift in Sources */,
+				FA7ACD252563C2FA0097800D /* OrganizationProfileView.swift in Sources */,
 				FA393C1F2540650900C29F7D /* SupplierActionsBeta.swift in Sources */,
 				0E506BF924FBC2FC00ABA211 /* OnboardOrganizationView.swift in Sources */,
 				FA8CB838255A5BD500D09B1D /* AdminFactory.swift in Sources */,
@@ -2071,6 +2150,7 @@
 				FA8CB83A255A5BE600D09B1D /* AdminDependencies.swift in Sources */,
 				0E506C2124FC108800ABA211 /* ReviewView.swift in Sources */,
 				FAD70487254E894C00DE8AD7 /* ApproveCommercialOfferViewBeta.swift in Sources */,
+				FA7ACD342563C3CE0097800D /* OrganizationProfileDependencies.swift in Sources */,
 				0EA11EC824F2B88F00133485 /* AppDelegate.swift in Sources */,
 				0E506C3524FC1BA700ABA211 /* ReviewFactory.swift in Sources */,
 				0E56173C25372BC5005DF4F3 /* CurrentActionsViewBeta.swift in Sources */,

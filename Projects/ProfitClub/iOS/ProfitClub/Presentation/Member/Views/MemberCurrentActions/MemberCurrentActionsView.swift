@@ -24,4 +24,5 @@ protocol MemberCurrentActionsViewInput: UIViewController {
 protocol MemberCurrentActionsViewOutput {
     func memberCurrentActionsDidLoad(view: MemberCurrentActionsViewInput)
     func memberCurrentActions(view: MemberCurrentActionsViewInput, didSelect action: PCAction)
+    func memberNavigtaionBar(view: MemberCurrentActionsViewInput, tappedOn profile: Any)
 }

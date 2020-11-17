@@ -54,6 +54,10 @@ extension MemberPresenter: MemberCurrentActionsViewOutput {
     func memberCurrentActions(view: MemberCurrentActionsViewInput, didSelect action: PCAction) {
         self.router?.openMemberCurrentAction(action: action, output: self)
     }
+
+    func memberNavigtaionBar(view: MemberCurrentActionsViewInput, tappedOn profile: Any) {
+        self.output?.member(module: self, userWantsToEnterProfileInside: self.router?.main)
+    }
 }
 
 extension MemberPresenter: MemberCurrentActionViewOutput {
