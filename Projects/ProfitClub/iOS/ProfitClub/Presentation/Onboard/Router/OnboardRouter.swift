@@ -23,8 +23,9 @@ final class OnboardRouter {
 
     @discardableResult
     func openOnboardWelcome(output: OnboardWelcomeViewOutput?) -> OnboardWelcomeViewInput {
-        let storyboard = UIStoryboard(name: "OnboardWelcomeViewBeta", bundle: nil)
-        let onboardWelcome = storyboard.instantiateInitialViewController() as! OnboardWelcomeViewBeta
+//        let storyboard = UIStoryboard(name: "OnboardWelcomeViewBeta", bundle: nil)
+//        let onboardWelcome = storyboard.instantiateInitialViewController() as! OnboardWelcomeViewBeta
+        let onboardWelcome = OnboardWelcomeViewAlpha()
         onboardWelcome.output = output
         self.main?.push(onboardWelcome, animated: false)
         return onboardWelcome

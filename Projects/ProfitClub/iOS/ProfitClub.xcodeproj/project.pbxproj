@@ -91,6 +91,7 @@
 		FA15B70925473D5A00D29835 /* ActionModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA15B70825473D5A00D29835 /* ActionModule.swift */; };
 		FA15B70B25473D6A00D29835 /* ActionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA15B70A25473D6A00D29835 /* ActionPresenter.swift */; };
 		FA15B70D25473D7A00D29835 /* ActionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA15B70C25473D7A00D29835 /* ActionRouter.swift */; };
+		FA17095925651F3F00BE460C /* OnboardWelcomeViewAlpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA17095825651F3F00BE460C /* OnboardWelcomeViewAlpha.swift */; };
 		FA1C2BEF2550547D008F3994 /* MemberViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1C2BEE2550547D008F3994 /* MemberViewCell.swift */; };
 		FA1C2BF125516652008F3994 /* PasActionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1C2BF025516652008F3994 /* PasActionsTableViewCell.swift */; };
 		FA393C1C254064E700C29F7D /* SupplierActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA393C1B254064E700C29F7D /* SupplierActions.swift */; };
@@ -308,6 +309,7 @@
 		FA15B70825473D5A00D29835 /* ActionModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionModule.swift; sourceTree = "<group>"; };
 		FA15B70A25473D6A00D29835 /* ActionPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionPresenter.swift; sourceTree = "<group>"; };
 		FA15B70C25473D7A00D29835 /* ActionRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionRouter.swift; sourceTree = "<group>"; };
+		FA17095825651F3F00BE460C /* OnboardWelcomeViewAlpha.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardWelcomeViewAlpha.swift; sourceTree = "<group>"; };
 		FA1C2BEE2550547D008F3994 /* MemberViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberViewCell.swift; sourceTree = "<group>"; };
 		FA1C2BF025516652008F3994 /* PasActionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasActionsTableViewCell.swift; sourceTree = "<group>"; };
 		FA393C1B254064E700C29F7D /* SupplierActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplierActions.swift; sourceTree = "<group>"; };
@@ -608,6 +610,7 @@
 			isa = PBXGroup;
 			children = (
 				0E506C3824FC9CC400ABA211 /* OnboardWelcomeView.swift */,
+				FA17095725651F0800BE460C /* Alpha */,
 				0E506C3A24FC9CC800ABA211 /* Beta */,
 			);
 			path = OnboardWelcome;
@@ -1102,6 +1105,14 @@
 				FABB6F072546830500B93FB8 /* Beta */,
 			);
 			path = ApproveCurrentAction;
+			sourceTree = "<group>";
+		};
+		FA17095725651F0800BE460C /* Alpha */ = {
+			isa = PBXGroup;
+			children = (
+				FA17095825651F3F00BE460C /* OnboardWelcomeViewAlpha.swift */,
+			);
+			path = Alpha;
 			sourceTree = "<group>";
 		};
 		FA393C1A254064A400C29F7D /* SupplierActions */ = {
@@ -2172,6 +2183,7 @@
 				FA7ACD482563E7BC0097800D /* SupplierProfileFactory.swift in Sources */,
 				FA8CB82B25583E1900D09B1D /* MemberCurrentActionViewBeta.swift in Sources */,
 				FA8CB855255A7BB000D09B1D /* AdminOrganizationsPresenter.swift in Sources */,
+				FA17095925651F3F00BE460C /* OnboardWelcomeViewAlpha.swift in Sources */,
 				FAE888D9256141A90023C232 /* MemberProfilePresenter.swift in Sources */,
 				0E90498724F60C980061A605 /* SelectRoleView.swift in Sources */,
 				0E6FBA622545AC7C00A2B882 /* ActionsDependencies.swift in Sources */,
