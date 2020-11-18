@@ -72,6 +72,10 @@ final class OnboardWelcomeViewAlpha: UIViewController {
 
         signInButton.backgroundColor = .clear
         signInButton.titleLabel?.font = UIFont(name: "Montserrat-Regular", size: 15)
+        signInButton.setAttributedTitle(combination(), for: .normal)
+    }
+
+    private func combination() -> NSMutableAttributedString {
         let attributesForTitle1: [NSAttributedString.Key: Any] = [
             NSAttributedString.Key.underlineStyle: NSUnderlineStyle.thick.rawValue,
             NSAttributedString.Key.foregroundColor: UIColor(red: 245/255, green: 200/255, blue: 145/255, alpha: 1)
@@ -85,7 +89,8 @@ final class OnboardWelcomeViewAlpha: UIViewController {
         let combination = NSMutableAttributedString()
         combination.append(title2)
         combination.append(title1)
-        signInButton.setAttributedTitle(combination, for: .normal)
+
+        return combination
     }
 
     private let stackView = UIStackView()
