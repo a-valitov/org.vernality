@@ -32,4 +32,5 @@ protocol SupplierActionsOutput {
     func supplierNavigationBar(view: SupplierActionsInput, tappedOn profile: Any)
     func supplierActions(view: SupplierActionsInput, userWantsToLogout sender: Any)
     func supplierActions(view: SupplierActionsInput, userConfirmLogout sender: Any)
+    func supplierActions(view: SupplierActionsInput, userWantsToChangeRole sender: Any)
 }

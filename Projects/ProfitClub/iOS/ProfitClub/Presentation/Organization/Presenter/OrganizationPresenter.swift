@@ -53,6 +53,9 @@ extension OrganizationPresenter: OrganizationTabBarViewOutput {
         self.output?.organization(module: self, userWantsToLogoutInside: self.router?.main)
     }
 
+    func organizationTabBar(view: OrganizationTabBarViewInput, userWantsToChangeRole sender: Any) {
+        self.output?.organization(module: self, userWantsToChangeRole: self.router?.main)
+    }
 }
 
 extension OrganizationPresenter: ActionsModuleOutput {

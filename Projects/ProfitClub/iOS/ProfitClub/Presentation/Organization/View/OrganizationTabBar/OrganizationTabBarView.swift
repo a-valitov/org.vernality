@@ -24,4 +24,5 @@ protocol OrganizationTabBarViewOutput {
     func organizationTabBar(view: OrganizationTabBarViewInput, tappedOn profile: Any)
     func organizationTabBar(view: OrganizationTabBarViewInput, userWantsToLogout sender: Any)
     func organizationTabBar(view: OrganizationTabBarViewInput, userConfirmToLogout sender: Any)
+    func organizationTabBar(view: OrganizationTabBarViewInput, userWantsToChangeRole sender: Any)
 }

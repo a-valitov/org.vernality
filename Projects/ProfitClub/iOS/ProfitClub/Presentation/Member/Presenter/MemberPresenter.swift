@@ -66,6 +66,10 @@ extension MemberPresenter: MemberCurrentActionsViewOutput {
     func memberNavigtaionBar(view: MemberCurrentActionsViewInput, tappedOn profile: Any) {
         self.output?.member(module: self, userWantsToEnterProfileInside: self.router?.main)
     }
+
+    func memberCurrentActions(view: MemberCurrentActionsViewInput, userWantsToChangeRole sender: Any) {
+        self.output?.member(module: self, userWantsToChangeRole: self.router?.main)
+    }
 }
 
 extension MemberPresenter: MemberCurrentActionViewOutput {

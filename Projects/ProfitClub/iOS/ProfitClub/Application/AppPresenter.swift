@@ -154,6 +154,12 @@ extension AppPresenter: OrganizationModuleOutput {
             }
         }
     }
+
+    func organization(module: OrganizationModule, userWantsToChangeRole main: MainModule?) {
+        main?.unwindToRoot()
+        let module = self.factory.review(output: self)
+        module.start(in: main)
+    }
 }
 
 extension AppPresenter: SupplierModuleOutput {
@@ -175,6 +181,11 @@ extension AppPresenter: SupplierModuleOutput {
         profile.open(in: main)
     }
 
+    func supplier(module: SupplierModule, userWantsToChangeRole main: MainModule?) {
+        main?.unwindToRoot()
+        let module = self.factory.review(output: self)
+        module.start(in: main)
+    }
 }
 
 extension AppPresenter: MemberModuleOutput {
@@ -194,6 +205,12 @@ extension AppPresenter: MemberModuleOutput {
                 onboard?.start(in: main)
             }
         }
+    }
+
+    func member(module: MemberModule, userWantsToChangeRole main: MainModule?) {
+        main?.unwindToRoot()
+        let module = self.factory.review(output: self)
+        module.start(in: main)
     }
 }
 

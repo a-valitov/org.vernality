@@ -87,7 +87,7 @@ final class SupplierViewBeta: UIViewController {
         logout.setValue(logoutIcon.withRenderingMode(.alwaysOriginal), forKey: "image")
 
         let changeRole = UIAlertAction(title: "Сменить роль", style: .default) { _ in
-
+            self.output?.supplier(view: self, userWantsToChangeRole: sender)
         }
 
         changeRole.setValue(changeRoleIcon.withRenderingMode(.alwaysOriginal), forKey: "image")
@@ -99,6 +99,7 @@ final class SupplierViewBeta: UIViewController {
         profileAction.setValue(profileIcon.withRenderingMode(.alwaysOriginal), forKey: "image")
 
         let cancelAction = UIAlertAction(title: "Отменить", style: .cancel)
+        cancelAction.setValue(UIColor.red, forKey: "titleTextColor")
 
         actionSheet.addAction(profileAction)
         actionSheet.addAction(changeRole)

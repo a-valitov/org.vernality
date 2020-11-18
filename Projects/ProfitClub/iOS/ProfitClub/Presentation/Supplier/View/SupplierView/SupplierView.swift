@@ -26,5 +26,6 @@ protocol SupplierViewOutput {
     func supplierNavigationBar(view: SupplierViewInput, tappedOn profile: Any)
     func supplier(view: SupplierViewInput, userWantsToLogout sender: Any)
     func supplier(view: SupplierViewInput, userConfirmToLogout sender: Any)
+    func supplier(view: SupplierViewInput, userWantsToChangeRole sender: Any)
 }
 

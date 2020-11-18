@@ -65,6 +65,10 @@ extension SupplierPresenter: SupplierViewOutput {
     func supplier(view: SupplierViewInput, userConfirmToLogout sender: Any) {
         self.output?.supplier(module: self, userWantsToLogoutInside: self.router?.main)
     }
+
+    func supplier(view: SupplierViewInput, userWantsToChangeRole sender: Any) {
+        self.output?.supplier(module: self, userWantsToChangeRole: self.router?.main)
+    }
 }
 
 extension SupplierPresenter: SupplierActionsOutput {
@@ -127,6 +131,10 @@ extension SupplierPresenter: SupplierActionsOutput {
     func supplierActions(view: SupplierActionsInput, userConfirmLogout sender: Any) {
         self.output?.supplier(module: self, userWantsToLogoutInside: self.router?.main)
     }
+
+    func supplierActions(view: SupplierActionsInput, userWantsToChangeRole sender: Any) {
+        self.output?.supplier(module: self, userWantsToChangeRole: self.router?.main)
+    }
 }
 
 extension SupplierPresenter: SupplierCommercialOfferOutput {
@@ -164,5 +172,9 @@ extension SupplierPresenter: SupplierCommercialOfferOutput {
 
     func supplierCommercialOffer(view: SupplierCommercialOfferInput, userConfirmToLogout sender: Any) {
         self.output?.supplier(module: self, userWantsToLogoutInside: self.router?.main)
+    }
+
+    func supplierCommercialOffer(view: SupplierCommercialOfferInput, userWantsToChangeRole sender: Any) {
+        self.output?.supplier(module: self, userWantsToChangeRole: self.router?.main)
     }
 }

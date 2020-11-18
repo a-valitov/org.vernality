@@ -29,4 +29,5 @@ protocol MemberCurrentActionsViewOutput {
     func memberNavigtaionBar(view: MemberCurrentActionsViewInput, tappedOn profile: Any)
     func memberCurrentActions(view: MemberCurrentActionsViewInput, userWantsToLogout sender: Any)
     func memberCurrentActions(view: MemberCurrentActionsViewInput, userConfirmToLogout sender: Any)
+    func memberCurrentActions(view: MemberCurrentActionsViewInput, userWantsToChangeRole sender: Any)
 }

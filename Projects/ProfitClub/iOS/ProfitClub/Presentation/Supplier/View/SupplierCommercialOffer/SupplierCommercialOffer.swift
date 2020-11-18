@@ -30,4 +30,5 @@ protocol SupplierCommercialOfferOutput {
     func supplierNavigationBar(view: SupplierCommercialOfferInput, tappedOn profile: Any)
     func supplierCommercialOffer(view: SupplierCommercialOfferInput, userWantsToLogout sender: Any)
     func supplierCommercialOffer(view: SupplierCommercialOfferInput, userConfirmToLogout sender: Any)
+    func supplierCommercialOffer(view: SupplierCommercialOfferInput, userWantsToChangeRole sender: Any)
 }
