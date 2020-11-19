@@ -38,6 +38,8 @@ final class OrganizationProfileViewBeta: UIViewController {
         deleteAccountButton.titleLabel?.attributedText = NSAttributedString(string: "Удалить аккаунт", attributes: [.underlineStyle: NSUnderlineStyle.thick.rawValue])
 
         self.updateUI()
+
+        navigationItem.title = "Профиль"
     }
     
     override func viewWillLayoutSubviews() {
