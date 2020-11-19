@@ -74,7 +74,7 @@ final class ReviewViewBeta: UITableViewController {
         label.textColor = UIColor.white
         label.text = "Profit Club"
         label.font = UIFont(name: "PlayfairDisplay-Bold", size: 25)
-//        self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: label)
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: label)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -87,27 +87,25 @@ final class ReviewViewBeta: UITableViewController {
         sender.endRefreshing()
     }
 
-    @IBAction func logoutBarButtonAction(_ sender: Any) {
-        self.output?.review(view: self, userWantsToLogout: sender)
-    }
-
-    @IBAction func addBarButtonAction(_ sender: Any) {
-        self.output?.review(view: self, userWantsToAdd: sender)
-    }
     @IBAction func actionsButtonAction(_ sender: Any) {
-//        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-//
-//        let logoutIcon = #imageLiteral(resourceName: "logout")
-//
-//        let logoutAction = UIAlertAction(title: "Выход", style: .default) { _ in
-//            self.output?.review(view: self, userWantsToLogout: sender)
-//        }
-//
-//        logoutAction.setValue(logoutIcon, forKey: "image")
-//        logoutAction.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
-//
-//        alertController.addAction(logoutAction)
-//        present(alertController, animated: true)
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+
+        alertController.view.tintColor = .black
+        let logoutAction = UIAlertAction(title: "Выход", style: .default) { _ in
+            self.output?.review(view: self, userWantsToLogout: sender)
+        }
+
+        let addRoleAction = UIAlertAction(title: "Добавить роль", style: .default) { _ in
+            self.output?.review(view: self, userWantsToAdd: sender)
+        }
+
+        let cancelAction = UIAlertAction(title: "Отменить", style: .cancel)
+        cancelAction.setValue(UIColor.red, forKey: "titleTextColor")
+
+        alertController.addAction(addRoleAction)
+        alertController.addAction(logoutAction)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true)
     }
     
     private let organizationCellReuseIdentifier = "ReviewViewBetaOrganizationCellReuseIdentifier"

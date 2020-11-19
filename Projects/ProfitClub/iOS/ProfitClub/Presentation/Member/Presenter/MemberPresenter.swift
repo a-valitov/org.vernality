@@ -23,8 +23,10 @@ final class MemberPresenter: MemberModule {
     weak var output: MemberModuleOutput?
     var router: MemberRouter?
 
-    init(presenters: MemberPresenters,
+    init(member: PCMember,
+         presenters: MemberPresenters,
          services: MemberServices) {
+        self.member = member
         self.presenters = presenters
         self.services = services
     }
@@ -37,6 +39,9 @@ final class MemberPresenter: MemberModule {
     // dependencies
     private let presenters: MemberPresenters
     private let services: MemberServices
+
+    // state
+    private let member: PCMember
 }
 
 extension MemberPresenter: MemberCurrentActionsViewOutput {
@@ -64,7 +69,7 @@ extension MemberPresenter: MemberCurrentActionsViewOutput {
     }
 
     func memberNavigtaionBar(view: MemberCurrentActionsViewInput, tappedOn profile: Any) {
-        self.output?.member(module: self, userWantsToEnterProfileInside: self.router?.main)
+        self.output?.member(module: self, userWantsToOpenProfileOf: self.member, inside: self.router?.main)
     }
 
     func memberCurrentActions(view: MemberCurrentActionsViewInput, userWantsToChangeRole sender: Any) {

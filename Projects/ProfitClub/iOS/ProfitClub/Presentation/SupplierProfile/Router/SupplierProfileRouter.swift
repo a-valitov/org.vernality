@@ -22,10 +22,14 @@ final class SupplierProfileRouter {
     weak var main: MainModule?
 
     @discardableResult
-    func openSupplierProfile(output: SupplierProfileViewOutput?) -> SupplierProfileViewInput {
+    func openSupplierProfile(supplier: PCSupplier, output: SupplierProfileViewOutput?) -> SupplierProfileViewInput {
         let storyboard = UIStoryboard(name: "SupplierProfileViewBeta", bundle: nil)
         let profile = storyboard.instantiateInitialViewController() as! SupplierProfileViewBeta
         profile.output = output
+        profile.supplierName = supplier.name
+        profile.supplierINN = supplier.inn
+        profile.supplierContactName = supplier.contact
+        profile.supplierPhoneNumber = supplier.phone
         self.main?.push(profile, animated: true)
         return profile
     }

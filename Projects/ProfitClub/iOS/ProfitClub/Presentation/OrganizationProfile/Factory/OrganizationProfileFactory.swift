@@ -26,10 +26,11 @@ final class OrganizationProfileFactory {
         self.services = services
     }
 
-    func make(output: OrganizationProfileModuleOutput?) -> OrganizationProfileModule {
+    func make(organization: PCOrganization, output: OrganizationProfileModuleOutput?) -> OrganizationProfileModule {
         let router = OrganizationProfileRouter()
-        let presenter = OrganizationProfilePresenter(presenters: self.presenters,
-                                                      services: self.services)
+        let presenter = OrganizationProfilePresenter(organization: organization,
+                                                     presenters: self.presenters,
+                                                     services: self.services)
         presenter.output = output
         presenter.router = router
         return presenter

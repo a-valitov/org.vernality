@@ -23,20 +23,25 @@ final class OrganizationProfilePresenter: OrganizationProfileModule {
     weak var output: OrganizationProfileModuleOutput?
     var router: OrganizationProfileRouter?
 
-    init(presenters: OrganizationProfilePresenters,
+    init(organization: PCOrganization,
+         presenters: OrganizationProfilePresenters,
          services: OrganizationProfileServices) {
+        self.organization = organization
         self.presenters = presenters
         self.services = services
     }
 
     func open(in main: MainModule?) {
         self.router?.main = main
-        self.router?.openOrganizationProfile(output: self)
+        self.router?.openOrganizationProfile(organization: self.organization, output: self)
     }
 
     // dependencies
     private let presenters: OrganizationProfilePresenters
     private let services: OrganizationProfileServices
+
+    // state
+    private let organization: PCOrganization
 }
 
 extension OrganizationProfilePresenter: OrganizationProfileViewOutput {

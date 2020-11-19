@@ -17,7 +17,10 @@
 import UIKit
 
 protocol OrganizationProfileViewInput: UIViewController {
-
+    var organizationName: String? { get set }
+    var organizationINN: String? { get set }
+    var organizationContactName: String? { get set }
+    var organizationPhoneNumber: String? { get set }
 }
 
 protocol OrganizationProfileViewOutput {

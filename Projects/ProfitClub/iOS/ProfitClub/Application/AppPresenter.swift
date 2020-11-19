@@ -119,7 +119,7 @@ extension AppPresenter: ReviewModuleOutput {
 
     func review(module: ReviewModule, userWantsToEnter organization: PCOrganization, inside main: MainModule?) {
         assert(organization.status == .approved)
-        let organization = self.factory.organization(output: self)
+        let organization = self.factory.organization(organization, output: self)
         organization.open(in: main)
     }
     
@@ -131,14 +131,14 @@ extension AppPresenter: ReviewModuleOutput {
 
     func review(module: ReviewModule, userWantsToEnter member: PCMember, inside main: MainModule?) {
         assert(member.status == .approved)
-        let memberModule = self.factory.member(output: self)
+        let memberModule = self.factory.member(member: member, output: self)
         memberModule.open(in: main)
     }
 }
 
 extension AppPresenter: OrganizationModuleOutput {
-    func organization(module: OrganizationModule, userWantsToEnterProfile main: MainModule?) {
-        let profile = self.factory.organizationProfile(output: self)
+    func organization(module: OrganizationModule, userWantsToOpenProfileOf organization: PCOrganization, inside main: MainModule?) {
+        let profile = self.factory.organizationProfile(organization: organization, output: self)
         profile.open(in: main)
     }
 
@@ -176,8 +176,8 @@ extension AppPresenter: SupplierModuleOutput {
         }
     }
 
-    func supplier(module: SupplierModule, userWantsToEnterProfileInside main: MainModule?) {
-        let profile = self.factory.supplierProfile(output: self)
+    func supplier(module: SupplierModule, userWantsToOpenProfileOf supplier: PCSupplier, inside main: MainModule?) {
+        let profile = self.factory.supplierProfile(supplier: supplier, output: self)
         profile.open(in: main)
     }
 
@@ -189,8 +189,8 @@ extension AppPresenter: SupplierModuleOutput {
 }
 
 extension AppPresenter: MemberModuleOutput {
-    func member(module: MemberModule, userWantsToEnterProfileInside main: MainModule?) {
-        let profile = self.factory.memberProfile(output: self)
+    func member(module: MemberModule, userWantsToOpenProfileOf member: PCMember, inside main: MainModule? ) {
+        let profile = self.factory.memberProfile(member: member, output: self)
         profile.open(in: main)
     }
 

@@ -23,19 +23,24 @@ final class SupplierProfilePresenter: SupplierProfileModule {
     weak var output: SupplierProfileModuleOutput?
     var router: SupplierProfileRouter?
 
-    init(presenters: SupplierProfilePresenters,
+    init(supplier: PCSupplier,
+         presenters: SupplierProfilePresenters,
          services: SupplierProfileServices) {
+        self.supplier = supplier
         self.presenters = presenters
         self.services = services
     }
 
     func open(in main: MainModule?) {
         self.router?.main = main
-        self.router?.openSupplierProfile(output: self)
+        self.router?.openSupplierProfile(supplier: self.supplier, output: self)
     }
 
     private let presenters: SupplierProfilePresenters
     private let services: SupplierProfileServices
+
+    // state
+    private let supplier: PCSupplier
 }
 
 extension SupplierProfilePresenter: SupplierProfileViewOutput {

@@ -55,7 +55,7 @@ extension SupplierPresenter: SupplierViewOutput {
     }
 
     func supplierNavigationBar(view: SupplierViewInput, tappedOn profile: Any) {
-        self.output?.supplier(module: self, userWantsToEnterProfileInside: self.router?.main)
+        self.output?.supplier(module: self, userWantsToOpenProfileOf: self.supplier, inside: self.router?.main)
     }
 
     func supplier(view: SupplierViewInput, userWantsToLogout sender: Any) {
@@ -73,7 +73,7 @@ extension SupplierPresenter: SupplierViewOutput {
 
 extension SupplierPresenter: SupplierActionsOutput {
     func supplierNavigationBar(view: SupplierActionsInput, tappedOn profile: Any) {
-        self.output?.supplier(module: self, userWantsToEnterProfileInside: self.router?.main)
+        self.output?.supplier(module: self, userWantsToOpenProfileOf: self.supplier, inside: self.router?.main)
     }
 
     func supplierActionsDidFinish(view: SupplierActionsInput) {
@@ -139,8 +139,7 @@ extension SupplierPresenter: SupplierActionsOutput {
 
 extension SupplierPresenter: SupplierCommercialOfferOutput {
     func supplierNavigationBar(view: SupplierCommercialOfferInput, tappedOn profile: Any) {
-        self.output?.supplier(module: self, userWantsToEnterProfileInside: self.router?.main)
-    }
+        self.output?.supplier(module: self, userWantsToOpenProfileOf: self.supplier, inside: self.router?.main)    }
     
     func supplierCommercialOfferDidFinish(view: SupplierCommercialOfferInput) {
         guard let message = view.message, !message.isEmpty else {

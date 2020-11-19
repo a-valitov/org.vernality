@@ -22,10 +22,12 @@ final class MemberProfileRouter {
     weak var main: MainModule?
 
     @discardableResult
-    func openmemberProfile(output: MemberProfileViewOutput?) -> MemberProfileViewInput {
+    func openmemberProfile(member: PCMember, output: MemberProfileViewOutput?) -> MemberProfileViewInput {
         let storyboard = UIStoryboard(name: "MemberProfileViewBeta", bundle: nil)
         let profile = storyboard.instantiateInitialViewController() as! MemberProfileViewBeta
         profile.output = output
+        profile.memberFirstName = member.firstName
+        profile.memberLastName = member.lastName
         self.main?.push(profile, animated: true)
         return profile
     }

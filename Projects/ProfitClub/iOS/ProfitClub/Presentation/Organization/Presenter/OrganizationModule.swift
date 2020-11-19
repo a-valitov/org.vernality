@@ -16,13 +16,14 @@
 
 import Foundation
 import Main
+import ProfitClubModel
 
 protocol OrganizationModule: class {
     func open(in main: MainModule?)
 }
 
 protocol OrganizationModuleOutput: class {
-    func organization(module: OrganizationModule, userWantsToEnterProfile profile: MainModule?)
+    func organization(module: OrganizationModule, userWantsToOpenProfileOf organization: PCOrganization, inside main: MainModule?)
     func organization(module: OrganizationModule, userWantsToLogoutInside main: MainModule?)
     func organization(module: OrganizationModule, userWantsToChangeRole main: MainModule?)
 }

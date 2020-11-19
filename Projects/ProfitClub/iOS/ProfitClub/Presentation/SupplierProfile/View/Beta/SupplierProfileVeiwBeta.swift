@@ -18,6 +18,12 @@ import UIKit
 
 final class SupplierProfileViewBeta: UIViewController {
     var output: SupplierProfileViewOutput?
+
+    var supplierName: String? { didSet { self.updateUIName() } }
+    var supplierINN: String? { didSet { self.updateUIINN() } }
+    var supplierContactName: String? { didSet { self.updateUIContactName() } }
+    var supplierPhoneNumber: String? { didSet { self.updateUIPhoneNumber() } }
+
     @IBOutlet weak var supplierImageView: UIImageView!
     @IBOutlet weak var supplierNameLabel: UILabel!
     @IBOutlet weak var suplierINNLabel: UILabel!
@@ -29,6 +35,8 @@ final class SupplierProfileViewBeta: UIViewController {
 
     override func viewDidLoad() {
         deleteAccountButton.titleLabel?.attributedText = NSAttributedString(string: "Удалить аккаунт", attributes: [.underlineStyle: NSUnderlineStyle.thick.rawValue])
+
+        self.updateUI()
     }
 
     override func viewWillLayoutSubviews() {
@@ -95,6 +103,36 @@ extension SupplierProfileViewBeta: UIImagePickerControllerDelegate, UINavigation
     }
 }
 
-extension SupplierProfileViewBeta: SupplierProfileViewInput {
+extension SupplierProfileViewBeta {
 
+}
+
+extension SupplierProfileViewBeta: SupplierProfileViewInput {
+    private func updateUI() {
+        updateUIName()
+        updateUIINN()
+        updateUIContactName()
+        updateUIPhoneNumber()
+    }
+
+    private func updateUIName() {
+        if self.isViewLoaded {
+            self.supplierNameLabel.text = self.supplierName
+        }
+    }
+    private func updateUIINN() {
+        if self.isViewLoaded {
+            self.suplierINNLabel.text = self.supplierINN
+        }
+    }
+    private func updateUIContactName() {
+        if self.isViewLoaded {
+            self.supplierContactNameLabel.text = self.supplierContactName
+        }
+    }
+    private func updateUIPhoneNumber() {
+        if self.isViewLoaded {
+            self.supplierPhoneNumberLabel.text = self.supplierPhoneNumber
+        }
+    }
 }

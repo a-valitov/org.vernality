@@ -22,10 +22,14 @@ final class OrganizationProfileRouter {
     weak var main: MainModule?
 
     @discardableResult
-    func openOrganizationProfile(output: OrganizationProfileViewOutput?) -> OrganizationProfileViewInput {
+    func openOrganizationProfile(organization: PCOrganization, output: OrganizationProfileViewOutput?) -> OrganizationProfileViewInput {
         let storyboard = UIStoryboard(name: "OrganizationProfileViewBeta", bundle: nil)
         let profile = storyboard.instantiateInitialViewController() as! OrganizationProfileViewBeta
         profile.output = output
+        profile.organizationName = organization.name
+        profile.organizationINN = organization.inn
+        profile.organizationContactName = organization.contact
+        profile.organizationPhoneNumber = organization.phone
         self.main?.push(profile, animated: true)
         return profile
     }

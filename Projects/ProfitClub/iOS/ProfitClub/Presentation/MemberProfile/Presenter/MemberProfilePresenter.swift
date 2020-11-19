@@ -23,20 +23,25 @@ final class MemberProfilePresenter: MemberProfileModule {
     weak var output: MemberProfileModuleOutput?
     var router: MemberProfileRouter?
 
-    init(presenters: MemberProfilePresenters,
+    init(member: PCMember,
+         presenters: MemberProfilePresenters,
          services: MemberProfileServices) {
+        self.member = member
         self.presenters = presenters
         self.services = services
     }
 
     func open(in main: MainModule?) {
         self.router?.main = main
-        self.router?.openmemberProfile(output: self)
+        self.router?.openmemberProfile(member: self.member, output: self)
     }
 
     // dependencies
     private let presenters: MemberProfilePresenters
     private let services: MemberProfileServices
+
+    // state
+    private let member: PCMember
 }
 
 extension MemberProfilePresenter: MemberProfileViewOutput {

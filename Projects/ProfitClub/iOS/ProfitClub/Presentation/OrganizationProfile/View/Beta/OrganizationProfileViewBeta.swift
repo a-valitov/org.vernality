@@ -18,6 +18,12 @@ import UIKit
 
 final class OrganizationProfileViewBeta: UIViewController {
     var output: OrganizationProfileViewOutput?
+
+    var organizationName: String? { didSet { self.updateUIName() } }
+    var organizationINN: String? { didSet { self.updateUIINN() } }
+    var organizationContactName: String? { didSet { self.updateUIContactName() } }
+    var organizationPhoneNumber: String? { didSet { self.updateUIPhoneNumber() } }
+
     @IBOutlet weak var organizationImageView: UIImageView!
     @IBOutlet weak var organizationNameLabel: UILabel!
     @IBOutlet weak var organizationINNLabel: UILabel!
@@ -30,6 +36,8 @@ final class OrganizationProfileViewBeta: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         deleteAccountButton.titleLabel?.attributedText = NSAttributedString(string: "Удалить аккаунт", attributes: [.underlineStyle: NSUnderlineStyle.thick.rawValue])
+
+        self.updateUI()
     }
     
     override func viewWillLayoutSubviews() {
@@ -99,4 +107,35 @@ extension OrganizationProfileViewBeta: UIImagePickerControllerDelegate, UINaviga
 
 extension OrganizationProfileViewBeta: OrganizationProfileViewInput {
     
+}
+
+extension OrganizationProfileViewBeta {
+    private func updateUI() {
+        updateUIName()
+        updateUIINN()
+        updateUIContactName()
+        updateUIPhoneNumber()
+    }
+
+    private func updateUIName() {
+        if self.isViewLoaded {
+            self.organizationNameLabel.text = self.organizationName
+        }
+    }
+    private func updateUIINN() {
+        if self.isViewLoaded {
+            self.organizationINNLabel.text = self.organizationINN
+        }
+    }
+    private func updateUIContactName() {
+        if self.isViewLoaded {
+            self.organizationContactNameLabel.text = self.organizationContactName
+        }
+    }
+    private func updateUIPhoneNumber() {
+        if self.isViewLoaded {
+            self.organizationPhoneNumberLabel.text = self.organizationPhoneNumber
+        }
+    }
+
 }

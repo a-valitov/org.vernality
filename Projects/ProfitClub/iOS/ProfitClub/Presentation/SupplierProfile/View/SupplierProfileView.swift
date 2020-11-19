@@ -17,7 +17,10 @@
 import UIKit
 
 protocol SupplierProfileViewInput: UIViewController {
-
+    var supplierName: String? { get set }
+    var supplierINN: String? { get set }
+    var supplierContactName: String? { get set }
+    var supplierPhoneNumber: String? { get set }
 }
 
 protocol SupplierProfileViewOutput {

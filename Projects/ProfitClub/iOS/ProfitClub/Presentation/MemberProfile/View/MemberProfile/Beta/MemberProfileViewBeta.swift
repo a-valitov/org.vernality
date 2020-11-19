@@ -19,11 +19,15 @@ import UIKit
 final class MemberProfileViewBeta: UIViewController {
     var output: MemberProfileViewOutput?
 
+    var memberFirstName: String?
+    var memberLastName: String?
+
     @IBOutlet weak var memberImageView: UIImageView!
     @IBOutlet weak var memberNameLabel: UILabel!
     @IBOutlet weak var memberOrganizationNameLabel: UILabel!
     @IBOutlet weak var memberEmailLabel: UILabel!
     @IBOutlet weak var memberPhoneNumberLabel: UILabel!
+
     @IBOutlet weak var addPhotoButton: UIButton!
     @IBOutlet weak var deleteAccountButton: UIButton!
 
@@ -32,6 +36,7 @@ final class MemberProfileViewBeta: UIViewController {
         super.viewDidLoad()
         deleteAccountButton.titleLabel?.attributedText = NSAttributedString(string: "Удалить аккаунт", attributes: [.underlineStyle: NSUnderlineStyle.thick.rawValue])
 
+        memberNameLabel.text = "\(memberFirstName ?? "") \(memberLastName ?? "")"
     }
 
     override func viewWillLayoutSubviews() {

@@ -17,7 +17,8 @@
 import UIKit
 
 protocol MemberProfileViewInput: UIViewController {
-
+    var memberFirstName: String? { get set }
+    var memberLastName: String? { get set }
 }
 
 protocol MemberProfileViewOutput {
