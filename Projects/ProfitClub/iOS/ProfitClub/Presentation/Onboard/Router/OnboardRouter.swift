@@ -44,6 +44,7 @@ final class OnboardRouter {
     func openOnboardSignUp(output: OnboardSignUpViewOutput?) -> OnboardSignUpViewInput {
         let storyboard = UIStoryboard(name: "OnboardSignUpViewBeta", bundle: nil)
         let onboardSignUp = storyboard.instantiateInitialViewController() as! OnboardSignUpViewBeta
+//        let onboardSignUp = OnboardSignUpViewAlpha()
         onboardSignUp.output = output
         self.main?.raise(onboardSignUp, animated: true)
         return onboardSignUp
