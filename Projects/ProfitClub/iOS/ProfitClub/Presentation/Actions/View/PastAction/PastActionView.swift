@@ -1,5 +1,5 @@
 //  Copyright (C) 2020 Startup Studio Vernality
-//  Created by Rinat Enikeev on 10/14/20
+//  Created by Macbook on 22.11.2020
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -15,13 +15,16 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import UIKit
-import ProfitClubModel
 
-protocol PastActionsViewInput: UIViewController {
-    var actions: [AnyPCAction] { get set }
+protocol PastActionViewInput: UIViewController {
+    var pastActionImageUrl: URL? { get set }
+    var pastActionMessage: String? { get set }
+    var pastActionDescription: String? { get set }
+    var pastActionStartDate: String? { get set }
+    var pastActionEndDate: String? { get set }
+    var organizationName: String? { get set }
 }
 
-protocol PastActionsViewOutput {
-    func pastActionsDidLoad(view: PastActionsViewInput)
-    func pastActions(view: PastActionsViewInput, didSelect pastAction: PCAction)
+protocol PastActionViewOutput {
+    
 }

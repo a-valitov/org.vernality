@@ -33,6 +33,11 @@ final class PastActionsViewBeta: UITableViewController {
         self.output?.pastActionsDidLoad(view: self)
     }
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let action = actions[indexPath.row]
+        self.output?.pastActions(view: self, didSelect: action)
+    }
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return actions.count
     }

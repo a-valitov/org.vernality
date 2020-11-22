@@ -79,4 +79,12 @@ extension ActionsPresenter: PastActionsViewOutput {
             }
         }
     }
+
+    func pastActions(view: PastActionsViewInput, didSelect pastAction: PCAction) {
+        self.router?.openPastAction(action: pastAction, output: self)
+    }
+}
+
+extension ActionsPresenter: PastActionViewOutput {
+
 }
