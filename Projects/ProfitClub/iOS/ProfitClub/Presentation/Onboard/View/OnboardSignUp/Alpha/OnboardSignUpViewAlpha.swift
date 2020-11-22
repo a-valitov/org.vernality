@@ -223,7 +223,7 @@ extension OnboardSignUpViewAlpha {
             signIn.topAnchor.constraint(equalTo: signUpButton.bottomAnchor, constant: 10.0),
             signIn.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 20.0),
             signIn.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -20.0),
-            signIn.bottomAnchor.constraint(greaterThanOrEqualTo: container.safeAreaLayoutGuide.bottomAnchor, constant: -20.0),
+            signIn.bottomAnchor.constraint(equalTo: container.safeAreaLayoutGuide.bottomAnchor, constant: -20.0),
             signIn.heightAnchor.constraint(equalToConstant: 30.0)
         ])
     }
