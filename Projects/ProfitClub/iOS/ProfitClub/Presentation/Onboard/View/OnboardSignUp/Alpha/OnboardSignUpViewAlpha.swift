@@ -158,7 +158,7 @@ extension OnboardSignUpViewAlpha {
     private func layoutRegistrationLabel(in container: UIView) {
         let label = registrationLabel
         label.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(label)
+        container.addSubview(label)
         NSLayoutConstraint.activate([
             label.topAnchor.constraint(equalTo: container.topAnchor, constant: 8),
             label.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 20)
@@ -171,7 +171,7 @@ extension OnboardSignUpViewAlpha {
         stack.axis = .vertical
         stack.distribution = .fill
         stack.spacing = 15
-        view.addSubview(stack)
+        container.addSubview(stack)
         stack.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             stack.topAnchor.constraint(equalTo: registrationLabel.bottomAnchor, constant: 30),
@@ -212,7 +212,7 @@ extension OnboardSignUpViewAlpha {
 
     private func layoutSignUp(in container: UIView) {
         let signUp = signUpButton
-        view.addSubview(signUp)
+        container.addSubview(signUp)
         signUp.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             signUp.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 20.0),
@@ -224,7 +224,7 @@ extension OnboardSignUpViewAlpha {
 
     private func layoutSignIn(in container: UIView) {
         let signIn = signInButton
-        view.addSubview(signIn)
+        container.addSubview(signIn)
         signIn.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             signIn.topAnchor.constraint(equalTo: signUpButton.bottomAnchor, constant: 10.0),
