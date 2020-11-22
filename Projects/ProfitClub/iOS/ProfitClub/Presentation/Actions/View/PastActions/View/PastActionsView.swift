@@ -22,5 +22,5 @@ protocol PastActionsViewInput: UIViewController {
 }
 
 protocol PastActionsViewOutput {
-    
+    func pastActionsDidLoad(view: PastActionsViewInput)
 }

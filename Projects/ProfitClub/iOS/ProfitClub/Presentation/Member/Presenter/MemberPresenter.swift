@@ -54,7 +54,7 @@ extension MemberPresenter: MemberCurrentActionsViewOutput {
     }
 
     func memberCurrentActionsDidLoad(view: MemberCurrentActionsViewInput) {
-        self.services.action.fetchApproved { [weak self] result in
+        self.services.action.fetchApprovedCurrentActions { [weak self] result in
             switch result {
             case .success(let actions):
                 view.actions = actions

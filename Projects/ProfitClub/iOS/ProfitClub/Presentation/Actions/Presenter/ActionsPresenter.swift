@@ -53,7 +53,7 @@ extension ActionsPresenter: ActionsContainerViewOutput {
 
 extension ActionsPresenter: CurrentActionsViewOutput {
     func currentActionsDidLoad(view: CurrentActionsViewInput) {
-        self.services.action.fetchApproved { [weak self] (result) in
+        self.services.action.fetchApprovedCurrentActions { [weak self] (result) in
             switch result {
             case .success(let actions):
                 view.actions = actions
@@ -69,4 +69,14 @@ extension ActionsPresenter: CurrentActionsViewOutput {
 }
 
 extension ActionsPresenter: PastActionsViewOutput {
+    func pastActionsDidLoad(view: PastActionsViewInput) {
+        self.services.action.fetchApprovedPastActions { [weak self] (result) in
+            switch result {
+            case .success(let actions):
+                view.actions = actions
+            case .failure(let error):
+                self?.presenters.error.present(error)
+            }
+        }
+    }
 }
