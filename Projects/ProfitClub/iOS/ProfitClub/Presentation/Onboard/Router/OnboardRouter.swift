@@ -23,8 +23,9 @@ final class OnboardRouter {
 
     @discardableResult
     func openOnboardWelcome(output: OnboardWelcomeViewOutput?) -> OnboardWelcomeViewInput {
-        let storyboard = UIStoryboard(name: "OnboardWelcomeViewBeta", bundle: nil)
-        let onboardWelcome = storyboard.instantiateInitialViewController() as! OnboardWelcomeViewBeta
+//        let storyboard = UIStoryboard(name: "OnboardWelcomeViewBeta", bundle: nil)
+//        let onboardWelcome = storyboard.instantiateInitialViewController() as! OnboardWelcomeViewBeta
+        let onboardWelcome = OnboardWelcomeViewAlpha()
         onboardWelcome.output = output
         self.main?.push(onboardWelcome, animated: false)
         return onboardWelcome
@@ -41,11 +42,21 @@ final class OnboardRouter {
 
     @discardableResult
     func openOnboardSignUp(output: OnboardSignUpViewOutput?) -> OnboardSignUpViewInput {
-        let storyboard = UIStoryboard(name: "OnboardSignUpViewBeta", bundle: nil)
-        let onboardSignUp = storyboard.instantiateInitialViewController() as! OnboardSignUpViewBeta
+//        let storyboard = UIStoryboard(name: "OnboardSignUpViewBeta", bundle: nil)
+//        let onboardSignUp = storyboard.instantiateInitialViewController() as! OnboardSignUpViewBeta
+        let onboardSignUp = OnboardSignUpViewAlpha()
         onboardSignUp.output = output
         self.main?.raise(onboardSignUp, animated: true)
         return onboardSignUp
+    }
+
+    @discardableResult
+    func openResetPassword(output: OnboardResetPasswordViewOutput?) -> OnboardResetPasswordViewInput {
+        let storyboard = UIStoryboard(name: "OnboardResetPasswordViewBeta", bundle: nil)
+        let onboardResetPassword = storyboard.instantiateInitialViewController() as! OnboardResetPasswordViewBeta
+        onboardResetPassword.output = output
+        self.main?.push(onboardResetPassword, animated: true)
+        return onboardResetPassword
     }
 
     @discardableResult
@@ -91,5 +102,10 @@ final class OnboardRouter {
         self.main?.push(onboardSupplier, animated: true)
         return onboardSupplier
 
+    }
+
+    @discardableResult
+    func pop() {
+        self.main?.pop()
     }
 }

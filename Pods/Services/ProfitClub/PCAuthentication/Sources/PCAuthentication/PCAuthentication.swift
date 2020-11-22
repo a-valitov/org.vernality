@@ -26,6 +26,8 @@ public protocol PCAuthentication {
     func add(member: PCMember, in organization: PCOrganization, result: @escaping ((Result<PCMember, Error>) -> Void))
     func add(supplier: PCSupplier, result: @escaping ((Result<PCSupplier, Error>) -> Void)) 
     func add(organization: PCOrganization, result: @escaping ((Result<PCOrganization, Error>) -> Void))
+
+    func resetPassword(email: String, result: @escaping ((Result<Bool, Error>) -> Void))
 }
 
 public protocol PCAuthenticationFactory {

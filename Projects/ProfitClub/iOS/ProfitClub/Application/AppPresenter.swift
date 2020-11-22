@@ -119,7 +119,7 @@ extension AppPresenter: ReviewModuleOutput {
 
     func review(module: ReviewModule, userWantsToEnter organization: PCOrganization, inside main: MainModule?) {
         assert(organization.status == .approved)
-        let organization = self.factory.organization(output: self)
+        let organization = self.factory.organization(organization, output: self)
         organization.open(in: main)
     }
     
@@ -131,17 +131,97 @@ extension AppPresenter: ReviewModuleOutput {
 
     func review(module: ReviewModule, userWantsToEnter member: PCMember, inside main: MainModule?) {
         assert(member.status == .approved)
-        let memberModule = self.factory.member(output: self)
+        let memberModule = self.factory.member(member: member, output: self)
         memberModule.open(in: main)
     }
 }
 
 extension AppPresenter: OrganizationModuleOutput {
+    func organization(module: OrganizationModule, userWantsToOpenProfileOf organization: PCOrganization, inside main: MainModule?) {
+        let profile = self.factory.organizationProfile(organization: organization, output: self)
+        profile.open(in: main)
+    }
+
+    func organization(module: OrganizationModule, userWantsToLogoutInside main: MainModule?) {
+        self.userService.logout { [weak self] result in
+            switch result {
+            case .failure(let error):
+                self?.errorPresenter.present(error)
+            case .success:
+                main?.unwindToRoot()
+                let onboard = self?.factory.onboard(output: self)
+                onboard?.start(in: main)
+            }
+        }
+    }
+
+    func organization(module: OrganizationModule, userWantsToChangeRole main: MainModule?) {
+        main?.unwindToRoot()
+        let module = self.factory.review(output: self)
+        module.start(in: main)
+    }
 }
 
 extension AppPresenter: SupplierModuleOutput {
+    func supplier(module: SupplierModule, userWantsToLogoutInside main: MainModule?) {
+        self.userService.logout { [weak self] result in
+            switch result {
+            case .failure(let error):
+                self?.errorPresenter.present(error)
+            case .success:
+                main?.unwindToRoot()
+                let onboard = self?.factory.onboard(output: self)
+                onboard?.start(in: main)
+            }
+        }
+    }
+
+    func supplier(module: SupplierModule, userWantsToOpenProfileOf supplier: PCSupplier, inside main: MainModule?) {
+        let profile = self.factory.supplierProfile(supplier: supplier, output: self)
+        profile.open(in: main)
+    }
+
+    func supplier(module: SupplierModule, userWantsToChangeRole main: MainModule?) {
+        main?.unwindToRoot()
+        let module = self.factory.review(output: self)
+        module.start(in: main)
+    }
 }
 
 extension AppPresenter: MemberModuleOutput {
+    func member(module: MemberModule, userWantsToOpenProfileOf member: PCMember, inside main: MainModule? ) {
+        let profile = self.factory.memberProfile(member: member, output: self)
+        profile.open(in: main)
+    }
+
+    func member(module: MemberModule, userWantsToLogoutInside main: MainModule?) {
+        self.userService.logout { [weak self] result in
+            switch result {
+            case .failure(let error):
+                self?.errorPresenter.present(error)
+            case .success:
+                main?.unwindToRoot()
+                let onboard = self?.factory.onboard(output: self)
+                onboard?.start(in: main)
+            }
+        }
+    }
+
+    func member(module: MemberModule, userWantsToChangeRole main: MainModule?) {
+        main?.unwindToRoot()
+        let module = self.factory.review(output: self)
+        module.start(in: main)
+    }
+}
+
+extension AppPresenter: MemberProfileModuleOutput {
+
+}
+
+extension AppPresenter: OrganizationProfileModuleOutput {
+
+}
+
+extension AppPresenter: SupplierProfileModuleOutput {
 
 }

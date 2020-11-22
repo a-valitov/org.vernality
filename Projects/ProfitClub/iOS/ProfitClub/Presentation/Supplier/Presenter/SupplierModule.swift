@@ -23,4 +23,7 @@ protocol SupplierModule: class {
 }
 
 protocol SupplierModuleOutput: class {
+    func supplier(module: SupplierModule, userWantsToOpenProfileOf supplier: PCSupplier, inside main: MainModule?)
+    func supplier(module: SupplierModule, userWantsToLogoutInside main: MainModule?)
+    func supplier(module: SupplierModule, userWantsToChangeRole main: MainModule?)
 }

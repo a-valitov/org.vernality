@@ -23,8 +23,10 @@ final class MemberPresenter: MemberModule {
     weak var output: MemberModuleOutput?
     var router: MemberRouter?
 
-    init(presenters: MemberPresenters,
+    init(member: PCMember,
+         presenters: MemberPresenters,
          services: MemberServices) {
+        self.member = member
         self.presenters = presenters
         self.services = services
     }
@@ -37,9 +39,20 @@ final class MemberPresenter: MemberModule {
     // dependencies
     private let presenters: MemberPresenters
     private let services: MemberServices
+
+    // state
+    private let member: PCMember
 }
 
 extension MemberPresenter: MemberCurrentActionsViewOutput {
+    func memberCurrentActions(view: MemberCurrentActionsViewInput, userWantsToLogout sender: Any) {
+        view.showLogoutConfirmationDialog()
+    }
+
+    func memberCurrentActions(view: MemberCurrentActionsViewInput, userConfirmToLogout sender: Any) {
+        self.output?.member(module: self, userWantsToLogoutInside: self.router?.main)
+    }
+
     func memberCurrentActionsDidLoad(view: MemberCurrentActionsViewInput) {
         self.services.action.fetchApproved { [weak self] result in
             switch result {
@@ -53,6 +66,14 @@ extension MemberPresenter: MemberCurrentActionsViewOutput {
 
     func memberCurrentActions(view: MemberCurrentActionsViewInput, didSelect action: PCAction) {
         self.router?.openMemberCurrentAction(action: action, output: self)
+    }
+
+    func memberNavigtaionBar(view: MemberCurrentActionsViewInput, tappedOn profile: Any) {
+        self.output?.member(module: self, userWantsToOpenProfileOf: self.member, inside: self.router?.main)
+    }
+
+    func memberCurrentActions(view: MemberCurrentActionsViewInput, userWantsToChangeRole sender: Any) {
+        self.output?.member(module: self, userWantsToChangeRole: self.router?.main)
     }
 }
 

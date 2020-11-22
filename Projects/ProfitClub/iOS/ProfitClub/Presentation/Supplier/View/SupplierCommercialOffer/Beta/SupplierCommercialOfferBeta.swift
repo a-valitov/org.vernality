@@ -91,6 +91,8 @@ final class SupplierCommercialOfferBeta: UIViewController {
         super.viewDidLoad()
         messageTextView.delegate = self
         messageTextView.textContainerInset = UIEdgeInsets(top: 10, left: 10, bottom: 0, right: 20)
+
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "barItem"), style: .plain, target: self, action: #selector(menuBarButtonItemAction))
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -101,6 +103,42 @@ final class SupplierCommercialOfferBeta: UIViewController {
             addCommercialOfferImage.imageView?.isHidden = true
         }
         UINavigationBar.appearance().tintColor = .white
+    }
+
+    @objc private func menuBarButtonItemAction(_ sender: Any) {
+        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        actionSheet.view.tintColor = .black
+
+        let logoutIcon = #imageLiteral(resourceName: "logout")
+        let changeRoleIcon = #imageLiteral(resourceName: "refresh")
+        let profileIcon = #imageLiteral(resourceName: "profile")
+
+        let logout = UIAlertAction(title: "Выйти", style: .default) { _ in
+            self.output?.supplierCommercialOffer(view: self, userWantsToLogout: sender)
+        }
+
+        logout.setValue(logoutIcon.withRenderingMode(.alwaysOriginal), forKey: "image")
+
+        let changeRole = UIAlertAction(title: "Сменить роль", style: .default) { _ in
+            self.output?.supplierCommercialOffer(view: self, userWantsToChangeRole: sender)
+        }
+
+        changeRole.setValue(changeRoleIcon.withRenderingMode(.alwaysOriginal), forKey: "image")
+
+        let profileAction = UIAlertAction(title: "Профиль", style: .default) { _ in
+            self.output?.supplierNavigationBar(view: self, tappedOn: sender)
+        }
+
+        profileAction.setValue(profileIcon.withRenderingMode(.alwaysOriginal), forKey: "image")
+
+        let cancelAction = UIAlertAction(title: "Отменить", style: .cancel)
+        cancelAction.setValue(UIColor.red, forKey: "titleTextColor")
+
+        actionSheet.addAction(profileAction)
+        actionSheet.addAction(changeRole)
+        actionSheet.addAction(logout)
+        actionSheet.addAction(cancelAction)
+        present(actionSheet, animated: true)
     }
 }
 
@@ -195,5 +233,25 @@ extension SupplierCommercialOfferBeta: UICollectionViewDelegate, UICollectionVie
 }
 
 extension SupplierCommercialOfferBeta: SupplierCommercialOfferInput {
-    
+    func showLogoutConfirmationDialog() {
+        var blurEffect = UIBlurEffect()
+        blurEffect = UIBlurEffect(style: .dark)
+        let blurVisualEffectView = UIVisualEffectView(effect: blurEffect)
+        blurVisualEffectView.frame = view.bounds
+        blurVisualEffectView.alpha = 0.9
+        self.view.addSubview(blurVisualEffectView)
+        let controller = UIAlertController(title: "Подтвердите выход", message: "Вы уверены что хотите выйти?", preferredStyle: .alert)
+
+        controller.addAction(UIAlertAction(title: "Выйти", style: .destructive, handler: { [weak self] _ in
+            guard let sSelf = self else { return }
+            self?.output?.supplierCommercialOffer(view: sSelf, userConfirmToLogout: controller)
+            blurVisualEffectView.removeFromSuperview()
+        }))
+
+        controller.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: { _ in
+            blurVisualEffectView.removeFromSuperview()
+        }))
+
+        self.present(controller, animated: true)
+    }
 }

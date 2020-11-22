@@ -24,4 +24,5 @@ protocol OnboardSignUpViewInput: UIViewController {
 
 protocol OnboardSignUpViewOutput {
     func onboardSignUp(view: OnboardSignUpViewInput, userWantsToSignUp sender: Any)
+    func onboardSignIn(view: OnboardSignUpViewInput, userWantsToSignIp sender: Any)
 }

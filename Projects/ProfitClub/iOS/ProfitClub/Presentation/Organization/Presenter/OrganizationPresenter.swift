@@ -24,8 +24,10 @@ final class OrganizationPresenter: OrganizationModule {
     weak var output: OrganizationModuleOutput?
     var router: OrganizationRouter?
 
-    init(presenters: OrganizationPresenters,
+    init(organization: PCOrganization,
+         presenters: OrganizationPresenters,
          services: OrganizationServices) {
+        self.organization = organization
         self.presenters = presenters
         self.services = services
     }
@@ -38,10 +40,27 @@ final class OrganizationPresenter: OrganizationModule {
     // dependencies
     private let presenters: OrganizationPresenters
     private let services: OrganizationServices
+
+    // state
+    private let organization: PCOrganization
 }
 
 extension OrganizationPresenter: OrganizationTabBarViewOutput {
-    
+    func organizationTabBar(view: OrganizationTabBarViewInput, tappedOn profile: Any) {
+        self.output?.organization(module: self, userWantsToOpenProfileOf: self.organization, inside: self.router?.main)
+    }
+
+    func organizationTabBar(view: OrganizationTabBarViewInput, userWantsToLogout sender: Any) {
+        view.showLogoutConfirmationDialog()
+    }
+
+    func organizationTabBar(view: OrganizationTabBarViewInput, userConfirmToLogout sender: Any) {
+        self.output?.organization(module: self, userWantsToLogoutInside: self.router?.main)
+    }
+
+    func organizationTabBar(view: OrganizationTabBarViewInput, userWantsToChangeRole sender: Any) {
+        self.output?.organization(module: self, userWantsToChangeRole: self.router?.main)
+    }
 }
 
 extension OrganizationPresenter: ActionsModuleOutput {

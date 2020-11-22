@@ -74,8 +74,8 @@ extension AppFactory {
         return module
     }
     
-    func organization(output: OrganizationModuleOutput?) -> OrganizationModule {
-        let module = self.organizationFactory.make(output: output)
+    func organization(_ organization: PCOrganization, output: OrganizationModuleOutput?) -> OrganizationModule {
+        let module = self.organizationFactory.make(organization: organization, output: output)
         return module
     }
     
@@ -84,8 +84,23 @@ extension AppFactory {
         return module
     }
 
-    func member(output: MemberModuleOutput?) -> MemberModule {
-        let module = self.memberFactory.make(output: output)
+    func member(member: PCMember, output: MemberModuleOutput?) -> MemberModule {
+        let module = self.memberFactory.make(member: member, output: output)
+        return module
+    }
+
+    func memberProfile(member: PCMember, output: MemberProfileModuleOutput?) -> MemberProfileModule {
+        let module = self.memberProfileFactory.make(member: member, output: output)
+        return module
+    }
+
+    func organizationProfile(organization: PCOrganization, output: OrganizationProfileModuleOutput?) -> OrganizationProfileModule {
+        let module = self.organizationProfileFactory.make(organization: organization, output: output)
+        return module
+    }
+
+    func supplierProfile(supplier: PCSupplier, output: SupplierProfileModuleOutput?) -> SupplierProfileModule {
+        let module = self.supplierProfileFactory.make(supplier: supplier, output: output)
         return module
     }
 }
@@ -124,6 +139,18 @@ private extension AppFactory {
         return MemberFactory(presenters: MemberPresenters(error: self.errorPresenter(), activity: self.activityPresenter()), services: MemberServices(action: self.actionService()))
     }
 
+    var adminFactory: AdminFactory {
+        return AdminFactory(presenters: AdminPresenters(error: self.errorPresenter(), activity: self.activityPresenter()), services: AdminServices(), factories: AdminFactories(adminOrganizations: self.adminOrganizationsFactory, adminOrganization: self.adminOrganizationFactory))
+    }
+
+    var adminOrganizationsFactory: AdminOrganizationsFactory {
+        return AdminOrganizationsFactory(presenters: AdminOrganizationsPresenters(error: self.errorPresenter(), activity: self.activityPresenter()), services: AdminOrganizationsServices(organization: self.organizationService()))
+    }
+
+    var adminOrganizationFactory: AdminOrganizationFactory {
+        return AdminOrganizationFactory(presenters: AdminOrganizationPresenters(error: self.errorPresenter(), activity: self.activityPresenter()), services: AdminOrganizationServices(organization: self.organizationService()))
+    }
+
     var actionsFactory: ActionsFactory {
         return ActionsFactory(presenters: ActionsPresenters(error: self.errorPresenter(), activity: self.activityPresenter()),
                               services: ActionsServices(action: self.actionService()))
@@ -144,5 +171,17 @@ private extension AppFactory {
 
     var membersFactory: MembersFactory {
         return MembersFactory(presenters: MembersPresenters(error: self.errorPresenter(), activity: self.activityPresenter()), services: MembersServices())
+    }
+
+    var memberProfileFactory: MemberProfileFactory {
+        return MemberProfileFactory(presenters: MemberProfilePresenters(error: self.errorPresenter(), activity: self.activityPresenter()), services: MemberProfileServices())
+    }
+
+    var organizationProfileFactory: OrganizationProfileFactory {
+        return OrganizationProfileFactory(presenters: OrganizationProfilePresenters(error: self.errorPresenter(), activity: self.activityPresenter()), services: OrganizationProfileServices())
+    }
+
+    var supplierProfileFactory: SupplierProfileFactory {
+        return SupplierProfileFactory(presenters: SupplierProfilePresenters(error: self.errorPresenter(), activity: self.activityPresenter()), services: SupplierProfileServices())
     }
 }

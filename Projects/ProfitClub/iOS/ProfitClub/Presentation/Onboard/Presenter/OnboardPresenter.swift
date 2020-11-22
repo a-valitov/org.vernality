@@ -95,6 +95,18 @@ extension OnboardPresenter: OnboardSignInViewOutput {
             }
         }
     }
+
+    func onboardSingUp(view: OnboardSignInViewInput, userWantsToSignUp sender: Any) {
+        self.router?.main?.unraise(animated: true, completion: { [weak self] in
+            self?.router?.openOnboardSignUp(output: self)
+        })
+    }
+
+    func onboardResetPassword(view: OnboardSignInViewInput, userWantsToResetPassword sender: Any) {
+        self.router?.main?.unraise(animated: true, completion: { [weak self] in
+            self?.router?.openResetPassword(output: self)
+        })
+    }
 }
 
 extension OnboardPresenter: OnboardSignUpViewOutput {
@@ -121,6 +133,41 @@ extension OnboardPresenter: OnboardSignUpViewOutput {
             self?.router?.openSelectRole(output: self)
         })
     }
+
+    func onboardSignIn(view: OnboardSignUpViewInput, userWantsToSignIp sender: Any) {
+        self.router?.main?.unraise(animated: true, completion: { [weak self] in
+            self?.router?.openOnboardSignIn(output: self)
+        })
+    }
+}
+
+extension OnboardPresenter: OnboardResetPasswordViewOutput {
+    func onboardResetPasswordDidFinish(view: OnboardResetPasswordViewInput) {
+        guard let email = view.email, email.isEmpty == false else {
+            self.presenters.error.present(OnboardError.emailIsEmpty)
+            return
+        }
+        self.email = email
+        if self.isValid(email: email) {
+            self.presenters.activity.increment()
+            self.services.authentication.resetPassword(email: email) { [weak self] result in
+                self?.presenters.activity.decrement()
+                switch result {
+                case .success:
+                    view.finishAlert()
+                case .failure(let error):
+                    self?.presenters.error.present(error)
+                }
+            }
+        } else {
+            view.alert()
+        }
+    }
+
+    func onboardResetPasswordFinish(view: OnboardResetPasswordViewInput) {
+        self.router?.pop()
+    }
+
 }
 
 extension OnboardPresenter: OnboardMemberViewOutput {
@@ -445,5 +492,12 @@ extension OnboardPresenter {
                 }
             }
         }
+    }
+
+    private func isValid(email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluate(with: email)
     }
 }
