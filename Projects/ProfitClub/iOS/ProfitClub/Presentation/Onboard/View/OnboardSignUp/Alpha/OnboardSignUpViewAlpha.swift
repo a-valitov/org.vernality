@@ -72,10 +72,9 @@ final class OnboardSignUpViewAlpha: UIViewController {
         signInButton.addTarget(self, action: #selector(OnboardSignUpViewAlpha.signInButtonTouchUpInside(_:)), for: .touchUpInside)
 
         var blurEffect = UIBlurEffect()
-        blurEffect = UIBlurEffect(style: .mat)
+        blurEffect = UIBlurEffect(style: .dark)
         let blurVisualEffectView = UIVisualEffectView(effect: blurEffect)
         blurVisualEffectView.frame = view.bounds
-        blurVisualEffectView.alpha = 0.9
         self.view.addSubview(blurVisualEffectView)
     }
 
@@ -115,6 +114,14 @@ final class OnboardSignUpViewAlpha: UIViewController {
         self.emailTextField.textColor = textColor
         self.passwordTextField.textColor = textColor
         self.passwordConfirmationTextField.textColor = textColor
+
+        self.emailTextField.backgroundColor = #colorLiteral(red: 0.5333333333, green: 0.5333333333, blue: 0.5333333333, alpha: 0.3)
+        self.passwordTextField.backgroundColor = #colorLiteral(red: 0.5333333333, green: 0.5333333333, blue: 0.5333333333, alpha: 0.3)
+        self.passwordConfirmationTextField.backgroundColor = #colorLiteral(red: 0.5333333333, green: 0.5333333333, blue: 0.5333333333, alpha: 0.3)
+
+        self.emailTextField.layer.cornerRadius = 5
+        self.passwordTextField.layer.cornerRadius = 5
+        self.passwordConfirmationTextField.layer.cornerRadius = 5
     }
 
     private func combination() -> NSMutableAttributedString {
@@ -160,7 +167,7 @@ extension OnboardSignUpViewAlpha {
         label.translatesAutoresizingMaskIntoConstraints = false
         container.addSubview(label)
         NSLayoutConstraint.activate([
-            label.topAnchor.constraint(equalTo: container.topAnchor, constant: 8),
+            label.topAnchor.constraint(equalTo: container.safeAreaLayoutGuide.topAnchor, constant: 8),
             label.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 20)
         ])
     }
