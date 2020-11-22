@@ -70,6 +70,13 @@ final class OnboardSignUpViewAlpha: UIViewController {
         view.backgroundColor = .clear
         signUpButton.addTarget(self, action: #selector(OnboardSignUpViewAlpha.signUpButtonTouchUpInside(_:)), for: .touchUpInside)
         signInButton.addTarget(self, action: #selector(OnboardSignUpViewAlpha.signInButtonTouchUpInside(_:)), for: .touchUpInside)
+
+        var blurEffect = UIBlurEffect()
+        blurEffect = UIBlurEffect(style: .mat)
+        let blurVisualEffectView = UIVisualEffectView(effect: blurEffect)
+        blurVisualEffectView.frame = view.bounds
+        blurVisualEffectView.alpha = 0.9
+        self.view.addSubview(blurVisualEffectView)
     }
 
     private func localize() {
@@ -223,7 +230,7 @@ extension OnboardSignUpViewAlpha {
             signIn.topAnchor.constraint(equalTo: signUpButton.bottomAnchor, constant: 10.0),
             signIn.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 20.0),
             signIn.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -20.0),
-            signIn.bottomAnchor.constraint(greaterThanOrEqualTo: container.safeAreaLayoutGuide.bottomAnchor, constant: -20.0),
+            signIn.bottomAnchor.constraint(equalTo: container.safeAreaLayoutGuide.bottomAnchor, constant: -20.0),
             signIn.heightAnchor.constraint(equalToConstant: 30.0)
         ])
     }
