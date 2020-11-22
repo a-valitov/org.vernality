@@ -169,7 +169,8 @@ extension OnboardSignUpViewAlpha {
         NSLayoutConstraint.activate([
             stack.topAnchor.constraint(equalTo: registrationLabel.bottomAnchor, constant: 30),
             stack.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 20),
-            stack.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -20)
+            stack.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -20),
+            stack.bottomAnchor.constraint(equalTo: container.bottomAnchor, constant: 20)
         ])
     }
 
