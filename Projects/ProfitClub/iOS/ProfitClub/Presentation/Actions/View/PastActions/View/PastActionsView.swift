@@ -15,9 +15,10 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import UIKit
+import ProfitClubModel
 
 protocol PastActionsViewInput: UIViewController {
-
+    var actions: [AnyPCAction] { get set }
 }
 
 protocol PastActionsViewOutput {
