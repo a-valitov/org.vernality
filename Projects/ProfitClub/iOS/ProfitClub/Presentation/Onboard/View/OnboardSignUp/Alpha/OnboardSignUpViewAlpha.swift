@@ -56,9 +56,16 @@ final class OnboardSignUpViewAlpha: UIViewController {
         self.layout()
         self.localize()
         self.style()
+
+        self.emailTextField.delegate = self
+        self.passwordTextField.delegate = self
+        self.passwordConfirmationTextField.delegate = self
     }
 
     @objc private func signUpButtonTouchUpInside(_ sender: Any) {
+        self.emailTextField.resignFirstResponder()
+        self.passwordTextField.resignFirstResponder()
+        self.passwordConfirmationTextField.resignFirstResponder()
         self.output?.onboardSignUp(view: self, userWantsToSignUp: sender)
     }
 
@@ -72,7 +79,11 @@ final class OnboardSignUpViewAlpha: UIViewController {
         signInButton.addTarget(self, action: #selector(OnboardSignUpViewAlpha.signInButtonTouchUpInside(_:)), for: .touchUpInside)
 
         var blurEffect = UIBlurEffect()
-        blurEffect = UIBlurEffect(style: .dark)
+        if #available(iOS 13.0, *) {
+            blurEffect = UIBlurEffect(style: .systemMaterialDark)
+        } else {
+            blurEffect = UIBlurEffect(style: .dark)
+        }
         let blurVisualEffectView = UIVisualEffectView(effect: blurEffect)
         blurVisualEffectView.frame = view.bounds
         self.view.addSubview(blurVisualEffectView)
@@ -94,6 +105,10 @@ final class OnboardSignUpViewAlpha: UIViewController {
 
         registrationLabel.font = UIFont(name: "PlayfairDisplay-Regular", size: 36.0)
         registrationLabel.textColor = #colorLiteral(red: 0.9632286429, green: 0.9344153404, blue: 0.9245409369, alpha: 1)
+
+        self.emailTextField.font = UIFont(name: "Montserrat-Regular", size: 14)
+        self.passwordTextField.font = UIFont(name: "Montserrat-Regular", size: 14)
+        self.passwordConfirmationTextField.font = UIFont(name: "Montserrat-Regular", size: 14)
 
         self.passwordTextField.layer.sublayerTransform = CATransform3DMakeTranslation(15, 0, 0)
         self.passwordConfirmationTextField.layer.sublayerTransform = CATransform3DMakeTranslation(15, 0, 0)
@@ -122,6 +137,26 @@ final class OnboardSignUpViewAlpha: UIViewController {
         self.emailTextField.layer.cornerRadius = 5
         self.passwordTextField.layer.cornerRadius = 5
         self.passwordConfirmationTextField.layer.cornerRadius = 5
+
+        self.emailTextField.autocorrectionType = UITextAutocorrectionType.no
+        self.passwordTextField.autocorrectionType = UITextAutocorrectionType.no
+        self.passwordConfirmationTextField.autocorrectionType = UITextAutocorrectionType.no
+
+        self.emailTextField.spellCheckingType = .no
+        self.passwordTextField.spellCheckingType = .no
+        self.passwordConfirmationTextField.spellCheckingType = .no
+
+        self.emailTextField.keyboardType = .emailAddress
+        self.emailTextField.returnKeyType = .next
+        self.passwordTextField.returnKeyType = .next
+        self.passwordConfirmationTextField.returnKeyType = .done
+
+        self.passwordTextField.textContentType = .password
+        self.passwordConfirmationTextField.textContentType = .password
+
+        self.emailTextField.keyboardAppearance = UIKeyboardAppearance.dark
+        self.passwordTextField.keyboardAppearance = UIKeyboardAppearance.dark
+        self.passwordConfirmationTextField.keyboardAppearance = UIKeyboardAppearance.dark
     }
 
     private func combination() -> NSMutableAttributedString {
@@ -237,11 +272,25 @@ extension OnboardSignUpViewAlpha {
             signIn.topAnchor.constraint(equalTo: signUpButton.bottomAnchor, constant: 10.0),
             signIn.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 20.0),
             signIn.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -20.0),
-            signIn.bottomAnchor.constraint(equalTo: container.safeAreaLayoutGuide.bottomAnchor, constant: -20.0),
-            signIn.heightAnchor.constraint(equalToConstant: 30.0)
+            signIn.heightAnchor.constraint(equalToConstant: 30.0),
+            signIn.bottomAnchor.constraint(lessThanOrEqualTo: container.safeAreaLayoutGuide.bottomAnchor, constant: -10.0)
         ])
     }
 
+}
+
+extension OnboardSignUpViewAlpha: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+        case emailTextField:
+            passwordTextField.becomeFirstResponder()
+        case passwordTextField:
+            passwordConfirmationTextField.becomeFirstResponder()
+        default:
+            textField.resignFirstResponder()
+        }
+        return false
+    }
 }
 
 extension OnboardSignUpViewAlpha: OnboardSignUpViewInput {
