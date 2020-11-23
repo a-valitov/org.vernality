@@ -63,8 +63,9 @@ final class OnboardRouter {
 
     @discardableResult
     func openSelectRole(output: SelectRoleViewOutput?) -> SelectRoleViewInput {
-        let storyboard = UIStoryboard(name: "SelectRoleViewBeta", bundle: nil)
-        let selectRoleView = storyboard.instantiateInitialViewController() as! SelectRoleViewBeta
+//        let storyboard = UIStoryboard(name: "SelectRoleViewBeta", bundle: nil)
+//        let selectRoleView = storyboard.instantiateInitialViewController() as! SelectRoleViewBeta
+        let selectRoleView = SelectRoleViewAlpha()
         selectRoleView.output = output
         self.main?.push(selectRoleView, animated: true)
         return selectRoleView
