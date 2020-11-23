@@ -33,8 +33,9 @@ final class OnboardRouter {
 
     @discardableResult
     func openOnboardSignIn(output: OnboardSignInViewOutput?) -> OnboardSignInViewInput {
-        let storyboard = UIStoryboard(name: "OnboardSignInViewBeta", bundle: nil)
-        let onboardSignIn = storyboard.instantiateInitialViewController() as! OnboardSignInViewBeta
+//        let storyboard = UIStoryboard(name: "OnboardSignInViewBeta", bundle: nil)
+//        let onboardSignIn = storyboard.instantiateInitialViewController() as! OnboardSignInViewBeta
+        let onboardSignIn = OnboardSignInViewAlpha()
         onboardSignIn.output = output
         self.main?.raise(onboardSignIn, animated: true)
         return onboardSignIn
@@ -52,8 +53,9 @@ final class OnboardRouter {
 
     @discardableResult
     func openResetPassword(output: OnboardResetPasswordViewOutput?) -> OnboardResetPasswordViewInput {
-        let storyboard = UIStoryboard(name: "OnboardResetPasswordViewBeta", bundle: nil)
-        let onboardResetPassword = storyboard.instantiateInitialViewController() as! OnboardResetPasswordViewBeta
+//        let storyboard = UIStoryboard(name: "OnboardResetPasswordViewBeta", bundle: nil)
+//        let onboardResetPassword = storyboard.instantiateInitialViewController() as! OnboardResetPasswordViewBeta
+        let onboardResetPassword = OnboardResetPasswordViewAlpha()
         onboardResetPassword.output = output
         self.main?.push(onboardResetPassword, animated: true)
         return onboardResetPassword
