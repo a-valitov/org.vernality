@@ -40,8 +40,16 @@ final class MemberCurrentActionViewBeta: UIViewController {
         }
     }
     var actionLink: String?
-    var actionStartDate: String?
-    var actionEndDate: String?
+    var actionStartDate: Date? {
+        didSet {
+            self.updateUIActionStartAndEndDate()
+        }
+    }
+    var actionEndDate: Date? {
+        didSet {
+            self.updateUIActionStartAndEndDate()
+        }
+    }
 
     @IBOutlet weak var actionImageView: UIImageView!
     @IBOutlet weak var organizationNameLabel: UILabel!
@@ -60,9 +68,8 @@ final class MemberCurrentActionViewBeta: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.updateUI()
         self.output?.memberCurrentActionDidLoad(view: self)
-        actionStartAndEndDate.text = "\(actionStartDate ?? "0")-\(actionEndDate ?? "0")"
+        self.updateUI()
     }
 }
 
@@ -77,22 +84,23 @@ extension MemberCurrentActionViewBeta {
         self.updateUIActionMessage()
         self.updateUIActionDescription()
         self.updateUIOrganizationName()
+        self.updateUIActionStartAndEndDate()
     }
 
     private func updateUIActionImageUrl() {
-        if isViewLoaded {
+        if self.isViewLoaded {
             self.actionImageView.kf.setImage(with: actionImageUrl)
         }
     }
 
     private func updateUIActionMessage() {
-        if isViewLoaded {
+        if self.isViewLoaded {
             self.actionMessageLabel.text = self.actionMessage
         }
     }
 
     private func updateUIActionDescription() {
-        if isViewLoaded {
+        if self.isViewLoaded {
             self.actionDescriptionLabel.text = self.actionDescription
         }
     }
@@ -100,6 +108,23 @@ extension MemberCurrentActionViewBeta {
     private func updateUIOrganizationName() {
         if self.isViewLoaded {
             self.organizationNameLabel.text = self.organizationName
+        }
+    }
+
+    private func updateUIActionStartAndEndDate() {
+        if self.isViewLoaded {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd.MM.yyyy"
+            if let actionStartDate = self.actionStartDate,
+               let actionEndDate = self.actionEndDate {
+                self.actionStartAndEndDate.text = dateFormatter.string(from: actionStartDate) + "-" + dateFormatter.string(from: actionEndDate)
+            } else if let actionEndDate = self.actionEndDate {
+                self.actionStartAndEndDate.text = dateFormatter.string(from: actionEndDate)
+            } else if let actionStartDate = self.actionStartDate {
+                self.actionStartAndEndDate.text = dateFormatter.string(from: actionStartDate)
+            } else {
+                self.actionStartAndEndDate.text = nil
+            }
         }
     }
 }

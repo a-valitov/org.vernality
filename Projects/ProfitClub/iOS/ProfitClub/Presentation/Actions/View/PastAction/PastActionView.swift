@@ -20,8 +20,8 @@ protocol PastActionViewInput: UIViewController {
     var pastActionImageUrl: URL? { get set }
     var pastActionMessage: String? { get set }
     var pastActionDescription: String? { get set }
-    var pastActionStartDate: String? { get set }
-    var pastActionEndDate: String? { get set }
+    var pastActionStartDate: Date? { get set }
+    var pastActionEndDate: Date? { get set }
     var organizationName: String? { get set }
 }
 
