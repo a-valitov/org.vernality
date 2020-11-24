@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Fb1-MO-uWL">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Fb1-MO-uWL">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -27,7 +28,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="example" translatesAutoresizingMaskIntoConstraints="NO" id="n8R-FO-oJV">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="example" translatesAutoresizingMaskIntoConstraints="NO" id="n8R-FO-oJV">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="178"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="n8R-FO-oJV" secondAttribute="height" multiplier="207:89" id="c1K-d3-qS8"/>
@@ -78,7 +79,8 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="FCK-BH-uDH"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="793-nE-bc9" firstAttribute="top" secondItem="n8R-FO-oJV" secondAttribute="bottom" constant="26" id="0ui-5z-Dnj"/>
                             <constraint firstAttribute="trailing" secondItem="YMR-sG-RhJ" secondAttribute="trailing" constant="20" id="9wJ-jY-zoB"/>
@@ -101,7 +103,6 @@
                             <constraint firstItem="n8R-FO-oJV" firstAttribute="leading" secondItem="FCK-BH-uDH" secondAttribute="leading" id="g7s-uq-1P3"/>
                             <constraint firstItem="YMR-sG-RhJ" firstAttribute="top" secondItem="XRI-3u-u6u" secondAttribute="bottom" constant="10" id="tRp-LE-ZTh"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="FCK-BH-uDH"/>
                     </view>
                     <connections>
                         <outlet property="actionStartAndEndDate" destination="kag-h9-Fp5" id="ldj-69-wjN"/>
@@ -119,5 +120,8 @@
     <resources>
         <image name="X" width="17" height="18"/>
         <image name="example" width="354" height="178"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

@@ -39,8 +39,16 @@ final class PastActionViewBeta: UIViewController {
             self.updateUIOrganizationName()
         }
     }
-    var pastActionStartDate: String?
-    var pastActionEndDate: String?
+    var pastActionStartDate: Date? {
+        didSet {
+            self.updateUIActionStartAndEndDate()
+        }
+    }
+    var pastActionEndDate: Date? {
+        didSet {
+            self.updateUIActionStartAndEndDate()
+        }
+    }
     
     @IBOutlet weak var pastActionImageView: UIImageView!
     @IBOutlet weak var organizationNameLabel: UILabel!
@@ -55,7 +63,6 @@ final class PastActionViewBeta: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.updateUI()
-        actionStartAndEndDate.text = "\(pastActionStartDate ?? "0")-\(pastActionEndDate ?? "0")"
     }
 }
 
@@ -65,6 +72,7 @@ extension PastActionViewBeta {
         self.updateUIActionMessage()
         self.updateUIActionDescription()
         self.updateUIOrganizationName()
+        self.updateUIActionStartAndEndDate()
     }
 
     private func updateUIActionImageUrl() {
@@ -88,6 +96,23 @@ extension PastActionViewBeta {
     private func updateUIOrganizationName() {
         if self.isViewLoaded {
             self.organizationNameLabel.text = self.organizationName
+        }
+    }
+
+    private func updateUIActionStartAndEndDate() {
+        if self.isViewLoaded {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd.MM.yyyy"
+            if let pastActionStartDate = self.pastActionStartDate,
+               let pastActionEndDate = self.pastActionEndDate {
+                self.actionStartAndEndDate.text = dateFormatter.string(from: pastActionStartDate) + "-" + dateFormatter.string(from: pastActionEndDate)
+            } else if let pastActionEndDate = self.pastActionEndDate {
+                self.actionStartAndEndDate.text = dateFormatter.string(from: pastActionEndDate)
+            } else if let pastActionStartDate = self.pastActionStartDate {
+                self.actionStartAndEndDate.text = dateFormatter.string(from: pastActionStartDate)
+            } else {
+                self.actionStartAndEndDate.text = nil
+            }
         }
     }
 }
