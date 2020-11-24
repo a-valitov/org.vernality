@@ -72,8 +72,9 @@ final class OnboardRouter {
 
     @discardableResult
     func openOnboardMember(output: OnboardMemberViewOutput?) -> OnboardMemberViewInput {
-        let storyboard = UIStoryboard(name: "OnboardMemberViewBeta", bundle: nil)
-        let onboardMember = storyboard.instantiateInitialViewController() as! OnboardMemberViewBeta
+//        let storyboard = UIStoryboard(name: "OnboardMemberViewBeta", bundle: nil)
+//        let onboardMember = storyboard.instantiateInitialViewController() as! OnboardMemberViewBeta
+        let onboardMember = OnboardMemberViewAlpha()
         onboardMember.output = output
         self.main?.push(onboardMember, animated: true)
         return onboardMember
