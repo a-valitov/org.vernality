@@ -16,7 +16,7 @@
 
 import UIKit
 
-class PasActionsTableViewCell: UITableViewCell {
+class PastActionsTableViewCell: UITableViewCell {
 
     @IBOutlet weak var pastActionImageView: UIImageView! {
         didSet {
