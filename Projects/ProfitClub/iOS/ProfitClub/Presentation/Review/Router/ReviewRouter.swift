@@ -23,8 +23,9 @@ final class ReviewRouter {
 
     @discardableResult
     func openReview(_ user: AnyPCUser?, output: ReviewViewOutput?) -> ReviewViewInput {
-        let storyboard = UIStoryboard(name: "ReviewViewBeta", bundle: nil)
-        let reviewView = storyboard.instantiateInitialViewController() as! ReviewViewBeta
+//        let storyboard = UIStoryboard(name: "ReviewViewBeta", bundle: nil)
+//        let reviewView = storyboard.instantiateInitialViewController() as! ReviewViewBeta
+        let reviewView = ReviewViewAlpha()
         reviewView.output = output
         reviewView.username = user?.username
         reviewView.members = user?.members?.map({ $0.any }) ?? []
