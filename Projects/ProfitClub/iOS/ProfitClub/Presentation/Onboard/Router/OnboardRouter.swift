@@ -91,8 +91,9 @@ final class OnboardRouter {
     }
 
     @discardableResult func openOnboardOrganization(output: OnboardOrganizationViewOutput?) -> OnboardOrganizationViewInput {
-        let storyboard = UIStoryboard(name: "OnboardOrganizationViewBeta", bundle: nil)
-        let onboardOrganization = storyboard.instantiateInitialViewController() as! OnboardOrganizationViewBeta
+//        let storyboard = UIStoryboard(name: "OnboardOrganizationViewBeta", bundle: nil)
+//        let onboardOrganization = storyboard.instantiateInitialViewController() as! OnboardOrganizationViewBeta
+        let onboardOrganization = OnboardOrganizationViewAlpha()
         onboardOrganization.output = output
         self.main?.push(onboardOrganization, animated: true)
         return onboardOrganization
