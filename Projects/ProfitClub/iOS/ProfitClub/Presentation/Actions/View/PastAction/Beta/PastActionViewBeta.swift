@@ -1,5 +1,5 @@
 //  Copyright (C) 2020 Startup Studio Vernality
-//  Created by Macbook on 08.11.2020
+//  Created by Macbook on 22.11.2020
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -17,19 +17,19 @@
 import UIKit
 import Kingfisher
 
-final class MemberCurrentActionViewBeta: UIViewController {
-    var output: MemberCurrentActionViewOutput?
-    var actionImageUrl: URL? {
+final class PastActionViewBeta: UIViewController {
+    var output: PastActionViewOutput?
+    var pastActionImageUrl: URL? {
         didSet {
             self.updateUIActionImageUrl()
         }
     }
-    var actionMessage: String? {
+    var pastActionMessage: String? {
         didSet {
             self.updateUIActionMessage()
         }
     }
-    var actionDescription: String? {
+    var pastActionDescription: String? {
         didSet {
             self.updateUIActionDescription()
         }
@@ -39,46 +39,34 @@ final class MemberCurrentActionViewBeta: UIViewController {
             self.updateUIOrganizationName()
         }
     }
-    var actionLink: String?
-    var actionStartDate: Date? {
+    var pastActionStartDate: Date? {
         didSet {
             self.updateUIActionStartAndEndDate()
         }
     }
-    var actionEndDate: Date? {
+    var pastActionEndDate: Date? {
         didSet {
             self.updateUIActionStartAndEndDate()
         }
     }
-
-    @IBOutlet weak var actionImageView: UIImageView!
-    @IBOutlet weak var organizationNameLabel: UILabel!
-    @IBOutlet weak var actionMessageLabel: UILabel!
-    @IBOutlet weak var actionDescriptionLabel: UILabel!
-    @IBOutlet weak var actionStartAndEndDate: UILabel!
     
-    @IBAction func actionLinkTouchUpInside(_ sender: UIButton) {
-        if let url = URL(string: actionLink!) {
-            UIApplication.shared.open(url)
-        }
-    }
-    @IBAction func cancelTouchUpInside() {
+    @IBOutlet weak var pastActionImageView: UIImageView!
+    @IBOutlet weak var organizationNameLabel: UILabel!
+    @IBOutlet weak var pastActionMessageLabel: UILabel!
+    @IBOutlet weak var pastActionDescriptionLabel: UILabel!
+    @IBOutlet weak var actionStartAndEndDate: UILabel!
+
+    @IBAction func cancelButtonTouchUpInside() {
         dismiss(animated: true)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.output?.memberCurrentActionDidLoad(view: self)
         self.updateUI()
     }
 }
 
-extension MemberCurrentActionViewBeta: MemberCurrentActionViewInput {
-    
-}
-
-// MARK: - Update UI
-extension MemberCurrentActionViewBeta {
+extension PastActionViewBeta {
     private func updateUI() {
         self.updateUIActionImageUrl()
         self.updateUIActionMessage()
@@ -88,20 +76,20 @@ extension MemberCurrentActionViewBeta {
     }
 
     private func updateUIActionImageUrl() {
-        if self.isViewLoaded {
-            self.actionImageView.kf.setImage(with: actionImageUrl)
+        if isViewLoaded {
+            self.pastActionImageView.kf.setImage(with: pastActionImageUrl)
         }
     }
 
     private func updateUIActionMessage() {
-        if self.isViewLoaded {
-            self.actionMessageLabel.text = self.actionMessage
+        if isViewLoaded {
+            self.pastActionMessageLabel.text = self.pastActionMessage
         }
     }
 
     private func updateUIActionDescription() {
-        if self.isViewLoaded {
-            self.actionDescriptionLabel.text = self.actionDescription
+        if isViewLoaded {
+            self.pastActionDescriptionLabel.text = self.pastActionDescription
         }
     }
 
@@ -115,16 +103,20 @@ extension MemberCurrentActionViewBeta {
         if self.isViewLoaded {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd.MM.yyyy"
-            if let actionStartDate = self.actionStartDate,
-               let actionEndDate = self.actionEndDate {
-                self.actionStartAndEndDate.text = dateFormatter.string(from: actionStartDate) + "-" + dateFormatter.string(from: actionEndDate)
-            } else if let actionEndDate = self.actionEndDate {
-                self.actionStartAndEndDate.text = dateFormatter.string(from: actionEndDate)
-            } else if let actionStartDate = self.actionStartDate {
-                self.actionStartAndEndDate.text = dateFormatter.string(from: actionStartDate)
+            if let pastActionStartDate = self.pastActionStartDate,
+               let pastActionEndDate = self.pastActionEndDate {
+                self.actionStartAndEndDate.text = dateFormatter.string(from: pastActionStartDate) + "-" + dateFormatter.string(from: pastActionEndDate)
+            } else if let pastActionEndDate = self.pastActionEndDate {
+                self.actionStartAndEndDate.text = dateFormatter.string(from: pastActionEndDate)
+            } else if let pastActionStartDate = self.pastActionStartDate {
+                self.actionStartAndEndDate.text = dateFormatter.string(from: pastActionStartDate)
             } else {
                 self.actionStartAndEndDate.text = nil
             }
         }
     }
+}
+
+extension PastActionViewBeta: PastActionViewInput {
+
 }

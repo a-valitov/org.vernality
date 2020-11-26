@@ -25,8 +25,8 @@ public extension PFObject {
         result.message = self["message"] as? String
         result.descriptionOf = self["descriptionOf"] as? String
         result.link = self["link"] as? String
-        result.startDate = self["startDate"] as? String
-        result.endDate = self["endDate"] as? String
+        result.startDate = self["startDate"] as? Date
+        result.endDate = self["endDate"] as? Date
         if let fileObject = self["imageFile"] as? PFFileObject,
             let urlString = fileObject.url,
             let imageUrl = URL(string: urlString) {
@@ -82,8 +82,8 @@ public final class PCActionParse: PFObject, PFSubclassing, PCAction {
     @NSManaged public var descriptionOf: String?
     @NSManaged public var link: String?
     @NSManaged public var statusString: String?
-    @NSManaged public var startDate: String?
-    @NSManaged public var endDate: String?
+    @NSManaged public var startDate: Date?
+    @NSManaged public var endDate: Date?
     @NSManaged public var imageFile: PFFileObject?
     public var image: UIImage?
     public var imageUrl: URL?

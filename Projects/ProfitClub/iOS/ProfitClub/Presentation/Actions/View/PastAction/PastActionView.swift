@@ -1,5 +1,5 @@
 //  Copyright (C) 2020 Startup Studio Vernality
-//  Created by Macbook on 22.10.2020
+//  Created by Macbook on 22.11.2020
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -14,11 +14,17 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import Foundation
-import ProfitClubModel
+import UIKit
 
-public protocol PCActionService {
-    func add(action: PCAction, result: @escaping (Result<PCAction, Error>) -> Void)
-    func fetchApprovedCurrentActions(result: @escaping (Result<[AnyPCAction], Error>) -> Void)
-    func fetchApprovedPastActions(result: @escaping (Result<[AnyPCAction], Error>) -> Void)
+protocol PastActionViewInput: UIViewController {
+    var pastActionImageUrl: URL? { get set }
+    var pastActionMessage: String? { get set }
+    var pastActionDescription: String? { get set }
+    var pastActionStartDate: Date? { get set }
+    var pastActionEndDate: Date? { get set }
+    var organizationName: String? { get set }
+}
+
+protocol PastActionViewOutput {
+    
 }

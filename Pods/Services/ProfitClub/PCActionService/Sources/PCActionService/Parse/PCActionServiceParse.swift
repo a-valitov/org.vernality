@@ -52,11 +52,12 @@ public final class PCActionServiceParse: PCActionService {
         }
     }
 
-    public func fetchApproved(result: @escaping (Result<[AnyPCAction], Error>) -> Void) {
+    public func fetchApprovedCurrentActions(result: @escaping (Result<[AnyPCAction], Error>) -> Void) {
         let query = PFQuery(className: "Action")
         query.order(byDescending: "createdAt")
         query.includeKey("supplier")
         query.whereKey("statusString", equalTo: "approved")
+        query.whereKey("endDate", greaterThanOrEqualTo: Date())
         query.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
             if let error = error {
                 result(.failure(error))
@@ -66,4 +67,18 @@ public final class PCActionServiceParse: PCActionService {
         }
     }
 
+    public func fetchApprovedPastActions(result: @escaping (Result<[AnyPCAction], Error>) -> Void) {
+        let query = PFQuery(className: "Action")
+        query.order(byDescending: "createdAt")
+        query.includeKey("supplier")
+        query.whereKey("statusString", equalTo: "approved")
+        query.whereKey("endDate", lessThan: Date())
+        query.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
+            if let error = error {
+                result(.failure(error))
+            } else if let objects = objects {
+                result(.success(objects.map({ $0.pcAction.any })))
+            }
+        }
+    }
 }

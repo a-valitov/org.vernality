@@ -48,13 +48,25 @@ final class ApproveCurrentActionViewBeta: UIViewController {
         }
     }
     var actionLink: String?
-    var actionStartDate: String?
-    var actionEndDate: String?
+    var actionStartDate: Date? {
+        didSet {
+            if self.isViewLoaded {
+                self.updateUIActionStartAndEndDate()
+            }
+        }
+    }
+    var actionEndDate: Date? {
+        didSet {
+            if self.isViewLoaded {
+                self.updateUIActionStartAndEndDate()
+            }
+        }
+    }
 
     @IBOutlet weak var rejectAction: UIButton! {
         didSet {
-            rejectAction.layer.borderWidth = 1
-            rejectAction.layer.borderColor = UIColor.black.cgColor
+            self.rejectAction.layer.borderWidth = 1
+            self.rejectAction.layer.borderColor = UIColor.black.cgColor
         }
     }
     @IBOutlet weak var actionStartAndEndDateLabel: UILabel!
@@ -69,7 +81,7 @@ final class ApproveCurrentActionViewBeta: UIViewController {
     }
     
     @IBAction func actionLinkTouchUpInside(_ sender: Any) {
-        if let url = URL(string: actionLink!) {
+        if let url = URL(string: self.actionLink!) {
             UIApplication.shared.open(url)
         }
     }
@@ -77,9 +89,31 @@ final class ApproveCurrentActionViewBeta: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.output?.approveCurrentActionDidLoad(view: self)
-        actionStartAndEndDateLabel.text = "\(actionStartDate ?? "0")-\(actionEndDate ?? "0")"
     }
 }
 
 extension ApproveCurrentActionViewBeta: ApproveCurrentActionViewInput {
+}
+
+extension ApproveCurrentActionViewBeta {
+    private func updateUI() {
+        self.updateUIActionStartAndEndDate()
+    }
+
+    private func updateUIActionStartAndEndDate() {
+        if self.isViewLoaded {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd.MM.yyyy"
+            if let actionStartDate = self.actionStartDate,
+               let actionEndDate = self.actionEndDate {
+                self.actionStartAndEndDateLabel.text = dateFormatter.string(from: actionStartDate) + "-" + dateFormatter.string(from: actionEndDate)
+            } else if let actionEndDate = self.actionEndDate {
+                self.actionStartAndEndDateLabel.text = dateFormatter.string(from: actionEndDate)
+            } else if let actionStartDate = self.actionStartDate {
+                self.actionStartAndEndDateLabel.text = dateFormatter.string(from: actionStartDate)
+            } else {
+                self.actionStartAndEndDateLabel.text = nil
+            }
+        }
+    }
 }
