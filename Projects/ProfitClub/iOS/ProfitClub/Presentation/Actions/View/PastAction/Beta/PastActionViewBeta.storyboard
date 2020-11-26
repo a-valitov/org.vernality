@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Fb1-MO-uWL">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="Montserrat-Bold.ttf">
+            <string>Montserrat-Bold</string>
+        </array>
+        <array key="Montserrat-Medium.ttf">
+            <string>Montserrat-Medium</string>
+        </array>
+        <array key="Montserrat-Regular.ttf">
+            <string>Montserrat-Regular</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Past Action View Beta-->
+        <scene sceneID="7I7-hi-Pkt">
+            <objects>
+                <viewController id="Fb1-MO-uWL" customClass="PastActionViewBeta" customModule="Profit_Club" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Eln-bd-kuI">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="example" translatesAutoresizingMaskIntoConstraints="NO" id="n8R-FO-oJV">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="178"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="n8R-FO-oJV" secondAttribute="height" multiplier="207:89" id="c1K-d3-qS8"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Алина Ермолаева" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="6c7-iT-ZRs">
+                                <rect key="frame" x="20" y="198" width="214.5" height="27"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="22"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Мы предлагаем вам купить по акции сообщение в 1-2 строки" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XRI-3u-u6u">
+                                <rect key="frame" x="20" y="228" width="374" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="40" id="Lj5-jA-TbP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="15"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Акция прошла" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="793-nE-bc9">
+                                <rect key="frame" x="300" y="204" width="94" height="15"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="12"/>
+                                <color key="textColor" red="0.23529411764705882" green="0.23529411764705882" blue="0.2627450980392157" alpha="0.5974903681506849" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YMR-sG-RhJ">
+                                <rect key="frame" x="20" y="275" width="374" height="73.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="100" id="hiQ-lB-jFQ"/>
+                                </constraints>
+                                <string key="text">это текст-"рыба", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной "рыбой" для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя</string>
+                                <fontDescription key="fontDescription" name="Montserrat-Regular" family="Montserrat" pointSize="12"/>
+                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="24.03.2020 - 26.03.2020" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kag-h9-Fp5">
+                                <rect key="frame" x="20" y="358.5" width="374" height="15"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Medium" family="Montserrat" pointSize="12"/>
+                                <color key="textColor" red="0.23529411759999999" green="0.23529411759999999" blue="0.26274509800000001" alpha="0.59957380640000002" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eqC-9T-wvS">
+                                <rect key="frame" x="377" y="14" width="17" height="22"/>
+                                <state key="normal" image="X"/>
+                                <connections>
+                                    <action selector="cancelButtonTouchUpInside" destination="Fb1-MO-uWL" eventType="touchUpInside" id="vwg-2E-yaM"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="FCK-BH-uDH"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="793-nE-bc9" firstAttribute="top" secondItem="n8R-FO-oJV" secondAttribute="bottom" constant="26" id="0ui-5z-Dnj"/>
+                            <constraint firstAttribute="trailing" secondItem="YMR-sG-RhJ" secondAttribute="trailing" constant="20" id="9wJ-jY-zoB"/>
+                            <constraint firstItem="eqC-9T-wvS" firstAttribute="top" secondItem="Eln-bd-kuI" secondAttribute="top" constant="14" id="Doe-9K-6fp"/>
+                            <constraint firstItem="6c7-iT-ZRs" firstAttribute="width" secondItem="Eln-bd-kuI" secondAttribute="width" multiplier="0.518116" id="Eo4-c7-uWM"/>
+                            <constraint firstItem="6c7-iT-ZRs" firstAttribute="top" secondItem="n8R-FO-oJV" secondAttribute="bottom" constant="20" id="Fch-II-KqJ"/>
+                            <constraint firstItem="FCK-BH-uDH" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="kag-h9-Fp5" secondAttribute="bottom" constant="20" id="L8m-Dd-2jx"/>
+                            <constraint firstItem="YMR-sG-RhJ" firstAttribute="leading" secondItem="XRI-3u-u6u" secondAttribute="leading" id="LJc-uB-MAU"/>
+                            <constraint firstItem="FCK-BH-uDH" firstAttribute="trailing" secondItem="kag-h9-Fp5" secondAttribute="trailing" constant="20" id="O8m-Sm-FZR"/>
+                            <constraint firstAttribute="trailing" secondItem="XRI-3u-u6u" secondAttribute="trailing" constant="20" id="P7x-HG-7aE"/>
+                            <constraint firstItem="n8R-FO-oJV" firstAttribute="top" secondItem="Eln-bd-kuI" secondAttribute="top" id="PGS-Gm-m6F"/>
+                            <constraint firstItem="XRI-3u-u6u" firstAttribute="leading" secondItem="6c7-iT-ZRs" secondAttribute="leading" id="Syu-np-taX"/>
+                            <constraint firstAttribute="trailing" secondItem="eqC-9T-wvS" secondAttribute="trailing" constant="20" id="TIZ-IU-e3T"/>
+                            <constraint firstItem="6c7-iT-ZRs" firstAttribute="leading" secondItem="FCK-BH-uDH" secondAttribute="leading" constant="20" id="TwY-3f-Fxq"/>
+                            <constraint firstItem="kag-h9-Fp5" firstAttribute="leading" secondItem="YMR-sG-RhJ" secondAttribute="leading" id="WCJ-e9-eUB"/>
+                            <constraint firstItem="FCK-BH-uDH" firstAttribute="trailing" secondItem="793-nE-bc9" secondAttribute="trailing" constant="20" id="YRm-wU-Yzj"/>
+                            <constraint firstItem="n8R-FO-oJV" firstAttribute="trailing" secondItem="FCK-BH-uDH" secondAttribute="trailing" id="bve-2f-Ssq"/>
+                            <constraint firstItem="kag-h9-Fp5" firstAttribute="top" secondItem="YMR-sG-RhJ" secondAttribute="bottom" constant="10" id="c1T-3w-Rc8"/>
+                            <constraint firstItem="XRI-3u-u6u" firstAttribute="top" secondItem="6c7-iT-ZRs" secondAttribute="bottom" constant="3" id="fHX-u0-41x"/>
+                            <constraint firstItem="n8R-FO-oJV" firstAttribute="leading" secondItem="FCK-BH-uDH" secondAttribute="leading" id="g7s-uq-1P3"/>
+                            <constraint firstItem="YMR-sG-RhJ" firstAttribute="top" secondItem="XRI-3u-u6u" secondAttribute="bottom" constant="10" id="tRp-LE-ZTh"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="actionStartAndEndDate" destination="kag-h9-Fp5" id="ldj-69-wjN"/>
+                        <outlet property="organizationNameLabel" destination="6c7-iT-ZRs" id="rGD-yo-5o5"/>
+                        <outlet property="pastActionDescriptionLabel" destination="YMR-sG-RhJ" id="P1l-2Y-OKH"/>
+                        <outlet property="pastActionImageView" destination="n8R-FO-oJV" id="mQL-iQ-3vf"/>
+                        <outlet property="pastActionMessageLabel" destination="XRI-3u-u6u" id="tad-aA-VJh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pyA-Ls-2mH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="308.69565217391306" y="-208.25892857142856"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="X" width="17" height="18"/>
+        <image name="example" width="354" height="178"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
