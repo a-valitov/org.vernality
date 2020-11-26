@@ -21,8 +21,8 @@ protocol MemberCurrentActionViewInput: UIViewController {
     var actionMessage: String? { get set }
     var actionDescription: String? { get set }
     var actionLink: String? { get set }
-    var actionStartDate: String? { get set }
-    var actionEndDate: String? { get set }
+    var actionStartDate: Date? { get set }
+    var actionEndDate: Date? { get set }
     var organizationName: String? { get set }
 }
 

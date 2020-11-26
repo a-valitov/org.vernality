@@ -15,17 +15,31 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import UIKit
+import ProfitClubModel
 
 final class PastActionsViewBeta: UITableViewController {
     var output: PastActionsViewOutput?
+    var actions = [AnyPCAction]() {
+        didSet {
+            if self.isViewLoaded {
+                self.tableView.reloadData()
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
+        self.output?.pastActionsDidLoad(view: self)
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let action = actions[indexPath.row]
+        self.output?.pastActions(view: self, didSelect: action)
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        3
+        return actions.count
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -33,7 +47,12 @@ final class PastActionsViewBeta: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "pastActionsCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "pastActionsCell", for: indexPath) as! PastActionsTableViewCell
+
+        let action = actions[indexPath.row]
+        cell.pastActionNameLabel.text = action.message
+        cell.pastActionDescriptionOfLabel.text = action.descriptionOf
+        cell.pastActionImageView.kf.setImage(with: action.imageUrl)
 
         return cell
     }

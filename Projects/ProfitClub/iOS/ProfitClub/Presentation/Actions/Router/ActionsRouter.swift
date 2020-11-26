@@ -48,4 +48,19 @@ final class ActionsRouter {
         controller.output = output
         return controller
     }
+
+    @discardableResult
+    func openPastAction(action: PCAction, output: PastActionViewOutput?) -> PastActionViewInput {
+        let storyboard = UIStoryboard(name: "PastActionViewBeta", bundle: nil)
+        let pastAction = storyboard.instantiateInitialViewController() as! PastActionViewBeta
+        pastAction.output = output
+        pastAction.organizationName = action.supplier?.name
+        pastAction.pastActionImageUrl = action.imageUrl
+        pastAction.pastActionMessage = action.message
+        pastAction.pastActionDescription = action.descriptionOf
+        pastAction.pastActionStartDate = action.startDate
+        pastAction.pastActionEndDate = action.endDate
+        self.main?.raise(pastAction, animated: true)
+        return pastAction
+    }
 }

@@ -70,22 +70,10 @@ final class SupplierActionsBeta: UIViewController {
             return nil
         }
     }
-    var startDate: String? {
-        if self.isViewLoaded {
-            return self.actionStartDateTextField.text
-        } else {
-            return nil
-        }
-    }
-    var endDate: String? {
-        if self.isViewLoaded {
-            return self.actionEndDataTextField.text
-        } else {
-            return nil
-        }
-    }
+    var startDate: Date?
+    var endDate: Date?
     
-    var activeTextField : UITextField? = nil
+    var activeTextField: UITextField? = nil
     let datePicker = UIDatePicker()
 
     @IBOutlet weak var actionImageView: UIImageView!
@@ -158,7 +146,9 @@ final class SupplierActionsBeta: UIViewController {
         self.linkTextField.delegate = self
         self.actionStartDateTextField.delegate = self
         self.actionEndDataTextField.delegate = self
-
+        if #available(iOS 13.4, *) {
+            self.datePicker.preferredDatePickerStyle = .wheels
+        }
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
 
@@ -275,14 +265,24 @@ extension SupplierActionsBeta: UITextFieldDelegate {
         toolbar.setItems([cancelButton, spaceButton, doneButton], animated: false)
 
         textField.inputAccessoryView = toolbar
-        textField.inputView = datePicker
+        textField.inputView = self.datePicker
     }
 
     @objc func doneDatePicker() {
-        let formatter = DateFormatter()
-        formatter.locale = Locale.autoupdatingCurrent
-        formatter.dateFormat = "dd.MM.yyyy"
-        activeTextField!.text = formatter.string(from: datePicker.date)
+        if let activeTextField = activeTextField {
+            let formatter = DateFormatter()
+            formatter.locale = Locale.autoupdatingCurrent
+            formatter.dateFormat = "dd.MM.yyyy"
+            activeTextField.text = formatter.string(from: datePicker.date)
+            switch activeTextField {
+            case self.actionStartDateTextField:
+                self.startDate = Calendar.current.startOfDay(for: self.datePicker.date)
+            case self.actionEndDataTextField:
+                self.endDate = Calendar.current.date(bySettingHour: 23, minute: 59, second: 59, of: self.datePicker.date)
+            default:
+                break
+            }
+        }
         self.view.endEditing(true)
     }
 
