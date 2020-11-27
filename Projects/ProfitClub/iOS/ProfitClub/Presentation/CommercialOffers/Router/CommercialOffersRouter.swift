@@ -23,9 +23,11 @@ final class CommercialOffersRouter {
 
     @discardableResult
     func embed(in tabBarController: UITabBarController, output: CommercialOffersViewOutput?) -> CommercialOffersViewInput {
-        let storyboard = UIStoryboard(name: "CommercialOffersViewBeta", bundle: nil)
-        let commercialOffers = storyboard.instantiateInitialViewController() as! CommercialOffersViewBeta
+//        let storyboard = UIStoryboard(name: "CommercialOffersViewBeta", bundle: nil)
+//        let commercialOffers = storyboard.instantiateInitialViewController() as! CommercialOffersViewBeta
+        let commercialOffers = CommercialOffersViewAlpha()
         commercialOffers.output = output
+        commercialOffers.tabBarItem = UITabBarItem(title: "Поставки", image: #imageLiteral(resourceName: "selectedCommercialOfferItem"), selectedImage: #imageLiteral(resourceName: "commercialOfferItem"))
         if var viewControllers = tabBarController.viewControllers {
             viewControllers.append(commercialOffers)
             tabBarController.setViewControllers(viewControllers, animated: false)
