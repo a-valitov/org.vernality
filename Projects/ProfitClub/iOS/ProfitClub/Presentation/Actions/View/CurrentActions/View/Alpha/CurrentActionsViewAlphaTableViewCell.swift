@@ -134,7 +134,7 @@ extension CurrentActionsViewAlphaTableViewCell {
         container.addSubview(label)
         NSLayoutConstraint.activate([
             label.trailingAnchor.constraint(equalTo: container.safeAreaLayoutGuide.trailingAnchor, constant: -16.0),
-            label.topAnchor.constraint(equalTo: self.actionDescriptionLabel.bottomAnchor, constant: 5.0),
+            label.topAnchor.constraint(equalTo: self.actionDescriptionLabel.bottomAnchor, constant: 0),
             label.bottomAnchor.constraint(equalTo: container.safeAreaLayoutGuide.bottomAnchor, constant: 0),
             label.leftAnchor.constraint(equalTo: self.actionDescriptionLabel.leftAnchor)
         ])

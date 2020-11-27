@@ -202,8 +202,8 @@ extension ActionsContainerViewAlpha {
         container.addSubview(segment)
         NSLayoutConstraint.activate([
             segment.topAnchor.constraint(equalTo: container.topAnchor, constant: 0),
-            segment.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 0),
-            segment.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: 0)
+            segment.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 5.0),
+            segment.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -5.0)
         ])
     }
 
