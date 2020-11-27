@@ -23,8 +23,9 @@ final class ActionsRouter {
 
     @discardableResult
     func embed(in tabBarController: UITabBarController, output: ActionsContainerViewOutput?) -> ActionsContainerViewInput {
-        let storyboard = UIStoryboard(name: "ActionsContainerViewBeta", bundle: nil)
-        let actionsContainer = storyboard.instantiateInitialViewController() as! ActionsContainerViewBeta
+//        let storyboard = UIStoryboard(name: "ActionsContainerViewBeta", bundle: nil)
+//        let actionsContainer = storyboard.instantiateInitialViewController() as! ActionsContainerViewBeta
+        let actionsContainer = ActionsContainerViewAlpha()
         actionsContainer.output = output
         if var viewControllers = tabBarController.viewControllers {
             viewControllers.append(actionsContainer)
