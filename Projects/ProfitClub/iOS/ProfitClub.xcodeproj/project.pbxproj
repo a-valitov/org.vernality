@@ -110,6 +110,8 @@
 		FA21D80625701DE3008024F0 /* SupplierViewAlpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA21D80525701DE3008024F0 /* SupplierViewAlpha.swift */; };
 		FA21D811257102A4008024F0 /* OrganizationTabBarViewAlpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA21D810257102A4008024F0 /* OrganizationTabBarViewAlpha.swift */; };
 		FA21D814257105C2008024F0 /* ActionsContainerViewAlpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA21D813257105C2008024F0 /* ActionsContainerViewAlpha.swift */; };
+		FA21D81725712F2F008024F0 /* CurrentActionsViewAlpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA21D81625712F2F008024F0 /* CurrentActionsViewAlpha.swift */; };
+		FA21D81925712FF9008024F0 /* CurrentActionsViewAlphaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA21D81825712FF9008024F0 /* CurrentActionsViewAlphaTableViewCell.swift */; };
 		FA393C1C254064E700C29F7D /* SupplierActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA393C1B254064E700C29F7D /* SupplierActions.swift */; };
 		FA393C1F2540650900C29F7D /* SupplierActionsBeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA393C1E2540650900C29F7D /* SupplierActionsBeta.swift */; };
 		FA393C212540651C00C29F7D /* SupplierActionsBeta.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA393C202540651C00C29F7D /* SupplierActionsBeta.storyboard */; };
@@ -344,6 +346,8 @@
 		FA21D80525701DE3008024F0 /* SupplierViewAlpha.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SupplierViewAlpha.swift; sourceTree = "<group>"; };
 		FA21D810257102A4008024F0 /* OrganizationTabBarViewAlpha.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationTabBarViewAlpha.swift; sourceTree = "<group>"; };
 		FA21D813257105C2008024F0 /* ActionsContainerViewAlpha.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsContainerViewAlpha.swift; sourceTree = "<group>"; };
+		FA21D81625712F2F008024F0 /* CurrentActionsViewAlpha.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentActionsViewAlpha.swift; sourceTree = "<group>"; };
+		FA21D81825712FF9008024F0 /* CurrentActionsViewAlphaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentActionsViewAlphaTableViewCell.swift; sourceTree = "<group>"; };
 		FA393C1B254064E700C29F7D /* SupplierActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplierActions.swift; sourceTree = "<group>"; };
 		FA393C1E2540650900C29F7D /* SupplierActionsBeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplierActionsBeta.swift; sourceTree = "<group>"; };
 		FA393C202540651C00C29F7D /* SupplierActionsBeta.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SupplierActionsBeta.storyboard; sourceTree = "<group>"; };
@@ -820,6 +824,7 @@
 			isa = PBXGroup;
 			children = (
 				0E56173825372B88005DF4F3 /* CurrentActionsView.swift */,
+				FA21D81525712F14008024F0 /* Alpha */,
 				0E56173425372B4F005DF4F3 /* Beta */,
 			);
 			path = View;
@@ -1245,6 +1250,15 @@
 			isa = PBXGroup;
 			children = (
 				FA21D813257105C2008024F0 /* ActionsContainerViewAlpha.swift */,
+			);
+			path = Alpha;
+			sourceTree = "<group>";
+		};
+		FA21D81525712F14008024F0 /* Alpha */ = {
+			isa = PBXGroup;
+			children = (
+				FA21D81625712F2F008024F0 /* CurrentActionsViewAlpha.swift */,
+				FA21D81825712FF9008024F0 /* CurrentActionsViewAlphaTableViewCell.swift */,
 			);
 			path = Alpha;
 			sourceTree = "<group>";
@@ -2295,6 +2309,7 @@
 				FA21D80625701DE3008024F0 /* SupplierViewAlpha.swift in Sources */,
 				FAD7049E25500F8000DE8AD7 /* MembersFactory.swift in Sources */,
 				0E506C2E24FC1A4600ABA211 /* ReviewPresenter.swift in Sources */,
+				FA21D81925712FF9008024F0 /* CurrentActionsViewAlphaTableViewCell.swift in Sources */,
 				FA8CB89A255ADA6E00D09B1D /* AdminOrganizationFactory.swift in Sources */,
 				FAD7048D254E89BB00DE8AD7 /* CommercialOfferDependencies.swift in Sources */,
 				FA17095C25655DF200BE460C /* OnboardSignUpViewAlpha.swift in Sources */,
@@ -2319,6 +2334,7 @@
 				0E90497124F390270061A605 /* AppFactory.swift in Sources */,
 				FA7ACD252563C2FA0097800D /* OrganizationProfileView.swift in Sources */,
 				FA393C1F2540650900C29F7D /* SupplierActionsBeta.swift in Sources */,
+				FA21D81725712F2F008024F0 /* CurrentActionsViewAlpha.swift in Sources */,
 				0E506BF924FBC2FC00ABA211 /* OnboardOrganizationView.swift in Sources */,
 				FA8CB838255A5BD500D09B1D /* AdminFactory.swift in Sources */,
 				FA8CB86B255A87D500D09B1D /* AdminApprovedOrganizationsView.swift in Sources */,

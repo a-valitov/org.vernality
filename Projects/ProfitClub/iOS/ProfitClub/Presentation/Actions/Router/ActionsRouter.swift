@@ -37,8 +37,9 @@ final class ActionsRouter {
     }
 
     func buildCurrentActions(output: CurrentActionsViewOutput?) -> UIViewController {
-        let storyboard = UIStoryboard(name: "CurrentActionsViewBeta", bundle: nil)
-        let controller = storyboard.instantiateInitialViewController() as! CurrentActionsViewBeta
+//        let storyboard = UIStoryboard(name: "CurrentActionsViewBeta", bundle: nil)
+//        let controller = storyboard.instantiateInitialViewController() as! CurrentActionsViewBeta
+        let controller = CurrentActionsViewAlpha()
         controller.output = output
         return controller
     }
