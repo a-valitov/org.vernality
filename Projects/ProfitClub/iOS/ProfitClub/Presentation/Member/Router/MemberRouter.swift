@@ -23,8 +23,9 @@ final class MemberRouter {
 
     @discardableResult
     func openMemberCurrentActions(output: MemberCurrentActionsViewOutput?) -> MemberCurrentActionsViewInput {
-        let storyboard = UIStoryboard(name: "MemberCurrentActionsViewBeta", bundle: nil)
-        let actions = storyboard.instantiateInitialViewController() as! MemberCurrentActionsViewBeta
+//        let storyboard = UIStoryboard(name: "MemberCurrentActionsViewBeta", bundle: nil)
+//        let actions = storyboard.instantiateInitialViewController() as! MemberCurrentActionsViewBeta
+        let actions = MemberCurrentActionsViewAlpha()
         actions.output = output
         self.main?.push(actions, animated: true)
         return actions
