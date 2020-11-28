@@ -113,6 +113,7 @@
 		FA21D80E2570494A008024F0 /* SupplierCommercialOfferViewAlphaFileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA21D80D2570494A008024F0 /* SupplierCommercialOfferViewAlphaFileCell.swift */; };
 		FA21D83D25718C0F008024F0 /* CommercialOffersViewAlpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA21D83C25718C0F008024F0 /* CommercialOffersViewAlpha.swift */; };
 		FA21D83F25718C46008024F0 /* CommercialOffersViewAlphaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA21D83E25718C46008024F0 /* CommercialOffersViewAlphaCell.swift */; };
+		FA21D8422571B442008024F0 /* ApproveCommercialOfferViewAlpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA21D8412571B442008024F0 /* ApproveCommercialOfferViewAlpha.swift */; };
 		FA393C1C254064E700C29F7D /* SupplierActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA393C1B254064E700C29F7D /* SupplierActions.swift */; };
 		FA393C1F2540650900C29F7D /* SupplierActionsBeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA393C1E2540650900C29F7D /* SupplierActionsBeta.swift */; };
 		FA393C212540651C00C29F7D /* SupplierActionsBeta.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA393C202540651C00C29F7D /* SupplierActionsBeta.storyboard */; };
@@ -350,6 +351,7 @@
 		FA21D80D2570494A008024F0 /* SupplierCommercialOfferViewAlphaFileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplierCommercialOfferViewAlphaFileCell.swift; sourceTree = "<group>"; };
 		FA21D83C25718C0F008024F0 /* CommercialOffersViewAlpha.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommercialOffersViewAlpha.swift; sourceTree = "<group>"; };
 		FA21D83E25718C46008024F0 /* CommercialOffersViewAlphaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommercialOffersViewAlphaCell.swift; sourceTree = "<group>"; };
+		FA21D8412571B442008024F0 /* ApproveCommercialOfferViewAlpha.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApproveCommercialOfferViewAlpha.swift; sourceTree = "<group>"; };
 		FA393C1B254064E700C29F7D /* SupplierActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplierActions.swift; sourceTree = "<group>"; };
 		FA393C1E2540650900C29F7D /* SupplierActionsBeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplierActionsBeta.swift; sourceTree = "<group>"; };
 		FA393C202540651C00C29F7D /* SupplierActionsBeta.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SupplierActionsBeta.storyboard; sourceTree = "<group>"; };
@@ -1264,6 +1266,14 @@
 			path = Alpha;
 			sourceTree = "<group>";
 		};
+		FA21D8402571B42E008024F0 /* Alpha */ = {
+			isa = PBXGroup;
+			children = (
+				FA21D8412571B442008024F0 /* ApproveCommercialOfferViewAlpha.swift */,
+			);
+			path = Alpha;
+			sourceTree = "<group>";
+		};
 		FA393C1A254064A400C29F7D /* SupplierActions */ = {
 			isa = PBXGroup;
 			children = (
@@ -1905,6 +1915,7 @@
 			isa = PBXGroup;
 			children = (
 				FAD70483254E892F00DE8AD7 /* ApproveCommercialOfferView.swift */,
+				FA21D8402571B42E008024F0 /* Alpha */,
 				FAD70485254E893300DE8AD7 /* Beta */,
 			);
 			path = ApproveCommercialOffer;
@@ -2403,6 +2414,7 @@
 				0E6B9723254D656500055570 /* Secrets.swift in Sources */,
 				FA6E8BC7254D997E007B8B4E /* CommercialOffersModule.swift in Sources */,
 				FA15B70925473D5A00D29835 /* ActionModule.swift in Sources */,
+				FA21D8422571B442008024F0 /* ApproveCommercialOfferViewAlpha.swift in Sources */,
 				FA56638B253F3AF500D19D4E /* SupplierView.swift in Sources */,
 				FA21D7DF256D8516008024F0 /* PastActionView.swift in Sources */,
 				0E90499824F6160F0061A605 /* OnboardFactory.swift in Sources */,
