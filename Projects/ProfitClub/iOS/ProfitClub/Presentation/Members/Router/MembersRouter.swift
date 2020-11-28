@@ -37,8 +37,9 @@ final class MembersRouter {
     }
 
     func buildMembersOfOrganization(output: MembersOfOrganizationViewOutput?) -> UIViewController {
-        let storyboard = UIStoryboard(name: "MembersOfOrganizationViewBeta", bundle: nil)
-        let controller = storyboard.instantiateInitialViewController() as! MembersOfOrganizationViewBeta
+//        let storyboard = UIStoryboard(name: "MembersOfOrganizationViewBeta", bundle: nil)
+//        let controller = storyboard.instantiateInitialViewController() as! MembersOfOrganizationViewBeta
+        let controller = MembersOfOrganizationViewAlpha()
         controller.output = output
         return controller
     }
