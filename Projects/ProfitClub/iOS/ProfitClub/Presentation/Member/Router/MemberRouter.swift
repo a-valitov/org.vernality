@@ -33,8 +33,9 @@ final class MemberRouter {
 
     @discardableResult
     func openMemberCurrentAction(action: PCAction, output: MemberCurrentActionViewOutput?) -> MemberCurrentActionViewInput {
-        let storyboard = UIStoryboard(name: "MemberCurrentActionViewBeta", bundle: nil)
-        let memberCurrentAction = storyboard.instantiateInitialViewController() as! MemberCurrentActionViewBeta
+//        let storyboard = UIStoryboard(name: "MemberCurrentActionViewBeta", bundle: nil)
+//        let memberCurrentAction = storyboard.instantiateInitialViewController() as! MemberCurrentActionViewBeta
+        let memberCurrentAction = MemberCurrentActionViewAlpha()
         memberCurrentAction.output = output
         memberCurrentAction.organizationName = action.supplier?.name
         memberCurrentAction.actionImageUrl = action.imageUrl
