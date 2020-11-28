@@ -44,8 +44,9 @@ final class MembersRouter {
     }
 
     func buildApplications(output: ApplicationsViewOutput?) -> UIViewController {
-        let storyboard = UIStoryboard(name: "ApplicationsViewBeta", bundle: nil)
-        let controller = storyboard.instantiateInitialViewController() as! ApplicationsViewBeta
+//        let storyboard = UIStoryboard(name: "ApplicationsViewBeta", bundle: nil)
+//        let controller = storyboard.instantiateInitialViewController() as! ApplicationsViewBeta
+        let controller = ApplicationsViewAlpha()
         controller.output = output
         return controller
     }
