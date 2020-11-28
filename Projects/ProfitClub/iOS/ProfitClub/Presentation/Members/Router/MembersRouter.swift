@@ -23,8 +23,9 @@ final class MembersRouter {
 
     @discardableResult
     func embed(in tabBarController: UITabBarController, output: MembersContainerViewOutput?) -> MembersContainerViewInput {
-        let storyboard = UIStoryboard(name: "MembersContainerViewBeta", bundle: nil)
-        let membersContainer = storyboard.instantiateInitialViewController() as! MembersContainerViewBeta
+//        let storyboard = UIStoryboard(name: "MembersContainerViewBeta", bundle: nil)
+//        let membersContainer = storyboard.instantiateInitialViewController() as! MembersContainerViewBeta
+        let membersContainer = MembersContainerViewAlpha()
         membersContainer.output = output
         if var viewControllers = tabBarController.viewControllers {
             viewControllers.append(membersContainer)
