@@ -27,7 +27,6 @@ final class CommercialOffersRouter {
 //        let commercialOffers = storyboard.instantiateInitialViewController() as! CommercialOffersViewBeta
         let commercialOffers = CommercialOffersViewAlpha()
         commercialOffers.output = output
-        commercialOffers.tabBarItem = UITabBarItem(title: "Поставки", image: #imageLiteral(resourceName: "selectedCommercialOfferItem"), selectedImage: #imageLiteral(resourceName: "commercialOfferItem"))
         if var viewControllers = tabBarController.viewControllers {
             viewControllers.append(commercialOffers)
             tabBarController.setViewControllers(viewControllers, animated: false)

@@ -28,8 +28,13 @@ final class CommercialOffersViewAlpha: UITableViewController {
         }
     }
 
-    init() {
-        super.init(nibName: nil, bundle: nil)
+    convenience init() {
+        self.init(nibName:nil, bundle:nil)
+    }
+
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        self.tabBarItem = UITabBarItem(title: "Поставки", image: #imageLiteral(resourceName: "selectedCommercialOfferItem"), selectedImage: #imageLiteral(resourceName: "commercialOfferItem"))
     }
 
     @available(*, unavailable)
