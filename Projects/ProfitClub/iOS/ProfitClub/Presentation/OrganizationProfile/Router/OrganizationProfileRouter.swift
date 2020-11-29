@@ -23,8 +23,9 @@ final class OrganizationProfileRouter {
 
     @discardableResult
     func openOrganizationProfile(organization: PCOrganization, output: OrganizationProfileViewOutput?) -> OrganizationProfileViewInput {
-        let storyboard = UIStoryboard(name: "OrganizationProfileViewBeta", bundle: nil)
-        let profile = storyboard.instantiateInitialViewController() as! OrganizationProfileViewBeta
+//        let storyboard = UIStoryboard(name: "OrganizationProfileViewBeta", bundle: nil)
+//        let profile = storyboard.instantiateInitialViewController() as! OrganizationProfileViewBeta
+        let profile = OrganizationProfileViewAlpha()
         profile.output = output
         profile.organizationName = organization.name
         profile.organizationINN = organization.inn
