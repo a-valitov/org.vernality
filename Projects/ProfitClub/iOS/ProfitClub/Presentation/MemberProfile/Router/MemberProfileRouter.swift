@@ -23,8 +23,9 @@ final class MemberProfileRouter {
 
     @discardableResult
     func openmemberProfile(member: PCMember, output: MemberProfileViewOutput?) -> MemberProfileViewInput {
-        let storyboard = UIStoryboard(name: "MemberProfileViewBeta", bundle: nil)
-        let profile = storyboard.instantiateInitialViewController() as! MemberProfileViewBeta
+//        let storyboard = UIStoryboard(name: "MemberProfileViewBeta", bundle: nil)
+//        let profile = storyboard.instantiateInitialViewController() as! MemberProfileViewBeta
+        let profile = MemberProfileViewAlpha()
         profile.output = output
         profile.memberFirstName = member.firstName
         profile.memberLastName = member.lastName
