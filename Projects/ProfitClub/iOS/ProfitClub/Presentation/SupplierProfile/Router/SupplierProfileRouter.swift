@@ -23,8 +23,9 @@ final class SupplierProfileRouter {
 
     @discardableResult
     func openSupplierProfile(supplier: PCSupplier, output: SupplierProfileViewOutput?) -> SupplierProfileViewInput {
-        let storyboard = UIStoryboard(name: "SupplierProfileViewBeta", bundle: nil)
-        let profile = storyboard.instantiateInitialViewController() as! SupplierProfileViewBeta
+//        let storyboard = UIStoryboard(name: "SupplierProfileViewBeta", bundle: nil)
+//        let profile = storyboard.instantiateInitialViewController() as! SupplierProfileViewBeta
+        let profile = SupplierProfileViewAlpha()
         profile.output = output
         profile.supplierName = supplier.name
         profile.supplierINN = supplier.inn
