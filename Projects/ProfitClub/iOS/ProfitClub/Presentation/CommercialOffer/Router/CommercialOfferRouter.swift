@@ -23,8 +23,9 @@ final class CommercialOfferRouter {
 
     @discardableResult
     func openCommercialOfferView(output: ApproveCommercialOfferViewOutput?) -> ApproveCommercialOfferViewInput {
-        let storyboard = UIStoryboard(name: "ApproveCommercialOfferViewBeta", bundle: nil)
-        let approveCommercialOfferView = storyboard.instantiateInitialViewController() as! ApproveCommercialOfferViewBeta
+//        let storyboard = UIStoryboard(name: "ApproveCommercialOfferViewBeta", bundle: nil)
+//        let approveCommercialOfferView = storyboard.instantiateInitialViewController() as! ApproveCommercialOfferViewBeta
+        let approveCommercialOfferView = ApproveCommercialOfferViewAlpha()
         approveCommercialOfferView.output = output
         self.main?.raise(approveCommercialOfferView, animated: true)
         return approveCommercialOfferView

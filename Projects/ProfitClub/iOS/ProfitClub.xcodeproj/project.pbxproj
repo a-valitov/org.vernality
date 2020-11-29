@@ -135,6 +135,9 @@
 		FA69F9E02573A52F00F519CB /* ApplicationsViewAlphaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA69F9DE2573A52F00F519CB /* ApplicationsViewAlphaTableViewCell.swift */; };
 		FA69F9E12573A52F00F519CB /* ApplicationsViewAlpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA69F9DF2573A52F00F519CB /* ApplicationsViewAlpha.swift */; };
 		FA69F9E42573A54E00F519CB /* MembersContainerViewAlpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA69F9E32573A54E00F519CB /* MembersContainerViewAlpha.swift */; };
+		FA69F9E82573A64600F519CB /* CommercialOffersViewAlphaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA69F9E62573A64600F519CB /* CommercialOffersViewAlphaCell.swift */; };
+		FA69F9E92573A64600F519CB /* CommercialOffersViewAlpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA69F9E72573A64600F519CB /* CommercialOffersViewAlpha.swift */; };
+		FA69F9EC2573A65500F519CB /* ApproveCommercialOfferViewAlpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA69F9EB2573A65500F519CB /* ApproveCommercialOfferViewAlpha.swift */; };
 		FA6E8BBC254D96A2007B8B4E /* CommercialOffersFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6E8BBB254D96A2007B8B4E /* CommercialOffersFactory.swift */; };
 		FA6E8BBE254D96FE007B8B4E /* CommercialOffersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6E8BBD254D96FE007B8B4E /* CommercialOffersView.swift */; };
 		FA6E8BC1254D9726007B8B4E /* CommercialOffersViewBeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6E8BC0254D9726007B8B4E /* CommercialOffersViewBeta.swift */; };
@@ -381,6 +384,9 @@
 		FA69F9DE2573A52F00F519CB /* ApplicationsViewAlphaTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationsViewAlphaTableViewCell.swift; sourceTree = "<group>"; };
 		FA69F9DF2573A52F00F519CB /* ApplicationsViewAlpha.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApplicationsViewAlpha.swift; sourceTree = "<group>"; };
 		FA69F9E32573A54E00F519CB /* MembersContainerViewAlpha.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MembersContainerViewAlpha.swift; sourceTree = "<group>"; };
+		FA69F9E62573A64600F519CB /* CommercialOffersViewAlphaCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommercialOffersViewAlphaCell.swift; sourceTree = "<group>"; };
+		FA69F9E72573A64600F519CB /* CommercialOffersViewAlpha.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommercialOffersViewAlpha.swift; sourceTree = "<group>"; };
+		FA69F9EB2573A65500F519CB /* ApproveCommercialOfferViewAlpha.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApproveCommercialOfferViewAlpha.swift; sourceTree = "<group>"; };
 		FA6E8BBB254D96A2007B8B4E /* CommercialOffersFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommercialOffersFactory.swift; sourceTree = "<group>"; };
 		FA6E8BBD254D96FE007B8B4E /* CommercialOffersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommercialOffersView.swift; sourceTree = "<group>"; };
 		FA6E8BC0254D9726007B8B4E /* CommercialOffersViewBeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommercialOffersViewBeta.swift; sourceTree = "<group>"; };
@@ -1426,6 +1432,23 @@
 			path = Alpha;
 			sourceTree = "<group>";
 		};
+		FA69F9E52573A64600F519CB /* Alpha */ = {
+			isa = PBXGroup;
+			children = (
+				FA69F9E62573A64600F519CB /* CommercialOffersViewAlphaCell.swift */,
+				FA69F9E72573A64600F519CB /* CommercialOffersViewAlpha.swift */,
+			);
+			path = Alpha;
+			sourceTree = "<group>";
+		};
+		FA69F9EA2573A65500F519CB /* Alpha */ = {
+			isa = PBXGroup;
+			children = (
+				FA69F9EB2573A65500F519CB /* ApproveCommercialOfferViewAlpha.swift */,
+			);
+			path = Alpha;
+			sourceTree = "<group>";
+		};
 		FA6E8BB6254D9617007B8B4E /* CommercialOffers */ = {
 			isa = PBXGroup;
 			children = (
@@ -1441,6 +1464,7 @@
 			isa = PBXGroup;
 			children = (
 				FA6E8BBD254D96FE007B8B4E /* CommercialOffersView.swift */,
+				FA69F9E52573A64600F519CB /* Alpha */,
 				FA6E8BBF254D9716007B8B4E /* Beta */,
 			);
 			path = View;
@@ -1984,6 +2008,7 @@
 			isa = PBXGroup;
 			children = (
 				FAD70483254E892F00DE8AD7 /* ApproveCommercialOfferView.swift */,
+				FA69F9EA2573A65500F519CB /* Alpha */,
 				FAD70485254E893300DE8AD7 /* Beta */,
 			);
 			path = ApproveCommercialOffer;
@@ -2420,6 +2445,7 @@
 				0E90499A24F624770061A605 /* OnboardError.swift in Sources */,
 				FA8CB80A255804F900D09B1D /* MemberDependencies.swift in Sources */,
 				0E6FBA582545ABAF00A2B882 /* ActionsRouter.swift in Sources */,
+				FA69F9EC2573A65500F519CB /* ApproveCommercialOfferViewAlpha.swift in Sources */,
 				FA21D80225701C34008024F0 /* ReviewViewAlphaAdminCell.swift in Sources */,
 				0E5617632537327C005DF4F3 /* OrganizationDependencies.swift in Sources */,
 				0E90497124F390270061A605 /* AppFactory.swift in Sources */,
@@ -2436,6 +2462,7 @@
 				0E90498724F60C980061A605 /* SelectRoleView.swift in Sources */,
 				FA69F9C72573A35000F519CB /* MemberCurrentActionsViewAlphaCell.swift in Sources */,
 				0E6FBA622545AC7C00A2B882 /* ActionsDependencies.swift in Sources */,
+				FA69F9E82573A64600F519CB /* CommercialOffersViewAlphaCell.swift in Sources */,
 				FA21D7E1256D85FD008024F0 /* PastActionsTableViewCell.swift in Sources */,
 				FAD7048B254E89AC00DE8AD7 /* CommercialOfferFactory.swift in Sources */,
 				FA21D809257020F6008024F0 /* SupplierActionsViewAlpha.swift in Sources */,
@@ -2461,6 +2488,7 @@
 				FABB6F092546831800B93FB8 /* ApproveCurrentActionViewBeta.swift in Sources */,
 				FA8CB858255A7BBD00D09B1D /* AdminOrganizationsRouter.swift in Sources */,
 				0E506C1E24FC0DE400ABA211 /* ReviewModule.swift in Sources */,
+				FA69F9E92573A64600F519CB /* CommercialOffersViewAlpha.swift in Sources */,
 				0E6FBA5C2545ABEF00A2B882 /* ActionsModule.swift in Sources */,
 				0E506C4924FCA78100ABA211 /* OnboardSignInViewBeta.swift in Sources */,
 				FA8CB89E255BBEBD00D09B1D /* AdminOrganizationsApplicationsTableViewCell.swift in Sources */,
