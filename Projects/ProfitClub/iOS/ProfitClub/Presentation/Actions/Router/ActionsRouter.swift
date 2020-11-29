@@ -23,8 +23,9 @@ final class ActionsRouter {
 
     @discardableResult
     func embed(in tabBarController: UITabBarController, output: ActionsContainerViewOutput?) -> ActionsContainerViewInput {
-        let storyboard = UIStoryboard(name: "ActionsContainerViewBeta", bundle: nil)
-        let actionsContainer = storyboard.instantiateInitialViewController() as! ActionsContainerViewBeta
+//        let storyboard = UIStoryboard(name: "ActionsContainerViewBeta", bundle: nil)
+//        let actionsContainer = storyboard.instantiateInitialViewController() as! ActionsContainerViewBeta
+        let actionsContainer = ActionsContainerViewAlpha()
         actionsContainer.output = output
         if var viewControllers = tabBarController.viewControllers {
             viewControllers.append(actionsContainer)
@@ -36,23 +37,26 @@ final class ActionsRouter {
     }
 
     func buildCurrentActions(output: CurrentActionsViewOutput?) -> UIViewController {
-        let storyboard = UIStoryboard(name: "CurrentActionsViewBeta", bundle: nil)
-        let controller = storyboard.instantiateInitialViewController() as! CurrentActionsViewBeta
+//        let storyboard = UIStoryboard(name: "CurrentActionsViewBeta", bundle: nil)
+//        let controller = storyboard.instantiateInitialViewController() as! CurrentActionsViewBeta
+        let controller = CurrentActionsViewAlpha()
         controller.output = output
         return controller
     }
 
     func buildPastActions(output: PastActionsViewOutput?) -> UIViewController {
-        let storyboard = UIStoryboard(name: "PastActionsViewBeta", bundle: nil)
-        let controller = storyboard.instantiateInitialViewController() as! PastActionsViewBeta
+//        let storyboard = UIStoryboard(name: "PastActionsViewBeta", bundle: nil)
+//        let controller = storyboard.instantiateInitialViewController() as! PastActionsViewBeta
+        let controller = PastActionsViewAlpha()
         controller.output = output
         return controller
     }
 
     @discardableResult
     func openPastAction(action: PCAction, output: PastActionViewOutput?) -> PastActionViewInput {
-        let storyboard = UIStoryboard(name: "PastActionViewBeta", bundle: nil)
-        let pastAction = storyboard.instantiateInitialViewController() as! PastActionViewBeta
+//        let storyboard = UIStoryboard(name: "PastActionViewBeta", bundle: nil)
+//        let pastAction = storyboard.instantiateInitialViewController() as! PastActionViewBeta
+        let pastAction = PastActionViewAlpha()
         pastAction.output = output
         pastAction.organizationName = action.supplier?.name
         pastAction.pastActionImageUrl = action.imageUrl
