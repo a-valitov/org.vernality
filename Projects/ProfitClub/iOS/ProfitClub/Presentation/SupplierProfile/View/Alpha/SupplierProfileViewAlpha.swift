@@ -210,15 +210,15 @@ final class SupplierProfileViewAlpha: UIViewController {
                                             preferredStyle: .actionSheet)
         actionSheet.view.tintColor = .black
 
-        let camera = UIAlertAction(title: "Камера", style: .default) { _ in
-            self.chooseImagePicker(source: .camera)
+        let camera = UIAlertAction(title: "Камера", style: .default) { [weak self] _ in
+            self?.chooseImagePicker(source: .camera)
         }
 
         camera.setValue(cameraIcon, forKey: "image")
         camera.setValue(CATextLayerAlignmentMode.left, forKey: "titleTextAlignment")
 
-        let photo = UIAlertAction(title: "Фото", style: .default) { _ in
-            self.chooseImagePicker(source: .photoLibrary)
+        let photo = UIAlertAction(title: "Фото", style: .default) { [weak self] _ in
+            self?.chooseImagePicker(source: .photoLibrary)
         }
 
         photo.setValue(photoIcon, forKey: "image")
@@ -442,7 +442,7 @@ extension SupplierProfileViewAlpha {
 }
 
 extension SupplierProfileViewAlpha: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    func chooseImagePicker(source: UIImagePickerController.SourceType) {
+    private func chooseImagePicker(source: UIImagePickerController.SourceType) {
         if UIImagePickerController.isSourceTypeAvailable(source) {
             let imagePicker = UIImagePickerController()
             imagePicker.delegate = self
