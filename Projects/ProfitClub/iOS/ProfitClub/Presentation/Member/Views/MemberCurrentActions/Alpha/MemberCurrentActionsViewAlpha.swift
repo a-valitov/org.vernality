@@ -92,20 +92,23 @@ final class MemberCurrentActionsViewAlpha: UITableViewController {
         let changeRoleIcon = #imageLiteral(resourceName: "refresh")
         let profileIcon = #imageLiteral(resourceName: "profile")
 
-        let logout = UIAlertAction(title: "Выйти", style: .default) { _ in
-            self.output?.memberCurrentActions(view: self, userWantsToLogout: sender)
+        let logout = UIAlertAction(title: "Выйти", style: .default) { [weak self] _ in
+            guard let sSelf = self else { return }
+            sSelf.output?.memberCurrentActions(view: sSelf, userWantsToLogout: sender)
         }
 
         logout.setValue(logoutIcon.withRenderingMode(.alwaysOriginal), forKey: "image")
 
-        let changeRole = UIAlertAction(title: "Сменить роль", style: .default) { _ in
-            self.output?.memberCurrentActions(view: self, userWantsToChangeRole: sender)
+        let changeRole = UIAlertAction(title: "Сменить роль", style: .default) { [weak self] _ in
+            guard let sSelf = self else { return }
+            sSelf.output?.memberCurrentActions(view: sSelf, userWantsToChangeRole: sender)
         }
 
         changeRole.setValue(changeRoleIcon.withRenderingMode(.alwaysOriginal), forKey: "image")
 
-        let profileAction = UIAlertAction(title: "Профиль", style: .default) { _ in
-            self.output?.memberNavigtaionBar(view: self, tappedOn: sender)
+        let profileAction = UIAlertAction(title: "Профиль", style: .default) { [weak self] _ in
+            guard let sSelf = self else { return }
+            sSelf.output?.memberNavigtaionBar(view: sSelf, tappedOn: sender)
         }
 
         profileAction.setValue(profileIcon.withRenderingMode(.alwaysOriginal), forKey: "image")
