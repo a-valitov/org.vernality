@@ -30,4 +30,5 @@ protocol MemberCurrentActionsViewOutput {
     func memberCurrentActions(view: MemberCurrentActionsViewInput, userWantsToLogout sender: Any)
     func memberCurrentActions(view: MemberCurrentActionsViewInput, userConfirmToLogout sender: Any)
     func memberCurrentActions(view: MemberCurrentActionsViewInput, userWantsToChangeRole sender: Any)
+    func memberCurrentActions(view: MemberCurrentActionsViewInput, userWantsToRefresh sender: Any)
 }

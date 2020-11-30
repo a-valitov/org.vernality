@@ -50,6 +50,10 @@ final class MemberCurrentActionsViewAlpha: UITableViewController {
         label.text = "Profit Club"
         label.font = UIFont(name: "PlayfairDisplay-Bold", size: 25)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: label)
+
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(MemberCurrentActionsViewAlpha.pullToRefreshValueChanged(_:)), for: .valueChanged)
+        tableView.refreshControl = refreshControl
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -121,6 +125,11 @@ final class MemberCurrentActionsViewAlpha: UITableViewController {
         actionSheet.addAction(logout)
         actionSheet.addAction(cancelAction)
         present(actionSheet, animated: true)
+    }
+
+    @objc private func pullToRefreshValueChanged(_ sender: UIRefreshControl) {
+        self.output?.memberCurrentActions(view: self, userWantsToRefresh: sender)
+        sender.endRefreshing()
     }
 }
 
