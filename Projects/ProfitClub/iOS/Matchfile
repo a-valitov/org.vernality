@@ -1,0 +1,6 @@
+git_url("git@github.com:rinat-enikeev/com.apple.developer.rinat.git")
+storage_mode("git")
+type("development")
+app_identifier("org.vernality.profitclub")
+username("rinat.enikeev@gmail.com")
+team_id("5V5EUT3ZXJ")
