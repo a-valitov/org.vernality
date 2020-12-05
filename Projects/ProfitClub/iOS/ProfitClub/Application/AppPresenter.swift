@@ -90,11 +90,6 @@ extension AppPresenter: OnboardModuleOutput {
         let review = self.factory.review(output: self)
         review.start(in: main)
     }
-
-    func onboard(module: OnboardModule, didRegister user: PCUser, inside main: MainModule?) {
-        let review = self.factory.review(output: self)
-        review.start(in: main)
-    }
 }
 
 extension AppPresenter: ReviewModuleOutput {
