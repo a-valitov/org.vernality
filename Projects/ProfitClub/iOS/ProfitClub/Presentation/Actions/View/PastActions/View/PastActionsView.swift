@@ -24,4 +24,5 @@ protocol PastActionsViewInput: UIViewController {
 protocol PastActionsViewOutput {
     func pastActionsDidLoad(view: PastActionsViewInput)
     func pastActions(view: PastActionsViewInput, didSelect pastAction: PCAction)
+    func pastActions(view: PastActionsViewInput, userWantsToRefresh sender: Any)
 }

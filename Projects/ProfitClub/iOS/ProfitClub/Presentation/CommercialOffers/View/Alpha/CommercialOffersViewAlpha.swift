@@ -49,6 +49,10 @@ final class CommercialOffersViewAlpha: UITableViewController {
         tableView.tableFooterView = UIView()
         tableView.register(CommercialOffersViewAlphaCell.self, forCellReuseIdentifier: CommercialOffersViewAlphaCell.reuseIdentifier)
         self.tabBarController?.selectedIndex = 2
+
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(CommercialOffersViewAlpha.pullToRefreshValueChanged(_:)), for: .valueChanged)
+        tableView.refreshControl = refreshControl
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -78,6 +82,11 @@ final class CommercialOffersViewAlpha: UITableViewController {
         cell.commercialOfferCreatedDateLabel.text = "\(dateFormatter.string(from: commercialOffer.createdAt ?? Date()))"
 
         return cell
+    }
+
+    @objc private func pullToRefreshValueChanged(_ sender: UIRefreshControl) {
+        self.output?.commercialOffers(view: self, userWantsToRefresh: sender)
+        sender.endRefreshing()
     }
 }
 

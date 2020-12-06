@@ -55,4 +55,15 @@ extension CommercialOffersPresenter: CommercialOffersViewOutput {
     func commercialOffers(view: CommercialOffersViewInput, didSelect commercialOffer: PCCommercialOffer) {
         self.output?.commercialOffers(module: self, didSelect: commercialOffer)
     }
+
+    func commercialOffers(view: CommercialOffersViewInput, userWantsToRefresh sender: Any) {
+        self.services.commercialOffer.fetchApproved { [weak self] (result) in
+            switch result {
+            case .success(let commercialOffers):
+                view.commercialOffers = commercialOffers
+            case .failure(let error):
+                self?.presenters.error.present(error)
+            }
+        }
+    }
 }

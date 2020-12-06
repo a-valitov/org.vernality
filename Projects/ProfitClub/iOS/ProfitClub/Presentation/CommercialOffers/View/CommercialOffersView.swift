@@ -24,4 +24,5 @@ protocol CommercialOffersViewInput: UIViewController {
 protocol CommercialOffersViewOutput {
     func commercialOffersDidLoad(view: CommercialOffersViewInput)
     func commercialOffers(view: CommercialOffersViewInput, didSelect commercialOffer: PCCommercialOffer)
+    func commercialOffers(view: CommercialOffersViewInput, userWantsToRefresh sender: Any)
 }

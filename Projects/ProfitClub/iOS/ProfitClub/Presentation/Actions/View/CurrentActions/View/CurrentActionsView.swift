@@ -24,4 +24,5 @@ protocol CurrentActionsViewInput: UIViewController {
 protocol CurrentActionsViewOutput {
     func currentActionsDidLoad(view: CurrentActionsViewInput)
     func currentActions(view: CurrentActionsViewInput, didSelect action: PCAction)
+    func currentActions(view: CurrentActionsViewInput, userWantsToRefresh sender: Any)
 }

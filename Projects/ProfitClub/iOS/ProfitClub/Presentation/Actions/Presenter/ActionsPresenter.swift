@@ -66,6 +66,17 @@ extension ActionsPresenter: CurrentActionsViewOutput {
     func currentActions(view: CurrentActionsViewInput, didSelect action: PCAction) {
         self.output?.actions(module: self, didSelect: action)
     }
+
+    func currentActions(view: CurrentActionsViewInput, userWantsToRefresh sender: Any) {
+        self.services.action.fetchApprovedCurrentActions { [weak self] (result) in
+            switch result {
+            case .success(let actions):
+                view.actions = actions
+            case .failure(let error):
+                self?.presenters.error.present(error)
+            }
+        }
+    }
 }
 
 extension ActionsPresenter: PastActionsViewOutput {
@@ -82,6 +93,17 @@ extension ActionsPresenter: PastActionsViewOutput {
 
     func pastActions(view: PastActionsViewInput, didSelect pastAction: PCAction) {
         self.router?.openPastAction(action: pastAction, output: self)
+    }
+
+    func pastActions(view: PastActionsViewInput, userWantsToRefresh sender: Any) {
+        self.services.action.fetchApprovedPastActions { [weak self] (result) in
+            switch result {
+            case .success(let actions):
+                view.actions = actions
+            case .failure(let error):
+                self?.presenters.error.present(error)
+            }
+        }
     }
 }
 

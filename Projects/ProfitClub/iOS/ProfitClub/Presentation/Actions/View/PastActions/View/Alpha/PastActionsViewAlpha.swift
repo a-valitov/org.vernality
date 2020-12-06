@@ -42,6 +42,10 @@ final class PastActionsViewAlpha: UITableViewController {
         self.output?.pastActionsDidLoad(view: self)
 
         tableView.register(PastActionsViewAlphaTableViewCell.self, forCellReuseIdentifier: PastActionsViewAlphaTableViewCell.reuseIdentifier)
+
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(PastActionsViewAlpha.pullToRefreshValueChanged(_:)), for: .valueChanged)
+        tableView.refreshControl = refreshControl
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -71,6 +75,11 @@ final class PastActionsViewAlpha: UITableViewController {
         cell.pastActionImageView.kf.setImage(with: action.imageUrl)
 
         return cell
+    }
+
+    @objc private func pullToRefreshValueChanged(_ sender: UIRefreshControl) {
+        self.output?.pastActions(view: self, userWantsToRefresh: sender)
+        sender.endRefreshing()
     }
 }
 

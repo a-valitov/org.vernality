@@ -43,6 +43,10 @@ final class CurrentActionsViewAlpha: UITableViewController {
 
         tableView.tableFooterView = UIView()
         tableView.register(CurrentActionsViewAlphaTableViewCell.self, forCellReuseIdentifier: CurrentActionsViewAlphaTableViewCell.reuseIdentifier)
+
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(CurrentActionsViewAlpha.pullToRefreshValueChanged(_:)), for: .valueChanged)
+        tableView.refreshControl = refreshControl
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -73,6 +77,11 @@ final class CurrentActionsViewAlpha: UITableViewController {
         cell.actionImageView.kf.setImage(with: action.imageUrl)
 
         return cell
+    }
+
+    @objc private func pullToRefreshValueChanged(_ sender: UIRefreshControl) {
+        self.output?.currentActions(view: self, userWantsToRefresh: sender)
+        sender.endRefreshing()
     }
 }
 

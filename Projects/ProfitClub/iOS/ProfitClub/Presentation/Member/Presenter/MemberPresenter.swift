@@ -75,10 +75,21 @@ extension MemberPresenter: MemberCurrentActionsViewOutput {
     func memberCurrentActions(view: MemberCurrentActionsViewInput, userWantsToChangeRole sender: Any) {
         self.output?.member(module: self, userWantsToChangeRole: self.router?.main)
     }
+
+    func memberCurrentActions(view: MemberCurrentActionsViewInput, userWantsToRefresh sender: Any) {
+        self.services.action.fetchApprovedCurrentActions { [weak self] result in
+            switch result {
+            case .success(let actions):
+                view.actions = actions
+            case .failure(let error):
+                self?.presenters.error.present(error)
+            }
+        }
+    }
 }
 
 extension MemberPresenter: MemberCurrentActionViewOutput {
     func memberCurrentActionDidLoad(view: MemberCurrentActionViewInput) {
-
+        
     }
 }
