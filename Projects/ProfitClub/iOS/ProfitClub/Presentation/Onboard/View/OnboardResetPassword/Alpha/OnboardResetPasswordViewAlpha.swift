@@ -26,6 +26,8 @@ final class OnboardResetPasswordViewAlpha: UIViewController {
             return nil
         }
     }
+    var keyboardIsShown = false
+    private var resetPasswordButtonBottomToContainerBottomConstraint: NSLayoutConstraint!
 
     private lazy var resetPasswordLabel: UILabel = {
         let label = UILabel()
@@ -134,12 +136,18 @@ final class OnboardResetPasswordViewAlpha: UIViewController {
     }
 
     @objc func keyboardWillShow(notification: NSNotification) {
-        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
-        self.resetPasswordButton.frame.origin.y = self.resetPasswordButton.frame.origin.y - keyboardSize.height
+        if !keyboardIsShown {
+            guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
+            resetPasswordButtonBottomToContainerBottomConstraint.constant = -10 - keyboardSize.height
+            keyboardIsShown = true
+        }
     }
 
     @objc func keyboardWillHide(notification: NSNotification) {
-        self.resetPasswordButton.frame.origin.y = 0
+        if keyboardIsShown {
+            resetPasswordButtonBottomToContainerBottomConstraint.constant = -20
+            keyboardIsShown = false
+        }
     }
 }
 
@@ -198,10 +206,11 @@ extension OnboardResetPasswordViewAlpha {
     private func layoutResetPasswordButton(in container: UIView) {
         let button = resetPasswordButton
         container.addSubview(button)
+        resetPasswordButtonBottomToContainerBottomConstraint = button.bottomAnchor.constraint(equalTo: container.safeAreaLayoutGuide.bottomAnchor, constant: -20.0)
         NSLayoutConstraint.activate([
             button.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -20.0),
             button.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 20.0),
-            button.bottomAnchor.constraint(equalTo: container.safeAreaLayoutGuide.bottomAnchor, constant: -20.0),
+            resetPasswordButtonBottomToContainerBottomConstraint,
             button.heightAnchor.constraint(equalToConstant: 52.0)
         ])
     }
