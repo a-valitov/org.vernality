@@ -41,6 +41,8 @@ final class OnboardSignUpViewAlpha: UIViewController {
         }
     }
 
+    var isOnclick = true
+
     init() {
         super.init(nibName: nil, bundle: nil)
     }
@@ -60,6 +62,10 @@ final class OnboardSignUpViewAlpha: UIViewController {
         self.emailTextField.delegate = self
         self.passwordTextField.delegate = self
         self.passwordConfirmationTextField.delegate = self
+    }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
 
     @objc private func signUpButtonTouchUpInside(_ sender: Any) {
@@ -157,6 +163,25 @@ final class OnboardSignUpViewAlpha: UIViewController {
         self.emailTextField.keyboardAppearance = UIKeyboardAppearance.dark
         self.passwordTextField.keyboardAppearance = UIKeyboardAppearance.dark
         self.passwordConfirmationTextField.keyboardAppearance = UIKeyboardAppearance.dark
+
+        self.passwordTextField.isSecureTextEntry = true
+        self.passwordConfirmationTextField.isSecureTextEntry = true
+
+        self.showHidePasswordButton.addTarget(self, action: #selector(OnboardSignUpViewAlpha.toggleShowHide(button:)), for: .touchUpInside)
+        self.showHidePasswordButton.setImage(#imageLiteral(resourceName: "showPassword").withRenderingMode(.alwaysTemplate), for: .normal)
+        self.showHidePasswordButton.setImage(#imageLiteral(resourceName: "hidePassword").withRenderingMode(.alwaysTemplate), for: .selected)
+        self.showHidePasswordButton.tintColor = #colorLiteral(red: 0.1588078997, green: 0.1588078997, blue: 0.1588078997, alpha: 1)
+    }
+
+    @objc private func toggleShowHide(button: UIButton) {
+        button.isSelected.toggle()
+        if isOnclick {
+            self.passwordTextField.isSecureTextEntry = false
+        } else {
+            self.passwordTextField.isSecureTextEntry = true
+        }
+
+        isOnclick = !isOnclick
     }
 
     private func combination() -> NSMutableAttributedString {
@@ -184,6 +209,7 @@ final class OnboardSignUpViewAlpha: UIViewController {
     private let passwordConfirmationTextField = UITextField()
     private let signUpButton = UIButton()
     private let signInButton = UIButton()
+    private let showHidePasswordButton = UIButton()
 }
 
 extension OnboardSignUpViewAlpha {
@@ -192,6 +218,7 @@ extension OnboardSignUpViewAlpha {
         layoutStack(in: view)
         layoutEmailTextField(in: stackView)
         layoutPasswordTextField(in: stackView)
+        layoutShowHidePasswordButton(in: view)
         layoutPasswordConfirmationTextField(in: stackView)
         layoutSignUp(in: view)
         layoutSignIn(in: view)
@@ -240,6 +267,18 @@ extension OnboardSignUpViewAlpha {
             password.heightAnchor.constraint(equalToConstant: 52.0)
         ])
         stack.addArrangedSubview(password)
+    }
+
+    private func layoutShowHidePasswordButton(in container: UIView) {
+        let showHide = showHidePasswordButton
+        showHide.translatesAutoresizingMaskIntoConstraints = false
+        container.addSubview(showHide)
+        NSLayoutConstraint.activate([
+            showHide.widthAnchor.constraint(equalToConstant: 30.0),
+            showHide.heightAnchor.constraint(equalToConstant: 30.0),
+            showHide.topAnchor.constraint(equalTo: self.passwordTextField.topAnchor, constant: 10.0),
+            showHide.trailingAnchor.constraint(equalTo: self.passwordTextField.trailingAnchor, constant: -10.0)
+        ])
     }
 
     private func layoutPasswordConfirmationTextField(in stack: UIStackView) {

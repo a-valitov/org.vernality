@@ -102,6 +102,10 @@ final class OnboardResetPasswordViewAlpha: UIViewController {
         emailTextField.delegate = self
     }
 
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+
     private func setup() {
         view.backgroundColor = .clear
         navigationItem.title = "Сбросить пароль"

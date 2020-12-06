@@ -112,6 +112,7 @@ final class OnboardSupplierViewAlpha: UIViewController {
         textField.autocorrectionType = .no
         textField.spellCheckingType = .no
         textField.returnKeyType = .next
+        textField.keyboardType = .numberPad
         textField.keyboardAppearance = .dark
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
@@ -141,6 +142,7 @@ final class OnboardSupplierViewAlpha: UIViewController {
         textField.spellCheckingType = .no
         textField.returnKeyType = .done
         textField.keyboardAppearance = .dark
+        textField.keyboardType = .phonePad
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
@@ -191,6 +193,8 @@ final class OnboardSupplierViewAlpha: UIViewController {
         setup()
         layout()
         style()
+        addDoneButtonOnKeyboard()
+        addNextButtonOnKeyboard()
 
         privacyPolicyButton.setAttributedTitle(combination(), for: .normal)
 
@@ -198,6 +202,10 @@ final class OnboardSupplierViewAlpha: UIViewController {
         supplierINNTextField.delegate = self
         supplierContactTextField.delegate = self
         supplierPhoneNumberTextField.delegate = self
+    }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
 
     private func setup() {
@@ -257,6 +265,36 @@ final class OnboardSupplierViewAlpha: UIViewController {
         return combination
     }
 
+    private func addDoneButtonOnKeyboard(){
+        let doneToolbar: UIToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
+        doneToolbar.barStyle = .default
+
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let done: UIBarButtonItem = UIBarButtonItem(title: "Готово", style: .done, target: self, action: #selector(self.doneButtonAction))
+        done.tintColor = .white
+
+        let items = [flexSpace, done]
+        doneToolbar.items = items
+        doneToolbar.sizeToFit()
+
+        supplierPhoneNumberTextField.inputAccessoryView = doneToolbar
+    }
+
+    private func addNextButtonOnKeyboard(){
+        let nextToolbar: UIToolbar = UIToolbar(frame: CGRect.init(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 50))
+        nextToolbar.barStyle = .default
+
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let next: UIBarButtonItem = UIBarButtonItem(title: "Далее", style: .done, target: self, action: #selector(self.nextButtonAction))
+        next.tintColor = .white
+
+        let items = [flexSpace, next]
+        nextToolbar.items = items
+        nextToolbar.sizeToFit()
+
+        supplierINNTextField.inputAccessoryView = nextToolbar
+    }
+
     @objc private func submitButtonTouchUpInside(_ sender: Any) {
         supplierNameTextField.resignFirstResponder()
         supplierINNTextField.resignFirstResponder()
@@ -299,6 +337,13 @@ final class OnboardSupplierViewAlpha: UIViewController {
         self.view.frame.origin.y = 0
     }
 
+    @objc func doneButtonAction() {
+        supplierPhoneNumberTextField.resignFirstResponder()
+    }
+
+    @objc func nextButtonAction() {
+        supplierContactTextField.becomeFirstResponder()
+    }
 }
 
 // MARK: - Layout
