@@ -23,8 +23,6 @@ final class OnboardRouter {
 
     @discardableResult
     func openOnboardWelcome(output: OnboardWelcomeViewOutput?) -> OnboardWelcomeViewInput {
-//        let storyboard = UIStoryboard(name: "OnboardWelcomeViewBeta", bundle: nil)
-//        let onboardWelcome = storyboard.instantiateInitialViewController() as! OnboardWelcomeViewBeta
         let onboardWelcome = OnboardWelcomeViewAlpha()
         onboardWelcome.output = output
         self.main?.push(onboardWelcome, animated: false)
@@ -33,8 +31,6 @@ final class OnboardRouter {
 
     @discardableResult
     func openOnboardSignIn(output: OnboardSignInViewOutput?) -> OnboardSignInViewInput {
-//        let storyboard = UIStoryboard(name: "OnboardSignInViewBeta", bundle: nil)
-//        let onboardSignIn = storyboard.instantiateInitialViewController() as! OnboardSignInViewBeta
         let onboardSignIn = OnboardSignInViewAlpha()
         onboardSignIn.output = output
         self.main?.raise(onboardSignIn, animated: true)
@@ -43,8 +39,6 @@ final class OnboardRouter {
 
     @discardableResult
     func openOnboardSignUp(output: OnboardSignUpViewOutput?) -> OnboardSignUpViewInput {
-//        let storyboard = UIStoryboard(name: "OnboardSignUpViewBeta", bundle: nil)
-//        let onboardSignUp = storyboard.instantiateInitialViewController() as! OnboardSignUpViewBeta
         let onboardSignUp = OnboardSignUpViewAlpha()
         onboardSignUp.output = output
         self.main?.raise(onboardSignUp, animated: true)
@@ -53,8 +47,6 @@ final class OnboardRouter {
 
     @discardableResult
     func openResetPassword(output: OnboardResetPasswordViewOutput?) -> OnboardResetPasswordViewInput {
-//        let storyboard = UIStoryboard(name: "OnboardResetPasswordViewBeta", bundle: nil)
-//        let onboardResetPassword = storyboard.instantiateInitialViewController() as! OnboardResetPasswordViewBeta
         let onboardResetPassword = OnboardResetPasswordViewAlpha()
         onboardResetPassword.output = output
         self.main?.push(onboardResetPassword, animated: true)
@@ -63,8 +55,6 @@ final class OnboardRouter {
 
     @discardableResult
     func openSelectRole(output: SelectRoleViewOutput?) -> SelectRoleViewInput {
-//        let storyboard = UIStoryboard(name: "SelectRoleViewBeta", bundle: nil)
-//        let selectRoleView = storyboard.instantiateInitialViewController() as! SelectRoleViewBeta
         let selectRoleView = SelectRoleViewAlpha()
         selectRoleView.output = output
         self.main?.push(selectRoleView, animated: true)
@@ -73,8 +63,6 @@ final class OnboardRouter {
 
     @discardableResult
     func openOnboardMember(output: OnboardMemberViewOutput?) -> OnboardMemberViewInput {
-//        let storyboard = UIStoryboard(name: "OnboardMemberViewBeta", bundle: nil)
-//        let onboardMember = storyboard.instantiateInitialViewController() as! OnboardMemberViewBeta
         let onboardMember = OnboardMemberViewAlpha()
         onboardMember.output = output
         self.main?.push(onboardMember, animated: true)
@@ -91,8 +79,6 @@ final class OnboardRouter {
     }
 
     @discardableResult func openOnboardOrganization(output: OnboardOrganizationViewOutput?) -> OnboardOrganizationViewInput {
-//        let storyboard = UIStoryboard(name: "OnboardOrganizationViewBeta", bundle: nil)
-//        let onboardOrganization = storyboard.instantiateInitialViewController() as! OnboardOrganizationViewBeta
         let onboardOrganization = OnboardOrganizationViewAlpha()
         onboardOrganization.output = output
         self.main?.push(onboardOrganization, animated: true)
@@ -101,8 +87,6 @@ final class OnboardRouter {
 
     @discardableResult
     func openOnboardSupplier(output: OnboardSupplierViewOutput?) -> OnboardSupplierViewInput {
-//        let storyboard = UIStoryboard(name: "OnboardSupplierViewBeta", bundle: nil)
-//        let onboardSupplier = storyboard.instantiateInitialViewController() as! OnboardSupplierViewBeta
         let onboardSupplier = OnboardSupplierViewAlpha()
         onboardSupplier.output = output
         self.main?.push(onboardSupplier, animated: true)

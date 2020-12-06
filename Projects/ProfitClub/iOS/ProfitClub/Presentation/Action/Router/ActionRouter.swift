@@ -23,8 +23,6 @@ final class ActionRouter {
     
     @discardableResult
     func openActionView(output: ApproveCurrentActionViewOutput?) -> ApproveCurrentActionViewInput {
-//        let storyboard = UIStoryboard(name: "ApproveCurrentActionViewBeta", bundle: nil)
-//        let approveCurrentActionView = storyboard.instantiateInitialViewController() as! ApproveCurrentActionViewBeta
         let approveCurrentActionView = ApproveCurrentActionViewAlpha()
         approveCurrentActionView.output = output
         self.main?.raise(approveCurrentActionView, animated: true)
