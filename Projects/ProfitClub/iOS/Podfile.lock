@@ -2,16 +2,16 @@ PODS:
   - ActivityPresenter (0.0.1)
   - Bolts/Tasks (1.9.1)
   - ErrorPresenter (0.0.1)
-  - FittedSheets (2.1.1)
-  - Kingfisher (5.15.0):
-    - Kingfisher/Core (= 5.15.0)
-  - Kingfisher/Core (5.15.0)
+  - FittedSheets (2.2.3)
+  - Kingfisher (5.15.8):
+    - Kingfisher/Core (= 5.15.8)
+  - Kingfisher/Core (5.15.8)
   - Main (0.0.1):
     - FittedSheets
-  - Nantes (0.1.1)
-  - Parse (1.19.0):
-    - Parse/Core (= 1.19.0)
-  - Parse/Core (1.19.0):
+  - Nantes (0.1.2)
+  - Parse (1.19.1):
+    - Parse/Core (= 1.19.1)
+  - Parse/Core (1.19.1):
     - Bolts/Tasks (= 1.9.1)
   - PCActionService (0.0.1):
     - Parse
@@ -89,11 +89,11 @@ SPEC CHECKSUMS:
   ActivityPresenter: 43362337d96a0ea52420fe808517fe9cd1b527a4
   Bolts: 8c1e8aab2f603387b8b9924f57d1d64f43d3ffdc
   ErrorPresenter: deb60f0739744b9b79bbf7be09e7e0a473ba132b
-  FittedSheets: ec30a41b7f054891992ada0441ebe7801958f123
-  Kingfisher: 1acb67597a520c2d0310677e66d6e0af455ef757
+  FittedSheets: 5533375af9ed713977b8e6d88b74c90e8f5df041
+  Kingfisher: a3c03d702433fa6cfedabb2bddbe076fb8f2e902
   Main: 5f3663f52dc9f73e8caed2af67aa325dfd64111d
-  Nantes: e11fbe0b6214de8c09cc8b763dbf61f70fbbf885
-  Parse: 0fb5c7cc7ee5900f2434e24607d0496155b8d04f
+  Nantes: 0396442578e32242223fed46050dea1850236184
+  Parse: e40fdb9c7d665823b7fe9865949cac9a53eb2ce7
   PCActionService: 57c4d47fb324bc6d6f0de36d037f8ee04e2f52dd
   PCAuthentication: 08d4d8b660b8f39573b8192607dd431ebdb7254f
   PCCommercialOfferService: 6ec41c8d76b385dbe02f6b7900f546863ba3559b
@@ -102,6 +102,6 @@ SPEC CHECKSUMS:
   ProfitClubModel: 38acfa2527d8cac51c97c8494db90fdd3025d32f
   ProfitClubParse: f0319471560bd2af6fd3d2753a8980bab1656b1a
 
-PODFILE CHECKSUM: 8f4bc80c6f7b493aac4fba315aad96552a273500
+PODFILE CHECKSUM: b4f1ae0234414a86954873e1f1cb706edcc99b3f
 
 COCOAPODS: 1.10.0

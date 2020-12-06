@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3K5-JW-o37">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3K5-JW-o37">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -28,14 +29,15 @@
                             </segmentedControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tbD-Le-gLa">
                                 <rect key="frame" x="0.0" y="75" width="414" height="821"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OC2-Kq-Z12">
                                 <rect key="frame" x="0.0" y="75" width="414" height="821"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="bOW-j0-YfG"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="bOW-j0-YfG" firstAttribute="trailing" secondItem="tbD-Le-gLa" secondAttribute="trailing" id="GYR-gf-dff"/>
                             <constraint firstItem="tbD-Le-gLa" firstAttribute="leading" secondItem="bOW-j0-YfG" secondAttribute="leading" id="IqK-za-Un6"/>
@@ -49,7 +51,6 @@
                             <constraint firstAttribute="bottom" secondItem="OC2-Kq-Z12" secondAttribute="bottom" id="uW8-FE-QuT"/>
                             <constraint firstAttribute="bottom" secondItem="tbD-Le-gLa" secondAttribute="bottom" id="ysb-dY-e4c"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="bOW-j0-YfG"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Организации" image="Organizations" id="VoD-ID-nrT"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
@@ -63,24 +64,11 @@
             </objects>
             <point key="canvasLocation" x="-62" y="175"/>
         </scene>
-        <!--AdminOrganizationsApplicationsViewBeta-->
-        <scene sceneID="Yyg-jq-kxR">
-            <objects>
-                <viewControllerPlaceholder storyboardName="AdminOrganizationsApplicationsViewBeta" id="shr-MU-m6x" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="NXO-Xe-xn8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="511" y="127"/>
-        </scene>
-        <!--AdminApprovedOrganizationsViewBeta-->
-        <scene sceneID="GK7-b9-uCV">
-            <objects>
-                <viewControllerPlaceholder storyboardName="AdminApprovedOrganizationsViewBeta" id="Pnd-24-lQ2" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="1lC-ee-TTN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="495" y="177"/>
-        </scene>
     </scenes>
     <resources>
         <image name="Organizations" width="32" height="18"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>

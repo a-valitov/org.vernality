@@ -110,7 +110,6 @@ final class OnboardRouter {
 
     }
 
-    @discardableResult
     func pop() {
         self.main?.pop()
     }

@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Hjl-gC-Ajt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Hjl-gC-Ajt">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -28,14 +29,15 @@
                             </segmentedControl>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mg8-AG-She">
                                 <rect key="frame" x="0.0" y="75" width="414" height="821"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jg7-i5-mAo">
                                 <rect key="frame" x="0.0" y="75" width="414" height="821"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <viewLayoutGuide key="safeArea" id="IVW-Ms-veO"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="uxb-Hy-3Pb" firstAttribute="top" secondItem="IVW-Ms-veO" secondAttribute="top" id="5Yg-KI-5GS"/>
                             <constraint firstItem="Jg7-i5-mAo" firstAttribute="trailing" secondItem="IVW-Ms-veO" secondAttribute="trailing" id="6g6-4k-Giy"/>
@@ -55,7 +57,6 @@
                             <constraint firstItem="Jg7-i5-mAo" firstAttribute="top" secondItem="uxb-Hy-3Pb" secondAttribute="bottom" id="w2T-uO-q5o"/>
                             <constraint firstItem="Jg7-i5-mAo" firstAttribute="leading" secondItem="IVW-Ms-veO" secondAttribute="leading" id="wUa-Kx-gDd"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="IVW-Ms-veO"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="Акции" image="actionItem" id="z5b-5v-rqR"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
@@ -69,24 +70,11 @@
             </objects>
             <point key="canvasLocation" x="224.63768115942031" y="85.714285714285708"/>
         </scene>
-        <!--CurrentActionsViewBeta-->
-        <scene sceneID="Xx1-QI-wXb">
-            <objects>
-                <viewControllerPlaceholder storyboardName="CurrentActionsViewBeta" id="nxV-3n-Xk0" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ePE-Lo-AAC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="815" y="69"/>
-        </scene>
-        <!--PastActionsViewBeta-->
-        <scene sceneID="nC1-fG-dFa">
-            <objects>
-                <viewControllerPlaceholder storyboardName="PastActionsViewBeta" id="fdx-Dt-g2p" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="22H-gO-Y92" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="801" y="103"/>
-        </scene>
     </scenes>
     <resources>
         <image name="actionItem" width="22" height="22"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>
