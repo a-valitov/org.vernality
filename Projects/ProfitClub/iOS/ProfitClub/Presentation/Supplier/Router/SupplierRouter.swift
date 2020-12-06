@@ -23,8 +23,6 @@ final class SupplierRouter {
 
     @discardableResult
     func openSupplierView(output: SupplierViewOutput?) -> SupplierViewInput {
-//        let storyboard = UIStoryboard(name: "SupplierViewBeta", bundle: nil)
-//        let supplierView = storyboard.instantiateInitialViewController() as! SupplierViewBeta
         let supplierView = SupplierViewAlpha()
         supplierView.output = output
         self.main?.push(supplierView, animated: true)
@@ -33,8 +31,6 @@ final class SupplierRouter {
 
     @discardableResult
     func openSupplierActions(output: SupplierActionsOutput?) -> SupplierActionsInput {
-//        let storyboard = UIStoryboard(name: "SupplierActionsBeta", bundle: nil)
-//        let supplierActions = storyboard.instantiateInitialViewController() as! SupplierActionsBeta
         let supplierActions = SupplierActionsViewAlpha()
         supplierActions.output = output
         self.main?.push(supplierActions, animated: true)
@@ -43,15 +39,12 @@ final class SupplierRouter {
 
     @discardableResult
     func openSupplierCommercialOffer(output: SupplierCommercialOfferOutput?) -> SupplierCommercialOfferInput {
-//        let storyboard = UIStoryboard(name: "SupplierCommercialOfferBeta", bundle: nil)
-//        let supplierCommercialOffer = storyboard.instantiateInitialViewController() as! SupplierCommercialOfferBeta
         let supplierCommercialOffer = SupplierCommercialOfferViewAlpha()
         supplierCommercialOffer.output = output
         self.main?.push(supplierCommercialOffer, animated: true)
         return supplierCommercialOffer
     }
 
-    @discardableResult
     func pop() {
         self.main?.pop()
     }

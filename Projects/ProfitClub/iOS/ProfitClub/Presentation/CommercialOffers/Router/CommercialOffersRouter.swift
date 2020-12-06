@@ -23,8 +23,6 @@ final class CommercialOffersRouter {
 
     @discardableResult
     func embed(in tabBarController: UITabBarController, output: CommercialOffersViewOutput?) -> CommercialOffersViewInput {
-//        let storyboard = UIStoryboard(name: "CommercialOffersViewBeta", bundle: nil)
-//        let commercialOffers = storyboard.instantiateInitialViewController() as! CommercialOffersViewBeta
         let commercialOffers = CommercialOffersViewAlpha()
         commercialOffers.output = output
         if var viewControllers = tabBarController.viewControllers {

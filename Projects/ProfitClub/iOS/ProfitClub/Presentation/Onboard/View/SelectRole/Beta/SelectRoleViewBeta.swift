@@ -61,7 +61,7 @@ final class SelectRoleViewBeta: UIViewController {
     }
 
     override func viewDidLoad() {
-        self.navigationController?.navigationBar.barStyle = .blackTranslucent
+        self.navigationController?.navigationBar.barStyle = .black
     }
 
     private var selectedRole: PCRole? {

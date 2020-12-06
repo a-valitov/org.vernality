@@ -27,8 +27,6 @@ final class OrganizationRouter {
 
     @discardableResult
     func openOrganizationTabBar(output: OrganizationTabBarViewOutput & ActionsModuleOutput & CommercialOffersModuleOutput & MembersModuleOutput) -> OrganizationTabBarViewInput {
-//        let storyboard = UIStoryboard(name: "OrganizationTabBarViewBeta", bundle: nil)
-//        let organizationTabBar = storyboard.instantiateInitialViewController() as! OrganizationTabBarViewBeta
         let organizationTabBar = OrganizationTabBarViewAlpha()
         organizationTabBar.output = output
         let actions = self.factories.actions.make(output: output)

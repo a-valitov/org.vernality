@@ -23,8 +23,6 @@ final class MembersRouter {
 
     @discardableResult
     func embed(in tabBarController: UITabBarController, output: MembersContainerViewOutput?) -> MembersContainerViewInput {
-//        let storyboard = UIStoryboard(name: "MembersContainerViewBeta", bundle: nil)
-//        let membersContainer = storyboard.instantiateInitialViewController() as! MembersContainerViewBeta
         let membersContainer = MembersContainerViewAlpha()
         membersContainer.output = output
         if var viewControllers = tabBarController.viewControllers {
@@ -37,16 +35,12 @@ final class MembersRouter {
     }
 
     func buildMembersOfOrganization(output: MembersOfOrganizationViewOutput?) -> UIViewController {
-//        let storyboard = UIStoryboard(name: "MembersOfOrganizationViewBeta", bundle: nil)
-//        let controller = storyboard.instantiateInitialViewController() as! MembersOfOrganizationViewBeta
         let controller = MembersOfOrganizationViewAlpha()
         controller.output = output
         return controller
     }
 
     func buildApplications(output: ApplicationsViewOutput?) -> UIViewController {
-//        let storyboard = UIStoryboard(name: "ApplicationsViewBeta", bundle: nil)
-//        let controller = storyboard.instantiateInitialViewController() as! ApplicationsViewBeta
         let controller = ApplicationsViewAlpha()
         controller.output = output
         return controller

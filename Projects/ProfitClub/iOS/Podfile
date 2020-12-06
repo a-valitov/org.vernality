@@ -35,6 +35,13 @@ end
 post_install do |installer|
   puts("Excluding Package.swift from targets")
   installer.pods_project.targets.each do |target|
+
+    target.build_configurations.each do |config|
+      if config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'].to_f < 9.0
+        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '9.0'
+      end
+    end
+
     all_filerefs = installer.pods_project.files
     all_filerefs.each do |fileref|
     if fileref.name == "Package.swift"
