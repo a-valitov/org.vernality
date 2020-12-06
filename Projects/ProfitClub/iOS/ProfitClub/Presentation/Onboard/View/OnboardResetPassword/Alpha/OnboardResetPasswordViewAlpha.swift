@@ -253,6 +253,7 @@ extension OnboardResetPasswordViewAlpha: OnboardResetPasswordViewInput {
         okAction.setValue(UIColor(red: 245/255, green: 200/255, blue: 145/255, alpha: 1), forKey: "titleTextColor")
 
         alertController.addAction(okAction)
+        alertController.preferredAction = okAction
         present(alertController, animated: true)
     }
 }

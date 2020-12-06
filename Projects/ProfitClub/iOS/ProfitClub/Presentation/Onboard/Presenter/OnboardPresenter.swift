@@ -134,14 +134,18 @@ extension OnboardPresenter: OnboardSignUpViewOutput {
                 guard let sSelf = self else { return }
                 switch result {
                 case .success:
-                    sSelf.router?.main?.unraise(animated: true, completion: { [weak self] in
-                        self?.router?.openSelectRole(output: self)
-                    })
+                    view.finishAlert()
                 case .failure(let error):
                     sSelf.presenters.error.present(error)
                 }
             }
         }
+    }
+
+    func onboardFinishSignUp(view: OnboardSignUpViewInput, userWantsToSignUp sender: Any) {
+        self.router?.main?.unraise(animated: true, completion: { [weak self] in
+            self?.router?.openSelectRole(output: self)
+        })
     }
 
     func onboardSignIn(view: OnboardSignUpViewInput, userWantsToSignIp sender: Any) {
