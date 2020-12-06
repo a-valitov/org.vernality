@@ -63,6 +63,7 @@ final class OnboardSignInViewAlpha: UIViewController {
         username.borderStyle = .none
         username.autocorrectionType = .no
         username.spellCheckingType = .no
+        username.keyboardType = .emailAddress
         username.returnKeyType = .next
         username.keyboardAppearance = UIKeyboardAppearance.dark
         username.translatesAutoresizingMaskIntoConstraints = false
