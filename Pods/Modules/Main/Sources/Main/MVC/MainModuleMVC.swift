@@ -57,8 +57,7 @@ extension MainModuleMVC: MainModule {
     }
 
     func raise(_ viewController: UIViewController, animated: Bool) {
-        SheetTransition.transitionDuration = 0.5
-        let options = SheetOptions(
+        var options = SheetOptions(
             pullBarHeight: 24,
             presentingViewCornerRadius: 20,
             shouldExtendBackground: true,
@@ -67,6 +66,7 @@ extension MainModuleMVC: MainModule {
             shrinkPresentingViewController: false,
             useInlineMode: false
         )
+        options.transitionDuration = 0.5
         let sheetController = SheetViewController(controller: viewController, options: options)
         viewController.view.superview?.backgroundColor = .clear
         self.navigationController?.topViewController?.present(sheetController, animated: animated)
