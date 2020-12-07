@@ -38,6 +38,7 @@ final class ReviewPresenter: ReviewModule {
                 self.router?.openReview(user, output: self)
             case .failure(let error):
                 self.presenters.error.present(error)
+                // TODO: fallback to error screen
             }
         }
     }
