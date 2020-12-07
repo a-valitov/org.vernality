@@ -118,6 +118,7 @@ final class OnboardMemberViewAlpha: UIViewController {
         button.setTitleColor(#colorLiteral(red: 0.9529411765, green: 0.9176470588, blue: 0.9058823529, alpha: 1), for: .normal)
         button.titleLabel?.font = UIFont(name: "Monsterrat-Regular", size: 14.0)
         button.titleLabel?.numberOfLines = 0
+        button.contentHorizontalAlignment = .left
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -303,7 +304,7 @@ extension OnboardMemberViewAlpha {
         let button = privacyPolicyButton
         container.addSubview(button)
         NSLayoutConstraint.activate([
-            button.leadingAnchor.constraint(equalTo: checkbox.trailingAnchor, constant: 8.0),
+            button.leadingAnchor.constraint(equalTo: checkbox.trailingAnchor, constant: 15.0),
             button.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -20.0),
             button.centerYAnchor.constraint(equalTo: checkbox.centerYAnchor)
         ])
