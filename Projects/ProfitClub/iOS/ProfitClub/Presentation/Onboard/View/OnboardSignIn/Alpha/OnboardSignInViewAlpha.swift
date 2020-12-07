@@ -63,6 +63,7 @@ final class OnboardSignInViewAlpha: UIViewController {
         username.borderStyle = .none
         username.autocorrectionType = .no
         username.spellCheckingType = .no
+        username.keyboardType = .emailAddress
         username.returnKeyType = .next
         username.keyboardAppearance = UIKeyboardAppearance.dark
         username.translatesAutoresizingMaskIntoConstraints = false
@@ -131,6 +132,10 @@ final class OnboardSignInViewAlpha: UIViewController {
 
         usernameTextField.delegate = self
         passwordTextField.delegate = self
+    }
+
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
     }
 
     private func setup() {

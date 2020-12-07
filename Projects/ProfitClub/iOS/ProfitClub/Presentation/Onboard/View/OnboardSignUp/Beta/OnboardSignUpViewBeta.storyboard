@@ -132,6 +132,10 @@
                                     <action selector="signInButtonTouchUpInside:" destination="sfo-Yr-mjz" eventType="touchUpInside" id="oZL-IT-JLi"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pwj-Oo-5Xz">
+                                <rect key="frame" x="354" y="207" width="30" height="30"/>
+                                <state key="normal" image="showPassword"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -140,6 +144,8 @@
                             <constraint firstItem="ycl-C0-zNm" firstAttribute="leading" secondItem="122-jg-S1P" secondAttribute="leading" id="3eL-so-jz5"/>
                             <constraint firstItem="Qw8-UE-ETf" firstAttribute="trailing" secondItem="BBC-fY-ifU" secondAttribute="trailing" id="6Yo-TS-XYG"/>
                             <constraint firstItem="Qw8-UE-ETf" firstAttribute="top" secondItem="HFS-xl-1fn" secondAttribute="top" id="8Fq-lg-Vaj"/>
+                            <constraint firstItem="Pwj-Oo-5Xz" firstAttribute="top" secondItem="EZa-Zm-TRJ" secondAttribute="top" constant="10" id="9No-5l-AfB"/>
+                            <constraint firstItem="Pwj-Oo-5Xz" firstAttribute="trailing" secondItem="EZa-Zm-TRJ" secondAttribute="trailing" constant="-10" id="I0t-xm-8M1"/>
                             <constraint firstAttribute="bottom" secondItem="Qw8-UE-ETf" secondAttribute="bottom" id="Knm-RD-K1s"/>
                             <constraint firstItem="ycl-C0-zNm" firstAttribute="top" secondItem="122-jg-S1P" secondAttribute="bottom" constant="10" id="OmC-FO-Vgl"/>
                             <constraint firstItem="wQX-pB-0tJ" firstAttribute="leading" secondItem="BBC-fY-ifU" secondAttribute="leading" constant="20" id="P4J-Kq-OjW"/>
@@ -166,4 +172,7 @@
             <point key="canvasLocation" x="-157.97101449275362" y="162.72321428571428"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="showPassword" width="30" height="30"/>
+    </resources>
 </document>

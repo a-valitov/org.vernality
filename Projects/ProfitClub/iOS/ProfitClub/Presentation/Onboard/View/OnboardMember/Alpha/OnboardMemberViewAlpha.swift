@@ -154,6 +154,10 @@ final class OnboardMemberViewAlpha: UIViewController {
         memberSurnameTextField.delegate = self
     }
 
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+
     private func setup() {
         view.backgroundColor = .clear
 
@@ -202,7 +206,9 @@ final class OnboardMemberViewAlpha: UIViewController {
     @objc private func submitButtonTouchUpInside(_ sender: Any) {
         memberNameTextField.resignFirstResponder()
         memberSurnameTextField.resignFirstResponder()
-        self.output?.onboardMemberDidFinish(view: self)
+        if checkbox.isSelected {
+            self.output?.onboardMemberDidFinish(view: self)
+        }
     }
 
     @objc private func checkboxTouchUpInside(_ sender: UIButton) {
