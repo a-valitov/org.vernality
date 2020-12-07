@@ -63,7 +63,7 @@ public final class PCUserServiceParse: PCUserService {
             } else {
                 if let pfUser = pfObject?.pcUser {
                     group.enter()
-                    parseUser.relation(forKey: "member").query().findObjectsInBackground(block: { (pfMembers, error) in
+                    parseUser.relation(forKey: "members").query().findObjectsInBackground(block: { (pfMembers, error) in
                         if let error = error {
                             finalError = error
                         } else {

@@ -19,4 +19,5 @@ import Foundation
 enum PCAuthenticationError: Error {
     case bothResultAndErrorAreNil
     case userIsStillNilAfterRegistration
+    case organizationOrUserIdIsNil
 }

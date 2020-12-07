@@ -65,29 +65,11 @@ final class PCAuthenticationParse: PCAuthentication {
 
     func add(supplier: PCSupplier, result: @escaping ((Result<PCSupplier, Error>) -> Void)) {
         let parseSupplier = supplier.parse
-        let currentUser = PFUser.current()
-        if let currentUser = currentUser {
-            let acl = PFACL(user: currentUser)
-            acl.hasPublicReadAccess = false
-            acl.hasPublicWriteAccess = false
-            acl.setReadAccess(true, forRoleWithName: PCRole.administrator.rawValue)
-            acl.setWriteAccess(true, forRoleWithName: PCRole.administrator.rawValue)
-            acl.setWriteAccess(false, for: currentUser)
-            acl.setReadAccess(true, for: currentUser)
-            parseSupplier.acl = acl
-        }
         parseSupplier.saveInBackground { (succeeded, error) in
             if let error = error {
                 result(.failure(error))
             } else {
-                currentUser?.relation(forKey: "suppliers").add(parseSupplier)
-                currentUser?.saveInBackground(block: { (succeeded, error) in
-                    if let error = error {
-                        result(.failure(error))
-                    } else {
-                        result(.success(supplier))
-                    }
-                })
+                result(.success(supplier))
             }
 
         }
@@ -96,65 +78,35 @@ final class PCAuthenticationParse: PCAuthentication {
     func add(member: PCMember, in organization: PCOrganization, result: @escaping ((Result<PCMember, Error>) -> Void)) {
         let parseMember = member.parse
         let parseOrganization = organization.parse
-        let currentUser = PFUser.current()
-        if let currentUser = currentUser {
-            let acl = PFACL(user: currentUser)
-            acl.hasPublicReadAccess = false
-            acl.hasPublicWriteAccess = false
-            acl.setReadAccess(true, forRoleWithName: PCRole.administrator.rawValue)
-            acl.setWriteAccess(true, forRoleWithName: PCRole.administrator.rawValue)
-            acl.setWriteAccess(false, for: currentUser)
-            acl.setReadAccess(true, for: currentUser)
-            parseMember.acl = acl
-        }
         parseMember.saveInBackground { (succeeded, error)  in
             if let error = error {
                 result(.failure(error))
             } else {
-                currentUser?.relation(forKey: "member").add(parseMember)
-                currentUser?.saveInBackground(block: { (succeeded, error) in
-                    if let error = error {
-                        result(.failure(error))
-                    } else {
-                        parseOrganization.relation(forKey: "members").add(parseMember)
-                        parseOrganization.saveInBackground { (succeeded, error) in
-                            if let error = error {
-                                result(.failure(error))
-                            } else {
-                                result(.success(member))
-                            }
+                if let organizationId = parseOrganization.id, let memberId = parseMember.id {
+                    PFCloud.callFunction(inBackground: "applyAsAMemberToOrganization",
+                                         withParameters: ["organizationId": organizationId,
+                                                          "memberId": memberId]) {
+                        (response, error) in
+                        if let error = error {
+                            result(.failure(error))
+                        } else {
+                            result(.success(member))
                         }
                     }
-                })
+                } else {
+                    result(.failure(PCAuthenticationError.organizationOrUserIdIsNil))
+                }
             }
         }
     }
 
     func add(organization: PCOrganization, result: @escaping ((Result<PCOrganization, Error>) -> Void)) {
         let parseOrganization = organization.parse
-        let currentUser = PFUser.current()
-        if let currentUser = currentUser {
-            let acl = PFACL(user: currentUser)
-            acl.hasPublicReadAccess = true
-            acl.hasPublicWriteAccess = false
-            acl.setReadAccess(true, forRoleWithName: PCRole.administrator.rawValue)
-            acl.setWriteAccess(true, forRoleWithName: PCRole.administrator.rawValue)
-            acl.setWriteAccess(false, for: currentUser)
-            acl.setReadAccess(true, for: currentUser)
-            parseOrganization.acl = acl
-        }
         parseOrganization.saveInBackground { (succeeded, error) in
             if let error = error {
                 result(.failure(error))
             } else {
-                currentUser?.relation(forKey: "organizations").add(parseOrganization)
-                currentUser?.saveInBackground(block: { (succeeded, error) in
-                    if let error = error {
-                        result(.failure(error))
-                    } else {
-                        result(.success(organization))
-                    }
-                })
+                result(.success(organization))
             }
         }
     }
