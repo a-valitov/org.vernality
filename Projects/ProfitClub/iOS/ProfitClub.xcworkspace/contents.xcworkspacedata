@@ -5,7 +5,7 @@
       location = "group:fastlane"
       name = "fastlane">
       <FileRef
-         location = "group:/Users/rinatenikeev/Documents/Repositories/GitHub/org.vernality/Projects/ProfitClub/iOS/fastlane/Matchfile">
+         location = "group:Matchfile">
       </FileRef>
       <FileRef
          location = "group:Appfile">
