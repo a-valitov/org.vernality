@@ -41,6 +41,10 @@ final class ApplicationsViewAlpha: UITableViewController {
         self.output?.applicationsDidLoad(view: self)
         tableView.tableFooterView = UIView()
         tableView.register(ApplicationsViewAlphaTableViewCell.self, forCellReuseIdentifier: ApplicationsViewAlphaTableViewCell.reuseIdentifier)
+
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(ApplicationsViewAlpha.pullToRefreshValueChanged(_:)), for: .valueChanged)
+        tableView.refreshControl = refreshControl
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -59,6 +63,11 @@ final class ApplicationsViewAlpha: UITableViewController {
         cell.memberNameLabel.text = "\(member.firstName ?? "") \(member.lastName ?? "")"
 
         return cell
+    }
+
+    @objc private func pullToRefreshValueChanged(_ sender: UIRefreshControl) {
+        self.output?.applications(view: self, userWantsToRefresh: sender)
+        sender.endRefreshing()
     }
 }
 

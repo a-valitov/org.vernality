@@ -66,10 +66,32 @@ extension MembersPresenter: MembersOfOrganizationViewOutput {
                 }
         }
     }
+
+    func membersOfOrganization(view: MembersOfOrganizationViewInput, userWantsToRefresh sender: Any) {
+        self.services.organization.fetchApprovedMembersOfOrganization(organization) { [weak self] (result) in
+                switch result {
+                case .success(let members):
+                    view.members = members
+                case .failure(let error):
+                    self?.presenters.error.present(error)
+                }
+        }
+    }
 }
 
 extension MembersPresenter: ApplicationsViewOutput {
     func applicationsDidLoad(view: ApplicationsViewInput) {
+        self.services.organization.fetchApprovedApplications(organization) { [weak self] (result) in
+            switch result {
+            case .success(let members):
+                view.members = members
+            case .failure(let error):
+                self?.presenters.error.present(error)
+            }
+        }
+    }
+
+    func applications(view: ApplicationsViewInput, userWantsToRefresh sender: Any) {
         self.services.organization.fetchApprovedApplications(organization) { [weak self] (result) in
             switch result {
             case .success(let members):

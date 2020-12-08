@@ -31,6 +31,10 @@ final class MembersOfOrganizationViewBeta: UITableViewController {
         super.viewDidLoad()
         self.output?.membersOfOrganizationDidLoad(view: self)
         tableView.tableFooterView = UIView()
+
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(MembersOfOrganizationViewBeta.pullToRefreshValueChanged(_:)), for: .valueChanged)
+        tableView.refreshControl = refreshControl
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -47,6 +51,11 @@ final class MembersOfOrganizationViewBeta: UITableViewController {
         let member = members[indexPath.row]
         cell.memberNameLabel.text = "\(member.firstName ?? "") \(member.lastName ?? "")"
         return cell
+    }
+
+    @objc private func pullToRefreshValueChanged(_ sender: UIRefreshControl) {
+        self.output?.membersOfOrganization(view: self, userWantsToRefresh: sender)
+        sender.endRefreshing()
     }
 }
 

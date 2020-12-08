@@ -23,4 +23,5 @@ protocol ApplicationsViewInput: UIViewController {
 
 protocol ApplicationsViewOutput {
     func applicationsDidLoad(view: ApplicationsViewInput)
+    func applications(view: ApplicationsViewInput, userWantsToRefresh sender: Any)
 }

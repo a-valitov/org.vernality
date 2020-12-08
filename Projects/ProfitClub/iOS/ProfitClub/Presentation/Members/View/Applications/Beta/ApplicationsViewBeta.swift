@@ -31,6 +31,10 @@ final class ApplicationsViewBeta: UITableViewController {
         super.viewDidLoad()
         self.output?.applicationsDidLoad(view: self)
         tableView.tableFooterView = UIView()
+
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(ApplicationsViewBeta.pullToRefreshValueChanged(_:)), for: .valueChanged)
+        tableView.refreshControl = refreshControl
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -41,6 +45,11 @@ final class ApplicationsViewBeta: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "applicationsCell", for: indexPath)
 
         return cell
+    }
+
+    @objc private func pullToRefreshValueChanged(_ sender: UIRefreshControl) {
+        self.output?.applications(view: self, userWantsToRefresh: sender)
+        sender.endRefreshing()
     }
 }
 

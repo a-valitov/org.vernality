@@ -41,6 +41,10 @@ final class MembersOfOrganizationViewAlpha: UITableViewController {
         self.output?.membersOfOrganizationDidLoad(view: self)
         tableView.tableFooterView = UIView()
         tableView.register(MembersOfOrganizationViewAlphaCell.self, forCellReuseIdentifier: MembersOfOrganizationViewAlphaCell.reuseIdentifier)
+
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(MembersOfOrganizationViewAlpha.pullToRefreshValueChanged(_:)), for: .valueChanged)
+        tableView.refreshControl = refreshControl
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -59,6 +63,11 @@ final class MembersOfOrganizationViewAlpha: UITableViewController {
         cell.memberNameLabel.text = "\(member.firstName ?? "") \(member.lastName ?? "")"
 
         return cell
+    }
+
+    @objc private func pullToRefreshValueChanged(_ sender: UIRefreshControl) {
+        self.output?.membersOfOrganization(view: self, userWantsToRefresh: sender)
+        sender.endRefreshing()
     }
 }
 
