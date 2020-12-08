@@ -56,7 +56,16 @@ extension MembersPresenter: MembersContainerViewOutput {
 }
 
 extension MembersPresenter: MembersOfOrganizationViewOutput {
-
+    func membersOfOrganizationDidLoad(view: MembersOfOrganizationViewInput) {
+        self.services.organization.fetchApprovedMembersOfOrganization(organization) { [weak self] (result) in
+                switch result {
+                case .success(let members):
+                    view.members = members
+                case .failure(let error):
+                    self?.presenters.error.present(error)
+                }
+        }
+    }
 }
 
 extension MembersPresenter: ApplicationsViewOutput {
