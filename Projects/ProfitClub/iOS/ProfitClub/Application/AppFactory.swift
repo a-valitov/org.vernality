@@ -170,7 +170,7 @@ private extension AppFactory {
     }
 
     var membersFactory: MembersFactory {
-        return MembersFactory(presenters: MembersPresenters(error: self.errorPresenter(), activity: self.activityPresenter()), services: MembersServices())
+        return MembersFactory(presenters: MembersPresenters(error: self.errorPresenter(), activity: self.activityPresenter()), services: MembersServices(organization: self.organizationService()))
     }
 
     var memberProfileFactory: MemberProfileFactory {

@@ -15,17 +15,26 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import UIKit
+import ProfitClubModel
 
 final class ApplicationsViewBeta: UITableViewController {
     var output: ApplicationsViewOutput?
+    var members = [AnyPCMember]() {
+        didSet {
+            if self.isViewLoaded {
+                self.tableView.reloadData()
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.output?.applicationsDidLoad(view: self)
         tableView.tableFooterView = UIView()
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        3
+        members.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

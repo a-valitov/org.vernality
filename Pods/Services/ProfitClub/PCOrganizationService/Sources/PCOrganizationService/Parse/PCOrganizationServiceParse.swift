@@ -50,4 +50,21 @@ public final class PCOrganizationServiceParse: PCOrganizationService {
             }
         }
     }
+
+    public func fetchApprovedApplications(_ organization: PCOrganization?, result: @escaping (Result<[AnyPCMember], Error>) -> Void) {
+        guard let organization = organization else {
+            result(.failure(PCOrganizationServiceError.inputIsNil))
+            return
+        }
+
+        let relation = organization.parse.relation(forKey: "members").query()
+        relation.whereKey("statusString", equalTo: "onReview")
+        relation.findObjectsInBackground { (members: [PFObject]?, error: Error?) in
+            if let error = error {
+                result(.failure(error))
+            } else if let members = members {
+                result(.success(members.map({ $0.pcMember.any })))
+            }
+        }
+    }
 }

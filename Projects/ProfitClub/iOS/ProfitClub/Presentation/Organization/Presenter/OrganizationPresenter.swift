@@ -34,7 +34,7 @@ final class OrganizationPresenter: OrganizationModule {
 
     func open(in main: MainModule?) {
         self.router?.main = main
-        self.router?.openOrganizationTabBar(output: self)
+        self.router?.openOrganizationTabBar(organization: organization, output: self)
     }
 
     // dependencies
