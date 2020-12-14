@@ -15,23 +15,41 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import UIKit
+import ProfitClubModel
 
 final class ApplicationsViewBeta: UITableViewController {
     var output: ApplicationsViewOutput?
+    var members = [AnyPCMember]() {
+        didSet {
+            if self.isViewLoaded {
+                self.tableView.reloadData()
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.output?.applicationsDidLoad(view: self)
         tableView.tableFooterView = UIView()
+
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(ApplicationsViewBeta.pullToRefreshValueChanged(_:)), for: .valueChanged)
+        tableView.refreshControl = refreshControl
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        3
+        members.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "applicationsCell", for: indexPath)
 
         return cell
+    }
+
+    @objc private func pullToRefreshValueChanged(_ sender: UIRefreshControl) {
+        self.output?.applications(view: self, userWantsToRefresh: sender)
+        sender.endRefreshing()
     }
 }
 

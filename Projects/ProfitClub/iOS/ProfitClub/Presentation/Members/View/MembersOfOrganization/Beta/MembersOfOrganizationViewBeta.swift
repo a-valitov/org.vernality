@@ -15,17 +15,30 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import UIKit
+import ProfitClubModel
 
 final class MembersOfOrganizationViewBeta: UITableViewController {
     var output: MembersOfOrganizationViewOutput?
+    var members = [AnyPCMember]() {
+        didSet {
+            if self.isViewLoaded {
+                self.tableView.reloadData()
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.output?.membersOfOrganizationDidLoad(view: self)
         tableView.tableFooterView = UIView()
+
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(MembersOfOrganizationViewBeta.pullToRefreshValueChanged(_:)), for: .valueChanged)
+        tableView.refreshControl = refreshControl
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        3
+        members.count
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -35,7 +48,14 @@ final class MembersOfOrganizationViewBeta: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "membersCell", for: indexPath) as! MemberViewCell
 
+        let member = members[indexPath.row]
+        cell.memberNameLabel.text = "\(member.firstName ?? "") \(member.lastName ?? "")"
         return cell
+    }
+
+    @objc private func pullToRefreshValueChanged(_ sender: UIRefreshControl) {
+        self.output?.membersOfOrganization(view: self, userWantsToRefresh: sender)
+        sender.endRefreshing()
     }
 }
 

@@ -21,4 +21,6 @@ public protocol PCOrganizationService {
     func reload(_ organization: PCOrganization?,
                 result: @escaping (Result<PCOrganization, Error>) -> Void)
     func fetchApproved(result: @escaping (Result<[AnyPCOrganization], Error>) -> Void)
+    func fetchApprovedApplications(_ organization: PCOrganization?, result: @escaping (Result<[AnyPCMember], Error>) -> Void)
+    func fetchApprovedMembersOfOrganization(_ organization: PCOrganization?, result: @escaping (Result<[AnyPCMember], Error>) -> Void)
 }

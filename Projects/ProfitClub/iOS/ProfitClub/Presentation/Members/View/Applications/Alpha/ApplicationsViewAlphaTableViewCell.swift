@@ -61,7 +61,7 @@ final class ApplicationsViewAlphaTableViewCell: UITableViewCell {
     private lazy var approveMemberButton: UIButton = {
         let button = UIButton()
         button.setTitle("Одобрить", for: .normal)
-        button.setTitleColor(#colorLiteral(red: 0.9607843137, green: 0.7843137255, blue: 0.568627451, alpha: 1), for: .normal)
+        button.setTitleColor(#colorLiteral(red: 0.9372549057, green: 0.5125920588, blue: 0.03754611422, alpha: 1), for: .normal)
         button.titleLabel?.font = UIFont(name: "Montserrat-SemiBold", size: 15.0)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button

@@ -24,8 +24,10 @@ final class MembersPresenter: MembersModule {
     weak var output: MembersModuleOutput?
     var router: MembersRouter?
 
-    init(presenters: MembersPresenters,
-         services: MembersServices) {
+    init(organization: PCOrganization,
+        presenters: MembersPresenters,
+        services: MembersServices) {
+        self.organization = organization
         self.presenters = presenters
         self.services = services
     }
@@ -34,6 +36,8 @@ final class MembersPresenter: MembersModule {
         self.router?.main = main
         self.router?.embed(in: tabBarController, output: self)
     }
+
+    private let organization: PCOrganization
 
     // dependencies
     private let presenters: MembersPresenters
@@ -52,11 +56,51 @@ extension MembersPresenter: MembersContainerViewOutput {
 }
 
 extension MembersPresenter: MembersOfOrganizationViewOutput {
+    func membersOfOrganizationDidLoad(view: MembersOfOrganizationViewInput) {
+        self.services.organization.fetchApprovedMembersOfOrganization(organization) { [weak self] (result) in
+                switch result {
+                case .success(let members):
+                    view.members = members
+                case .failure(let error):
+                    self?.presenters.error.present(error)
+                }
+        }
+    }
 
+    func membersOfOrganization(view: MembersOfOrganizationViewInput, userWantsToRefresh sender: Any) {
+        self.services.organization.fetchApprovedMembersOfOrganization(organization) { [weak self] (result) in
+                switch result {
+                case .success(let members):
+                    view.members = members
+                case .failure(let error):
+                    self?.presenters.error.present(error)
+                }
+        }
+    }
 }
 
 extension MembersPresenter: ApplicationsViewOutput {
+    func applicationsDidLoad(view: ApplicationsViewInput) {
+        self.services.organization.fetchApprovedApplications(organization) { [weak self] (result) in
+            switch result {
+            case .success(let members):
+                view.members = members
+            case .failure(let error):
+                self?.presenters.error.present(error)
+            }
+        }
+    }
 
+    func applications(view: ApplicationsViewInput, userWantsToRefresh sender: Any) {
+        self.services.organization.fetchApprovedApplications(organization) { [weak self] (result) in
+            switch result {
+            case .success(let members):
+                view.members = members
+            case .failure(let error):
+                self?.presenters.error.present(error)
+            }
+        }
+    }
 }
 
 

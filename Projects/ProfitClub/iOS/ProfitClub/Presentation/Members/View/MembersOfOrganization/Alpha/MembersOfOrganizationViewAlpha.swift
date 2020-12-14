@@ -15,9 +15,17 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import UIKit
+import ProfitClubModel
 
 final class MembersOfOrganizationViewAlpha: UITableViewController {
     var output: MembersOfOrganizationViewOutput?
+    var members = [AnyPCMember]() {
+        didSet {
+            if self.isViewLoaded {
+                self.tableView.reloadData()
+            }
+        }
+    }
 
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -30,12 +38,17 @@ final class MembersOfOrganizationViewAlpha: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.output?.membersOfOrganizationDidLoad(view: self)
         tableView.tableFooterView = UIView()
         tableView.register(MembersOfOrganizationViewAlphaCell.self, forCellReuseIdentifier: MembersOfOrganizationViewAlphaCell.reuseIdentifier)
+
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(MembersOfOrganizationViewAlpha.pullToRefreshValueChanged(_:)), for: .valueChanged)
+        tableView.refreshControl = refreshControl
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return members.count
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -46,7 +59,15 @@ final class MembersOfOrganizationViewAlpha: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: MembersOfOrganizationViewAlphaCell.reuseIdentifier, for: indexPath) as! MembersOfOrganizationViewAlphaCell
         cell.selectionStyle = .none
 
+        let member = members[indexPath.row]
+        cell.memberNameLabel.text = "\(member.firstName ?? "") \(member.lastName ?? "")"
+
         return cell
+    }
+
+    @objc private func pullToRefreshValueChanged(_ sender: UIRefreshControl) {
+        self.output?.membersOfOrganization(view: self, userWantsToRefresh: sender)
+        sender.endRefreshing()
     }
 }
 

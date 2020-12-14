@@ -15,11 +15,13 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import UIKit
+import ProfitClubModel
 
 protocol ApplicationsViewInput: UIViewController {
-
+    var members: [AnyPCMember] { get set }
 }
 
 protocol ApplicationsViewOutput {
-    
+    func applicationsDidLoad(view: ApplicationsViewInput)
+    func applications(view: ApplicationsViewInput, userWantsToRefresh sender: Any)
 }

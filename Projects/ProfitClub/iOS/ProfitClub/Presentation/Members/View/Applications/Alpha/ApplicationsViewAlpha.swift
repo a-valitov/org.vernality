@@ -15,9 +15,17 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import UIKit
+import ProfitClubModel
 
 final class ApplicationsViewAlpha: UITableViewController {
     var output: ApplicationsViewOutput?
+    var members = [AnyPCMember]() {
+        didSet {
+            if self.isViewLoaded {
+                self.tableView.reloadData()
+            }
+        }
+    }
 
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -30,12 +38,17 @@ final class ApplicationsViewAlpha: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.output?.applicationsDidLoad(view: self)
         tableView.tableFooterView = UIView()
         tableView.register(ApplicationsViewAlphaTableViewCell.self, forCellReuseIdentifier: ApplicationsViewAlphaTableViewCell.reuseIdentifier)
+
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(ApplicationsViewAlpha.pullToRefreshValueChanged(_:)), for: .valueChanged)
+        tableView.refreshControl = refreshControl
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return members.count
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -46,7 +59,15 @@ final class ApplicationsViewAlpha: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: ApplicationsViewAlphaTableViewCell.reuseIdentifier, for: indexPath) as! ApplicationsViewAlphaTableViewCell
         cell.selectionStyle = .none
 
+        let member = members[indexPath.row]
+        cell.memberNameLabel.text = "\(member.firstName ?? "") \(member.lastName ?? "")"
+
         return cell
+    }
+
+    @objc private func pullToRefreshValueChanged(_ sender: UIRefreshControl) {
+        self.output?.applications(view: self, userWantsToRefresh: sender)
+        sender.endRefreshing()
     }
 }
 
