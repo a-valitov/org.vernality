@@ -57,6 +57,7 @@ final class OnboardResetPasswordViewAlpha: UIViewController {
         email.backgroundColor = #colorLiteral(red: 0.5333333333, green: 0.5333333333, blue: 0.5333333333, alpha: 0.3)
         email.layer.cornerRadius = 5
         email.autocorrectionType = .no
+        email.autocapitalizationType = .none
         email.spellCheckingType = .no
         email.keyboardType = .emailAddress
         email.returnKeyType = .done
