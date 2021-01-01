@@ -153,6 +153,7 @@ final class OnboardSignUpViewAlpha: UIViewController {
         self.passwordConfirmationTextField.spellCheckingType = .no
 
         self.emailTextField.keyboardType = .emailAddress
+        self.emailTextField.autocapitalizationType = .none
         self.emailTextField.returnKeyType = .next
         self.passwordTextField.returnKeyType = .next
         self.passwordConfirmationTextField.returnKeyType = .done
