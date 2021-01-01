@@ -51,6 +51,18 @@ public final class PCOrganizationServiceParse: PCOrganizationService {
         }
     }
 
+    public func approve(member: PCMember, result: @escaping (Result<PCMember, Error>) -> Void) {
+        let parseMember = member.parse
+        parseMember.status = .approved
+        parseMember.saveInBackground { (success, error) in
+            if let error = error {
+                result(.failure(error))
+            } else {
+                result(.success(parseMember.any))
+            }
+        }
+    }
+
     public func fetchApprovedApplications(_ organization: PCOrganization?, result: @escaping (Result<[AnyPCMember], Error>) -> Void) {
         guard let organization = organization else {
             result(.failure(PCOrganizationServiceError.inputIsNil))

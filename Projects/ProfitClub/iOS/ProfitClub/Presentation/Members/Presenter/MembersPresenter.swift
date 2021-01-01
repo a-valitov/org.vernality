@@ -101,6 +101,22 @@ extension MembersPresenter: ApplicationsViewOutput {
             }
         }
     }
+
+    func applications(view: ApplicationsViewInput, userWantsToApprove member: PCMember) {
+        // TODO: @temur please add confirmation dialog and reload tables on success
+        self.services.organization.approve(member: member) { [weak self] result in
+            switch result {
+            case .success(let member):
+                print("success")
+            case .failure(let error):
+                self?.presenters.error.present(error)
+            }
+        }
+    }
+
+    func applications(view: ApplicationsViewInput, userWantsToReject member: PCMember) {
+
+    }
 }
 
 

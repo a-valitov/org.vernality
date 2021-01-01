@@ -16,8 +16,13 @@
 
 import UIKit
 
-final class ApplicationsViewAlphaTableViewCell: UITableViewCell {
+protocol ApplicationsViewAlphaTableViewCellDelegate: class {
+    func applicationsViewAlpha(cell: ApplicationsViewAlphaTableViewCell, didAskToApprove sender: Any)
+    func applicationsViewAlpha(cell: ApplicationsViewAlphaTableViewCell, didAskToReject sender: Any)
+}
 
+final class ApplicationsViewAlphaTableViewCell: UITableViewCell {
+    weak var delegate: ApplicationsViewAlphaTableViewCellDelegate?
     static let reuseIdentifier = "ApplicationsViewAlphaTableViewCellReuseIdentifier"
 
     lazy var memberImageView: UIImageView = {
@@ -79,6 +84,7 @@ final class ApplicationsViewAlphaTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.layout()
+        self.setup()
     }
 
     @available(*, unavailable)
@@ -90,6 +96,27 @@ final class ApplicationsViewAlphaTableViewCell: UITableViewCell {
         super.layoutIfNeeded()
         memberImageView.layer.cornerRadius = memberImageView.frame.height / 2
         memberImageView.clipsToBounds = true
+    }
+}
+
+// MARK: - Actions
+extension ApplicationsViewAlphaTableViewCell {
+    @objc
+    private func approveMemberButtonTouchUpInside(_ sender: Any) {
+        delegate?.applicationsViewAlpha(cell: self, didAskToApprove: sender)
+    }
+
+    @objc
+    private func rejectMemberButtonTouchUpInside(_ sender: Any) {
+        delegate?.applicationsViewAlpha(cell: self, didAskToReject: sender)
+    }
+}
+
+// MARK: - Setup
+extension ApplicationsViewAlphaTableViewCell {
+    private func setup() {
+        approveMemberButton.addTarget(self, action: #selector(approveMemberButtonTouchUpInside(_:)), for: .touchUpInside)
+        rejectMemberButton.addTarget(self, action: #selector(rejectMemberButtonTouchUpInside(_:)), for: .touchUpInside)
     }
 }
 
