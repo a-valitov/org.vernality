@@ -86,6 +86,7 @@ final class OnboardMemberViewAlpha: UIViewController {
         textField.returnKeyType = .next
         textField.keyboardAppearance = .dark
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.textContentType = .name
         return textField
     }()
 
@@ -100,6 +101,7 @@ final class OnboardMemberViewAlpha: UIViewController {
         textField.returnKeyType = .done
         textField.keyboardAppearance = .dark
         textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.textContentType = .familyName
         return textField
     }()
 

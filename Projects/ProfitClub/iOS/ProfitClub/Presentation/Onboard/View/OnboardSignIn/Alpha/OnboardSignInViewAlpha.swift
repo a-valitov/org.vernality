@@ -64,6 +64,7 @@ final class OnboardSignInViewAlpha: UIViewController {
         username.autocorrectionType = .no
         username.spellCheckingType = .no
         username.keyboardType = .emailAddress
+        username.autocapitalizationType = .none
         username.returnKeyType = .next
         username.autocapitalizationType = .none
         username.keyboardAppearance = UIKeyboardAppearance.dark
@@ -79,6 +80,7 @@ final class OnboardSignInViewAlpha: UIViewController {
         password.layer.cornerRadius = 5
         password.borderStyle = .none
         password.autocorrectionType = .no
+        password.autocapitalizationType = .none
         password.spellCheckingType = .no
         password.returnKeyType = .done
         password.isSecureTextEntry = true

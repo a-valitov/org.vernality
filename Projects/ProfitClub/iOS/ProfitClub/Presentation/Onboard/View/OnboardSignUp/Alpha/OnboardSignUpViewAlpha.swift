@@ -148,6 +148,10 @@ final class OnboardSignUpViewAlpha: UIViewController {
         self.passwordTextField.autocorrectionType = UITextAutocorrectionType.no
         self.passwordConfirmationTextField.autocorrectionType = UITextAutocorrectionType.no
 
+        self.emailTextField.autocapitalizationType = .none
+        self.passwordTextField.autocapitalizationType = .none
+        self.passwordConfirmationTextField.autocapitalizationType = .none
+
         self.emailTextField.spellCheckingType = .no
         self.passwordTextField.spellCheckingType = .no
         self.passwordConfirmationTextField.spellCheckingType = .no
