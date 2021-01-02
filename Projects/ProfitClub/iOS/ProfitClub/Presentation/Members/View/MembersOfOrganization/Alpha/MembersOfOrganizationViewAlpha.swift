@@ -45,8 +45,6 @@ final class MembersOfOrganizationViewAlpha: UITableViewController {
         let refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: #selector(MembersOfOrganizationViewAlpha.pullToRefreshValueChanged(_:)), for: .valueChanged)
         tableView.refreshControl = refreshControl
-
-        NotificationCenter.default.addObserver(self, selector: #selector(refreshData), name: NSNotification.Name(rawValue: "load"), object: nil)
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -70,10 +68,6 @@ final class MembersOfOrganizationViewAlpha: UITableViewController {
     @objc private func pullToRefreshValueChanged(_ sender: UIRefreshControl) {
         self.output?.membersOfOrganizationDidLoad(view: self)
         sender.endRefreshing()
-    }
-
-    @objc private func refreshData() {
-        self.output?.membersOfOrganizationDidLoad(view: self)
     }
 }
 
