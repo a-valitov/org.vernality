@@ -19,11 +19,14 @@ import ProfitClubModel
 
 protocol ApplicationsViewInput: UIViewController {
     var members: [AnyPCMember] { get set }
+
+    func finishAlert(title: String, completion: @escaping () -> Void)
+    func reloadRow(indexPath: IndexPath)
 }
 
 protocol ApplicationsViewOutput {
     func applicationsDidLoad(view: ApplicationsViewInput)
     func applications(view: ApplicationsViewInput, userWantsToRefresh sender: Any)
-    func applications(view: ApplicationsViewInput, userWantsToApprove member: PCMember)
-    func applications(view: ApplicationsViewInput, userWantsToReject member: PCMember)
+    func applications(view: ApplicationsViewInput, userWantsToApprove member: PCMember, indexPath: IndexPath)
+    func applications(view: ApplicationsViewInput, userWantsToReject member: PCMember, indexPath: IndexPath)
 }

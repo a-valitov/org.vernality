@@ -54,5 +54,46 @@ final class ApplicationsViewBeta: UITableViewController {
 }
 
 extension ApplicationsViewBeta: ApplicationsViewInput {
-    
+    func reloadRow(indexPath: IndexPath) {
+        members.remove(at: indexPath.row)
+        tableView.reloadData()
+    }
+
+    func finishAlert(title: String, completion: @escaping () -> Void) {
+        var blurEffect = UIBlurEffect()
+        blurEffect = UIBlurEffect(style: .light)
+        let blurVisualEffectView = UIVisualEffectView(effect: blurEffect)
+        blurVisualEffectView.frame = tableView.bounds
+        self.tableView.addSubview(blurVisualEffectView)
+
+        let alertController = UIAlertController(title: "", message: "", preferredStyle: .alert)
+
+        let backView = alertController.view.subviews.first?.subviews.first?.subviews.first
+        backView?.layer.cornerRadius = 14.0
+        backView?.backgroundColor = #colorLiteral(red: 0.1176470588, green: 0.1176470588, blue: 0.1176470588, alpha: 0.7476990582)
+
+        let titleFont = [NSAttributedString.Key.foregroundColor: UIColor(red: 241/255, green: 231/255, blue: 228/255, alpha: 1)]
+        let messageFont = [NSAttributedString.Key.foregroundColor: UIColor(red: 241/255, green: 231/255, blue: 228/255, alpha: 1)]
+        let attributedTitle = NSAttributedString(string: "\(title) заявку?", attributes: titleFont)
+        let attributedMessage = NSAttributedString(string: "\(title) заявку на вступление в организацию", attributes: messageFont)
+
+        alertController.setValue(attributedTitle, forKey: "attributedTitle")
+        alertController.setValue(attributedMessage, forKey: "attributedMessage")
+
+        let okAction = UIAlertAction(title: title, style: .default) { action in
+            blurVisualEffectView.removeFromSuperview()
+            completion()
+        }
+        okAction.setValue(UIColor(red: 245/255, green: 200/255, blue: 145/255, alpha: 1), forKey: "titleTextColor")
+
+        let cancelAction = UIAlertAction(title: "Назад", style: .default) { action in
+            blurVisualEffectView.removeFromSuperview()
+        }
+        cancelAction.setValue(UIColor(red: 245/255, green: 200/255, blue: 145/255, alpha: 1), forKey: "titleTextColor")
+
+        alertController.addAction(okAction)
+        alertController.addAction(cancelAction)
+        alertController.preferredAction = okAction
+        present(alertController, animated: true)
+    }
 }
