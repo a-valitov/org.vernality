@@ -109,13 +109,13 @@ extension ApplicationsViewAlpha: ApplicationsViewInput {
         alertController.setValue(attributedTitle, forKey: "attributedTitle")
         alertController.setValue(attributedMessage, forKey: "attributedMessage")
 
-        let okAction = UIAlertAction(title: title, style: .default) { action in
+        let okAction = UIAlertAction(title: title, style: .default) { _ in
             blurVisualEffectView.removeFromSuperview()
             completion()
         }
         okAction.setValue(UIColor(red: 245/255, green: 200/255, blue: 145/255, alpha: 1), forKey: "titleTextColor")
 
-        let cancelAction = UIAlertAction(title: "Назад", style: .default) { action in
+        let cancelAction = UIAlertAction(title: "Назад", style: .default) { _ in
             blurVisualEffectView.removeFromSuperview()
         }
         cancelAction.setValue(UIColor(red: 245/255, green: 200/255, blue: 145/255, alpha: 1), forKey: "titleTextColor")
