@@ -87,6 +87,7 @@
 		FA0955F1254C369D00FFF835 /* SupplierCommercialOfferBeta.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA0955F0254C369D00FFF835 /* SupplierCommercialOfferBeta.storyboard */; };
 		FA0955F3254C427700FFF835 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA0955F2254C427700FFF835 /* Roboto-Medium.ttf */; };
 		FA0F4BFD25A104B20011484E /* AdminApprovedOrganizationsViewBetaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0F4BFC25A104B20011484E /* AdminApprovedOrganizationsViewBetaTableViewCell.swift */; };
+		FA0F4C0025A12D550011484E /* AdminTabBarViewAlpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0F4BFF25A12D550011484E /* AdminTabBarViewAlpha.swift */; };
 		FA15B70525473D1D00D29835 /* ActionFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA15B70425473D1D00D29835 /* ActionFactory.swift */; };
 		FA15B70725473D3A00D29835 /* ActionDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA15B70625473D3A00D29835 /* ActionDependencies.swift */; };
 		FA15B70925473D5A00D29835 /* ActionModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA15B70825473D5A00D29835 /* ActionModule.swift */; };
@@ -345,6 +346,7 @@
 		FA0955F0254C369D00FFF835 /* SupplierCommercialOfferBeta.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SupplierCommercialOfferBeta.storyboard; sourceTree = "<group>"; };
 		FA0955F2254C427700FFF835 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		FA0F4BFC25A104B20011484E /* AdminApprovedOrganizationsViewBetaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminApprovedOrganizationsViewBetaTableViewCell.swift; sourceTree = "<group>"; };
+		FA0F4BFF25A12D550011484E /* AdminTabBarViewAlpha.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminTabBarViewAlpha.swift; sourceTree = "<group>"; };
 		FA15B70425473D1D00D29835 /* ActionFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionFactory.swift; sourceTree = "<group>"; };
 		FA15B70625473D3A00D29835 /* ActionDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionDependencies.swift; sourceTree = "<group>"; };
 		FA15B70825473D5A00D29835 /* ActionModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionModule.swift; sourceTree = "<group>"; };
@@ -1163,6 +1165,14 @@
 			path = Beta;
 			sourceTree = "<group>";
 		};
+		FA0F4BFE25A12D410011484E /* Alpha */ = {
+			isa = PBXGroup;
+			children = (
+				FA0F4BFF25A12D550011484E /* AdminTabBarViewAlpha.swift */,
+			);
+			path = Alpha;
+			sourceTree = "<group>";
+		};
 		FA15B70125473C4000D29835 /* Router */ = {
 			isa = PBXGroup;
 			children = (
@@ -1826,6 +1836,7 @@
 			isa = PBXGroup;
 			children = (
 				FA8CB842255A5C3100D09B1D /* AdminTabBarView.swift */,
+				FA0F4BFE25A12D410011484E /* Alpha */,
 				FA8CB844255A5C3500D09B1D /* Beta */,
 			);
 			path = AdminTabBar;
@@ -2453,6 +2464,7 @@
 				FA8CB83E255A5C0D00D09B1D /* AdminPresenter.swift in Sources */,
 				FA15B70D25473D7A00D29835 /* ActionRouter.swift in Sources */,
 				0E56175D2537321C005DF4F3 /* OrganizationPresenter.swift in Sources */,
+				FA0F4C0025A12D550011484E /* AdminTabBarViewAlpha.swift in Sources */,
 				FA1C2BEF2550547D008F3994 /* MemberViewCell.swift in Sources */,
 				FAD704A42550104E00DE8AD7 /* MembersRouter.swift in Sources */,
 				FA7ACD2C2563C3A70097800D /* OrganizationProfileRouter.swift in Sources */,

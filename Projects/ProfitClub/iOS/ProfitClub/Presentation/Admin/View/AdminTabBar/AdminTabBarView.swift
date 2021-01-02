@@ -17,9 +17,11 @@
 import UIKit
 
 protocol AdminTabBarViewInput: UIViewController {
-
+    func showLogoutConfirmationDialog()
 }
 
 protocol AdminTabBarViewOutput {
-    
+    func adminTabBar(view: AdminTabBarViewInput, userWantsToLogout sender: Any)
+    func adminTabBar(view: AdminTabBarViewInput, userConfirmToLogout sender: Any)
+    func adminTabBar(view: AdminTabBarViewInput, userWantsToChangeRole sender: Any)
 }

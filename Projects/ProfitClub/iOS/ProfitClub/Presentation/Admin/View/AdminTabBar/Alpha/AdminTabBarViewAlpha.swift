@@ -1,5 +1,5 @@
-//  Copyright (C) 2020 Startup Studio Vernality
-//  Created by Macbook on 10.11.2020
+//  Copyright (C) 2021 Startup Studio Vernality
+//  Created by Macbook on 03.01.2021
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -16,8 +16,17 @@
 
 import UIKit
 
-final class AdminTabBarViewBeta: UITabBarController {
+final class AdminTabBarViewAlpha: UITabBarController {
     var output: AdminTabBarViewOutput?
+
+    init() {
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +52,7 @@ final class AdminTabBarViewBeta: UITabBarController {
         label.font = UIFont(name: "PlayfairDisplay-Bold", size: 25)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: label)
 
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named:"barItem"), style: .plain, target: self, action: #selector(AdminTabBarViewBeta.menuBarButtonItemAction))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named:"barItem"), style: .plain, target: self, action: #selector(AdminTabBarViewAlpha.menuBarButtonItemAction))
     }
 
     @objc private func menuBarButtonItemAction(_ sender: Any) {
@@ -52,10 +61,10 @@ final class AdminTabBarViewBeta: UITabBarController {
 
         let logoutIcon = #imageLiteral(resourceName: "logout")
         let changeRoleIcon = #imageLiteral(resourceName: "refresh")
-
+        
         let logout = UIAlertAction(title: "Выйти", style: .default) { [weak self] _ in
             guard let sSelf = self else { return }
-            sSelf.output?.adminTabBar(view: sSelf, userWantsToChangeRole: sender)
+            sSelf.output?.adminTabBar(view: sSelf, userWantsToLogout: sender)
         }
 
         logout.setValue(logoutIcon.withRenderingMode(.alwaysOriginal), forKey: "image")
@@ -77,7 +86,7 @@ final class AdminTabBarViewBeta: UITabBarController {
     }
 }
 
-extension AdminTabBarViewBeta: AdminTabBarViewInput {
+extension AdminTabBarViewAlpha: AdminTabBarViewInput {
     func showLogoutConfirmationDialog() {
         var blurEffect = UIBlurEffect()
         blurEffect = UIBlurEffect(style: .dark)
