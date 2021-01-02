@@ -19,13 +19,7 @@ import ProfitClubModel
 
 final class ApplicationsViewBeta: UITableViewController {
     var output: ApplicationsViewOutput?
-    var members = [AnyPCMember]() {
-        didSet {
-            if self.isViewLoaded {
-                self.tableView.reloadData()
-            }
-        }
-    }
+    var members = [AnyPCMember]() 
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,9 +48,20 @@ final class ApplicationsViewBeta: UITableViewController {
 }
 
 extension ApplicationsViewBeta: ApplicationsViewInput {
-    func reloadRow(indexPath: IndexPath) {
-        members.remove(at: indexPath.row)
-        tableView.reloadData()
+    func reload() {
+        if self.isViewLoaded {
+            self.tableView.reloadData()
+        }
+    }
+
+    func hide(member: PCMember) {
+        guard let index = members.firstIndex(of: member.any) else {
+            assertionFailure("Member not found")
+            return
+        }
+        members.remove(at: index)
+        let indexPath = IndexPath(row: index, section: 0)
+        tableView.deleteRows(at: [indexPath], with: .bottom)
     }
 
     func finishAlert(title: String, completion: @escaping () -> Void) {
