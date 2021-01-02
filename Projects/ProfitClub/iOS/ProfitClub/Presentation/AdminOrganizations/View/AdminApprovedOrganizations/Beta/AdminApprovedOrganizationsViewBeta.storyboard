@@ -73,6 +73,12 @@
                             <outlet property="delegate" destination="Jbd-ek-0iS" id="meH-x6-lWH"/>
                         </connections>
                     </tableView>
+                    <refreshControl key="refreshControl" opaque="NO" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="BzK-Vs-tBY">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <connections>
+                            <action selector="pullToRefreshValueChanged:" destination="Jbd-ek-0iS" eventType="valueChanged" id="Ki8-ZB-WCG"/>
+                        </connections>
+                    </refreshControl>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xJZ-Ji-7Fm" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

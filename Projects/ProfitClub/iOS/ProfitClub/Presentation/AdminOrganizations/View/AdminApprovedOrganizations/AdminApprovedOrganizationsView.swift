@@ -23,4 +23,5 @@ protocol AdminApprovedOrganizationsViewInput: UIViewController {
 
 protocol AdminApprovedOrganizationsViewOutput {
     func adminApprovedOrganizationsDidLoad(view: AdminApprovedOrganizationsViewInput)
+    func adminApprovedOrganizations(view: AdminApprovedOrganizationsViewInput, userWantsToRefresh sender: Any)
 }

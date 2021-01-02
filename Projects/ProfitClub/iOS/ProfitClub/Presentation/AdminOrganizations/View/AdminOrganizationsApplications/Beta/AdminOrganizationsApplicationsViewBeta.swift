@@ -56,6 +56,11 @@ final class AdminOrganizationsApplicationsViewBeta: UITableViewController {
         cell.organizationContactNameLabel.text = organization.contact
         return cell
     }
+
+    @IBAction func pullToRefreshValueChanged(_ sender: UIRefreshControl) {
+        self.output?.adminOrganizationsApplications(view: self, userWantsToRefresh: sender)
+        sender.endRefreshing()
+    }
 }
 
 extension AdminOrganizationsApplicationsViewBeta: AdminOrganizationsApplicationsViewInput {
