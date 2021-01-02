@@ -63,6 +63,12 @@ extension MembersPresenter: MembersOfOrganizationViewOutput {
         self.membersOfOrganization = view
         self.reloadMembersOfOrganization()
     }
+
+    func membersOfOrganization(view: MembersOfOrganizationViewInput, userWantsToRefresh sender: Any) {
+        self.membersOfOrganization = view
+        self.reloadMembersOfOrganization()
+    }
+
 }
 
 extension MembersPresenter: ApplicationsViewOutput {

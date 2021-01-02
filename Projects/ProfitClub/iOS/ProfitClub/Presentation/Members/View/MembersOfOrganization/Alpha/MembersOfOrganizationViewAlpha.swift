@@ -66,7 +66,7 @@ final class MembersOfOrganizationViewAlpha: UITableViewController {
     }
 
     @objc private func pullToRefreshValueChanged(_ sender: UIRefreshControl) {
-        self.output?.membersOfOrganizationDidLoad(view: self)
+        self.output?.membersOfOrganization(view: self, userWantsToRefresh: sender)
         sender.endRefreshing()
     }
 }
