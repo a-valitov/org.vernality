@@ -15,9 +15,18 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import UIKit
+import ProfitClubModel
 
 final class AdminApprovedOrganizationsViewBeta: UITableViewController {
     var output: AdminApprovedOrganizationsViewOutput?
+
+    var organizations: [AnyPCOrganization] = [] {
+        didSet {
+            if self.isViewLoaded {
+                self.tableView.reloadData()
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +35,7 @@ final class AdminApprovedOrganizationsViewBeta: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        3
+        return self.organizations.count
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -35,7 +44,8 @@ final class AdminApprovedOrganizationsViewBeta: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "approvedOrganizationCell", for: indexPath)
-
+        let organization = self.organizations[indexPath.row]
+        // TODO: @temur show organization info
         return cell
     }
 }

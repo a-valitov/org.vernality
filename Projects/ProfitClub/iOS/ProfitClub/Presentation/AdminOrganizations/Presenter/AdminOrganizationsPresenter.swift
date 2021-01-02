@@ -67,6 +67,13 @@ extension AdminOrganizationsPresenter: AdminOrganizationsApplicationsViewOutput 
 
 extension AdminOrganizationsPresenter: AdminApprovedOrganizationsViewOutput {
     func adminApprovedOrganizationsDidLoad(view: AdminApprovedOrganizationsViewInput) {
-
+        self.services.organization.fetch(.approved) { [weak self] (result) in
+            switch result {
+            case .success(let organizations):
+                view.organizations = organizations
+            case .failure(let error):
+                self?.presenters.error.present(error)
+            }
+        }
     }
 }
