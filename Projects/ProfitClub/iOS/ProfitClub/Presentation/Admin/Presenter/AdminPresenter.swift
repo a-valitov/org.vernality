@@ -45,7 +45,9 @@ extension AdminPresenter: AdminTabBarViewOutput {
 }
 
 extension AdminPresenter: AdminOrganizationsModuleOutput {
-
+    func adminOrganizations(module: AdminOrganizationsModule, didSelect organization: PCOrganization) {
+        self.router?.open(organization: organization, output: self)
+    }
 }
 
 extension AdminPresenter: AdminOrganizationModuleOutput {

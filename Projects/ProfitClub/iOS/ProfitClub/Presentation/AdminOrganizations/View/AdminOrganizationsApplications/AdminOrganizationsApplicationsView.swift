@@ -23,4 +23,5 @@ protocol AdminOrganizationsApplicationsViewInput: UIViewController {
 
 protocol AdminOrganizationsApplicationsViewOutput {
     func adminOrganizationsApplicationsViewDidLoad(view: AdminOrganizationsApplicationsViewInput)
+    func adminOrganizationsApplications(view: AdminOrganizationsApplicationsViewInput, didSelect organization: PCOrganization)
 }

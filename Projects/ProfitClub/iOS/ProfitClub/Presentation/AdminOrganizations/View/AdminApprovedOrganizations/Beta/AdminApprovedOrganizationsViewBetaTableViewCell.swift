@@ -1,5 +1,5 @@
-//  Copyright (C) 2020 Startup Studio Vernality
-//  Created by Macbook on 10.11.2020
+//  Copyright (C) 2021 Startup Studio Vernality
+//  Created by Macbook on 03.01.2021
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -16,13 +16,15 @@
 
 import UIKit
 
-protocol OrganizationApplicationViewInput: UIViewController {
-    var organizationName: String? { get set }
-    var organizationContactName: String? { get set }
-    var organizationINN: String? { get set }
-    var organizationPhoneNumber: String? { get set }
-}
+class AdminApprovedOrganizationsViewBetaTableViewCell: UITableViewCell {
 
-protocol OrganizationApplicationViewOutput {
-    func organizationApplicationDidLoad(view: OrganizationApplicationViewInput)
+    @IBOutlet weak var organizationImageView: UIImageView! {
+        didSet {
+            organizationImageView.layer.cornerRadius = organizationImageView.frame.height / 2
+            organizationImageView.clipsToBounds = true
+        }
+    }
+    @IBOutlet weak var organizationNameLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    
 }

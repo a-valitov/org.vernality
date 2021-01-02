@@ -63,6 +63,10 @@ extension AdminOrganizationsPresenter: AdminOrganizationsApplicationsViewOutput 
             }
         }
     }
+
+    func adminOrganizationsApplications(view: AdminOrganizationsApplicationsViewInput, didSelect organization: PCOrganization) {
+        self.output?.adminOrganizations(module: self, didSelect: organization)
+    }
 }
 
 extension AdminOrganizationsPresenter: AdminApprovedOrganizationsViewOutput {

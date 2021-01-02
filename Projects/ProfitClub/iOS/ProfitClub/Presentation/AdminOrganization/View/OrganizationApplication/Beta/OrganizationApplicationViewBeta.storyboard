@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.3" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Mh1-cr-Ovg">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -115,6 +114,9 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zgg-oQ-ord">
                                 <rect key="frame" x="377" y="14" width="17" height="22"/>
                                 <state key="normal" image="X"/>
+                                <connections>
+                                    <action selector="cancelButtonTouchUpInside" destination="Mh1-cr-Ovg" eventType="touchUpInside" id="b8n-dN-2Xr"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -154,6 +156,14 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="sms-Wx-Q8S"/>
                     </view>
+                    <connections>
+                        <outlet property="organizationContactNameLabel" destination="qLa-Lv-QwK" id="hIu-87-vYs"/>
+                        <outlet property="organizationINNLabel" destination="ZZb-m2-7KA" id="6OW-Nd-BBj"/>
+                        <outlet property="organizationImageView" destination="WVP-FT-0cz" id="JDT-8o-unG"/>
+                        <outlet property="organizationNameLabel" destination="qmU-gj-Uil" id="Ih7-zw-Ovn"/>
+                        <outlet property="organizationPhoneNumberLabel" destination="WPF-kg-6n3" id="YpX-Cq-4dq"/>
+                        <outlet property="rejectOrganization" destination="WRS-rY-pZE" id="yyb-Ad-ktn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BfW-bX-52x" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

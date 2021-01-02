@@ -35,7 +35,8 @@ final class AdminOrganizationsApplicationsViewBeta: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
+        let organization = self.organizations[indexPath.row]
+        self.output?.adminOrganizationsApplications(view: self, didSelect: organization)
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -48,6 +49,8 @@ final class AdminOrganizationsApplicationsViewBeta: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "applicationsCell", for: indexPath) as! AdminOrganizationsApplicationsTableViewCell
+        cell.selectionStyle = .none
+
         let organization = self.organizations[indexPath.row]
         cell.organizationNameLabel.text = organization.name
         cell.organizationContactNameLabel.text = organization.contact

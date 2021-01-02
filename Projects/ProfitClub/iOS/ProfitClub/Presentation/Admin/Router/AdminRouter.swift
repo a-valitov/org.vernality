@@ -36,5 +36,12 @@ final class AdminRouter {
         return adminTabBar
     }
 
+    @discardableResult
+    func open(organization: PCOrganization, output: AdminOrganizationModuleOutput?) -> AdminOrganizationModule {
+        let organizationModule = self.factories.adminOrganization.make(organization: organization, output: output)
+        organizationModule.open(in: self.main)
+        return organizationModule
+    }
+
     private let factories: AdminFactories
 }
