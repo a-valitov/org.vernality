@@ -42,6 +42,9 @@ final class MembersPresenter: MembersModule {
     // dependencies
     private let presenters: MembersPresenters
     private let services: MembersServices
+
+    // submodules
+    private weak var membersOfOrganization: MembersOfOrganizationViewInput?
 }
 
 extension MembersPresenter: MembersContainerViewOutput {
@@ -57,14 +60,8 @@ extension MembersPresenter: MembersContainerViewOutput {
 
 extension MembersPresenter: MembersOfOrganizationViewOutput {
     func membersOfOrganizationDidLoad(view: MembersOfOrganizationViewInput) {
-        self.services.organization.fetchApprovedMembersOfOrganization(organization) { [weak self] (result) in
-                switch result {
-                case .success(let members):
-                    view.members = members
-                case .failure(let error):
-                    self?.presenters.error.present(error)
-                }
-        }
+        self.membersOfOrganization = view
+        self.reloadMembersOfOrganization()
     }
 }
 
@@ -99,7 +96,7 @@ extension MembersPresenter: ApplicationsViewOutput {
                 switch result {
                 case .success(let member):
                     view.hide(member: member)
-                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
+                    self?.reloadMembersOfOrganization()
                 case .failure(let error):
                     self?.presenters.error.present(error)
                 }
@@ -121,4 +118,16 @@ extension MembersPresenter: ApplicationsViewOutput {
     }
 }
 
+extension MembersPresenter {
+    private func reloadMembersOfOrganization() {
+        self.services.organization.fetchApprovedMembersOfOrganization(organization) { [weak self] (result) in
+                switch result {
+                case .success(let members):
+                    self?.membersOfOrganization?.members = members
+                case .failure(let error):
+                    self?.presenters.error.present(error)
+                }
+        }
+    }
+}
 
