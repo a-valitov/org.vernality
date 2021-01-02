@@ -48,7 +48,7 @@ public final class PCUserParse: PFUser, PCUser {
     public var id: String? {
         return self.objectId
     }
-
+    public var roles: [PCRole]?
     public var members: [PCMember]?
     public var organizations: [PCOrganization]?
     public var suppliers: [PCSupplier]?

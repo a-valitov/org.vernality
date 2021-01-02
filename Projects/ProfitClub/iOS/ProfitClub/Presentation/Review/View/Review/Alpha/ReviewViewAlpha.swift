@@ -20,6 +20,14 @@ import ProfitClubModel
 final class ReviewViewAlpha: UITableViewController {
     var output: ReviewViewOutput?
     var username: String?
+    var isAdministrator: Bool = false {
+        didSet {
+            if self.isViewLoaded {
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
     var members = [AnyPCMember]() {
         didSet {
             if self.isViewLoaded {
@@ -50,6 +58,13 @@ final class ReviewViewAlpha: UITableViewController {
         tableView.register(ReviewViewAlphaSupplierCell.self, forCellReuseIdentifier: ReviewViewAlphaSupplierCell.reuseIdentifier)
         tableView.register(ReviewViewAlphaMemberCell.self, forCellReuseIdentifier: ReviewViewAlphaMemberCell.reuseIdentifier)
         tableView.register(ReviewViewAlphaAdminCell.self, forCellReuseIdentifier: ReviewViewAlphaAdminCell.reuseIdentifier)
+    }
+
+    private enum Section: Int {
+        case administrator = 0
+        case member = 1
+        case organization = 2
+        case supplier = 3
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -130,33 +145,39 @@ extension ReviewViewAlpha: ReviewViewInput {
 extension ReviewViewAlpha {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        switch indexPath.section {
-        case 0:
+        guard let section = Section(rawValue: indexPath.section) else {
+            return
+        }
+        switch section {
+        case .administrator:
+            self.output?.reviewUserDidTapOnAdmin(view: self)
+        case .member:
             let member = self.members[indexPath.row]
             self.output?.review(view: self, userTappedOn: member)
-        case 1:
+        case .organization:
             let organization = self.organizations[indexPath.row]
             self.output?.review(view: self, userTappedOn: organization)
-        case 2:
+        case .supplier:
             let supplier = self.suppliers[indexPath.row]
             self.output?.review(view: self, userTappedOn: supplier)
-        default:
-            break
         }
     }
 }
 
 extension ReviewViewAlpha {
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        switch section {
-        case 0:
-            return self.members.isEmpty ? nil : "Участник"
-        case 1:
-            return self.organizations.isEmpty ? nil : "Организации"
-        case 2:
-            return self.suppliers.isEmpty ? nil : "Поставщики"
-        default:
+        guard let section = Section(rawValue: section) else {
             return nil
+        }
+        switch section {
+        case .administrator:
+            return nil
+        case .member:
+            return self.members.isEmpty ? nil : "Участники"
+        case .organization:
+            return self.organizations.isEmpty ? nil : "Организации"
+        case .supplier:
+            return self.suppliers.isEmpty ? nil : "Поставщики"
         }
     }
 
@@ -179,7 +200,7 @@ extension ReviewViewAlpha {
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 4
     }
 
     override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -187,21 +208,31 @@ extension ReviewViewAlpha {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0:
-            return self.members.count
-        case 1:
-            return self.organizations.count
-        case 2:
-            return self.suppliers.count
-        default:
+        guard let section = Section(rawValue: section) else {
             return 0
+        }
+        switch section {
+        case .administrator:
+            return isAdministrator ? 1 : 0
+        case .member:
+            return self.members.count
+        case .organization:
+            return self.organizations.count
+        case .supplier:
+            return self.suppliers.count
         }
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        switch indexPath.section {
-        case 0:
+        guard let section = Section(rawValue: indexPath.section) else {
+            fatalError()
+        }
+        switch section {
+        case .administrator:
+            let cell = tableView.dequeueReusableCell(withIdentifier: ReviewViewAlphaAdminCell.reuseIdentifier, for: indexPath) as! ReviewViewAlphaAdminCell
+            cell.adminLabel.text = "Администратор"
+            return cell
+        case .member:
             let cell = tableView.dequeueReusableCell(withIdentifier: ReviewViewAlphaMemberCell.reuseIdentifier, for: indexPath) as! ReviewViewAlphaMemberCell
             let member = self.members[indexPath.row]
             cell.memberFullnameLabel.text = (member.firstName ?? "") + " " + (member.lastName ?? "")
@@ -222,7 +253,7 @@ extension ReviewViewAlpha {
                 }
             }
             return cell
-        case 1:
+        case .organization:
             let cell = tableView.dequeueReusableCell(withIdentifier: ReviewViewAlphaOrganizationCell.reuseIdentifier, for: indexPath) as! ReviewViewAlphaOrganizationCell
             let organization = self.organizations[indexPath.row]
             cell.organizationNameLabel.text = organization.name
@@ -246,7 +277,7 @@ extension ReviewViewAlpha {
                 }
             }
             return cell
-        case 2:
+        case .supplier:
             let cell = tableView.dequeueReusableCell(withIdentifier: ReviewViewAlphaSupplierCell.reuseIdentifier, for: indexPath) as! ReviewViewAlphaSupplierCell
             let supplier = self.suppliers[indexPath.row]
             cell.supplierNameLabel.text = supplier.name
@@ -270,8 +301,6 @@ extension ReviewViewAlpha {
                 }
             }
             return cell
-        default:
-            fatalError()
         }
     }
 }

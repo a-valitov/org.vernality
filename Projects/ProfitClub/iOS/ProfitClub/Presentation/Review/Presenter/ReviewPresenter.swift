@@ -38,7 +38,6 @@ final class ReviewPresenter: ReviewModule {
                 self.router?.openReview(user, output: self)
             case .failure(let error):
                 self.presenters.error.present(error)
-                // TODO: fallback to error screen
             }
         }
     }
@@ -48,6 +47,10 @@ final class ReviewPresenter: ReviewModule {
 }
 
 extension ReviewPresenter: ReviewViewOutput {
+    func reviewUserDidTapOnAdmin(view: ReviewViewInput) {
+        // TODO: open admin module
+    }
+
     func review(view: ReviewViewInput, userWantsToRefresh sender: Any) {
         self.services.userService.reload { [weak self] result in
             switch result {

@@ -29,6 +29,7 @@ final class ReviewRouter {
         reviewView.members = user?.members?.map({ $0.any }) ?? []
         reviewView.organizations = user?.organizations?.map({ $0.any }) ?? []
         reviewView.suppliers = user?.suppliers?.map({ $0.any }) ?? []
+        reviewView.isAdministrator = user?.roles?.contains(.administrator) ?? false
         self.main?.push(reviewView, animated: true)
         return reviewView
     }

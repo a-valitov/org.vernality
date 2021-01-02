@@ -63,6 +63,21 @@ public final class PCUserServiceParse: PCUserService {
             } else {
                 if let pfUser = pfObject?.pcUser {
                     group.enter()
+                    let query = PFRole.query()
+                    query?.whereKey("users", equalTo: parseUser)
+                    query?.findObjectsInBackground(block: { (roles, error) in
+                        if let error = error {
+                            finalError = error
+                        } else if let roles = roles {
+                            let pfRoles = roles.compactMap({ ($0 as? PFRole) })
+                            pfUser.roles = pfRoles.compactMap({ PCRole(rawValue: $0.name) })
+                        } else {
+                            finalError = PCUserServiceError.bothResultAndErrorAreNil
+                        }
+                        group.leave()
+                    })
+
+                    group.enter()
                     parseUser.relation(forKey: "members").query().findObjectsInBackground(block: { (pfMembers, error) in
                         if let error = error {
                             finalError = error

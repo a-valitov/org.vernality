@@ -136,7 +136,7 @@ extension ReviewViewBeta {
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         switch section {
         case 0:
-            return self.members.isEmpty ? nil : "Участник"
+            return self.members.isEmpty ? nil : "Участники"
         case 1:
             return self.organizations.isEmpty ? nil : "Организации"
         case 2:
