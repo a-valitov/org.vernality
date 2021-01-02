@@ -15,11 +15,12 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import UIKit
+import ProfitClubModel
 
 protocol AdminApprovedOrganizationsViewInput: UIViewController {
-
+    var organizations: [AnyPCOrganization] { get set }
 }
 
 protocol AdminApprovedOrganizationsViewOutput {
-    
+    func adminApprovedOrganizationsDidLoad(view: AdminApprovedOrganizationsViewInput)
 }

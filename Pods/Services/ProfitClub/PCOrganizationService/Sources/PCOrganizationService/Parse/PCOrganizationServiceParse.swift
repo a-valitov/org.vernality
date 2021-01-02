@@ -39,9 +39,9 @@ public final class PCOrganizationServiceParse: PCOrganizationService {
         }
     }
 
-    public func fetchApproved(result: @escaping (Result<[AnyPCOrganization], Error>) -> Void) {
+    public func fetch(_ status: PCOrganizationStatus, result: @escaping (Result<[AnyPCOrganization], Error>) -> Void) {
         let query = PFQuery(className: "Organization")
-        query.whereKey("statusString", equalTo: "approved")
+        query.whereKey("statusString", equalTo: status.rawValue)
         query.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
             if let error = error {
                 result(.failure(error))
