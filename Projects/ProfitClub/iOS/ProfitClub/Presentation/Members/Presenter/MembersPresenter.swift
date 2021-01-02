@@ -42,6 +42,9 @@ final class MembersPresenter: MembersModule {
     // dependencies
     private let presenters: MembersPresenters
     private let services: MembersServices
+
+    // submodules
+    private weak var membersOfOrganization: MembersOfOrganizationViewInput?
 }
 
 extension MembersPresenter: MembersContainerViewOutput {
@@ -57,26 +60,15 @@ extension MembersPresenter: MembersContainerViewOutput {
 
 extension MembersPresenter: MembersOfOrganizationViewOutput {
     func membersOfOrganizationDidLoad(view: MembersOfOrganizationViewInput) {
-        self.services.organization.fetchApprovedMembersOfOrganization(organization) { [weak self] (result) in
-                switch result {
-                case .success(let members):
-                    view.members = members
-                case .failure(let error):
-                    self?.presenters.error.present(error)
-                }
-        }
+        self.membersOfOrganization = view
+        self.reloadMembersOfOrganization()
     }
 
     func membersOfOrganization(view: MembersOfOrganizationViewInput, userWantsToRefresh sender: Any) {
-        self.services.organization.fetchApprovedMembersOfOrganization(organization) { [weak self] (result) in
-                switch result {
-                case .success(let members):
-                    view.members = members
-                case .failure(let error):
-                    self?.presenters.error.present(error)
-                }
-        }
+        self.membersOfOrganization = view
+        self.reloadMembersOfOrganization()
     }
+
 }
 
 extension MembersPresenter: ApplicationsViewOutput {
@@ -85,6 +77,7 @@ extension MembersPresenter: ApplicationsViewOutput {
             switch result {
             case .success(let members):
                 view.members = members
+                view.reload()
             case .failure(let error):
                 self?.presenters.error.present(error)
             }
@@ -96,6 +89,7 @@ extension MembersPresenter: ApplicationsViewOutput {
             switch result {
             case .success(let members):
                 view.members = members
+                view.reload()
             case .failure(let error):
                 self?.presenters.error.present(error)
             }
@@ -103,28 +97,43 @@ extension MembersPresenter: ApplicationsViewOutput {
     }
 
     func applications(view: ApplicationsViewInput, userWantsToApprove member: PCMember) {
-        // TODO: @temur please add confirmation dialog and reload tables on success
-        self.services.organization.approve(member: member) { [weak self] result in
-            switch result {
-            case .success(let member):
-                print("success")
-            case .failure(let error):
-                self?.presenters.error.present(error)
+        view.finishAlert(title: "Одобрить") {
+            self.services.organization.approve(member: member) { [weak self] result in
+                switch result {
+                case .success(let member):
+                    view.hide(member: member)
+                    self?.reloadMembersOfOrganization()
+                case .failure(let error):
+                    self?.presenters.error.present(error)
+                }
             }
         }
     }
 
     func applications(view: ApplicationsViewInput, userWantsToReject member: PCMember) {
-        // TODO: @temur please add confirmation dialog and reload tables on success
-        self.services.organization.reject(member: member) { [weak self] result in
-            switch result {
-            case .success(let member):
-                print("success")
-            case .failure(let error):
-                self?.presenters.error.present(error)
+        view.finishAlert(title: "Отклонить") {
+            self.services.organization.reject(member: member) { [weak self] result in
+                switch result {
+                case .success(let member):
+                    view.hide(member: member)
+                case .failure(let error):
+                    self?.presenters.error.present(error)
+                }
             }
         }
     }
 }
 
+extension MembersPresenter {
+    private func reloadMembersOfOrganization() {
+        self.services.organization.fetchApprovedMembersOfOrganization(organization) { [weak self] (result) in
+                switch result {
+                case .success(let members):
+                    self?.membersOfOrganization?.members = members
+                case .failure(let error):
+                    self?.presenters.error.present(error)
+                }
+        }
+    }
+}
 

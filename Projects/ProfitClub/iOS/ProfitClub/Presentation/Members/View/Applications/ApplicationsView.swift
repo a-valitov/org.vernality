@@ -19,6 +19,10 @@ import ProfitClubModel
 
 protocol ApplicationsViewInput: UIViewController {
     var members: [AnyPCMember] { get set }
+
+    func reload()
+    func hide(member: PCMember)
+    func finishAlert(title: String, completion: @escaping () -> Void)
 }
 
 protocol ApplicationsViewOutput {
