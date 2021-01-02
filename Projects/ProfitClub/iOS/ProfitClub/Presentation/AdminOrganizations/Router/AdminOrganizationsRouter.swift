@@ -23,8 +23,7 @@ final class AdminOrganizationsRouter {
 
     @discardableResult
     func embed(in tabBarController: UITabBarController, output: AdminOrganizationsContainerViewOutput?) -> AdminOrganizationsContainerViewInput {
-        let storyboard = UIStoryboard(name: "AdminOrganizationsContainerViewBeta", bundle: nil)
-        let organizationsContainer = storyboard.instantiateInitialViewController() as! AdminOrganizationsContainerViewBeta
+        let organizationsContainer = AdminOrganizationsContainerViewAlpha()
         organizationsContainer.output = output
         if var viewControllers = tabBarController.viewControllers {
             viewControllers.append(organizationsContainer)
