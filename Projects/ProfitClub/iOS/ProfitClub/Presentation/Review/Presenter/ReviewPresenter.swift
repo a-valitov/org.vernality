@@ -48,7 +48,7 @@ final class ReviewPresenter: ReviewModule {
 
 extension ReviewPresenter: ReviewViewOutput {
     func reviewUserDidTapOnAdmin(view: ReviewViewInput) {
-        // TODO: open admin module
+        self.output?.review(module: self, userWantsToEnterAdminInsideMain: self.router?.main)
     }
 
     func review(view: ReviewViewInput, userWantsToRefresh sender: Any) {

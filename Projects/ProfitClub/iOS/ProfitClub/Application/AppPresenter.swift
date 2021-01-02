@@ -112,6 +112,11 @@ extension AppPresenter: ReviewModuleOutput {
         onboard.onboard(in: main)
     }
 
+    func review(module: ReviewModule, userWantsToEnterAdminInsideMain main: MainModule?) {
+        let admin = self.factory.admin(output: self)
+        admin.open(in: main)
+    }
+
     func review(module: ReviewModule, userWantsToEnter organization: PCOrganization, inside main: MainModule?) {
         assert(organization.status == .approved)
         let organization = self.factory.organization(organization, output: self)
@@ -218,5 +223,9 @@ extension AppPresenter: OrganizationProfileModuleOutput {
 }
 
 extension AppPresenter: SupplierProfileModuleOutput {
+
+}
+
+extension AppPresenter: AdminModuleOutput {
 
 }
