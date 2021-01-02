@@ -20,6 +20,7 @@ public protocol PCUser {
     var id: String? { get }
     var email: String? { get }
     var username: String? { get }
+    var roles: [PCRole]? { get }
 
     var members: [PCMember]? { get }
     var organizations: [PCOrganization]? { get }
@@ -39,6 +40,7 @@ public struct PCUserStruct: PCUser {
     public var members: [PCMember]?
     public var organizations: [PCOrganization]?
     public var suppliers: [PCSupplier]?
+    public var roles: [PCRole]?
 
     public init() {}
 }
@@ -66,6 +68,10 @@ public struct AnyPCUser: PCUser, Equatable, Hashable {
 
     public var suppliers: [PCSupplier]? {
         return self.object.suppliers
+    }
+
+    public var roles: [PCRole]? {
+        return self.object.roles
     }
 
     public init(object: PCUser) {

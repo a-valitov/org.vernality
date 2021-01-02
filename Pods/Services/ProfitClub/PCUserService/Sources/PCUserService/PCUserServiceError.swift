@@ -19,4 +19,5 @@ import Foundation
 enum PCUserServiceError: Error {
     case userIsNil
     case userIsNotPFUser
+    case bothResultAndErrorAreNil
 }

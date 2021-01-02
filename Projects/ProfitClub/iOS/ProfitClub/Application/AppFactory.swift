@@ -89,6 +89,11 @@ extension AppFactory {
         return module
     }
 
+    func admin(output: AdminModuleOutput?) -> AdminModule {
+        let module = self.adminFactory.make(output: output)
+        return module
+    }
+
     func memberProfile(member: PCMember, output: MemberProfileModuleOutput?) -> MemberProfileModule {
         let module = self.memberProfileFactory.make(member: member, output: output)
         return module
