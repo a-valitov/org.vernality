@@ -66,17 +66,6 @@ extension MembersPresenter: MembersOfOrganizationViewOutput {
                 }
         }
     }
-
-    func membersOfOrganization(view: MembersOfOrganizationViewInput, userWantsToRefresh sender: Any) {
-        self.services.organization.fetchApprovedMembersOfOrganization(organization) { [weak self] (result) in
-                switch result {
-                case .success(let members):
-                    view.members = members
-                case .failure(let error):
-                    self?.presenters.error.present(error)
-                }
-        }
-    }
 }
 
 extension MembersPresenter: ApplicationsViewOutput {
@@ -110,6 +99,7 @@ extension MembersPresenter: ApplicationsViewOutput {
                 switch result {
                 case .success(let member):
                     view.hide(member: member)
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
                 case .failure(let error):
                     self?.presenters.error.present(error)
                 }

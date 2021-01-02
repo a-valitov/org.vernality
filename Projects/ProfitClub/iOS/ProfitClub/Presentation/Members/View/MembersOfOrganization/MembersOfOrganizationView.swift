@@ -23,5 +23,4 @@ protocol MembersOfOrganizationViewInput: UIViewController {
 
 protocol MembersOfOrganizationViewOutput {
     func membersOfOrganizationDidLoad(view: MembersOfOrganizationViewInput)
-    func membersOfOrganization(view: MembersOfOrganizationViewInput, userWantsToRefresh sender: Any)
 }
