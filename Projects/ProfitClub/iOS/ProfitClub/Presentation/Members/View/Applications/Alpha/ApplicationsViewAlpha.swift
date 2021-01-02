@@ -19,13 +19,7 @@ import ProfitClubModel
 
 final class ApplicationsViewAlpha: UITableViewController {
     var output: ApplicationsViewOutput?
-    var members = [AnyPCMember]() {
-        didSet {
-            if self.isViewLoaded {
-                self.tableView.reloadData()
-            }
-        }
-    }
+    var members = [AnyPCMember]()
 
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -75,19 +69,35 @@ extension ApplicationsViewAlpha: ApplicationsViewAlphaTableViewCellDelegate {
     func applicationsViewAlpha(cell: ApplicationsViewAlphaTableViewCell, didAskToApprove sender: Any) {
         if let indexPath = tableView.indexPath(for: cell) {
             let member = members[indexPath.row]
-            output?.applications(view: self, userWantsToApprove: member, indexPath: indexPath)
+            output?.applications(view: self, userWantsToApprove: member)
         }
     }
 
     func applicationsViewAlpha(cell: ApplicationsViewAlphaTableViewCell, didAskToReject sender: Any) {
         if let indexPath = tableView.indexPath(for: cell) {
             let member = members[indexPath.row]
-            output?.applications(view: self, userWantsToReject: member, indexPath: indexPath)
+            output?.applications(view: self, userWantsToReject: member)
         }
     }
 }
 
 extension ApplicationsViewAlpha: ApplicationsViewInput {
+    func reload() {
+        if self.isViewLoaded {
+            self.tableView.reloadData()
+        }
+    }
+
+    func hide(member: PCMember) {
+        guard let index = members.firstIndex(of: member.any) else {
+            assertionFailure("Member not found")
+            return
+        }
+        members.remove(at: index)
+        let indexPath = IndexPath(row: index, section: 0)
+        tableView.deleteRows(at: [indexPath], with: .fade)
+    }
+    
     func finishAlert(title: String, completion: @escaping () -> Void) {
         var blurEffect = UIBlurEffect()
         blurEffect = UIBlurEffect(style: .light)
@@ -124,10 +134,5 @@ extension ApplicationsViewAlpha: ApplicationsViewInput {
         alertController.addAction(cancelAction)
         alertController.preferredAction = okAction
         present(alertController, animated: true)
-    }
-
-    func reloadRow(indexPath: IndexPath) {
-        members.remove(at: indexPath.row)
-        tableView.reloadData()
     }
 }

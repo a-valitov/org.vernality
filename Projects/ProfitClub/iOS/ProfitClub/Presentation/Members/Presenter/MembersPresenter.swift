@@ -85,6 +85,7 @@ extension MembersPresenter: ApplicationsViewOutput {
             switch result {
             case .success(let members):
                 view.members = members
+                view.reload()
             case .failure(let error):
                 self?.presenters.error.present(error)
             }
@@ -96,18 +97,19 @@ extension MembersPresenter: ApplicationsViewOutput {
             switch result {
             case .success(let members):
                 view.members = members
+                view.reload()
             case .failure(let error):
                 self?.presenters.error.present(error)
             }
         }
     }
 
-    func applications(view: ApplicationsViewInput, userWantsToApprove member: PCMember, indexPath: IndexPath) {
+    func applications(view: ApplicationsViewInput, userWantsToApprove member: PCMember) {
         view.finishAlert(title: "Одобрить") {
             self.services.organization.approve(member: member) { [weak self] result in
                 switch result {
                 case .success(let member):
-                    view.reloadRow(indexPath: indexPath)
+                    view.hide(member: member)
                 case .failure(let error):
                     self?.presenters.error.present(error)
                 }
@@ -115,12 +117,12 @@ extension MembersPresenter: ApplicationsViewOutput {
         }
     }
 
-    func applications(view: ApplicationsViewInput, userWantsToReject member: PCMember, indexPath: IndexPath) {
+    func applications(view: ApplicationsViewInput, userWantsToReject member: PCMember) {
         view.finishAlert(title: "Отклонить") {
             self.services.organization.reject(member: member) { [weak self] result in
                 switch result {
                 case .success(let member):
-                    view.reloadRow(indexPath: indexPath)
+                    view.hide(member: member)
                 case .failure(let error):
                     self?.presenters.error.present(error)
                 }
