@@ -197,7 +197,7 @@ extension OnboardPresenter: OnboardMemberViewOutput {
         self.firstName = firstName
         self.lastName = lastName
         let selectOrganization = self.router?.openSelectOrganization(output: self)
-        self.services.organization.fetchApproved { [weak self] (result) in
+        self.services.organization.fetch(.approved) { [weak self] (result) in
             switch result {
             case .success(let organizations):
                 selectOrganization?.organizations = organizations
@@ -252,7 +252,7 @@ extension OnboardPresenter: OnboardOrganizationViewOutput {
 extension OnboardPresenter: SelectOrganizationViewOutput {
     func selectOrganization(view: SelectOrganizationViewInput, userWantsToRefresh sender: Any) {
         self.presenters.activity.increment()
-        self.services.organization.fetchApproved { [weak self] (result) in
+        self.services.organization.fetch(.approved) { [weak self] (result) in
             self?.presenters.activity.decrement()
             switch result {
             case .success(let organizations):
