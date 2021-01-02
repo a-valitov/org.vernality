@@ -61,13 +61,29 @@ final class ApplicationsViewAlpha: UITableViewController {
 
         let member = members[indexPath.row]
         cell.memberNameLabel.text = "\(member.firstName ?? "") \(member.lastName ?? "")"
-
+        cell.delegate = self
         return cell
     }
 
     @objc private func pullToRefreshValueChanged(_ sender: UIRefreshControl) {
         self.output?.applications(view: self, userWantsToRefresh: sender)
         sender.endRefreshing()
+    }
+}
+
+extension ApplicationsViewAlpha: ApplicationsViewAlphaTableViewCellDelegate {
+    func applicationsViewAlpha(cell: ApplicationsViewAlphaTableViewCell, didAskToApprove sender: Any) {
+        if let indexPath = tableView.indexPath(for: cell) {
+            let member = members[indexPath.row]
+            output?.applications(view: self, userWantsToApprove: member)
+        }
+    }
+
+    func applicationsViewAlpha(cell: ApplicationsViewAlphaTableViewCell, didAskToReject sender: Any) {
+        if let indexPath = tableView.indexPath(for: cell) {
+            let member = members[indexPath.row]
+            output?.applications(view: self, userWantsToReject: member)
+        }
     }
 }
 
