@@ -53,9 +53,20 @@ extension AdminOrganizationsPresenter: AdminOrganizationsContainerViewOutput {
 }
 
 extension AdminOrganizationsPresenter: AdminOrganizationsApplicationsViewOutput {
-
+    func adminOrganizationsApplicationsViewDidLoad(view: AdminOrganizationsApplicationsViewInput) {
+        self.services.organization.fetch(.onReview) { [weak self] (result) in
+            switch result {
+            case .success(let organizations):
+                view.organizations = organizations.map({ $0.any })
+            case .failure(let error):
+                self?.presenters.error.present(error)
+            }
+        }
+    }
 }
 
 extension AdminOrganizationsPresenter: AdminApprovedOrganizationsViewOutput {
+    func adminApprovedOrganizationsDidLoad(view: AdminApprovedOrganizationsViewInput) {
 
+    }
 }

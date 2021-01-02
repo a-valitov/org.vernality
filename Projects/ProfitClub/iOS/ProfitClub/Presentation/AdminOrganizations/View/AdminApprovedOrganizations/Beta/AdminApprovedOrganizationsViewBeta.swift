@@ -22,6 +22,7 @@ final class AdminApprovedOrganizationsViewBeta: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
+        self.output?.adminApprovedOrganizationsDidLoad(view: self)
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
