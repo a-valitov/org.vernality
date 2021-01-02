@@ -103,28 +103,26 @@ extension MembersPresenter: ApplicationsViewOutput {
     }
 
     func applications(view: ApplicationsViewInput, userWantsToApprove member: PCMember, indexPath: IndexPath) {
-        view.finishAlert(title: "Одобрить") { [weak self] in
-            guard let sSelf = self else { return }
-            sSelf.services.organization.approve(member: member) { [weak sSelf] result in
+        view.finishAlert(title: "Одобрить") {
+            self.services.organization.approve(member: member) { [weak self] result in
                 switch result {
                 case .success(let member):
                     view.reloadRow(indexPath: indexPath)
                 case .failure(let error):
-                    sSelf?.presenters.error.present(error)
+                    self?.presenters.error.present(error)
                 }
             }
         }
     }
 
     func applications(view: ApplicationsViewInput, userWantsToReject member: PCMember, indexPath: IndexPath) {
-        view.finishAlert(title: "Отклонить") { [weak self] in
-            guard let sSelf = self else { return }
-            sSelf.services.organization.reject(member: member) { [weak sSelf] result in
+        view.finishAlert(title: "Отклонить") {
+            self.services.organization.reject(member: member) { [weak self] result in
                 switch result {
                 case .success(let member):
                     view.reloadRow(indexPath: indexPath)
                 case .failure(let error):
-                    sSelf?.presenters.error.present(error)
+                    self?.presenters.error.present(error)
                 }
             }
         }
