@@ -89,6 +89,8 @@
 		FA0F4BFD25A104B20011484E /* AdminApprovedOrganizationsViewBetaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0F4BFC25A104B20011484E /* AdminApprovedOrganizationsViewBetaTableViewCell.swift */; };
 		FA0F4C0025A12D550011484E /* AdminTabBarViewAlpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0F4BFF25A12D550011484E /* AdminTabBarViewAlpha.swift */; };
 		FA0F4C0325A132B80011484E /* AdminOrganizationsContainerViewAlpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0F4C0225A132B70011484E /* AdminOrganizationsContainerViewAlpha.swift */; };
+		FA0F4C0625A13D200011484E /* AdminOrganizationsApplicationsViewAlpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0F4C0525A13D200011484E /* AdminOrganizationsApplicationsViewAlpha.swift */; };
+		FA0F4C0825A13E080011484E /* AdminOrganizationsApplicationsViewAlphaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0F4C0725A13E080011484E /* AdminOrganizationsApplicationsViewAlphaCell.swift */; };
 		FA15B70525473D1D00D29835 /* ActionFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA15B70425473D1D00D29835 /* ActionFactory.swift */; };
 		FA15B70725473D3A00D29835 /* ActionDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA15B70625473D3A00D29835 /* ActionDependencies.swift */; };
 		FA15B70925473D5A00D29835 /* ActionModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA15B70825473D5A00D29835 /* ActionModule.swift */; };
@@ -349,6 +351,8 @@
 		FA0F4BFC25A104B20011484E /* AdminApprovedOrganizationsViewBetaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminApprovedOrganizationsViewBetaTableViewCell.swift; sourceTree = "<group>"; };
 		FA0F4BFF25A12D550011484E /* AdminTabBarViewAlpha.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminTabBarViewAlpha.swift; sourceTree = "<group>"; };
 		FA0F4C0225A132B70011484E /* AdminOrganizationsContainerViewAlpha.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminOrganizationsContainerViewAlpha.swift; sourceTree = "<group>"; };
+		FA0F4C0525A13D200011484E /* AdminOrganizationsApplicationsViewAlpha.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminOrganizationsApplicationsViewAlpha.swift; sourceTree = "<group>"; };
+		FA0F4C0725A13E080011484E /* AdminOrganizationsApplicationsViewAlphaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminOrganizationsApplicationsViewAlphaCell.swift; sourceTree = "<group>"; };
 		FA15B70425473D1D00D29835 /* ActionFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionFactory.swift; sourceTree = "<group>"; };
 		FA15B70625473D3A00D29835 /* ActionDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionDependencies.swift; sourceTree = "<group>"; };
 		FA15B70825473D5A00D29835 /* ActionModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionModule.swift; sourceTree = "<group>"; };
@@ -1183,6 +1187,15 @@
 			path = Alpha;
 			sourceTree = "<group>";
 		};
+		FA0F4C0425A13D120011484E /* Alpha */ = {
+			isa = PBXGroup;
+			children = (
+				FA0F4C0525A13D200011484E /* AdminOrganizationsApplicationsViewAlpha.swift */,
+				FA0F4C0725A13E080011484E /* AdminOrganizationsApplicationsViewAlphaCell.swift */,
+			);
+			path = Alpha;
+			sourceTree = "<group>";
+		};
 		FA15B70125473C4000D29835 /* Router */ = {
 			isa = PBXGroup;
 			children = (
@@ -1922,6 +1935,7 @@
 			isa = PBXGroup;
 			children = (
 				FA8CB863255A865600D09B1D /* AdminOrganizationsApplicationsView.swift */,
+				FA0F4C0425A13D120011484E /* Alpha */,
 				FA8CB865255A865900D09B1D /* Beta */,
 			);
 			path = AdminOrganizationsApplications;
@@ -2520,6 +2534,7 @@
 				FA15B70525473D1D00D29835 /* ActionFactory.swift in Sources */,
 				FA8CB8242558386600D09B1D /* MemberCurrentActionsTableViewCell.swift in Sources */,
 				0E4BD1E2250CF1E300F8D4C8 /* OnboardSupplierViewBeta.swift in Sources */,
+				FA0F4C0825A13E080011484E /* AdminOrganizationsApplicationsViewAlphaCell.swift in Sources */,
 				0E506C3324FC1B9C00ABA211 /* ReviewDependencies.swift in Sources */,
 				FAE888D3256141710023C232 /* MemberProfileFactory.swift in Sources */,
 				FA21D7F825701A09008024F0 /* OnboardOrganizationViewAlpha.swift in Sources */,
@@ -2639,6 +2654,7 @@
 				0E506C3524FC1BA700ABA211 /* ReviewFactory.swift in Sources */,
 				0E56173C25372BC5005DF4F3 /* CurrentActionsViewBeta.swift in Sources */,
 				FA8CB820255814B300D09B1D /* MemberCurrentActionsViewBeta.swift in Sources */,
+				FA0F4C0625A13D200011484E /* AdminOrganizationsApplicationsViewAlpha.swift in Sources */,
 				FA69F9DC2573A52300F519CB /* MembersOfOrganizationViewAlphaCell.swift in Sources */,
 				0E5617602537324E005DF4F3 /* OrganizationRouter.swift in Sources */,
 				FA8CB86E255A87E200D09B1D /* AdminApprovedOrganizationsViewBeta.swift in Sources */,
