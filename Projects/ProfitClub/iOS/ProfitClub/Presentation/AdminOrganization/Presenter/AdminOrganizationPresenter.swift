@@ -51,4 +51,34 @@ extension AdminOrganizationPresenter: OrganizationApplicationViewOutput {
         view.organizationContactName = self.organization.contact
         view.organizationPhoneNumber = self.organization.phone
     }
+
+    func organizationApplication(view: OrganizationApplicationViewInput, userWantsToApprove sender: Any) {
+        // TODO: @temur add confirmation
+        self.router?.closeApplication(view, completion: { [weak self] in
+            guard let organization = self?.organization else { return }
+            self?.services.organization.approve(organization: organization) { [weak self] (result) in
+                switch result {
+                case .success(let organization):
+                    print("TODO: @temur hide application and reload approved")
+                case .failure(let error):
+                    self?.presenters.error.present(error)
+                }
+            }
+        })
+    }
+
+    func organizationApplication(view: OrganizationApplicationViewInput, userWantsToReject sender: Any) {
+        // TODO: @temur add confirmation
+        self.router?.closeApplication(view, completion: { [weak self] in
+            guard let organization = self?.organization else { return }
+            self?.services.organization.reject(organization: organization) { [weak self] (result) in
+                switch result {
+                case .success(let organization):
+                    print("TODO: @temur hide application")
+                case .failure(let error):
+                    self?.presenters.error.present(error)
+                }
+            }
+        })
+    }
 }
