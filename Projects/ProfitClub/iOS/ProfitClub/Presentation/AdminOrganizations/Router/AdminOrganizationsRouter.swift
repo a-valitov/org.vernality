@@ -41,8 +41,7 @@ final class AdminOrganizationsRouter {
     }
 
     func buildApprovedOrganizations(output: AdminApprovedOrganizationsViewOutput?) -> UIViewController {
-        let storyboard = UIStoryboard(name: "AdminApprovedOrganizationsViewBeta", bundle: nil)
-        let controller = storyboard.instantiateInitialViewController() as! AdminApprovedOrganizationsViewBeta
+        let controller = AdminApprovedOrganizationsViewAlpha()
         controller.output = output
         return controller
     }
