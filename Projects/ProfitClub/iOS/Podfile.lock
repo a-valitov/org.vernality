@@ -1,6 +1,7 @@
 PODS:
   - ActivityPresenter (0.0.1)
   - Bolts/Tasks (1.9.1)
+  - ConfirmationPresenter (0.0.1)
   - ErrorPresenter (0.0.1)
   - FittedSheets (2.2.3)
   - Kingfisher (5.15.8):
@@ -43,6 +44,7 @@ PODS:
 
 DEPENDENCIES:
   - ActivityPresenter (from `../../../Pods/Packages/ActivityPresenter.podspec`)
+  - ConfirmationPresenter (from `../../../Pods/Packages/ConfirmationPresenter.podspec`)
   - ErrorPresenter (from `../../../Pods/Packages/ErrorPresenter.podspec`)
   - Kingfisher
   - Main (from `../../../Pods/Modules/Main.podspec`)
@@ -66,6 +68,8 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   ActivityPresenter:
     :path: "../../../Pods/Packages/ActivityPresenter.podspec"
+  ConfirmationPresenter:
+    :path: "../../../Pods/Packages/ConfirmationPresenter.podspec"
   ErrorPresenter:
     :path: "../../../Pods/Packages/ErrorPresenter.podspec"
   Main:
@@ -88,6 +92,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   ActivityPresenter: 43362337d96a0ea52420fe808517fe9cd1b527a4
   Bolts: 8c1e8aab2f603387b8b9924f57d1d64f43d3ffdc
+  ConfirmationPresenter: 8dc6e46d920dbaf9358f93f28358e85eb3e76255
   ErrorPresenter: deb60f0739744b9b79bbf7be09e7e0a473ba132b
   FittedSheets: 5533375af9ed713977b8e6d88b74c90e8f5df041
   Kingfisher: a3c03d702433fa6cfedabb2bddbe076fb8f2e902
@@ -102,6 +107,6 @@ SPEC CHECKSUMS:
   ProfitClubModel: 38acfa2527d8cac51c97c8494db90fdd3025d32f
   ProfitClubParse: f0319471560bd2af6fd3d2753a8980bab1656b1a
 
-PODFILE CHECKSUM: b4f1ae0234414a86954873e1f1cb706edcc99b3f
+PODFILE CHECKSUM: 0a09ec1f15d4d3c42da0968bfa83acfa81beefb5
 
 COCOAPODS: 1.10.0
