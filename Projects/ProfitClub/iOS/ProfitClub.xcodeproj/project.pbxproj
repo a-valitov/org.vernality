@@ -93,6 +93,7 @@
 		FA0F4C0825A13E080011484E /* AdminOrganizationsApplicationsViewAlphaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0F4C0725A13E080011484E /* AdminOrganizationsApplicationsViewAlphaCell.swift */; };
 		FA0F4C0B25A178C00011484E /* AdminApprovedOrganizationsViewAlpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0F4C0A25A178C00011484E /* AdminApprovedOrganizationsViewAlpha.swift */; };
 		FA0F4C0D25A179580011484E /* AdminApprovedOrganizationsViewAlphaCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0F4C0C25A179580011484E /* AdminApprovedOrganizationsViewAlphaCell.swift */; };
+		FA0F4C1025A17C0A0011484E /* OrganizationApplicationViewAlpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0F4C0F25A17C0A0011484E /* OrganizationApplicationViewAlpha.swift */; };
 		FA15B70525473D1D00D29835 /* ActionFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA15B70425473D1D00D29835 /* ActionFactory.swift */; };
 		FA15B70725473D3A00D29835 /* ActionDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA15B70625473D3A00D29835 /* ActionDependencies.swift */; };
 		FA15B70925473D5A00D29835 /* ActionModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA15B70825473D5A00D29835 /* ActionModule.swift */; };
@@ -357,6 +358,7 @@
 		FA0F4C0725A13E080011484E /* AdminOrganizationsApplicationsViewAlphaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminOrganizationsApplicationsViewAlphaCell.swift; sourceTree = "<group>"; };
 		FA0F4C0A25A178C00011484E /* AdminApprovedOrganizationsViewAlpha.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminApprovedOrganizationsViewAlpha.swift; sourceTree = "<group>"; };
 		FA0F4C0C25A179580011484E /* AdminApprovedOrganizationsViewAlphaCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminApprovedOrganizationsViewAlphaCell.swift; sourceTree = "<group>"; };
+		FA0F4C0F25A17C0A0011484E /* OrganizationApplicationViewAlpha.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationApplicationViewAlpha.swift; sourceTree = "<group>"; };
 		FA15B70425473D1D00D29835 /* ActionFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionFactory.swift; sourceTree = "<group>"; };
 		FA15B70625473D3A00D29835 /* ActionDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionDependencies.swift; sourceTree = "<group>"; };
 		FA15B70825473D5A00D29835 /* ActionModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionModule.swift; sourceTree = "<group>"; };
@@ -1209,6 +1211,14 @@
 			path = Alpha;
 			sourceTree = "<group>";
 		};
+		FA0F4C0E25A17BF60011484E /* Alpha */ = {
+			isa = PBXGroup;
+			children = (
+				FA0F4C0F25A17C0A0011484E /* OrganizationApplicationViewAlpha.swift */,
+			);
+			path = Alpha;
+			sourceTree = "<group>";
+		};
 		FA15B70125473C4000D29835 /* Router */ = {
 			isa = PBXGroup;
 			children = (
@@ -2042,6 +2052,7 @@
 			isa = PBXGroup;
 			children = (
 				FA8CB882255AD88F00D09B1D /* OrganizationApplicationView.swift */,
+				FA0F4C0E25A17BF60011484E /* Alpha */,
 				FA8CB884255AD89200D09B1D /* Beta */,
 			);
 			path = OrganizationApplication;
@@ -2657,6 +2668,7 @@
 				0E6B9723254D656500055570 /* Secrets.swift in Sources */,
 				FA6E8BC7254D997E007B8B4E /* CommercialOffersModule.swift in Sources */,
 				FA15B70925473D5A00D29835 /* ActionModule.swift in Sources */,
+				FA0F4C1025A17C0A0011484E /* OrganizationApplicationViewAlpha.swift in Sources */,
 				FA56638B253F3AF500D19D4E /* SupplierView.swift in Sources */,
 				FA21D7DF256D8516008024F0 /* PastActionView.swift in Sources */,
 				0E90499824F6160F0061A605 /* OnboardFactory.swift in Sources */,

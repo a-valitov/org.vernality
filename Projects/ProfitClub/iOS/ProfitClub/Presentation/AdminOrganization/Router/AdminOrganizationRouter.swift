@@ -23,8 +23,7 @@ final class AdminOrganizationRouter {
 
     @discardableResult
     func openApplication(output: OrganizationApplicationViewOutput?) -> OrganizationApplicationViewInput {
-        let storyboard = UIStoryboard(name: "OrganizationApplicationViewBeta", bundle: nil)
-        let applicationView = storyboard.instantiateInitialViewController() as! OrganizationApplicationViewBeta
+        let applicationView = OrganizationApplicationViewAlpha()
         applicationView.output = output
         self.main?.raise(applicationView, animated: true)
         return applicationView
