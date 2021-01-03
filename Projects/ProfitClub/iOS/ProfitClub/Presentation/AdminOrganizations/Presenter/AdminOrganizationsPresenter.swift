@@ -63,10 +63,36 @@ extension AdminOrganizationsPresenter: AdminOrganizationsApplicationsViewOutput 
             }
         }
     }
+
+    func adminOrganizationsApplications(view: AdminOrganizationsApplicationsViewInput, didSelect organization: PCOrganization) {
+        self.output?.adminOrganizations(module: self, didSelect: organization)
+    }
+
+    func adminOrganizationsApplications(view: AdminOrganizationsApplicationsViewInput, userWantsToRefresh sender: Any) {
+        self.services.organization.fetch(.onReview) { [weak self] (result) in
+            switch result {
+            case .success(let organizations):
+                view.organizations = organizations.map({ $0.any })
+            case .failure(let error):
+                self?.presenters.error.present(error)
+            }
+        }
+    }
 }
 
 extension AdminOrganizationsPresenter: AdminApprovedOrganizationsViewOutput {
     func adminApprovedOrganizationsDidLoad(view: AdminApprovedOrganizationsViewInput) {
+        self.services.organization.fetch(.approved) { [weak self] (result) in
+            switch result {
+            case .success(let organizations):
+                view.organizations = organizations
+            case .failure(let error):
+                self?.presenters.error.present(error)
+            }
+        }
+    }
+
+    func adminApprovedOrganizations(view: AdminApprovedOrganizationsViewInput, userWantsToRefresh sender: Any) {
         self.services.organization.fetch(.approved) { [weak self] (result) in
             switch result {
             case .success(let organizations):

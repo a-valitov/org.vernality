@@ -43,10 +43,20 @@ final class AdminApprovedOrganizationsViewBeta: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "approvedOrganizationCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "approvedOrganizationCell", for: indexPath) as! AdminApprovedOrganizationsViewBetaTableViewCell
+        cell.selectionStyle = .none
+
         let organization = self.organizations[indexPath.row]
-        // TODO: @temur show organization info
+
+        cell.organizationNameLabel.text = organization.name
+        cell.dateLabel.text = "\(Date())"
+
         return cell
+    }
+
+    @IBAction func pullToRefreshValueChanged(_ sender: UIRefreshControl) {
+        self.output?.adminApprovedOrganizations(view: self, userWantsToRefresh: sender)
+        sender.endRefreshing()
     }
 }
 

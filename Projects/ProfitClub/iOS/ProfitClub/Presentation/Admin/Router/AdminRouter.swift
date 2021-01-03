@@ -27,13 +27,19 @@ final class AdminRouter {
 
     @discardableResult
     func openAdminTabBar(output: AdminTabBarViewOutput & AdminOrganizationsModuleOutput) -> AdminTabBarViewInput {
-        let storyboard = UIStoryboard(name: "AdminTabBarViewBeta", bundle: nil)
-        let adminTabBar = storyboard.instantiateInitialViewController() as! AdminTabBarViewBeta
+        let adminTabBar = AdminTabBarViewAlpha()
         adminTabBar.output = output
         let applications = self.factories.adminOrganizations.make(output: output)
         applications.embed(in: adminTabBar, main: self.main)
         self.main?.push(adminTabBar, animated: true)
         return adminTabBar
+    }
+
+    @discardableResult
+    func open(organization: PCOrganization, output: AdminOrganizationModuleOutput?) -> AdminOrganizationModule {
+        let organizationModule = self.factories.adminOrganization.make(organization: organization, output: output)
+        organizationModule.open(in: self.main)
+        return organizationModule
     }
 
     private let factories: AdminFactories

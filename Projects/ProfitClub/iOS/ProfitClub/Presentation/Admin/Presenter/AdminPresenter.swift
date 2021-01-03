@@ -41,11 +41,25 @@ final class AdminPresenter: AdminModule {
 }
 
 extension AdminPresenter: AdminTabBarViewOutput {
+    func adminTabBar(view: AdminTabBarViewInput, userWantsToLogout sender: Any) {
+        view.showLogoutConfirmationDialog()
+    }
+
+    func adminTabBar(view: AdminTabBarViewInput, userConfirmToLogout sender: Any) {
+        self.output?.admin(module: self, userWantsToLogoutInside: self.router?.main)
+    }
+
+    func adminTabBar(view: AdminTabBarViewInput, userWantsToChangeRole sender: Any) {
+        self.output?.admin(module: self, userWantsToChangeRole: self.router?.main)
+    }
+
     
 }
 
 extension AdminPresenter: AdminOrganizationsModuleOutput {
-
+    func adminOrganizations(module: AdminOrganizationsModule, didSelect organization: PCOrganization) {
+        self.router?.open(organization: organization, output: self)
+    }
 }
 
 extension AdminPresenter: AdminOrganizationModuleOutput {

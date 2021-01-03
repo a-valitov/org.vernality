@@ -18,7 +18,55 @@ import UIKit
 
 final class OrganizationApplicationViewBeta: UIViewController {
     var output: OrganizationApplicationViewOutput?
+    var organizationName: String? {
+        didSet {
+            if self.isViewLoaded {
+                self.organizationNameLabel.text = self.organizationName
+            }
+        }
+    }
+    var organizationContactName: String? {
+        didSet {
+            if self.isViewLoaded {
+                self.organizationContactNameLabel.text = self.organizationContactName
+            }
+        }
+    }
+    var organizationINN: String? {
+        didSet {
+            if self.isViewLoaded {
+                self.organizationINNLabel.text = self.organizationINN
+            }
+        }
+    }
+    var organizationPhoneNumber: String? {
+        didSet {
+            if self.isViewLoaded {
+                self.organizationPhoneNumberLabel.text = self.organizationPhoneNumber
+            }
+        }
+    }
 
+    @IBOutlet weak var organizationImageView: UIImageView!
+    @IBOutlet weak var organizationNameLabel: UILabel!
+    @IBOutlet weak var organizationContactNameLabel: UILabel!
+    @IBOutlet weak var organizationINNLabel: UILabel!
+    @IBOutlet weak var organizationPhoneNumberLabel: UILabel!
+    @IBOutlet weak var rejectOrganization: UIButton! {
+        didSet {
+            self.rejectOrganization.layer.borderWidth = 1
+            self.rejectOrganization.layer.borderColor = UIColor.black.cgColor
+        }
+    }
+
+    @IBAction func cancelButtonTouchUpInside() {
+        dismiss(animated: true)
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.output?.organizationApplicationDidLoad(view: self)
+    }
 }
 
 extension OrganizationApplicationViewBeta: OrganizationApplicationViewInput {

@@ -17,9 +17,12 @@
 import UIKit
 
 protocol OrganizationApplicationViewInput: UIViewController {
-
+    var organizationName: String? { get set }
+    var organizationContactName: String? { get set }
+    var organizationINN: String? { get set }
+    var organizationPhoneNumber: String? { get set }
 }
 
 protocol OrganizationApplicationViewOutput {
-    
+    func organizationApplicationDidLoad(view: OrganizationApplicationViewInput)
 }

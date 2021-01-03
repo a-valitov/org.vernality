@@ -138,6 +138,10 @@ final class SupplierCommercialOfferViewAlpha: UIViewController {
         UINavigationBar.appearance().tintColor = .white
     }
 
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+
     private func setup() {
         view.backgroundColor = .white
 

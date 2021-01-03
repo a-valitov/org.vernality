@@ -24,5 +24,5 @@ protocol AdminOrganizationsModule: class {
 }
 
 protocol AdminOrganizationsModuleOutput: class {
-
+    func adminOrganizations(module: AdminOrganizationsModule, didSelect organization: PCOrganization)
 }

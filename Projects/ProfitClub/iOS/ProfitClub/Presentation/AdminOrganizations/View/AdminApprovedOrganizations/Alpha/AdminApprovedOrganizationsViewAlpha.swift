@@ -1,5 +1,5 @@
-//  Copyright (C) 2020 Startup Studio Vernality
-//  Created by Macbook on 10.11.2020
+//  Copyright (C) 2021 Startup Studio Vernality
+//  Created by Macbook on 03.01.2021
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -17,8 +17,8 @@
 import UIKit
 import ProfitClubModel
 
-final class AdminOrganizationsApplicationsViewBeta: UITableViewController {
-    var output: AdminOrganizationsApplicationsViewOutput?
+final class AdminApprovedOrganizationsViewAlpha: UITableViewController {
+    var output: AdminApprovedOrganizationsViewOutput?
 
     var organizations: [AnyPCOrganization] = [] {
         didSet {
@@ -28,41 +28,53 @@ final class AdminOrganizationsApplicationsViewBeta: UITableViewController {
         }
     }
 
+    init() {
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    @available(*, unavailable)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
-        self.output?.adminOrganizationsApplicationsViewDidLoad(view: self)
-    }
+        self.output?.adminApprovedOrganizationsDidLoad(view: self)
 
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let organization = self.organizations[indexPath.row]
-        self.output?.adminOrganizationsApplications(view: self, didSelect: organization)
+        tableView.register(AdminApprovedOrganizationsViewAlphaCell.self, forCellReuseIdentifier: AdminApprovedOrganizationsViewAlphaCell.reuseIdentifier)
+
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action: #selector(AdminApprovedOrganizationsViewAlpha.pullToRefreshValueChanged(_:)), for: .valueChanged)
+        tableView.refreshControl = refreshControl
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.organizations.count
+        return organizations.count
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        84
+        return 76
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "applicationsCell", for: indexPath) as! AdminOrganizationsApplicationsTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: AdminApprovedOrganizationsViewAlphaCell.reuseIdentifier, for: indexPath) as! AdminApprovedOrganizationsViewAlphaCell
         cell.selectionStyle = .none
 
         let organization = self.organizations[indexPath.row]
         cell.organizationNameLabel.text = organization.name
-        cell.organizationContactNameLabel.text = organization.contact
+
         return cell
     }
 
-    @IBAction func pullToRefreshValueChanged(_ sender: UIRefreshControl) {
-        self.output?.adminOrganizationsApplications(view: self, userWantsToRefresh: sender)
+    @objc private func pullToRefreshValueChanged(_ sender: UIRefreshControl) {
+        self.output?.adminApprovedOrganizations(view: self, userWantsToRefresh: sender)
         sender.endRefreshing()
     }
 }
 
-extension AdminOrganizationsApplicationsViewBeta: AdminOrganizationsApplicationsViewInput {
+extension AdminApprovedOrganizationsViewAlpha: AdminApprovedOrganizationsViewInput {
 
 }
+
+

@@ -45,5 +45,10 @@ final class AdminOrganizationPresenter: AdminOrganizationModule {
 }
 
 extension AdminOrganizationPresenter: OrganizationApplicationViewOutput {
-    
+    func organizationApplicationDidLoad(view: OrganizationApplicationViewInput) {
+        view.organizationName = self.organization.name
+        view.organizationINN = self.organization.inn
+        view.organizationContactName = self.organization.contact
+        view.organizationPhoneNumber = self.organization.phone
+    }
 }

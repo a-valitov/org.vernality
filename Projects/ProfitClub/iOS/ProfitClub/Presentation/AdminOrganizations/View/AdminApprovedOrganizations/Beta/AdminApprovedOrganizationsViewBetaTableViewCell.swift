@@ -1,5 +1,5 @@
-//  Copyright (C) 2020 Startup Studio Vernality
-//  Created by Macbook on 10.11.2020
+//  Copyright (C) 2021 Startup Studio Vernality
+//  Created by Macbook on 03.01.2021
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -15,14 +15,16 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import UIKit
-import ProfitClubModel
 
-protocol AdminOrganizationsApplicationsViewInput: UIViewController {
-    var organizations: [AnyPCOrganization] { get set }
-}
+class AdminApprovedOrganizationsViewBetaTableViewCell: UITableViewCell {
 
-protocol AdminOrganizationsApplicationsViewOutput {
-    func adminOrganizationsApplicationsViewDidLoad(view: AdminOrganizationsApplicationsViewInput)
-    func adminOrganizationsApplications(view: AdminOrganizationsApplicationsViewInput, didSelect organization: PCOrganization)
-    func adminOrganizationsApplications(view: AdminOrganizationsApplicationsViewInput, userWantsToRefresh sender: Any)
+    @IBOutlet weak var organizationImageView: UIImageView! {
+        didSet {
+            organizationImageView.layer.cornerRadius = organizationImageView.frame.height / 2
+            organizationImageView.clipsToBounds = true
+        }
+    }
+    @IBOutlet weak var organizationNameLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    
 }

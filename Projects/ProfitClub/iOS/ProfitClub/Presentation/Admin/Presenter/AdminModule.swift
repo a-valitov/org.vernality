@@ -22,5 +22,6 @@ protocol AdminModule: class {
 }
 
 protocol AdminModuleOutput: class {
-    
+    func admin(module: AdminModule, userWantsToLogoutInside main: MainModule?)
+    func admin(module: AdminModule, userWantsToChangeRole main: MainModule?)
 }

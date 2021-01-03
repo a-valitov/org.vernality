@@ -23,8 +23,7 @@ final class AdminOrganizationsRouter {
 
     @discardableResult
     func embed(in tabBarController: UITabBarController, output: AdminOrganizationsContainerViewOutput?) -> AdminOrganizationsContainerViewInput {
-        let storyboard = UIStoryboard(name: "AdminOrganizationsContainerViewBeta", bundle: nil)
-        let organizationsContainer = storyboard.instantiateInitialViewController() as! AdminOrganizationsContainerViewBeta
+        let organizationsContainer = AdminOrganizationsContainerViewAlpha()
         organizationsContainer.output = output
         if var viewControllers = tabBarController.viewControllers {
             viewControllers.append(organizationsContainer)
@@ -36,15 +35,13 @@ final class AdminOrganizationsRouter {
     }
 
     func buildOrganizationApplications(output: AdminOrganizationsApplicationsViewOutput?) -> UIViewController {
-        let storyboard = UIStoryboard(name: "AdminOrganizationsApplicationsViewBeta", bundle: nil)
-        let controller = storyboard.instantiateInitialViewController() as! AdminOrganizationsApplicationsViewBeta
+        let controller = AdminOrganizationsApplicationsViewAlpha()
         controller.output = output
         return controller
     }
 
     func buildApprovedOrganizations(output: AdminApprovedOrganizationsViewOutput?) -> UIViewController {
-        let storyboard = UIStoryboard(name: "AdminApprovedOrganizationsViewBeta", bundle: nil)
-        let controller = storyboard.instantiateInitialViewController() as! AdminApprovedOrganizationsViewBeta
+        let controller = AdminApprovedOrganizationsViewAlpha()
         controller.output = output
         return controller
     }

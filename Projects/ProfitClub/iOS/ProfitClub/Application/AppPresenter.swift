@@ -227,5 +227,24 @@ extension AppPresenter: SupplierProfileModuleOutput {
 }
 
 extension AppPresenter: AdminModuleOutput {
+    func admin(module: AdminModule, userWantsToLogoutInside main: MainModule?) {
+        self.userService.logout { [weak self] result in
+            switch result {
+            case .failure(let error):
+                self?.errorPresenter.present(error)
+            case .success:
+                main?.unwindToRoot()
+                let onboard = self?.factory.onboard(output: self)
+                onboard?.start(in: main)
+            }
+        }
+    }
+
+    func admin(module: AdminModule, userWantsToChangeRole main: MainModule?) {
+        main?.unwindToRoot()
+        let module = self.factory.review(output: self)
+        module.start(in: main)
+    }
+
 
 }
