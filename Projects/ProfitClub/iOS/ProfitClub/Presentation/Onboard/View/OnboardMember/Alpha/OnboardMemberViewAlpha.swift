@@ -78,7 +78,6 @@ final class OnboardMemberViewAlpha: UIViewController {
     private lazy var memberNameTextField: UITextField = {
         let textField = UITextField()
         textField.font = UIFont(name: "Montserrat-Regular", size: 14.0)
-        textField.layer.sublayerTransform = CATransform3DMakeTranslation(15, 0, 0)
         textField.backgroundColor = #colorLiteral(red: 0.5333333333, green: 0.5333333333, blue: 0.5333333333, alpha: 0.3)
         textField.layer.cornerRadius = 5
         textField.autocorrectionType = .no
@@ -93,7 +92,6 @@ final class OnboardMemberViewAlpha: UIViewController {
     private lazy var memberSurnameTextField: UITextField = {
         let textField = UITextField()
         textField.font = UIFont(name: "Montserrat-Regular", size: 14.0)
-        textField.layer.sublayerTransform = CATransform3DMakeTranslation(15, 0, 0)
         textField.backgroundColor = #colorLiteral(red: 0.5333333333, green: 0.5333333333, blue: 0.5333333333, alpha: 0.3)
         textField.layer.cornerRadius = 5
         textField.autocorrectionType = .no
@@ -173,6 +171,15 @@ final class OnboardMemberViewAlpha: UIViewController {
         let blurVisualEffectView = UIVisualEffectView(effect: blurEffect)
         blurVisualEffectView.frame = view.bounds
         self.backgroundImageView.addSubview(blurVisualEffectView)
+
+        addPadding(to: memberNameTextField)
+        addPadding(to: memberSurnameTextField)
+    }
+
+    private func addPadding(to textField: UITextField) {
+        let leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: 0))
+        textField.leftView = leftView
+        textField.leftViewMode = .always
     }
 
     private func style() {

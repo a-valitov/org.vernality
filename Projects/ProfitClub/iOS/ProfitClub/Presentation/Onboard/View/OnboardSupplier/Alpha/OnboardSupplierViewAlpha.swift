@@ -92,7 +92,6 @@ final class OnboardSupplierViewAlpha: UIViewController {
     private lazy var supplierNameTextField: UITextField = {
         let textField = UITextField()
         textField.font = UIFont(name: "Montserrat-Regular", size: 14.0)
-        textField.layer.sublayerTransform = CATransform3DMakeTranslation(15, 0, 0)
         textField.backgroundColor = #colorLiteral(red: 0.5333333333, green: 0.5333333333, blue: 0.5333333333, alpha: 0.3)
         textField.layer.cornerRadius = 5
         textField.autocorrectionType = .no
@@ -106,7 +105,6 @@ final class OnboardSupplierViewAlpha: UIViewController {
     private lazy var supplierINNTextField: UITextField = {
         let textField = UITextField()
         textField.font = UIFont(name: "Montserrat-Regular", size: 14.0)
-        textField.layer.sublayerTransform = CATransform3DMakeTranslation(15, 0, 0)
         textField.backgroundColor = #colorLiteral(red: 0.5333333333, green: 0.5333333333, blue: 0.5333333333, alpha: 0.3)
         textField.layer.cornerRadius = 5
         textField.autocorrectionType = .no
@@ -121,7 +119,6 @@ final class OnboardSupplierViewAlpha: UIViewController {
     private lazy var supplierContactTextField: UITextField = {
         let textField = UITextField()
         textField.font = UIFont(name: "Montserrat-Regular", size: 14.0)
-        textField.layer.sublayerTransform = CATransform3DMakeTranslation(15, 0, 0)
         textField.backgroundColor = #colorLiteral(red: 0.5333333333, green: 0.5333333333, blue: 0.5333333333, alpha: 0.3)
         textField.layer.cornerRadius = 5
         textField.autocorrectionType = .no
@@ -135,7 +132,6 @@ final class OnboardSupplierViewAlpha: UIViewController {
     private lazy var supplierPhoneNumberTextField: UITextField = {
         let textField = UITextField()
         textField.font = UIFont(name: "Montserrat-Regular", size: 14.0)
-        textField.layer.sublayerTransform = CATransform3DMakeTranslation(15, 0, 0)
         textField.backgroundColor = #colorLiteral(red: 0.5333333333, green: 0.5333333333, blue: 0.5333333333, alpha: 0.3)
         textField.layer.cornerRadius = 5
         textField.autocorrectionType = .no
@@ -224,6 +220,17 @@ final class OnboardSupplierViewAlpha: UIViewController {
 
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+
+        addPadding(to: supplierNameTextField)
+        addPadding(to: supplierINNTextField)
+        addPadding(to: supplierContactTextField)
+        addPadding(to: supplierPhoneNumberTextField)
+    }
+
+    private func addPadding(to textField: UITextField) {
+        let leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: 0))
+        textField.leftView = leftView
+        textField.leftViewMode = .always
     }
 
     private func style() {
