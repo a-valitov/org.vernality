@@ -193,6 +193,10 @@ final class SupplierActionsViewAlpha: UIViewController {
         self.endDateTextField.delegate = self
     }
 
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+
     private func setup() {
         view.backgroundColor = .white
 
