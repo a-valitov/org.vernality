@@ -28,4 +28,8 @@ final class AdminOrganizationRouter {
         self.main?.raise(applicationView, animated: true)
         return applicationView
     }
+
+    func closeApplication(_ view: OrganizationApplicationViewInput, completion: (() -> Void)? = nil) {
+        self.main?.unraise(animated: true, completion: completion)
+    }
 }

@@ -51,6 +51,30 @@ public final class PCOrganizationServiceParse: PCOrganizationService {
         }
     }
 
+    public func approve(organization: PCOrganization, result: @escaping (Result<PCOrganization, Error>) -> Void) {
+        let parseOrganization = organization.parse
+        parseOrganization.status = .approved
+        parseOrganization.saveInBackground { (success, error) in
+            if let error = error {
+                result(.failure(error))
+            } else {
+                result(.success(parseOrganization.any))
+            }
+        }
+    }
+
+    public func reject(organization: PCOrganization, result: @escaping (Result<PCOrganization, Error>) -> Void) {
+        let parseOrganization = organization.parse
+        parseOrganization.status = .rejected
+        parseOrganization.saveInBackground { (success, error) in
+            if let error = error {
+                result(.failure(error))
+            } else {
+                result(.success(parseOrganization.any))
+            }
+        }
+    }
+
     public func approve(member: PCMember, result: @escaping (Result<PCMember, Error>) -> Void) {
         let parseMember = member.parse
         parseMember.status = .approved

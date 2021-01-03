@@ -25,4 +25,6 @@ protocol OrganizationApplicationViewInput: UIViewController {
 
 protocol OrganizationApplicationViewOutput {
     func organizationApplicationDidLoad(view: OrganizationApplicationViewInput)
+    func organizationApplication(view: OrganizationApplicationViewInput, userWantsToApprove sender: Any)
+    func organizationApplication(view: OrganizationApplicationViewInput, userWantsToReject sender: Any)
 }

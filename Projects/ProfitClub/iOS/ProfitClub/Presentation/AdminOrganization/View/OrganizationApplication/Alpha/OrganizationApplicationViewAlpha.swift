@@ -147,7 +147,6 @@ final class OrganizationApplicationViewAlpha: UIViewController {
 
     private lazy var cancelButton: UIButton = {
         let button = UIButton()
-        button.addTarget(self, action: #selector(OrganizationApplicationViewAlpha.cancelTouchUpInside(_:)), for: .touchUpInside)
         button.setImage(#imageLiteral(resourceName: "X"), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -165,6 +164,7 @@ final class OrganizationApplicationViewAlpha: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         layout()
+        setup()
         view.backgroundColor = .white
         self.output?.organizationApplicationDidLoad(view: self)
     }
@@ -174,11 +174,33 @@ final class OrganizationApplicationViewAlpha: UIViewController {
         self.rejectOrganizationButton.layer.borderWidth = 1
         self.rejectOrganizationButton.layer.borderColor = UIColor.black.cgColor
     }
+}
 
-    @objc private func cancelTouchUpInside(_ sender: Any) {
+// MARK: - Actions
+extension OrganizationApplicationViewAlpha {
+    @objc
+    private func cancelTouchUpInside(_ sender: Any) {
         dismiss(animated: true)
     }
 
+    @objc
+    private func approveOrganizationButtonTouchUpInside(_ sender: Any) {
+        output?.organizationApplication(view: self, userWantsToApprove: sender)
+    }
+
+    @objc
+    private func rejectOrganizationButtonTouchUpInside(_ sender: Any) {
+        output?.organizationApplication(view: self, userWantsToReject: sender)
+    }
+}
+
+// MARK: - Setup
+extension OrganizationApplicationViewAlpha {
+    private func setup() {
+        cancelButton.addTarget(self, action: #selector(OrganizationApplicationViewAlpha.cancelTouchUpInside(_:)), for: .touchUpInside)
+        approveOrganizationButton.addTarget(self, action: #selector(OrganizationApplicationViewAlpha.approveOrganizationButtonTouchUpInside(_:)), for: .touchUpInside)
+        rejectOrganizationButton.addTarget(self, action: #selector(OrganizationApplicationViewAlpha.rejectOrganizationButtonTouchUpInside(_:)), for: .touchUpInside)
+    }
 }
 
 // MARK: - Layout
