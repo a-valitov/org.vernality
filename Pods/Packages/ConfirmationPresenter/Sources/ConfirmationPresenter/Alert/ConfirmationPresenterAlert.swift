@@ -18,16 +18,19 @@
 import UIKit
 
 class ConfirmationPresenterAlert: ConfirmationPresenter {
-    func present(title: String, message: String, actionTitle: String, withCancelAction: Bool, completion: @escaping () -> Void) {
+    func present(title: String, message: String, actionTitle: String?, withCancelAction: Bool, completion: @escaping () -> Void) {
         self.presentAlert(title: title, message: message, actionTitle: actionTitle, withCancelAction: withCancelAction, completion: completion)
     }
 
-    private func presentAlert(title: String, message: String, actionTitle: String, withCancelAction: Bool, completion: @escaping () -> Void) {
+    private func presentAlert(title: String, message: String, actionTitle: String?, withCancelAction: Bool, completion: @escaping () -> Void) {
+        guard let actionTitle = actionTitle else { return }
+
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
 
-        let backView = alert.view.subviews.first?.subviews.first?.subviews.first
-        backView?.layer.cornerRadius = 14.0
-        backView?.backgroundColor = #colorLiteral(red: 0.1176470588, green: 0.1176470588, blue: 0.1176470588, alpha: 0.7476990582)
+        if let bgView = alert.view.subviews.first, let groupView = bgView.subviews.first, let contentView = groupView.subviews.first {
+            contentView.layer.cornerRadius = 14.0
+            contentView.backgroundColor = #colorLiteral(red: 0.1176470588, green: 0.1176470588, blue: 0.1176470588, alpha: 0.7476990582)
+        }
 
         var blurVisualEffectView: UIView?
         if let topView = UIApplication.shared.topViewController()?.view {
