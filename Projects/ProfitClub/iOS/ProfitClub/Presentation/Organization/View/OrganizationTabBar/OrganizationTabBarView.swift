@@ -20,7 +20,5 @@ protocol OrganizationTabBarViewInput: UIViewController {
 }
 
 protocol OrganizationTabBarViewOutput {
-    func organizationTabBar(view: OrganizationTabBarViewInput, tappedOn profile: Any)
-    func organizationTabBar(view: OrganizationTabBarViewInput, userWantsToLogout sender: Any)
-    func organizationTabBar(view: OrganizationTabBarViewInput, userWantsToChangeRole sender: Any)
+    func organizationTabBar(view: OrganizationTabBarViewInput, tappenOn menuBarButton: Any)
 }

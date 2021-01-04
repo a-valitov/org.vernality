@@ -27,7 +27,5 @@ protocol SupplierActionsInput: UIViewController {
 
 protocol SupplierActionsOutput {
     func supplierActionsDidFinish(view: SupplierActionsInput)
-    func supplierNavigationBar(view: SupplierActionsInput, tappedOn profile: Any)
-    func supplierActions(view: SupplierActionsInput, userWantsToLogout sender: Any)
-    func supplierActions(view: SupplierActionsInput, userWantsToChangeRole sender: Any)
+    func supplierActions(view: SupplierActionsInput, tappenOn menuBarButton: Any)
 }

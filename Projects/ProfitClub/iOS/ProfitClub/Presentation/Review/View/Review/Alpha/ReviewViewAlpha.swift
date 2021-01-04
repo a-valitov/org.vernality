@@ -97,49 +97,11 @@ final class ReviewViewAlpha: UITableViewController {
     }
 
     @objc private func rightBarButtonTouchUpInside(_ sender: Any) {
-        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-
-        alertController.view.tintColor = .black
-        let logoutAction = UIAlertAction(title: "Выход", style: .default) { _ in
-            self.output?.review(view: self, userWantsToLogout: sender)
-        }
-
-        let addRoleAction = UIAlertAction(title: "Добавить роль", style: .default) { _ in
-            self.output?.review(view: self, userWantsToAdd: sender)
-        }
-
-        let cancelAction = UIAlertAction(title: "Отменить", style: .cancel)
-        cancelAction.setValue(UIColor.red, forKey: "titleTextColor")
-
-        alertController.addAction(addRoleAction)
-        alertController.addAction(logoutAction)
-        alertController.addAction(cancelAction)
-        present(alertController, animated: true)
+        self.output?.review(view: self, tappenOn: sender)
     }
 }
 
 extension ReviewViewAlpha: ReviewViewInput {
-    func showLogoutConfirmationDialog() {
-        var blurEffect = UIBlurEffect()
-        blurEffect = UIBlurEffect(style: .dark)
-        let blurVisualEffectView = UIVisualEffectView(effect: blurEffect)
-        blurVisualEffectView.frame = view.bounds
-        blurVisualEffectView.alpha = 0.9
-        self.view.addSubview(blurVisualEffectView)
-        let controller = UIAlertController(title: "Подтвердите выход", message: "Вы уверены что хотите выйти?", preferredStyle: .alert)
-
-        controller.addAction(UIAlertAction(title: "Выйти", style: .destructive, handler: { [weak self] _ in
-            guard let sSelf = self else { return }
-            self?.output?.review(view: sSelf, userConfirmToLogout: controller)
-            blurVisualEffectView.removeFromSuperview()
-        }))
-
-        controller.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: { _ in
-            blurVisualEffectView.removeFromSuperview()
-        }))
-
-        self.present(controller, animated: true)
-    }
 }
 
 extension ReviewViewAlpha {

@@ -19,6 +19,7 @@ import Main
 import ErrorPresenter
 import ActivityPresenter
 import ConfirmationPresenter
+import MenuPresenter
 import ProfitClubModel
 
 final class SupplierPresenter: SupplierModule {
@@ -55,26 +56,12 @@ extension SupplierPresenter: SupplierViewOutput {
         self.router?.openSupplierCommercialOffer(output: self)
     }
 
-    func supplierNavigationBar(view: SupplierViewInput, tappedOn profile: Any) {
-        self.output?.supplier(module: self, userWantsToOpenProfileOf: self.supplier, inside: self.router?.main)
-    }
-
-    func supplier(view: SupplierViewInput, userWantsToLogout sender: Any) {        self.presenters.confirmation.present(title: "Подтвердите выход", message: "Вы уверены что хотите выйти?", actionTitle: "Выйти", withCancelAction: true) { [weak self] in
-        guard let sSelf = self else { return }
-        sSelf.output?.supplier(module: sSelf, userWantsToLogoutInside: sSelf.router?.main)
-        }
-    }
-
-    func supplier(view: SupplierViewInput, userWantsToChangeRole sender: Any) {
-        self.output?.supplier(module: self, userWantsToChangeRole: self.router?.main)
+    func supplier(view: SupplierViewInput, tappenOn menuBarButton: Any) {
+        self.showMenu()
     }
 }
 
 extension SupplierPresenter: SupplierActionsOutput {
-    func supplierNavigationBar(view: SupplierActionsInput, tappedOn profile: Any) {
-        self.output?.supplier(module: self, userWantsToOpenProfileOf: self.supplier, inside: self.router?.main)
-    }
-
     func supplierActionsDidFinish(view: SupplierActionsInput) {
         guard let message = view.message, !message.isEmpty else {
             self.presenters.error.present(SupplierError.actionMessageIsEmpty)
@@ -126,22 +113,12 @@ extension SupplierPresenter: SupplierActionsOutput {
         }
     }
 
-    func supplierActions(view: SupplierActionsInput, userWantsToLogout sender: Any) {
-        self.presenters.confirmation.present(title: "Подтвердите выход", message: "Вы уверены что хотите выйти?", actionTitle: "Выйти", withCancelAction: true) { [weak self] in
-            guard let sSelf = self else { return }
-            sSelf.output?.supplier(module: sSelf, userWantsToLogoutInside: sSelf.router?.main)
-        }
-    }
-
-    func supplierActions(view: SupplierActionsInput, userWantsToChangeRole sender: Any) {
-        self.output?.supplier(module: self, userWantsToChangeRole: self.router?.main)
+    func supplierActions(view: SupplierActionsInput, tappenOn menuBarButton: Any) {
+        self.showMenu()
     }
 }
 
 extension SupplierPresenter: SupplierCommercialOfferOutput {
-    func supplierNavigationBar(view: SupplierCommercialOfferInput, tappedOn profile: Any) {
-        self.output?.supplier(module: self, userWantsToOpenProfileOf: self.supplier, inside: self.router?.main)    }
-    
     func supplierCommercialOfferDidFinish(view: SupplierCommercialOfferInput) {
         guard let message = view.message, !message.isEmpty, message != "Введите сообщение" else {
             self.presenters.error.present(SupplierError.actionMessageIsEmpty)
@@ -169,14 +146,25 @@ extension SupplierPresenter: SupplierCommercialOfferOutput {
         }
     }
 
-    func supplierCommercialOffer(view: SupplierCommercialOfferInput, userWantsToLogout sender: Any) {
-        self.presenters.confirmation.present(title: "Подтвердите выход", message: "Вы уверены что хотите выйти?", actionTitle: "Выйти", withCancelAction: true) { [weak self] in
-            guard let sSelf = self else { return }
-            sSelf.output?.supplier(module: sSelf, userWantsToLogoutInside: sSelf.router?.main)
-        }
+    func supplierCommercialOffer(view: SupplierCommercialOfferInput, tappenOn menuBarButton: Any) {
+        self.showMenu()
     }
+}
 
-    func supplierCommercialOffer(view: SupplierCommercialOfferInput, userWantsToChangeRole sender: Any) {
-        self.output?.supplier(module: self, userWantsToChangeRole: self.router?.main)
+extension SupplierPresenter {
+    func showMenu() {
+        self.presenters.menu.present(menuFor: .custom, logout: { [weak self] in
+        guard let sSelf = self else { return }
+        sSelf.presenters.confirmation.present(title: "Подтвердите выход", message: "Вы уверены что хотите выйти?", actionTitle: "Выйти", withCancelAction: true) { [weak sSelf] in
+            guard let ssSelf = sSelf else { return }
+            ssSelf.output?.supplier(module: ssSelf, userWantsToLogoutInside: ssSelf.router?.main)
+        }
+        }, changeRole: { [weak self] in
+            guard let sSelf = self else { return }
+            sSelf.output?.supplier(module: sSelf, userWantsToChangeRole: sSelf.router?.main)
+        }, openProfile: { [weak self] in
+            guard let sSelf = self else { return }
+            sSelf.output?.supplier(module: sSelf, userWantsToOpenProfileOf: sSelf.supplier, inside: sSelf.router?.main)
+        }, addRole: nil)
     }
 }
