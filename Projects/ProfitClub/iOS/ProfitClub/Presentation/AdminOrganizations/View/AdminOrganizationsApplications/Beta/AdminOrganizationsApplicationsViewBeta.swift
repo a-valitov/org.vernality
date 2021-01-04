@@ -20,13 +20,7 @@ import ProfitClubModel
 final class AdminOrganizationsApplicationsViewBeta: UITableViewController {
     var output: AdminOrganizationsApplicationsViewOutput?
 
-    var organizations: [AnyPCOrganization] = [] {
-        didSet {
-            if self.isViewLoaded {
-                self.tableView.reloadData()
-            }
-        }
-    }
+    var organizations = [AnyPCOrganization]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,5 +58,19 @@ final class AdminOrganizationsApplicationsViewBeta: UITableViewController {
 }
 
 extension AdminOrganizationsApplicationsViewBeta: AdminOrganizationsApplicationsViewInput {
+    func reload() {
+        if self.isViewLoaded {
+            self.tableView.reloadData()
+        }
+    }
 
+    func hide(organization: PCOrganization) {
+        guard let index = organizations.firstIndex(of: organization.any) else {
+            assertionFailure("Organization not found")
+            return
+        }
+        organizations.remove(at: index)
+        let indexPath = IndexPath(row: index, section: 0)
+        tableView.deleteRows(at: [indexPath], with: .fade)
+    }
 }

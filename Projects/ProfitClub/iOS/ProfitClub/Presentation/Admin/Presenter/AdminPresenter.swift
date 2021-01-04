@@ -18,6 +18,7 @@ import Foundation
 import Main
 import ErrorPresenter
 import ActivityPresenter
+import ConfirmationPresenter
 import ProfitClubModel
 
 final class AdminPresenter: AdminModule {
@@ -38,30 +39,38 @@ final class AdminPresenter: AdminModule {
     // dependencies
     private let presenters: AdminPresenters
     private let services: AdminServices
+    private weak var adminOrganizationsModule: AdminOrganizationsModule?
 }
 
 extension AdminPresenter: AdminTabBarViewOutput {
     func adminTabBar(view: AdminTabBarViewInput, userWantsToLogout sender: Any) {
-        view.showLogoutConfirmationDialog()
-    }
-
-    func adminTabBar(view: AdminTabBarViewInput, userConfirmToLogout sender: Any) {
-        self.output?.admin(module: self, userWantsToLogoutInside: self.router?.main)
+        self.presenters.confirmation.present(title: "Подтвердите выход", message: "Вы уверены что хотите выйти?", actionTitle: "Выйти", withCancelAction: true) { [weak self] in
+            guard let sSelf = self else { return }
+            sSelf.output?.admin(module: sSelf, userWantsToLogoutInside: sSelf.router?.main)
+        }
     }
 
     func adminTabBar(view: AdminTabBarViewInput, userWantsToChangeRole sender: Any) {
         self.output?.admin(module: self, userWantsToChangeRole: self.router?.main)
     }
-
-    
 }
 
 extension AdminPresenter: AdminOrganizationsModuleOutput {
+    func adminOrganizationsModuleDidLoad(module: AdminOrganizationsModule) {
+        self.adminOrganizationsModule = module
+    }
+
     func adminOrganizations(module: AdminOrganizationsModule, didSelect organization: PCOrganization) {
         self.router?.open(organization: organization, output: self)
     }
 }
 
 extension AdminPresenter: AdminOrganizationModuleOutput {
+    func adminOrganization(module: AdminOrganizationModule, didApprove organization: PCOrganization) {
+        self.adminOrganizationsModule?.onDidApprove(organization: organization)
+    }
 
+    func adminOrganization(module: AdminOrganizationModule, didReject organization: PCOrganization) {
+        self.adminOrganizationsModule?.onDidReject(organization: organization)
+    }
 }

@@ -23,14 +23,11 @@ protocol SupplierActionsInput: UIViewController {
     var image: UIImage? { get }
     var startDate: Date? { get }
     var endDate: Date? { get }
-
-    func showLogoutConfirmationDialog()
 }
 
 protocol SupplierActionsOutput {
     func supplierActionsDidFinish(view: SupplierActionsInput)
     func supplierNavigationBar(view: SupplierActionsInput, tappedOn profile: Any)
     func supplierActions(view: SupplierActionsInput, userWantsToLogout sender: Any)
-    func supplierActions(view: SupplierActionsInput, userConfirmLogout sender: Any)
     func supplierActions(view: SupplierActionsInput, userWantsToChangeRole sender: Any)
 }

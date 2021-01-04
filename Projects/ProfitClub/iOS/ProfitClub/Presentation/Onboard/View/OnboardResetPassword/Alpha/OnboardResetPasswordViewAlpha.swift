@@ -230,44 +230,5 @@ extension OnboardResetPasswordViewAlpha: UITextFieldDelegate {
 }
 
 extension OnboardResetPasswordViewAlpha: OnboardResetPasswordViewInput {
-    func alert() {
-        let alertController = UIAlertController(title: "Invalid Email", message: "Please check your email", preferredStyle: .alert)
-
-        let okAction = UIAlertAction(title: "Хорошо", style: .default)
-
-        alertController.addAction(okAction)
-        present(alertController, animated: true)
-    }
-
-    func finishAlert() {
-        var blurEffect = UIBlurEffect()
-        blurEffect = UIBlurEffect(style: .dark)
-        let blurVisualEffectView = UIVisualEffectView(effect: blurEffect)
-        blurVisualEffectView.frame = view.bounds
-        self.view.addSubview(blurVisualEffectView)
-
-        let alertController = UIAlertController(title: "", message: "", preferredStyle: .alert)
-
-        let backView = alertController.view.subviews.first?.subviews.first?.subviews.first
-        backView?.layer.cornerRadius = 14.0
-        backView?.backgroundColor = #colorLiteral(red: 0.1176470588, green: 0.1176470588, blue: 0.1176470588, alpha: 0.7476990582)
-
-        let titleFont = [NSAttributedString.Key.foregroundColor: UIColor(red: 241/255, green: 231/255, blue: 228/255, alpha: 1)]
-        let messageFont = [NSAttributedString.Key.foregroundColor: UIColor(red: 241/255, green: 231/255, blue: 228/255, alpha: 1)]
-        let attributedTitle = NSAttributedString(string: "Вы сбросили пароль", attributes: titleFont)
-        let attributedMessage = NSAttributedString(string: "Проверьте вашу почту", attributes: messageFont)
-
-        alertController.setValue(attributedTitle, forKey: "attributedTitle")
-        alertController.setValue(attributedMessage, forKey: "attributedMessage")
-
-        let okAction = UIAlertAction(title: "Спасибо", style: .default) { action in
-            self.output?.onboardResetPasswordFinish(view: self)
-            blurVisualEffectView.removeFromSuperview()
-        }
-        okAction.setValue(UIColor(red: 245/255, green: 200/255, blue: 145/255, alpha: 1), forKey: "titleTextColor")
-
-        alertController.addAction(okAction)
-        alertController.preferredAction = okAction
-        present(alertController, animated: true)
-    }
+    
 }

@@ -35,15 +35,29 @@ final class AdminOrganizationsPresenter: AdminOrganizationsModule {
         self.router?.embed(in: tabBarController, output: self)
     }
 
+    func onDidApprove(organization: PCOrganization) {
+        organizationApplicationsView?.hide(organization: organization)
+        self.reloadApprovedOrganizations()
+    }
+
+    func onDidReject(organization: PCOrganization) {
+        organizationApplicationsView?.hide(organization: organization)
+    }
+
     // dependencies
     private let presenters: AdminOrganizationsPresenters
     private let services: AdminOrganizationsServices
+
+    // submodules
+    private weak var organizationApplicationsView: AdminOrganizationsApplicationsViewInput?
+    private weak var approvedOrganizationsView: AdminApprovedOrganizationsViewInput?
 }
 
 extension AdminOrganizationsPresenter: AdminOrganizationsContainerViewOutput {
     func adminOrganizationsContainerDidLoad(view: AdminOrganizationsContainerViewInput) {
         view.applications = router?.buildOrganizationApplications(output: self)
         view.approved = router?.buildApprovedOrganizations(output: self)
+        output?.adminOrganizationsModuleDidLoad(module: self)
     }
 
     func adminOrganizationsContainer(view: AdminOrganizationsContainerViewInput, didChangeState state: AdminOrganizationsContainerState) {
@@ -54,14 +68,8 @@ extension AdminOrganizationsPresenter: AdminOrganizationsContainerViewOutput {
 
 extension AdminOrganizationsPresenter: AdminOrganizationsApplicationsViewOutput {
     func adminOrganizationsApplicationsViewDidLoad(view: AdminOrganizationsApplicationsViewInput) {
-        self.services.organization.fetch(.onReview) { [weak self] (result) in
-            switch result {
-            case .success(let organizations):
-                view.organizations = organizations.map({ $0.any })
-            case .failure(let error):
-                self?.presenters.error.present(error)
-            }
-        }
+        self.organizationApplicationsView = view
+        self.reloadApplicationsOrganizations()
     }
 
     func adminOrganizationsApplications(view: AdminOrganizationsApplicationsViewInput, didSelect organization: PCOrganization) {
@@ -69,34 +77,41 @@ extension AdminOrganizationsPresenter: AdminOrganizationsApplicationsViewOutput 
     }
 
     func adminOrganizationsApplications(view: AdminOrganizationsApplicationsViewInput, userWantsToRefresh sender: Any) {
-        self.services.organization.fetch(.onReview) { [weak self] (result) in
-            switch result {
-            case .success(let organizations):
-                view.organizations = organizations.map({ $0.any })
-            case .failure(let error):
-                self?.presenters.error.present(error)
-            }
-        }
+        self.organizationApplicationsView = view
+        self.reloadApplicationsOrganizations()
     }
 }
 
 extension AdminOrganizationsPresenter: AdminApprovedOrganizationsViewOutput {
     func adminApprovedOrganizationsDidLoad(view: AdminApprovedOrganizationsViewInput) {
+        self.approvedOrganizationsView = view
+        self.reloadApprovedOrganizations()
+    }
+
+    func adminApprovedOrganizations(view: AdminApprovedOrganizationsViewInput, userWantsToRefresh sender: Any) {
+        self.approvedOrganizationsView = view
+        self.reloadApprovedOrganizations()
+    }
+}
+
+extension AdminOrganizationsPresenter {
+    private func reloadApprovedOrganizations() {
         self.services.organization.fetch(.approved) { [weak self] (result) in
             switch result {
             case .success(let organizations):
-                view.organizations = organizations
+                self?.approvedOrganizationsView?.organizations = organizations
             case .failure(let error):
                 self?.presenters.error.present(error)
             }
         }
     }
 
-    func adminApprovedOrganizations(view: AdminApprovedOrganizationsViewInput, userWantsToRefresh sender: Any) {
-        self.services.organization.fetch(.approved) { [weak self] (result) in
+    private func reloadApplicationsOrganizations() {
+        self.services.organization.fetch(.onReview) { [weak self] (result) in
             switch result {
             case .success(let organizations):
-                view.organizations = organizations
+                self?.organizationApplicationsView?.organizations = organizations
+                self?.organizationApplicationsView?.reload()
             case .failure(let error):
                 self?.presenters.error.present(error)
             }

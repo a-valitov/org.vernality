@@ -16,12 +16,14 @@
 
 import Foundation
 import ErrorPresenter
+import ConfirmationPresenter
 import ActivityPresenter
 import PCOrganizationService
 
 struct AdminOrganizationPresenters {
     let error: ErrorPresenter
     let activity: ActivityPresenter
+    let confirmation: ConfirmationPresenter
 }
 
 struct AdminOrganizationServices {

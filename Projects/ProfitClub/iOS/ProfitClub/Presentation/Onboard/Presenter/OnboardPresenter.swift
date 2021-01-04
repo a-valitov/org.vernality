@@ -18,6 +18,7 @@ import Foundation
 import Main
 import ErrorPresenter
 import ActivityPresenter
+import ConfirmationPresenter
 import ProfitClubModel
 
 final class OnboardPresenter: OnboardModule {
@@ -134,18 +135,17 @@ extension OnboardPresenter: OnboardSignUpViewOutput {
                 guard let sSelf = self else { return }
                 switch result {
                 case .success:
-                    view.finishAlert()
+                    sSelf.presenters.confirmation.present(title: "Вы прошли регистрацию", message: "Осталось выбрать роль в клубе", actionTitle: "Продолжить", withCancelAction: false, completion: { [weak sSelf] in
+                        guard let ssSelf = sSelf else { return }
+                        ssSelf.router?.main?.unraise(animated: true, completion: { [weak ssSelf] in
+                            ssSelf?.router?.openSelectRole(output: self)
+                        })
+                    })
                 case .failure(let error):
                     sSelf.presenters.error.present(error)
                 }
             }
         }
-    }
-
-    func onboardFinishSignUp(view: OnboardSignUpViewInput, userWantsToSignUp sender: Any) {
-        self.router?.main?.unraise(animated: true, completion: { [weak self] in
-            self?.router?.openSelectRole(output: self)
-        })
     }
 
     func onboardSignIn(view: OnboardSignUpViewInput, userWantsToSignIp sender: Any) {
@@ -165,23 +165,21 @@ extension OnboardPresenter: OnboardResetPasswordViewOutput {
         if self.isValid(email: email) {
             self.presenters.activity.increment()
             self.services.authentication.resetPassword(email: email) { [weak self] result in
-                self?.presenters.activity.decrement()
+                guard let sSelf = self else { return }
+                sSelf.presenters.activity.decrement()
                 switch result {
                 case .success:
-                    view.finishAlert()
+                    sSelf.presenters.confirmation.present(title: "Вы сбросили пароль", message: "Проверьте вашу почту", actionTitle: "Спасибо", withCancelAction: false, completion: { [weak sSelf] in
+                        sSelf?.router?.pop()
+                    })
                 case .failure(let error):
                     self?.presenters.error.present(error)
                 }
             }
         } else {
-            view.alert()
+            self.presenters.confirmation.present(title: "Invalid Email", message: "Please check your email", actionTitle: "Хорошо", withCancelAction: false, completion: nil)
         }
     }
-
-    func onboardResetPasswordFinish(view: OnboardResetPasswordViewInput) {
-        self.router?.pop()
-    }
-
 }
 
 extension OnboardPresenter: OnboardMemberViewOutput {
@@ -383,7 +381,10 @@ extension OnboardPresenter {
             sSelf.presenters.activity.decrement()
             switch result {
             case .success:
-                sSelf.output?.onboard(module: sSelf, didAddMember: member, inside: sSelf.router?.main)
+                sSelf.presenters.confirmation.present(title: "Ваши данные отправлены в обработку", message: "Дождитесь пока администратор одобрит вашу заявку на вступление в клуб", actionTitle: "Спасибо", withCancelAction: false) { [weak sSelf] in
+                    guard let ssSelf = sSelf else { return }
+                    ssSelf.output?.onboard(module: ssSelf, didAddMember: member, inside: ssSelf.router?.main)
+                }
             case .failure(let error):
                 sSelf.presenters.error.present(error)
             }
@@ -400,7 +401,10 @@ extension OnboardPresenter {
             sSelf.presenters.activity.decrement()
             switch result {
             case .success:
-                sSelf.output?.onboard(module: sSelf, didAddOrganization: organization, inside: sSelf.router?.main)
+                sSelf.presenters.confirmation.present(title: "Ваши данные отправлены в обработку", message: "Дождитесь пока администратор одобрит вашу заявку на вступление в клуб", actionTitle: "Спасибо", withCancelAction: false) { [weak sSelf] in
+                    guard let ssSelf = sSelf else { return }
+                    ssSelf.output?.onboard(module: ssSelf, didAddOrganization: organization, inside: ssSelf.router?.main)
+                }
             case .failure(let error):
                 sSelf.presenters.error.present(error)
             }
@@ -417,7 +421,10 @@ extension OnboardPresenter {
             sSelf.presenters.activity.decrement()
             switch result {
             case .success:
-                sSelf.output?.onboard(module: sSelf, didAddSupplier: supplier, inside: sSelf.router?.main)
+                sSelf.presenters.confirmation.present(title: "Ваши данные отправлены в обработку", message: "Дождитесь пока администратор одобрит вашу заявку на вступление в клуб", actionTitle: "Спасибо", withCancelAction: false) { [weak sSelf] in
+                    guard let ssSelf = sSelf else { return }
+                    ssSelf.output?.onboard(module: ssSelf, didAddSupplier: supplier, inside: ssSelf.router?.main)
+                }
             case .failure(let error):
                 sSelf.presenters.error.present(error)
             }

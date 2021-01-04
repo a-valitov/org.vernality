@@ -19,6 +19,9 @@ import ProfitClubModel
 
 protocol AdminOrganizationsApplicationsViewInput: UIViewController {
     var organizations: [AnyPCOrganization] { get set }
+
+    func reload()
+    func hide(organization: PCOrganization)
 }
 
 protocol AdminOrganizationsApplicationsViewOutput {

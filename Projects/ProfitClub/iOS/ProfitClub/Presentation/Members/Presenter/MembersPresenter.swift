@@ -18,6 +18,7 @@ import Foundation
 import Main
 import ErrorPresenter
 import ActivityPresenter
+import ConfirmationPresenter
 import ProfitClubModel
 
 final class MembersPresenter: MembersModule {
@@ -97,7 +98,7 @@ extension MembersPresenter: ApplicationsViewOutput {
     }
 
     func applications(view: ApplicationsViewInput, userWantsToApprove member: PCMember) {
-        view.finishAlert(title: "Одобрить") {
+        self.presenters.confirmation.present(title: "Одобрить заявку?", message: "Одобрить заявку на вступление \(member.firstName!) \(member.lastName!) в организацию?", actionTitle: "Одобрить", withCancelAction: true) {
             self.services.organization.approve(member: member) { [weak self] result in
                 switch result {
                 case .success(let member):
@@ -111,7 +112,7 @@ extension MembersPresenter: ApplicationsViewOutput {
     }
 
     func applications(view: ApplicationsViewInput, userWantsToReject member: PCMember) {
-        view.finishAlert(title: "Отклонить") {
+        self.presenters.confirmation.present(title: "Отклонить заявку?", message: "Отклонить заявку на вступление \(member.firstName!) \(member.lastName!) в организацию?", actionTitle: "Отклонить", withCancelAction: true) {
             self.services.organization.reject(member: member) { [weak self] result in
                 switch result {
                 case .success(let member):

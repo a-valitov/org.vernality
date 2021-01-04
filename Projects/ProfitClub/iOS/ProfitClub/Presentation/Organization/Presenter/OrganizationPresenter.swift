@@ -18,6 +18,7 @@ import Foundation
 import Main
 import ErrorPresenter
 import ActivityPresenter
+import ConfirmationPresenter
 import ProfitClubModel
 
 final class OrganizationPresenter: OrganizationModule {
@@ -51,11 +52,10 @@ extension OrganizationPresenter: OrganizationTabBarViewOutput {
     }
 
     func organizationTabBar(view: OrganizationTabBarViewInput, userWantsToLogout sender: Any) {
-        view.showLogoutConfirmationDialog()
-    }
-
-    func organizationTabBar(view: OrganizationTabBarViewInput, userConfirmToLogout sender: Any) {
-        self.output?.organization(module: self, userWantsToLogoutInside: self.router?.main)
+        self.presenters.confirmation.present(title: "Подтвердите выход", message: "Вы уверены что хотите выйти?", actionTitle: "Выйти", withCancelAction: true) { [weak self] in
+            guard let sSelf = self else { return }
+            sSelf.output?.organization(module: sSelf, userWantsToLogoutInside: sSelf.router?.main)
+        }
     }
 
     func organizationTabBar(view: OrganizationTabBarViewInput, userWantsToChangeRole sender: Any) {

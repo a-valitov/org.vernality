@@ -21,8 +21,11 @@ import ProfitClubModel
 
 protocol AdminOrganizationsModule: class {
     func embed(in tabBarController: UITabBarController, main: MainModule?)
+    func onDidApprove(organization: PCOrganization)
+    func onDidReject(organization: PCOrganization)
 }
 
 protocol AdminOrganizationsModuleOutput: class {
+    func adminOrganizationsModuleDidLoad(module: AdminOrganizationsModule)
     func adminOrganizations(module: AdminOrganizationsModule, didSelect organization: PCOrganization)
 }

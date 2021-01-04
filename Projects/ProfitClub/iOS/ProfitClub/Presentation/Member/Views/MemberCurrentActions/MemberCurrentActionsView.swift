@@ -19,8 +19,6 @@ import ProfitClubModel
 
 protocol MemberCurrentActionsViewInput: UIViewController {
     var actions: [AnyPCAction] { get set }
-
-    func showLogoutConfirmationDialog()
 }
 
 protocol MemberCurrentActionsViewOutput {
@@ -28,7 +26,6 @@ protocol MemberCurrentActionsViewOutput {
     func memberCurrentActions(view: MemberCurrentActionsViewInput, didSelect action: PCAction)
     func memberNavigtaionBar(view: MemberCurrentActionsViewInput, tappedOn profile: Any)
     func memberCurrentActions(view: MemberCurrentActionsViewInput, userWantsToLogout sender: Any)
-    func memberCurrentActions(view: MemberCurrentActionsViewInput, userConfirmToLogout sender: Any)
     func memberCurrentActions(view: MemberCurrentActionsViewInput, userWantsToChangeRole sender: Any)
     func memberCurrentActions(view: MemberCurrentActionsViewInput, userWantsToRefresh sender: Any)
 }

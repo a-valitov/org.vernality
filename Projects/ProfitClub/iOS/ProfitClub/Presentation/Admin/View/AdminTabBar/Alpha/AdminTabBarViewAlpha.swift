@@ -87,25 +87,4 @@ final class AdminTabBarViewAlpha: UITabBarController {
 }
 
 extension AdminTabBarViewAlpha: AdminTabBarViewInput {
-    func showLogoutConfirmationDialog() {
-        var blurEffect = UIBlurEffect()
-        blurEffect = UIBlurEffect(style: .dark)
-        let blurVisualEffectView = UIVisualEffectView(effect: blurEffect)
-        blurVisualEffectView.frame = view.bounds
-        blurVisualEffectView.alpha = 0.9
-        self.view.addSubview(blurVisualEffectView)
-        let controller = UIAlertController(title: "Подтвердите выход", message: "Вы уверены что хотите выйти?", preferredStyle: .alert)
-
-        controller.addAction(UIAlertAction(title: "Выйти", style: .destructive, handler: { [weak self] _ in
-            guard let sSelf = self else { return }
-            sSelf.output?.adminTabBar(view: sSelf, userConfirmToLogout: controller)
-            blurVisualEffectView.removeFromSuperview()
-        }))
-
-        controller.addAction(UIAlertAction(title: "Отмена", style: .cancel, handler: { _ in
-            blurVisualEffectView.removeFromSuperview()
-        }))
-
-        self.present(controller, animated: true)
-    }
 }
