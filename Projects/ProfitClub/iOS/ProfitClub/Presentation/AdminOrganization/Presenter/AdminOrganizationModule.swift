@@ -23,5 +23,6 @@ protocol AdminOrganizationModule: class {
 }
 
 protocol AdminOrganizationModuleOutput: class {
-    
+    func adminOrganization(module: AdminOrganizationModule, didApprove organization: PCOrganization)
+    func adminOrganization(module: AdminOrganizationModule, didReject organization: PCOrganization)
 }

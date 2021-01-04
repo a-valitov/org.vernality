@@ -58,11 +58,12 @@ extension AdminOrganizationPresenter: OrganizationApplicationViewOutput {
             self.router?.closeApplication(view, completion: { [weak self] in
                 guard let organization = self?.organization else { return }
                 self?.services.organization.approve(organization: organization) { [weak self] (result) in
+                    guard let sSelf = self else { return }
                     switch result {
                     case .success(let organization):
-                        print("TODO: @temur hide application and reload approved")
+                        sSelf.output?.adminOrganization(module: sSelf, didApprove: organization)
                     case .failure(let error):
-                        self?.presenters.error.present(error)
+                        sSelf.presenters.error.present(error)
                     }
                 }
             })
@@ -74,11 +75,13 @@ extension AdminOrganizationPresenter: OrganizationApplicationViewOutput {
             self.router?.closeApplication(view, completion: { [weak self] in
                 guard let organization = self?.organization else { return }
                 self?.services.organization.reject(organization: organization) { [weak self] (result) in
+                    guard let sSelf = self else { return }
                     switch result {
                     case .success(let organization):
-                        print("TODO: @temur hide application")
+                        print("success")
+                        sSelf.output?.adminOrganization(module: sSelf, didReject: organization)
                     case .failure(let error):
-                        self?.presenters.error.present(error)
+                        sSelf.presenters.error.present(error)
                     }
                 }
             })

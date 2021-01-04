@@ -39,6 +39,7 @@ final class AdminPresenter: AdminModule {
     // dependencies
     private let presenters: AdminPresenters
     private let services: AdminServices
+    private weak var adminOrganizationsModule: AdminOrganizationsModule?
 }
 
 extension AdminPresenter: AdminTabBarViewOutput {
@@ -55,11 +56,21 @@ extension AdminPresenter: AdminTabBarViewOutput {
 }
 
 extension AdminPresenter: AdminOrganizationsModuleOutput {
+    func adminOrganizationsModuleDidLoad(module: AdminOrganizationsModule) {
+        self.adminOrganizationsModule = module
+    }
+
     func adminOrganizations(module: AdminOrganizationsModule, didSelect organization: PCOrganization) {
         self.router?.open(organization: organization, output: self)
     }
 }
 
 extension AdminPresenter: AdminOrganizationModuleOutput {
+    func adminOrganization(module: AdminOrganizationModule, didApprove organization: PCOrganization) {
+        self.adminOrganizationsModule?.onDidApprove(organization: organization)
+    }
 
+    func adminOrganization(module: AdminOrganizationModule, didReject organization: PCOrganization) {
+        self.adminOrganizationsModule?.onDidReject(organization: organization)
+    }
 }
