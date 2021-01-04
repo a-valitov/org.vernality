@@ -16,10 +16,10 @@
 
 import Foundation
 
-public protocol ConfirmationPresenter {
-    func present(title: String, message: String, buttonTitle: String, completion: @escaping () -> Void)
-}
+public final class ConfirmationPresenterAlertFactory: ConfirmationPresenterFactory {
+    public init() {}
 
-public protocol ConfirmationPresenterFactory {
-    func make() -> ConfirmationPresenter
+    public func make() -> ConfirmationPresenter {
+        return ConfirmationPresenterAlert()
+    }
 }

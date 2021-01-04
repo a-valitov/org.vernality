@@ -43,6 +43,10 @@ final class AppFactory {
     func errorPresenter() -> ErrorPresenter {
         return ErrorPresenterAlertFactory().make()
     }
+
+    func confirmationPresenter() -> ConfirmationPresenter {
+        return ConfirmationPresenterAlertFactory().make()
+    }
     
     func organizationService() -> PCOrganizationService {
         return PCOrganizationServiceParse()
@@ -153,7 +157,7 @@ private extension AppFactory {
     }
 
     var adminOrganizationFactory: AdminOrganizationFactory {
-        return AdminOrganizationFactory(presenters: AdminOrganizationPresenters(error: self.errorPresenter(), activity: self.activityPresenter()), services: AdminOrganizationServices(organization: self.organizationService()))
+        return AdminOrganizationFactory(presenters: AdminOrganizationPresenters(error: self.errorPresenter(), activity: self.activityPresenter(), confirmation: self.confirmationPresenter()), services: AdminOrganizationServices(organization: self.organizationService()))
     }
 
     var actionsFactory: ActionsFactory {
