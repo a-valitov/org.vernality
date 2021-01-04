@@ -18,11 +18,11 @@
 import UIKit
 
 class ConfirmationPresenterAlert: ConfirmationPresenter {
-    func present(title: String, message: String, buttonTitle: String, completion: @escaping () -> Void) {
-        self.presentAlert(title: title, message: message, buttonTitle: buttonTitle, completion: completion)
+    func present(title: String, message: String, actionTitle: String, withCancelAction: Bool, completion: @escaping () -> Void) {
+        self.presentAlert(title: title, message: message, actionTitle: actionTitle, withCancelAction: withCancelAction, completion: completion)
     }
 
-    private func presentAlert(title: String, message: String, buttonTitle: String, completion: @escaping () -> Void) {
+    private func presentAlert(title: String, message: String, actionTitle: String, withCancelAction: Bool, completion: @escaping () -> Void) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
 
         let backView = alert.view.subviews.first?.subviews.first?.subviews.first
@@ -46,7 +46,7 @@ class ConfirmationPresenterAlert: ConfirmationPresenter {
         alert.setValue(attributedTitle, forKey: "attributedTitle")
         alert.setValue(attributedMessage, forKey: "attributedMessage")
 
-        let okAction = UIAlertAction(title: "\(buttonTitle)         ", style: .default) { _ in
+        let okAction = UIAlertAction(title: "\(actionTitle)         ", style: .default) { _ in
             blurVisualEffectView?.removeFromSuperview()
             completion()
         }
@@ -57,8 +57,14 @@ class ConfirmationPresenterAlert: ConfirmationPresenter {
         }
         cancelAction.setValue(UIColor(red: 245/255, green: 200/255, blue: 145/255, alpha: 1), forKey: "titleTextColor")
 
-        alert.addAction(okAction)
-        alert.addAction(cancelAction)
+        switch withCancelAction {
+        case true:
+            alert.addAction(okAction)
+            alert.addAction(cancelAction)
+        case false:
+            alert.addAction(okAction)
+        }
+
         alert.preferredAction = okAction
         alert.show()
     }

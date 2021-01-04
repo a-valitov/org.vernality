@@ -17,7 +17,7 @@
 import Foundation
 
 public protocol ConfirmationPresenter {
-    func present(title: String, message: String, buttonTitle: String, completion: @escaping () -> Void)
+    func present(title: String, message: String, actionTitle: String, withCancelAction: Bool, completion: @escaping () -> Void)
 }
 
 public protocol ConfirmationPresenterFactory {

@@ -54,8 +54,7 @@ extension AdminOrganizationPresenter: OrganizationApplicationViewOutput {
     }
 
     func organizationApplication(view: OrganizationApplicationViewInput, userWantsToApprove sender: Any) {
-        // TODO: @temur add confirmation
-        self.presenters.confirmation.present(title: "Одобрить заявку?", message: "Одобрить заявку на создание организации \(view.organizationName ?? "")", buttonTitle: "Одобрить") {
+        self.presenters.confirmation.present(title: "Одобрить заявку?", message: "Одобрить заявку на создание организации \(view.organizationName ?? "")", actionTitle: "Одобрить", withCancelAction: true) {
             self.router?.closeApplication(view, completion: { [weak self] in
                 guard let organization = self?.organization else { return }
                 self?.services.organization.approve(organization: organization) { [weak self] (result) in
@@ -71,8 +70,7 @@ extension AdminOrganizationPresenter: OrganizationApplicationViewOutput {
     }
 
     func organizationApplication(view: OrganizationApplicationViewInput, userWantsToReject sender: Any) {
-        // TODO: @temur add confirmation
-        self.presenters.confirmation.present(title: "Отклонить заявку?", message: "Отклонить заявку на создание организации \(view.organizationName ?? "")", buttonTitle: "Отклонить") {
+        self.presenters.confirmation.present(title: "Отклонить заявку?", message: "Отклонить заявку на создание организации \(view.organizationName ?? "")", actionTitle: "Отклонить", withCancelAction: true) {
             self.router?.closeApplication(view, completion: { [weak self] in
                 guard let organization = self?.organization else { return }
                 self?.services.organization.reject(organization: organization) { [weak self] (result) in
