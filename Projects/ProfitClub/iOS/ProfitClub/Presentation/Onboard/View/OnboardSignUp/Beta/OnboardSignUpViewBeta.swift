@@ -17,38 +17,6 @@
 import UIKit
 
 extension OnboardSignUpViewBeta: OnboardSignUpViewInput {
-    func finishAlert() {
-        var blurEffect = UIBlurEffect()
-        blurEffect = UIBlurEffect(style: .dark)
-        let blurVisualEffectView = UIVisualEffectView(effect: blurEffect)
-        blurVisualEffectView.frame = view.bounds
-        self.view.addSubview(blurVisualEffectView)
-
-        let alertController = UIAlertController(title: "", message: "", preferredStyle: .alert)
-
-        let backView = alertController.view.subviews.first?.subviews.first?.subviews.first
-        backView?.layer.cornerRadius = 14.0
-        backView?.backgroundColor = #colorLiteral(red: 0.1176470588, green: 0.1176470588, blue: 0.1176470588, alpha: 0.7476990582)
-
-        let titleFont = [NSAttributedString.Key.foregroundColor: UIColor(red: 241/255, green: 231/255, blue: 228/255, alpha: 1)]
-        let messageFont = [NSAttributedString.Key.foregroundColor: UIColor(red: 241/255, green: 231/255, blue: 228/255, alpha: 1)]
-        let attributedTitle = NSAttributedString(string: "Вы прошли регистрацию", attributes: titleFont)
-        let attributedMessage = NSAttributedString(string: "Осталось выбрать роль в клубе", attributes: messageFont)
-
-        alertController.setValue(attributedTitle, forKey: "attributedTitle")
-        alertController.setValue(attributedMessage, forKey: "attributedMessage")
-
-        let okAction = UIAlertAction(title: "Продолжить", style: .default) { [weak self] action in
-            guard let sSelf = self else { return }
-            sSelf.output?.onboardFinishSignUp(view: sSelf, userWantsToSignUp: action)
-            blurVisualEffectView.removeFromSuperview()
-        }
-        okAction.setValue(UIColor(red: 245/255, green: 200/255, blue: 145/255, alpha: 1), forKey: "titleTextColor")
-
-        alertController.addAction(okAction)
-        alertController.preferredAction = okAction
-        present(alertController, animated: true)
-    }
 }
 
 final class OnboardSignUpViewBeta: UIViewController {

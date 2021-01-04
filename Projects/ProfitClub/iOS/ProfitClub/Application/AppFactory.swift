@@ -123,7 +123,7 @@ private extension AppFactory {
     
     var onboardFactory: OnboardFactory {
         return OnboardFactory(presenters: OnboardPresenters(error: self.errorPresenter(),
-                                                            activity: self.activityPresenter()),
+                                                            activity: self.activityPresenter(), confirmation: self.confirmationPresenter()),
                               services: OnboardServices(authentication: self.authentication,
                                                         organization: self.organizationService()))
     }
@@ -135,22 +135,22 @@ private extension AppFactory {
     }
     
     var organizationFactory: OrganizationFactory {
-        return OrganizationFactory(presenters: OrganizationPresenters(error: self.errorPresenter(), activity: self.activityPresenter()),
+        return OrganizationFactory(presenters: OrganizationPresenters(error: self.errorPresenter(), activity: self.activityPresenter(), confirmation: self.confirmationPresenter()),
                                    services: OrganizationServices(authentication: self.authentication, organization: self.organizationService()),
                                    factories: OrganizationFactories(actions: self.actionsFactory, action: self.actionFactory, commercialOffers: self.commercialOffersFactory, commercialOffer: self.commercialOfferFactory, members: self.membersFactory))
     }
     
     var supplierFactory: SupplierFactory {
-        return SupplierFactory(presenters: SupplierPresenters(error: self.errorPresenter(), activity: self.activityPresenter()),
+        return SupplierFactory(presenters: SupplierPresenters(error: self.errorPresenter(), activity: self.activityPresenter(), confirmation: self.confirmationPresenter()),
                                services: SupplierServices(authentication: self.authentication, action: self.actionService(), commercialOffer: self.commercialOfferService()))
     }
 
     var memberFactory: MemberFactory {
-        return MemberFactory(presenters: MemberPresenters(error: self.errorPresenter(), activity: self.activityPresenter()), services: MemberServices(action: self.actionService()))
+        return MemberFactory(presenters: MemberPresenters(error: self.errorPresenter(), activity: self.activityPresenter(), confirmation: self.confirmationPresenter()), services: MemberServices(action: self.actionService()))
     }
 
     var adminFactory: AdminFactory {
-        return AdminFactory(presenters: AdminPresenters(error: self.errorPresenter(), activity: self.activityPresenter()), services: AdminServices(), factories: AdminFactories(adminOrganizations: self.adminOrganizationsFactory, adminOrganization: self.adminOrganizationFactory))
+        return AdminFactory(presenters: AdminPresenters(error: self.errorPresenter(), activity: self.activityPresenter(), confirmation: self.confirmationPresenter()), services: AdminServices(), factories: AdminFactories(adminOrganizations: self.adminOrganizationsFactory, adminOrganization: self.adminOrganizationFactory))
     }
 
     var adminOrganizationsFactory: AdminOrganizationsFactory {
@@ -180,7 +180,7 @@ private extension AppFactory {
     }
 
     var membersFactory: MembersFactory {
-        return MembersFactory(presenters: MembersPresenters(error: self.errorPresenter(), activity: self.activityPresenter()), services: MembersServices(organization: self.organizationService()))
+        return MembersFactory(presenters: MembersPresenters(error: self.errorPresenter(), activity: self.activityPresenter(), confirmation: self.confirmationPresenter()), services: MembersServices(organization: self.organizationService()))
     }
 
     var memberProfileFactory: MemberProfileFactory {

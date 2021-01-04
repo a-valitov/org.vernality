@@ -17,6 +17,7 @@
 import Foundation
 import Main
 import ActivityPresenter
+import ConfirmationPresenter
 import ProfitClubModel
 
 final class MemberPresenter: MemberModule {
@@ -46,11 +47,10 @@ final class MemberPresenter: MemberModule {
 
 extension MemberPresenter: MemberCurrentActionsViewOutput {
     func memberCurrentActions(view: MemberCurrentActionsViewInput, userWantsToLogout sender: Any) {
-        view.showLogoutConfirmationDialog()
-    }
-
-    func memberCurrentActions(view: MemberCurrentActionsViewInput, userConfirmToLogout sender: Any) {
-        self.output?.member(module: self, userWantsToLogoutInside: self.router?.main)
+        self.presenters.confirmation.present(title: "Подтвердите выход", message: "Вы уверены что хотите выйти?", actionTitle: "Выйти", withCancelAction: true) { [weak self] in
+        guard let sSelf = self else { return }
+        sSelf.output?.member(module: sSelf, userWantsToLogoutInside: sSelf.router?.main)
+        }
     }
 
     func memberCurrentActionsDidLoad(view: MemberCurrentActionsViewInput) {

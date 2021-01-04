@@ -18,11 +18,13 @@ import Foundation
 import PCAuthentication
 import ErrorPresenter
 import ActivityPresenter
+import ConfirmationPresenter
 import PCOrganizationService
 
 struct MembersPresenters {
     let error: ErrorPresenter
     let activity: ActivityPresenter
+    let confirmation: ConfirmationPresenter
 }
 
 struct MembersServices {

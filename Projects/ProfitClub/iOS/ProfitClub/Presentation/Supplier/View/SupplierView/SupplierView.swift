@@ -17,7 +17,6 @@
 import UIKit
 
 protocol SupplierViewInput: UIViewController {
-    func showLogoutConfirmationDialog()
 }
 
 protocol SupplierViewOutput {
@@ -25,7 +24,6 @@ protocol SupplierViewOutput {
     func supplier(view: SupplierViewInput, wantsToCreateCommercialOffer sender: Any)
     func supplierNavigationBar(view: SupplierViewInput, tappedOn profile: Any)
     func supplier(view: SupplierViewInput, userWantsToLogout sender: Any)
-    func supplier(view: SupplierViewInput, userConfirmToLogout sender: Any)
     func supplier(view: SupplierViewInput, userWantsToChangeRole sender: Any)
 }
 

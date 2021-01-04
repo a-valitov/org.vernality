@@ -18,6 +18,7 @@ import Foundation
 import Main
 import ErrorPresenter
 import ActivityPresenter
+import ConfirmationPresenter
 import ProfitClubModel
 
 final class SupplierPresenter: SupplierModule {
@@ -58,12 +59,10 @@ extension SupplierPresenter: SupplierViewOutput {
         self.output?.supplier(module: self, userWantsToOpenProfileOf: self.supplier, inside: self.router?.main)
     }
 
-    func supplier(view: SupplierViewInput, userWantsToLogout sender: Any) {
-        view.showLogoutConfirmationDialog()
-    }
-
-    func supplier(view: SupplierViewInput, userConfirmToLogout sender: Any) {
-        self.output?.supplier(module: self, userWantsToLogoutInside: self.router?.main)
+    func supplier(view: SupplierViewInput, userWantsToLogout sender: Any) {        self.presenters.confirmation.present(title: "Подтвердите выход", message: "Вы уверены что хотите выйти?", actionTitle: "Выйти", withCancelAction: true) { [weak self] in
+        guard let sSelf = self else { return }
+        sSelf.output?.supplier(module: sSelf, userWantsToLogoutInside: sSelf.router?.main)
+        }
     }
 
     func supplier(view: SupplierViewInput, userWantsToChangeRole sender: Any) {
@@ -81,7 +80,7 @@ extension SupplierPresenter: SupplierActionsOutput {
             self.presenters.error.present(SupplierError.actionMessageIsEmpty)
             return
         }
-        guard let descriptionOf = view.descriptionOf, !descriptionOf.isEmpty else {
+        guard let descriptionOf = view.descriptionOf, !descriptionOf.isEmpty, descriptionOf != "Введите описание акции" else {
             self.presenters.error.present(SupplierError.actionDescriptionOfIsEmpty)
             return
         }
@@ -112,24 +111,26 @@ extension SupplierPresenter: SupplierActionsOutput {
         action.status = .onReview
         action.supplier = self.supplier
 
-        self.presenters.activity.increment()
-        self.services.action.add(action: action) { [weak self] result in
-            self?.presenters.activity.decrement()
-            switch result {
-            case .success:
-                self?.router?.pop()
-            case .failure(let error):
-                self?.presenters.error.present(error)
+        self.presenters.confirmation.present(title: "Отправить в обработку?", message: "Перед публикацией акции, её должен проверить аминистратор", actionTitle: "Отправить", withCancelAction: true) { [weak self] in
+            guard let sSelf = self else { return }
+            sSelf.presenters.activity.increment()
+            sSelf.services.action.add(action: action) { [weak sSelf] result in
+                sSelf?.presenters.activity.decrement()
+                switch result {
+                case .success:
+                    sSelf?.router?.pop()
+                case .failure(let error):
+                    sSelf?.presenters.error.present(error)
+                }
             }
         }
     }
 
     func supplierActions(view: SupplierActionsInput, userWantsToLogout sender: Any) {
-        view.showLogoutConfirmationDialog()
-    }
-
-    func supplierActions(view: SupplierActionsInput, userConfirmLogout sender: Any) {
-        self.output?.supplier(module: self, userWantsToLogoutInside: self.router?.main)
+        self.presenters.confirmation.present(title: "Подтвердите выход", message: "Вы уверены что хотите выйти?", actionTitle: "Выйти", withCancelAction: true) { [weak self] in
+            guard let sSelf = self else { return }
+            sSelf.output?.supplier(module: sSelf, userWantsToLogoutInside: sSelf.router?.main)
+        }
     }
 
     func supplierActions(view: SupplierActionsInput, userWantsToChangeRole sender: Any) {
@@ -142,7 +143,7 @@ extension SupplierPresenter: SupplierCommercialOfferOutput {
         self.output?.supplier(module: self, userWantsToOpenProfileOf: self.supplier, inside: self.router?.main)    }
     
     func supplierCommercialOfferDidFinish(view: SupplierCommercialOfferInput) {
-        guard let message = view.message, !message.isEmpty else {
+        guard let message = view.message, !message.isEmpty, message != "Введите сообщение" else {
             self.presenters.error.present(SupplierError.actionMessageIsEmpty)
             return
         }
@@ -152,25 +153,27 @@ extension SupplierPresenter: SupplierCommercialOfferOutput {
         offer.supplier = self.supplier
         offer.attachments = view.attachments
         offer.attachmentNames = view.attachmentNames
-        
-        self.presenters.activity.increment()
-        self.services.commercialOffer.add(offer: offer) { [weak self] result in
-            self?.presenters.activity.decrement()
-            switch result {
-            case .success:
-                self?.router?.pop()
-            case .failure(let error):
-                self?.presenters.error.present(error)
+
+        self.presenters.confirmation.present(title: "Отправить в обработку?", message: "Перед публикацией комерческого предложения, его должен проверить аминистратор", actionTitle: "Отправить", withCancelAction: true) { [weak self] in
+            guard let sSelf = self else { return }
+            sSelf.presenters.activity.increment()
+            sSelf.services.commercialOffer.add(offer: offer) { [weak sSelf] result in
+                sSelf?.presenters.activity.decrement()
+                switch result {
+                case .success:
+                    sSelf?.router?.pop()
+                case .failure(let error):
+                    sSelf?.presenters.error.present(error)
+                }
             }
         }
     }
 
     func supplierCommercialOffer(view: SupplierCommercialOfferInput, userWantsToLogout sender: Any) {
-        view.showLogoutConfirmationDialog()
-    }
-
-    func supplierCommercialOffer(view: SupplierCommercialOfferInput, userConfirmToLogout sender: Any) {
-        self.output?.supplier(module: self, userWantsToLogoutInside: self.router?.main)
+        self.presenters.confirmation.present(title: "Подтвердите выход", message: "Вы уверены что хотите выйти?", actionTitle: "Выйти", withCancelAction: true) { [weak self] in
+            guard let sSelf = self else { return }
+            sSelf.output?.supplier(module: sSelf, userWantsToLogoutInside: sSelf.router?.main)
+        }
     }
 
     func supplierCommercialOffer(view: SupplierCommercialOfferInput, userWantsToChangeRole sender: Any) {

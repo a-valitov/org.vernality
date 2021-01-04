@@ -22,7 +22,6 @@ protocol ApplicationsViewInput: UIViewController {
 
     func reload()
     func hide(member: PCMember)
-    func finishAlert(title: String, completion: @escaping () -> Void)
 }
 
 protocol ApplicationsViewOutput {

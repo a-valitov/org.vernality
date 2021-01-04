@@ -20,12 +20,9 @@ protocol OnboardSignUpViewInput: UIViewController {
     var email: String? { get }
     var password: String? { get }
     var passwordConfirmation: String? { get }
-
-    func finishAlert()
 }
 
 protocol OnboardSignUpViewOutput {
     func onboardSignUp(view: OnboardSignUpViewInput, userWantsToSignUp sender: Any)
-    func onboardFinishSignUp(view: OnboardSignUpViewInput, userWantsToSignUp sender: Any)
     func onboardSignIn(view: OnboardSignUpViewInput, userWantsToSignIp sender: Any)
 }

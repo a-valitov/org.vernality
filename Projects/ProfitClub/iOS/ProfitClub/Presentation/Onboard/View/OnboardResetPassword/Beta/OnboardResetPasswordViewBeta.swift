@@ -73,28 +73,5 @@ extension OnboardResetPasswordViewBeta: UITextFieldDelegate {
 }
 
 extension OnboardResetPasswordViewBeta: OnboardResetPasswordViewInput {
-    func alert() {
-        let alertController = UIAlertController(title: "Invalid Email", message: "Please check your email", preferredStyle: .alert)
-
-        let okAction = UIAlertAction(title: "Хорошо", style: .default)
-
-        alertController.addAction(okAction)
-        present(alertController, animated: true)
-    }
-
-    func finishAlert() {
-        var blurEffect = UIBlurEffect()
-        blurEffect = UIBlurEffect(style: .dark)
-        let blurVisualEffectView = UIVisualEffectView(effect: blurEffect)
-        blurVisualEffectView.frame = view.bounds
-        self.view.addSubview(blurVisualEffectView)
-        let alertController = UIAlertController(title: "Вы сбросили пароль", message: "Проверьте вашу почту", preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "Спасибо", style: .default) { action in
-            self.output?.onboardResetPasswordFinish(view: self)
-            blurVisualEffectView.removeFromSuperview()
-        }
-
-        alertController.addAction(okAction)
-        present(alertController, animated: true)
-    }
+    
 }

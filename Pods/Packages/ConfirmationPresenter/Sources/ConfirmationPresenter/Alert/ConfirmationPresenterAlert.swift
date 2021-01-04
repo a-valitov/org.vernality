@@ -18,11 +18,11 @@
 import UIKit
 
 class ConfirmationPresenterAlert: ConfirmationPresenter {
-    func present(title: String, message: String, actionTitle: String?, withCancelAction: Bool, completion: @escaping () -> Void) {
+    func present(title: String, message: String, actionTitle: String?, withCancelAction: Bool, completion: (() -> Void)? = nil) {
         self.presentAlert(title: title, message: message, actionTitle: actionTitle, withCancelAction: withCancelAction, completion: completion)
     }
 
-    private func presentAlert(title: String, message: String, actionTitle: String?, withCancelAction: Bool, completion: @escaping () -> Void) {
+    private func presentAlert(title: String, message: String, actionTitle: String?, withCancelAction: Bool, completion: (() -> Void)? = nil) {
         guard let actionTitle = actionTitle else { return }
 
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
@@ -49,9 +49,9 @@ class ConfirmationPresenterAlert: ConfirmationPresenter {
         alert.setValue(attributedTitle, forKey: "attributedTitle")
         alert.setValue(attributedMessage, forKey: "attributedMessage")
 
-        let okAction = UIAlertAction(title: "\(actionTitle)         ", style: .default) { _ in
+        let okAction = UIAlertAction(title: "\(actionTitle)                 ", style: .default) { _ in
             blurVisualEffectView?.removeFromSuperview()
-            completion()
+            completion?()
         }
         okAction.setValue(UIColor(red: 245/255, green: 200/255, blue: 145/255, alpha: 1), forKey: "titleTextColor")
 
