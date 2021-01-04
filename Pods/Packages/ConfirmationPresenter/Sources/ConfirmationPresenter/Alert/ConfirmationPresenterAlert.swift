@@ -29,6 +29,15 @@ class ConfirmationPresenterAlert: ConfirmationPresenter {
         backView?.layer.cornerRadius = 14.0
         backView?.backgroundColor = #colorLiteral(red: 0.1176470588, green: 0.1176470588, blue: 0.1176470588, alpha: 0.7476990582)
 
+        var blurVisualEffectView: UIView?
+        if let topView = UIApplication.shared.topViewController()?.view {
+            let blurEffect = UIBlurEffect(style: .dark)
+            let subview = UIVisualEffectView(effect: blurEffect)
+            subview.frame = topView.bounds
+            topView.addSubview(subview)
+            blurVisualEffectView = subview
+        }
+
         let titleFont = [NSAttributedString.Key.foregroundColor: UIColor(red: 241/255, green: 231/255, blue: 228/255, alpha: 1)]
         let messageFont = [NSAttributedString.Key.foregroundColor: UIColor(red: 241/255, green: 231/255, blue: 228/255, alpha: 1)]
         let attributedTitle = NSAttributedString(string: title, attributes: titleFont)
@@ -38,11 +47,14 @@ class ConfirmationPresenterAlert: ConfirmationPresenter {
         alert.setValue(attributedMessage, forKey: "attributedMessage")
 
         let okAction = UIAlertAction(title: "\(buttonTitle)         ", style: .default) { _ in
+            blurVisualEffectView?.removeFromSuperview()
             completion()
         }
         okAction.setValue(UIColor(red: 245/255, green: 200/255, blue: 145/255, alpha: 1), forKey: "titleTextColor")
 
-        let cancelAction = UIAlertAction(title: "Назад", style: .default)
+        let cancelAction = UIAlertAction(title: "Назад", style: .default) { _ in
+            blurVisualEffectView?.removeFromSuperview()
+        }
         cancelAction.setValue(UIColor(red: 245/255, green: 200/255, blue: 145/255, alpha: 1), forKey: "titleTextColor")
 
         alert.addAction(okAction)
@@ -79,6 +91,22 @@ extension UIAlertController {
         }
     }
 
+}
+
+extension UIApplication {
+    func topViewController(_ base: UIViewController? = nil) -> UIViewController? {
+        let base = base ?? keyWindow?.rootViewController
+        if let top = (base as? UINavigationController)?.topViewController {
+            return topViewController(top)
+        }
+        if let selected = (base as? UITabBarController)?.selectedViewController {
+            return topViewController(selected)
+        }
+        if let presented = base?.presentedViewController, !presented.isBeingDismissed {
+            return topViewController(presented)
+        }
+        return base
+    }
 }
 
 #endif
