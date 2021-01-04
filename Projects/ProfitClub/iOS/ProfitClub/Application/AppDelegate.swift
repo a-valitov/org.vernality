@@ -29,8 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             $0.server = Secrets.parseServer
         }
         Parse.initialize(with: parseConfig)
+        UNUserNotificationCenter.current().delegate = self
         self.registerForPushNotifications()
-
         self.window = UIWindow(frame: UIScreen.main.bounds)
         let presenter = AppPresenter(factory: AppFactory())
         presenter.present(in: self.window)
@@ -67,6 +67,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 UIApplication.shared.registerForRemoteNotifications()
             }
         }
+    }
+}
+
+extension AppDelegate: UNUserNotificationCenterDelegate {
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                    willPresent notification: UNNotification,
+                                    withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        let userInfo = notification.request.content.userInfo
+        print(userInfo) // the payload that is attached to the push notification
+        // you can customize the notification presentation options. Below code will show notification banner as well as play a sound. If you want to add a badge too, add .badge in the array.
+        completionHandler([.alert, .sound, .badge])
     }
 }
 
