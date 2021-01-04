@@ -44,9 +44,11 @@ final class PCAuthenticationParse: PCAuthentication {
         PFUser.logInWithUsername(inBackground: username, password: password) { [weak self] (user, error) in
             if let error = error {
                 result(.failure(error))
-            } else if let user = user?.pcUser?.any {
-                self?.user = user
-                result(.success(user))
+            } else if let user = user, let anyUser = user.pcUser?.any {
+                self?.user = anyUser
+                PFInstallation.current()?.setObject(user, forKey: "user")
+                PFInstallation.current()?.saveEventually()
+                result(.success(anyUser))
             } else {
                 result(.failure(PCAuthenticationError.bothResultAndErrorAreNil))
             }
@@ -121,6 +123,8 @@ final class PCAuthenticationParse: PCAuthentication {
                 let defaultACL = PFACL(user: parseUser)
                 defaultACL.setReadAccess(true, forRoleWithName: PCRole.administrator.rawValue)
                 PFACL.setDefault(defaultACL, withAccessForCurrentUser: true)
+                PFInstallation.current()?.setObject(parseUser, forKey: "user")
+                PFInstallation.current()?.saveEventually()
                 result(.success(user.any))
             }
         }
