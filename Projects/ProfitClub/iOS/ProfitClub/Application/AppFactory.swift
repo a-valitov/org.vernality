@@ -26,6 +26,7 @@ import PCUserService
 import PCActionService
 import ProfitClubModel
 import PCCommercialOfferService
+import ConfirmationPresenter
 
 final class AppFactory {
     lazy var authentication: PCAuthentication = {
