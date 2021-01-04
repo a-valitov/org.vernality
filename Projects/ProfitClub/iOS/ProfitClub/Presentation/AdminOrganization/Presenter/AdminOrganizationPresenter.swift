@@ -62,7 +62,6 @@ extension AdminOrganizationPresenter: OrganizationApplicationViewOutput {
                     switch result {
                     case .success(let organization):
                         print("TODO: @temur hide application and reload approved")
-                        self?.router?.main?.unraise(animated: true)
                     case .failure(let error):
                         self?.presenters.error.present(error)
                     }
@@ -73,15 +72,13 @@ extension AdminOrganizationPresenter: OrganizationApplicationViewOutput {
 
     func organizationApplication(view: OrganizationApplicationViewInput, userWantsToReject sender: Any) {
         // TODO: @temur add confirmation
-        self.presenters.confirmation.present(title: "Отклонить заявку", message: "Отклонить заявку на создание организации \(view.organizationName ?? "")", buttonTitle: "Отклонить") {
+        self.presenters.confirmation.present(title: "Отклонить заявку?", message: "Отклонить заявку на создание организации \(view.organizationName ?? "")", buttonTitle: "Отклонить") {
             self.router?.closeApplication(view, completion: { [weak self] in
                 guard let organization = self?.organization else { return }
                 self?.services.organization.reject(organization: organization) { [weak self] (result) in
                     switch result {
                     case .success(let organization):
                         print("TODO: @temur hide application")
-//                        view.dismiss(animated: true)
-                        self?.router?.main?.unraise(animated: true)
                     case .failure(let error):
                         self?.presenters.error.present(error)
                     }
