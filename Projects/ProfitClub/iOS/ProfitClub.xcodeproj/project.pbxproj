@@ -65,6 +65,7 @@
 		0E6FBA5F2545AC3900A2B882 /* ActionsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6FBA5E2545AC3900A2B882 /* ActionsPresenter.swift */; };
 		0E6FBA622545AC7C00A2B882 /* ActionsDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6FBA612545AC7C00A2B882 /* ActionsDependencies.swift */; };
 		0E6FBA652545AC9B00A2B882 /* ActionsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6FBA642545AC9B00A2B882 /* ActionsFactory.swift */; };
+		0E72644525A4A643006306B1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0E72644425A4A643006306B1 /* GoogleService-Info.plist */; };
 		0E772A8D2504D39000D677E6 /* PlayfairDisplay-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0E772A8C2504D39000D677E6 /* PlayfairDisplay-Bold.ttf */; };
 		0E90496E24F390070061A605 /* AppPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E90496D24F390070061A605 /* AppPresenter.swift */; };
 		0E90497124F390270061A605 /* AppFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E90497024F390270061A605 /* AppFactory.swift */; };
@@ -325,6 +326,7 @@
 		0E6FBA5E2545AC3900A2B882 /* ActionsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsPresenter.swift; sourceTree = "<group>"; };
 		0E6FBA612545AC7C00A2B882 /* ActionsDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsDependencies.swift; sourceTree = "<group>"; };
 		0E6FBA642545AC9B00A2B882 /* ActionsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsFactory.swift; sourceTree = "<group>"; };
+		0E72644425A4A643006306B1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0E772A8C2504D39000D677E6 /* PlayfairDisplay-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlayfairDisplay-Bold.ttf"; sourceTree = "<group>"; };
 		0E772A8E2505174D00D677E6 /* ProfitClub.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ProfitClub.entitlements; sourceTree = "<group>"; };
 		0E90496D24F390070061A605 /* AppPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPresenter.swift; sourceTree = "<group>"; };
@@ -921,6 +923,7 @@
 		0E6B9721254D655400055570 /* Secrets */ = {
 			isa = PBXGroup;
 			children = (
+				0E72644425A4A643006306B1 /* GoogleService-Info.plist */,
 				0E6B9722254D656500055570 /* Secrets.swift */,
 			);
 			path = Secrets;
@@ -2358,6 +2361,7 @@
 				0EA11EC024F2B88F00133485 /* Sources */,
 				0EA11EC124F2B88F00133485 /* Frameworks */,
 				0EA11EC224F2B88F00133485 /* Resources */,
+				0E72653C25A4B452006306B1 /* Fetch Secrets */,
 				BA2F6CCF47B700FA3835C26D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
@@ -2409,6 +2413,7 @@
 			files = (
 				FA6E8BC3254D9732007B8B4E /* CommercialOffersViewBeta.storyboard in Resources */,
 				FA21D7DE256D8516008024F0 /* PastActionViewBeta.storyboard in Resources */,
+				0E72644525A4A643006306B1 /* GoogleService-Info.plist in Resources */,
 				FA8CB822255814BB00D09B1D /* MemberCurrentActionsViewBeta.storyboard in Resources */,
 				FA0955F3254C427700FFF835 /* Roboto-Medium.ttf in Resources */,
 				FA393C212540651C00C29F7D /* SupplierActionsBeta.storyboard in Resources */,
@@ -2457,6 +2462,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0E72653C25A4B452006306B1 /* Fetch Secrets */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Fetch Secrets";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "BUILD_APP_DIR=${BUILT_PRODUCTS_DIR}/${FULL_PRODUCT_NAME}\ngit clone git@github.com:vernality/org.vernality.profitclub.keystore.git\nif [ $? -eq 0 ]; then\n    /bin/cp -rf org.vernality.profitclub.keystore/GoogleService-Info.plist \"$BUILD_APP_DIR/GoogleService-Info.plist\"\n    /bin/cp -rf org.vernality.profitclub.keystore/Secrets.swift \"$BUILD_APP_DIR/Secrets.swift\"\n    rm -rf org.vernality.profitclub.keystore\nfi\n";
+		};
 		71E1AB59A3E31BCDAD2F8BD8 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2852,6 +2875,7 @@
 				CODE_SIGN_ENTITLEMENTS = ProfitClub/ProfitClub.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 5V5EUT3ZXJ;
 				INFOPLIST_FILE = ProfitClub/Resources/Plists/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2863,6 +2887,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "match Development org.vernality.profitclub";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
@@ -2874,6 +2899,7 @@
 				CODE_SIGN_ENTITLEMENTS = ProfitClub/ProfitClub.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 5V5EUT3ZXJ;
 				INFOPLIST_FILE = ProfitClub/Resources/Plists/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2885,6 +2911,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "match Development org.vernality.profitclub";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
 		};

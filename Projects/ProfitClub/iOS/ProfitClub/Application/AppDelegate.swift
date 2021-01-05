@@ -17,6 +17,7 @@
 import UIKit
 import Parse
 import UserNotifications
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -29,6 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             $0.server = Secrets.parseServer
         }
         Parse.initialize(with: parseConfig)
+        FirebaseApp.configure()
         UNUserNotificationCenter.current().delegate = self
         self.registerForPushNotifications()
         self.window = UIWindow(frame: UIScreen.main.bounds)

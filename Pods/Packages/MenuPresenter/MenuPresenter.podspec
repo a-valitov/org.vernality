@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
-  s.name             = 'PCUserService'
+  s.name             = 'MenuPresenter'
   s.version          = '0.0.1'
-  s.summary          = 'ProfitClub authentication.'
+  s.summary          = 'Menu presenter.'
   s.homepage         = 'https://vernality.org'
   s.author           = { 'Rinat Enikeev' => 'rinat.enikeev@gmail.com' }
   s.license          = { :type => 'GPL', :file => '../../LICENSE' }
@@ -12,15 +12,10 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '11.0'
   s.swift_version    = '5.0'
 
-  s.ios.source_files = 'PCUserService/**/*.{h,m,swift}', 'PCUserService/*.{h,m,swift}'
-  s.exclude_files = 'PCUserService/Tests/*.*', 'PCUserService/Tests/**/*.*'
+  s.ios.source_files = 'Sources/**/*.{h,m,swift}', 'Sources/*.{h,m,swift}'
 
   s.test_spec 'Tests' do |test_spec|
-    test_spec.source_files = 'PCUserService/Tests/**/*.{swift}', 'PCUserService/Tests/*.{swift}'
+    test_spec.source_files = 'Tests/**/*.{swift}', 'Tests/*.{swift}'
   end
-
-  s.dependency 'ProfitClubModel'
-  s.dependency 'PCAuthentication'
-  s.dependency 'Parse'
 end
 
