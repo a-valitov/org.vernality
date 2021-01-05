@@ -12,6 +12,7 @@ target 'ProfitClub' do
   pod 'Nantes'
   pod 'Kingfisher'
   pod 'Firebase/Analytics'
+  pod 'Firebase/Crashlytics'
 
   # modules
   pod 'Main', :path => MODULES_PATH + '/Main/Main.podspec'

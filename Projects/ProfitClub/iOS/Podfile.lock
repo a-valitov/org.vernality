@@ -10,6 +10,9 @@ PODS:
     - FirebaseAnalytics (= 7.3.0)
   - Firebase/CoreOnly (7.3.0):
     - FirebaseCore (= 7.3.0)
+  - Firebase/Crashlytics (7.3.0):
+    - Firebase/CoreOnly
+    - FirebaseCrashlytics (~> 7.3.0)
   - FirebaseAnalytics (7.3.0):
     - FirebaseCore (~> 7.0)
     - FirebaseInstallations (~> 7.0)
@@ -28,6 +31,12 @@ PODS:
     - GoogleUtilities/Environment (~> 7.0)
     - GoogleUtilities/Logger (~> 7.0)
     - nanopb (~> 2.30906.0)
+  - FirebaseCrashlytics (7.3.0):
+    - FirebaseCore (~> 7.0)
+    - FirebaseInstallations (~> 7.0)
+    - GoogleDataTransport (~> 8.0)
+    - nanopb (~> 2.30906.0)
+    - PromisesObjC (~> 1.2)
   - FirebaseInstallations (7.3.0):
     - FirebaseCore (~> 7.0)
     - GoogleUtilities/Environment (~> 7.0)
@@ -111,6 +120,7 @@ DEPENDENCIES:
   - ConfirmationPresenter (from `../../../Pods/Packages/ConfirmationPresenter/ConfirmationPresenter.podspec`)
   - ErrorPresenter (from `../../../Pods/Packages/ErrorPresenter/ErrorPresenter.podspec`)
   - Firebase/Analytics
+  - Firebase/Crashlytics
   - Kingfisher
   - Main (from `../../../Pods/Modules/Main/Main.podspec`)
   - MenuPresenter (from `../../../Pods/Packages/MenuPresenter/MenuPresenter.podspec`)
@@ -130,6 +140,7 @@ SPEC REPOS:
     - FirebaseAnalytics
     - FirebaseCore
     - FirebaseCoreDiagnostics
+    - FirebaseCrashlytics
     - FirebaseInstallations
     - FittedSheets
     - GoogleAppMeasurement
@@ -176,6 +187,7 @@ SPEC CHECKSUMS:
   FirebaseAnalytics: 2580c2d62535ae7b644143d48941fcc239ea897a
   FirebaseCore: 4d3c72622ce0e2106aaa07bb4b2935ba2c370972
   FirebaseCoreDiagnostics: d50e11039e5984d92c8a512be2395f13df747350
+  FirebaseCrashlytics: d31325312c92e2cb2f0386d589b9aa44e303d99b
   FirebaseInstallations: 971df89b48ae5ee4cc2bf6935f3857a525d28550
   FittedSheets: c64310ca8fd55846703a272da3ea3916d381d839
   GoogleAppMeasurement: 8d3c0aeede16ab7764144b5a4ca8e1d4323841b7
@@ -196,6 +208,6 @@ SPEC CHECKSUMS:
   ProfitClubParse: b4b8d11a56f8b4fa9651cb38d54cbec342e9f23d
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
 
-PODFILE CHECKSUM: b951c6a93059176569ebf1cca2701c04ae531dc5
+PODFILE CHECKSUM: 8ed4ebb72ae7820bfeaa928ef588e01bb6f651c5
 
 COCOAPODS: 1.10.0

@@ -2875,6 +2875,7 @@
 				CODE_SIGN_ENTITLEMENTS = ProfitClub/ProfitClub.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 5V5EUT3ZXJ;
 				INFOPLIST_FILE = ProfitClub/Resources/Plists/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2886,6 +2887,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "match Development org.vernality.profitclub";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
@@ -2897,6 +2899,7 @@
 				CODE_SIGN_ENTITLEMENTS = ProfitClub/ProfitClub.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = 5V5EUT3ZXJ;
 				INFOPLIST_FILE = ProfitClub/Resources/Plists/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2908,6 +2911,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "match Development org.vernality.profitclub";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
+				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
 		};
