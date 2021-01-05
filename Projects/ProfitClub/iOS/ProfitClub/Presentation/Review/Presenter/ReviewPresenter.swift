@@ -67,16 +67,18 @@ extension ReviewPresenter: ReviewViewOutput {
     }
 
     func review(view: ReviewViewInput, tappenOn menuBarButton: Any) {
-        self.presenters.menu.present(menuFor: .review, logout: { [weak self] in
+        let addRole = MenuItem(title: "Добавить роль", image: #imageLiteral(resourceName: "addRoleIcon")) { [weak self] in
+            guard let sSelf = self else { return }
+            sSelf.output?.review(module: sSelf, userWantsToAddRoleInside: sSelf.router?.main)
+        }
+        let logout = MenuItem(title: "Выйти", image: #imageLiteral(resourceName: "logout")) { [weak self] in
             guard let sSelf = self else { return }
             sSelf.presenters.confirmation.present(title: "Подтвердите выход", message: "Вы уверены что хотите выйти?", actionTitle: "Выйти", withCancelAction: true) { [weak sSelf] in
                 guard let ssSelf = sSelf else { return }
                 ssSelf.output?.review(module: ssSelf, userWantsToLogoutInside: ssSelf.router?.main)
             }
-        }, changeRole: nil, openProfile: nil) { [weak self] in
-            guard let sSelf = self else { return }
-            sSelf.output?.review(module: sSelf, userWantsToAddRoleInside: sSelf.router?.main)
         }
+        self.presenters.menu.present(items: [addRole, logout])
     }
 
     func review(view: ReviewViewInput, userTappedOn supplier: PCSupplier) {

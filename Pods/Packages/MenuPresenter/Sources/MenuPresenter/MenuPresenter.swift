@@ -16,14 +16,20 @@
 
 import Foundation
 
-public enum Menu {
-    case review
-    case admin
-    case custom
+public struct MenuItem {
+    public var title: String
+    public var image: UIImage?
+    public var handler: (() -> Void)?
+
+    public init(title: String, image: UIImage?, handler: (() -> Void)?) {
+        self.title = title
+        self.image = image
+        self.handler = handler
+    }
 }
 
 public protocol MenuPresenter {
-    func present(menuFor: Menu, logout: (() -> Void)?, changeRole: (() -> Void)?, openProfile: (() -> Void)?, addRole: (() -> Void)?)
+    func present(items: [MenuItem])
 }
 
 public protocol MenuPresenterFactory {
