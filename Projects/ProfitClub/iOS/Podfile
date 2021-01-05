@@ -4,33 +4,34 @@ install! 'cocoapods', :disable_input_output_paths => true
 
 PODS_PATH = '../../../Pods'
 MODULES_PATH = PODS_PATH + '/Modules'
-PACAKGES_PATH = PODS_PATH + '/Packages'
+PACKAGES_PATH = PODS_PATH + '/Packages'
 SERVICES_PATH = PODS_PATH + '/Services'
 ONTOLOGY_PATH = PODS_PATH + '/Ontology'
 
 target 'ProfitClub' do
   pod 'Nantes'
   pod 'Kingfisher'
+  pod 'Firebase/Analytics'
 
   # modules
-  pod 'Main', :path => MODULES_PATH + '/Main.podspec'
+  pod 'Main', :path => MODULES_PATH + '/Main/Main.podspec'
 
   # ontology
-  pod 'ProfitClubModel', :path => ONTOLOGY_PATH + '/ProfitClubModel.podspec'
-  pod 'ProfitClubParse', :path => ONTOLOGY_PATH + '/ProfitClubParse.podspec'
+  pod 'ProfitClubModel', :path => ONTOLOGY_PATH + '/ProfitClubModel/ProfitClubModel.podspec'
+  pod 'ProfitClubParse', :path => ONTOLOGY_PATH + '/ProfitClubParse/ProfitClubParse.podspec'
   
   # packages
-  pod 'ErrorPresenter', :path => PACAKGES_PATH + '/ErrorPresenter.podspec'
-  pod 'ActivityPresenter', :path => PACAKGES_PATH + '/ActivityPresenter.podspec'
-  pod 'ConfirmationPresenter', :path => PACAKGES_PATH + '/ConfirmationPresenter.podspec'
-  pod 'MenuPresenter', :path => PACAKGES_PATH + '/MenuPresenter.podspec'
+  pod 'ErrorPresenter', :path => PACKAGES_PATH + '/ErrorPresenter/ErrorPresenter.podspec'
+  pod 'ActivityPresenter', :path => PACKAGES_PATH + '/ActivityPresenter/ActivityPresenter.podspec'
+  pod 'ConfirmationPresenter', :path => PACKAGES_PATH + '/ConfirmationPresenter/ConfirmationPresenter.podspec'
+  pod 'MenuPresenter', :path => PACKAGES_PATH + '/MenuPresenter/MenuPresenter.podspec'
   
   # services
-  pod 'PCAuthentication', :path => SERVICES_PATH + '/ProfitClub/PCAuthentication.podspec'
-  pod 'PCUserService', :path => SERVICES_PATH + '/ProfitClub/PCUserService.podspec'
-  pod 'PCOrganizationService', :path => SERVICES_PATH + '/ProfitClub/PCOrganizationService.podspec'
-  pod 'PCActionService', :path => SERVICES_PATH + '/ProfitClub/PCActionService.podspec'
-  pod 'PCCommercialOfferService', :path => SERVICES_PATH + '/ProfitClub/PCCommercialOfferService.podspec'
+  pod 'PCAuthentication', :path => SERVICES_PATH + '/ProfitClub/PCAuthentication/PCAuthentication.podspec'
+  pod 'PCUserService', :path => SERVICES_PATH + '/ProfitClub/PCUserService/PCUserService.podspec'
+  pod 'PCOrganizationService', :path => SERVICES_PATH + '/ProfitClub/PCOrganizationService/PCOrganizationService.podspec'
+  pod 'PCActionService', :path => SERVICES_PATH + '/ProfitClub/PCActionService/PCActionService.podspec'
+  pod 'PCCommercialOfferService', :path => SERVICES_PATH + '/ProfitClub/PCCommercialOfferService/PCCommercialOfferService.podspec'
 end
 
 # Exclude all Package.swift from pods targets
@@ -41,17 +42,6 @@ post_install do |installer|
     target.build_configurations.each do |config|
       if config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'].to_f < 9.0
         config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '9.0'
-      end
-    end
-
-    all_filerefs = installer.pods_project.files
-    all_filerefs.each do |fileref|
-    if fileref.name == "Package.swift"
-        build_phase = target.source_build_phase
-        build_phase.remove_file_reference(fileref)
-        if build_phase.files_references.include?(fileref)
-          build_phase.remove_file_reference(fileref)
-        end
       end
     end
   end

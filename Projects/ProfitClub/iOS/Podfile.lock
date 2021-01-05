@@ -3,13 +3,75 @@ PODS:
   - Bolts/Tasks (1.9.1)
   - ConfirmationPresenter (0.0.1)
   - ErrorPresenter (0.0.1)
-  - FittedSheets (2.2.3)
+  - Firebase/Analytics (7.3.0):
+    - Firebase/Core
+  - Firebase/Core (7.3.0):
+    - Firebase/CoreOnly
+    - FirebaseAnalytics (= 7.3.0)
+  - Firebase/CoreOnly (7.3.0):
+    - FirebaseCore (= 7.3.0)
+  - FirebaseAnalytics (7.3.0):
+    - FirebaseCore (~> 7.0)
+    - FirebaseInstallations (~> 7.0)
+    - GoogleAppMeasurement (= 7.3.0)
+    - GoogleUtilities/AppDelegateSwizzler (~> 7.0)
+    - GoogleUtilities/MethodSwizzler (~> 7.0)
+    - GoogleUtilities/Network (~> 7.0)
+    - "GoogleUtilities/NSData+zlib (~> 7.0)"
+    - nanopb (~> 2.30906.0)
+  - FirebaseCore (7.3.0):
+    - FirebaseCoreDiagnostics (~> 7.0)
+    - GoogleUtilities/Environment (~> 7.0)
+    - GoogleUtilities/Logger (~> 7.0)
+  - FirebaseCoreDiagnostics (7.3.0):
+    - GoogleDataTransport (~> 8.0)
+    - GoogleUtilities/Environment (~> 7.0)
+    - GoogleUtilities/Logger (~> 7.0)
+    - nanopb (~> 2.30906.0)
+  - FirebaseInstallations (7.3.0):
+    - FirebaseCore (~> 7.0)
+    - GoogleUtilities/Environment (~> 7.0)
+    - GoogleUtilities/UserDefaults (~> 7.0)
+    - PromisesObjC (~> 1.2)
+  - FittedSheets (2.3.0)
+  - GoogleAppMeasurement (7.3.0):
+    - GoogleUtilities/AppDelegateSwizzler (~> 7.0)
+    - GoogleUtilities/MethodSwizzler (~> 7.0)
+    - GoogleUtilities/Network (~> 7.0)
+    - "GoogleUtilities/NSData+zlib (~> 7.0)"
+    - nanopb (~> 2.30906.0)
+  - GoogleDataTransport (8.1.0):
+    - nanopb (~> 2.30906.0)
+  - GoogleUtilities/AppDelegateSwizzler (7.1.1):
+    - GoogleUtilities/Environment
+    - GoogleUtilities/Logger
+    - GoogleUtilities/Network
+  - GoogleUtilities/Environment (7.1.1):
+    - PromisesObjC (~> 1.2)
+  - GoogleUtilities/Logger (7.1.1):
+    - GoogleUtilities/Environment
+  - GoogleUtilities/MethodSwizzler (7.1.1):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/Network (7.1.1):
+    - GoogleUtilities/Logger
+    - "GoogleUtilities/NSData+zlib"
+    - GoogleUtilities/Reachability
+  - "GoogleUtilities/NSData+zlib (7.1.1)"
+  - GoogleUtilities/Reachability (7.1.1):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/UserDefaults (7.1.1):
+    - GoogleUtilities/Logger
   - Kingfisher (5.15.8):
     - Kingfisher/Core (= 5.15.8)
   - Kingfisher/Core (5.15.8)
   - Main (0.0.1):
     - FittedSheets
   - MenuPresenter (0.0.1)
+  - nanopb (2.30906.0):
+    - nanopb/decode (= 2.30906.0)
+    - nanopb/encode (= 2.30906.0)
+  - nanopb/decode (2.30906.0)
+  - nanopb/encode (2.30906.0)
   - Nantes (0.1.2)
   - Parse (1.19.1):
     - Parse/Core (= 1.19.1)
@@ -42,76 +104,98 @@ PODS:
   - ProfitClubParse (0.0.1):
     - Parse
     - ProfitClubModel
+  - PromisesObjC (1.2.12)
 
 DEPENDENCIES:
-  - ActivityPresenter (from `../../../Pods/Packages/ActivityPresenter.podspec`)
-  - ConfirmationPresenter (from `../../../Pods/Packages/ConfirmationPresenter.podspec`)
-  - ErrorPresenter (from `../../../Pods/Packages/ErrorPresenter.podspec`)
+  - ActivityPresenter (from `../../../Pods/Packages/ActivityPresenter/ActivityPresenter.podspec`)
+  - ConfirmationPresenter (from `../../../Pods/Packages/ConfirmationPresenter/ConfirmationPresenter.podspec`)
+  - ErrorPresenter (from `../../../Pods/Packages/ErrorPresenter/ErrorPresenter.podspec`)
+  - Firebase/Analytics
   - Kingfisher
-  - Main (from `../../../Pods/Modules/Main.podspec`)
-  - MenuPresenter (from `../../../Pods/Packages/MenuPresenter.podspec`)
+  - Main (from `../../../Pods/Modules/Main/Main.podspec`)
+  - MenuPresenter (from `../../../Pods/Packages/MenuPresenter/MenuPresenter.podspec`)
   - Nantes
-  - PCActionService (from `../../../Pods/Services/ProfitClub/PCActionService.podspec`)
-  - PCAuthentication (from `../../../Pods/Services/ProfitClub/PCAuthentication.podspec`)
-  - PCCommercialOfferService (from `../../../Pods/Services/ProfitClub/PCCommercialOfferService.podspec`)
-  - PCOrganizationService (from `../../../Pods/Services/ProfitClub/PCOrganizationService.podspec`)
-  - PCUserService (from `../../../Pods/Services/ProfitClub/PCUserService.podspec`)
-  - ProfitClubModel (from `../../../Pods/Ontology/ProfitClubModel.podspec`)
-  - ProfitClubParse (from `../../../Pods/Ontology/ProfitClubParse.podspec`)
+  - PCActionService (from `../../../Pods/Services/ProfitClub/PCActionService/PCActionService.podspec`)
+  - PCAuthentication (from `../../../Pods/Services/ProfitClub/PCAuthentication/PCAuthentication.podspec`)
+  - PCCommercialOfferService (from `../../../Pods/Services/ProfitClub/PCCommercialOfferService/PCCommercialOfferService.podspec`)
+  - PCOrganizationService (from `../../../Pods/Services/ProfitClub/PCOrganizationService/PCOrganizationService.podspec`)
+  - PCUserService (from `../../../Pods/Services/ProfitClub/PCUserService/PCUserService.podspec`)
+  - ProfitClubModel (from `../../../Pods/Ontology/ProfitClubModel/ProfitClubModel.podspec`)
+  - ProfitClubParse (from `../../../Pods/Ontology/ProfitClubParse/ProfitClubParse.podspec`)
 
 SPEC REPOS:
   trunk:
     - Bolts
+    - Firebase
+    - FirebaseAnalytics
+    - FirebaseCore
+    - FirebaseCoreDiagnostics
+    - FirebaseInstallations
     - FittedSheets
+    - GoogleAppMeasurement
+    - GoogleDataTransport
+    - GoogleUtilities
     - Kingfisher
+    - nanopb
     - Nantes
     - Parse
+    - PromisesObjC
 
 EXTERNAL SOURCES:
   ActivityPresenter:
-    :path: "../../../Pods/Packages/ActivityPresenter.podspec"
+    :path: "../../../Pods/Packages/ActivityPresenter/ActivityPresenter.podspec"
   ConfirmationPresenter:
-    :path: "../../../Pods/Packages/ConfirmationPresenter.podspec"
+    :path: "../../../Pods/Packages/ConfirmationPresenter/ConfirmationPresenter.podspec"
   ErrorPresenter:
-    :path: "../../../Pods/Packages/ErrorPresenter.podspec"
+    :path: "../../../Pods/Packages/ErrorPresenter/ErrorPresenter.podspec"
   Main:
-    :path: "../../../Pods/Modules/Main.podspec"
+    :path: "../../../Pods/Modules/Main/Main.podspec"
   MenuPresenter:
-    :path: "../../../Pods/Packages/MenuPresenter.podspec"
+    :path: "../../../Pods/Packages/MenuPresenter/MenuPresenter.podspec"
   PCActionService:
-    :path: "../../../Pods/Services/ProfitClub/PCActionService.podspec"
+    :path: "../../../Pods/Services/ProfitClub/PCActionService/PCActionService.podspec"
   PCAuthentication:
-    :path: "../../../Pods/Services/ProfitClub/PCAuthentication.podspec"
+    :path: "../../../Pods/Services/ProfitClub/PCAuthentication/PCAuthentication.podspec"
   PCCommercialOfferService:
-    :path: "../../../Pods/Services/ProfitClub/PCCommercialOfferService.podspec"
+    :path: "../../../Pods/Services/ProfitClub/PCCommercialOfferService/PCCommercialOfferService.podspec"
   PCOrganizationService:
-    :path: "../../../Pods/Services/ProfitClub/PCOrganizationService.podspec"
+    :path: "../../../Pods/Services/ProfitClub/PCOrganizationService/PCOrganizationService.podspec"
   PCUserService:
-    :path: "../../../Pods/Services/ProfitClub/PCUserService.podspec"
+    :path: "../../../Pods/Services/ProfitClub/PCUserService/PCUserService.podspec"
   ProfitClubModel:
-    :path: "../../../Pods/Ontology/ProfitClubModel.podspec"
+    :path: "../../../Pods/Ontology/ProfitClubModel/ProfitClubModel.podspec"
   ProfitClubParse:
-    :path: "../../../Pods/Ontology/ProfitClubParse.podspec"
+    :path: "../../../Pods/Ontology/ProfitClubParse/ProfitClubParse.podspec"
 
 SPEC CHECKSUMS:
-  ActivityPresenter: 43362337d96a0ea52420fe808517fe9cd1b527a4
+  ActivityPresenter: cd15f43e0696b5a13c1c78407cffe34c71d1de09
   Bolts: 8c1e8aab2f603387b8b9924f57d1d64f43d3ffdc
-  ConfirmationPresenter: 8dc6e46d920dbaf9358f93f28358e85eb3e76255
-  ErrorPresenter: deb60f0739744b9b79bbf7be09e7e0a473ba132b
-  FittedSheets: 5533375af9ed713977b8e6d88b74c90e8f5df041
+  ConfirmationPresenter: 99fa0e9252aae3adf92063ac9e3b8517e75bd72e
+  ErrorPresenter: e9b77c9bc1a80af18a3d261e839d9b59a7bf75bf
+  Firebase: 26223c695fe322633274198cb19dca8cb7e54416
+  FirebaseAnalytics: 2580c2d62535ae7b644143d48941fcc239ea897a
+  FirebaseCore: 4d3c72622ce0e2106aaa07bb4b2935ba2c370972
+  FirebaseCoreDiagnostics: d50e11039e5984d92c8a512be2395f13df747350
+  FirebaseInstallations: 971df89b48ae5ee4cc2bf6935f3857a525d28550
+  FittedSheets: c64310ca8fd55846703a272da3ea3916d381d839
+  GoogleAppMeasurement: 8d3c0aeede16ab7764144b5a4ca8e1d4323841b7
+  GoogleDataTransport: 116c84c4bdeb76be2a7a46de51244368f9794eab
+  GoogleUtilities: 3dc4ff0d5e4840e2fa8eef0889620e8c33d4218c
   Kingfisher: a3c03d702433fa6cfedabb2bddbe076fb8f2e902
-  Main: 5f3663f52dc9f73e8caed2af67aa325dfd64111d
-  MenuPresenter: 9f12bf648de0245b29fcf0ecbe528199161f1640
+  Main: 7c09e4cc03e96879e0de9de5a69f9cfbf7f47b0a
+  MenuPresenter: df2c3f2fa89829bb210d3ba25ac058315ec34332
+  nanopb: 1bf24dd71191072e120b83dd02d08f3da0d65e53
   Nantes: 0396442578e32242223fed46050dea1850236184
   Parse: e40fdb9c7d665823b7fe9865949cac9a53eb2ce7
-  PCActionService: 57c4d47fb324bc6d6f0de36d037f8ee04e2f52dd
-  PCAuthentication: 08d4d8b660b8f39573b8192607dd431ebdb7254f
-  PCCommercialOfferService: 6ec41c8d76b385dbe02f6b7900f546863ba3559b
-  PCOrganizationService: d3e3f936840999a102c4bfdecfdeccd327ccf9d3
-  PCUserService: 0fda50172a03145b21c939d6bbdbf12526c7e37b
-  ProfitClubModel: 38acfa2527d8cac51c97c8494db90fdd3025d32f
-  ProfitClubParse: f0319471560bd2af6fd3d2753a8980bab1656b1a
+  PCActionService: f01b62c45652d414b08e7485dd93d3fa81469b8e
+  PCAuthentication: bffb9e8e9a0350032c67daeb5d645280672ec598
+  PCCommercialOfferService: ceca05fd607591d8ca264c8948dff9c723a006b5
+  PCOrganizationService: ae5dcf078a38eae6946b94a89ef069f054d12a90
+  PCUserService: 0ac1aaca007a96211c1e5d77791e1c1d519b6566
+  ProfitClubModel: 4010684de9ecc44919367c734657d6c1a784753e
+  ProfitClubParse: b4b8d11a56f8b4fa9651cb38d54cbec342e9f23d
+  PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
 
-PODFILE CHECKSUM: 659f6f5f4f177722c95dffcb9a630a24e05cf31d
+PODFILE CHECKSUM: b951c6a93059176569ebf1cca2701c04ae531dc5
 
 COCOAPODS: 1.10.0
