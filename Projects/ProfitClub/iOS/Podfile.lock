@@ -42,7 +42,7 @@ PODS:
     - GoogleUtilities/Environment (~> 7.0)
     - GoogleUtilities/UserDefaults (~> 7.0)
     - PromisesObjC (~> 1.2)
-  - FittedSheets (2.3.0)
+  - FittedSheets (2.2.3)
   - GoogleAppMeasurement (7.3.0):
     - GoogleUtilities/AppDelegateSwizzler (~> 7.0)
     - GoogleUtilities/MethodSwizzler (~> 7.0)
@@ -74,7 +74,7 @@ PODS:
     - Kingfisher/Core (= 5.15.8)
   - Kingfisher/Core (5.15.8)
   - Main (0.0.1):
-    - FittedSheets
+    - FittedSheets (~> 2.2.3)
   - MenuPresenter (0.0.1)
   - nanopb (2.30906.0):
     - nanopb/decode (= 2.30906.0)
@@ -189,12 +189,12 @@ SPEC CHECKSUMS:
   FirebaseCoreDiagnostics: d50e11039e5984d92c8a512be2395f13df747350
   FirebaseCrashlytics: d31325312c92e2cb2f0386d589b9aa44e303d99b
   FirebaseInstallations: 971df89b48ae5ee4cc2bf6935f3857a525d28550
-  FittedSheets: c64310ca8fd55846703a272da3ea3916d381d839
+  FittedSheets: 5533375af9ed713977b8e6d88b74c90e8f5df041
   GoogleAppMeasurement: 8d3c0aeede16ab7764144b5a4ca8e1d4323841b7
   GoogleDataTransport: 116c84c4bdeb76be2a7a46de51244368f9794eab
   GoogleUtilities: 3dc4ff0d5e4840e2fa8eef0889620e8c33d4218c
   Kingfisher: a3c03d702433fa6cfedabb2bddbe076fb8f2e902
-  Main: 7c09e4cc03e96879e0de9de5a69f9cfbf7f47b0a
+  Main: 132589845be9a89dc460367d0bc2a28e86557b3b
   MenuPresenter: df2c3f2fa89829bb210d3ba25ac058315ec34332
   nanopb: 1bf24dd71191072e120b83dd02d08f3da0d65e53
   Nantes: 0396442578e32242223fed46050dea1850236184

@@ -18,5 +18,5 @@ Pod::Spec.new do |s|
     test_spec.source_files = 'Tests/**/*.{swift}', 'Tests/*.{swift}'
   end
 
-  s.dependency 'FittedSheets'
+  s.dependency 'FittedSheets', '~> 2.2.3'
 end

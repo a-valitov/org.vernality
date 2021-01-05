@@ -68,12 +68,6 @@ extension MainModuleMVC: MainModule {
         )
         options.transitionDuration = 0.5
         let sheetController = SheetViewController(controller: viewController, options: options)
-        sheetController.shouldDismiss = { _ in
-            return true
-        }
-        sheetController.didDismiss = { _ in
-            // This is called after the sheet is dismissed
-        }
         viewController.view.superview?.backgroundColor = .clear
         self.navigationController?.topViewController?.present(sheetController, animated: animated)
     }
