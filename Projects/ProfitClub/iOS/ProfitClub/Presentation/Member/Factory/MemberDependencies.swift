@@ -20,11 +20,13 @@ import PCActionService
 import ActivityPresenter
 import ConfirmationPresenter
 import ErrorPresenter
+import MenuPresenter
 
 struct MemberPresenters {
     let error: ErrorPresenter
     let activity: ActivityPresenter
     let confirmation: ConfirmationPresenter
+    let menu: MenuPresenter
 }
 
 struct MemberServices {

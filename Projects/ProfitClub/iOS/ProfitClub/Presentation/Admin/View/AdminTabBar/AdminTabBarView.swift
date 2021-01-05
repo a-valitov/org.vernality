@@ -20,6 +20,5 @@ protocol AdminTabBarViewInput: UIViewController {
 }
 
 protocol AdminTabBarViewOutput {
-    func adminTabBar(view: AdminTabBarViewInput, userWantsToLogout sender: Any)
-    func adminTabBar(view: AdminTabBarViewInput, userWantsToChangeRole sender: Any)
+    func adminTabBar(view: AdminTabBarViewInput, tappenOn menuBarButton: Any)
 }

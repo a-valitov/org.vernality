@@ -9,6 +9,7 @@ PODS:
   - Kingfisher/Core (5.15.8)
   - Main (0.0.1):
     - FittedSheets
+  - MenuPresenter (0.0.1)
   - Nantes (0.1.2)
   - Parse (1.19.1):
     - Parse/Core (= 1.19.1)
@@ -48,6 +49,7 @@ DEPENDENCIES:
   - ErrorPresenter (from `../../../Pods/Packages/ErrorPresenter.podspec`)
   - Kingfisher
   - Main (from `../../../Pods/Modules/Main.podspec`)
+  - MenuPresenter (from `../../../Pods/Packages/MenuPresenter.podspec`)
   - Nantes
   - PCActionService (from `../../../Pods/Services/ProfitClub/PCActionService.podspec`)
   - PCAuthentication (from `../../../Pods/Services/ProfitClub/PCAuthentication.podspec`)
@@ -74,6 +76,8 @@ EXTERNAL SOURCES:
     :path: "../../../Pods/Packages/ErrorPresenter.podspec"
   Main:
     :path: "../../../Pods/Modules/Main.podspec"
+  MenuPresenter:
+    :path: "../../../Pods/Packages/MenuPresenter.podspec"
   PCActionService:
     :path: "../../../Pods/Services/ProfitClub/PCActionService.podspec"
   PCAuthentication:
@@ -97,6 +101,7 @@ SPEC CHECKSUMS:
   FittedSheets: 5533375af9ed713977b8e6d88b74c90e8f5df041
   Kingfisher: a3c03d702433fa6cfedabb2bddbe076fb8f2e902
   Main: 5f3663f52dc9f73e8caed2af67aa325dfd64111d
+  MenuPresenter: 9f12bf648de0245b29fcf0ecbe528199161f1640
   Nantes: 0396442578e32242223fed46050dea1850236184
   Parse: e40fdb9c7d665823b7fe9865949cac9a53eb2ce7
   PCActionService: 57c4d47fb324bc6d6f0de36d037f8ee04e2f52dd
@@ -107,6 +112,6 @@ SPEC CHECKSUMS:
   ProfitClubModel: 38acfa2527d8cac51c97c8494db90fdd3025d32f
   ProfitClubParse: f0319471560bd2af6fd3d2753a8980bab1656b1a
 
-PODFILE CHECKSUM: 0a09ec1f15d4d3c42da0968bfa83acfa81beefb5
+PODFILE CHECKSUM: 659f6f5f4f177722c95dffcb9a630a24e05cf31d
 
 COCOAPODS: 1.10.0

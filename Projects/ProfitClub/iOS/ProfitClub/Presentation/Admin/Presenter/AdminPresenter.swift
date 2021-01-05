@@ -19,6 +19,7 @@ import Main
 import ErrorPresenter
 import ActivityPresenter
 import ConfirmationPresenter
+import MenuPresenter
 import ProfitClubModel
 
 final class AdminPresenter: AdminModule {
@@ -43,15 +44,19 @@ final class AdminPresenter: AdminModule {
 }
 
 extension AdminPresenter: AdminTabBarViewOutput {
-    func adminTabBar(view: AdminTabBarViewInput, userWantsToLogout sender: Any) {
-        self.presenters.confirmation.present(title: "Подтвердите выход", message: "Вы уверены что хотите выйти?", actionTitle: "Выйти", withCancelAction: true) { [weak self] in
+    func adminTabBar(view: AdminTabBarViewInput, tappenOn menuBarButton: Any) {
+        let changeRole = MenuItem(title: "Сменить роль", image: #imageLiteral(resourceName: "refresh")) { [weak self] in
             guard let sSelf = self else { return }
-            sSelf.output?.admin(module: sSelf, userWantsToLogoutInside: sSelf.router?.main)
+            sSelf.output?.admin(module: sSelf, userWantsToChangeRole: sSelf.router?.main)
         }
-    }
-
-    func adminTabBar(view: AdminTabBarViewInput, userWantsToChangeRole sender: Any) {
-        self.output?.admin(module: self, userWantsToChangeRole: self.router?.main)
+        let logout = MenuItem(title: "Выйти", image: #imageLiteral(resourceName: "logout")) { [weak self] in
+            guard let sSelf = self else { return }
+            sSelf.presenters.confirmation.present(title: "Подтвердите выход", message: "Вы уверены что хотите выйти?", actionTitle: "Выйти", withCancelAction: true) { [weak sSelf] in
+                guard let ssSelf = sSelf else { return }
+                ssSelf.output?.admin(module: ssSelf, userWantsToLogoutInside: ssSelf.router?.main)
+            }
+        }
+        self.presenters.menu.present(items: [changeRole, logout])
     }
 }
 

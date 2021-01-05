@@ -22,10 +22,8 @@ protocol MemberCurrentActionsViewInput: UIViewController {
 }
 
 protocol MemberCurrentActionsViewOutput {
+    func memberCurrentActions(view: MemberCurrentActionsViewInput, tappenOn menuBarButton: Any)
     func memberCurrentActionsDidLoad(view: MemberCurrentActionsViewInput)
     func memberCurrentActions(view: MemberCurrentActionsViewInput, didSelect action: PCAction)
-    func memberNavigtaionBar(view: MemberCurrentActionsViewInput, tappedOn profile: Any)
-    func memberCurrentActions(view: MemberCurrentActionsViewInput, userWantsToLogout sender: Any)
-    func memberCurrentActions(view: MemberCurrentActionsViewInput, userWantsToChangeRole sender: Any)
     func memberCurrentActions(view: MemberCurrentActionsViewInput, userWantsToRefresh sender: Any)
 }

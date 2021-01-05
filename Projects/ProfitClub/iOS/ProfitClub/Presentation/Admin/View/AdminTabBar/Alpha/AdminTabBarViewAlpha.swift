@@ -56,33 +56,7 @@ final class AdminTabBarViewAlpha: UITabBarController {
     }
 
     @objc private func menuBarButtonItemAction(_ sender: Any) {
-        let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        actionSheet.view.tintColor = .black
-
-        let logoutIcon = #imageLiteral(resourceName: "logout")
-        let changeRoleIcon = #imageLiteral(resourceName: "refresh")
-        
-        let logout = UIAlertAction(title: "Выйти", style: .default) { [weak self] _ in
-            guard let sSelf = self else { return }
-            sSelf.output?.adminTabBar(view: sSelf, userWantsToLogout: sender)
-        }
-
-        logout.setValue(logoutIcon.withRenderingMode(.alwaysOriginal), forKey: "image")
-
-        let changeRole = UIAlertAction(title: "Сменить роль", style: .default) { [weak self] _ in
-            guard let sSelf = self else { return }
-            sSelf.output?.adminTabBar(view: sSelf, userWantsToChangeRole: sender)
-        }
-
-        changeRole.setValue(changeRoleIcon.withRenderingMode(.alwaysOriginal), forKey: "image")
-
-        let cancelAction = UIAlertAction(title: "Отменить", style: .cancel)
-        cancelAction.setValue(UIColor.red, forKey: "titleTextColor")
-
-        actionSheet.addAction(changeRole)
-        actionSheet.addAction(logout)
-        actionSheet.addAction(cancelAction)
-        present(actionSheet, animated: true)
+        self.output?.adminTabBar(view: self, tappenOn: sender)
     }
 }
 

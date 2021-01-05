@@ -19,6 +19,7 @@ import Main
 import ErrorPresenter
 import ActivityPresenter
 import ConfirmationPresenter
+import MenuPresenter
 import ProfitClubModel
 
 final class OrganizationPresenter: OrganizationModule {
@@ -47,19 +48,23 @@ final class OrganizationPresenter: OrganizationModule {
 }
 
 extension OrganizationPresenter: OrganizationTabBarViewOutput {
-    func organizationTabBar(view: OrganizationTabBarViewInput, tappedOn profile: Any) {
-        self.output?.organization(module: self, userWantsToOpenProfileOf: self.organization, inside: self.router?.main)
-    }
-
-    func organizationTabBar(view: OrganizationTabBarViewInput, userWantsToLogout sender: Any) {
-        self.presenters.confirmation.present(title: "Подтвердите выход", message: "Вы уверены что хотите выйти?", actionTitle: "Выйти", withCancelAction: true) { [weak self] in
+    func organizationTabBar(view: OrganizationTabBarViewInput, tappenOn menuBarButton: Any) {
+        let profile = MenuItem(title: "Профиль", image: #imageLiteral(resourceName: "profile")) { [weak self] in
             guard let sSelf = self else { return }
-            sSelf.output?.organization(module: sSelf, userWantsToLogoutInside: sSelf.router?.main)
+            sSelf.output?.organization(module: sSelf, userWantsToOpenProfileOf: sSelf.organization, inside: sSelf.router?.main)
         }
-    }
-
-    func organizationTabBar(view: OrganizationTabBarViewInput, userWantsToChangeRole sender: Any) {
-        self.output?.organization(module: self, userWantsToChangeRole: self.router?.main)
+        let changeRole = MenuItem(title: "Сменить роль", image: #imageLiteral(resourceName: "refresh")) { [weak self] in
+            guard let sSelf = self else { return }
+            sSelf.output?.organization(module: sSelf, userWantsToChangeRole: sSelf.router?.main)
+        }
+        let logout = MenuItem(title: "Выйти", image: #imageLiteral(resourceName: "logout")) { [weak self] in
+            guard let sSelf = self else { return }
+            sSelf.presenters.confirmation.present(title: "Подтвердите выход", message: "Вы уверены что хотите выйти?", actionTitle: "Выйти", withCancelAction: true) { [weak sSelf] in
+                guard let ssSelf = sSelf else { return }
+                ssSelf.output?.organization(module: ssSelf, userWantsToLogoutInside: ssSelf.router?.main)
+            }
+        }
+        self.presenters.menu.present(items: [profile, changeRole, logout])
     }
 }
 
@@ -80,9 +85,9 @@ extension OrganizationPresenter: CommercialOffersModuleOutput {
 }
 
 extension OrganizationPresenter: CommercialOfferModuleOutput {
-    
+
 }
 
 extension OrganizationPresenter: MembersModuleOutput {
-    
+
 }

@@ -18,6 +18,7 @@ import Foundation
 import Main
 import ActivityPresenter
 import ConfirmationPresenter
+import MenuPresenter
 import ProfitClubModel
 
 final class MemberPresenter: MemberModule {
@@ -46,13 +47,6 @@ final class MemberPresenter: MemberModule {
 }
 
 extension MemberPresenter: MemberCurrentActionsViewOutput {
-    func memberCurrentActions(view: MemberCurrentActionsViewInput, userWantsToLogout sender: Any) {
-        self.presenters.confirmation.present(title: "Подтвердите выход", message: "Вы уверены что хотите выйти?", actionTitle: "Выйти", withCancelAction: true) { [weak self] in
-        guard let sSelf = self else { return }
-        sSelf.output?.member(module: sSelf, userWantsToLogoutInside: sSelf.router?.main)
-        }
-    }
-
     func memberCurrentActionsDidLoad(view: MemberCurrentActionsViewInput) {
         self.services.action.fetchApprovedCurrentActions { [weak self] result in
             switch result {
@@ -68,12 +62,23 @@ extension MemberPresenter: MemberCurrentActionsViewOutput {
         self.router?.openMemberCurrentAction(action: action, output: self)
     }
 
-    func memberNavigtaionBar(view: MemberCurrentActionsViewInput, tappedOn profile: Any) {
-        self.output?.member(module: self, userWantsToOpenProfileOf: self.member, inside: self.router?.main)
-    }
-
-    func memberCurrentActions(view: MemberCurrentActionsViewInput, userWantsToChangeRole sender: Any) {
-        self.output?.member(module: self, userWantsToChangeRole: self.router?.main)
+    func memberCurrentActions(view: MemberCurrentActionsViewInput, tappenOn menuBarButton: Any) {
+        let profile = MenuItem(title: "Профиль", image: #imageLiteral(resourceName: "profile")) { [weak self] in
+            guard let sSelf = self else { return }
+            sSelf.output?.member(module: sSelf, userWantsToOpenProfileOf: sSelf.member, inside: sSelf.router?.main)
+        }
+        let changeRole = MenuItem(title: "Сменить роль", image: #imageLiteral(resourceName: "refresh")) { [weak self] in
+            guard let sSelf = self else { return }
+            sSelf.output?.member(module: sSelf, userWantsToChangeRole: sSelf.router?.main)
+        }
+        let logout = MenuItem(title: "Выйти", image: #imageLiteral(resourceName: "logout")) { [weak self] in
+            guard let sSelf = self else { return }
+            sSelf.presenters.confirmation.present(title: "Подтвердите выход", message: "Вы уверены что хотите выйти?", actionTitle: "Выйти", withCancelAction: true) { [weak sSelf] in
+                guard let ssSelf = sSelf else { return }
+                ssSelf.output?.member(module: ssSelf, userWantsToLogoutInside: ssSelf.router?.main)
+            }
+        }
+        self.presenters.menu.present(items: [profile, changeRole, logout])
     }
 
     func memberCurrentActions(view: MemberCurrentActionsViewInput, userWantsToRefresh sender: Any) {

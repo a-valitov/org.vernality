@@ -17,6 +17,8 @@
 import Foundation
 import Main
 import ProfitClubModel
+import MenuPresenter
+import ConfirmationPresenter
 
 final class ReviewPresenter: ReviewModule {
     var router: ReviewRouter?
@@ -64,16 +66,19 @@ extension ReviewPresenter: ReviewViewOutput {
         }
     }
 
-    func review(view: ReviewViewInput, userWantsToAdd sender: Any) {
-        self.output?.review(module: self, userWantsToAddRoleInside: self.router?.main)
-    }
-
-    func review(view: ReviewViewInput, userWantsToLogout sender: Any) {
-        view.showLogoutConfirmationDialog()
-    }
-
-    func review(view: ReviewViewInput, userConfirmToLogout sender: Any) {
-        self.output?.review(module: self, userWantsToLogoutInside: self.router?.main)
+    func review(view: ReviewViewInput, tappenOn menuBarButton: Any) {
+        let addRole = MenuItem(title: "Добавить роль", image: #imageLiteral(resourceName: "addRoleIcon")) { [weak self] in
+            guard let sSelf = self else { return }
+            sSelf.output?.review(module: sSelf, userWantsToAddRoleInside: sSelf.router?.main)
+        }
+        let logout = MenuItem(title: "Выйти", image: #imageLiteral(resourceName: "logout")) { [weak self] in
+            guard let sSelf = self else { return }
+            sSelf.presenters.confirmation.present(title: "Подтвердите выход", message: "Вы уверены что хотите выйти?", actionTitle: "Выйти", withCancelAction: true) { [weak sSelf] in
+                guard let ssSelf = sSelf else { return }
+                ssSelf.output?.review(module: ssSelf, userWantsToLogoutInside: ssSelf.router?.main)
+            }
+        }
+        self.presenters.menu.present(items: [addRole, logout])
     }
 
     func review(view: ReviewViewInput, userTappedOn supplier: PCSupplier) {

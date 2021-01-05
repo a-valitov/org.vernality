@@ -18,11 +18,13 @@ import Foundation
 import ErrorPresenter
 import ActivityPresenter
 import ConfirmationPresenter
+import MenuPresenter
 
 struct AdminPresenters {
     let error: ErrorPresenter
     let activity: ActivityPresenter
     let confirmation: ConfirmationPresenter
+    let menu: MenuPresenter
 }
 
 struct AdminServices {

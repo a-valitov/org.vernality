@@ -22,8 +22,6 @@ protocol SupplierViewInput: UIViewController {
 protocol SupplierViewOutput {
     func supplierView(view: SupplierViewInput, supplierWantsToCreateAction sender: Any)
     func supplier(view: SupplierViewInput, wantsToCreateCommercialOffer sender: Any)
-    func supplierNavigationBar(view: SupplierViewInput, tappedOn profile: Any)
-    func supplier(view: SupplierViewInput, userWantsToLogout sender: Any)
-    func supplier(view: SupplierViewInput, userWantsToChangeRole sender: Any)
+    func supplier(view: SupplierViewInput, tappenOn menuBarButton: Any)
 }
 

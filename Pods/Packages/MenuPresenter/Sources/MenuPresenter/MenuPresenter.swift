@@ -1,5 +1,5 @@
-//  Copyright (C) 2020 Startup Studio Vernality
-//  Created by Macbook on 30.10.2020
+//  Copyright (C) 2021 Startup Studio Vernality
+//  Created by Macbook on 05.01.2021
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -14,16 +14,24 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import UIKit
+import Foundation
 
-protocol SupplierCommercialOfferInput: UIViewController {
-    var message: String? { get }
-    var image: UIImage? { get }
-    var attachments: [Data] { get }
-    var attachmentNames: [String] { get }
+public struct MenuItem {
+    public var title: String
+    public var image: UIImage?
+    public var handler: (() -> Void)?
+
+    public init(title: String, image: UIImage?, handler: (() -> Void)?) {
+        self.title = title
+        self.image = image
+        self.handler = handler
+    }
 }
 
-protocol SupplierCommercialOfferOutput {
-    func supplierCommercialOfferDidFinish(view: SupplierCommercialOfferInput)
-    func supplierCommercialOffer(view: SupplierCommercialOfferInput, tappenOn menuBarButton: Any)
+public protocol MenuPresenter {
+    func present(items: [MenuItem])
+}
+
+public protocol MenuPresenterFactory {
+    func make() -> MenuPresenter
 }

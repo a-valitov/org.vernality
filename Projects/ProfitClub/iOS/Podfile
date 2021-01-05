@@ -23,6 +23,7 @@ target 'ProfitClub' do
   pod 'ErrorPresenter', :path => PACAKGES_PATH + '/ErrorPresenter.podspec'
   pod 'ActivityPresenter', :path => PACAKGES_PATH + '/ActivityPresenter.podspec'
   pod 'ConfirmationPresenter', :path => PACAKGES_PATH + '/ConfirmationPresenter.podspec'
+  pod 'MenuPresenter', :path => PACAKGES_PATH + '/MenuPresenter.podspec'
   
   # services
   pod 'PCAuthentication', :path => SERVICES_PATH + '/ProfitClub/PCAuthentication.podspec'

@@ -27,6 +27,7 @@ import PCActionService
 import ProfitClubModel
 import PCCommercialOfferService
 import ConfirmationPresenter
+import MenuPresenter
 
 final class AppFactory {
     lazy var authentication: PCAuthentication = {
@@ -47,6 +48,10 @@ final class AppFactory {
 
     func confirmationPresenter() -> ConfirmationPresenter {
         return ConfirmationPresenterAlertFactory().make()
+    }
+
+    func menuPresenter() -> MenuPresenter {
+        return MenuPresenterActionSheetFactory().make()
     }
     
     func organizationService() -> PCOrganizationService {
@@ -130,27 +135,27 @@ private extension AppFactory {
     
     var reviewFactory: ReviewFactory {
         return ReviewFactory(presenters: ReviewPresenters(error: self.errorPresenter(),
-                                                          activity: self.activityPresenter()),
+                                                          activity: self.activityPresenter(), confirmation: self.confirmationPresenter(), menu: self.menuPresenter()),
                              services: ReviewServices(userService: self.userService))
     }
     
     var organizationFactory: OrganizationFactory {
-        return OrganizationFactory(presenters: OrganizationPresenters(error: self.errorPresenter(), activity: self.activityPresenter(), confirmation: self.confirmationPresenter()),
+        return OrganizationFactory(presenters: OrganizationPresenters(error: self.errorPresenter(), activity: self.activityPresenter(), confirmation: self.confirmationPresenter(), menu: self.menuPresenter()),
                                    services: OrganizationServices(authentication: self.authentication, organization: self.organizationService()),
                                    factories: OrganizationFactories(actions: self.actionsFactory, action: self.actionFactory, commercialOffers: self.commercialOffersFactory, commercialOffer: self.commercialOfferFactory, members: self.membersFactory))
     }
     
     var supplierFactory: SupplierFactory {
-        return SupplierFactory(presenters: SupplierPresenters(error: self.errorPresenter(), activity: self.activityPresenter(), confirmation: self.confirmationPresenter()),
+        return SupplierFactory(presenters: SupplierPresenters(error: self.errorPresenter(), activity: self.activityPresenter(), confirmation: self.confirmationPresenter(), menu: self.menuPresenter()),
                                services: SupplierServices(authentication: self.authentication, action: self.actionService(), commercialOffer: self.commercialOfferService()))
     }
 
     var memberFactory: MemberFactory {
-        return MemberFactory(presenters: MemberPresenters(error: self.errorPresenter(), activity: self.activityPresenter(), confirmation: self.confirmationPresenter()), services: MemberServices(action: self.actionService()))
+        return MemberFactory(presenters: MemberPresenters(error: self.errorPresenter(), activity: self.activityPresenter(), confirmation: self.confirmationPresenter(), menu: self.menuPresenter()), services: MemberServices(action: self.actionService()))
     }
 
     var adminFactory: AdminFactory {
-        return AdminFactory(presenters: AdminPresenters(error: self.errorPresenter(), activity: self.activityPresenter(), confirmation: self.confirmationPresenter()), services: AdminServices(), factories: AdminFactories(adminOrganizations: self.adminOrganizationsFactory, adminOrganization: self.adminOrganizationFactory))
+        return AdminFactory(presenters: AdminPresenters(error: self.errorPresenter(), activity: self.activityPresenter(), confirmation: self.confirmationPresenter(), menu: self.menuPresenter()), services: AdminServices(), factories: AdminFactories(adminOrganizations: self.adminOrganizationsFactory, adminOrganization: self.adminOrganizationFactory))
     }
 
     var adminOrganizationsFactory: AdminOrganizationsFactory {
