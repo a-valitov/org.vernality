@@ -64,9 +64,11 @@ final class ApproveCurrentActionViewAlpha: UIViewController {
 
     private lazy var actionImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleToFill
+        imageView.contentMode = .scaleAspectFill
         imageView.backgroundColor = .black
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.setContentHuggingPriority(.defaultLow, for: .vertical)
+        imageView.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
         return imageView
     }()
 
@@ -163,6 +165,7 @@ final class ApproveCurrentActionViewAlpha: UIViewController {
         super.viewWillLayoutSubviews()
         self.rejectActionButton.layer.borderWidth = 1
         self.rejectActionButton.layer.borderColor = UIColor.black.cgColor
+        self.actionImageView.layer.masksToBounds = true
     }
 
     @objc private func cancelTouchUpInside(_ sender: Any) {
@@ -197,8 +200,7 @@ extension ApproveCurrentActionViewAlpha {
             imageView.topAnchor.constraint(equalTo: container.topAnchor, constant: 0),
             imageView.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 0),
             imageView.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: 0),
-            imageView.heightAnchor.constraint(equalTo: self.actionImageView.widthAnchor, multiplier: 89/207),
-            imageView.widthAnchor.constraint(equalTo: self.actionImageView.heightAnchor, multiplier: 207/89)
+            imageView.heightAnchor.constraint(greaterThanOrEqualTo: self.actionImageView.widthAnchor, multiplier: 89/207)
         ])
     }
 
@@ -282,7 +284,7 @@ extension ApproveCurrentActionViewAlpha {
             button.rightAnchor.constraint(equalTo: self.actionLinkButton.rightAnchor),
             button.topAnchor.constraint(equalTo: self.approveActionButton.bottomAnchor, constant: 15.0),
             button.heightAnchor.constraint(equalToConstant: 52.0),
-            button.bottomAnchor.constraint(lessThanOrEqualTo: container.safeAreaLayoutGuide.bottomAnchor, constant: -20.0)
+            button.bottomAnchor.constraint(equalTo: container.safeAreaLayoutGuide.bottomAnchor, constant: -20.0)
         ])
     }
 }

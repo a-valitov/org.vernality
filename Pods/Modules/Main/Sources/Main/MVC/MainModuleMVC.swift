@@ -67,7 +67,8 @@ extension MainModuleMVC: MainModule {
             useInlineMode: false
         )
         options.transitionDuration = 0.5
-        let sheetController = SheetViewController(controller: viewController, options: options)
+        let sheetController = SheetViewController(controller: viewController, sizes: [.intrinsic, .fullscreen], options: options)
+        sheetController.minimumSpaceAbovePullBar = 50
         viewController.view.superview?.backgroundColor = .clear
         self.navigationController?.topViewController?.present(sheetController, animated: animated)
     }

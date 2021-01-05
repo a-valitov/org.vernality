@@ -51,9 +51,11 @@ final class PastActionViewAlpha: UIViewController {
 
     private lazy var pastActionImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleToFill
+        imageView.contentMode = .scaleAspectFill
         imageView.backgroundColor = .black
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.setContentHuggingPriority(.defaultLow, for: .vertical)
+        imageView.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
         return imageView
     }()
 
@@ -105,6 +107,8 @@ final class PastActionViewAlpha: UIViewController {
         label.textColor = #colorLiteral(red: 0.2352941176, green: 0.2352941176, blue: 0.262745098, alpha: 0.5981110873)
         label.font = UIFont(name: "Montserrat-Medium", size: 12.0)
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.setContentHuggingPriority(.defaultHigh, for: .vertical)
+        label.setContentCompressionResistancePriority(.defaultHigh, for: .vertical)
         return label
     }()
 
@@ -122,6 +126,11 @@ final class PastActionViewAlpha: UIViewController {
         view.backgroundColor = .white
         self.updateUI()
         self.layout()
+    }
+
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        self.pastActionImageView.layer.masksToBounds = true
     }
 
     @objc private func cancelButtonTouchUpInside() {
@@ -148,8 +157,7 @@ extension PastActionViewAlpha {
             imageView.topAnchor.constraint(equalTo: container.topAnchor, constant: 0),
             imageView.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 0),
             imageView.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: 0),
-            imageView.heightAnchor.constraint(equalTo: self.pastActionImageView.widthAnchor, multiplier: 89/207),
-            imageView.widthAnchor.constraint(equalTo: self.pastActionImageView.heightAnchor, multiplier: 207/89)
+            imageView.heightAnchor.constraint(greaterThanOrEqualTo: self.pastActionImageView.widthAnchor, multiplier: 89/207)
         ])
     }
 
@@ -209,7 +217,7 @@ extension PastActionViewAlpha {
             label.leftAnchor.constraint(equalTo: self.organizationNameLabel.leftAnchor),
             label.rightAnchor.constraint(equalTo: self.actionPassedLabel.rightAnchor),
             label.topAnchor.constraint(equalTo: self.pastActionDescriptionLabel.bottomAnchor, constant: 10.0),
-            label.bottomAnchor.constraint(lessThanOrEqualTo: container.safeAreaLayoutGuide.bottomAnchor, constant: -20.0)
+            label.bottomAnchor.constraint(equalTo: container.safeAreaLayoutGuide.bottomAnchor, constant: -20.0)
         ])
     }
 }
