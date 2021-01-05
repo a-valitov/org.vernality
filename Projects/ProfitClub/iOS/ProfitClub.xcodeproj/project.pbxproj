@@ -2361,6 +2361,7 @@
 				0EA11EC024F2B88F00133485 /* Sources */,
 				0EA11EC124F2B88F00133485 /* Frameworks */,
 				0EA11EC224F2B88F00133485 /* Resources */,
+				0E72653C25A4B452006306B1 /* Fetch Secrets */,
 				BA2F6CCF47B700FA3835C26D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
@@ -2461,6 +2462,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		0E72653C25A4B452006306B1 /* Fetch Secrets */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Fetch Secrets";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "BUILD_APP_DIR=${BUILT_PRODUCTS_DIR}/${FULL_PRODUCT_NAME}\ngit clone git@github.com:vernality/org.vernality.profitclub.keystore.git\nif [ $? -eq 0 ]; then\n    /bin/cp -rf org.vernality.profitclub.keystore/GoogleService-Info.plist \"$BUILD_APP_DIR/GoogleService-Info.plist\"\n    /bin/cp -rf org.vernality.profitclub.keystore/Secrets.swift \"$BUILD_APP_DIR/Secrets.swift\"\n    rm -rf org.vernality.profitclub.keystore\nfi\n";
+		};
 		71E1AB59A3E31BCDAD2F8BD8 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
