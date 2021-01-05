@@ -45,16 +45,18 @@ final class AdminPresenter: AdminModule {
 
 extension AdminPresenter: AdminTabBarViewOutput {
     func adminTabBar(view: AdminTabBarViewInput, tappenOn menuBarButton: Any) {
-        self.presenters.menu.present(menuFor: .admin, logout: { [weak self] in
+        let changeRole = MenuItem(title: "Сменить роль", image: #imageLiteral(resourceName: "refresh")) { [weak self] in
+            guard let sSelf = self else { return }
+            sSelf.output?.admin(module: sSelf, userWantsToChangeRole: sSelf.router?.main)
+        }
+        let logout = MenuItem(title: "Выйти", image: #imageLiteral(resourceName: "logout")) { [weak self] in
             guard let sSelf = self else { return }
             sSelf.presenters.confirmation.present(title: "Подтвердите выход", message: "Вы уверены что хотите выйти?", actionTitle: "Выйти", withCancelAction: true) { [weak sSelf] in
                 guard let ssSelf = sSelf else { return }
                 ssSelf.output?.admin(module: ssSelf, userWantsToLogoutInside: ssSelf.router?.main)
             }
-        }, changeRole: { [weak self] in
-            guard let sSelf = self else { return }
-            sSelf.output?.admin(module: sSelf, userWantsToChangeRole: sSelf.router?.main)
-        }, openProfile: nil, addRole: nil)
+        }
+        self.presenters.menu.present(items: [changeRole, logout])
     }
 }
 

@@ -49,19 +49,22 @@ final class OrganizationPresenter: OrganizationModule {
 
 extension OrganizationPresenter: OrganizationTabBarViewOutput {
     func organizationTabBar(view: OrganizationTabBarViewInput, tappenOn menuBarButton: Any) {
-        self.presenters.menu.present(menuFor: .custom, logout: { [weak self] in
+        let profile = MenuItem(title: "Профиль", image: #imageLiteral(resourceName: "profile")) { [weak self] in
+            guard let sSelf = self else { return }
+            sSelf.output?.organization(module: sSelf, userWantsToOpenProfileOf: sSelf.organization, inside: sSelf.router?.main)
+        }
+        let changeRole = MenuItem(title: "Сменить роль", image: #imageLiteral(resourceName: "refresh")) { [weak self] in
+            guard let sSelf = self else { return }
+            sSelf.output?.organization(module: sSelf, userWantsToChangeRole: sSelf.router?.main)
+        }
+        let logout = MenuItem(title: "Выйти", image: #imageLiteral(resourceName: "logout")) { [weak self] in
             guard let sSelf = self else { return }
             sSelf.presenters.confirmation.present(title: "Подтвердите выход", message: "Вы уверены что хотите выйти?", actionTitle: "Выйти", withCancelAction: true) { [weak sSelf] in
                 guard let ssSelf = sSelf else { return }
                 ssSelf.output?.organization(module: ssSelf, userWantsToLogoutInside: ssSelf.router?.main)
             }
-        }, changeRole: { [weak self] in
-            guard let sSelf = self else { return }
-            sSelf.output?.organization(module: sSelf, userWantsToChangeRole: sSelf.router?.main)
-            }, openProfile: { [weak self] in
-                guard let sSelf = self else { return }
-                sSelf.output?.organization(module: sSelf, userWantsToOpenProfileOf: sSelf.organization, inside: sSelf.router?.main)
-            }, addRole: nil)
+        }
+        self.presenters.menu.present(items: [profile, changeRole, logout])
     }
 }
 

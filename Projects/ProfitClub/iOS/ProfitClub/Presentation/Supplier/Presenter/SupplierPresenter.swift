@@ -153,18 +153,21 @@ extension SupplierPresenter: SupplierCommercialOfferOutput {
 
 extension SupplierPresenter {
     func showMenu() {
-        self.presenters.menu.present(menuFor: .custom, logout: { [weak self] in
-        guard let sSelf = self else { return }
-        sSelf.presenters.confirmation.present(title: "Подтвердите выход", message: "Вы уверены что хотите выйти?", actionTitle: "Выйти", withCancelAction: true) { [weak sSelf] in
-            guard let ssSelf = sSelf else { return }
-            ssSelf.output?.supplier(module: ssSelf, userWantsToLogoutInside: ssSelf.router?.main)
-        }
-        }, changeRole: { [weak self] in
-            guard let sSelf = self else { return }
-            sSelf.output?.supplier(module: sSelf, userWantsToChangeRole: sSelf.router?.main)
-        }, openProfile: { [weak self] in
+        let profile = MenuItem(title: "Профиль", image: #imageLiteral(resourceName: "profile")) { [weak self] in
             guard let sSelf = self else { return }
             sSelf.output?.supplier(module: sSelf, userWantsToOpenProfileOf: sSelf.supplier, inside: sSelf.router?.main)
-        }, addRole: nil)
+        }
+        let changeRole = MenuItem(title: "Сменить роль", image: #imageLiteral(resourceName: "refresh")) { [weak self] in
+            guard let sSelf = self else { return }
+            sSelf.output?.supplier(module: sSelf, userWantsToChangeRole: sSelf.router?.main)
+        }
+        let logout = MenuItem(title: "Выйти", image: #imageLiteral(resourceName: "logout")) { [weak self] in
+            guard let sSelf = self else { return }
+            sSelf.presenters.confirmation.present(title: "Подтвердите выход", message: "Вы уверены что хотите выйти?", actionTitle: "Выйти", withCancelAction: true) { [weak sSelf] in
+                guard let ssSelf = sSelf else { return }
+                ssSelf.output?.supplier(module: ssSelf, userWantsToLogoutInside: ssSelf.router?.main)
+            }
+        }
+        self.presenters.menu.present(items: [profile, changeRole, logout])
     }
 }

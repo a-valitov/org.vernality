@@ -18,58 +18,20 @@
 import UIKit
 
 class MenuPresenterActionSheet: MenuPresenter {
-    func present(menuFor: Menu, logout: (() -> Void)? = nil, changeRole: (() -> Void)? = nil, openProfile: (() -> Void)? = nil, addRole: (() -> Void)? = nil) {
-        self.presentActionSheet(menuFor: menuFor, logout: logout, changeRole: changeRole, openProfile: openProfile, addRole: addRole)
-    }
-
-    private func presentActionSheet(menuFor: Menu, logout: (() -> Void)? = nil, changeRole: (() -> Void)? = nil, openProfile: (() -> Void)? = nil, addRole: (() -> Void)? = nil) {
+    func present(items: [MenuItem]) {
         let actionSheet = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         actionSheet.view.tintColor = .black
-
-        let logoutIcon = #imageLiteral(resourceName: "logout")
-        let changeRoleIcon = #imageLiteral(resourceName: "refresh")
-        let profileIcon = #imageLiteral(resourceName: "profile")
-        let addRoleIcon = #imageLiteral(resourceName: "addRoleIcon")
-
-        let logout = UIAlertAction(title: "Выйти", style: .default) { _ in
-            logout?()
+        for item in items {
+            let action = UIAlertAction(title: item.title, style: .default) { _ in
+                item.handler?()
+            }
+            action.setValue(item.image?.withRenderingMode(.alwaysOriginal), forKey: "image")
+            actionSheet.addAction(action)
         }
-        logout.setValue(logoutIcon.withRenderingMode(.alwaysOriginal), forKey: "image")
-
-        let changeRole = UIAlertAction(title: "Сменить роль", style: .default) { _ in
-            changeRole?()
-        }
-        changeRole.setValue(changeRoleIcon.withRenderingMode(.alwaysOriginal), forKey: "image")
-
-        let profileAction = UIAlertAction(title: "Профиль", style: .default) { _ in
-            openProfile?()
-        }
-        profileAction.setValue(profileIcon.withRenderingMode(.alwaysOriginal), forKey: "image")
-
-        let addRoleAction = UIAlertAction(title: "Добавить роль", style: .default) { _ in
-            addRole?()
-        }
-        addRoleAction.setValue(addRoleIcon.withRenderingMode(.alwaysOriginal), forKey: "image")
 
         let cancelAction = UIAlertAction(title: "Отменить", style: .cancel)
         cancelAction.setValue(UIColor.red, forKey: "titleTextColor")
-
-        switch menuFor {
-        case .review:
-            actionSheet.addAction(addRoleAction)
-            actionSheet.addAction(logout)
-            actionSheet.addAction(cancelAction)
-        case .admin:
-            actionSheet.addAction(changeRole)
-            actionSheet.addAction(logout)
-            actionSheet.addAction(cancelAction)
-        case .custom:
-            actionSheet.addAction(profileAction)
-            actionSheet.addAction(changeRole)
-            actionSheet.addAction(logout)
-            actionSheet.addAction(cancelAction)
-        }
-        
+        actionSheet.addAction(cancelAction)
         actionSheet.show()
     }
 }
