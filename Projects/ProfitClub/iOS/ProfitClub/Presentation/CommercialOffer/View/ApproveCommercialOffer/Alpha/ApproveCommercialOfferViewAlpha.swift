@@ -46,9 +46,11 @@ final class ApproveCommercialOfferViewAlpha: UIViewController {
 
     private lazy var commercialOfferImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleToFill
+        imageView.contentMode = .scaleAspectFill
         imageView.backgroundColor = .black
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.setContentHuggingPriority(.defaultLow, for: .vertical)
+        imageView.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
         return imageView
     }()
 
@@ -57,6 +59,8 @@ final class ApproveCommercialOfferViewAlpha: UIViewController {
         label.textColor = #colorLiteral(red: 0.09803921569, green: 0.09411764706, blue: 0.09411764706, alpha: 1)
         label.font = UIFont(name: "Montserrat-Bold", size: 22.0)
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.setContentHuggingPriority(.defaultHigh, for: .vertical)
+        label.setContentCompressionResistancePriority(.defaultHigh, for: .vertical)
         return label
     }()
 
@@ -66,6 +70,8 @@ final class ApproveCommercialOfferViewAlpha: UIViewController {
         label.font = UIFont(name: "Montserrat-Regular", size: 12.0)
         label.numberOfLines = 0
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.setContentHuggingPriority(.defaultHigh, for: .vertical)
+        label.setContentCompressionResistancePriority(.defaultHigh, for: .vertical)
         return label
     }()
 
@@ -147,6 +153,7 @@ final class ApproveCommercialOfferViewAlpha: UIViewController {
         super.viewWillLayoutSubviews()
         self.rejectCommercialOffer.layer.borderWidth = 1
         self.rejectCommercialOffer.layer.borderColor = UIColor.black.cgColor
+        self.commercialOfferImageView.layer.masksToBounds = true
     }
 
     @objc private func cancelTouchUpInside(_ sender: Any) {
@@ -219,8 +226,7 @@ extension ApproveCommercialOfferViewAlpha {
             imageView.topAnchor.constraint(equalTo: container.topAnchor, constant: 0),
             imageView.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 0),
             imageView.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: 0),
-            imageView.heightAnchor.constraint(equalTo: self.commercialOfferImageView.widthAnchor, multiplier: 89/207),
-            imageView.widthAnchor.constraint(equalTo: self.commercialOfferImageView.heightAnchor, multiplier: 207/89)
+            imageView.heightAnchor.constraint(greaterThanOrEqualTo: self.commercialOfferImageView.widthAnchor, multiplier: 89/207)
         ])
     }
 
@@ -292,7 +298,7 @@ extension ApproveCommercialOfferViewAlpha {
             button.rightAnchor.constraint(equalTo: self.commercialOfferCreatedDateLabel.rightAnchor),
             button.topAnchor.constraint(equalTo: self.approveCommercialOffer.bottomAnchor, constant: 15.0),
             button.heightAnchor.constraint(equalToConstant: 52.0),
-            button.bottomAnchor.constraint(lessThanOrEqualTo: container.safeAreaLayoutGuide.bottomAnchor, constant: -20.0)
+            button.bottomAnchor.constraint(equalTo: container.safeAreaLayoutGuide.bottomAnchor, constant: -20.0)
         ])
     }
 }

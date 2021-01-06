@@ -52,9 +52,11 @@ final class OrganizationApplicationViewAlpha: UIViewController {
 
     private lazy var organizationImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.contentMode = .scaleToFill
+        imageView.contentMode = .scaleAspectFill
         imageView.image = #imageLiteral(resourceName: "Mask Group")
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.setContentHuggingPriority(.defaultLow, for: .vertical)
+        imageView.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
         return imageView
     }()
 
@@ -173,6 +175,7 @@ final class OrganizationApplicationViewAlpha: UIViewController {
         super.viewWillLayoutSubviews()
         self.rejectOrganizationButton.layer.borderWidth = 1
         self.rejectOrganizationButton.layer.borderColor = UIColor.black.cgColor
+        self.organizationImageView.layer.masksToBounds = true
     }
 }
 
@@ -227,8 +230,7 @@ extension OrganizationApplicationViewAlpha {
             imageView.topAnchor.constraint(equalTo: container.topAnchor, constant: 0),
             imageView.leadingAnchor.constraint(equalTo: container.leadingAnchor, constant: 0),
             imageView.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: 0),
-            imageView.heightAnchor.constraint(equalTo: self.organizationImageView.widthAnchor, multiplier: 89/207),
-            imageView.widthAnchor.constraint(equalTo: self.organizationImageView.heightAnchor, multiplier: 207/89)
+            imageView.heightAnchor.constraint(greaterThanOrEqualTo: self.organizationImageView.widthAnchor, multiplier: 89/207)
         ])
     }
 
@@ -338,7 +340,7 @@ extension OrganizationApplicationViewAlpha {
             button.rightAnchor.constraint(equalTo: self.organizationDateLabel.rightAnchor),
             button.topAnchor.constraint(equalTo: self.approveOrganizationButton.bottomAnchor, constant: 15.0),
             button.heightAnchor.constraint(equalToConstant: 52.0),
-            button.bottomAnchor.constraint(lessThanOrEqualTo: container.safeAreaLayoutGuide.bottomAnchor, constant: -20.0)
+            button.bottomAnchor.constraint(equalTo: container.safeAreaLayoutGuide.bottomAnchor, constant: -20.0)
         ])
     }
 }
