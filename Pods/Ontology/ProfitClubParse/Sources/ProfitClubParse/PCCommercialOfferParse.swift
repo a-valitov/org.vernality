@@ -39,6 +39,9 @@ public extension PFObject {
                 }
             })
         }
+        if let statusString = self["statusString"] as? String {
+            result.status = PCCommercialOfferStatus(rawValue: statusString)
+        }
         if let supplier = self["supplier"] as? PFObject {
             result.supplier = supplier.pcSupplier.any
         }
@@ -54,6 +57,7 @@ public extension PCCommercialOffer {
         result.image = self.image
         result.attachments = self.attachments
         result.attachmentNames = self.attachmentNames
+        result.status = self.status
         return result
     }
 
@@ -63,12 +67,26 @@ public final class PCCommercialOfferParse: PFObject, PFSubclassing, PCCommercial
     public var id: String? {
         return self.objectId
     }
+    public var status: PCCommercialOfferStatus? {
+        get {
+            if let statusString = self.statusString {
+                return PCCommercialOfferStatus(rawValue: statusString)
+            } else {
+                return nil
+            }
+        }
+        set {
+            self.statusString = newValue?.rawValue
+        }
+    }
+
     public var supplier: PCSupplier?
     public var organization: PCOrganization?
     @NSManaged public var message: String?
     @NSManaged public var attachmentNames: [String]
     @NSManaged public var imageFile: PFFileObject?
     @NSManaged public var attachmentFiles: [PFFileObject]
+    @NSManaged public var statusString: String?
     public var image: UIImage?
     public var imageUrl: URL?
     public var attachments = [Data]()

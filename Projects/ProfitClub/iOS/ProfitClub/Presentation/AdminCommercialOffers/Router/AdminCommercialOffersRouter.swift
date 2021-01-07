@@ -33,4 +33,10 @@ final class AdminCommercialOffersRouter {
         }
         return commercialOffersContainer
     }
+
+    func buildCommercialOffersApplications(output: AdminCommercialOffersApplicationsViewOutput?) -> UIViewController {
+        let controller = AdminCommercialOffersApplicationsViewAlpha()
+        controller.output = output
+        return controller
+    }
 }

@@ -38,16 +38,44 @@ final class AdminCommercialOffersPresenter: AdminCommercialOffersModule {
     // dependencies
     private let presenters: AdminCommercialOffersPresenters
     private let services: AdminCommercialOffersServices
+
+    //submodules
+    private weak var commercialOffersApplicationsView: AdminCommercialOffersApplicationsViewInput?
 }
 
 extension AdminCommercialOffersPresenter: AdminCommercialOffersContainerViewOutput {
     func adminCommercialOffersContainerDidLoad(view: AdminCommercialOffersContainerViewInput) {
-
+        view.applications = router?.buildCommercialOffersApplications(output: self)
     }
 
     func adminCommercialOffersContainer(view: AdminCommercialOffersContainerViewInput, didChangeState state: AdminCommercialOffersContainerState) {
         view.state = state
     }
+}
 
+extension AdminCommercialOffersPresenter: AdminCommercialOffersApplicationsViewOutput {
+    func adminCommercialOffersApplicationsDidLoad(view: AdminCommercialOffersApplicationsViewInput) {
+        self.commercialOffersApplicationsView = view
+        self.reloadCommercialOffersApplications()
+    }
 
+    func adminCommercialOffersApplications(view: AdminCommercialOffersApplicationsViewInput, userWantsToRefresh sender: Any) {
+        self.commercialOffersApplicationsView = view
+        self.reloadCommercialOffersApplications()
+    }
+
+}
+
+extension AdminCommercialOffersPresenter {
+    private func reloadCommercialOffersApplications() {
+        self.services.commercialOffers.fetch(.onReview) { [weak self] (result) in
+            switch result {
+            case .success(let commercialOffers):
+                self?.commercialOffersApplicationsView?.commercialOffers = commercialOffers
+                self?.commercialOffersApplicationsView?.reload()
+            case .failure(let error):
+                self?.presenters.error.present(error)
+            }
+        }
+    }
 }
