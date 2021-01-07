@@ -1,5 +1,5 @@
-//  Copyright (C) 2020 Startup Studio Vernality
-//  Created by Macbook on 10.11.2020
+//  Copyright (C) 2021 Startup Studio Vernality
+//  Created by Macbook on 07.01.2021
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -14,26 +14,20 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import Foundation
-import ErrorPresenter
-import ActivityPresenter
-import ConfirmationPresenter
-import MenuPresenter
+import UIKit
 
-struct AdminPresenters {
-    let error: ErrorPresenter
-    let activity: ActivityPresenter
-    let confirmation: ConfirmationPresenter
-    let menu: MenuPresenter
+enum AdminSuppliersContainerState {
+    case applications
+    case approved
 }
 
-struct AdminServices {
-
+protocol AdminSuppliersContainerViewInput: UIViewController {
+    var state: AdminSuppliersContainerState { get set }
+    var applications: UIViewController? { get set }
+    var approved: UIViewController? { get set }
 }
 
-struct AdminFactories {
-    let adminOrganizations: AdminOrganizationsFactory
-    let adminOrganization: AdminOrganizationFactory
-    let adminCommercialOffers: AdminCommercialOffersFactory
-    let adminSuppliers: AdminSuppliersFactory
+protocol AdminSuppliersContainerViewOutput {
+    func adminSuppliersContainerDidLoad(view: AdminSuppliersContainerViewInput)
+    func adminSuppliersContainer(view: AdminSuppliersContainerViewInput, didChangeState state: AdminSuppliersContainerState)
 }

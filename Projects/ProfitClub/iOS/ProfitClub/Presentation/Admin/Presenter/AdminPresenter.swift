@@ -82,3 +82,7 @@ extension AdminPresenter: AdminOrganizationModuleOutput {
 
 extension AdminPresenter: AdminCommercialOffersModuleOutput {
 }
+
+extension AdminPresenter: AdminSuppliersModuleOutput {
+    
+}
