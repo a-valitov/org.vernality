@@ -1,5 +1,5 @@
-//  Copyright (C) 2020 Startup Studio Vernality
-//  Created by Macbook on 10.11.2020
+//  Copyright (C) 2021 Startup Studio Vernality
+//  Created by Macbook on 07.01.2021
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -15,26 +15,21 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import Foundation
-import ErrorPresenter
-import ActivityPresenter
-import ConfirmationPresenter
-import MenuPresenter
+import Main
+import ProfitClubModel
 
-struct AdminPresenters {
-    let error: ErrorPresenter
-    let activity: ActivityPresenter
-    let confirmation: ConfirmationPresenter
-    let menu: MenuPresenter
-}
+final class AdminSupplierRouter {
+    weak var main: MainModule?
 
-struct AdminServices {
+    @discardableResult
+    func openApplication(output: AdminSupplierApplicationViewOutput?) -> AdminSupplierApplicationViewInput {
+        let applicationView = AdminSupplierApplicationViewAlpha()
+        applicationView.output = output
+        self.main?.raise(applicationView, animated: true)
+        return applicationView
+    }
 
-}
-
-struct AdminFactories {
-    let adminOrganizations: AdminOrganizationsFactory
-    let adminOrganization: AdminOrganizationFactory
-    let adminCommercialOffers: AdminCommercialOffersFactory
-    let adminSuppliers: AdminSuppliersFactory
-    let adminSupplier: AdminSupplierFactory
+    func closeApplication(_ view: AdminSupplierApplicationViewInput) {
+        self.main?.unraise(animated: true)
+    }
 }

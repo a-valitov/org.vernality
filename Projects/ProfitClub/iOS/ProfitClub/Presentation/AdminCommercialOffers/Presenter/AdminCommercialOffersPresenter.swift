@@ -45,7 +45,7 @@ final class AdminCommercialOffersPresenter: AdminCommercialOffersModule {
 
 extension AdminCommercialOffersPresenter: AdminCommercialOffersContainerViewOutput {
     func adminCommercialOffersContainerDidLoad(view: AdminCommercialOffersContainerViewInput) {
-        view.applications = router?.buildCommercialOffersApplications(output: self)
+//        view.applications = router?.buildCommercialOffersApplications(output: self)
     }
 
     func adminCommercialOffersContainer(view: AdminCommercialOffersContainerViewInput, didChangeState state: AdminCommercialOffersContainerState) {

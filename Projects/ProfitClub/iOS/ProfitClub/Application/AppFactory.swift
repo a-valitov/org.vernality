@@ -27,6 +27,7 @@ import PCActionService
 import ProfitClubModel
 import PCCommercialOfferService
 import ConfirmationPresenter
+import PCSupplierService
 import MenuPresenter
 
 final class AppFactory {
@@ -56,6 +57,10 @@ final class AppFactory {
     
     func organizationService() -> PCOrganizationService {
         return PCOrganizationServiceParse()
+    }
+
+    func supplierService() -> PCSupplierService {
+        return PCSupplierServiceParse()
     }
 
     func actionService() -> PCActionService {
@@ -155,7 +160,7 @@ private extension AppFactory {
     }
 
     var adminFactory: AdminFactory {
-        return AdminFactory(presenters: AdminPresenters(error: self.errorPresenter(), activity: self.activityPresenter(), confirmation: self.confirmationPresenter(), menu: self.menuPresenter()), services: AdminServices(), factories: AdminFactories(adminOrganizations: self.adminOrganizationsFactory, adminOrganization: self.adminOrganizationFactory, adminCommercialOffers: self.adminCommercialOffersFactory))
+        return AdminFactory(presenters: AdminPresenters(error: self.errorPresenter(), activity: self.activityPresenter(), confirmation: self.confirmationPresenter(), menu: self.menuPresenter()), services: AdminServices(), factories: AdminFactories(adminOrganizations: self.adminOrganizationsFactory, adminOrganization: self.adminOrganizationFactory, adminCommercialOffers: self.adminCommercialOffersFactory, adminSuppliers: self.adminSuppliersFactory, adminSupplier: self.adminSupplierFactory))
     }
 
     var adminOrganizationsFactory: AdminOrganizationsFactory {
@@ -164,6 +169,14 @@ private extension AppFactory {
 
     var adminOrganizationFactory: AdminOrganizationFactory {
         return AdminOrganizationFactory(presenters: AdminOrganizationPresenters(error: self.errorPresenter(), activity: self.activityPresenter(), confirmation: self.confirmationPresenter()), services: AdminOrganizationServices(organization: self.organizationService()))
+    }
+
+    var adminSuppliersFactory: AdminSuppliersFactory {
+        return AdminSuppliersFactory(presenters: AdminSuppliersPresenters(error: self.errorPresenter(), activity: self.activityPresenter()), services: AdminSuppliersServices(supplier: self.supplierService()))
+    }
+
+    var adminSupplierFactory: AdminSupplierFactory {
+        return AdminSupplierFactory(presenters: AdminSupplierPresenters(error: self.errorPresenter(), activity: self.activityPresenter(), confirmation: self.confirmationPresenter()), services: AdminSupplierServices(supplier: self.supplierService()))
     }
 
     var adminCommercialOffersFactory: AdminCommercialOffersFactory {

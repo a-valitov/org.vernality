@@ -1,5 +1,5 @@
 //  Copyright (C) 2021 Startup Studio Vernality
-//  Created by Macbook on 03.01.2021
+//  Created by Macbook on 07.01.2021
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -16,9 +16,9 @@
 
 import UIKit
 
-final class AdminOrganizationsContainerViewAlpha: UIViewController {
-    var output: AdminOrganizationsContainerViewOutput?
-    var state: AdminOrganizationsContainerState = .applications {
+final class AdminSuppliersContainerViewAlpha: UIViewController {
+    var output: AdminSuppliersContainerViewOutput?
+    var state: AdminSuppliersContainerState = .applications {
         didSet {
             updateState()
         }
@@ -27,7 +27,7 @@ final class AdminOrganizationsContainerViewAlpha: UIViewController {
         didSet {
             if isViewLoaded {
                 if let vc = self.approved {
-                    self.embed(controller: vc, in: self.approvedOrganizationsContainer)
+                    self.embed(controller: vc, in: self.approvedSuppliersContainer)
                 }
             }
         }
@@ -51,7 +51,7 @@ final class AdminOrganizationsContainerViewAlpha: UIViewController {
 
     private lazy var segmentedControl: UISegmentedControl = {
         let segmentedControl = UISegmentedControl()
-        segmentedControl.addTarget(self, action: #selector(AdminOrganizationsContainerViewAlpha.organizationsSegmentedControlValueChanged(_:)), for: .valueChanged)
+        segmentedControl.addTarget(self, action: #selector(AdminSuppliersContainerViewAlpha.suppliersSegmentedControlValueChanged(_:)), for: .valueChanged)
         segmentedControl.backgroundColor = .white
         segmentedControl.tintColor = .clear
         segmentedControl.setTitleTextAttributes([NSAttributedString.Key.font : UIFont(name: "Montserrat-Regular", size: 15)!, NSAttributedString.Key.foregroundColor: UIColor.black], for: .selected)
@@ -70,7 +70,7 @@ final class AdminOrganizationsContainerViewAlpha: UIViewController {
         return indicator
     }()
 
-    private lazy var approvedOrganizationsContainer: UIView = {
+    private lazy var approvedSuppliersContainer: UIView = {
         let view = UIView()
         view.backgroundColor = .white
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -94,7 +94,7 @@ final class AdminOrganizationsContainerViewAlpha: UIViewController {
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        self.tabBarItem = UITabBarItem(title: "Организации", image: #imageLiteral(resourceName: "organizationsItem"), selectedImage: #imageLiteral(resourceName: "selectedOrganizationsItem"))
+        self.tabBarItem = UITabBarItem(title: "Поставщики", image: #imageLiteral(resourceName: "supplier"), selectedImage: #imageLiteral(resourceName: "selectedSupplier"))
     }
 
     @available(*, unavailable)
@@ -107,11 +107,11 @@ final class AdminOrganizationsContainerViewAlpha: UIViewController {
         super.viewDidLoad()
         setup()
         layout()
-        self.output?.adminOrganizationsContainerDidLoad(view: self)
+        self.output?.adminSuppliersContainerDidLoad(view: self)
     }
-    
+
     private func setup() {
-        self.tabBarController?.selectedIndex = 0
+        self.tabBarController?.selectedIndex = 2
 
         segmentedControl.setBackgroundImage(imageWithColor(color: .clear), for: .normal, barMetrics: .default)
         segmentedControl.setBackgroundImage(imageWithColor(color: .clear), for: .selected, barMetrics: .default)
@@ -158,22 +158,22 @@ final class AdminOrganizationsContainerViewAlpha: UIViewController {
             case .applications:
                 self.segmentedControl.selectedSegmentIndex = 0
                 self.applicationsContainer.isHidden = false
-                self.approvedOrganizationsContainer.isHidden = true
+                self.approvedSuppliersContainer.isHidden = true
             case .approved:
                 self.segmentedControl.selectedSegmentIndex = 1
-                self.approvedOrganizationsContainer.isHidden = false
+                self.approvedSuppliersContainer.isHidden = false
                 self.applicationsContainer.isHidden = true
             }
         }
     }
 
-    @objc private func organizationsSegmentedControlValueChanged(_ sender: UISegmentedControl) {
+    @objc private func suppliersSegmentedControlValueChanged(_ sender: UISegmentedControl) {
         changeSegmentedControlLinePosition()
         switch sender.selectedSegmentIndex {
         case 0:
-            self.output?.adminOrganizationsContainer(view: self, didChangeState: .applications)
+            self.output?.adminSuppliersContainer(view: self, didChangeState: .applications)
         case 1:
-            self.output?.adminOrganizationsContainer(view: self, didChangeState: .approved)
+            self.output?.adminSuppliersContainer(view: self, didChangeState: .approved)
         default:
             break
         }
@@ -181,12 +181,12 @@ final class AdminOrganizationsContainerViewAlpha: UIViewController {
 }
 
 // MARK: - Layout
-extension AdminOrganizationsContainerViewAlpha {
+extension AdminSuppliersContainerViewAlpha {
     private func layout() {
         layoutSegmentedControlContainerView(in: self.view)
         layoutSegmentedControl(in: self.segmentedControlContainerView)
         layoutSegmentIndicator(in: self.segmentedControlContainerView)
-        layoutMembersOfOrganizationContainer(in: self.view)
+        layoutSuppliersContainer(in: self.view)
         layoutApplicationsContainer(in: self.view)
     }
 
@@ -223,8 +223,8 @@ extension AdminOrganizationsContainerViewAlpha {
         ])
     }
 
-    private func layoutMembersOfOrganizationContainer(in container: UIView) {
-        let currentContainer = approvedOrganizationsContainer
+    private func layoutSuppliersContainer(in container: UIView) {
+        let currentContainer = approvedSuppliersContainer
         container.addSubview(currentContainer)
         NSLayoutConstraint.activate([
             currentContainer.topAnchor.constraint(equalTo: self.segmentedControlContainerView.bottomAnchor, constant: 0),
@@ -246,6 +246,7 @@ extension AdminOrganizationsContainerViewAlpha {
     }
 }
 
-extension AdminOrganizationsContainerViewAlpha: AdminOrganizationsContainerViewInput {
+
+extension AdminSuppliersContainerViewAlpha: AdminSuppliersContainerViewInput {
 
 }
