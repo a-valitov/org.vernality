@@ -14,13 +14,17 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import Foundation
-import ProfitClubModel
+import UIKit
 
-public protocol PCSupplierService {
-    func fetch(_ status: PCSupplierStatus, result: @escaping (Result<[AnyPCSupplier], Error>) -> Void)
-
-    func approve(supplier: PCSupplier, result: @escaping (Result<PCSupplier, Error>) -> Void)
-    func reject(supplier: PCSupplier, result: @escaping (Result<PCSupplier, Error>) -> Void)
+protocol AdminSupplierApplicationViewInput: UIViewController {
+    var supplierName: String? { get set }
+    var supplierContactName: String? { get set }
+    var supplierINN: String? { get set }
+    var supplierPhoneNumber: String? { get set }
 }
 
+protocol AdminSupplierApplicationViewOutput {
+    func adminSupplierApplicationDidLoad(view: AdminSupplierApplicationViewInput)
+    func adminSupplierApplication(view: AdminSupplierApplicationViewInput, userWantsToApprove sender: Any)
+    func adminSupplierApplication(view: AdminSupplierApplicationViewInput, userWantsToReject sender: Any)
+}

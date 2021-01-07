@@ -15,12 +15,17 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import Foundation
-import ProfitClubModel
+import ErrorPresenter
+import ConfirmationPresenter
+import ActivityPresenter
+import PCSupplierService
 
-public protocol PCSupplierService {
-    func fetch(_ status: PCSupplierStatus, result: @escaping (Result<[AnyPCSupplier], Error>) -> Void)
-
-    func approve(supplier: PCSupplier, result: @escaping (Result<PCSupplier, Error>) -> Void)
-    func reject(supplier: PCSupplier, result: @escaping (Result<PCSupplier, Error>) -> Void)
+struct AdminSupplierPresenters {
+    let error: ErrorPresenter
+    let activity: ActivityPresenter
+    let confirmation: ConfirmationPresenter
 }
 
+struct AdminSupplierServices {
+    let supplier: PCSupplierService
+}

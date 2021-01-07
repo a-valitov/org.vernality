@@ -41,6 +41,7 @@ final class AdminPresenter: AdminModule {
     private let presenters: AdminPresenters
     private let services: AdminServices
     private weak var adminOrganizationsModule: AdminOrganizationsModule?
+    private weak var adminSuppliersModule: AdminSuppliersModule?
 }
 
 extension AdminPresenter: AdminTabBarViewOutput {
@@ -84,5 +85,21 @@ extension AdminPresenter: AdminCommercialOffersModuleOutput {
 }
 
 extension AdminPresenter: AdminSuppliersModuleOutput {
-    
+    func adminSuppliersModuleDidLoad(module: AdminSuppliersModule) {
+        self.adminSuppliersModule = module
+    }
+
+    func adminSuppliers(module: AdminSuppliersModule, didSelect supplier: PCSupplier) {
+        self.router?.open(supplier: supplier, output: self)
+    }
+}
+
+extension AdminPresenter: AdminSupplierModuleOutput {
+    func adminSupplier(module: AdminSupplierModule, didApprove supplier: PCSupplier) {
+        self.adminSuppliersModule?.onDidApprove(supplier: supplier)
+    }
+
+    func adminSupplier(module: AdminSupplierModule, didReject supplier: PCSupplier) {
+        self.adminSuppliersModule?.onDidReject(supplier: supplier)
+    }
 }

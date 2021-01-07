@@ -20,8 +20,11 @@ import ProfitClubModel
 
 protocol AdminSuppliersModule: class {
     func embed(in tabBarController: UITabBarController, main: MainModule?)
+    func onDidApprove(supplier: PCSupplier)
+    func onDidReject(supplier: PCSupplier)
 }
 
 protocol AdminSuppliersModuleOutput: class {
-    
+    func adminSuppliersModuleDidLoad(module: AdminSuppliersModule)
+    func adminSuppliers(module: AdminSuppliersModule, didSelect supplier: PCSupplier)
 }

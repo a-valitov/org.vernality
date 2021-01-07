@@ -15,12 +15,21 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import Foundation
+import Main
 import ProfitClubModel
 
-public protocol PCSupplierService {
-    func fetch(_ status: PCSupplierStatus, result: @escaping (Result<[AnyPCSupplier], Error>) -> Void)
+final class AdminSupplierRouter {
+    weak var main: MainModule?
 
-    func approve(supplier: PCSupplier, result: @escaping (Result<PCSupplier, Error>) -> Void)
-    func reject(supplier: PCSupplier, result: @escaping (Result<PCSupplier, Error>) -> Void)
+    @discardableResult
+    func openApplication(output: AdminSupplierApplicationViewOutput?) -> AdminSupplierApplicationViewInput {
+        let applicationView = AdminSupplierApplicationViewAlpha()
+        applicationView.output = output
+        self.main?.raise(applicationView, animated: true)
+        return applicationView
+    }
+
+    func closeApplication(_ view: AdminSupplierApplicationViewInput) {
+        self.main?.unraise(animated: true)
+    }
 }
-

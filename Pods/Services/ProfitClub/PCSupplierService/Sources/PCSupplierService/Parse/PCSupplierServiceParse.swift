@@ -33,4 +33,28 @@ public final class PCSupplierServiceParse: PCSupplierService {
             }
         }
     }
+
+    public func approve(supplier: PCSupplier, result: @escaping (Result<PCSupplier, Error>) -> Void) {
+        let parseSupplier = supplier.parse
+        parseSupplier.status = .approved
+        parseSupplier.saveInBackground { (success, error) in
+            if let error = error {
+                result(.failure(error))
+            } else {
+                result(.success(parseSupplier.any))
+            }
+        }
+    }
+
+    public func reject(supplier: PCSupplier, result: @escaping (Result<PCSupplier, Error>) -> Void) {
+        let parseSupplier = supplier.parse
+        parseSupplier.status = .rejected
+        parseSupplier.saveInBackground { (success, error) in
+            if let error = error {
+                result(.failure(error))
+            } else {
+                result(.success(parseSupplier.any))
+            }
+        }
+    }
 }

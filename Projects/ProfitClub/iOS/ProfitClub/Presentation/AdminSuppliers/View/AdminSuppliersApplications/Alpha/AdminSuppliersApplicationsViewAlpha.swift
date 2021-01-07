@@ -61,6 +61,11 @@ final class AdminSuppliersApplicationsViewAlpha: UITableViewController {
         return cell
     }
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let supplier = self.suppliers[indexPath.row]
+        self.output?.adminSuppliersApplications(view: self, didSelect: supplier)
+    }
+
     @objc private func pullToRefreshValueChanged(_ sender: UIRefreshControl) {
         self.output?.adminSuppliersApplications(view: self, userWantsToRefresh: sender)
         sender.endRefreshing()
@@ -72,5 +77,15 @@ extension AdminSuppliersApplicationsViewAlpha: AdminSuppliersApplicationsViewInp
         if self.isViewLoaded {
             self.tableView.reloadData()
         }
+    }
+
+    func hide(supplier: PCSupplier) {
+        guard let index = suppliers.firstIndex(of: supplier.any) else {
+            assertionFailure("Organization not found")
+            return
+        }
+        suppliers.remove(at: index)
+        let indexPath = IndexPath(row: index, section: 0)
+        tableView.deleteRows(at: [indexPath], with: .fade)
     }
 }

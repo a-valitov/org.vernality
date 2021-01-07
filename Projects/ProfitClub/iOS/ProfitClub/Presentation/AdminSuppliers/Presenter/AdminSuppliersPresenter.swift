@@ -35,6 +35,15 @@ final class AdminSuppliersPresenter: AdminSuppliersModule {
         self.router?.embed(in: tabBarController, output: self)
     }
 
+    func onDidApprove(supplier: PCSupplier) {
+        suppliersApplicationsView?.hide(supplier: supplier)
+        self.reloadApprovedSuppliers()
+    }
+
+    func onDidReject(supplier: PCSupplier) {
+        suppliersApplicationsView?.hide(supplier: supplier)
+    }
+
     // dependencies
     private let presenters: AdminSuppliersPresenters
     private let services: AdminSuppliersServices
@@ -48,6 +57,7 @@ extension AdminSuppliersPresenter: AdminSuppliersContainerViewOutput {
     func adminSuppliersContainerDidLoad(view: AdminSuppliersContainerViewInput) {
         view.applications = router?.buildSuppliersApplications(output: self)
         view.approved = router?.buildApprovedSuppliers(output: self)
+        output?.adminSuppliersModuleDidLoad(module: self)
     }
 
     func adminSuppliersContainer(view: AdminSuppliersContainerViewInput, didChangeState state: AdminSuppliersContainerState) {
@@ -64,6 +74,10 @@ extension AdminSuppliersPresenter: AdminSuppliersApplicationsViewOutput {
     func adminSuppliersApplications(view: AdminSuppliersApplicationsViewInput, userWantsToRefresh sender: Any) {
         self.suppliersApplicationsView = view
         self.reloadSuppliersApplications()
+    }
+
+    func adminSuppliersApplications(view: AdminSuppliersApplicationsViewInput, didSelect supplier: PCSupplier) {
+        self.output?.adminSuppliers(module: self, didSelect: supplier)
     }
 }
 

@@ -21,9 +21,11 @@ protocol AdminSuppliersApplicationsViewInput: UIViewController {
     var suppliers: [AnyPCSupplier] { get set }
 
     func reload()
+    func hide(supplier: PCSupplier)
 }
 
 protocol AdminSuppliersApplicationsViewOutput {
     func adminSuppliersApplicationsViewDidLoad(view: AdminSuppliersApplicationsViewInput)
     func adminSuppliersApplications(view: AdminSuppliersApplicationsViewInput, userWantsToRefresh sender: Any)
+    func adminSuppliersApplications(view: AdminSuppliersApplicationsViewInput, didSelect supplier: PCSupplier)
 }
