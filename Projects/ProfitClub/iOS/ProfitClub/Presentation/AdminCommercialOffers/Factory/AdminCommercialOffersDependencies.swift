@@ -1,5 +1,5 @@
-//  Copyright (C) 2020 Startup Studio Vernality
-//  Created by Macbook on 22.10.2020
+//  Copyright (C) 2021 Startup Studio Vernality
+//  Created by Macbook on 07.01.2021
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -15,11 +15,15 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import Foundation
-import ProfitClubModel
+import ErrorPresenter
+import ActivityPresenter
+import PCCommercialOfferService
 
-public protocol PCCommercialOfferService {
-    func add(offer: PCCommercialOffer, result: @escaping (Result<PCCommercialOffer, Error>) -> Void)
-    func fetchApproved(result: @escaping (Result<[AnyPCCommercialOffer], Error>) -> Void)
-    func loadAttachment(at index: Int, for offer: PCCommercialOffer, result: @escaping (Result<URL, Error>) -> Void)
-    func fetch(_ status: PCCommercialOfferStatus, result: @escaping (Result<[AnyPCCommercialOffer], Error>) -> Void)
+struct AdminCommercialOffersPresenters {
+    let error: ErrorPresenter
+    let activity: ActivityPresenter
+}
+
+struct AdminCommercialOffersServices {
+    let commercialOffers: PCCommercialOfferService
 }

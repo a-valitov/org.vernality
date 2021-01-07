@@ -26,6 +26,13 @@ public protocol PCCommercialOffer {
     var message: String? { get }
     var image: UIImage? { get }
     var imageUrl: URL? { get }
+    var status: PCCommercialOfferStatus? { get }
+}
+
+public enum PCCommercialOfferStatus: String {
+    case onReview
+    case approved
+    case rejected
 }
 
 public extension PCCommercialOffer {
@@ -45,6 +52,7 @@ public struct PCCommercialOfferStruct: PCCommercialOffer {
     public var link: String?
     public var image: UIImage?
     public var imageUrl: URL?
+    public var status: PCCommercialOfferStatus?
 
     public init() {}
 }
@@ -84,6 +92,10 @@ public struct AnyPCCommercialOffer: PCCommercialOffer, Equatable, Hashable {
 
     public var imageUrl: URL? {
         return self.object.imageUrl
+    }
+
+    public var status: PCCommercialOfferStatus? {
+        return self.object.status
     }
 
     public init(object: PCCommercialOffer) {

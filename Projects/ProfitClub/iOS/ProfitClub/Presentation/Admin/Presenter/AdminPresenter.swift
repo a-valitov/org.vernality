@@ -79,3 +79,6 @@ extension AdminPresenter: AdminOrganizationModuleOutput {
         self.adminOrganizationsModule?.onDidReject(organization: organization)
     }
 }
+
+extension AdminPresenter: AdminCommercialOffersModuleOutput {
+}

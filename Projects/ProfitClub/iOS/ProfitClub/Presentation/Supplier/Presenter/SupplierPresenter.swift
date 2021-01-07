@@ -130,6 +130,7 @@ extension SupplierPresenter: SupplierCommercialOfferOutput {
         offer.supplier = self.supplier
         offer.attachments = view.attachments
         offer.attachmentNames = view.attachmentNames
+        offer.status = .onReview
 
         self.presenters.confirmation.present(title: "Отправить в обработку?", message: "Перед публикацией комерческого предложения, его должен проверить аминистратор", actionTitle: "Отправить", withCancelAction: true) { [weak self] in
             guard let sSelf = self else { return }
