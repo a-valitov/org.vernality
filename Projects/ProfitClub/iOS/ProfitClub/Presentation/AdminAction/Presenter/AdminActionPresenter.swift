@@ -53,13 +53,38 @@ extension AdminActionPresenter: AdminActionApplicationViewOutput {
         view.actionStartDate = self.action.startDate
         view.actionImageUrl = self.action.imageUrl
         view.actionDescription = self.action.descriptionOf
+        view.supplierName = self.action.supplier?.name
     }
 
     func adminActionApplication(view: AdminActionApplicationViewInput, userWantsToApprove sender: Any) {
-
+        self.presenters.confirmation.present(title: "Одобрить акцию?", message: "Одобрить акцию от \(view.supplierName ?? "")", actionTitle: "Одобрить", withCancelAction: true) { [weak self] in
+            guard let action = self?.action else { return }
+            self?.services.action.approve(action: action, result: { [weak self] (result) in
+                guard let sSelf = self else { return }
+                switch result {
+                case .success(let action):
+                    sSelf.output?.adminAction(module: sSelf, didApprove: action)
+                    sSelf.router?.closeApplication(view)
+                case .failure(let error):
+                    sSelf.presenters.error.present(error)
+                }
+            })
+        }
     }
 
     func adminActionApplication(view: AdminActionApplicationViewInput, userWantsToReject sender: Any) {
-
+        self.presenters.confirmation.present(title: "Отклонить акцию?", message: "Отклонить акцию от \(view.supplierName ?? "")", actionTitle: "Отклонить", withCancelAction: true) { [weak self] in
+            guard let action = self?.action else { return }
+            self?.services.action.reject(action: action, result: { [weak self] (result) in
+                guard let sSelf = self else { return }
+                switch result {
+                case .success(let action):
+                    sSelf.output?.adminAction(module: sSelf, didReject: action)
+                    sSelf.router?.closeApplication(view)
+                case .failure(let error):
+                    sSelf.presenters.error.present(error)
+                }
+            })
+        }
     }
 }

@@ -93,4 +93,29 @@ public final class PCActionServiceParse: PCActionService {
             }
         }
     }
+
+    public func approve(action: PCAction, result: @escaping (Result<PCAction, Error>) -> Void) {
+        let parseAction = action.parse
+        parseAction.status = .approved
+        parseAction.saveInBackground { (success, error) in
+            if let error = error {
+                result(.failure(error))
+            } else {
+                result(.success(parseAction.any))
+            }
+        }
+    }
+
+
+    public func reject(action: PCAction, result: @escaping (Result<PCAction, Error>) -> Void) {
+        let parseAction = action.parse
+        parseAction.status = .rejected
+        parseAction.saveInBackground { (success, error) in
+            if let error = error {
+                result(.failure(error))
+            } else {
+                result(.success(parseAction.any))
+            }
+        }
+    }
 }

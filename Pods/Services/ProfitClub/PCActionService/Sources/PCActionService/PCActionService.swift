@@ -22,4 +22,7 @@ public protocol PCActionService {
     func fetchApprovedCurrentActions(result: @escaping (Result<[AnyPCAction], Error>) -> Void)
     func fetchApprovedPastActions(result: @escaping (Result<[AnyPCAction], Error>) -> Void)
     func fetch(_ status: PCActionStatus, result: @escaping (Result<[AnyPCAction], Error>) -> Void)
+
+    func approve(action: PCAction, result: @escaping (Result<PCAction, Error>) -> Void)
+    func reject(action: PCAction, result: @escaping (Result<PCAction, Error>) -> Void)
 }

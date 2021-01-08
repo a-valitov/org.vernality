@@ -24,6 +24,7 @@ protocol AdminActionApplicationViewInput: UIViewController {
     var actionLink: String? { get set }
     var actionStartDate: Date? { get set }
     var actionEndDate: Date? { get set }
+    var supplierName: String? { get set }
 }
 
 protocol AdminActionApplicationViewOutput {

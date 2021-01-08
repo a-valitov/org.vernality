@@ -61,6 +61,7 @@ final class AdminActionApplicationViewAlpha: UIViewController {
             }
         }
     }
+    var supplierName: String?
 
     private lazy var actionImageView: UIImageView = {
         let imageView = UIImageView()
