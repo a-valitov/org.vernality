@@ -20,8 +20,11 @@ import ProfitClubModel
 
 protocol AdminActionsModule: class {
     func embed(in tabBarController: UITabBarController, main: MainModule?)
+    func onDidApprove(action: PCAction)
+    func onDidReject(action: PCAction)
 }
 
 protocol AdminActionsModuleOutput: class {
-    
+    func adminActionsModuleDidLoad(module: AdminActionsModule)
+    func adminActions(module: AdminActionsModule, didSelect action: PCAction)
 }

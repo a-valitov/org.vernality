@@ -17,15 +17,11 @@
 import UIKit
 import ProfitClubModel
 
-protocol AdminActionsApplicationsViewInput: UIViewController {
+protocol AdminApprovedActionsViewInput: UIViewController {
     var actions: [AnyPCAction] { get set }
-
-    func reload()
-    func hide(action: PCAction)
 }
 
-protocol AdminActionsApplicationsViewOutput {
-    func adminActionsApplicationsDidLoad(view: AdminActionsApplicationsViewInput)
-    func adminActionsApplications(view: AdminActionsApplicationsViewInput, userWantsToRefresh sender: Any)
-    func adminActionsApplications(view: AdminActionsApplicationsViewInput, didSelect action: PCAction)
+protocol AdminApprovedActionsViewOutput {
+    func adminApprovedActionsDidLoad(view: AdminApprovedActionsViewInput)
+    func adminApprovedActions(view: AdminApprovedActionsViewInput, userWantsToRefresh sender: Any)
 }

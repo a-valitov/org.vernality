@@ -17,10 +17,16 @@
 import UIKit
 import ProfitClubModel
 
-final class AdminActionsApplicationsViewAlpha: UITableViewController {
-    var output: AdminActionsApplicationsViewOutput?
+final class AdminApprovedActionsViewAlpha: UITableViewController {
+    var output: AdminApprovedActionsViewOutput?
 
-    var actions = [AnyPCAction]()
+    var actions: [AnyPCAction] = [] {
+        didSet {
+            if self.isViewLoaded {
+                self.tableView.reloadData()
+            }
+        }
+    }
 
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -34,64 +40,45 @@ final class AdminActionsApplicationsViewAlpha: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
-        self.output?.adminActionsApplicationsDidLoad(view: self)
+        self.output?.adminApprovedActionsDidLoad(view: self)
 
-        tableView.register(AdminActionsApplicationsViewAlphaCell.self, forCellReuseIdentifier: AdminActionsApplicationsViewAlphaCell.reuseIdentifier)
+        tableView.register(AdminApprovedActionsViewCell.self, forCellReuseIdentifier: AdminApprovedActionsViewCell.reuseIdentifier)
 
         let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(AdminActionsApplicationsViewAlpha.pullToRefreshValueChanged(_:)), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(AdminApprovedActionsViewAlpha.pullToRefreshValueChanged(_:)), for: .valueChanged)
         tableView.refreshControl = refreshControl
     }
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return actions.count
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 108
+        83
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: AdminActionsApplicationsViewAlphaCell.reuseIdentifier, for: indexPath) as! AdminActionsApplicationsViewAlphaCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: AdminApprovedActionsViewCell.reuseIdentifier, for: indexPath) as! AdminApprovedActionsViewCell
+
         cell.selectionStyle = .none
 
         let action = actions[indexPath.row]
-        cell.actionMessageLabel.text = action.message
-        cell.actionDescriptionLabel.text = action.descriptionOf
-        cell.actionLinkLabel.text = action.link
+        cell.approvedActionNameLabel.text = action.message
+        cell.approvedActionDescriptionLabel.text = action.descriptionOf
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd.MM.yyyy"
         cell.actionEndDate.text = "до \(dateFormatter.string(from: action.endDate ?? Date()))"
-        cell.actionImageView.kf.setImage(with: action.imageUrl)
+        cell.approvedActionImageView.kf.setImage(with: action.imageUrl)
 
         return cell
     }
 
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let action = self.actions[indexPath.row]
-        self.output?.adminActionsApplications(view: self, didSelect: action)
-    }
-
     @objc private func pullToRefreshValueChanged(_ sender: UIRefreshControl) {
-        self.output?.adminActionsApplications(view: self, userWantsToRefresh: sender)
+        self.output?.adminApprovedActions(view: self, userWantsToRefresh: sender)
         sender.endRefreshing()
     }
 }
 
-extension AdminActionsApplicationsViewAlpha: AdminActionsApplicationsViewInput {
-    func reload() {
-        if self.isViewLoaded {
-            self.tableView.reloadData()
-        }
-    }
+extension AdminApprovedActionsViewAlpha: AdminApprovedActionsViewInput {
 
-    func hide(action: PCAction) {
-        guard let index = actions.firstIndex(of: action.any) else {
-            assertionFailure("Organization not found")
-            return
-        }
-        actions.remove(at: index)
-        let indexPath = IndexPath(row: index, section: 0)
-        tableView.deleteRows(at: [indexPath], with: .fade)
-    }
 }

@@ -14,18 +14,18 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import UIKit
-import ProfitClubModel
+import Foundation
+import ErrorPresenter
+import ConfirmationPresenter
+import ActivityPresenter
+import PCActionService
 
-protocol AdminActionsApplicationsViewInput: UIViewController {
-    var actions: [AnyPCAction] { get set }
-
-    func reload()
-    func hide(action: PCAction)
+struct AdminActionPresenters {
+    let error: ErrorPresenter
+    let activity: ActivityPresenter
+    let confirmation: ConfirmationPresenter
 }
 
-protocol AdminActionsApplicationsViewOutput {
-    func adminActionsApplicationsDidLoad(view: AdminActionsApplicationsViewInput)
-    func adminActionsApplications(view: AdminActionsApplicationsViewInput, userWantsToRefresh sender: Any)
-    func adminActionsApplications(view: AdminActionsApplicationsViewInput, didSelect action: PCAction)
+struct AdminActionServices {
+    let action: PCActionService
 }

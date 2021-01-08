@@ -15,17 +15,19 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import UIKit
-import ProfitClubModel
 
-protocol AdminActionsApplicationsViewInput: UIViewController {
-    var actions: [AnyPCAction] { get set }
-
-    func reload()
-    func hide(action: PCAction)
+protocol AdminActionApplicationViewInput: UIViewController {
+    var actionImageUrl: URL? { get set }
+    var actionMessage: String? { get set }
+    var actionDescription: String? { get set }
+    var organizationName: String? { get set }
+    var actionLink: String? { get set }
+    var actionStartDate: Date? { get set }
+    var actionEndDate: Date? { get set }
 }
 
-protocol AdminActionsApplicationsViewOutput {
-    func adminActionsApplicationsDidLoad(view: AdminActionsApplicationsViewInput)
-    func adminActionsApplications(view: AdminActionsApplicationsViewInput, userWantsToRefresh sender: Any)
-    func adminActionsApplications(view: AdminActionsApplicationsViewInput, didSelect action: PCAction)
+protocol AdminActionApplicationViewOutput {
+    func adminActionApplicationDidLoad(view: AdminActionApplicationViewInput)
+    func adminActionApplication(view: AdminActionApplicationViewInput, userWantsToApprove sender: Any)
+    func adminActionApplication(view: AdminActionApplicationViewInput, userWantsToReject sender: Any)
 }

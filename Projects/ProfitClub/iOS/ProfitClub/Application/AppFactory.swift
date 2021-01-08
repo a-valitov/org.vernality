@@ -160,7 +160,7 @@ private extension AppFactory {
     }
 
     var adminFactory: AdminFactory {
-        return AdminFactory(presenters: AdminPresenters(error: self.errorPresenter(), activity: self.activityPresenter(), confirmation: self.confirmationPresenter(), menu: self.menuPresenter()), services: AdminServices(), factories: AdminFactories(adminOrganizations: self.adminOrganizationsFactory, adminOrganization: self.adminOrganizationFactory, adminCommercialOffers: self.adminCommercialOffersFactory, adminSuppliers: self.adminSuppliersFactory, adminSupplier: self.adminSupplierFactory, adminActions: self.adminActionsFactory))
+        return AdminFactory(presenters: AdminPresenters(error: self.errorPresenter(), activity: self.activityPresenter(), confirmation: self.confirmationPresenter(), menu: self.menuPresenter()), services: AdminServices(), factories: AdminFactories(adminOrganizations: self.adminOrganizationsFactory, adminOrganization: self.adminOrganizationFactory, adminCommercialOffers: self.adminCommercialOffersFactory, adminSuppliers: self.adminSuppliersFactory, adminSupplier: self.adminSupplierFactory, adminActions: self.adminActionsFactory, adminAction: self.adminActionFactory))
     }
 
     var adminOrganizationsFactory: AdminOrganizationsFactory {
@@ -181,6 +181,10 @@ private extension AppFactory {
 
     var adminActionsFactory: AdminActionsFactory {
         return AdminActionsFactory(presenters: AdminActionsPresenters(error: self.errorPresenter(), activity: self.activityPresenter()), services: AdminActionsServices(action: self.actionService()))
+    }
+
+    var adminActionFactory: AdminActionFactory {
+        return AdminActionFactory(presenters: AdminActionPresenters(error: self.errorPresenter(), activity: self.activityPresenter(), confirmation: self.confirmationPresenter()), services: AdminActionServices(action: self.actionService()))
     }
 
     var adminCommercialOffersFactory: AdminCommercialOffersFactory {

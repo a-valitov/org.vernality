@@ -14,18 +14,22 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import UIKit
+import Foundation
+import Main
 import ProfitClubModel
 
-protocol AdminActionsApplicationsViewInput: UIViewController {
-    var actions: [AnyPCAction] { get set }
+final class AdminActionRouter {
+    weak var main: MainModule?
 
-    func reload()
-    func hide(action: PCAction)
-}
+    @discardableResult
+    func openApplication(output: AdminActionApplicationViewOutput?) -> AdminActionApplicationViewInput {
+        let applicationView = AdminActionApplicationViewAlpha()
+        applicationView.output = output
+        self.main?.raise(applicationView, animated: true)
+        return applicationView
+    }
 
-protocol AdminActionsApplicationsViewOutput {
-    func adminActionsApplicationsDidLoad(view: AdminActionsApplicationsViewInput)
-    func adminActionsApplications(view: AdminActionsApplicationsViewInput, userWantsToRefresh sender: Any)
-    func adminActionsApplications(view: AdminActionsApplicationsViewInput, didSelect action: PCAction)
+    func closeApplication(_ view: AdminActionApplicationViewInput) {
+        self.main?.unraise(animated: true)
+    }
 }
