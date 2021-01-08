@@ -103,3 +103,7 @@ extension AdminPresenter: AdminSupplierModuleOutput {
         self.adminSuppliersModule?.onDidReject(supplier: supplier)
     }
 }
+
+extension AdminPresenter: AdminActionsModuleOutput {
+    
+}
