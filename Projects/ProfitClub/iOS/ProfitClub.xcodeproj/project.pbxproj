@@ -156,6 +156,13 @@
 		FA50B13D25A7233C003D514B /* AdminSupplierRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA50B13C25A7233C003D514B /* AdminSupplierRouter.swift */; };
 		FA50B14025A72373003D514B /* AdminSupplierApplicationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA50B13F25A72373003D514B /* AdminSupplierApplicationView.swift */; };
 		FA50B14325A72385003D514B /* AdminSupplierApplicationViewAlpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA50B14225A72385003D514B /* AdminSupplierApplicationViewAlpha.swift */; };
+		FA50B14A25A87A12003D514B /* AdminActionsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA50B14925A87A12003D514B /* AdminActionsFactory.swift */; };
+		FA50B14C25A87A20003D514B /* AdminActionsDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA50B14B25A87A20003D514B /* AdminActionsDependencies.swift */; };
+		FA50B14E25A87A28003D514B /* AdminActionsModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA50B14D25A87A28003D514B /* AdminActionsModule.swift */; };
+		FA50B15025A87A32003D514B /* AdminActionsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA50B14F25A87A32003D514B /* AdminActionsPresenter.swift */; };
+		FA50B15225A87A3B003D514B /* AdminActionsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA50B15125A87A3B003D514B /* AdminActionsRouter.swift */; };
+		FA50B15725A87A71003D514B /* AdminActionsContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA50B15625A87A71003D514B /* AdminActionsContainerView.swift */; };
+		FA50B15A25A87A82003D514B /* AdminActionsContainerViewAlpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA50B15925A87A82003D514B /* AdminActionsContainerViewAlpha.swift */; };
 		FA566380253F397600D19D4E /* SupplierFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA56637F253F397600D19D4E /* SupplierFactory.swift */; };
 		FA566382253F39A400D19D4E /* SupplierDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA566381253F39A400D19D4E /* SupplierDependencies.swift */; };
 		FA566384253F39C200D19D4E /* SupplierModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA566383253F39C200D19D4E /* SupplierModule.swift */; };
@@ -452,6 +459,13 @@
 		FA50B13C25A7233C003D514B /* AdminSupplierRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminSupplierRouter.swift; sourceTree = "<group>"; };
 		FA50B13F25A72373003D514B /* AdminSupplierApplicationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminSupplierApplicationView.swift; sourceTree = "<group>"; };
 		FA50B14225A72385003D514B /* AdminSupplierApplicationViewAlpha.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminSupplierApplicationViewAlpha.swift; sourceTree = "<group>"; };
+		FA50B14925A87A12003D514B /* AdminActionsFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminActionsFactory.swift; sourceTree = "<group>"; };
+		FA50B14B25A87A20003D514B /* AdminActionsDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminActionsDependencies.swift; sourceTree = "<group>"; };
+		FA50B14D25A87A28003D514B /* AdminActionsModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminActionsModule.swift; sourceTree = "<group>"; };
+		FA50B14F25A87A32003D514B /* AdminActionsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminActionsPresenter.swift; sourceTree = "<group>"; };
+		FA50B15125A87A3B003D514B /* AdminActionsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminActionsRouter.swift; sourceTree = "<group>"; };
+		FA50B15625A87A71003D514B /* AdminActionsContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminActionsContainerView.swift; sourceTree = "<group>"; };
+		FA50B15925A87A82003D514B /* AdminActionsContainerViewAlpha.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminActionsContainerViewAlpha.swift; sourceTree = "<group>"; };
 		FA56637F253F397600D19D4E /* SupplierFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplierFactory.swift; sourceTree = "<group>"; };
 		FA566381253F39A400D19D4E /* SupplierDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplierDependencies.swift; sourceTree = "<group>"; };
 		FA566383253F39C200D19D4E /* SupplierModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplierModule.swift; sourceTree = "<group>"; };
@@ -1026,6 +1040,7 @@
 		0E90498424F60C740061A605 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				FA50B14425A879C9003D514B /* AdminActions */,
 				FA50B12F25A72286003D514B /* AdminSupplier */,
 				FA50B10425A70925003D514B /* AdminSuppliers */,
 				FA50B0E425A64CF1003D514B /* AdminCommercialOffers */,
@@ -1715,6 +1730,84 @@
 			isa = PBXGroup;
 			children = (
 				FA50B14225A72385003D514B /* AdminSupplierApplicationViewAlpha.swift */,
+			);
+			path = Alpha;
+			sourceTree = "<group>";
+		};
+		FA50B14425A879C9003D514B /* AdminActions */ = {
+			isa = PBXGroup;
+			children = (
+				FA50B14825A879F4003D514B /* Factory */,
+				FA50B14725A879EE003D514B /* Presenter */,
+				FA50B14625A879E9003D514B /* Router */,
+				FA50B14525A879E5003D514B /* View */,
+			);
+			path = AdminActions;
+			sourceTree = "<group>";
+		};
+		FA50B14525A879E5003D514B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				FA50B15525A87A59003D514B /* AdminApprovedActions */,
+				FA50B15425A87A4B003D514B /* AdminActionsApplications */,
+				FA50B15325A87A3F003D514B /* AdminActionsContainer */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		FA50B14625A879E9003D514B /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				FA50B15125A87A3B003D514B /* AdminActionsRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		FA50B14725A879EE003D514B /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				FA50B14D25A87A28003D514B /* AdminActionsModule.swift */,
+				FA50B14F25A87A32003D514B /* AdminActionsPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		FA50B14825A879F4003D514B /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				FA50B14925A87A12003D514B /* AdminActionsFactory.swift */,
+				FA50B14B25A87A20003D514B /* AdminActionsDependencies.swift */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
+		FA50B15325A87A3F003D514B /* AdminActionsContainer */ = {
+			isa = PBXGroup;
+			children = (
+				FA50B15625A87A71003D514B /* AdminActionsContainerView.swift */,
+				FA50B15825A87A74003D514B /* Alpha */,
+			);
+			path = AdminActionsContainer;
+			sourceTree = "<group>";
+		};
+		FA50B15425A87A4B003D514B /* AdminActionsApplications */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = AdminActionsApplications;
+			sourceTree = "<group>";
+		};
+		FA50B15525A87A59003D514B /* AdminApprovedActions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = AdminApprovedActions;
+			sourceTree = "<group>";
+		};
+		FA50B15825A87A74003D514B /* Alpha */ = {
+			isa = PBXGroup;
+			children = (
+				FA50B15925A87A82003D514B /* AdminActionsContainerViewAlpha.swift */,
 			);
 			path = Alpha;
 			sourceTree = "<group>";
@@ -2852,6 +2945,7 @@
 				FA7ACD322563C3C40097800D /* OrganizationProfileFactory.swift in Sources */,
 				0E6FBA652545AC9B00A2B882 /* ActionsFactory.swift in Sources */,
 				FAD70491254E89D000DE8AD7 /* CommercialOfferPresenter.swift in Sources */,
+				FA50B15A25A87A82003D514B /* AdminActionsContainerViewAlpha.swift in Sources */,
 				FA50B11525A709C5003D514B /* AdminSuppliersDependencies.swift in Sources */,
 				FA8CB83E255A5C0D00D09B1D /* AdminPresenter.swift in Sources */,
 				FA50B0F225A64DE3003D514B /* AdminCommercialOffersDependencies.swift in Sources */,
@@ -2873,6 +2967,7 @@
 				FA8CB896255ADA5800D09B1D /* AdminOrganizationModule.swift in Sources */,
 				FA8CB886255AD89D00D09B1D /* OrganizationApplicationViewBeta.swift in Sources */,
 				FA21D80E2570494A008024F0 /* SupplierCommercialOfferViewAlphaFileCell.swift in Sources */,
+				FA50B14A25A87A12003D514B /* AdminActionsFactory.swift in Sources */,
 				FAE888D52561418B0023C232 /* MemberProfileDependencies.swift in Sources */,
 				0E90499424F614390061A605 /* OnboardModule.swift in Sources */,
 				0E56174C25372D95005DF4F3 /* PastActionsViewBeta.swift in Sources */,
@@ -2911,6 +3006,7 @@
 				0E506C3324FC1B9C00ABA211 /* ReviewDependencies.swift in Sources */,
 				FAE888D3256141710023C232 /* MemberProfileFactory.swift in Sources */,
 				FA21D7F825701A09008024F0 /* OnboardOrganizationViewAlpha.swift in Sources */,
+				FA50B15725A87A71003D514B /* AdminActionsContainerView.swift in Sources */,
 				FA8CB867255A866500D09B1D /* AdminOrganizationsApplicationsViewBeta.swift in Sources */,
 				FAE888C725601D960023C232 /* OnboardResetPasswordViewBeta.swift in Sources */,
 				FA21D80625701DE3008024F0 /* SupplierViewAlpha.swift in Sources */,
@@ -2923,6 +3019,7 @@
 				FA7ACD282563C3170097800D /* OrganizationProfileViewBeta.swift in Sources */,
 				FA50B13D25A7233C003D514B /* AdminSupplierRouter.swift in Sources */,
 				FA21D85E2572BE2B008024F0 /* OrganizationProfileViewAlpha.swift in Sources */,
+				FA50B15025A87A32003D514B /* AdminActionsPresenter.swift in Sources */,
 				FAE888DB256141B70023C232 /* MemberProfileRouter.swift in Sources */,
 				FABB6F06254682FD00B93FB8 /* ApproveCurrentActionView.swift in Sources */,
 				FA7ACD2E2563C3B20097800D /* OrganizationProfileModule.swift in Sources */,
@@ -2937,9 +3034,11 @@
 				FAD704B0255013E200DE8AD7 /* MembersOfOrganizationView.swift in Sources */,
 				FA8CB81D2558149E00D09B1D /* MemberCurrentActionsView.swift in Sources */,
 				0E506BEC24FBB83700ABA211 /* SelectRoleViewBeta.swift in Sources */,
+				FA50B15225A87A3B003D514B /* AdminActionsRouter.swift in Sources */,
 				0E90499A24F624770061A605 /* OnboardError.swift in Sources */,
 				FA69F9FF2573A77300F519CB /* ActionsContainerViewAlpha.swift in Sources */,
 				FA8CB80A255804F900D09B1D /* MemberDependencies.swift in Sources */,
+				FA50B14E25A87A28003D514B /* AdminActionsModule.swift in Sources */,
 				0E6FBA582545ABAF00A2B882 /* ActionsRouter.swift in Sources */,
 				FA69F9EC2573A65500F519CB /* ApproveCommercialOfferViewAlpha.swift in Sources */,
 				FA21D80225701C34008024F0 /* ReviewViewAlphaAdminCell.swift in Sources */,
@@ -2987,6 +3086,7 @@
 				0E506C3E24FC9CE700ABA211 /* OnboardWelcomeViewBeta.swift in Sources */,
 				FA7ACD3B2563E6CC0097800D /* SupplierProfileView.swift in Sources */,
 				FA8CB8122558053D00D09B1D /* MemberRouter.swift in Sources */,
+				FA50B14C25A87A20003D514B /* AdminActionsDependencies.swift in Sources */,
 				0E90499224F6142A0061A605 /* OnboardPresenter.swift in Sources */,
 				FABB6F092546831800B93FB8 /* ApproveCurrentActionViewBeta.swift in Sources */,
 				FA8CB858255A7BBD00D09B1D /* AdminOrganizationsRouter.swift in Sources */,

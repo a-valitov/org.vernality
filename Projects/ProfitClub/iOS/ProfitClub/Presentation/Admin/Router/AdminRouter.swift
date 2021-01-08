@@ -26,7 +26,7 @@ final class AdminRouter {
     }
 
     @discardableResult
-    func openAdminTabBar(output: AdminTabBarViewOutput & AdminOrganizationsModuleOutput & AdminCommercialOffersModuleOutput & AdminSuppliersModuleOutput) -> AdminTabBarViewInput {
+    func openAdminTabBar(output: AdminTabBarViewOutput & AdminOrganizationsModuleOutput & AdminCommercialOffersModuleOutput & AdminSuppliersModuleOutput & AdminActionsModuleOutput) -> AdminTabBarViewInput {
         let adminTabBar = AdminTabBarViewAlpha()
         adminTabBar.output = output
         let applications = self.factories.adminOrganizations.make(output: output)
@@ -35,6 +35,8 @@ final class AdminRouter {
         adminCommercialOffers.embed(in: adminTabBar, main: self.main)
         let adminSuppliers = self.factories.adminSuppliers.make(output: output)
         adminSuppliers.embed(in: adminTabBar, main: self.main)
+        let adminActions = self.factories.adminActions.make(output: output)
+        adminActions.embed(in: adminTabBar, main: self.main)
         self.main?.push(adminTabBar, animated: true)
         return adminTabBar
     }
