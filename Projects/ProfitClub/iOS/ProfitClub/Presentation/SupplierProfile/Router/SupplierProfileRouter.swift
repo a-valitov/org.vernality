@@ -25,6 +25,7 @@ final class SupplierProfileRouter {
     func openSupplierProfile(supplier: PCSupplier, output: SupplierProfileViewOutput?) -> SupplierProfileViewInput {
         let profile = SupplierProfileViewAlpha()
         profile.output = output
+        profile.email = supplier.owner?.email
         profile.supplierName = supplier.name
         profile.supplierINN = supplier.inn
         profile.supplierContactName = supplier.contact

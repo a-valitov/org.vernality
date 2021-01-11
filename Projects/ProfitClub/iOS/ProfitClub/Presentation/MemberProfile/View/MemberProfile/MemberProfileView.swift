@@ -19,6 +19,8 @@ import UIKit
 protocol MemberProfileViewInput: UIViewController {
     var memberFirstName: String? { get set }
     var memberLastName: String? { get set }
+    var userEmail: String? { get set }
+    var organizationName: String? { get set }
 }
 
 protocol MemberProfileViewOutput {

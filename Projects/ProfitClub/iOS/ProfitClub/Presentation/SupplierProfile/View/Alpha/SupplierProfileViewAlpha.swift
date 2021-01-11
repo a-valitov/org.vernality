@@ -23,6 +23,7 @@ final class SupplierProfileViewAlpha: UIViewController {
     var supplierINN: String? { didSet { self.updateUIINN() } }
     var supplierContactName: String? { didSet { self.updateUIContactName() } }
     var supplierPhoneNumber: String? { didSet { self.updateUIPhoneNumber() } }
+    var email: String? { didSet { self.updateUIEmail() } }
 
     private lazy var supplierImageView: UIImageView = {
         let imageView = UIImageView()
@@ -104,7 +105,6 @@ final class SupplierProfileViewAlpha: UIViewController {
 
     private lazy var userEmail: UILabel = {
         let label = UILabel()
-        label.text = "Lena.Kon@yandex.ru"
         label.font = UIFont(name: "Montserrat-Regular", size: 18.0)
         label.textColor = #colorLiteral(red: 0.09803921569, green: 0.09411764706, blue: 0.09411764706, alpha: 1)
         label.numberOfLines = 2
@@ -123,7 +123,6 @@ final class SupplierProfileViewAlpha: UIViewController {
 
     private lazy var supplierContactNameLabel: UILabel = {
         let label = UILabel()
-        label.text = "Temur Xushvaqtov"
         label.font = UIFont(name: "Montserrat-Regular", size: 18.0)
         label.textColor = #colorLiteral(red: 0.09803921569, green: 0.09411764706, blue: 0.09411764706, alpha: 1)
         label.numberOfLines = 2
@@ -142,7 +141,6 @@ final class SupplierProfileViewAlpha: UIViewController {
 
     private lazy var supplierPhoneNumberLabel: UILabel = {
         let label = UILabel()
-        label.text = "+79502220202"
         label.font = UIFont(name: "Montserrat-Regular", size: 18.0)
         label.textColor = #colorLiteral(red: 0.09803921569, green: 0.09411764706, blue: 0.09411764706, alpha: 1)
         label.numberOfLines = 2
@@ -161,7 +159,6 @@ final class SupplierProfileViewAlpha: UIViewController {
 
     private lazy var supplierINNLabel: UILabel = {
         let label = UILabel()
-        label.text = "32132142344234"
         label.font = UIFont(name: "Montserrat-Regular", size: 18.0)
         label.textColor = #colorLiteral(red: 0.09803921569, green: 0.09411764706, blue: 0.09411764706, alpha: 1)
         label.numberOfLines = 2
@@ -469,6 +466,7 @@ extension SupplierProfileViewAlpha {
         updateUIINN()
         updateUIContactName()
         updateUIPhoneNumber()
+        updateUIEmail()
     }
 
     private func updateUIName() {
@@ -489,6 +487,11 @@ extension SupplierProfileViewAlpha {
     private func updateUIPhoneNumber() {
         if self.isViewLoaded {
             self.supplierPhoneNumberLabel.text = self.supplierPhoneNumber
+        }
+    }
+    private func updateUIEmail() {
+        if self.isViewLoaded {
+            self.userEmail.text = self.email
         }
     }
 }

@@ -21,6 +21,7 @@ protocol OrganizationProfileViewInput: UIViewController {
     var organizationINN: String? { get set }
     var organizationContactName: String? { get set }
     var organizationPhoneNumber: String? { get set }
+    var email: String? { get set }
 }
 
 protocol OrganizationProfileViewOutput {

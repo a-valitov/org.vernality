@@ -29,6 +29,9 @@ public extension PFObject {
         if let statusString = self["statusString"] as? String {
             result.status = PCSupplierStatus(rawValue: statusString)
         }
+//        if let owner = self["owner"] as? PFObject {
+//            result.owner = owner.pcUser?.any
+//        }
         return result
     }
 }
@@ -41,6 +44,7 @@ public extension PCSupplier {
         result.inn = self.inn
         result.contact = self.contact
         result.phone = self.phone
+        result.owner = self.owner
         result.status = self.status
         return result
     }
@@ -62,6 +66,8 @@ public final class PCSupplierParse: PFObject, PFSubclassing, PCSupplier {
             self.statusString = newValue?.rawValue
         }
     }
+
+    public var owner: PCUser?
     
     @NSManaged public var name: String?
     @NSManaged public var inn: String?

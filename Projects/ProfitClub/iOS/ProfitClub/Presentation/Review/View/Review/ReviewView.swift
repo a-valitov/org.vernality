@@ -18,7 +18,6 @@ import UIKit
 import ProfitClubModel
 
 protocol ReviewViewInput: UIViewController {
-    var username: String? { get set }
     var members: [AnyPCMember] { get set }
     var organizations: [AnyPCOrganization] { get set }
     var suppliers: [AnyPCSupplier] { get set }

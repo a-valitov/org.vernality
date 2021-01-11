@@ -78,7 +78,7 @@ public final class PCUserServiceParse: PCUserService {
                     })
 
                     group.enter()
-                    parseUser.relation(forKey: "members").query().findObjectsInBackground(block: { (pfMembers, error) in
+                    parseUser.relation(forKey: "members").query().includeKeys(["organization", "owner"]).findObjectsInBackground(block: { (pfMembers, error) in
                         if let error = error {
                             finalError = error
                         } else {
@@ -87,7 +87,7 @@ public final class PCUserServiceParse: PCUserService {
                         group.leave()
                     })
                     group.enter()
-                    parseUser.relation(forKey: "organizations").query().findObjectsInBackground { (pfOrganizations, error) in
+                    parseUser.relation(forKey: "organizations").query().includeKey("owner").findObjectsInBackground { (pfOrganizations, error) in
                         if let error = error {
                             finalError = error
                         } else {
@@ -96,7 +96,7 @@ public final class PCUserServiceParse: PCUserService {
                         group.leave()
                     }
                     group.enter()
-                    parseUser.relation(forKey: "suppliers").query().findObjectsInBackground { (pfSuppliers, error) in
+                    parseUser.relation(forKey: "suppliers").query().includeKey("owner").findObjectsInBackground { (pfSuppliers, error) in
                         if let error = error {
                             finalError = error
                         } else {

@@ -25,6 +25,7 @@ final class OrganizationProfileRouter {
     func openOrganizationProfile(organization: PCOrganization, output: OrganizationProfileViewOutput?) -> OrganizationProfileViewInput {
         let profile = OrganizationProfileViewAlpha()
         profile.output = output
+        profile.email = organization.owner?.email
         profile.organizationName = organization.name
         profile.organizationINN = organization.inn
         profile.organizationContactName = organization.contact

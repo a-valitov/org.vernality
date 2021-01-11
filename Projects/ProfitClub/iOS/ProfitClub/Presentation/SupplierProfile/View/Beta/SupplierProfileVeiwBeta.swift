@@ -23,6 +23,7 @@ final class SupplierProfileViewBeta: UIViewController {
     var supplierINN: String? { didSet { self.updateUIINN() } }
     var supplierContactName: String? { didSet { self.updateUIContactName() } }
     var supplierPhoneNumber: String? { didSet { self.updateUIPhoneNumber() } }
+    var email: String? { didSet { self.updateUIEmail() } }
 
     @IBOutlet weak var supplierImageView: UIImageView!
     @IBOutlet weak var supplierNameLabel: UILabel!
@@ -115,6 +116,7 @@ extension SupplierProfileViewBeta: SupplierProfileViewInput {
         updateUIINN()
         updateUIContactName()
         updateUIPhoneNumber()
+        updateUIEmail()
     }
 
     private func updateUIName() {
@@ -135,6 +137,11 @@ extension SupplierProfileViewBeta: SupplierProfileViewInput {
     private func updateUIPhoneNumber() {
         if self.isViewLoaded {
             self.supplierPhoneNumberLabel.text = self.supplierPhoneNumber
+        }
+    }
+    private func updateUIEmail() {
+        if self.isViewLoaded {
+            self.supplierEmailLabel.text = self.email
         }
     }
 }
