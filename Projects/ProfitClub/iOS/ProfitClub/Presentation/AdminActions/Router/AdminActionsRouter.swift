@@ -33,4 +33,16 @@ final class AdminActionsRouter {
         }
         return actionsContainer
     }
+
+    func buildActionsApplications(output: AdminActionsApplicationsViewOutput?) -> UIViewController {
+        let controller = AdminActionsApplicationsViewAlpha()
+        controller.output = output
+        return controller
+    }
+
+    func buildApprovedActions(output: AdminApprovedActionsViewOutput?) -> UIViewController {
+        let controller = AdminApprovedActionsViewAlpha()
+        controller.output = output
+        return controller
+    }
 }

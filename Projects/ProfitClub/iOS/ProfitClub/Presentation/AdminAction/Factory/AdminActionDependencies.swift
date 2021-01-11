@@ -14,17 +14,18 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import UIKit
-import Main
-import ProfitClubModel
+import Foundation
+import ErrorPresenter
+import ConfirmationPresenter
+import ActivityPresenter
+import PCActionService
 
-protocol AdminActionsModule: class {
-    func embed(in tabBarController: UITabBarController, main: MainModule?)
-    func onDidApprove(action: PCAction)
-    func onDidReject(action: PCAction)
+struct AdminActionPresenters {
+    let error: ErrorPresenter
+    let activity: ActivityPresenter
+    let confirmation: ConfirmationPresenter
 }
 
-protocol AdminActionsModuleOutput: class {
-    func adminActionsModuleDidLoad(module: AdminActionsModule)
-    func adminActions(module: AdminActionsModule, didSelect action: PCAction)
+struct AdminActionServices {
+    let action: PCActionService
 }

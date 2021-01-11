@@ -15,16 +15,20 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import UIKit
-import Main
-import ProfitClubModel
 
-protocol AdminActionsModule: class {
-    func embed(in tabBarController: UITabBarController, main: MainModule?)
-    func onDidApprove(action: PCAction)
-    func onDidReject(action: PCAction)
+protocol AdminActionApplicationViewInput: UIViewController {
+    var actionImageUrl: URL? { get set }
+    var actionMessage: String? { get set }
+    var actionDescription: String? { get set }
+    var organizationName: String? { get set }
+    var actionLink: String? { get set }
+    var actionStartDate: Date? { get set }
+    var actionEndDate: Date? { get set }
+    var supplierName: String? { get set }
 }
 
-protocol AdminActionsModuleOutput: class {
-    func adminActionsModuleDidLoad(module: AdminActionsModule)
-    func adminActions(module: AdminActionsModule, didSelect action: PCAction)
+protocol AdminActionApplicationViewOutput {
+    func adminActionApplicationDidLoad(view: AdminActionApplicationViewInput)
+    func adminActionApplication(view: AdminActionApplicationViewInput, userWantsToApprove sender: Any)
+    func adminActionApplication(view: AdminActionApplicationViewInput, userWantsToReject sender: Any)
 }

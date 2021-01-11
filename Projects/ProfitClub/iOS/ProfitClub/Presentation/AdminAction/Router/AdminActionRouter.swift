@@ -1,5 +1,5 @@
-//  Copyright (C) 2020 Startup Studio Vernality
-//  Created by Macbook on 22.10.2020
+//  Copyright (C) 2021 Startup Studio Vernality
+//  Created by Macbook on 08.01.2021
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -15,14 +15,21 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import Foundation
+import Main
 import ProfitClubModel
 
-public protocol PCActionService {
-    func add(action: PCAction, result: @escaping (Result<PCAction, Error>) -> Void)
-    func fetchApprovedCurrentActions(result: @escaping (Result<[AnyPCAction], Error>) -> Void)
-    func fetchApprovedPastActions(result: @escaping (Result<[AnyPCAction], Error>) -> Void)
-    func fetch(_ status: PCActionStatus, result: @escaping (Result<[AnyPCAction], Error>) -> Void)
+final class AdminActionRouter {
+    weak var main: MainModule?
 
-    func approve(action: PCAction, result: @escaping (Result<PCAction, Error>) -> Void)
-    func reject(action: PCAction, result: @escaping (Result<PCAction, Error>) -> Void)
+    @discardableResult
+    func openApplication(output: AdminActionApplicationViewOutput?) -> AdminActionApplicationViewInput {
+        let applicationView = AdminActionApplicationViewAlpha()
+        applicationView.output = output
+        self.main?.raise(applicationView, animated: true)
+        return applicationView
+    }
+
+    func closeApplication(_ view: AdminActionApplicationViewInput) {
+        self.main?.unraise(animated: true)
+    }
 }

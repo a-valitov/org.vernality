@@ -38,4 +38,5 @@ struct AdminFactories {
     let adminSuppliers: AdminSuppliersFactory
     let adminSupplier: AdminSupplierFactory
     let adminActions: AdminActionsFactory
+    let adminAction: AdminActionFactory
 }

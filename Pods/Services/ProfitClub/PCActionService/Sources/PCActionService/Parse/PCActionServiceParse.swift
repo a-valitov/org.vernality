@@ -81,4 +81,41 @@ public final class PCActionServiceParse: PCActionService {
             }
         }
     }
+
+    public func fetch(_ status: PCActionStatus, result: @escaping (Result<[AnyPCAction], Error>) -> Void) {
+        let query = PFQuery(className: "Action")
+        query.whereKey("statusString", equalTo: status.rawValue)
+        query.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
+            if let error = error {
+                result(.failure(error))
+            } else if let objects = objects {
+                result(.success(objects.map({ $0.pcAction.any })))
+            }
+        }
+    }
+
+    public func approve(action: PCAction, result: @escaping (Result<PCAction, Error>) -> Void) {
+        let parseAction = action.parse
+        parseAction.status = .approved
+        parseAction.saveInBackground { (success, error) in
+            if let error = error {
+                result(.failure(error))
+            } else {
+                result(.success(parseAction.any))
+            }
+        }
+    }
+
+
+    public func reject(action: PCAction, result: @escaping (Result<PCAction, Error>) -> Void) {
+        let parseAction = action.parse
+        parseAction.status = .rejected
+        parseAction.saveInBackground { (success, error) in
+            if let error = error {
+                result(.failure(error))
+            } else {
+                result(.success(parseAction.any))
+            }
+        }
+    }
 }
