@@ -509,6 +509,9 @@ extension SupplierActionsViewAlpha: UIImagePickerControllerDelegate, UINavigatio
         actionImageView.image = info[.editedImage] as? UIImage
         actionImageView.contentMode = .scaleAspectFill
         actionImageView.clipsToBounds = true
+        addPhotoButton.setImage(nil, for: .normal)
+        addPhotoButton.setTitle("Заменить фото", for: .normal)
+        addPhotoButton.setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), for: .normal)
 
         dismiss(animated: true)
     }
