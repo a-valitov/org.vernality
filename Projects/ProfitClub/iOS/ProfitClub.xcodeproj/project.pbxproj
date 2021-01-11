@@ -3443,7 +3443,7 @@
 				CODE_SIGN_ENTITLEMENTS = ProfitClub/ProfitClub.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 5V5EUT3ZXJ;
 				INFOPLIST_FILE = ProfitClub/Resources/Plists/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -3467,7 +3467,7 @@
 				CODE_SIGN_ENTITLEMENTS = ProfitClub/ProfitClub.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 5V5EUT3ZXJ;
 				INFOPLIST_FILE = ProfitClub/Resources/Plists/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
