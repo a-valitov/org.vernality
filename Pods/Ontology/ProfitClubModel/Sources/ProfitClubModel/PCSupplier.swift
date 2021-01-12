@@ -22,6 +22,7 @@ public protocol PCSupplier {
     var inn: String? { get }
     var contact: String? { get }
     var phone: String? { get }
+    var owner: PCUser? { get }
     var status: PCSupplierStatus? { get }
 }
 
@@ -44,6 +45,7 @@ public struct PCSupplierStruct: PCSupplier {
     public var inn: String?
     public var contact: String?
     public var phone: String?
+    public var owner: PCUser?
     public var status: PCSupplierStatus?
 
     public init() {}
@@ -68,6 +70,10 @@ public struct AnyPCSupplier: PCSupplier, Equatable, Hashable {
 
     public var phone: String? {
         return self.object.phone
+    }
+
+    public var owner: PCUser? {
+        return self.object.owner
     }
 
     public var status: PCSupplierStatus? {

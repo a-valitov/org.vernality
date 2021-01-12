@@ -25,7 +25,6 @@ final class ReviewRouter {
     func openReview(_ user: AnyPCUser?, output: ReviewViewOutput?) -> ReviewViewInput {
         let reviewView = ReviewViewAlpha()
         reviewView.output = output
-        reviewView.username = user?.username
         reviewView.members = user?.members?.map({ $0.any }) ?? []
         reviewView.organizations = user?.organizations?.map({ $0.any }) ?? []
         reviewView.suppliers = user?.suppliers?.map({ $0.any }) ?? []

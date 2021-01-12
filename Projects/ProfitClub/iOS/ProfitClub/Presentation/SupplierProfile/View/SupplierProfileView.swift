@@ -21,6 +21,7 @@ protocol SupplierProfileViewInput: UIViewController {
     var supplierINN: String? { get set }
     var supplierContactName: String? { get set }
     var supplierPhoneNumber: String? { get set }
+    var email: String? { get set }
 }
 
 protocol SupplierProfileViewOutput {

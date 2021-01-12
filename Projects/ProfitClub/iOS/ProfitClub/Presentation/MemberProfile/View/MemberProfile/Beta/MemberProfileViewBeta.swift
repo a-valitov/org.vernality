@@ -21,6 +21,8 @@ final class MemberProfileViewBeta: UIViewController {
 
     var memberFirstName: String?
     var memberLastName: String?
+    var userEmail: String? { didSet { self.updateUIEmail() } }
+    var organizationName: String? { didSet { self.updateUIOrganization() } }
 
     @IBOutlet weak var memberImageView: UIImageView!
     @IBOutlet weak var memberNameLabel: UILabel!
@@ -39,6 +41,7 @@ final class MemberProfileViewBeta: UIViewController {
         memberNameLabel.text = "\(memberFirstName ?? "") \(memberLastName ?? "")"
 
         navigationItem.title = "Профиль"
+        self.updateUI()
     }
 
     override func viewWillLayoutSubviews() {
@@ -102,6 +105,25 @@ extension MemberProfileViewBeta: UIImagePickerControllerDelegate, UINavigationCo
         memberImageView.clipsToBounds = true
 
         dismiss(animated: true)
+    }
+}
+
+extension MemberProfileViewBeta {
+    private func updateUI() {
+        updateUIEmail()
+        updateUIOrganization()
+    }
+
+    private func updateUIEmail() {
+        if self.isViewLoaded {
+            self.memberEmailLabel.text = self.userEmail
+        }
+    }
+
+    public func updateUIOrganization() {
+        if self.isViewLoaded {
+            self.memberOrganizationNameLabel.text = self.organizationName
+        }
     }
 }
 

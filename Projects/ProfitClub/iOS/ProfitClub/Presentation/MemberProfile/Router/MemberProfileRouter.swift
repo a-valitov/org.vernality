@@ -25,8 +25,10 @@ final class MemberProfileRouter {
     func openmemberProfile(member: PCMember, output: MemberProfileViewOutput?) -> MemberProfileViewInput {
         let profile = MemberProfileViewAlpha()
         profile.output = output
+        profile.organizationName = member.organization?.name
         profile.memberFirstName = member.firstName
         profile.memberLastName = member.lastName
+        profile.userEmail = member.owner?.username
         self.main?.push(profile, animated: true)
         return profile
     }

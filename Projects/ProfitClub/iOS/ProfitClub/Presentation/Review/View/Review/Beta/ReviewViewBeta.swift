@@ -22,7 +22,6 @@ extension ReviewViewBeta: ReviewViewInput {
 
 final class ReviewViewBeta: UITableViewController {
     var output: ReviewViewOutput?
-    var username: String?
     var members = [AnyPCMember]() {
         didSet {
             if self.isViewLoaded {

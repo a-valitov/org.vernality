@@ -21,6 +21,8 @@ final class MemberProfileViewAlpha: UIViewController {
 
     var memberFirstName: String?
     var memberLastName: String?
+    var userEmail: String? { didSet { self.updateUIEmail() } }
+    var organizationName: String? { didSet { self.updateUIOrganization() } }
 
     private lazy var memberImageView: UIImageView = {
         let imageView = UIImageView()
@@ -53,7 +55,6 @@ final class MemberProfileViewAlpha: UIViewController {
         let label = UILabel()
         label.textAlignment = .center
         label.textColor = #colorLiteral(red: 0.09803921569, green: 0.09411764706, blue: 0.09411764706, alpha: 1)
-        label.text = "ООО <<Газпромнефть>>"
         label.font = UIFont(name: "Montserrat-Medium", size: 16.0)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -98,7 +99,6 @@ final class MemberProfileViewAlpha: UIViewController {
 
     private lazy var memberEmail: UILabel = {
         let label = UILabel()
-        label.text = "Lena.Kon@yandex.ru"
         label.font = UIFont(name: "Montserrat-Regular", size: 18.0)
         label.textColor = #colorLiteral(red: 0.09803921569, green: 0.09411764706, blue: 0.09411764706, alpha: 1)
         label.numberOfLines = 2
@@ -117,7 +117,6 @@ final class MemberProfileViewAlpha: UIViewController {
 
     private lazy var memberPhoneNumber: UILabel = {
         let label = UILabel()
-        label.text = "+3801231278768"
         label.font = UIFont(name: "Montserrat-Regular", size: 18.0)
         label.textColor = #colorLiteral(red: 0.09803921569, green: 0.09411764706, blue: 0.09411764706, alpha: 1)
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -145,6 +144,7 @@ final class MemberProfileViewAlpha: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.layout()
+        self.updateUI()
 
         view.backgroundColor = .white
         navigationItem.title = "Профиль"
@@ -364,6 +364,25 @@ extension MemberProfileViewAlpha: UIImagePickerControllerDelegate, UINavigationC
         memberImageView.clipsToBounds = true
 
         dismiss(animated: true)
+    }
+}
+
+extension MemberProfileViewAlpha {
+    private func updateUI() {
+        updateUIEmail()
+        updateUIOrganization()
+    }
+
+    private func updateUIEmail() {
+        if self.isViewLoaded {
+            self.memberEmail.text = self.userEmail
+        }
+    }
+
+    public func updateUIOrganization() {
+        if self.isViewLoaded {
+            self.memberOrganizationLabel.text = self.organizationName
+        }
     }
 }
 

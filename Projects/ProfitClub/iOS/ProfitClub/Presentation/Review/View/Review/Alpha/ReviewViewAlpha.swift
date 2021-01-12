@@ -19,7 +19,6 @@ import ProfitClubModel
 
 final class ReviewViewAlpha: UITableViewController {
     var output: ReviewViewOutput?
-    var username: String?
     var isAdministrator: Bool = false {
         didSet {
             if self.isViewLoaded {

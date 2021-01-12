@@ -20,6 +20,8 @@ public protocol PCMember {
     var id: String? { get }
     var firstName: String? { get }
     var lastName: String? { get }
+    var owner: PCUser? { get }
+    var organization: PCOrganization? { get }
     var status: PCMemberStatus? { get }
 }
 
@@ -40,6 +42,8 @@ public struct PCMemberStruct: PCMember {
     public var id: String?
     public var firstName: String?
     public var lastName: String?
+    public var owner: PCUser?
+    public var organization: PCOrganization?
     public var status: PCMemberStatus?
 
     public init() {}
@@ -56,6 +60,14 @@ public struct AnyPCMember: PCMember, Equatable, Hashable {
 
     public var lastName: String? {
         return self.object.lastName
+    }
+
+    public var owner: PCUser? {
+        return self.object.owner
+    }
+
+    public var organization: PCOrganization? {
+        return self.object.organization
     }
 
     public var status: PCMemberStatus? {

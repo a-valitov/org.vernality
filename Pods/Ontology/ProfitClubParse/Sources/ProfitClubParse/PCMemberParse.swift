@@ -27,6 +27,12 @@ public extension PFObject {
         if let statusString = self["statusString"] as? String {
             result.status = PCMemberStatus(rawValue: statusString)
         }
+        if let owner = self["owner"] as? PFObject {
+            result.owner = owner.pcUser?.any
+        }
+        if let organization = self["organization"] as? PFObject {
+            result.organization = organization.pcOrganization.any
+        }
         return result
     }
 }
@@ -37,6 +43,8 @@ public extension PCMember {
         result.objectId = self.id
         result.firstName = self.firstName
         result.lastName = self.lastName
+        result.owner = self.owner
+        result.organization = self.organization
         result.status = self.status
         return result
     }
@@ -59,7 +67,9 @@ public final class PCMemberParse: PFObject, PFSubclassing, PCMember {
         }
     }
 
-    @NSManaged public var username: String
+    public var owner: PCUser?
+    public var organization: PCOrganization?
+
     @NSManaged public var firstName: String?
     @NSManaged public var lastName: String?
     @NSManaged public var statusString: String?
