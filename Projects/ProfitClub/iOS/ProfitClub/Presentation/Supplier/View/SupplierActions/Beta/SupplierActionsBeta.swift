@@ -256,6 +256,9 @@ extension SupplierActionsBeta: UIImagePickerControllerDelegate, UINavigationCont
         actionImageView.image = info[.editedImage] as? UIImage
         actionImageView.contentMode = .scaleAspectFill
         actionImageView.clipsToBounds = true
+        addActionImageView.setImage(nil, for: .normal)
+        addActionImageView.setTitle("Заменить фото", for: .normal)
+        addActionImageView.setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), for: .normal)
 
         dismiss(animated: true)
     }

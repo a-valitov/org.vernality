@@ -349,6 +349,9 @@ extension SupplierCommercialOfferViewAlpha: UIImagePickerControllerDelegate, UIN
         commercialOfferImageView.image = info[.editedImage] as? UIImage
         commercialOfferImageView.contentMode = .scaleAspectFill
         commercialOfferImageView.clipsToBounds = true
+        addPhotoButton.setImage(nil, for: .normal)
+        addPhotoButton.setTitle("Заменить фото", for: .normal)
+        addPhotoButton.setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), for: .normal)
 
         dismiss(animated: true)
     }

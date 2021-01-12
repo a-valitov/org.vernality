@@ -150,6 +150,9 @@ extension SupplierCommercialOfferBeta: UIImagePickerControllerDelegate, UINaviga
         commercialOfferImageView.image = info[.editedImage] as? UIImage
         commercialOfferImageView.contentMode = .scaleAspectFill
         commercialOfferImageView.clipsToBounds = true
+        addCommercialOfferImage.setImage(nil, for: .normal)
+        addCommercialOfferImage.setTitle("Заменить фото", for: .normal)
+        addCommercialOfferImage.setTitleColor(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), for: .normal)
 
         dismiss(animated: true)
     }
