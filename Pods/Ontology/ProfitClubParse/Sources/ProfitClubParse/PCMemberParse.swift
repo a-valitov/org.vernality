@@ -27,10 +27,10 @@ public extension PFObject {
         if let statusString = self["statusString"] as? String {
             result.status = PCMemberStatus(rawValue: statusString)
         }
-        if let owner = self["owner"] as? PFObject {
+        if let owner = self["owner"] as? PFObject, owner.isDataAvailable {
             result.owner = owner.pcUser?.any
         }
-        if let organization = self["organization"] as? PFObject {
+        if let organization = self["organization"] as? PFObject, organization.isDataAvailable {
             result.organization = organization.pcOrganization.any
         }
         return result
