@@ -22,4 +22,6 @@ public protocol PCCommercialOfferService {
     func fetchApproved(result: @escaping (Result<[AnyPCCommercialOffer], Error>) -> Void)
     func loadAttachment(at index: Int, for offer: PCCommercialOffer, result: @escaping (Result<URL, Error>) -> Void)
     func fetch(_ status: PCCommercialOfferStatus, result: @escaping (Result<[AnyPCCommercialOffer], Error>) -> Void)
+    func approve(commercialOffer: PCCommercialOffer, result: @escaping (Result<PCCommercialOffer, Error>) -> Void)
+    func reject(commercialOffer: PCCommercialOffer, result: @escaping (Result<PCCommercialOffer, Error>) -> Void)
 }

@@ -39,4 +39,10 @@ final class AdminCommercialOffersRouter {
         controller.output = output
         return controller
     }
+
+    func buildApprovedCommercialOffers(output: AdminApprovedCommercialOffersViewOutput?) -> UIViewController {
+        let controller = AdminApprovedCommercialOffersViewAlpha()
+        controller.output = output
+        return controller
+    }
 }

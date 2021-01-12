@@ -160,7 +160,7 @@ private extension AppFactory {
     }
 
     var adminFactory: AdminFactory {
-        return AdminFactory(presenters: AdminPresenters(error: self.errorPresenter(), activity: self.activityPresenter(), confirmation: self.confirmationPresenter(), menu: self.menuPresenter()), services: AdminServices(), factories: AdminFactories(adminOrganizations: self.adminOrganizationsFactory, adminOrganization: self.adminOrganizationFactory, adminCommercialOffers: self.adminCommercialOffersFactory, adminSuppliers: self.adminSuppliersFactory, adminSupplier: self.adminSupplierFactory, adminActions: self.adminActionsFactory, adminAction: self.adminActionFactory))
+        return AdminFactory(presenters: AdminPresenters(error: self.errorPresenter(), activity: self.activityPresenter(), confirmation: self.confirmationPresenter(), menu: self.menuPresenter()), services: AdminServices(), factories: AdminFactories(adminOrganizations: self.adminOrganizationsFactory, adminOrganization: self.adminOrganizationFactory, adminCommercialOffers: self.adminCommercialOffersFactory, adminCommercialOffer: self.adminCommercialOfferFactory, adminSuppliers: self.adminSuppliersFactory, adminSupplier: self.adminSupplierFactory, adminActions: self.adminActionsFactory, adminAction: self.adminActionFactory))
     }
 
     var adminOrganizationsFactory: AdminOrganizationsFactory {
@@ -189,6 +189,10 @@ private extension AppFactory {
 
     var adminCommercialOffersFactory: AdminCommercialOffersFactory {
         return AdminCommercialOffersFactory(presenters: AdminCommercialOffersPresenters(error: self.errorPresenter(), activity: self.activityPresenter()), services: AdminCommercialOffersServices(commercialOffers: self.commercialOfferService()))
+    }
+
+    var adminCommercialOfferFactory: AdminCommercialOfferFactory {
+        return AdminCommercialOfferFactory(presenters: AdminCommercialOfferPresenters(error: self.errorPresenter(), activity: self.activityPresenter(), confirmation: self.confirmationPresenter()), services: AdminCommercialOfferServices(commercialOffer: self.commercialOfferService()))
     }
 
     var actionsFactory: ActionsFactory {

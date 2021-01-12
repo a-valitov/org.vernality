@@ -57,7 +57,7 @@ final class AdminCommercialOffersContainerViewAlpha: UIViewController {
         segmentedControl.setTitleTextAttributes([NSAttributedString.Key.font : UIFont(name: "Montserrat-Regular", size: 15)!, NSAttributedString.Key.foregroundColor: UIColor.black], for: .selected)
         segmentedControl.setTitleTextAttributes([NSAttributedString.Key.font : UIFont(name: "Montserrat-Regular", size: 15)!, NSAttributedString.Key.foregroundColor: UIColor(red: 25/255, green: 24/255, blue: 24/255, alpha: 0.5)], for: .normal)
         segmentedControl.insertSegment(withTitle: "Заявки", at: 0, animated: true)
-        segmentedControl.insertSegment(withTitle: "Текущие", at: 1, animated: true)
+        segmentedControl.insertSegment(withTitle: "Одобренные", at: 1, animated: true)
         segmentedControl.selectedSegmentIndex = 0
         segmentedControl.translatesAutoresizingMaskIntoConstraints = false
         return segmentedControl

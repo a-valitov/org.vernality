@@ -62,5 +62,12 @@ final class AdminRouter {
         return actionModule
     }
 
+    @discardableResult
+    func open(commercialOffer: PCCommercialOffer, output: AdminCommercialOfferModuleOutput?) -> AdminCommercialOfferModule {
+        let commercialOfferModule = self.factories.adminCommercialOffer.make(commercialOffer: commercialOffer, output: output)
+        commercialOfferModule.open(in: self.main)
+        return commercialOfferModule
+    }
+
     private let factories: AdminFactories
 }
