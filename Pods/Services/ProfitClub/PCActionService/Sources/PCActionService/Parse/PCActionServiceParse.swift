@@ -84,6 +84,7 @@ public final class PCActionServiceParse: PCActionService {
 
     public func fetch(_ status: PCActionStatus, result: @escaping (Result<[AnyPCAction], Error>) -> Void) {
         let query = PFQuery(className: "Action")
+        query.includeKey("supplier")
         query.whereKey("statusString", equalTo: status.rawValue)
         query.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
             if let error = error {

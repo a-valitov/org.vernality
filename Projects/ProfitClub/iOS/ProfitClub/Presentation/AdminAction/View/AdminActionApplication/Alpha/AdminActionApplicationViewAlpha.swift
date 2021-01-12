@@ -155,6 +155,7 @@ final class AdminActionApplicationViewAlpha: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setup()
         layout()
         view.backgroundColor = .white
         self.output?.adminActionApplicationDidLoad(view: self)
