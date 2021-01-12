@@ -29,9 +29,9 @@ public extension PFObject {
         if let statusString = self["statusString"] as? String {
             result.status = PCSupplierStatus(rawValue: statusString)
         }
-//        if let owner = self["owner"] as? PFObject {
-//            result.owner = owner.pcUser?.any
-//        }
+        if let owner = self["owner"] as? PFObject, owner.isDataAvailable {
+            result.owner = owner.pcUser?.any
+        }
         return result
     }
 }
