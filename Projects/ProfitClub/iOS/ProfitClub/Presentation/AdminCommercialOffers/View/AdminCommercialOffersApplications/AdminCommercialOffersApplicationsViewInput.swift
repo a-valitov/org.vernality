@@ -21,9 +21,11 @@ protocol AdminCommercialOffersApplicationsViewInput: UIViewController {
     var commercialOffers: [AnyPCCommercialOffer] { get set }
 
     func reload()
+    func hide(commercialOffer: PCCommercialOffer)
 }
 
 protocol AdminCommercialOffersApplicationsViewOutput {
     func adminCommercialOffersApplicationsDidLoad(view: AdminCommercialOffersApplicationsViewInput)
     func adminCommercialOffersApplications(view: AdminCommercialOffersApplicationsViewInput, userWantsToRefresh sender: Any)
+    func adminCommercialOffersApplications(view: AdminCommercialOffersApplicationsViewInput, didSelect commercialOffer: PCCommercialOffer)
 }

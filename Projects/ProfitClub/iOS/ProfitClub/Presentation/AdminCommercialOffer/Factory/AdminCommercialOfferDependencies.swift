@@ -1,5 +1,5 @@
-//  Copyright (C) 2020 Startup Studio Vernality
-//  Created by Macbook on 10.11.2020
+//  Copyright (C) 2021 Startup Studio Vernality
+//  Created by Macbook on 12.01.2021
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -16,28 +16,16 @@
 
 import Foundation
 import ErrorPresenter
-import ActivityPresenter
 import ConfirmationPresenter
-import MenuPresenter
+import ActivityPresenter
+import PCCommercialOfferService
 
-struct AdminPresenters {
+struct AdminCommercialOfferPresenters {
     let error: ErrorPresenter
     let activity: ActivityPresenter
     let confirmation: ConfirmationPresenter
-    let menu: MenuPresenter
 }
 
-struct AdminServices {
-
-}
-
-struct AdminFactories {
-    let adminOrganizations: AdminOrganizationsFactory
-    let adminOrganization: AdminOrganizationFactory
-    let adminCommercialOffers: AdminCommercialOffersFactory
-    let adminCommercialOffer: AdminCommercialOfferFactory
-    let adminSuppliers: AdminSuppliersFactory
-    let adminSupplier: AdminSupplierFactory
-    let adminActions: AdminActionsFactory
-    let adminAction: AdminActionFactory
+struct AdminCommercialOfferServices {
+    let commercialOffer: PCCommercialOfferService
 }

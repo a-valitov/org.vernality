@@ -1,5 +1,5 @@
 //  Copyright (C) 2021 Startup Studio Vernality
-//  Created by Macbook on 07.01.2021
+//  Created by Macbook on 12.01.2021
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -16,12 +16,17 @@
 
 import UIKit
 import ProfitClubModel
-import Kingfisher
 
-final class AdminCommercialOffersApplicationsViewAlpha: UITableViewController {
-    var output: AdminCommercialOffersApplicationsViewOutput?
+final class AdminApprovedCommercialOffersViewAlpha: UITableViewController {
+    var output: AdminApprovedCommercialOffersViewOutput?
 
-    var commercialOffers = [AnyPCCommercialOffer]()
+    var commercialOffers: [AnyPCCommercialOffer] = [] {
+        didSet {
+            if self.isViewLoaded {
+                self.tableView.reloadData()
+            }
+        }
+    }
 
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -35,12 +40,12 @@ final class AdminCommercialOffersApplicationsViewAlpha: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
-        self.output?.adminCommercialOffersApplicationsDidLoad(view: self)
+        self.output?.adminApprovedCommercialOffersDidLoad(view: self)
 
         tableView.register(AdminCommercialOffersApplicationsViewAlphaCell.self, forCellReuseIdentifier: AdminCommercialOffersApplicationsViewAlphaCell.reuseIdentifier)
 
         let refreshControl = UIRefreshControl()
-        refreshControl.addTarget(self, action: #selector(AdminCommercialOffersApplicationsViewAlpha.pullToRefreshValueChanged(_:)), for: .valueChanged)
+        refreshControl.addTarget(self, action: #selector(AdminApprovedCommercialOffersViewAlpha.pullToRefreshValueChanged(_:)), for: .valueChanged)
         tableView.refreshControl = refreshControl
     }
 
@@ -68,31 +73,13 @@ final class AdminCommercialOffersApplicationsViewAlpha: UITableViewController {
         return cell
     }
 
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let commercialOffer = self.commercialOffers[indexPath.row]
-        self.output?.adminCommercialOffersApplications(view: self, didSelect: commercialOffer)
-    }
-
     @objc private func pullToRefreshValueChanged(_ sender: UIRefreshControl) {
-        self.output?.adminCommercialOffersApplications(view: self, userWantsToRefresh: sender)
+        self.output?.adminApprovedCommercialOffers(view: self, userWantsToRefresh: sender)
         sender.endRefreshing()
     }
 }
 
-extension AdminCommercialOffersApplicationsViewAlpha: AdminCommercialOffersApplicationsViewInput {
-    func reload() {
-        if self.isViewLoaded {
-            self.tableView.reloadData()
-        }
-    }
+extension AdminApprovedCommercialOffersViewAlpha: AdminApprovedCommercialOffersViewInput {
 
-    func hide(commercialOffer: PCCommercialOffer) {
-        guard let index = commercialOffers.firstIndex(of: commercialOffer.any) else {
-            assertionFailure("Organization not found")
-            return
-        }
-        commercialOffers.remove(at: index)
-        let indexPath = IndexPath(row: index, section: 0)
-        tableView.deleteRows(at: [indexPath], with: .fade)
-    }
 }
+

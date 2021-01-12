@@ -35,17 +35,29 @@ final class AdminCommercialOffersPresenter: AdminCommercialOffersModule {
         self.router?.embed(in: tabBarController, output: self)
     }
 
+    func onDidApprove(commercialOffer: PCCommercialOffer) {
+        commercialOffersApplicationsView?.hide(commercialOffer: commercialOffer)
+        self.reloadApprovedCommercialOffers()
+    }
+
+    func onDidReject(commercialOffer: PCCommercialOffer) {
+        commercialOffersApplicationsView?.hide(commercialOffer: commercialOffer)
+    }
+
     // dependencies
     private let presenters: AdminCommercialOffersPresenters
     private let services: AdminCommercialOffersServices
 
     //submodules
     private weak var commercialOffersApplicationsView: AdminCommercialOffersApplicationsViewInput?
+    private weak var approvedCommercialOffers: AdminApprovedCommercialOffersViewInput?
 }
 
 extension AdminCommercialOffersPresenter: AdminCommercialOffersContainerViewOutput {
     func adminCommercialOffersContainerDidLoad(view: AdminCommercialOffersContainerViewInput) {
-//        view.applications = router?.buildCommercialOffersApplications(output: self)
+        view.applications = router?.buildCommercialOffersApplications(output: self)
+        view.approved = router?.buildApprovedCommercialOffers(output: self)
+        output?.adminCommercialOffersModuleDidLoad(module: self)
     }
 
     func adminCommercialOffersContainer(view: AdminCommercialOffersContainerViewInput, didChangeState state: AdminCommercialOffersContainerState) {
@@ -64,6 +76,21 @@ extension AdminCommercialOffersPresenter: AdminCommercialOffersApplicationsViewO
         self.reloadCommercialOffersApplications()
     }
 
+    func adminCommercialOffersApplications(view: AdminCommercialOffersApplicationsViewInput, didSelect commercialOffer: PCCommercialOffer) {
+        self.output?.adminCommercialOffers(module: self, didSelect: commercialOffer)
+    }
+}
+
+extension AdminCommercialOffersPresenter: AdminApprovedCommercialOffersViewOutput {
+    func adminApprovedCommercialOffersDidLoad(view: AdminApprovedCommercialOffersViewInput) {
+        self.approvedCommercialOffers = view
+        self.reloadApprovedCommercialOffers()
+    }
+
+    func adminApprovedCommercialOffers(view: AdminApprovedCommercialOffersViewInput, userWantsToRefresh sender: Any) {
+        self.approvedCommercialOffers = view
+        self.reloadApprovedCommercialOffers()
+    }
 }
 
 extension AdminCommercialOffersPresenter {
@@ -73,6 +100,17 @@ extension AdminCommercialOffersPresenter {
             case .success(let commercialOffers):
                 self?.commercialOffersApplicationsView?.commercialOffers = commercialOffers
                 self?.commercialOffersApplicationsView?.reload()
+            case .failure(let error):
+                self?.presenters.error.present(error)
+            }
+        }
+    }
+
+    private func reloadApprovedCommercialOffers() {
+        self.services.commercialOffers.fetch(.approved) { [weak self] (result) in
+            switch result {
+            case .success(let commercialOffers):
+                self?.approvedCommercialOffers?.commercialOffers = commercialOffers
             case .failure(let error):
                 self?.presenters.error.present(error)
             }

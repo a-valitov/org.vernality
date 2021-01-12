@@ -93,12 +93,37 @@ public final class PCCommercialOfferServiceParse: PCCommercialOfferService {
 
     public func fetch(_ status: PCCommercialOfferStatus, result: @escaping (Result<[AnyPCCommercialOffer], Error>) -> Void) {
         let query = PFQuery(className: "CommercialOffer")
+        query.includeKey("supplier")
         query.whereKey("statusString", equalTo: status.rawValue)
         query.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
             if let error = error {
                 result(.failure(error))
             } else if let objects = objects {
                 result(.success(objects.map({ $0.pcCommercialOffer.any })))
+            }
+        }
+    }
+
+    public func approve(commercialOffer: PCCommercialOffer, result: @escaping (Result<PCCommercialOffer, Error>) -> Void) {
+        let parseCommercialOffer = commercialOffer.parse
+        parseCommercialOffer.status = .approved
+        parseCommercialOffer.saveInBackground { (success, error) in
+            if let error = error {
+                result(.failure(error))
+            } else {
+                result(.success(parseCommercialOffer.any))
+            }
+        }
+    }
+
+    public func reject(commercialOffer: PCCommercialOffer, result: @escaping (Result<PCCommercialOffer, Error>) -> Void) {
+        let parseCommercialOffer = commercialOffer.parse
+        parseCommercialOffer.status = .rejected
+        parseCommercialOffer.saveInBackground { (success, error) in
+            if let error = error {
+                result(.failure(error))
+            } else {
+                result(.success(parseCommercialOffer.any))
             }
         }
     }
