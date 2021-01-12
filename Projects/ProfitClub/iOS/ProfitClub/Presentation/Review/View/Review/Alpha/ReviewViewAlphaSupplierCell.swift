@@ -60,6 +60,8 @@ final class ReviewViewAlphaSupplierCell: UITableViewCell {
         label.font = UIFont(name: "Montserrat-Regular", size: 18.0)
         label.textColor = #colorLiteral(red: 0.09803921569, green: 0.09411764706, blue: 0.09411764706, alpha: 1)
         label.translatesAutoresizingMaskIntoConstraints = false
+        label.setContentHuggingPriority(.defaultLow, for: .horizontal)
+        label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         return label
     }()
 
@@ -136,7 +138,7 @@ extension ReviewViewAlphaSupplierCell {
         container.addSubview(label)
         NSLayoutConstraint.activate([
             label.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -20.0),
-            label.leadingAnchor.constraint(lessThanOrEqualTo: self.supplierINN.trailingAnchor, constant: 8.0),
+            label.leadingAnchor.constraint(greaterThanOrEqualTo: self.supplierINN.trailingAnchor, constant: 8.0),
             label.centerYAnchor.constraint(equalTo: self.supplierINN.centerYAnchor)
         ])
     }
@@ -154,7 +156,7 @@ extension ReviewViewAlphaSupplierCell {
         container.addSubview(label)
         NSLayoutConstraint.activate([
             label.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -20.0),
-            label.leadingAnchor.constraint(lessThanOrEqualTo: self.supplierContact.trailingAnchor, constant: 8.0),
+            label.leadingAnchor.constraint(greaterThanOrEqualTo: self.supplierContact.trailingAnchor, constant: 8.0),
             label.centerYAnchor.constraint(equalTo: self.supplierContact.centerYAnchor),
             label.topAnchor.constraint(equalTo: self.supplierINNLabel.bottomAnchor, constant: 8.0)
         ])
@@ -173,7 +175,7 @@ extension ReviewViewAlphaSupplierCell {
         container.addSubview(label)
         NSLayoutConstraint.activate([
             label.trailingAnchor.constraint(equalTo: container.trailingAnchor, constant: -20.0),
-            label.leadingAnchor.constraint(lessThanOrEqualTo: self.supplierPhoneNumber.trailingAnchor, constant: 8.0),
+            label.leadingAnchor.constraint(greaterThanOrEqualTo: self.supplierPhoneNumber.trailingAnchor, constant: 8.0),
             label.centerYAnchor.constraint(equalTo: self.supplierPhoneNumber.centerYAnchor),
             label.topAnchor.constraint(equalTo: self.supplierContactLabel.bottomAnchor, constant: 8.0)
         ])
