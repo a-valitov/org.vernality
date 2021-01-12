@@ -22,7 +22,7 @@ final class MemberProfileRouter {
     weak var main: MainModule?
 
     @discardableResult
-    func openmemberProfile(member: PCMember, output: MemberProfileViewOutput?) -> MemberProfileViewInput {
+    func openMemberProfile(member: PCMember, output: MemberProfileViewOutput?) -> MemberProfileViewInput {
         let profile = MemberProfileViewAlpha()
         profile.output = output
         profile.organizationName = member.organization?.name

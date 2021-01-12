@@ -33,7 +33,7 @@ final class MemberProfilePresenter: MemberProfileModule {
 
     func open(in main: MainModule?) {
         self.router?.main = main
-        self.router?.openmemberProfile(member: self.member, output: self)
+        self.router?.openMemberProfile(member: self.member, output: self)
     }
 
     // dependencies
