@@ -110,7 +110,7 @@ extension AdminActionsPresenter {
         self.services.action.fetch(.approved) { [weak self] (result) in
             switch result {
             case .success(let actions):
-                self?.actionsApplicationsView?.actions = actions
+                self?.approvedActionsView?.actions = actions
             case .failure(let error):
                 self?.presenters.error.present(error)
             }
