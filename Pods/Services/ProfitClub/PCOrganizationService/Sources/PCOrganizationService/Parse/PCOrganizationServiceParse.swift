@@ -108,7 +108,7 @@ public final class PCOrganizationServiceParse: PCOrganizationService {
             if let error = error {
                 result(.failure(error))
             } else {
-                result(.success(organization))
+                result(.success(parseOrganization.pcOrganization))
             }
         }
     }

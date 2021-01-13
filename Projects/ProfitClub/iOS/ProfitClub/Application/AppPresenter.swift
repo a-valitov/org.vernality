@@ -56,6 +56,9 @@ final class AppPresenter {
     private var isLoggedIn: Bool {
         return self.userService.user != nil
     }
+
+    // modules
+    private weak var organizationModule: OrganizationModule?
 }
 
 extension AppPresenter: MainModuleOutput {
@@ -119,8 +122,9 @@ extension AppPresenter: ReviewModuleOutput {
 
     func review(module: ReviewModule, userWantsToEnter organization: PCOrganization, inside main: MainModule?) {
         assert(organization.status == .approved)
-        let organization = self.factory.organization(organization, output: self)
-        organization.open(in: main)
+        let organizationModule = self.factory.organization(organization, output: self)
+        organizationModule.open(in: main)
+        self.organizationModule = organizationModule
     }
     
     func review(module: ReviewModule, userWantsToEnter supplier: PCSupplier, inside main: MainModule?) {
@@ -219,7 +223,9 @@ extension AppPresenter: MemberProfileModuleOutput {
 }
 
 extension AppPresenter: OrganizationProfileModuleOutput {
-
+    func organizationProfile(module: OrganizationProfileModule, didUpdate organization: PCOrganization) {
+        self.organizationModule?.organization = organization
+    }
 }
 
 extension AppPresenter: SupplierProfileModuleOutput {
