@@ -41,9 +41,22 @@ final class OrganizationProfilePresenter: OrganizationProfileModule {
     private let services: OrganizationProfileServices
 
     // state
-    private let organization: PCOrganization
+    private var organization: PCOrganization
 }
 
 extension OrganizationProfilePresenter: OrganizationProfileViewOutput {
-
+    func organizationProfile(view: OrganizationProfileViewInput, userWantsToEditProfile sender: Any) {
+        guard let image = view.organizationImage else { return }
+        self.presenters.activity.increment()
+        self.services.organization.editProfile(organization: organization, image: image) { [weak self] (result) in
+            self?.presenters.activity.decrement()
+            switch result {
+            case .success(let organization):
+                self?.organization = organization
+                self?.router?.pop()
+            case .failure(let error):
+                self?.presenters.error.present(error)
+            }
+        }
+    }
 }

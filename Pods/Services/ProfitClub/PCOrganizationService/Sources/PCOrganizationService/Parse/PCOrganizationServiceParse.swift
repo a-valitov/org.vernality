@@ -99,6 +99,20 @@ public final class PCOrganizationServiceParse: PCOrganizationService {
         }
     }
 
+    public func editProfile(organization: PCOrganization, image: UIImage, result: @escaping (Result<PCOrganization, Error>) -> Void) {
+        let parseOrganization = organization.parse
+        let imageData = image.pngData()
+        let imageFile = PFFileObject(name: "image.png", data: imageData!)
+        parseOrganization.imageFile = imageFile
+        parseOrganization.saveInBackground { (success, error) in
+            if let error = error {
+                result(.failure(error))
+            } else {
+                result(.success(organization))
+            }
+        }
+    }
+
     public func fetchApprovedApplications(_ organization: PCOrganization?, result: @escaping (Result<[AnyPCMember], Error>) -> Void) {
         guard let organization = organization else {
             result(.failure(PCOrganizationServiceError.inputIsNil))

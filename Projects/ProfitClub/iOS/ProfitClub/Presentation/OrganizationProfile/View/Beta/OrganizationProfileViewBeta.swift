@@ -25,6 +25,7 @@ final class OrganizationProfileViewBeta: UIViewController {
     var organizationPhoneNumber: String? { didSet { self.updateUIPhoneNumber() } }
     var organizationImageUrl: URL? { didSet { self.updateUIImage() } }
     var email: String? { didSet { self.updateUIEmail() } }
+    var organizationImage: UIImage?
 
     @IBOutlet weak var organizationImageView: UIImageView!
     @IBOutlet weak var organizationNameLabel: UILabel!

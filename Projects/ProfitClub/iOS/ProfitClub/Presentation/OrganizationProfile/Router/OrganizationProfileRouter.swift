@@ -34,4 +34,8 @@ final class OrganizationProfileRouter {
         self.main?.push(profile, animated: true)
         return profile
     }
+
+    func pop() {
+        self.main?.pop()
+    }
 }

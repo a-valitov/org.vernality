@@ -29,4 +29,6 @@ public protocol PCOrganizationService {
 
     func approve(organization: PCOrganization, result: @escaping (Result<PCOrganization, Error>) -> Void)
     func reject(organization: PCOrganization, result: @escaping (Result<PCOrganization, Error>) -> Void)
+
+    func editProfile(organization: PCOrganization, image: UIImage, result: @escaping (Result<PCOrganization, Error>) -> Void)
 }

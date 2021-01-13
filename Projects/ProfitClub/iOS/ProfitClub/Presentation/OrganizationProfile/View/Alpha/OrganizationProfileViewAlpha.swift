@@ -25,6 +25,7 @@ final class OrganizationProfileViewAlpha: UIViewController {
     var organizationContactName: String? { didSet { self.updateUIContactName() } }
     var organizationPhoneNumber: String? { didSet { self.updateUIPhoneNumber() } }
     var organizationImageUrl: URL? { didSet { self.updateUIImage() } }
+    var organizationImage: UIImage?
     var email: String? { didSet { self.updateUIEmail() } }
 
     private lazy var organizationImageView: UIImageView = {
@@ -189,6 +190,7 @@ final class OrganizationProfileViewAlpha: UIViewController {
         super.viewDidLoad()
         self.layout()
         self.updateUI()
+        self.setup()
 
         editProfileButton.titleLabel?.attributedText = NSAttributedString(string: "Редактировать аккаунт", attributes: [.underlineStyle: NSUnderlineStyle.thick.rawValue])
         view.backgroundColor = .white
@@ -198,6 +200,7 @@ final class OrganizationProfileViewAlpha: UIViewController {
     override func viewWillLayoutSubviews() {
         addPhotoButton.layer.cornerRadius = addPhotoButton.frame.height / 2
         organizationImageView.layer.cornerRadius = organizationImageView.frame.height / 2
+        organizationImageView.clipsToBounds = true
     }
 
     @objc private func addPhotoButtonTouchUpInside() {
@@ -230,6 +233,21 @@ final class OrganizationProfileViewAlpha: UIViewController {
         actionSheet.addAction(cancel)
 
         present(actionSheet, animated: true)
+    }
+}
+
+// MARK: - Actions
+extension OrganizationProfileViewAlpha {
+    @objc
+    private func editProfileButtonTouchUpInside(_ sender: Any) {
+        self.output?.organizationProfile(view: self, userWantsToEditProfile: sender)
+    }
+}
+
+// MARK: - Setup
+extension OrganizationProfileViewAlpha {
+    private func setup() {
+        editProfileButton.addTarget(self, action: #selector(OrganizationProfileViewAlpha.editProfileButtonTouchUpInside(_:)), for: .touchUpInside)
     }
 }
 
@@ -457,6 +475,7 @@ extension OrganizationProfileViewAlpha: UIImagePickerControllerDelegate, UINavig
         organizationImageView.image = info[.editedImage] as? UIImage
         organizationImageView.contentMode = .scaleAspectFill
         organizationImageView.clipsToBounds = true
+        organizationImage = organizationImageView.image
 
         dismiss(animated: true)
     }

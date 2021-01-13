@@ -222,7 +222,7 @@ private extension AppFactory {
     }
 
     var organizationProfileFactory: OrganizationProfileFactory {
-        return OrganizationProfileFactory(presenters: OrganizationProfilePresenters(error: self.errorPresenter(), activity: self.activityPresenter()), services: OrganizationProfileServices())
+        return OrganizationProfileFactory(presenters: OrganizationProfilePresenters(error: self.errorPresenter(), activity: self.activityPresenter()), services: OrganizationProfileServices(organization: self.organizationService()))
     }
 
     var supplierProfileFactory: SupplierProfileFactory {
