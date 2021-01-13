@@ -23,5 +23,5 @@ protocol MemberProfileModule: class {
 }
 
 protocol MemberProfileModuleOutput: class {
-
+    func memberProfile(module: MemberProfileModule, didUpdate member: PCMember)
 }

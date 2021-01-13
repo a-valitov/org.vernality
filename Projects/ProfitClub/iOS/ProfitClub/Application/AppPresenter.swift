@@ -60,6 +60,7 @@ final class AppPresenter {
     // modules
     private weak var organizationModule: OrganizationModule?
     private weak var supplierModule: SupplierModule?
+    private weak var memberModule: MemberModule?
 }
 
 extension AppPresenter: MainModuleOutput {
@@ -139,6 +140,7 @@ extension AppPresenter: ReviewModuleOutput {
         assert(member.status == .approved)
         let memberModule = self.factory.member(member: member, output: self)
         memberModule.open(in: main)
+        self.memberModule = memberModule
     }
 }
 
@@ -221,7 +223,9 @@ extension AppPresenter: MemberModuleOutput {
 }
 
 extension AppPresenter: MemberProfileModuleOutput {
-
+    func memberProfile(module: MemberProfileModule, didUpdate member: PCMember) {
+        self.memberModule?.member = member
+    }
 }
 
 extension AppPresenter: OrganizationProfileModuleOutput {

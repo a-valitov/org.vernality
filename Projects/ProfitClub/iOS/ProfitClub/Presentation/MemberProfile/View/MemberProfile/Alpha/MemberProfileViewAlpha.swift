@@ -29,6 +29,7 @@ final class MemberProfileViewAlpha: UIViewController {
     private lazy var memberImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -37,7 +38,6 @@ final class MemberProfileViewAlpha: UIViewController {
         let button = UIButton()
         button.setImage(#imageLiteral(resourceName: "addFoto"), for: .normal)
         button.backgroundColor = #colorLiteral(red: 0.9294117647, green: 0.9294117647, blue: 0.9294117647, alpha: 1)
-        button.addTarget(self, action: #selector(MemberProfileViewAlpha.addPhotoButtonTouchUpInside), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -130,6 +130,7 @@ final class MemberProfileViewAlpha: UIViewController {
         button.setTitleColor(#colorLiteral(red: 0.09803921569, green: 0.09411764706, blue: 0.09411764706, alpha: 1), for: .normal)
         button.setTitle("Редактировать аккаунт", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.isHidden = true
         return button
     }()
 
@@ -146,6 +147,7 @@ final class MemberProfileViewAlpha: UIViewController {
         super.viewDidLoad()
         self.layout()
         self.updateUI()
+        self.setup()
 
         view.backgroundColor = .white
         navigationItem.title = "Профиль"
@@ -190,6 +192,21 @@ final class MemberProfileViewAlpha: UIViewController {
         actionSheet.addAction(cancel)
 
         present(actionSheet, animated: true)
+    }
+}
+
+// MARK: - Actions
+extension MemberProfileViewAlpha {
+    @objc
+    private func editProfileButtonTouchUpInside(_ sender: Any) {
+    }
+}
+
+// MARK: - Setup
+extension MemberProfileViewAlpha {
+    private func setup() {
+        addPhotoButton.addTarget(self, action: #selector(MemberProfileViewAlpha.addPhotoButtonTouchUpInside), for: .touchUpInside)
+        editMemberProfileButton.addTarget(self, action: #selector(MemberProfileViewAlpha.editProfileButtonTouchUpInside(_:)), for: .touchUpInside)
     }
 }
 
@@ -360,9 +377,14 @@ extension MemberProfileViewAlpha: UIImagePickerControllerDelegate, UINavigationC
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
 
-        memberImageView.image = info[.editedImage] as? UIImage
-        memberImageView.contentMode = .scaleAspectFill
-        memberImageView.clipsToBounds = true
+        if let image = info[.editedImage] as? UIImage {
+            dismiss(animated: true) { [weak self] in
+                guard let sSelf = self else { return }
+                self?.output?.memberProfile(view: sSelf, userDidChangeImage: image)
+            }
+        } else {
+            dismiss(animated: true)
+        }
 
         dismiss(animated: true)
     }

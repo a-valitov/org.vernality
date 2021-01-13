@@ -218,7 +218,7 @@ private extension AppFactory {
     }
 
     var memberProfileFactory: MemberProfileFactory {
-        return MemberProfileFactory(presenters: MemberProfilePresenters(error: self.errorPresenter(), activity: self.activityPresenter()), services: MemberProfileServices())
+        return MemberProfileFactory(presenters: MemberProfilePresenters(error: self.errorPresenter(), activity: self.activityPresenter()), services: MemberProfileServices(member: self.userService))
     }
 
     var organizationProfileFactory: OrganizationProfileFactory {

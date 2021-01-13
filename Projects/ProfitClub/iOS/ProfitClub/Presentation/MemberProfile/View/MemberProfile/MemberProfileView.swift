@@ -25,5 +25,5 @@ protocol MemberProfileViewInput: UIViewController {
 }
 
 protocol MemberProfileViewOutput {
-
+    func memberProfile(view: MemberProfileViewInput, userDidChangeImage image: UIImage)
 }
