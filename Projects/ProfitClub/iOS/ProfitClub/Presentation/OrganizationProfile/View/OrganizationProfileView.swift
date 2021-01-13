@@ -22,10 +22,9 @@ protocol OrganizationProfileViewInput: UIViewController {
     var organizationContactName: String? { get set }
     var organizationPhoneNumber: String? { get set }
     var organizationImageUrl: URL? { get set }
-    var organizationImage: UIImage? { get set }
     var email: String? { get set }
 }
 
 protocol OrganizationProfileViewOutput {
-    func organizationProfile(view: OrganizationProfileViewInput, userWantsToEditProfile sender: Any)
+    func organizationProfile(view: OrganizationProfileViewInput, userDidChangeImage image: UIImage)
 }
