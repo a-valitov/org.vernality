@@ -226,6 +226,6 @@ private extension AppFactory {
     }
 
     var supplierProfileFactory: SupplierProfileFactory {
-        return SupplierProfileFactory(presenters: SupplierProfilePresenters(error: self.errorPresenter(), activity: self.activityPresenter()), services: SupplierProfileServices())
+        return SupplierProfileFactory(presenters: SupplierProfilePresenters(error: self.errorPresenter(), activity: self.activityPresenter()), services: SupplierProfileServices(supplier: self.supplierService()))
     }
 }

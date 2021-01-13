@@ -26,6 +26,8 @@ final class SupplierPresenter: SupplierModule {
     weak var output: SupplierModuleOutput?
     var router: SupplierRouter?
 
+    var supplier: PCSupplier
+
     init(supplier: PCSupplier,
          presenters: SupplierPresenters,
          services: SupplierServices) {
@@ -38,9 +40,6 @@ final class SupplierPresenter: SupplierModule {
         self.router?.main = main
         self.router?.openSupplierView(output: self)
     }
-
-    // state
-    private let supplier: PCSupplier
 
     // dependencies
     private let presenters: SupplierPresenters

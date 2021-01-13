@@ -57,4 +57,18 @@ public final class PCSupplierServiceParse: PCSupplierService {
             }
         }
     }
+
+    public func editProfile(supplier: PCSupplier, image: UIImage, result: @escaping (Result<PCSupplier, Error>) -> Void) {
+        let parseSupplier = supplier.parse
+        let imageData = image.pngData()
+        let imageFile = PFFileObject(name: "image.png", data: imageData!)
+        parseSupplier.imageFile = imageFile
+        parseSupplier.saveInBackground { (success, error) in
+            if let error = error {
+                result(.failure(error))
+            } else {
+                result(.success(parseSupplier.pcSupplier))
+            }
+        }
+    }
 }

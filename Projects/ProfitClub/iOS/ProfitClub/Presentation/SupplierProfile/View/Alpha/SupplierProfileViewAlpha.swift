@@ -30,6 +30,7 @@ final class SupplierProfileViewAlpha: UIViewController {
     private lazy var supplierImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -38,7 +39,6 @@ final class SupplierProfileViewAlpha: UIViewController {
         let button = UIButton()
         button.setImage(#imageLiteral(resourceName: "addFoto"), for: .normal)
         button.backgroundColor = #colorLiteral(red: 0.9294117647, green: 0.9294117647, blue: 0.9294117647, alpha: 1)
-        button.addTarget(self, action: #selector(SupplierProfileViewAlpha.addPhotoButtonTouchUpInside), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -173,6 +173,7 @@ final class SupplierProfileViewAlpha: UIViewController {
         button.setTitleColor(#colorLiteral(red: 0.09803921569, green: 0.09411764706, blue: 0.09411764706, alpha: 1), for: .normal)
         button.setTitle("Редактировать аккаунт", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.isHidden = true
         return button
     }()
 
@@ -188,6 +189,7 @@ final class SupplierProfileViewAlpha: UIViewController {
     override func viewDidLoad() {
         self.updateUI()
         self.layout()
+        self.setup()
 
         view.backgroundColor = .white
         editProfileButton.titleLabel?.attributedText = NSAttributedString(string: "Удалить аккаунт", attributes: [.underlineStyle: NSUnderlineStyle.thick.rawValue])
@@ -229,6 +231,22 @@ final class SupplierProfileViewAlpha: UIViewController {
         actionSheet.addAction(cancel)
 
         present(actionSheet, animated: true)
+    }
+}
+
+// MARK: - Actions
+extension SupplierProfileViewAlpha {
+    @objc
+    private func editProfileButtonTouchUpInside(_ sender: Any) {
+
+    }
+}
+
+// MARK: - Setup
+extension SupplierProfileViewAlpha {
+    private func setup() {
+        addPhotoButton.addTarget(self, action: #selector(SupplierProfileViewAlpha.addPhotoButtonTouchUpInside), for: .touchUpInside)
+        editProfileButton.addTarget(self, action: #selector(SupplierProfileViewAlpha.editProfileButtonTouchUpInside(_:)), for: .touchUpInside)
     }
 }
 
@@ -453,11 +471,14 @@ extension SupplierProfileViewAlpha: UIImagePickerControllerDelegate, UINavigatio
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
 
-        supplierImageView.image = info[.editedImage] as? UIImage
-        supplierImageView.contentMode = .scaleAspectFill
-        supplierImageView.clipsToBounds = true
-
-        dismiss(animated: true)
+        if let image = info[.editedImage] as? UIImage {
+            dismiss(animated: true) { [weak self] in
+                guard let sSelf = self else { return }
+                self?.output?.supplierProfile(view: sSelf, userDidChangeImage: image)
+            }
+        } else {
+            dismiss(animated: true)
+        }
     }
 }
 

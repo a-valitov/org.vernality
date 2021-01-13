@@ -26,5 +26,5 @@ protocol SupplierProfileViewInput: UIViewController {
 }
 
 protocol SupplierProfileViewOutput {
-    
+    func supplierProfile(view: SupplierProfileViewInput, userDidChangeImage image: UIImage)
 }

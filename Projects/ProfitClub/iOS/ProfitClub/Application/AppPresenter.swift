@@ -59,6 +59,7 @@ final class AppPresenter {
 
     // modules
     private weak var organizationModule: OrganizationModule?
+    private weak var supplierModule: SupplierModule?
 }
 
 extension AppPresenter: MainModuleOutput {
@@ -131,6 +132,7 @@ extension AppPresenter: ReviewModuleOutput {
         assert(supplier.status == .approved)
         let supplierModule = self.factory.supplier(supplier: supplier, output: self)
         supplierModule.open(in: main)
+        self.supplierModule = supplierModule
     }
 
     func review(module: ReviewModule, userWantsToEnter member: PCMember, inside main: MainModule?) {
@@ -229,7 +231,9 @@ extension AppPresenter: OrganizationProfileModuleOutput {
 }
 
 extension AppPresenter: SupplierProfileModuleOutput {
-
+    func supplierProfile(module: SupplierProfileModule, didUpdate supplier: PCSupplier) {
+        self.supplierModule?.supplier = supplier
+    }
 }
 
 extension AppPresenter: AdminModuleOutput {
