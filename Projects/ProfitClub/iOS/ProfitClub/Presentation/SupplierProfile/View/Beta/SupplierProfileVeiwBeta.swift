@@ -23,6 +23,7 @@ final class SupplierProfileViewBeta: UIViewController {
     var supplierINN: String? { didSet { self.updateUIINN() } }
     var supplierContactName: String? { didSet { self.updateUIContactName() } }
     var supplierPhoneNumber: String? { didSet { self.updateUIPhoneNumber() } }
+    var supplierImageUrl: URL? { didSet { self.updateUIImage() } }
     var email: String? { didSet { self.updateUIEmail() } }
 
     @IBOutlet weak var supplierImageView: UIImageView!
@@ -117,6 +118,7 @@ extension SupplierProfileViewBeta: SupplierProfileViewInput {
         updateUIContactName()
         updateUIPhoneNumber()
         updateUIEmail()
+        updateUIImage()
     }
 
     private func updateUIName() {
@@ -142,6 +144,11 @@ extension SupplierProfileViewBeta: SupplierProfileViewInput {
     private func updateUIEmail() {
         if self.isViewLoaded {
             self.supplierEmailLabel.text = self.email
+        }
+    }
+    private func updateUIImage() {
+        if self.isViewLoaded {
+            self.supplierImageView.kf.setImage(with: self.supplierImageUrl)
         }
     }
 }

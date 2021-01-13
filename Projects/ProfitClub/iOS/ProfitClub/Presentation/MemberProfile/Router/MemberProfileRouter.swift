@@ -29,6 +29,7 @@ final class MemberProfileRouter {
         profile.memberFirstName = member.firstName
         profile.memberLastName = member.lastName
         profile.userEmail = member.owner?.username
+        profile.memberImageUrl = member.imageUrl
         self.main?.push(profile, animated: true)
         return profile
     }

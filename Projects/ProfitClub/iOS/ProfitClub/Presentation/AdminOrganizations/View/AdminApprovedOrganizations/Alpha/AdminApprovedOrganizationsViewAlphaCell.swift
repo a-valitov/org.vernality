@@ -22,7 +22,6 @@ final class AdminApprovedOrganizationsViewAlphaCell: UITableViewCell {
     lazy var organizationImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
-        imageView.image = #imageLiteral(resourceName: "example")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()

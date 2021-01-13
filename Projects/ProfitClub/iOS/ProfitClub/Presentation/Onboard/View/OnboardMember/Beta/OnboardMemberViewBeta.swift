@@ -41,6 +41,13 @@ final class OnboardMemberViewBeta: UIViewController {
             }
         }
     }
+    var image: UIImage? {
+        if self.isViewLoaded {
+            return #imageLiteral(resourceName: "profileImage")
+        } else {
+            return nil
+        }
+    }
 
     @IBOutlet weak var firstNameTextField: UITextField!
     @IBOutlet weak var lastNameTextField: UITextField!

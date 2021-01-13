@@ -21,6 +21,7 @@ protocol MemberProfileViewInput: UIViewController {
     var memberLastName: String? { get set }
     var userEmail: String? { get set }
     var organizationName: String? { get set }
+    var memberImageUrl: URL? { get set }
 }
 
 protocol MemberProfileViewOutput {

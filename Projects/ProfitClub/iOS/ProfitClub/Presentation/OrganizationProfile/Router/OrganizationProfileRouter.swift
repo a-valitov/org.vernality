@@ -30,6 +30,7 @@ final class OrganizationProfileRouter {
         profile.organizationINN = organization.inn
         profile.organizationContactName = organization.contact
         profile.organizationPhoneNumber = organization.phone
+        profile.organizationImageUrl = organization.imageUrl
         self.main?.push(profile, animated: true)
         return profile
     }

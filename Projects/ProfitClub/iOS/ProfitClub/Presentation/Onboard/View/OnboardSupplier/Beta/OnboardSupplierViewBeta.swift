@@ -49,6 +49,13 @@ final class OnboardSupplierViewBeta: UIViewController {
             return nil
         }
     }
+    var image: UIImage? {
+        if self.isViewLoaded {
+            return #imageLiteral(resourceName: "profileImage")
+        } else {
+            return nil
+        }
+    }
 
     @IBOutlet weak var policyCheckbox: UIButton!
     @IBOutlet weak var nameTextField: UITextField!

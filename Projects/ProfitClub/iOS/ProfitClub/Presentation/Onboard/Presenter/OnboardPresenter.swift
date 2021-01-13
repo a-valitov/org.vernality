@@ -50,14 +50,17 @@ final class OnboardPresenter: OnboardModule {
     private var password: String?
     private var firstName: String?
     private var lastName: String?
+    private var memberImage: UIImage?
     private var supplierName: String?
     private var supplierInn: String?
     private var supplierContact: String?
     private var supplierPhone: String?
+    private var supplierImage: UIImage?
     private var organizationName: String?
     private var organizationInn: String?
     private var organizationContact: String?
     private var organizationPhone: String?
+    private var organizationImage: UIImage?
 }
 
 extension OnboardPresenter: OnboardWelcomeViewOutput {
@@ -192,8 +195,13 @@ extension OnboardPresenter: OnboardMemberViewOutput {
             self.presenters.error.present(OnboardError.lastNameIsEmpty)
             return
         }
+        guard let image = view.image else {
+            self.presenters.error.present(OnboardError.memberImageIsNil)
+            return
+        }
         self.firstName = firstName
         self.lastName = lastName
+        self.memberImage = image
         let selectOrganization = self.router?.openSelectOrganization(output: self)
         self.services.organization.fetch(.approved) { [weak self] (result) in
             switch result {
@@ -239,10 +247,15 @@ extension OnboardPresenter: OnboardOrganizationViewOutput {
             self.presenters.error.present(OnboardError.organizationPhoneIsEmpty)
             return
         }
+        guard let image = view.image else {
+            self.presenters.error.present(OnboardError.organizationImageIsNil)
+            return
+        }
         self.organizationName = name
         self.organizationInn = inn
         self.organizationContact = contact
         self.organizationPhone = phone
+        self.organizationImage = image
         self.registerOrganization()
     }
 }
@@ -284,10 +297,15 @@ extension OnboardPresenter: OnboardSupplierViewOutput {
             self.presenters.error.present(OnboardError.supplierPhoneIsEmpty)
             return
         }
+        guard let image = view.image else {
+            self.presenters.error.present(OnboardError.supplierImageIsNil)
+            return
+        }
         self.supplierName = name
         self.supplierInn = inn
         self.supplierContact = contact
         self.supplierPhone = phone
+        self.supplierImage = image
         self.registerSupplier()
     }
 }
@@ -320,11 +338,16 @@ extension OnboardPresenter {
             self.presenters.error.present(OnboardError.supplierPhoneIsEmpty)
             return nil
         }
+        guard let image = self.supplierImage else {
+            self.presenters.error.present(OnboardError.supplierImageIsNil)
+            return nil
+        }
         var supplier = PCSupplierStruct()
         supplier.inn = inn
         supplier.contact = contact
         supplier.phone = phone
         supplier.name = name
+        supplier.image = image
         supplier.status = .onReview
         return supplier
     }
@@ -338,9 +361,14 @@ extension OnboardPresenter {
             self.presenters.error.present(OnboardError.lastNameIsEmpty)
             return nil
         }
+        guard let image = self.memberImage else {
+            self.presenters.error.present(OnboardError.memberImageIsNil)
+            return nil
+        }
         var member = PCMemberStruct()
         member.firstName = self.firstName
         member.lastName = self.lastName
+        member.image = image
         member.status = .onReview
         return member
     }
@@ -362,11 +390,16 @@ extension OnboardPresenter {
             self.presenters.error.present(OnboardError.organizationPhoneIsEmpty)
             return nil
         }
+        guard let image = self.organizationImage else {
+            self.presenters.error.present(OnboardError.organizationImageIsNil)
+            return nil
+        }
         var organization = PCOrganizationStruct()
         organization.name = name
         organization.inn = inn
         organization.contact = contact
         organization.phone = phone
+        organization.image = image
         organization.status = .onReview
         return organization
     }

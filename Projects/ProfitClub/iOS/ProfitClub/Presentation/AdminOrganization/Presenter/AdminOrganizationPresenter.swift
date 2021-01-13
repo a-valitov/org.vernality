@@ -51,6 +51,7 @@ extension AdminOrganizationPresenter: OrganizationApplicationViewOutput {
         view.organizationINN = self.organization.inn
         view.organizationContactName = self.organization.contact
         view.organizationPhoneNumber = self.organization.phone
+        view.organizationImageUrl = self.organization.imageUrl
     }
 
     func organizationApplication(view: OrganizationApplicationViewInput, userWantsToApprove sender: Any) {

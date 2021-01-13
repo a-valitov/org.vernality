@@ -33,6 +33,11 @@ public extension PFObject {
         if let organization = self["organization"] as? PFObject, organization.isDataAvailable {
             result.organization = organization.pcOrganization.any
         }
+        if let fileObject = self["imageFile"] as? PFFileObject,
+            let urlString = fileObject.url,
+            let imageUrl = URL(string: urlString) {
+            result.imageUrl = imageUrl
+        }
         return result
     }
 }
@@ -43,6 +48,7 @@ public extension PCMember {
         result.objectId = self.id
         result.firstName = self.firstName
         result.lastName = self.lastName
+        result.image = self.image
         result.owner = self.owner
         result.organization = self.organization
         result.status = self.status
@@ -73,6 +79,9 @@ public final class PCMemberParse: PFObject, PFSubclassing, PCMember {
     @NSManaged public var firstName: String?
     @NSManaged public var lastName: String?
     @NSManaged public var statusString: String?
+    @NSManaged public var imageFile: PFFileObject?
+    public var image: UIImage?
+    public var imageUrl: URL?
 
     public static func parseClassName() -> String {
         return "Member"

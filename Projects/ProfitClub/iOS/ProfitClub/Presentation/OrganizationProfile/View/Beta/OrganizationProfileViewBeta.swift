@@ -23,6 +23,7 @@ final class OrganizationProfileViewBeta: UIViewController {
     var organizationINN: String? { didSet { self.updateUIINN() } }
     var organizationContactName: String? { didSet { self.updateUIContactName() } }
     var organizationPhoneNumber: String? { didSet { self.updateUIPhoneNumber() } }
+    var organizationImageUrl: URL? { didSet { self.updateUIImage() } }
     var email: String? { didSet { self.updateUIEmail() } }
 
     @IBOutlet weak var organizationImageView: UIImageView!
@@ -119,6 +120,7 @@ extension OrganizationProfileViewBeta {
         updateUIContactName()
         updateUIPhoneNumber()
         updateUIEmail()
+        updateUIImage()
     }
 
     private func updateUIName() {
@@ -144,6 +146,11 @@ extension OrganizationProfileViewBeta {
     private func updateUIEmail() {
         if self.isViewLoaded {
             self.organizationEmailLabel.text = self.email
+        }
+    }
+    private func updateUIImage() {
+        if self.isViewLoaded {
+            self.organizationImageView.kf.setImage(with: self.organizationImageUrl)
         }
     }
 

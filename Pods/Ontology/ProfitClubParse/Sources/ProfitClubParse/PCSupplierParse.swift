@@ -32,6 +32,11 @@ public extension PFObject {
         if let owner = self["owner"] as? PFObject, owner.isDataAvailable {
             result.owner = owner.pcUser?.any
         }
+        if let fileObject = self["imageFile"] as? PFFileObject,
+            let urlString = fileObject.url,
+            let imageUrl = URL(string: urlString) {
+            result.imageUrl = imageUrl
+        }
         return result
     }
 }
@@ -44,6 +49,7 @@ public extension PCSupplier {
         result.inn = self.inn
         result.contact = self.contact
         result.phone = self.phone
+        result.image = self.image
         result.owner = self.owner
         result.status = self.status
         return result
@@ -74,6 +80,9 @@ public final class PCSupplierParse: PFObject, PFSubclassing, PCSupplier {
     @NSManaged public var contact: String?
     @NSManaged public var phone: String?
     @NSManaged public var statusString: String?
+    @NSManaged public var imageFile: PFFileObject?
+    public var image: UIImage?
+    public var imageUrl: URL?
 
     public static func parseClassName() -> String {
         return "Supplier"

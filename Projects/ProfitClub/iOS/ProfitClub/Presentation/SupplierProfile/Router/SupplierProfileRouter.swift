@@ -30,6 +30,7 @@ final class SupplierProfileRouter {
         profile.supplierINN = supplier.inn
         profile.supplierContactName = supplier.contact
         profile.supplierPhoneNumber = supplier.phone
+        profile.supplierImageUrl = supplier.imageUrl
         self.main?.push(profile, animated: true)
         return profile
     }

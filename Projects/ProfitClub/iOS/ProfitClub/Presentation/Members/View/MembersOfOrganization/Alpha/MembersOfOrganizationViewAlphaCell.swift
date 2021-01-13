@@ -23,7 +23,6 @@ final class MembersOfOrganizationViewAlphaCell: UITableViewCell {
     lazy var memberImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
-        imageView.image = #imageLiteral(resourceName: "🧑 Persona")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()

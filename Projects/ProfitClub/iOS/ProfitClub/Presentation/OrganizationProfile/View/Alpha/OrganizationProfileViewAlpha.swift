@@ -15,6 +15,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import UIKit
+import Kingfisher
 
 final class OrganizationProfileViewAlpha: UIViewController {
     var output: OrganizationProfileViewOutput?
@@ -23,11 +24,11 @@ final class OrganizationProfileViewAlpha: UIViewController {
     var organizationINN: String? { didSet { self.updateUIINN() } }
     var organizationContactName: String? { didSet { self.updateUIContactName() } }
     var organizationPhoneNumber: String? { didSet { self.updateUIPhoneNumber() } }
+    var organizationImageUrl: URL? { didSet { self.updateUIImage() } }
     var email: String? { didSet { self.updateUIEmail() } }
 
     private lazy var organizationImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = #imageLiteral(resourceName: "exmapleOrgProfile")
         imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
@@ -468,6 +469,7 @@ extension OrganizationProfileViewAlpha {
         updateUIContactName()
         updateUIPhoneNumber()
         updateUIEmail()
+        updateUIImage()
     }
 
     private func updateUIName() {
@@ -493,6 +495,11 @@ extension OrganizationProfileViewAlpha {
     private func updateUIEmail() {
         if self.isViewLoaded {
             self.userEmail.text = self.email
+        }
+    }
+    private func updateUIImage() {
+        if self.isViewLoaded {
+            self.organizationImageView.kf.setImage(with: self.organizationImageUrl)
         }
     }
 }

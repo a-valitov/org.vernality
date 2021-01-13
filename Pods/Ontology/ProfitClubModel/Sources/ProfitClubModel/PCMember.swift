@@ -21,6 +21,8 @@ public protocol PCMember {
     var firstName: String? { get }
     var lastName: String? { get }
     var owner: PCUser? { get }
+    var image: UIImage? { get }
+    var imageUrl: URL? { get }
     var organization: PCOrganization? { get }
     var status: PCMemberStatus? { get }
 }
@@ -43,6 +45,8 @@ public struct PCMemberStruct: PCMember {
     public var firstName: String?
     public var lastName: String?
     public var owner: PCUser?
+    public var image: UIImage?
+    public var imageUrl: URL?
     public var organization: PCOrganization?
     public var status: PCMemberStatus?
 
@@ -64,6 +68,14 @@ public struct AnyPCMember: PCMember, Equatable, Hashable {
 
     public var owner: PCUser? {
         return self.object.owner
+    }
+
+    public var image: UIImage? {
+        return self.object.image
+    }
+
+    public var imageUrl: URL? {
+        return self.object.imageUrl
     }
 
     public var organization: PCOrganization? {

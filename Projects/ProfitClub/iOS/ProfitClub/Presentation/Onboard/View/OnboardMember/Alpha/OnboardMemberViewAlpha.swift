@@ -37,6 +37,13 @@ final class OnboardMemberViewAlpha: UIViewController {
             }
         }
     }
+    var image: UIImage? {
+        if self.isViewLoaded {
+            return #imageLiteral(resourceName: "profileImage")
+        } else {
+            return nil
+        }
+    }
 
     private lazy var backgroundImageView: UIImageView = {
         let imageView = UIImageView()

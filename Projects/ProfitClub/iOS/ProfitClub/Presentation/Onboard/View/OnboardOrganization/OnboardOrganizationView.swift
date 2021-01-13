@@ -21,6 +21,7 @@ protocol OnboardOrganizationViewInput: UIViewController {
     var inn: String? { get }
     var contact: String? { get }
     var phone: String? { get }
+    var image: UIImage? { get }
 }
 
 protocol OnboardOrganizationViewOutput {

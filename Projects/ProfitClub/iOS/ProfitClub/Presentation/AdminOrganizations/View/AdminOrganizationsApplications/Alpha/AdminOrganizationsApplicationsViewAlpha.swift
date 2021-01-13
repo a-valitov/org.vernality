@@ -16,6 +16,7 @@
 
 import UIKit
 import ProfitClubModel
+import Kingfisher
 
 final class AdminOrganizationsApplicationsViewAlpha: UITableViewController {
     var output: AdminOrganizationsApplicationsViewOutput?
@@ -58,6 +59,7 @@ final class AdminOrganizationsApplicationsViewAlpha: UITableViewController {
         let organization = self.organizations[indexPath.row]
         cell.organizationNameLabel.text = organization.name
         cell.organizationContactNameLabel.text = organization.contact
+        cell.organizationImageView.kf.setImage(with: organization.imageUrl)
         return cell
     }
 

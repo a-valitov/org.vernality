@@ -21,6 +21,7 @@ protocol AdminSupplierApplicationViewInput: UIViewController {
     var supplierContactName: String? { get set }
     var supplierINN: String? { get set }
     var supplierPhoneNumber: String? { get set }
+    var supplierImageUrl: URL? { get set }
 }
 
 protocol AdminSupplierApplicationViewOutput {

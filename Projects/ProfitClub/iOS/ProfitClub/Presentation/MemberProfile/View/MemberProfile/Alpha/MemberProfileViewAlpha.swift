@@ -15,6 +15,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import UIKit
+import Kingfisher
 
 final class MemberProfileViewAlpha: UIViewController {
     var output: MemberProfileViewOutput?
@@ -23,10 +24,10 @@ final class MemberProfileViewAlpha: UIViewController {
     var memberLastName: String?
     var userEmail: String? { didSet { self.updateUIEmail() } }
     var organizationName: String? { didSet { self.updateUIOrganization() } }
+    var memberImageUrl: URL? { didSet { self.updateUIImage() } }
 
     private lazy var memberImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = #imageLiteral(resourceName: "exampleProfile")
         imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
@@ -371,6 +372,7 @@ extension MemberProfileViewAlpha {
     private func updateUI() {
         updateUIEmail()
         updateUIOrganization()
+        updateUIImage()
     }
 
     private func updateUIEmail() {
@@ -382,6 +384,11 @@ extension MemberProfileViewAlpha {
     public func updateUIOrganization() {
         if self.isViewLoaded {
             self.memberOrganizationLabel.text = self.organizationName
+        }
+    }
+    private func updateUIImage() {
+        if self.isViewLoaded {
+            self.memberImageView.kf.setImage(with: self.memberImageUrl)
         }
     }
 }

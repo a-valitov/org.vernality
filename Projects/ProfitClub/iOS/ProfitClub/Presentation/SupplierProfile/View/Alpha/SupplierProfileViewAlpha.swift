@@ -15,6 +15,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import UIKit
+import Kingfisher
 
 final class SupplierProfileViewAlpha: UIViewController {
     var output: SupplierProfileViewOutput?
@@ -23,11 +24,11 @@ final class SupplierProfileViewAlpha: UIViewController {
     var supplierINN: String? { didSet { self.updateUIINN() } }
     var supplierContactName: String? { didSet { self.updateUIContactName() } }
     var supplierPhoneNumber: String? { didSet { self.updateUIPhoneNumber() } }
+    var supplierImageUrl: URL? { didSet { self.updateUIImage() } }
     var email: String? { didSet { self.updateUIEmail() } }
 
     private lazy var supplierImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = #imageLiteral(resourceName: "supplierProfile")
         imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
@@ -467,6 +468,7 @@ extension SupplierProfileViewAlpha {
         updateUIContactName()
         updateUIPhoneNumber()
         updateUIEmail()
+        updateUIImage()
     }
 
     private func updateUIName() {
@@ -492,6 +494,11 @@ extension SupplierProfileViewAlpha {
     private func updateUIEmail() {
         if self.isViewLoaded {
             self.userEmail.text = self.email
+        }
+    }
+    private func updateUIImage() {
+        if self.isViewLoaded {
+            self.supplierImageView.kf.setImage(with: self.supplierImageUrl)
         }
     }
 }

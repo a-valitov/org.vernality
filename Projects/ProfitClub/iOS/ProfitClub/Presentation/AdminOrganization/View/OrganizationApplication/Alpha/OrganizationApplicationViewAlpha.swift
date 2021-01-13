@@ -15,6 +15,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import UIKit
+import Kingfisher
 
 final class OrganizationApplicationViewAlpha: UIViewController {
     var output: OrganizationApplicationViewOutput?
@@ -49,11 +50,17 @@ final class OrganizationApplicationViewAlpha: UIViewController {
             }
         }
     }
+    var organizationImageUrl: URL? {
+        didSet {
+            if self.isViewLoaded {
+                self.organizationImageView.kf.setImage(with: organizationImageUrl)
+            }
+        }
+    }
 
     private lazy var organizationImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
-        imageView.image = #imageLiteral(resourceName: "Mask Group")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.setContentHuggingPriority(.defaultLow, for: .vertical)
         imageView.setContentCompressionResistancePriority(.defaultLow, for: .vertical)

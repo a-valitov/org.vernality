@@ -67,6 +67,10 @@ final class PCAuthenticationParse: PCAuthentication {
 
     func add(supplier: PCSupplier, result: @escaping ((Result<PCSupplier, Error>) -> Void)) {
         let parseSupplier = supplier.parse
+        if let image = supplier.image, let imageData = image.pngData() {
+            let imageFile = PFFileObject(name: "image.png", data: imageData)
+            parseSupplier.imageFile = imageFile
+        }
         parseSupplier.saveInBackground { (succeeded, error) in
             if let error = error {
                 result(.failure(error))
@@ -80,6 +84,10 @@ final class PCAuthenticationParse: PCAuthentication {
     func add(member: PCMember, in organization: PCOrganization, result: @escaping ((Result<PCMember, Error>) -> Void)) {
         let parseMember = member.parse
         let parseOrganization = organization.parse
+        if let image = member.image, let imageData = image.pngData() {
+            let imageFile = PFFileObject(name: "image.png", data: imageData)
+            parseMember.imageFile = imageFile
+        }
         parseMember.saveInBackground { (succeeded, error)  in
             if let error = error {
                 result(.failure(error))
@@ -104,6 +112,10 @@ final class PCAuthenticationParse: PCAuthentication {
 
     func add(organization: PCOrganization, result: @escaping ((Result<PCOrganization, Error>) -> Void)) {
         let parseOrganization = organization.parse
+        if let image = organization.image, let imageData = image.pngData() {
+            let imageFile = PFFileObject(name: "image.png", data: imageData)
+            parseOrganization.imageFile = imageFile
+        }
         parseOrganization.saveInBackground { (succeeded, error) in
             if let error = error {
                 result(.failure(error))
