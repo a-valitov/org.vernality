@@ -33,7 +33,7 @@ final class OrganizationProfilePresenter: OrganizationProfileModule {
 
     func open(in main: MainModule?) {
         self.router?.main = main
-        self.router?.openOrganizationProfile(organization: self.organization, output: self)
+        self.view = self.router?.openOrganizationProfile(organization: self.organization, output: self)
     }
 
     // dependencies
@@ -41,9 +41,24 @@ final class OrganizationProfilePresenter: OrganizationProfileModule {
     private let services: OrganizationProfileServices
 
     // state
-    private let organization: PCOrganization
+    private var organization: PCOrganization
+    private weak var view: OrganizationProfileViewInput?
 }
 
 extension OrganizationProfilePresenter: OrganizationProfileViewOutput {
-
+    func organizationProfile(view: OrganizationProfileViewInput, userDidChangeImage image: UIImage) {
+        self.presenters.activity.increment()
+        self.services.organization.editProfile(organization: organization, image: image) { [weak self] (result) in
+            guard let sSelf = self else { return }
+            sSelf.presenters.activity.decrement()
+            switch result {
+            case .success(let organization):
+                sSelf.organization = organization
+                sSelf.view?.organizationImageUrl = organization.imageUrl
+                sSelf.output?.organizationProfile(module: sSelf, didUpdate: organization)
+            case .failure(let error):
+                sSelf.presenters.error.present(error)
+            }
+        }
+    }
 }

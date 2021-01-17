@@ -23,7 +23,6 @@ final class AdminApprovedSuppliersViewAlphaCell: UITableViewCell {
     lazy var supplierImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
-        imageView.image = #imageLiteral(resourceName: "example")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()

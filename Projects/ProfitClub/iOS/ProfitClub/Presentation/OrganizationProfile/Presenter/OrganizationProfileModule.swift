@@ -23,5 +23,5 @@ protocol OrganizationProfileModule: class {
 }
 
 protocol OrganizationProfileModuleOutput: class {
-
+    func organizationProfile(module: OrganizationProfileModule, didUpdate organization: PCOrganization)
 }

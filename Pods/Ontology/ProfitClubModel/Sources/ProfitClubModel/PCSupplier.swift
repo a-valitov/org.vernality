@@ -23,6 +23,8 @@ public protocol PCSupplier {
     var contact: String? { get }
     var phone: String? { get }
     var owner: PCUser? { get }
+    var image: UIImage? { get }
+    var imageUrl: URL? { get }
     var status: PCSupplierStatus? { get }
 }
 
@@ -46,6 +48,8 @@ public struct PCSupplierStruct: PCSupplier {
     public var contact: String?
     public var phone: String?
     public var owner: PCUser?
+    public var image: UIImage?
+    public var imageUrl: URL?
     public var status: PCSupplierStatus?
 
     public init() {}
@@ -74,6 +78,14 @@ public struct AnyPCSupplier: PCSupplier, Equatable, Hashable {
 
     public var owner: PCUser? {
         return self.object.owner
+    }
+
+    public var image: UIImage? {
+        return self.object.image
+    }
+
+    public var imageUrl: URL? {
+        return self.object.imageUrl
     }
 
     public var status: PCSupplierStatus? {

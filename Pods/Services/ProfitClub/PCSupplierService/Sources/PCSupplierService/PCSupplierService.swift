@@ -22,5 +22,7 @@ public protocol PCSupplierService {
 
     func approve(supplier: PCSupplier, result: @escaping (Result<PCSupplier, Error>) -> Void)
     func reject(supplier: PCSupplier, result: @escaping (Result<PCSupplier, Error>) -> Void)
+
+    func editProfile(supplier: PCSupplier, image: UIImage, result: @escaping (Result<PCSupplier, Error>) -> Void)
 }
 

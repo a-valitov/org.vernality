@@ -25,6 +25,8 @@ final class MemberPresenter: MemberModule {
     weak var output: MemberModuleOutput?
     var router: MemberRouter?
 
+    var member: PCMember
+
     init(member: PCMember,
          presenters: MemberPresenters,
          services: MemberServices) {
@@ -41,9 +43,6 @@ final class MemberPresenter: MemberModule {
     // dependencies
     private let presenters: MemberPresenters
     private let services: MemberServices
-
-    // state
-    private let member: PCMember
 }
 
 extension MemberPresenter: MemberCurrentActionsViewOutput {

@@ -15,6 +15,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import UIKit
+import Kingfisher
 
 final class OrganizationApplicationViewBeta: UIViewController {
     var output: OrganizationApplicationViewOutput?
@@ -43,6 +44,13 @@ final class OrganizationApplicationViewBeta: UIViewController {
         didSet {
             if self.isViewLoaded {
                 self.organizationPhoneNumberLabel.text = self.organizationPhoneNumber
+            }
+        }
+    }
+    var organizationImageUrl: URL? {
+        didSet {
+            if self.isViewLoaded {
+                self.organizationImageView.kf.setImage(with: organizationImageUrl)
             }
         }
     }

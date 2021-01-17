@@ -23,4 +23,6 @@ public protocol PCUserService {
     func isOnReview() -> Bool
     func logout(result: @escaping (Result<Bool, Error>) -> Void)
     func reload(result: @escaping (Result<AnyPCUser, Error>) -> Void)
+
+    func editProfile(member: PCMember, image: UIImage, result: @escaping (Result<PCMember, Error>) -> Void)
 }

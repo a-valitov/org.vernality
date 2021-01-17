@@ -21,6 +21,7 @@ protocol OrganizationApplicationViewInput: UIViewController {
     var organizationContactName: String? { get set }
     var organizationINN: String? { get set }
     var organizationPhoneNumber: String? { get set }
+    var organizationImageUrl: URL? { get set }
 }
 
 protocol OrganizationApplicationViewOutput {

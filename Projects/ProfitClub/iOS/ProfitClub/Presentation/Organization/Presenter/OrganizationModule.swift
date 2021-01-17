@@ -19,6 +19,7 @@ import Main
 import ProfitClubModel
 
 protocol OrganizationModule: class {
+    var organization: PCOrganization { get set }
     func open(in main: MainModule?)
 }
 

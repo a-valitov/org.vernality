@@ -17,6 +17,7 @@
 import Foundation
 import ErrorPresenter
 import ActivityPresenter
+import PCSupplierService
 
 struct SupplierProfilePresenters {
     let error: ErrorPresenter
@@ -24,5 +25,5 @@ struct SupplierProfilePresenters {
 }
 
 struct SupplierProfileServices {
-    
+    let supplier: PCSupplierService
 }

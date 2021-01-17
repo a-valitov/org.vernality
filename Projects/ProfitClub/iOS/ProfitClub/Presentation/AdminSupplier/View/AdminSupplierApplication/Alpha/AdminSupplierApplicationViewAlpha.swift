@@ -15,6 +15,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import UIKit
+import Kingfisher
 
 final class AdminSupplierApplicationViewAlpha: UIViewController {
     var output: AdminSupplierApplicationViewOutput?
@@ -46,6 +47,13 @@ final class AdminSupplierApplicationViewAlpha: UIViewController {
         didSet {
             if self.isViewLoaded {
                 self.supplierPhoneNumberInfoLabel.text = self.supplierPhoneNumber
+            }
+        }
+    }
+    var supplierImageUrl: URL? {
+        didSet {
+            if self.isViewLoaded {
+                self.supplierImageView.kf.setImage(with: supplierImageUrl)
             }
         }
     }

@@ -20,4 +20,5 @@ enum PCUserServiceError: Error {
     case userIsNil
     case userIsNotPFUser
     case bothResultAndErrorAreNil
+    case failedToGetImagePNGRepresentation
 }

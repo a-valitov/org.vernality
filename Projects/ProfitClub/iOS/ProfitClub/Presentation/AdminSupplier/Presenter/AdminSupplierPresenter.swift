@@ -51,6 +51,7 @@ extension AdminSupplierPresenter: AdminSupplierApplicationViewOutput {
         view.supplierINN = self.supplier.inn
         view.supplierContactName = self.supplier.contact
         view.supplierPhoneNumber = self.supplier.phone
+        view.supplierImageUrl = self.supplier.imageUrl
     }
 
     func adminSupplierApplication(view: AdminSupplierApplicationViewInput, userWantsToApprove sender: Any) {

@@ -19,6 +19,7 @@ import UIKit
 protocol OnboardMemberViewInput: UIViewController {
     var firstName: String? { get }
     var lastName: String? { get }
+    var image: UIImage? { get }
 }
 
 protocol OnboardMemberViewOutput {

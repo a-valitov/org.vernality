@@ -56,6 +56,11 @@ final class AppPresenter {
     private var isLoggedIn: Bool {
         return self.userService.user != nil
     }
+
+    // modules
+    private weak var organizationModule: OrganizationModule?
+    private weak var supplierModule: SupplierModule?
+    private weak var memberModule: MemberModule?
 }
 
 extension AppPresenter: MainModuleOutput {
@@ -119,20 +124,23 @@ extension AppPresenter: ReviewModuleOutput {
 
     func review(module: ReviewModule, userWantsToEnter organization: PCOrganization, inside main: MainModule?) {
         assert(organization.status == .approved)
-        let organization = self.factory.organization(organization, output: self)
-        organization.open(in: main)
+        let organizationModule = self.factory.organization(organization, output: self)
+        organizationModule.open(in: main)
+        self.organizationModule = organizationModule
     }
     
     func review(module: ReviewModule, userWantsToEnter supplier: PCSupplier, inside main: MainModule?) {
         assert(supplier.status == .approved)
         let supplierModule = self.factory.supplier(supplier: supplier, output: self)
         supplierModule.open(in: main)
+        self.supplierModule = supplierModule
     }
 
     func review(module: ReviewModule, userWantsToEnter member: PCMember, inside main: MainModule?) {
         assert(member.status == .approved)
         let memberModule = self.factory.member(member: member, output: self)
         memberModule.open(in: main)
+        self.memberModule = memberModule
     }
 }
 
@@ -215,15 +223,21 @@ extension AppPresenter: MemberModuleOutput {
 }
 
 extension AppPresenter: MemberProfileModuleOutput {
-
+    func memberProfile(module: MemberProfileModule, didUpdate member: PCMember) {
+        self.memberModule?.member = member
+    }
 }
 
 extension AppPresenter: OrganizationProfileModuleOutput {
-
+    func organizationProfile(module: OrganizationProfileModule, didUpdate organization: PCOrganization) {
+        self.organizationModule?.organization = organization
+    }
 }
 
 extension AppPresenter: SupplierProfileModuleOutput {
-
+    func supplierProfile(module: SupplierProfileModule, didUpdate supplier: PCSupplier) {
+        self.supplierModule?.supplier = supplier
+    }
 }
 
 extension AppPresenter: AdminModuleOutput {

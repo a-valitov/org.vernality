@@ -1084,15 +1084,15 @@
 		0E90498424F60C740061A605 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				FA394C8825ADC1A2004EAA2B /* AdminCommercialOffer */,
+				FA7ACD352563E6040097800D /* SupplierProfile */,
+				FA7ACD1F25632D400097800D /* OrganizationProfile */,
+				FAE888CC256141040023C232 /* MemberProfile */,
 				FA50B17425A8B1CC003D514B /* AdminAction */,
 				FA50B14425A879C9003D514B /* AdminActions */,
 				FA50B12F25A72286003D514B /* AdminSupplier */,
 				FA50B10425A70925003D514B /* AdminSuppliers */,
+				FA394C8825ADC1A2004EAA2B /* AdminCommercialOffer */,
 				FA50B0E425A64CF1003D514B /* AdminCommercialOffers */,
-				FA7ACD352563E6040097800D /* SupplierProfile */,
-				FA7ACD1F25632D400097800D /* OrganizationProfile */,
-				FAE888CC256141040023C232 /* MemberProfile */,
 				FA8CB872255AD30C00D09B1D /* AdminOrganization */,
 				FA8CB849255A7B1000D09B1D /* AdminOrganizations */,
 				FA8CB832255A5B6000D09B1D /* Admin */,

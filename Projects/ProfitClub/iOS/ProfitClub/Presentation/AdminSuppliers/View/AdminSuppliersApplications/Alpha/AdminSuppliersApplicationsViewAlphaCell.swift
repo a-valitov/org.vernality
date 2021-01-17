@@ -23,7 +23,6 @@ final class AdminSuppliersApplicationsViewAlphaCell: UITableViewCell {
     lazy var supplierImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
-        imageView.image = #imageLiteral(resourceName: "🧑 Persona")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()

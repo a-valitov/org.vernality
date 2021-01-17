@@ -19,6 +19,7 @@ import Main
 import ProfitClubModel
 
 protocol MemberModule: class {
+    var member: PCMember { get set }
     func open(in main: MainModule?)
 }
 

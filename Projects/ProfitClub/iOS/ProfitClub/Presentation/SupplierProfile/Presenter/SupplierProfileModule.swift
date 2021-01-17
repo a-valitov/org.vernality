@@ -23,5 +23,5 @@ protocol SupplierProfileModule: class {
 }
 
 protocol SupplierProfileModuleOutput: class {
-    
+    func supplierProfile(module: SupplierProfileModule, didUpdate supplier: PCSupplier)
 }

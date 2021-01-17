@@ -23,7 +23,6 @@ final class AdminOrganizationsApplicationsViewAlphaCell: UITableViewCell {
     lazy var organizationImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
-        imageView.image = #imageLiteral(resourceName: "🧑 Persona")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()

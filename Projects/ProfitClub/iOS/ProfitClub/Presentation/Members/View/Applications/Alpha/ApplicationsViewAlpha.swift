@@ -16,6 +16,7 @@
 
 import UIKit
 import ProfitClubModel
+import Kingfisher
 
 final class ApplicationsViewAlpha: UITableViewController {
     var output: ApplicationsViewOutput?
@@ -55,6 +56,7 @@ final class ApplicationsViewAlpha: UITableViewController {
 
         let member = members[indexPath.row]
         cell.memberNameLabel.text = "\(member.firstName ?? "") \(member.lastName ?? "")"
+        cell.memberImageView.kf.setImage(with: member.imageUrl)
         cell.delegate = self
         return cell
     }

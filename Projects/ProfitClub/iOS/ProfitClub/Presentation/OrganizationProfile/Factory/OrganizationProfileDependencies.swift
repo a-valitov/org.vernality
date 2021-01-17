@@ -17,6 +17,7 @@
 import Foundation
 import ActivityPresenter
 import ErrorPresenter
+import PCOrganizationService
 
 struct OrganizationProfilePresenters {
     let error: ErrorPresenter
@@ -24,5 +25,5 @@ struct OrganizationProfilePresenters {
 }
 
 struct OrganizationProfileServices {
-
+    let organization: PCOrganizationService
 }

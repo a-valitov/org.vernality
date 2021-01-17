@@ -33,7 +33,7 @@ final class MemberProfilePresenter: MemberProfileModule {
 
     func open(in main: MainModule?) {
         self.router?.main = main
-        self.router?.openMemberProfile(member: self.member, output: self)
+        self.view = self.router?.openMemberProfile(member: self.member, output: self)
     }
 
     // dependencies
@@ -41,9 +41,24 @@ final class MemberProfilePresenter: MemberProfileModule {
     private let services: MemberProfileServices
 
     // state
-    private let member: PCMember
+    private var member: PCMember
+    private weak var view: MemberProfileViewInput?
 }
 
 extension MemberProfilePresenter: MemberProfileViewOutput {
-    
+    func memberProfile(view: MemberProfileViewInput, userDidChangeImage image: UIImage) {
+        self.presenters.activity.increment()
+        self.services.member.editProfile(member: member, image: image) { [weak self] (result) in
+            guard let sSelf = self else { return }
+            sSelf.presenters.activity.decrement()
+            switch result {
+            case .success(let member):
+                sSelf.member = member
+                sSelf.view?.memberImageUrl = member.imageUrl
+                sSelf.output?.memberProfile(module: sSelf, didUpdate: member)
+            case .failure(let error):
+                sSelf.presenters.error.present(error)
+            }
+        }
+    }
 }

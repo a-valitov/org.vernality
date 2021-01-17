@@ -15,6 +15,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import UIKit
+import Kingfisher
 
 final class OrganizationProfileViewAlpha: UIViewController {
     var output: OrganizationProfileViewOutput?
@@ -23,13 +24,14 @@ final class OrganizationProfileViewAlpha: UIViewController {
     var organizationINN: String? { didSet { self.updateUIINN() } }
     var organizationContactName: String? { didSet { self.updateUIContactName() } }
     var organizationPhoneNumber: String? { didSet { self.updateUIPhoneNumber() } }
+    var organizationImageUrl: URL? { didSet { self.updateUIImage() } }
     var email: String? { didSet { self.updateUIEmail() } }
 
     private lazy var organizationImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = #imageLiteral(resourceName: "exmapleOrgProfile")
         imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
+        imageView.clipsToBounds = true
         return imageView
     }()
 
@@ -37,7 +39,6 @@ final class OrganizationProfileViewAlpha: UIViewController {
         let button = UIButton()
         button.setImage(#imageLiteral(resourceName: "addFoto"), for: .normal)
         button.backgroundColor = #colorLiteral(red: 0.9294117647, green: 0.9294117647, blue: 0.9294117647, alpha: 1)
-        button.addTarget(self, action: #selector(OrganizationProfileViewAlpha.addPhotoButtonTouchUpInside), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -172,6 +173,7 @@ final class OrganizationProfileViewAlpha: UIViewController {
         button.setTitleColor(#colorLiteral(red: 0.09803921569, green: 0.09411764706, blue: 0.09411764706, alpha: 1), for: .normal)
         button.setTitle("Редактировать аккаунт", for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.isHidden = true
         return button
     }()
 
@@ -188,6 +190,7 @@ final class OrganizationProfileViewAlpha: UIViewController {
         super.viewDidLoad()
         self.layout()
         self.updateUI()
+        self.setup()
 
         editProfileButton.titleLabel?.attributedText = NSAttributedString(string: "Редактировать аккаунт", attributes: [.underlineStyle: NSUnderlineStyle.thick.rawValue])
         view.backgroundColor = .white
@@ -197,6 +200,7 @@ final class OrganizationProfileViewAlpha: UIViewController {
     override func viewWillLayoutSubviews() {
         addPhotoButton.layer.cornerRadius = addPhotoButton.frame.height / 2
         organizationImageView.layer.cornerRadius = organizationImageView.frame.height / 2
+        organizationImageView.clipsToBounds = true
     }
 
     @objc private func addPhotoButtonTouchUpInside() {
@@ -229,6 +233,22 @@ final class OrganizationProfileViewAlpha: UIViewController {
         actionSheet.addAction(cancel)
 
         present(actionSheet, animated: true)
+    }
+}
+
+// MARK: - Actions
+extension OrganizationProfileViewAlpha {
+    @objc
+    private func editProfileButtonTouchUpInside(_ sender: Any) {
+        // do nothing
+    }
+}
+
+// MARK: - Setup
+extension OrganizationProfileViewAlpha {
+    private func setup() {
+        addPhotoButton.addTarget(self, action: #selector(OrganizationProfileViewAlpha.addPhotoButtonTouchUpInside), for: .touchUpInside)
+        editProfileButton.addTarget(self, action: #selector(OrganizationProfileViewAlpha.editProfileButtonTouchUpInside(_:)), for: .touchUpInside)
     }
 }
 
@@ -453,11 +473,14 @@ extension OrganizationProfileViewAlpha: UIImagePickerControllerDelegate, UINavig
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
 
-        organizationImageView.image = info[.editedImage] as? UIImage
-        organizationImageView.contentMode = .scaleAspectFill
-        organizationImageView.clipsToBounds = true
-
-        dismiss(animated: true)
+        if let image = info[.editedImage] as? UIImage {
+            dismiss(animated: true) { [weak self] in
+                guard let sSelf = self else { return }
+                self?.output?.organizationProfile(view: sSelf, userDidChangeImage: image)
+            }
+        } else {
+            dismiss(animated: true)
+        }
     }
 }
 
@@ -468,6 +491,7 @@ extension OrganizationProfileViewAlpha {
         updateUIContactName()
         updateUIPhoneNumber()
         updateUIEmail()
+        updateUIImage()
     }
 
     private func updateUIName() {
@@ -493,6 +517,11 @@ extension OrganizationProfileViewAlpha {
     private func updateUIEmail() {
         if self.isViewLoaded {
             self.userEmail.text = self.email
+        }
+    }
+    private func updateUIImage() {
+        if self.isViewLoaded {
+            self.organizationImageView.kf.setImage(with: self.organizationImageUrl)
         }
     }
 }

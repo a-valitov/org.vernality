@@ -21,9 +21,10 @@ protocol SupplierProfileViewInput: UIViewController {
     var supplierINN: String? { get set }
     var supplierContactName: String? { get set }
     var supplierPhoneNumber: String? { get set }
+    var supplierImageUrl: URL? { get set }
     var email: String? { get set }
 }
 
 protocol SupplierProfileViewOutput {
-    
+    func supplierProfile(view: SupplierProfileViewInput, userDidChangeImage image: UIImage)
 }

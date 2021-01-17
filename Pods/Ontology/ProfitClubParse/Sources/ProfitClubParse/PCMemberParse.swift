@@ -27,12 +27,28 @@ public extension PFObject {
         if let statusString = self["statusString"] as? String {
             result.status = PCMemberStatus(rawValue: statusString)
         }
-        if let owner = self["owner"] as? PFObject {
+
+        if let owner = self["owner"] as? PFObject, owner.isDataAvailable {
             result.owner = owner.pcUser?.any
+        } else if let memberParse = self as? PCMemberParse {
+            result.owner = memberParse.owner
         }
-        if let organization = self["organization"] as? PFObject {
+
+        if let organization = self["organization"] as? PFObject, organization.isDataAvailable {
             result.organization = organization.pcOrganization.any
+        } else if let memberParse = self as? PCMemberParse {
+            result.organization = memberParse.organization
         }
+
+        if let fileObject = self["imageFile"] as? PFFileObject,
+            let urlString = fileObject.url,
+            let imageUrl = URL(string: urlString) {
+            result.imageUrl = imageUrl
+        } else if let memberParse = self as? PCMemberParse {
+            result.imageUrl = memberParse.imageUrl
+            result.image = memberParse.image
+        }
+
         return result
     }
 }
@@ -43,6 +59,7 @@ public extension PCMember {
         result.objectId = self.id
         result.firstName = self.firstName
         result.lastName = self.lastName
+        result.image = self.image
         result.owner = self.owner
         result.organization = self.organization
         result.status = self.status
@@ -67,12 +84,14 @@ public final class PCMemberParse: PFObject, PFSubclassing, PCMember {
         }
     }
 
-    public var owner: PCUser?
-    public var organization: PCOrganization?
-
     @NSManaged public var firstName: String?
     @NSManaged public var lastName: String?
     @NSManaged public var statusString: String?
+    @NSManaged public var imageFile: PFFileObject?
+    public var image: UIImage?
+    public var imageUrl: URL?
+    public var owner: PCUser?
+    public var organization: PCOrganization?
 
     public static func parseClassName() -> String {
         return "Member"

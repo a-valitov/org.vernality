@@ -23,12 +23,15 @@ enum OnboardError: Error {
     case usernameIsEmpty
     case firstNameIsEmpty
     case lastNameIsEmpty
+    case memberImageIsNil
     case supplierNameIsEmpty
     case supplierInnIsEmpty
     case supplierContactIsEmpty
     case supplierPhoneIsEmpty
+    case supplierImageIsNil
     case organizationNameIsEmpty
     case organizationInnIsEmpty
     case organizationContactIsEmpty
     case organizationPhoneIsEmpty
+    case organizationImageIsNil
 }

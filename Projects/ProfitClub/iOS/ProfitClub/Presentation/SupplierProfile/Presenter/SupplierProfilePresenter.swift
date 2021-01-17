@@ -33,16 +33,31 @@ final class SupplierProfilePresenter: SupplierProfileModule {
 
     func open(in main: MainModule?) {
         self.router?.main = main
-        self.router?.openSupplierProfile(supplier: self.supplier, output: self)
+        self.view = self.router?.openSupplierProfile(supplier: self.supplier, output: self)
     }
 
     private let presenters: SupplierProfilePresenters
     private let services: SupplierProfileServices
 
     // state
-    private let supplier: PCSupplier
+    private var supplier: PCSupplier
+    private weak var view: SupplierProfileViewInput?
 }
 
 extension SupplierProfilePresenter: SupplierProfileViewOutput {
-
+    func supplierProfile(view: SupplierProfileViewInput, userDidChangeImage image: UIImage) {
+        self.presenters.activity.increment()
+        self.services.supplier.editProfile(supplier: supplier, image: image) { [weak self] (result) in
+            guard let sSelf = self else { return }
+            sSelf.presenters.activity.decrement()
+            switch result {
+            case .success(let supplier):
+                sSelf.supplier = supplier
+                sSelf.view?.supplierImageUrl = supplier.imageUrl
+                sSelf.output?.supplierProfile(module: sSelf, didUpdate: supplier)
+            case .failure(let error):
+                sSelf.presenters.error.present(error)
+            }
+        }
+    }
 }
