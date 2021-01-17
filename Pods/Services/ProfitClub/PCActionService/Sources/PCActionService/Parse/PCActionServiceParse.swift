@@ -102,9 +102,9 @@ public final class PCActionServiceParse: PCActionService {
             if let error = error {
                 result(.failure(error))
             } else {
-                if let actionId = parseAction.id {
+                if let actionId = parseAction.id, let statusString = parseAction.status {
                     PFCloud.callFunction(inBackground: "approveAction",
-                                         withParameters: ["actionId": actionId]) { (response, error) in
+                                         withParameters: ["actionId": actionId, "statusString": statusString]) { (response, error) in
                         if let error = error {
                             result(.failure(error))
                         } else {
