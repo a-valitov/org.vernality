@@ -101,9 +101,12 @@ public final class PCOrganizationServiceParse: PCOrganizationService {
 
     public func editProfile(organization: PCOrganization, image: UIImage, result: @escaping (Result<PCOrganization, Error>) -> Void) {
         let parseOrganization = organization.parse
-        let imageData = image.pngData()
-        let imageFile = PFFileObject(name: "image.png", data: imageData!)
-        parseOrganization.imageFile = imageFile
+        if let imageData = image.pngData() {
+            let imageFile = PFFileObject(name: "image.png", data: imageData)
+            parseOrganization.imageFile = imageFile
+        } else {
+            result(.failure(PCOrganizationServiceError.imageDataIsNil))
+        }
         parseOrganization.saveInBackground { (success, error) in
             if let error = error {
                 result(.failure(error))
