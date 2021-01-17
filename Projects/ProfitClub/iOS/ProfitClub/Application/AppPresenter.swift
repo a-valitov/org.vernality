@@ -73,7 +73,7 @@ final class AppPresenter {
 // MARK: - Push Notifications handling
 extension AppPresenter {
     func handleActionCreatedPushNotification(with actionId: String) {
-//        guard self.isAdministrator else { return }
+        guard self.isAdministrator else { return }
         let actionService = self.factory.actionService()
         actionService.fetch(actionId) { [weak self] result in
             switch result {
