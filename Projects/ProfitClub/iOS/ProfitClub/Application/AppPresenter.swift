@@ -59,11 +59,42 @@ final class AppPresenter {
         return self.userService.user != nil
     }
 
+    private var isAdministrator: Bool {
+        return self.userService.user?.roles?.contains(.administrator) ?? false
+    }
+
     // modules
     private weak var mainModule: MainModule?
     private weak var organizationModule: OrganizationModule?
     private weak var supplierModule: SupplierModule?
     private weak var memberModule: MemberModule?
+}
+
+// MARK: - Push Notifications handling
+extension AppPresenter {
+    func handleActionCreatedPushNotification(with actionId: String) {
+//        guard self.isAdministrator else { return }
+        let actionService = self.factory.actionService()
+        actionService.fetch(actionId) { [weak self] result in
+            switch result {
+            case .success(let action):
+                let adminAction = self?.factory.adminAction(action: action, output: self)
+                adminAction?.open(in: self?.mainModule)
+            case .failure(let error):
+                self?.errorPresenter.present(error)
+            }
+        }
+    }
+}
+
+extension AppPresenter: AdminActionModuleOutput {
+    func adminAction(module: AdminActionModule, didApprove action: PCAction) {
+        self.mainModule?.unraise(animated: true)
+    }
+
+    func adminAction(module: AdminActionModule, didReject action: PCAction) {
+        self.mainModule?.unraise(animated: true)
+    }
 }
 
 extension AppPresenter: MainModuleOutput {

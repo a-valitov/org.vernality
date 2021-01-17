@@ -83,7 +83,18 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
 
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         let userInfo = response.notification.request.content.userInfo
-        print(userInfo)
+        if let type = userInfo["type"] as? String {
+            switch type {
+            case "action_create":
+                if let actionId = userInfo["action_id"] as? String {
+                    self.appPresenter?.handleActionCreatedPushNotification(with: actionId)
+                } else {
+                    assertionFailure("missing actionId in payload")
+                }
+            default:
+                break
+            }
+        }
         completionHandler()
     }
 }

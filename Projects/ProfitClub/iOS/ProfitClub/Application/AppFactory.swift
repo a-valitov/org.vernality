@@ -123,6 +123,11 @@ extension AppFactory {
         let module = self.supplierProfileFactory.make(supplier: supplier, output: output)
         return module
     }
+
+    func adminAction(action: PCAction, output: AdminActionModuleOutput?) -> AdminActionModule {
+        let module = self.adminActionFactory.make(action: action, output: output)
+        return module
+    }
 }
 
 // MARK: - Factories

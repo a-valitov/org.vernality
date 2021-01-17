@@ -123,4 +123,16 @@ public final class PCActionServiceParse: PCActionService {
             }
         }
     }
+
+    public func fetch(_ actionId: String, result: @escaping (Result<PCAction, Error>) -> Void) {
+        let query = PFQuery(className: "Action")
+        query.includeKey("supplier")
+        query.getObjectInBackground(withId: actionId) { (object, error) in
+            if let error = error {
+                result(.failure(error))
+            } else if let object = object {
+                result(.success(object.pcAction))
+            }
+        }
+    }
 }
