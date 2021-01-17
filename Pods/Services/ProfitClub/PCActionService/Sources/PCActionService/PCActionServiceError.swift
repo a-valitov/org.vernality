@@ -19,4 +19,5 @@ import Foundation
 enum PCActionServiceError: Error {
     case bothResultAndErrorAreNil
     case inputIsNil
+    case actionOrUserIdIsNil
 }

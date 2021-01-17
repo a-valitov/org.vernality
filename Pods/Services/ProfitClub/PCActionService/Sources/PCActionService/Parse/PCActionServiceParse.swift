@@ -97,13 +97,17 @@ public final class PCActionServiceParse: PCActionService {
 
     public func approve(action: PCAction, result: @escaping (Result<PCAction, Error>) -> Void) {
         let parseAction = action.parse
-        parseAction.status = .approved
-        parseAction.saveInBackground { (success, error) in
-            if let error = error {
-                result(.failure(error))
-            } else {
-                result(.success(parseAction.any))
+        if let actionId = parseAction.id {
+            PFCloud.callFunction(inBackground: "approveAction",
+                                 withParameters: ["actionId": actionId]) { (response, error) in
+                                    if let error = error {
+                                        result(.failure(error))
+                                    } else {
+                                        result(.success(parseAction.any))
+                                    }
             }
+        } else {
+            result(.failure(PCActionServiceError.actionOrUserIdIsNil))
         }
     }
 
