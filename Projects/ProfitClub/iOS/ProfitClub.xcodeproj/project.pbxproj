@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E06F95D25B49D5100E975F6 /* AppPush.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E06F95C25B49D5100E975F6 /* AppPush.swift */; };
 		0E39664324FCABAD0008266D /* OnboardSignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E39664224FCABAD0008266D /* OnboardSignUpView.swift */; };
 		0E39664624FCABD70008266D /* OnboardSignUpViewBeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E39664524FCABD70008266D /* OnboardSignUpViewBeta.swift */; };
 		0E39664824FCAC020008266D /* OnboardSignUpViewBeta.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E39664724FCAC020008266D /* OnboardSignUpViewBeta.storyboard */; };
@@ -327,6 +328,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E06F95C25B49D5100E975F6 /* AppPush.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPush.swift; sourceTree = "<group>"; };
 		0E39664224FCABAD0008266D /* OnboardSignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardSignUpView.swift; sourceTree = "<group>"; };
 		0E39664524FCABD70008266D /* OnboardSignUpViewBeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardSignUpViewBeta.swift; sourceTree = "<group>"; };
 		0E39664724FCAC020008266D /* OnboardSignUpViewBeta.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OnboardSignUpViewBeta.storyboard; sourceTree = "<group>"; };
@@ -1235,6 +1237,7 @@
 			children = (
 				0EA11EC724F2B88F00133485 /* AppDelegate.swift */,
 				0E90496D24F390070061A605 /* AppPresenter.swift */,
+				0E06F95C25B49D5100E975F6 /* AppPush.swift */,
 				0E90497024F390270061A605 /* AppFactory.swift */,
 			);
 			path = Application;
@@ -3196,6 +3199,7 @@
 				FA8CB83C255A5BFF00D09B1D /* AdminModule.swift in Sources */,
 				FA69F9CA2573A36100F519CB /* MemberCurrentActionViewAlpha.swift in Sources */,
 				FA50B12425A7190E003D514B /* AdminSuppliersApplicationsViewAlpha.swift in Sources */,
+				0E06F95D25B49D5100E975F6 /* AppPush.swift in Sources */,
 				FA8CB898255ADA6400D09B1D /* AdminOrganizationPresenter.swift in Sources */,
 				FAD704A02550103600DE8AD7 /* MembersModule.swift in Sources */,
 				0E56174025372BF3005DF4F3 /* ActionsContainerViewBeta.swift in Sources */,
