@@ -31,11 +31,16 @@ public extension PFObject {
         }
         if let owner = self["owner"] as? PFObject, owner.isDataAvailable {
             result.owner = owner.pcUser?.any
+        } else if let organizationParse = self as? PCOrganizationParse {
+            result.owner = organizationParse.owner
         }
         if let fileObject = self["imageFile"] as? PFFileObject,
             let urlString = fileObject.url,
             let imageUrl = URL(string: urlString) {
             result.imageUrl = imageUrl
+        } else if let organizationParse = self as? PCOrganizationParse {
+            result.imageUrl = organizationParse.imageUrl
+            result.image = organizationParse.image
         }
         return result
     }
@@ -74,8 +79,6 @@ public final class PCOrganizationParse: PFObject, PFSubclassing, PCOrganization 
 
     }
 
-    public var owner: PCUser?
-
     @NSManaged public var name: String?
     @NSManaged public var inn: String?
     @NSManaged public var contact: String?
@@ -84,6 +87,7 @@ public final class PCOrganizationParse: PFObject, PFSubclassing, PCOrganization 
     @NSManaged public var imageFile: PFFileObject?
     public var image: UIImage?
     public var imageUrl: URL?
+    public var owner: PCUser?
 
     public static func parseClassName() -> String {
         return "Organization"
