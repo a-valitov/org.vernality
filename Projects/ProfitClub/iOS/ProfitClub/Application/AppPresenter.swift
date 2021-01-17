@@ -32,7 +32,9 @@ final class AppPresenter {
         UINavigationBar.appearance().tintColor = .white
         UINavigationBar.appearance().isTranslucent = true
         UINavigationBar.appearance().barStyle = .black
-        window?.rootViewController = self.factory.main(output: self)
+        let mainModule = self.factory.main(output: self)
+        self.mainModule = mainModule
+        window?.rootViewController = mainModule.viewController
         window?.makeKeyAndVisible()
     }
 
@@ -58,6 +60,7 @@ final class AppPresenter {
     }
 
     // modules
+    private weak var mainModule: MainModule?
     private weak var organizationModule: OrganizationModule?
     private weak var supplierModule: SupplierModule?
     private weak var memberModule: MemberModule?

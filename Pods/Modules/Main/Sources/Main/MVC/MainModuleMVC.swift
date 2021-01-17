@@ -20,6 +20,16 @@ import FittedSheets
 
 final class MainModuleMVC: UIViewController {
     var output: MainModuleOutput?
+    var viewController: UIViewController {
+        if let view = self.weakView {
+            return view
+        } else {
+            let navigationController = UINavigationController(rootViewController: self)
+            navigationController.isNavigationBarHidden = true
+            self.weakView = navigationController
+            return navigationController
+        }
+    }
 
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -45,6 +55,8 @@ final class MainModuleMVC: UIViewController {
         super.viewWillDisappear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
+
+    private weak var weakView: UIViewController?
 }
 
 extension MainModuleMVC: MainModule {

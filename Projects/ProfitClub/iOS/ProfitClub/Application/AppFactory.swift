@@ -74,9 +74,9 @@ final class AppFactory {
 
 // MARK: - ViewContollers
 extension AppFactory {
-    func main(output: MainModuleOutput?) -> UIViewController {
-        let main = self.mainFactory.make(output: output)
-        return main.view
+    func main(output: MainModuleOutput?) -> MainModule {
+        let module = self.mainFactory.make(output: output)
+        return module
     }
     
     func onboard(output: OnboardModuleOutput?) -> OnboardModule {

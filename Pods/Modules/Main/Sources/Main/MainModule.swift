@@ -17,8 +17,9 @@
 #if canImport(UIKit)
 import UIKit
 
-public protocol MainModule: UIViewController {
+public protocol MainModule: class {
     var output: MainModuleOutput? { get set }
+    var viewController: UIViewController { get }
 
     func push(_ viewController: UIViewController, animated: Bool)
     func pop()
@@ -38,6 +39,6 @@ public protocol MainModuleOutput {
 }
 
 public protocol MainModuleFactory {
-    func make(output: MainModuleOutput?) -> (module: MainModule, view: UIViewController)
+    func make(output: MainModuleOutput?) -> MainModule
 }
 #endif
