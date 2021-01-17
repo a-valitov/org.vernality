@@ -125,9 +125,12 @@ public final class PCUserServiceParse: PCUserService {
     }
 
     public func editProfile(member: PCMember, image: UIImage, result: @escaping (Result<PCMember, Error>) -> Void) {
+        guard let imageData = image.pngData() else {
+            result(.failure(PCUserServiceError.failedToGetImagePNGRepresentation))
+            return
+        }
         let parseMember = member.parse
-        let imageData = image.pngData()
-        let imageFile = PFFileObject(name: "image.png", data: imageData!)
+        let imageFile = PFFileObject(name: "image.png", data: imageData)
         parseMember.imageFile = imageFile
         parseMember.saveInBackground { (success, error) in
             if let error = error {

@@ -1,5 +1,5 @@
-//  Copyright (C) 2020 Startup Studio Vernality
-//  Created by Rinat Enikeev on 8/30/20
+//  Copyright (C) 2021 Startup Studio Vernality
+//  Created by Rinat Enikeev on 17.01.2021
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -16,9 +16,15 @@
 
 import Foundation
 
-enum PCUserServiceError: Error {
-    case userIsNil
-    case userIsNotPFUser
-    case bothResultAndErrorAreNil
+enum PCSupplierServiceError: Error {
     case failedToGetImagePNGRepresentation
+}
+
+extension PCSupplierServiceError: LocalizedError {
+    public var errorDescription: String? {
+        switch self {
+        case .failedToGetImagePNGRepresentation:
+            return "Не удалось получить PNG данные из изображения"
+        }
+    }
 }

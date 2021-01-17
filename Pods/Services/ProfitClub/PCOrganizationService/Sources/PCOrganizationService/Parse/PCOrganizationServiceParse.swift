@@ -100,9 +100,12 @@ public final class PCOrganizationServiceParse: PCOrganizationService {
     }
 
     public func editProfile(organization: PCOrganization, image: UIImage, result: @escaping (Result<PCOrganization, Error>) -> Void) {
+        guard let imageData = image.pngData() else {
+            result(.failure(PCOrganizationServiceError.failedToGetImagePNGRepresentation))
+            return
+        }
         let parseOrganization = organization.parse
-        let imageData = image.pngData()
-        let imageFile = PFFileObject(name: "image.png", data: imageData!)
+        let imageFile = PFFileObject(name: "image.png", data: imageData)
         parseOrganization.imageFile = imageFile
         parseOrganization.saveInBackground { (success, error) in
             if let error = error {
