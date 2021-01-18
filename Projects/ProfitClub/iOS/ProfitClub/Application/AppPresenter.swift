@@ -77,6 +77,14 @@ extension AppPresenter {
         switch push {
         case .actionCreated(let actionId):
             self.openAdminAction(actionId: actionId)
+        case .commercialOfferCreated(let commercialOfferId):
+            self.openAdminCommercialOffer(commercialOfferId: commercialOfferId)
+        case .organizationCreated(let organizationId):
+            self.openAdminOrganization(organizationId: organizationId)
+        case .supplierCreated(let supplierId):
+            self.openAdminSupplier(supplierId: supplierId)
+        case .memberCreated(let memberId):
+            self.openAdminMember(memberId: memberId)
         }
     }
 
@@ -91,6 +99,22 @@ extension AppPresenter {
                 self?.errorPresenter.present(error)
             }
         }
+    }
+    
+    private func openAdminCommercialOffer(commercialOfferId: String) {
+        print(commercialOfferId)
+    }
+    
+    private func openAdminOrganization(organizationId: String) {
+        print(organizationId)
+    }
+    
+    private func openAdminSupplier(supplierId: String) {
+        print(supplierId)
+    }
+    
+    private func openAdminMember(memberId: String) {
+        print(memberId)
     }
 }
 

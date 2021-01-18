@@ -19,15 +19,47 @@ import ProfitClubModel
 
 enum AppPush {
     case actionCreated(actionId: String)
-
+    case commercialOfferCreated(commercialOfferId: String)
+    case organizationCreated(organizationId: String)
+    case supplierCreated(supplierId: String)
+    case memberCreated(memberId: String)
+    
     static func parse(from userInfo: [AnyHashable : Any]) -> AppPush? {
         if let type = userInfo["type"] as? String {
             switch type {
             case "action_created":
-                if let actionId = userInfo["action_id"] as? String {
+                if let actionId = userInfo["identifier"] as? String {
                     return .actionCreated(actionId: actionId)
                 } else {
-                    assertionFailure("missing actionId in payload")
+                    assertionFailure("missing identifier in payload")
+                    return nil
+                }
+            case "commerical_offer_created":
+                if let commercialOfferId = userInfo["identifier"] as? String {
+                    return .commercialOfferCreated(commercialOfferId: commercialOfferId)
+                } else {
+                    assertionFailure("missing identifier in payload")
+                    return nil
+                }
+            case "organization_created":
+                if let organizationId = userInfo["identifier"] as? String {
+                    return .organizationCreated(organizationId: organizationId)
+                } else {
+                    assertionFailure("missing identifier in payload")
+                    return nil
+                }
+            case "supplier_created":
+                if let supplierId = userInfo["identifier"] as? String {
+                    return .supplierCreated(supplierId: supplierId)
+                } else {
+                    assertionFailure("missing identifier in payload")
+                    return nil
+                }
+            case "member_created":
+                if let memberId = userInfo["identifier"] as? String {
+                    return .memberCreated(memberId: memberId)
+                } else {
+                    assertionFailure("missing identifier in payload")
                     return nil
                 }
             default:
