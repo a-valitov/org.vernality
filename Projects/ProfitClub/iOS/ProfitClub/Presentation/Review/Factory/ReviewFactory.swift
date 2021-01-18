@@ -26,11 +26,9 @@ final class ReviewFactory {
     }
 
     func make(output: ReviewModuleOutput?) -> ReviewModule {
-        let router = ReviewRouter()
         let presenter = ReviewPresenter(presenters: self.presenters,
                                          services: self.services)
         presenter.output = output
-        presenter.router = router
         return presenter
     }
 

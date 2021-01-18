@@ -60,6 +60,10 @@ final class MainModuleMVC: UIViewController {
 }
 
 extension MainModuleMVC: MainModule {
+    func present(_ viewController: UIViewController, animated: Bool) {
+        self.navigationController?.topViewController?.present(viewController, animated: animated)
+    }
+
     func push(_ viewController: UIViewController, animated: Bool) {
         self.navigationController?.pushViewController(viewController, animated: animated)
     }

@@ -32,7 +32,6 @@
 		0E506C2A24FC180300ABA211 /* ReviewViewBetaSupplierCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E506C2924FC180300ABA211 /* ReviewViewBetaSupplierCell.swift */; };
 		0E506C2C24FC184900ABA211 /* ReviewViewBetaMemberCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E506C2B24FC184900ABA211 /* ReviewViewBetaMemberCell.swift */; };
 		0E506C2E24FC1A4600ABA211 /* ReviewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E506C2D24FC1A4600ABA211 /* ReviewPresenter.swift */; };
-		0E506C3124FC1AAB00ABA211 /* ReviewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E506C3024FC1AAB00ABA211 /* ReviewRouter.swift */; };
 		0E506C3324FC1B9C00ABA211 /* ReviewDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E506C3224FC1B9C00ABA211 /* ReviewDependencies.swift */; };
 		0E506C3524FC1BA700ABA211 /* ReviewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E506C3424FC1BA700ABA211 /* ReviewFactory.swift */; };
 		0E506C3924FC9CC400ABA211 /* OnboardWelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E506C3824FC9CC400ABA211 /* OnboardWelcomeView.swift */; };
@@ -353,7 +352,6 @@
 		0E506C2924FC180300ABA211 /* ReviewViewBetaSupplierCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewBetaSupplierCell.swift; sourceTree = "<group>"; };
 		0E506C2B24FC184900ABA211 /* ReviewViewBetaMemberCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewBetaMemberCell.swift; sourceTree = "<group>"; };
 		0E506C2D24FC1A4600ABA211 /* ReviewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewPresenter.swift; sourceTree = "<group>"; };
-		0E506C3024FC1AAB00ABA211 /* ReviewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewRouter.swift; sourceTree = "<group>"; };
 		0E506C3224FC1B9C00ABA211 /* ReviewDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewDependencies.swift; sourceTree = "<group>"; };
 		0E506C3424FC1BA700ABA211 /* ReviewFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewFactory.swift; sourceTree = "<group>"; };
 		0E506C3824FC9CC400ABA211 /* OnboardWelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardWelcomeView.swift; sourceTree = "<group>"; };
@@ -763,7 +761,6 @@
 			children = (
 				0E506C1C24FC0D9B00ABA211 /* Factory */,
 				0E506C1B24FC0D9400ABA211 /* Presenter */,
-				0E506C2F24FC1A9E00ABA211 /* Router */,
 				0E506C1924FC0D8A00ABA211 /* View */,
 			);
 			path = Review;
@@ -816,14 +813,6 @@
 				0E506C2524FC10B700ABA211 /* ReviewViewBeta.storyboard */,
 			);
 			path = Beta;
-			sourceTree = "<group>";
-		};
-		0E506C2F24FC1A9E00ABA211 /* Router */ = {
-			isa = PBXGroup;
-			children = (
-				0E506C3024FC1AAB00ABA211 /* ReviewRouter.swift */,
-			);
-			path = Router;
 			sourceTree = "<group>";
 		};
 		0E506C3724FC9C9A00ABA211 /* OnboardWelcome */ = {
@@ -3169,7 +3158,6 @@
 				FA69FA022573A78500F519CB /* ApproveCurrentActionViewAlpha.swift in Sources */,
 				FA6E8BBC254D96A2007B8B4E /* CommercialOffersFactory.swift in Sources */,
 				FAD704AC2550114A00DE8AD7 /* MembersContainerViewBeta.swift in Sources */,
-				0E506C3124FC1AAB00ABA211 /* ReviewRouter.swift in Sources */,
 				FA0955EC254C364F00FFF835 /* SupplierCommercialOffer.swift in Sources */,
 				FA7ACD302563C3BA0097800D /* OrganizationProfilePresenter.swift in Sources */,
 				0E56176B25373349005DF4F3 /* OrganizationTabBarViewBeta.swift in Sources */,

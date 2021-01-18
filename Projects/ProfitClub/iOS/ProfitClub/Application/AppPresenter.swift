@@ -32,9 +32,7 @@ final class AppPresenter {
         UINavigationBar.appearance().tintColor = .white
         UINavigationBar.appearance().isTranslucent = true
         UINavigationBar.appearance().barStyle = .black
-        let mainModule = self.factory.main(output: self)
-        self.mainModule = mainModule
-        window?.rootViewController = mainModule.viewController
+        window?.rootViewController = self.main.viewController
         window?.makeKeyAndVisible()
     }
 
@@ -64,10 +62,35 @@ final class AppPresenter {
     }
 
     // modules
-    private weak var mainModule: MainModule?
+
     private weak var organizationModule: OrganizationModule?
     private weak var supplierModule: SupplierModule?
     private weak var memberModule: MemberModule?
+
+    // modules construction
+    var main: MainModule {
+        if let mainModule = self.weakMain {
+            return mainModule
+        } else {
+            let mainModule = self.factory.main(output: self)
+            self.weakMain = mainModule
+            return mainModule
+        }
+    }
+
+    var review: ReviewModule {
+        if let reviewModule = self.weakReview {
+            return reviewModule
+        } else {
+            let reviewModule = self.factory.review(output: self)
+            self.weakReview = reviewModule
+            return reviewModule
+        }
+    }
+
+    // weak modules
+    private weak var weakMain: MainModule?
+    private weak var weakReview: ReviewModule?
 }
 
 // MARK: - Push Notifications handling
@@ -86,7 +109,7 @@ extension AppPresenter {
             switch result {
             case .success(let action):
                 let adminAction = self?.factory.adminAction(action: action, output: self)
-                adminAction?.open(in: self?.mainModule)
+                adminAction?.open(in: self?.main)
             case .failure(let error):
                 self?.errorPresenter.present(error)
             }
@@ -96,19 +119,18 @@ extension AppPresenter {
 
 extension AppPresenter: AdminActionModuleOutput {
     func adminAction(module: AdminActionModule, didApprove action: PCAction) {
-        self.mainModule?.unraise(animated: true)
+        self.main.unraise(animated: true)
     }
 
     func adminAction(module: AdminActionModule, didReject action: PCAction) {
-        self.mainModule?.unraise(animated: true)
+        self.main.unraise(animated: true)
     }
 }
 
 extension AppPresenter: MainModuleOutput {
     func mainDidLoad(module: MainModule) {
         if self.isLoggedIn {
-            let review = self.factory.review(output: self)
-            review.start(in: module)
+            self.main.push(self.review.viewController, animated: true)
         } else {
             let onboard = self.factory.onboard(output: self)
             onboard.start(in: module)
@@ -118,69 +140,64 @@ extension AppPresenter: MainModuleOutput {
 
 extension AppPresenter: OnboardModuleOutput {
     func onboard(module: OnboardModule, didAddSupplier supplier: PCSupplier, inside main: MainModule?) {
-        let review = self.factory.review(output: self)
-        review.start(in: main)
+        self.main.push(self.review.viewController, animated: true)
     }
 
     func onboard(module: OnboardModule, didAddOrganization organization: PCOrganization, inside main: MainModule?) {
-        let review = self.factory.review(output: self)
-        review.start(in: main)
+        self.main.push(self.review.viewController, animated: true)
     }
 
     func onboard(module: OnboardModule, didAddMember member: PCMember, inside main: MainModule?) {
-        let review = self.factory.review(output: self)
-        review.start(in: main)
+        self.main.push(self.review.viewController, animated: true)
     }
 
     func onboard(module: OnboardModule, didLogin user: PCUser, inside main: MainModule?) {
-        let review = self.factory.review(output: self)
-        review.start(in: main)
+        self.main.push(self.review.viewController, animated: true)
     }
 }
 
 extension AppPresenter: ReviewModuleOutput {
-    
-    func review(module: ReviewModule, userWantsToLogoutInside main: MainModule?) {
+    func reviewUserWantsToLogout(module: ReviewModule) {
         self.userService.logout { [weak self] result in
             switch result {
             case .failure(let error):
                 self?.errorPresenter.present(error)
             case .success:
-                main?.unwindToRoot()
+                self?.main.unwindToRoot()
                 let onboard = self?.factory.onboard(output: self)
-                onboard?.start(in: main)
+                onboard?.start(in: self?.main)
             }
         }
     }
 
-    func review(module: ReviewModule, userWantsToAddRoleInside main: MainModule?) {
+    func reviewUserWantsToAddRole(module: ReviewModule) {
         let onboard = self.factory.onboard(output: self)
-        onboard.onboard(in: main)
+        onboard.onboard(in: self.main)
     }
 
-    func review(module: ReviewModule, userWantsToEnterAdminInsideMain main: MainModule?) {
+    func reviewUserWantsToEnterAdmin(module: ReviewModule) {
         let admin = self.factory.admin(output: self)
-        admin.open(in: main)
+        admin.open(in: self.main)
     }
 
-    func review(module: ReviewModule, userWantsToEnter organization: PCOrganization, inside main: MainModule?) {
+    func review(module: ReviewModule, userWantsToEnter organization: PCOrganization) {
         assert(organization.status == .approved)
         let organizationModule = self.factory.organization(organization, output: self)
-        organizationModule.open(in: main)
+        organizationModule.open(in: self.main)
         self.organizationModule = organizationModule
     }
-    
-    func review(module: ReviewModule, userWantsToEnter supplier: PCSupplier, inside main: MainModule?) {
+
+    func review(module: ReviewModule, userWantsToEnter supplier: PCSupplier) {
         assert(supplier.status == .approved)
         let supplierModule = self.factory.supplier(supplier: supplier, output: self)
-        supplierModule.open(in: main)
+        supplierModule.open(in: self.main)
         self.supplierModule = supplierModule
     }
 
-    func review(module: ReviewModule, userWantsToEnter member: PCMember, inside main: MainModule?) {
+    func review(module: ReviewModule, userWantsToEnter member: PCMember) {
         assert(member.status == .approved)
         let memberModule = self.factory.member(member: member, output: self)
-        memberModule.open(in: main)
+        memberModule.open(in: self.main)
         self.memberModule = memberModule
     }
 }
@@ -206,8 +223,7 @@ extension AppPresenter: OrganizationModuleOutput {
 
     func organization(module: OrganizationModule, userWantsToChangeRole main: MainModule?) {
         main?.unwindToRoot()
-        let module = self.factory.review(output: self)
-        module.start(in: main)
+        self.main.push(self.review.viewController, animated: true)
     }
 }
 
@@ -232,8 +248,7 @@ extension AppPresenter: SupplierModuleOutput {
 
     func supplier(module: SupplierModule, userWantsToChangeRole main: MainModule?) {
         main?.unwindToRoot()
-        let module = self.factory.review(output: self)
-        module.start(in: main)
+        self.main.push(self.review.viewController, animated: true)
     }
 }
 
@@ -258,8 +273,7 @@ extension AppPresenter: MemberModuleOutput {
 
     func member(module: MemberModule, userWantsToChangeRole main: MainModule?) {
         main?.unwindToRoot()
-        let module = self.factory.review(output: self)
-        module.start(in: main)
+        self.main.push(self.review.viewController, animated: true)
     }
 }
 
@@ -297,9 +311,6 @@ extension AppPresenter: AdminModuleOutput {
 
     func admin(module: AdminModule, userWantsToChangeRole main: MainModule?) {
         main?.unwindToRoot()
-        let module = self.factory.review(output: self)
-        module.start(in: main)
+        self.main.push(self.review.viewController, animated: true)
     }
-
-
 }
