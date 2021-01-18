@@ -26,11 +26,9 @@ final class OnboardFactory {
     }
 
     func make(output: OnboardModuleOutput?) -> OnboardModule {
-        let router = OnboardRouter()
         let presenter = OnboardPresenter(presenters: self.presenters,
                                          services: self.services)
         presenter.output = output
-        presenter.router = router
         return presenter
     }
 

@@ -23,53 +23,80 @@ import ProfitClubModel
 
 final class OnboardPresenter: OnboardModule {
     weak var output: OnboardModuleOutput?
-    var router: OnboardRouter?
+//    var router: OnboardRouter?
+    var viewController: UIViewController {
+        return self.welcome
+    }
 
     init(presenters: OnboardPresenters,
          services: OnboardServices) {
         self.presenters = presenters
         self.services = services
     }
-
-    func start(in main: MainModule?) {
-        self.router?.main = main
-        self.router?.openOnboardWelcome(output: self)
-    }
-
-    func onboard(in main: MainModule?) {
-        self.router?.main = main
-        self.router?.openSelectRole(output: self)
-    }
-
+    
     // dependencies
     private let presenters: OnboardPresenters
     private let services: OnboardServices
 
+    // views
+    private var welcome: UIViewController {
+        if let welcome = self.weakWelcome {
+            return welcome
+        } else {
+            let welcome = OnboardWelcomeViewAlpha()
+            welcome.output = self
+            self.weakWelcome = welcome
+            return welcome
+        }
+    }
+    private var signIn: UIViewController {
+        if let signIn = self.weakSignIn {
+            return signIn
+        } else {
+            let signIn = OnboardSignInViewAlpha()
+            signIn.output = self
+            self.weakSignIn = signIn
+            return signIn
+        }
+    }
+    private var signUp: UIViewController {
+        if let signUp = self.weakSignUp {
+            return signUp
+        } else {
+            let signUp = OnboardSignUpViewAlpha()
+            signUp.output = self
+            self.weakSignUp = signUp
+            return signUp
+        }
+    }
+    private var resetPassword: UIViewController {
+        if let resetPassword = self.weakResetPassword {
+            return resetPassword
+        } else {
+            let resetPassword = OnboardResetPasswordViewAlpha()
+            resetPassword.output = self
+            self.weakResetPassword = resetPassword
+            return resetPassword
+        }
+    }
+
+    private weak var weakWelcome: UIViewController?
+    private weak var weakSignIn: UIViewController?
+    private weak var weakSignUp: UIViewController?
+    private weak var weakResetPassword: UIViewController?
+
     // persisted
     private var email: String?
     private var password: String?
-    private var firstName: String?
-    private var lastName: String?
-    private var memberImage: UIImage?
-    private var supplierName: String?
-    private var supplierInn: String?
-    private var supplierContact: String?
-    private var supplierPhone: String?
-    private var supplierImage: UIImage?
-    private var organizationName: String?
-    private var organizationInn: String?
-    private var organizationContact: String?
-    private var organizationPhone: String?
-    private var organizationImage: UIImage?
 }
 
 extension OnboardPresenter: OnboardWelcomeViewOutput {
     func onboardWelcome(view: OnboardWelcomeViewInput, userWantsToSignIn sender: Any) {
-        self.router?.openOnboardSignIn(output: self)
+        view.raise(self.signIn, animated: true)
     }
 
     func onboardWelcome(view: OnboardWelcomeViewInput, userWantsToSignUp sender: Any) {
-        self.router?.openOnboardSignUp(output: self)
+        view.raise(self.signUp, animated: true)
     }
 }
 
@@ -89,9 +116,9 @@ extension OnboardPresenter: OnboardSignInViewOutput {
             sSelf.presenters.activity.decrement()
             switch result {
             case .success(let user):
-                sSelf.router?.main?.unraise(animated: true, completion: { [weak sSelf] in
+                view.unraise(animated: true, completion: { [weak sSelf] in
                     guard let ssSelf = sSelf else { return }
-                    ssSelf.output?.onboard(module: ssSelf, didLogin: user, inside: ssSelf.router?.main)
+                    ssSelf.output?.onboard(module: ssSelf, didLogin: user)
                 })
             case .failure(let error):
                 sSelf.presenters.error.present(error)
@@ -100,14 +127,18 @@ extension OnboardPresenter: OnboardSignInViewOutput {
     }
 
     func onboardSingUp(view: OnboardSignInViewInput, userWantsToSignUp sender: Any) {
-        self.router?.main?.unraise(animated: true, completion: { [weak self] in
-            self?.router?.openOnboardSignUp(output: self)
+        let presenting = view.presentingViewController
+        view.unraise(animated: true, completion: { [weak self] in
+            guard let sSelf = self else { return }
+            presenting?.raise(sSelf.signUp, animated: true)
         })
     }
 
     func onboardResetPassword(view: OnboardSignInViewInput, userWantsToResetPassword sender: Any) {
-        self.router?.main?.unraise(animated: true, completion: { [weak self] in
-            self?.router?.openResetPassword(output: self)
+        let presenting = view.presentingViewController
+        view.unraise(animated: true, completion: { [weak self] in
+            guard let sSelf = self else { return }
+            presenting?.raise(sSelf.resetPassword, animated: true)
         })
     }
 }
@@ -138,12 +169,19 @@ extension OnboardPresenter: OnboardSignUpViewOutput {
                 guard let sSelf = self else { return }
                 switch result {
                 case .success:
-                    sSelf.presenters.confirmation.present(title: "Вы прошли регистрацию", message: "Осталось выбрать роль в клубе", actionTitle: "Продолжить", withCancelAction: false, completion: { [weak sSelf] in
+                    view.unraise(animated: true) { [weak sSelf] in
                         guard let ssSelf = sSelf else { return }
-                        ssSelf.router?.main?.unraise(animated: true, completion: { [weak ssSelf] in
-                            ssSelf?.router?.openSelectRole(output: self)
-                        })
-                    })
+                        ssSelf.presenters.confirmation.present(
+                            title: "Вы прошли регистрацию",
+                            message: "Осталось выбрать роль в клубе",
+                            actionTitle: "Продолжить",
+                            withCancelAction: false,
+                            completion: { [weak ssSelf] in
+                                guard let sssSelf = ssSelf else { return }
+                                sssSelf.output?.onboard(module: sssSelf, didRegister: user)
+                            }
+                        )
+                    }
                 case .failure(let error):
                     sSelf.presenters.error.present(error)
                 }
@@ -152,8 +190,10 @@ extension OnboardPresenter: OnboardSignUpViewOutput {
     }
 
     func onboardSignIn(view: OnboardSignUpViewInput, userWantsToSignIp sender: Any) {
-        self.router?.main?.unraise(animated: true, completion: { [weak self] in
-            self?.router?.openOnboardSignIn(output: self)
+        let presenting = view.presentingViewController
+        view.unraise(animated: true, completion: { [weak self] in
+            guard let sSelf = self else { return }
+            presenting?.raise(sSelf.signIn, animated: true)
         })
     }
 }
@@ -172,141 +212,26 @@ extension OnboardPresenter: OnboardResetPasswordViewOutput {
                 sSelf.presenters.activity.decrement()
                 switch result {
                 case .success:
-                    sSelf.presenters.confirmation.present(title: "Вы сбросили пароль", message: "Проверьте вашу почту", actionTitle: "Спасибо", withCancelAction: false, completion: { [weak sSelf] in
-                        sSelf?.router?.pop()
-                    })
+                    view.unraise(animated: true) { [weak sSelf] in
+                        sSelf?.presenters.confirmation.present(
+                            title: "Вы сбросили пароль",
+                            message: "Проверьте вашу почту",
+                            actionTitle: "Спасибо",
+                            withCancelAction: false
+                        )
+                    }
                 case .failure(let error):
                     self?.presenters.error.present(error)
                 }
             }
         } else {
-            self.presenters.confirmation.present(title: "Invalid Email", message: "Please check your email", actionTitle: "Хорошо", withCancelAction: false, completion: nil)
+            self.presenters.confirmation.present(
+                title: "Некорректный email",
+                message: "Пожалуйста, проверьте email",
+                actionTitle: "Хорошо",
+                withCancelAction: false
+            )
         }
-    }
-}
-
-extension OnboardPresenter: OnboardMemberViewOutput {
-    func onboardMemberDidFinish(view: OnboardMemberViewInput) {
-        guard let firstName = view.firstName, firstName.isEmpty == false else {
-            self.presenters.error.present(OnboardError.firstNameIsEmpty)
-            return
-        }
-        guard let lastName = view.lastName, lastName.isEmpty == false else {
-            self.presenters.error.present(OnboardError.lastNameIsEmpty)
-            return
-        }
-        guard let image = view.image else {
-            self.presenters.error.present(OnboardError.memberImageIsNil)
-            return
-        }
-        self.firstName = firstName
-        self.lastName = lastName
-        self.memberImage = image
-        let selectOrganization = self.router?.openSelectOrganization(output: self)
-        self.services.organization.fetch(.approved) { [weak self] (result) in
-            switch result {
-            case .success(let organizations):
-                selectOrganization?.organizations = organizations
-            case .failure(let error):
-                self?.presenters.error.present(error)
-            }
-        }
-    }
-}
-
-extension OnboardPresenter: SelectRoleViewOutput {
-    func selectRole(view: SelectRoleViewInput, didSelect role: PCRole) {
-        switch role {
-        case .member:
-            self.router?.openOnboardMember(output: self)
-        case .supplier:
-            self.router?.openOnboardSupplier(output: self)
-        case .organization:
-            self.router?.openOnboardOrganization(output: self)
-        default:
-            break
-        }
-    }
-}
-
-extension OnboardPresenter: OnboardOrganizationViewOutput {
-    func onboardOrganizationDidFinish(view: OnboardOrganizationViewInput) {
-        guard let name = view.name, name.isEmpty == false else {
-            self.presenters.error.present(OnboardError.organizationNameIsEmpty)
-            return
-        }
-        guard let inn = view.inn, inn.isEmpty == false else {
-            self.presenters.error.present(OnboardError.organizationInnIsEmpty)
-            return
-        }
-        guard let contact = view.contact, contact.isEmpty == false else {
-            self.presenters.error.present(OnboardError.organizationContactIsEmpty)
-            return
-        }
-        guard let phone = view.phone, phone.isEmpty == false else {
-            self.presenters.error.present(OnboardError.organizationPhoneIsEmpty)
-            return
-        }
-        guard let image = view.image else {
-            self.presenters.error.present(OnboardError.organizationImageIsNil)
-            return
-        }
-        self.organizationName = name
-        self.organizationInn = inn
-        self.organizationContact = contact
-        self.organizationPhone = phone
-        self.organizationImage = image
-        self.registerOrganization()
-    }
-}
-
-extension OnboardPresenter: SelectOrganizationViewOutput {
-    func selectOrganization(view: SelectOrganizationViewInput, userWantsToRefresh sender: Any) {
-        self.presenters.activity.increment()
-        self.services.organization.fetch(.approved) { [weak self] (result) in
-            self?.presenters.activity.decrement()
-            switch result {
-            case .success(let organizations):
-                view.organizations = organizations
-            case .failure(let error):
-                self?.presenters.error.present(error)
-            }
-        }
-    }
-
-    func selectOrganization(view: SelectOrganizationViewInput, didSelect organization: AnyPCOrganization) {
-        self.registerMember(in: organization)
-    }
-}
-
-extension OnboardPresenter: OnboardSupplierViewOutput {
-    func onboardSupplier(view: OnboardSupplierViewInput, didFinish sender: Any) {
-        guard let name = view.name, name.isEmpty == false else {
-            self.presenters.error.present(OnboardError.supplierNameIsEmpty)
-            return
-        }
-        guard let inn = view.inn, inn.isEmpty == false else {
-            self.presenters.error.present(OnboardError.supplierInnIsEmpty)
-            return
-        }
-        guard let contact = view.contact, contact.isEmpty == false else {
-            self.presenters.error.present(OnboardError.supplierContactIsEmpty)
-            return
-        }
-        guard let phone = view.phone, phone.isEmpty == false else {
-            self.presenters.error.present(OnboardError.supplierPhoneIsEmpty)
-            return
-        }
-        guard let image = view.image else {
-            self.presenters.error.present(OnboardError.supplierImageIsNil)
-            return
-        }
-        self.supplierName = name
-        self.supplierInn = inn
-        self.supplierContact = contact
-        self.supplierPhone = phone
-        self.supplierImage = image
-        self.registerSupplier()
     }
 }
 
@@ -321,149 +246,6 @@ extension OnboardPresenter {
         return user
     }
 
-    private func createSupplier() -> PCSupplierStruct? {
-        guard let name = self.supplierName, name.isEmpty == false else {
-            self.presenters.error.present(OnboardError.supplierNameIsEmpty)
-            return nil
-        }
-        guard let inn = self.supplierInn, inn.isEmpty == false else {
-            self.presenters.error.present(OnboardError.supplierInnIsEmpty)
-            return nil
-        }
-        guard let contact = self.supplierContact, contact.isEmpty == false else {
-            self.presenters.error.present(OnboardError.supplierContactIsEmpty)
-            return nil
-        }
-        guard let phone = self.supplierPhone, phone.isEmpty == false else {
-            self.presenters.error.present(OnboardError.supplierPhoneIsEmpty)
-            return nil
-        }
-        guard let image = self.supplierImage else {
-            self.presenters.error.present(OnboardError.supplierImageIsNil)
-            return nil
-        }
-        var supplier = PCSupplierStruct()
-        supplier.inn = inn
-        supplier.contact = contact
-        supplier.phone = phone
-        supplier.name = name
-        supplier.image = image
-        supplier.status = .onReview
-        return supplier
-    }
-
-    private func createMember() -> PCMemberStruct? {
-        guard let firstName = self.firstName, firstName.isEmpty == false else {
-            self.presenters.error.present(OnboardError.firstNameIsEmpty)
-            return nil
-        }
-        guard let lastName = self.lastName, lastName.isEmpty == false else {
-            self.presenters.error.present(OnboardError.lastNameIsEmpty)
-            return nil
-        }
-        guard let image = self.memberImage else {
-            self.presenters.error.present(OnboardError.memberImageIsNil)
-            return nil
-        }
-        var member = PCMemberStruct()
-        member.firstName = self.firstName
-        member.lastName = self.lastName
-        member.image = image
-        member.status = .onReview
-        return member
-    }
-
-    private func createOrganization() -> PCOrganizationStruct? {
-        guard let name = self.organizationName, name.isEmpty == false else {
-            self.presenters.error.present(OnboardError.organizationNameIsEmpty)
-            return nil
-        }
-        guard let inn = self.organizationInn, inn.isEmpty == false else {
-            self.presenters.error.present(OnboardError.organizationInnIsEmpty)
-            return nil
-        }
-        guard let contact = self.organizationContact, contact.isEmpty == false else {
-            self.presenters.error.present(OnboardError.organizationContactIsEmpty)
-            return nil
-        }
-        guard let phone = self.organizationPhone, phone.isEmpty == false else {
-            self.presenters.error.present(OnboardError.organizationPhoneIsEmpty)
-            return nil
-        }
-        guard let image = self.organizationImage else {
-            self.presenters.error.present(OnboardError.organizationImageIsNil)
-            return nil
-        }
-        var organization = PCOrganizationStruct()
-        organization.name = name
-        organization.inn = inn
-        organization.contact = contact
-        organization.phone = phone
-        organization.image = image
-        organization.status = .onReview
-        return organization
-    }
-
-    private func registerMember(in organization: PCOrganization) {
-        guard let member = self.createMember() else {
-            return
-        }
-        self.presenters.activity.increment()
-        self.services.authentication.add(member: member, in: organization) { [weak self] (result) in
-            guard let sSelf = self else { return }
-            sSelf.presenters.activity.decrement()
-            switch result {
-            case .success:
-                sSelf.presenters.confirmation.present(title: "Ваши данные отправлены в обработку", message: "Дождитесь пока администратор одобрит вашу заявку на вступление в клуб", actionTitle: "Спасибо", withCancelAction: false) { [weak sSelf] in
-                    guard let ssSelf = sSelf else { return }
-                    ssSelf.output?.onboard(module: ssSelf, didAddMember: member, inside: ssSelf.router?.main)
-                }
-            case .failure(let error):
-                sSelf.presenters.error.present(error)
-            }
-        }
-    }
-
-    private func registerOrganization() {
-        guard let organization = self.createOrganization() else {
-            return
-        }
-        self.presenters.activity.increment()
-        self.services.authentication.add(organization: organization) { [weak self] (result) in
-            guard let sSelf = self else { return }
-            sSelf.presenters.activity.decrement()
-            switch result {
-            case .success:
-                sSelf.presenters.confirmation.present(title: "Ваши данные отправлены в обработку", message: "Дождитесь пока администратор одобрит вашу заявку на вступление в клуб", actionTitle: "Спасибо", withCancelAction: false) { [weak sSelf] in
-                    guard let ssSelf = sSelf else { return }
-                    ssSelf.output?.onboard(module: ssSelf, didAddOrganization: organization, inside: ssSelf.router?.main)
-                }
-            case .failure(let error):
-                sSelf.presenters.error.present(error)
-            }
-        }
-    }
-
-    private func registerSupplier() {
-        guard let supplier = self.createSupplier() else {
-            return
-        }
-        self.presenters.activity.increment()
-        self.services.authentication.add(supplier: supplier) { [weak self] result in
-            guard let sSelf = self else { return }
-            sSelf.presenters.activity.decrement()
-            switch result {
-            case .success:
-                sSelf.presenters.confirmation.present(title: "Ваши данные отправлены в обработку", message: "Дождитесь пока администратор одобрит вашу заявку на вступление в клуб", actionTitle: "Спасибо", withCancelAction: false) { [weak sSelf] in
-                    guard let ssSelf = sSelf else { return }
-                    ssSelf.output?.onboard(module: ssSelf, didAddSupplier: supplier, inside: ssSelf.router?.main)
-                }
-            case .failure(let error):
-                sSelf.presenters.error.present(error)
-            }
-        }
-    }
-
     private func isValid(email: String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
 
@@ -471,3 +253,4 @@ extension OnboardPresenter {
         return emailTest.evaluate(with: email)
     }
 }
+

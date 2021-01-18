@@ -20,6 +20,12 @@ public protocol ConfirmationPresenter {
     func present(title: String, message: String, actionTitle: String?, withCancelAction: Bool, completion: (() -> Void)?)
 }
 
+public extension ConfirmationPresenter {
+    func present(title: String, message: String, actionTitle: String?, withCancelAction: Bool) {
+        self.present(title: title, message: message, actionTitle: actionTitle, withCancelAction: withCancelAction, completion: nil)
+    }
+}
+
 public protocol ConfirmationPresenterFactory {
     func make() -> ConfirmationPresenter
 }

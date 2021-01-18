@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		0E06F95D25B49D5100E975F6 /* AppPush.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E06F95C25B49D5100E975F6 /* AppPush.swift */; };
+		0E06F96625B541B700E975F6 /* UIViewController+Raise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E06F96525B541B700E975F6 /* UIViewController+Raise.swift */; };
+		0E06F96E25B552ED00E975F6 /* AddRoleModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E06F96D25B552ED00E975F6 /* AddRoleModule.swift */; };
+		0E06F97125B552FB00E975F6 /* AddRolePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E06F97025B552FB00E975F6 /* AddRolePresenter.swift */; };
+		0E06F97425B5530700E975F6 /* AddRoleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E06F97325B5530700E975F6 /* AddRoleFactory.swift */; };
+		0E06F97725B5531900E975F6 /* AddRoleDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E06F97625B5531900E975F6 /* AddRoleDependencies.swift */; };
 		0E39664324FCABAD0008266D /* OnboardSignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E39664224FCABAD0008266D /* OnboardSignUpView.swift */; };
 		0E39664624FCABD70008266D /* OnboardSignUpViewBeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E39664524FCABD70008266D /* OnboardSignUpViewBeta.swift */; };
 		0E39664824FCAC020008266D /* OnboardSignUpViewBeta.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E39664724FCAC020008266D /* OnboardSignUpViewBeta.storyboard */; };
@@ -73,7 +78,6 @@
 		0E90498A24F60D250061A605 /* SelectRoleViewAlpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E90498924F60D250061A605 /* SelectRoleViewAlpha.swift */; };
 		0E90499224F6142A0061A605 /* OnboardPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E90499124F6142A0061A605 /* OnboardPresenter.swift */; };
 		0E90499424F614390061A605 /* OnboardModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E90499324F614390061A605 /* OnboardModule.swift */; };
-		0E90499624F615E80061A605 /* OnboardRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E90499524F615E80061A605 /* OnboardRouter.swift */; };
 		0E90499824F6160F0061A605 /* OnboardFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E90499724F6160F0061A605 /* OnboardFactory.swift */; };
 		0E90499A24F624770061A605 /* OnboardError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E90499924F624770061A605 /* OnboardError.swift */; };
 		0E90499C24F62A6D0061A605 /* OnboardDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E90499B24F62A6D0061A605 /* OnboardDependencies.swift */; };
@@ -328,6 +332,11 @@
 
 /* Begin PBXFileReference section */
 		0E06F95C25B49D5100E975F6 /* AppPush.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPush.swift; sourceTree = "<group>"; };
+		0E06F96525B541B700E975F6 /* UIViewController+Raise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Raise.swift"; sourceTree = "<group>"; };
+		0E06F96D25B552ED00E975F6 /* AddRoleModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRoleModule.swift; sourceTree = "<group>"; };
+		0E06F97025B552FB00E975F6 /* AddRolePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRolePresenter.swift; sourceTree = "<group>"; };
+		0E06F97325B5530700E975F6 /* AddRoleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRoleFactory.swift; sourceTree = "<group>"; };
+		0E06F97625B5531900E975F6 /* AddRoleDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRoleDependencies.swift; sourceTree = "<group>"; };
 		0E39664224FCABAD0008266D /* OnboardSignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardSignUpView.swift; sourceTree = "<group>"; };
 		0E39664524FCABD70008266D /* OnboardSignUpViewBeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardSignUpViewBeta.swift; sourceTree = "<group>"; };
 		0E39664724FCAC020008266D /* OnboardSignUpViewBeta.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OnboardSignUpViewBeta.storyboard; sourceTree = "<group>"; };
@@ -394,7 +403,6 @@
 		0E90498924F60D250061A605 /* SelectRoleViewAlpha.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRoleViewAlpha.swift; sourceTree = "<group>"; };
 		0E90499124F6142A0061A605 /* OnboardPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardPresenter.swift; sourceTree = "<group>"; };
 		0E90499324F614390061A605 /* OnboardModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardModule.swift; sourceTree = "<group>"; };
-		0E90499524F615E80061A605 /* OnboardRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardRouter.swift; sourceTree = "<group>"; };
 		0E90499724F6160F0061A605 /* OnboardFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardFactory.swift; sourceTree = "<group>"; };
 		0E90499924F624770061A605 /* OnboardError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardError.swift; sourceTree = "<group>"; };
 		0E90499B24F62A6D0061A605 /* OnboardDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardDependencies.swift; sourceTree = "<group>"; };
@@ -663,6 +671,54 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0E06F96425B541A300E975F6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0E06F96525B541B700E975F6 /* UIViewController+Raise.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		0E06F96925B5529300E975F6 /* AddRole */ = {
+			isa = PBXGroup;
+			children = (
+				0E06F96A25B5529D00E975F6 /* Factory */,
+				0E06F96B25B552A600E975F6 /* Presenter */,
+				0E06F96C25B552AC00E975F6 /* View */,
+			);
+			path = AddRole;
+			sourceTree = "<group>";
+		};
+		0E06F96A25B5529D00E975F6 /* Factory */ = {
+			isa = PBXGroup;
+			children = (
+				0E06F97325B5530700E975F6 /* AddRoleFactory.swift */,
+				0E06F97625B5531900E975F6 /* AddRoleDependencies.swift */,
+			);
+			path = Factory;
+			sourceTree = "<group>";
+		};
+		0E06F96B25B552A600E975F6 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				0E06F96D25B552ED00E975F6 /* AddRoleModule.swift */,
+				0E06F97025B552FB00E975F6 /* AddRolePresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		0E06F96C25B552AC00E975F6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0E90499D24F62C570061A605 /* OnboardSupplier */,
+				0E506BF724FBC2D600ABA211 /* OnboardOrganization */,
+				0E506BE224FBB14800ABA211 /* OnboardMember */,
+				0E506BEF24FBBF3000ABA211 /* SelectOrganization */,
+				0E90498524F60C810061A605 /* SelectRole */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		0E39664124FCAB750008266D /* OnboardSignUp */ = {
 			isa = PBXGroup;
 			children = (
@@ -1075,9 +1131,9 @@
 		0E90498424F60C740061A605 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				0E06F96925B5529300E975F6 /* AddRole */,
 				FA7ACD352563E6040097800D /* SupplierProfile */,
 				FA7ACD1F25632D400097800D /* OrganizationProfile */,
-				FAE888CC256141040023C232 /* MemberProfile */,
 				FA50B17425A8B1CC003D514B /* AdminAction */,
 				FA50B14425A879C9003D514B /* AdminActions */,
 				FA50B12F25A72286003D514B /* AdminSupplier */,
@@ -1088,6 +1144,7 @@
 				FA8CB849255A7B1000D09B1D /* AdminOrganizations */,
 				FA8CB832255A5B6000D09B1D /* Admin */,
 				FAD7049625500EE100DE8AD7 /* Members */,
+				FAE888CC256141040023C232 /* MemberProfile */,
 				FAD7047D254E824900DE8AD7 /* CommercialOffer */,
 				FA6E8BB6254D9617007B8B4E /* CommercialOffers */,
 				FABB6F03254682B600B93FB8 /* Action */,
@@ -1124,7 +1181,6 @@
 			children = (
 				0E90498F24F613FF0061A605 /* Factory */,
 				0E90498D24F613F20061A605 /* Presenter */,
-				0E90498E24F613FB0061A605 /* Router */,
 				0E90499024F6140D0061A605 /* View */,
 			);
 			path = Onboard;
@@ -1138,14 +1194,6 @@
 				0E90499124F6142A0061A605 /* OnboardPresenter.swift */,
 			);
 			path = Presenter;
-			sourceTree = "<group>";
-		};
-		0E90498E24F613FB0061A605 /* Router */ = {
-			isa = PBXGroup;
-			children = (
-				0E90499524F615E80061A605 /* OnboardRouter.swift */,
-			);
-			path = Router;
 			sourceTree = "<group>";
 		};
 		0E90498F24F613FF0061A605 /* Factory */ = {
@@ -1164,11 +1212,6 @@
 				0E506C4424FCA6B800ABA211 /* OnboardSignIn */,
 				0E39664124FCAB750008266D /* OnboardSignUp */,
 				0E506C3724FC9C9A00ABA211 /* OnboardWelcome */,
-				0E506BE224FBB14800ABA211 /* OnboardMember */,
-				0E506BF724FBC2D600ABA211 /* OnboardOrganization */,
-				0E90499D24F62C570061A605 /* OnboardSupplier */,
-				0E506BEF24FBBF3000ABA211 /* SelectOrganization */,
-				0E90498524F60C810061A605 /* SelectRole */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -1214,6 +1257,7 @@
 			children = (
 				0E772A8E2505174D00D677E6 /* ProfitClub.entitlements */,
 				0EA11EDB24F2B94400133485 /* Application */,
+				0E06F96425B541A300E975F6 /* Extensions */,
 				0E90498424F60C740061A605 /* Presentation */,
 				0EA11EDC24F2B94900133485 /* Resources */,
 				0E6B9721254D655400055570 /* Secrets */,
@@ -3135,6 +3179,7 @@
 				FA7ACD4A2563E7CA0097800D /* SupplierProfileDependencies.swift in Sources */,
 				FA15B70B25473D6A00D29835 /* ActionPresenter.swift in Sources */,
 				FA393C1C254064E700C29F7D /* SupplierActions.swift in Sources */,
+				0E06F97725B5531900E975F6 /* AddRoleDependencies.swift in Sources */,
 				FA566382253F39A400D19D4E /* SupplierDependencies.swift in Sources */,
 				FABB6F0225455EA700B93FB8 /* CurrentActionsTableViewCell.swift in Sources */,
 				FA7ACD322563C3C40097800D /* OrganizationProfileFactory.swift in Sources */,
@@ -3257,7 +3302,9 @@
 				FA8CB82B25583E1900D09B1D /* MemberCurrentActionViewBeta.swift in Sources */,
 				FA8CB855255A7BB000D09B1D /* AdminOrganizationsPresenter.swift in Sources */,
 				FA50B0EA25A64D7D003D514B /* AdminCommercialOffersFactory.swift in Sources */,
+				0E06F97125B552FB00E975F6 /* AddRolePresenter.swift in Sources */,
 				FA17095925651F3F00BE460C /* OnboardWelcomeViewAlpha.swift in Sources */,
+				0E06F96E25B552ED00E975F6 /* AddRoleModule.swift in Sources */,
 				FAE888D9256141A90023C232 /* MemberProfilePresenter.swift in Sources */,
 				0E90498724F60C980061A605 /* SelectRoleView.swift in Sources */,
 				FA69F9C72573A35000F519CB /* MemberCurrentActionsViewAlphaCell.swift in Sources */,
@@ -3288,6 +3335,7 @@
 				0E56175325372DC1005DF4F3 /* PastActionsView.swift in Sources */,
 				0E506C3E24FC9CE700ABA211 /* OnboardWelcomeViewBeta.swift in Sources */,
 				FA7ACD3B2563E6CC0097800D /* SupplierProfileView.swift in Sources */,
+				0E06F96625B541B700E975F6 /* UIViewController+Raise.swift in Sources */,
 				FA8CB8122558053D00D09B1D /* MemberRouter.swift in Sources */,
 				FA50B14C25A87A20003D514B /* AdminActionsDependencies.swift in Sources */,
 				0E90499224F6142A0061A605 /* OnboardPresenter.swift in Sources */,
@@ -3316,7 +3364,6 @@
 				FAD704BA2550156400DE8AD7 /* ApplicationsViewBeta.swift in Sources */,
 				FA0F4C0D25A179580011484E /* AdminApprovedOrganizationsViewAlphaCell.swift in Sources */,
 				FA50B16A25A8AD41003D514B /* AdminActionsApplicationsView.swift in Sources */,
-				0E90499624F615E80061A605 /* OnboardRouter.swift in Sources */,
 				0E39664324FCABAD0008266D /* OnboardSignUpView.swift in Sources */,
 				FA8CB80C2558050500D09B1D /* MemberFactory.swift in Sources */,
 				0E56175A253731ED005DF4F3 /* OrganizationModule.swift in Sources */,
@@ -3383,6 +3430,7 @@
 				FA50B18225A8B235003D514B /* AdminActionPresenter.swift in Sources */,
 				FA50B13725A7231C003D514B /* AdminSupplierDependencies.swift in Sources */,
 				0E90499F24F62C6C0061A605 /* OnboardSupplierView.swift in Sources */,
+				0E06F97425B5530700E975F6 /* AddRoleFactory.swift in Sources */,
 				FA394C9625ADCA50004EAA2B /* AdminCommercialOfferDependencies.swift in Sources */,
 				FA21D85B25729CDD008024F0 /* MemberProfileViewAlpha.swift in Sources */,
 				0E506BFC24FBC37900ABA211 /* OnboardOrganizationViewBeta.swift in Sources */,

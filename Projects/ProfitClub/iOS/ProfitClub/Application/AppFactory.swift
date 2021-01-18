@@ -128,6 +128,11 @@ extension AppFactory {
         let module = self.adminActionFactory.make(action: action, output: output)
         return module
     }
+
+    func addRole(output: AddRoleModuleOutput?) -> AddRoleModule {
+        let module = self.addRoleFactory.make(output: output)
+        return module
+    }
 }
 
 // MARK: - Factories
@@ -232,5 +237,9 @@ private extension AppFactory {
 
     var supplierProfileFactory: SupplierProfileFactory {
         return SupplierProfileFactory(presenters: SupplierProfilePresenters(error: self.errorPresenter(), activity: self.activityPresenter()), services: SupplierProfileServices(supplier: self.supplierService()))
+    }
+
+    var addRoleFactory: AddRoleFactory {
+        return AddRoleFactory(presenters: AddRolePresenters(error: self.errorPresenter(), activity: self.activityPresenter(), confirmation: self.confirmationPresenter()), services: AddRoleServices(authentication: self.authentication, organization: self.organizationService()))
     }
 }

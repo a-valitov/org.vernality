@@ -1,5 +1,5 @@
-//  Copyright (C) 2020 Startup Studio Vernality
-//  Created by Rinat Enikeev on 8/26/20
+//  Copyright (C) 2021 Startup Studio Vernality
+//  Created by Rinat Enikeev on 18.01.2021
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -15,14 +15,19 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import Foundation
-import Main
-import ProfitClubModel
+import PCAuthentication
+import PCOrganizationService
+import ErrorPresenter
+import ConfirmationPresenter
+import ActivityPresenter
 
-protocol OnboardModule: class {
-    var viewController: UIViewController { get }
+struct AddRolePresenters {
+    let error: ErrorPresenter
+    let activity: ActivityPresenter
+    let confirmation: ConfirmationPresenter
 }
 
-protocol OnboardModuleOutput: class {
-    func onboard(module: OnboardModule, didLogin user: PCUser)
-    func onboard(module: OnboardModule, didRegister user: PCUser)
+struct AddRoleServices {
+    let authentication: PCAuthentication
+    let organization: PCOrganizationService
 }

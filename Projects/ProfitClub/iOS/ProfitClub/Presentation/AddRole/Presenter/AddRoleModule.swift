@@ -1,5 +1,5 @@
-//  Copyright (C) 2020 Startup Studio Vernality
-//  Created by Rinat Enikeev on 8/26/20
+//  Copyright (C) 2021 Startup Studio Vernality
+//  Created by Rinat Enikeev on 18.01.2021
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -14,15 +14,15 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import Foundation
-import Main
+import UIKit
 import ProfitClubModel
 
-protocol OnboardModule: class {
+protocol AddRoleModule: class {
     var viewController: UIViewController { get }
 }
 
-protocol OnboardModuleOutput: class {
-    func onboard(module: OnboardModule, didLogin user: PCUser)
-    func onboard(module: OnboardModule, didRegister user: PCUser)
+protocol AddRoleModuleOutput: class {
+    func addRole(module: AddRoleModule, didAddSupplier supplier: PCSupplier)
+    func addRole(module: AddRoleModule, didAddOrganization organization: PCOrganization)
+    func addRole(module: AddRoleModule, didAddMember member: PCMember)
 }

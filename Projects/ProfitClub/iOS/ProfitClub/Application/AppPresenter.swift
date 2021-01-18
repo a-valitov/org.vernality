@@ -69,28 +69,50 @@ final class AppPresenter {
 
     // modules construction
     var main: MainModule {
-        if let mainModule = self.weakMain {
-            return mainModule
+        if let main = self.weakMain {
+            return main
         } else {
-            let mainModule = self.factory.main(output: self)
-            self.weakMain = mainModule
-            return mainModule
+            let main = self.factory.main(output: self)
+            self.weakMain = main
+            return main
         }
     }
 
     var review: ReviewModule {
-        if let reviewModule = self.weakReview {
-            return reviewModule
+        if let review = self.weakReview {
+            return review
         } else {
-            let reviewModule = self.factory.review(output: self)
-            self.weakReview = reviewModule
-            return reviewModule
+            let review = self.factory.review(output: self)
+            self.weakReview = review
+            return review
+        }
+    }
+
+    var onboard: OnboardModule {
+        if let onboard = self.weakOnboard {
+            return onboard
+        } else {
+            let onboard = self.factory.onboard(output: self)
+            self.weakOnboard = onboard
+            return onboard
+        }
+    }
+
+    var addRole: AddRoleModule {
+        if let addRole = self.weakAddRole {
+            return addRole
+        } else {
+            let addRole = self.factory.addRole(output: self)
+            self.weakAddRole = addRole
+            return addRole
         }
     }
 
     // weak modules
     private weak var weakMain: MainModule?
     private weak var weakReview: ReviewModule?
+    private weak var weakOnboard: OnboardModule?
+    private weak var weakAddRole: AddRoleModule?
 }
 
 // MARK: - Push Notifications handling
@@ -117,6 +139,23 @@ extension AppPresenter {
     }
 }
 
+extension AppPresenter: AddRoleModuleOutput {
+    func addRole(module: AddRoleModule, didAddSupplier supplier: PCSupplier) {
+        self.main.unwindToRoot()
+        self.main.push(self.review.viewController, animated: true)
+    }
+
+    func addRole(module: AddRoleModule, didAddOrganization organization: PCOrganization) {
+        self.main.unwindToRoot()
+        self.main.push(self.review.viewController, animated: true)
+    }
+
+    func addRole(module: AddRoleModule, didAddMember member: PCMember) {
+        self.main.unwindToRoot()
+        self.main.push(self.review.viewController, animated: true)
+    }
+}
+
 extension AppPresenter: AdminActionModuleOutput {
     func adminAction(module: AdminActionModule, didApprove action: PCAction) {
         self.main.unraise(animated: true)
@@ -132,47 +171,28 @@ extension AppPresenter: MainModuleOutput {
         if self.isLoggedIn {
             self.main.push(self.review.viewController, animated: true)
         } else {
-            let onboard = self.factory.onboard(output: self)
-            onboard.start(in: module)
+            self.main.push(self.onboard.viewController, animated: true)
         }
     }
 }
 
 extension AppPresenter: OnboardModuleOutput {
-    func onboard(module: OnboardModule, didAddSupplier supplier: PCSupplier, inside main: MainModule?) {
+    func onboard(module: OnboardModule, didLogin user: PCUser) {
         self.main.push(self.review.viewController, animated: true)
     }
 
-    func onboard(module: OnboardModule, didAddOrganization organization: PCOrganization, inside main: MainModule?) {
-        self.main.push(self.review.viewController, animated: true)
-    }
-
-    func onboard(module: OnboardModule, didAddMember member: PCMember, inside main: MainModule?) {
-        self.main.push(self.review.viewController, animated: true)
-    }
-
-    func onboard(module: OnboardModule, didLogin user: PCUser, inside main: MainModule?) {
-        self.main.push(self.review.viewController, animated: true)
+    func onboard(module: OnboardModule, didRegister user: PCUser) {
+        self.main.push(self.addRole.viewController, animated: true)
     }
 }
 
 extension AppPresenter: ReviewModuleOutput {
     func reviewUserWantsToLogout(module: ReviewModule) {
-        self.userService.logout { [weak self] result in
-            switch result {
-            case .failure(let error):
-                self?.errorPresenter.present(error)
-            case .success:
-                self?.main.unwindToRoot()
-                let onboard = self?.factory.onboard(output: self)
-                onboard?.start(in: self?.main)
-            }
-        }
+        self.logout()
     }
 
     func reviewUserWantsToAddRole(module: ReviewModule) {
-        let onboard = self.factory.onboard(output: self)
-        onboard.onboard(in: self.main)
+        self.main.push(self.addRole.viewController, animated: true)
     }
 
     func reviewUserWantsToEnterAdmin(module: ReviewModule) {
@@ -209,16 +229,7 @@ extension AppPresenter: OrganizationModuleOutput {
     }
 
     func organization(module: OrganizationModule, userWantsToLogoutInside main: MainModule?) {
-        self.userService.logout { [weak self] result in
-            switch result {
-            case .failure(let error):
-                self?.errorPresenter.present(error)
-            case .success:
-                main?.unwindToRoot()
-                let onboard = self?.factory.onboard(output: self)
-                onboard?.start(in: main)
-            }
-        }
+        self.logout()
     }
 
     func organization(module: OrganizationModule, userWantsToChangeRole main: MainModule?) {
@@ -229,16 +240,7 @@ extension AppPresenter: OrganizationModuleOutput {
 
 extension AppPresenter: SupplierModuleOutput {
     func supplier(module: SupplierModule, userWantsToLogoutInside main: MainModule?) {
-        self.userService.logout { [weak self] result in
-            switch result {
-            case .failure(let error):
-                self?.errorPresenter.present(error)
-            case .success:
-                main?.unwindToRoot()
-                let onboard = self?.factory.onboard(output: self)
-                onboard?.start(in: main)
-            }
-        }
+        self.logout()
     }
 
     func supplier(module: SupplierModule, userWantsToOpenProfileOf supplier: PCSupplier, inside main: MainModule?) {
@@ -259,16 +261,7 @@ extension AppPresenter: MemberModuleOutput {
     }
 
     func member(module: MemberModule, userWantsToLogoutInside main: MainModule?) {
-        self.userService.logout { [weak self] result in
-            switch result {
-            case .failure(let error):
-                self?.errorPresenter.present(error)
-            case .success:
-                main?.unwindToRoot()
-                let onboard = self?.factory.onboard(output: self)
-                onboard?.start(in: main)
-            }
-        }
+        self.logout()
     }
 
     func member(module: MemberModule, userWantsToChangeRole main: MainModule?) {
@@ -297,20 +290,27 @@ extension AppPresenter: SupplierProfileModuleOutput {
 
 extension AppPresenter: AdminModuleOutput {
     func admin(module: AdminModule, userWantsToLogoutInside main: MainModule?) {
-        self.userService.logout { [weak self] result in
-            switch result {
-            case .failure(let error):
-                self?.errorPresenter.present(error)
-            case .success:
-                main?.unwindToRoot()
-                let onboard = self?.factory.onboard(output: self)
-                onboard?.start(in: main)
-            }
-        }
+        self.logout()
     }
 
     func admin(module: AdminModule, userWantsToChangeRole main: MainModule?) {
         main?.unwindToRoot()
         self.main.push(self.review.viewController, animated: true)
+    }
+}
+
+// MARK: - Private
+extension AppPresenter {
+    private func logout() {
+        self.userService.logout { [weak self] result in
+            guard let sSelf = self else { return }
+            switch result {
+            case .failure(let error):
+                sSelf.errorPresenter.present(error)
+            case .success:
+                sSelf.main.unwindToRoot()
+                sSelf.main.push(sSelf.onboard.viewController, animated: true)
+            }
+        }
     }
 }
