@@ -71,8 +71,7 @@ final class OnboardRouter {
 
     @discardableResult
     func openSelectOrganization(output: SelectOrganizationViewOutput?) -> SelectOrganizationViewInput {
-        let storyboard = UIStoryboard(name: "SelectOrganizationViewBeta", bundle: nil)
-        let selectOrganization = storyboard.instantiateInitialViewController() as! SelectOrganizationViewBeta
+        let selectOrganization = SelectOrganizationViewAlpha()
         selectOrganization.output = output
         self.main?.push(selectOrganization, animated: true)
         return selectOrganization
