@@ -23,7 +23,9 @@ import ProfitClubModel
 
 final class AdminCommercialOfferPresenter: AdminCommercialOfferModule {
     weak var output: AdminCommercialOfferModuleOutput?
-    var router: AdminCommercialOfferRouter?
+    var viewController: UIViewController {
+        return self.adminCommercialOffer
+    }
 
     init(commercialOffer: PCCommercialOffer,
          presenters: AdminCommercialOfferPresenters,
@@ -33,16 +35,24 @@ final class AdminCommercialOfferPresenter: AdminCommercialOfferModule {
         self.services = services
     }
 
-    func open(in main: MainModule?) {
-        self.router?.main = main
-        self.router?.openApplication(output: self)
-    }
-
     private let commercialOffer: PCCommercialOffer
 
     // dependencies
     private let presenters: AdminCommercialOfferPresenters
     private let services: AdminCommercialOfferServices
+
+    // view
+    private var adminCommercialOffer: UIViewController {
+        if let adminCommercialOffer = self.weakAdminCommercialOffer {
+            return adminCommercialOffer
+        } else {
+            let adminCommercialOffer = AdminCommercialOfferApplicationViewAlpha()
+            adminCommercialOffer.output = self
+            self.weakAdminCommercialOffer = adminCommercialOffer
+            return adminCommercialOffer
+        }
+    }
+    private weak var weakAdminCommercialOffer: UIViewController?
 
     // state
     private var fileUrls = [Int: URL]()
@@ -85,7 +95,6 @@ extension AdminCommercialOfferPresenter: AdminCommercialOfferApplicationViewOutp
                 switch result {
                 case .success(let commercialOffer):
                     sSelf.output?.adminCommercialOffer(module: sSelf, didApprove: commercialOffer)
-                    sSelf.router?.closeApplication(view)
                 case .failure(let error):
                     sSelf.presenters.error.present(error)
                 }
@@ -101,7 +110,6 @@ extension AdminCommercialOfferPresenter: AdminCommercialOfferApplicationViewOutp
                 switch result {
                 case .success(let commercialOffer):
                     sSelf.output?.adminCommercialOffer(module: sSelf, didReject: commercialOffer)
-                    sSelf.router?.closeApplication(view)
                 case .failure(let error):
                     sSelf.presenters.error.present(error)
                 }

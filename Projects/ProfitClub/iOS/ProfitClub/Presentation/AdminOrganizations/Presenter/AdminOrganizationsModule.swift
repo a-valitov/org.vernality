@@ -20,7 +20,7 @@ import UIKit
 import ProfitClubModel
 
 protocol AdminOrganizationsModule: class {
-    func embed(in tabBarController: UITabBarController, main: MainModule?)
+    var viewController: UIViewController { get }
     func onDidApprove(organization: PCOrganization)
     func onDidReject(organization: PCOrganization)
 }

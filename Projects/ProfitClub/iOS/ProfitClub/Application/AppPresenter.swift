@@ -107,8 +107,18 @@ final class AppPresenter {
             return addRole
         }
     }
+    var admin: AdminModule {
+        if let admin = self.weakAdmin {
+            return admin
+        } else {
+            let admin = self.factory.admin(output: self)
+            self.weakAdmin = admin
+            return admin
+        }
+    }
 
     // weak modules
+    private weak var weakAdmin: AdminModule?
     private weak var weakMain: MainModule?
     private weak var weakReview: ReviewModule?
     private weak var weakOnboard: OnboardModule?
@@ -128,12 +138,13 @@ extension AppPresenter {
     private func openAdminAction(actionId: String) {
         let actionService = self.factory.actionService()
         actionService.fetch(actionId) { [weak self] result in
+            guard let sSelf = self else { return }
             switch result {
             case .success(let action):
-                let adminAction = self?.factory.adminAction(action: action, output: self)
-                adminAction?.open(in: self?.main)
+                let adminAction = sSelf.factory.adminAction(action: action, output: sSelf)
+                sSelf.main.raise(adminAction.viewController, animated: true)
             case .failure(let error):
-                self?.errorPresenter.present(error)
+                sSelf.errorPresenter.present(error)
             }
         }
     }
@@ -196,8 +207,7 @@ extension AppPresenter: ReviewModuleOutput {
     }
 
     func reviewUserWantsToEnterAdmin(module: ReviewModule) {
-        let admin = self.factory.admin(output: self)
-        admin.open(in: self.main)
+        self.main.push(self.admin.viewController, animated: true)
     }
 
     func review(module: ReviewModule, userWantsToEnter organization: PCOrganization) {
@@ -289,12 +299,12 @@ extension AppPresenter: SupplierProfileModuleOutput {
 }
 
 extension AppPresenter: AdminModuleOutput {
-    func admin(module: AdminModule, userWantsToLogoutInside main: MainModule?) {
+    func adminUserWantsToLogout(module: AdminModule) {
         self.logout()
     }
 
-    func admin(module: AdminModule, userWantsToChangeRole main: MainModule?) {
-        main?.unwindToRoot()
+    func adminUserWantsToChangeRole(module: AdminModule) {
+        self.main.unwindToRoot()
         self.main.push(self.review.viewController, animated: true)
     }
 }

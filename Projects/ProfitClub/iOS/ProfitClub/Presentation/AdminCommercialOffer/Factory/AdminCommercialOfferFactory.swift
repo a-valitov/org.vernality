@@ -27,12 +27,10 @@ final class AdminCommercialOfferFactory {
     }
 
     func make(commercialOffer: PCCommercialOffer, output: AdminCommercialOfferModuleOutput?) -> AdminCommercialOfferModule {
-        let router = AdminCommercialOfferRouter()
         let presenter = AdminCommercialOfferPresenter(commercialOffer: commercialOffer,
                                                       presenters: self.presenters,
                                                       services: self.services)
         presenter.output = output
-        presenter.router = router
         return presenter
     }
 

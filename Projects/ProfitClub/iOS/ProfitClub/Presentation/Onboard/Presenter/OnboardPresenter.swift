@@ -23,7 +23,6 @@ import ProfitClubModel
 
 final class OnboardPresenter: OnboardModule {
     weak var output: OnboardModuleOutput?
-//    var router: OnboardRouter?
     var viewController: UIViewController {
         return self.welcome
     }

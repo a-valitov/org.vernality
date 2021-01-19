@@ -23,7 +23,9 @@ import ProfitClubModel
 
 final class AdminActionPresenter: AdminActionModule {
     weak var output: AdminActionModuleOutput?
-    var router: AdminActionRouter?
+    var viewController: UIViewController {
+        return self.adminAction
+    }
 
     init(action: PCAction,
          presenters: AdminActionPresenters,
@@ -33,16 +35,24 @@ final class AdminActionPresenter: AdminActionModule {
         self.services = services
     }
 
-    func open(in main: MainModule?) {
-        self.router?.main = main
-        self.router?.openApplication(output: self)
-    }
-
     private let action: PCAction
 
     // dependencies
     private let presenters: AdminActionPresenters
     private let services: AdminActionServices
+
+    // view
+    private var adminAction: UIViewController {
+        if let adminAction = self.weakAdminAction {
+            return adminAction
+        } else {
+            let adminAction = AdminActionApplicationViewAlpha()
+            adminAction.output = self
+            self.weakAdminAction = adminAction
+            return adminAction
+        }
+    }
+    private weak var weakAdminAction: UIViewController?
 }
 
 extension AdminActionPresenter: AdminActionApplicationViewOutput {
@@ -64,7 +74,6 @@ extension AdminActionPresenter: AdminActionApplicationViewOutput {
                 switch result {
                 case .success(let action):
                     sSelf.output?.adminAction(module: sSelf, didApprove: action)
-                    sSelf.router?.closeApplication(view)
                 case .failure(let error):
                     sSelf.presenters.error.present(error)
                 }
@@ -80,7 +89,6 @@ extension AdminActionPresenter: AdminActionApplicationViewOutput {
                 switch result {
                 case .success(let action):
                     sSelf.output?.adminAction(module: sSelf, didReject: action)
-                    sSelf.router?.closeApplication(view)
                 case .failure(let error):
                     sSelf.presenters.error.present(error)
                 }

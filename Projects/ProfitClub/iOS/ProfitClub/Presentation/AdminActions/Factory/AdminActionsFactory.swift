@@ -26,11 +26,9 @@ final class AdminActionsFactory {
     }
 
     func make(output: AdminActionsModuleOutput?) -> AdminActionsModule {
-        let router = AdminActionsRouter()
         let presenter = AdminActionsPresenter(presenters: self.presenters,
                                               services: self.services)
         presenter.output = output
-        presenter.router = router
         return presenter
     }
 

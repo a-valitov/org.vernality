@@ -18,10 +18,10 @@ import Foundation
 import Main
 
 protocol AdminModule: class {
-    func open(in main: MainModule?)
+    var viewController: UIViewController { get }
 }
 
 protocol AdminModuleOutput: class {
-    func admin(module: AdminModule, userWantsToLogoutInside main: MainModule?)
-    func admin(module: AdminModule, userWantsToChangeRole main: MainModule?)
+    func adminUserWantsToLogout(module: AdminModule)
+    func adminUserWantsToChangeRole(module: AdminModule)
 }

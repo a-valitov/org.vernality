@@ -19,7 +19,8 @@ import Main
 import ProfitClubModel
 
 protocol AdminActionsModule: class {
-    func embed(in tabBarController: UITabBarController, main: MainModule?)
+    var viewController: UIViewController { get }
+    
     func onDidApprove(action: PCAction)
     func onDidReject(action: PCAction)
 }
