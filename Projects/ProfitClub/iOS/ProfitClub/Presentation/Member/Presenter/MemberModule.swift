@@ -20,11 +20,11 @@ import ProfitClubModel
 
 protocol MemberModule: class {
     var member: PCMember { get set }
-    func open(in main: MainModule?)
+    var viewController: UIViewController { get }
 }
 
 protocol MemberModuleOutput: class {
-    func member(module: MemberModule, userWantsToOpenProfileOf member: PCMember, inside main: MainModule? )
-    func member(module: MemberModule, userWantsToLogoutInside main: MainModule?)
-    func member(module: MemberModule, userWantsToChangeRole main: MainModule?)
+    func member(module: MemberModule, userWantsToOpenProfileOf member: PCMember)
+    func memberUserWantsToLogout(module: MemberModule)
+    func memberUserWantsToChangeRole(module: MemberModule)
 }

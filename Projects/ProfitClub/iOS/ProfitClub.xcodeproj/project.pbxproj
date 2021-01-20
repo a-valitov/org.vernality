@@ -237,7 +237,6 @@
 		FA8CB80C2558050500D09B1D /* MemberFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8CB80B2558050500D09B1D /* MemberFactory.swift */; };
 		FA8CB80E2558051A00D09B1D /* MemberModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8CB80D2558051A00D09B1D /* MemberModule.swift */; };
 		FA8CB8102558052600D09B1D /* MemberPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8CB80F2558052600D09B1D /* MemberPresenter.swift */; };
-		FA8CB8122558053D00D09B1D /* MemberRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8CB8112558053D00D09B1D /* MemberRouter.swift */; };
 		FA8CB81D2558149E00D09B1D /* MemberCurrentActionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8CB81C2558149E00D09B1D /* MemberCurrentActionsView.swift */; };
 		FA8CB820255814B300D09B1D /* MemberCurrentActionsViewBeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA8CB81F255814B300D09B1D /* MemberCurrentActionsViewBeta.swift */; };
 		FA8CB822255814BB00D09B1D /* MemberCurrentActionsViewBeta.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA8CB821255814BB00D09B1D /* MemberCurrentActionsViewBeta.storyboard */; };
@@ -551,7 +550,6 @@
 		FA8CB80B2558050500D09B1D /* MemberFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberFactory.swift; sourceTree = "<group>"; };
 		FA8CB80D2558051A00D09B1D /* MemberModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberModule.swift; sourceTree = "<group>"; };
 		FA8CB80F2558052600D09B1D /* MemberPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberPresenter.swift; sourceTree = "<group>"; };
-		FA8CB8112558053D00D09B1D /* MemberRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberRouter.swift; sourceTree = "<group>"; };
 		FA8CB81C2558149E00D09B1D /* MemberCurrentActionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberCurrentActionsView.swift; sourceTree = "<group>"; };
 		FA8CB81F255814B300D09B1D /* MemberCurrentActionsViewBeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberCurrentActionsViewBeta.swift; sourceTree = "<group>"; };
 		FA8CB821255814BB00D09B1D /* MemberCurrentActionsViewBeta.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MemberCurrentActionsViewBeta.storyboard; sourceTree = "<group>"; };
@@ -2282,7 +2280,6 @@
 			children = (
 				FA8CB808255804C400D09B1D /* Factory */,
 				FA8CB807255804B900D09B1D /* Presenter */,
-				FA8CB806255804B200D09B1D /* Router */,
 				FA8CB805255804AD00D09B1D /* Views */,
 			);
 			path = Member;
@@ -2295,14 +2292,6 @@
 				FA8CB82625583DE500D09B1D /* MemberCurrentAction */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		FA8CB806255804B200D09B1D /* Router */ = {
-			isa = PBXGroup;
-			children = (
-				FA8CB8112558053D00D09B1D /* MemberRouter.swift */,
-			);
-			path = Router;
 			sourceTree = "<group>";
 		};
 		FA8CB807255804B900D09B1D /* Presenter */ = {
@@ -3164,7 +3153,6 @@
 				0E506C3E24FC9CE700ABA211 /* OnboardWelcomeViewBeta.swift in Sources */,
 				FA7ACD3B2563E6CC0097800D /* SupplierProfileView.swift in Sources */,
 				0E06F96625B541B700E975F6 /* UIViewController+Raise.swift in Sources */,
-				FA8CB8122558053D00D09B1D /* MemberRouter.swift in Sources */,
 				FA50B14C25A87A20003D514B /* AdminActionsDependencies.swift in Sources */,
 				0E90499224F6142A0061A605 /* OnboardPresenter.swift in Sources */,
 				FABB6F092546831800B93FB8 /* ApproveCurrentActionViewBeta.swift in Sources */,

@@ -61,9 +61,6 @@ final class AppPresenter {
         return self.userService.user?.roles?.contains(.administrator) ?? false
     }
 
-    // modules
-    private weak var memberModule: MemberModule?
-
     // modules construction
     private var main: MainModule {
         if let main = self.weakMain {
@@ -131,8 +128,18 @@ final class AppPresenter {
             return supplier
         }
     }
+    private func member(for member: PCMember) -> MemberModule {
+        if let member = self.weakMember {
+            return member
+        } else {
+            let member = self.factory.member(member: member, output: self)
+            self.weakMember = member
+            return member
+        }
+    }
 
     // weak modules
+    private weak var weakMember: MemberModule?
     private weak var weakOrganization: OrganizationModule?
     private weak var weakSupplier: SupplierModule?
     private weak var weakAdmin: AdminModule?
@@ -241,9 +248,8 @@ extension AppPresenter: ReviewModuleOutput {
 
     func review(module: ReviewModule, userWantsToEnter member: PCMember) {
         assert(member.status == .approved)
-        let memberModule = self.factory.member(member: member, output: self)
-        memberModule.open(in: self.main)
-        self.memberModule = memberModule
+        let memberModule = self.member(for: member)
+        self.main.push(memberModule.viewController, animated: true)
     }
 }
 
@@ -278,24 +284,24 @@ extension AppPresenter: SupplierModuleOutput {
 }
 
 extension AppPresenter: MemberModuleOutput {
-    func member(module: MemberModule, userWantsToOpenProfileOf member: PCMember, inside main: MainModule? ) {
+    func member(module: MemberModule, userWantsToOpenProfileOf member: PCMember) {
         let profile = self.factory.memberProfile(member: member, output: self)
-        profile.open(in: main)
+        profile.open(in: self.main)
     }
-
-    func member(module: MemberModule, userWantsToLogoutInside main: MainModule?) {
+    
+    func memberUserWantsToLogout(module: MemberModule) {
         self.logout()
     }
 
-    func member(module: MemberModule, userWantsToChangeRole main: MainModule?) {
-        main?.unwindToRoot()
+    func memberUserWantsToChangeRole(module: MemberModule) {
+        self.main.unwindToRoot()
         self.main.push(self.review.viewController, animated: true)
     }
 }
 
 extension AppPresenter: MemberProfileModuleOutput {
     func memberProfile(module: MemberProfileModule, didUpdate member: PCMember) {
-        self.memberModule?.member = member
+        self.weakMember?.member = member
     }
 }
 

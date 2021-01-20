@@ -23,7 +23,9 @@ import ProfitClubModel
 
 final class MemberPresenter: MemberModule {
     weak var output: MemberModuleOutput?
-    var router: MemberRouter?
+    var viewController: UIViewController {
+        return self.memberCurrentActionsView
+    }
 
     var member: PCMember
 
@@ -35,14 +37,41 @@ final class MemberPresenter: MemberModule {
         self.services = services
     }
 
-    func open(in main: MainModule?) {
-        self.router?.main = main
-        self.router?.openMemberCurrentActions(output: self)
-    }
-
     // dependencies
     private let presenters: MemberPresenters
     private let services: MemberServices
+
+    // views
+    private var memberCurrentActionsView: UIViewController {
+        if let memberCurrentActionsView = self.weakMemberCurrentActionsView {
+            return memberCurrentActionsView
+        } else {
+            let memberCurrentActionsView = MemberCurrentActionsViewAlpha()
+            memberCurrentActionsView.output = self
+            self.weakMemberCurrentActionsView = memberCurrentActionsView
+            return memberCurrentActionsView
+        }
+    }
+    private func memberCurrentActionView(_ action: PCAction) -> UIViewController {
+        if let memberCurrentActionView = self.weakMemberCurrentActionView {
+            return memberCurrentActionView
+        } else {
+            let memberCurrentActionView = MemberCurrentActionViewAlpha()
+            memberCurrentActionView.output = self
+            memberCurrentActionView.organizationName = action.supplier?.name
+            memberCurrentActionView.actionImageUrl = action.imageUrl
+            memberCurrentActionView.actionMessage = action.message
+            memberCurrentActionView.actionDescription = action.descriptionOf
+            memberCurrentActionView.actionLink = action.link
+            memberCurrentActionView.actionStartDate = action.startDate
+            memberCurrentActionView.actionEndDate = action.endDate
+            self.weakMemberCurrentActionView = memberCurrentActionView
+            return memberCurrentActionView
+        }
+    }
+
+    private weak var weakMemberCurrentActionsView: UIViewController?
+    private weak var weakMemberCurrentActionView: UIViewController?
 }
 
 extension MemberPresenter: MemberCurrentActionsViewOutput {
@@ -58,23 +87,24 @@ extension MemberPresenter: MemberCurrentActionsViewOutput {
     }
 
     func memberCurrentActions(view: MemberCurrentActionsViewInput, didSelect action: PCAction) {
-        self.router?.openMemberCurrentAction(action: action, output: self)
+        let currentActionView = self.memberCurrentActionView(action)
+        view.raise(currentActionView, animated: true)
     }
 
     func memberCurrentActions(view: MemberCurrentActionsViewInput, tappenOn menuBarButton: Any) {
         let profile = MenuItem(title: "Профиль", image: #imageLiteral(resourceName: "profile")) { [weak self] in
             guard let sSelf = self else { return }
-            sSelf.output?.member(module: sSelf, userWantsToOpenProfileOf: sSelf.member, inside: sSelf.router?.main)
+            sSelf.output?.member(module: sSelf, userWantsToOpenProfileOf: sSelf.member)
         }
         let changeRole = MenuItem(title: "Сменить роль", image: #imageLiteral(resourceName: "refresh")) { [weak self] in
             guard let sSelf = self else { return }
-            sSelf.output?.member(module: sSelf, userWantsToChangeRole: sSelf.router?.main)
+            sSelf.output?.memberUserWantsToChangeRole(module: sSelf)
         }
         let logout = MenuItem(title: "Выйти", image: #imageLiteral(resourceName: "logout")) { [weak self] in
             guard let sSelf = self else { return }
             sSelf.presenters.confirmation.present(title: "Подтвердите выход", message: "Вы уверены что хотите выйти?", actionTitle: "Выйти", withCancelAction: true) { [weak sSelf] in
                 guard let ssSelf = sSelf else { return }
-                ssSelf.output?.member(module: ssSelf, userWantsToLogoutInside: ssSelf.router?.main)
+                ssSelf.output?.memberUserWantsToLogout(module: ssSelf)
             }
         }
         self.presenters.menu.present(items: [profile, changeRole, logout])
