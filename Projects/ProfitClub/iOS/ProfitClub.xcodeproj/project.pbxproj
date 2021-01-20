@@ -220,7 +220,6 @@
 		FA7ACD252563C2FA0097800D /* OrganizationProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7ACD242563C2FA0097800D /* OrganizationProfileView.swift */; };
 		FA7ACD282563C3170097800D /* OrganizationProfileViewBeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7ACD272563C3170097800D /* OrganizationProfileViewBeta.swift */; };
 		FA7ACD2A2563C31F0097800D /* OrganizationProfileViewBeta.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA7ACD292563C31F0097800D /* OrganizationProfileViewBeta.storyboard */; };
-		FA7ACD2C2563C3A70097800D /* OrganizationProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7ACD2B2563C3A70097800D /* OrganizationProfileRouter.swift */; };
 		FA7ACD2E2563C3B20097800D /* OrganizationProfileModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7ACD2D2563C3B20097800D /* OrganizationProfileModule.swift */; };
 		FA7ACD302563C3BA0097800D /* OrganizationProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7ACD2F2563C3BA0097800D /* OrganizationProfilePresenter.swift */; };
 		FA7ACD322563C3C40097800D /* OrganizationProfileFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7ACD312563C3C40097800D /* OrganizationProfileFactory.swift */; };
@@ -533,7 +532,6 @@
 		FA7ACD242563C2FA0097800D /* OrganizationProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationProfileView.swift; sourceTree = "<group>"; };
 		FA7ACD272563C3170097800D /* OrganizationProfileViewBeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationProfileViewBeta.swift; sourceTree = "<group>"; };
 		FA7ACD292563C31F0097800D /* OrganizationProfileViewBeta.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OrganizationProfileViewBeta.storyboard; sourceTree = "<group>"; };
-		FA7ACD2B2563C3A70097800D /* OrganizationProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationProfileRouter.swift; sourceTree = "<group>"; };
 		FA7ACD2D2563C3B20097800D /* OrganizationProfileModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationProfileModule.swift; sourceTree = "<group>"; };
 		FA7ACD2F2563C3BA0097800D /* OrganizationProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationProfilePresenter.swift; sourceTree = "<group>"; };
 		FA7ACD312563C3C40097800D /* OrganizationProfileFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationProfileFactory.swift; sourceTree = "<group>"; };
@@ -2168,7 +2166,6 @@
 			children = (
 				FA7ACD2325632DF10097800D /* Factory */,
 				FA7ACD2225632DEC0097800D /* Presenter */,
-				FA7ACD2125632DDE0097800D /* Router */,
 				FA7ACD2025632DDA0097800D /* View */,
 			);
 			path = OrganizationProfile;
@@ -2182,14 +2179,6 @@
 				FA7ACD262563C2FD0097800D /* Beta */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		FA7ACD2125632DDE0097800D /* Router */ = {
-			isa = PBXGroup;
-			children = (
-				FA7ACD2B2563C3A70097800D /* OrganizationProfileRouter.swift */,
-			);
-			path = Router;
 			sourceTree = "<group>";
 		};
 		FA7ACD2225632DEC0097800D /* Presenter */ = {
@@ -3018,7 +3007,6 @@
 				0E56175D2537321C005DF4F3 /* OrganizationPresenter.swift in Sources */,
 				FA0F4C0025A12D550011484E /* AdminTabBarViewAlpha.swift in Sources */,
 				FA1C2BEF2550547D008F3994 /* MemberViewCell.swift in Sources */,
-				FA7ACD2C2563C3A70097800D /* OrganizationProfileRouter.swift in Sources */,
 				FA50B16E25A8AE82003D514B /* AdminApprovedActionsView.swift in Sources */,
 				FA69FA022573A78500F519CB /* ApproveCurrentActionViewAlpha.swift in Sources */,
 				FA6E8BBC254D96A2007B8B4E /* CommercialOffersFactory.swift in Sources */,

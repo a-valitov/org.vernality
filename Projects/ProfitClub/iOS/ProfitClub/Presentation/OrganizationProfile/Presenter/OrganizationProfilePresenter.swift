@@ -21,7 +21,9 @@ import ProfitClubModel
 
 final class OrganizationProfilePresenter: OrganizationProfileModule {
     weak var output: OrganizationProfileModuleOutput?
-    var router: OrganizationProfileRouter?
+    var viewController: UIViewController {
+        return self.view
+    }
 
     init(organization: PCOrganization,
          presenters: OrganizationProfilePresenters,
@@ -31,10 +33,6 @@ final class OrganizationProfilePresenter: OrganizationProfileModule {
         self.services = services
     }
 
-    func open(in main: MainModule?) {
-        self.router?.main = main
-        self.view = self.router?.openOrganizationProfile(organization: self.organization, output: self)
-    }
 
     // dependencies
     private let presenters: OrganizationProfilePresenters
@@ -42,7 +40,25 @@ final class OrganizationProfilePresenter: OrganizationProfileModule {
 
     // state
     private var organization: PCOrganization
-    private weak var view: OrganizationProfileViewInput?
+
+    // view
+    private var view: UIViewController {
+        if let view = self.weakView {
+            return view
+        } else {
+            let view = OrganizationProfileViewAlpha()
+            view.output = self
+            view.email = self.organization.owner?.email
+            view.organizationName = self.organization.name
+            view.organizationINN = self.organization.inn
+            view.organizationContactName = self.organization.contact
+            view.organizationPhoneNumber = self.organization.phone
+            view.organizationImageUrl = self.organization.imageUrl
+            self.weakView = view
+            return view
+        }
+    }
+    private weak var weakView: OrganizationProfileViewInput?
 }
 
 extension OrganizationProfilePresenter: OrganizationProfileViewOutput {
@@ -54,7 +70,7 @@ extension OrganizationProfilePresenter: OrganizationProfileViewOutput {
             switch result {
             case .success(let organization):
                 sSelf.organization = organization
-                sSelf.view?.organizationImageUrl = organization.imageUrl
+                sSelf.weakView?.organizationImageUrl = organization.imageUrl
                 sSelf.output?.organizationProfile(module: sSelf, didUpdate: organization)
             case .failure(let error):
                 sSelf.presenters.error.present(error)

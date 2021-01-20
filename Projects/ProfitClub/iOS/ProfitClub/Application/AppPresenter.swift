@@ -137,8 +137,18 @@ final class AppPresenter {
             return member
         }
     }
+    private func profile(for organization: PCOrganization) -> OrganizationProfileModule {
+        if let profile = self.weakOrganizationProfile {
+            return profile
+        } else {
+            let profile = self.factory.organizationProfile(organization: organization, output: self)
+            self.weakOrganizationProfile = profile
+            return profile
+        }
+    }
 
     // weak modules
+    private weak var weakOrganizationProfile: OrganizationProfileModule?
     private weak var weakMember: MemberModule?
     private weak var weakOrganization: OrganizationModule?
     private weak var weakSupplier: SupplierModule?
@@ -255,8 +265,8 @@ extension AppPresenter: ReviewModuleOutput {
 
 extension AppPresenter: OrganizationModuleOutput {
     func organization(module: OrganizationModule, userWantsToOpenProfileOf organization: PCOrganization) {
-        let profile = self.factory.organizationProfile(organization: organization, output: self)
-        profile.open(in: self.main)
+        let organizationProfileModule = self.profile(for: organization)
+        self.main.push(organizationProfileModule.viewController, animated: true)
     }
     func organizationUserWantsToLogout(module: OrganizationModule) {
         self.logout()
