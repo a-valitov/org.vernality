@@ -21,7 +21,9 @@ import ProfitClubModel
 
 final class SupplierProfilePresenter: SupplierProfileModule {
     weak var output: SupplierProfileModuleOutput?
-    var router: SupplierProfileRouter?
+    var viewController: UIViewController {
+        return self.view
+    }
 
     init(supplier: PCSupplier,
          presenters: SupplierProfilePresenters,
@@ -31,17 +33,30 @@ final class SupplierProfilePresenter: SupplierProfileModule {
         self.services = services
     }
 
-    func open(in main: MainModule?) {
-        self.router?.main = main
-        self.view = self.router?.openSupplierProfile(supplier: self.supplier, output: self)
-    }
-
     private let presenters: SupplierProfilePresenters
     private let services: SupplierProfileServices
 
     // state
     private var supplier: PCSupplier
-    private weak var view: SupplierProfileViewInput?
+
+    // view
+    private var view: UIViewController {
+        if let view = self.weakView {
+            return view
+        } else {
+            let view = SupplierProfileViewAlpha()
+            view.output = self
+            view.email = supplier.owner?.email
+            view.supplierName = supplier.name
+            view.supplierINN = supplier.inn
+            view.supplierContactName = supplier.contact
+            view.supplierPhoneNumber = supplier.phone
+            view.supplierImageUrl = supplier.imageUrl
+            self.weakView = view
+            return view
+        }
+    }
+    private weak var weakView: SupplierProfileViewInput?
 }
 
 extension SupplierProfilePresenter: SupplierProfileViewOutput {
@@ -53,7 +68,7 @@ extension SupplierProfilePresenter: SupplierProfileViewOutput {
             switch result {
             case .success(let supplier):
                 sSelf.supplier = supplier
-                sSelf.view?.supplierImageUrl = supplier.imageUrl
+                sSelf.weakView?.supplierImageUrl = supplier.imageUrl
                 sSelf.output?.supplierProfile(module: sSelf, didUpdate: supplier)
             case .failure(let error):
                 sSelf.presenters.error.present(error)

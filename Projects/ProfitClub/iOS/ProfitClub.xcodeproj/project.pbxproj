@@ -227,7 +227,6 @@
 		FA7ACD3B2563E6CC0097800D /* SupplierProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7ACD3A2563E6CC0097800D /* SupplierProfileView.swift */; };
 		FA7ACD3E2563E6DC0097800D /* SupplierProfileVeiwBeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7ACD3D2563E6DC0097800D /* SupplierProfileVeiwBeta.swift */; };
 		FA7ACD402563E7290097800D /* SupplierProfileViewBeta.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA7ACD3F2563E7290097800D /* SupplierProfileViewBeta.storyboard */; };
-		FA7ACD422563E79F0097800D /* SupplierProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7ACD412563E79F0097800D /* SupplierProfileRouter.swift */; };
 		FA7ACD442563E7A90097800D /* SupplierProfileModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7ACD432563E7A90097800D /* SupplierProfileModule.swift */; };
 		FA7ACD462563E7B30097800D /* SupplierProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7ACD452563E7B20097800D /* SupplierProfilePresenter.swift */; };
 		FA7ACD482563E7BC0097800D /* SupplierProfileFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7ACD472563E7BC0097800D /* SupplierProfileFactory.swift */; };
@@ -539,7 +538,6 @@
 		FA7ACD3A2563E6CC0097800D /* SupplierProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplierProfileView.swift; sourceTree = "<group>"; };
 		FA7ACD3D2563E6DC0097800D /* SupplierProfileVeiwBeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplierProfileVeiwBeta.swift; sourceTree = "<group>"; };
 		FA7ACD3F2563E7290097800D /* SupplierProfileViewBeta.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SupplierProfileViewBeta.storyboard; sourceTree = "<group>"; };
-		FA7ACD412563E79F0097800D /* SupplierProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplierProfileRouter.swift; sourceTree = "<group>"; };
 		FA7ACD432563E7A90097800D /* SupplierProfileModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplierProfileModule.swift; sourceTree = "<group>"; };
 		FA7ACD452563E7B20097800D /* SupplierProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplierProfilePresenter.swift; sourceTree = "<group>"; };
 		FA7ACD472563E7BC0097800D /* SupplierProfileFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplierProfileFactory.swift; sourceTree = "<group>"; };
@@ -2213,7 +2211,6 @@
 			children = (
 				FA7ACD392563E6AE0097800D /* Factory */,
 				FA7ACD382563E6A80097800D /* Presenter */,
-				FA7ACD372563E6A30097800D /* Router */,
 				FA7ACD362563E69F0097800D /* View */,
 			);
 			path = SupplierProfile;
@@ -2227,14 +2224,6 @@
 				FA7ACD3C2563E6D00097800D /* Beta */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		FA7ACD372563E6A30097800D /* Router */ = {
-			isa = PBXGroup;
-			children = (
-				FA7ACD412563E79F0097800D /* SupplierProfileRouter.swift */,
-			);
-			path = Router;
 			sourceTree = "<group>";
 		};
 		FA7ACD382563E6A80097800D /* Presenter */ = {
@@ -3176,7 +3165,6 @@
 				0E56176725373305005DF4F3 /* OrganizationTabBarView.swift in Sources */,
 				FA69F9C62573A35000F519CB /* MemberCurrentActionsViewAlpha.swift in Sources */,
 				FA50B18825A8B259003D514B /* AdminActionFactory.swift in Sources */,
-				FA7ACD422563E79F0097800D /* SupplierProfileRouter.swift in Sources */,
 				FAD704B72550155100DE8AD7 /* ApplicationsView.swift in Sources */,
 				FA21D80325701C34008024F0 /* ReviewViewAlphaSupplierCell.swift in Sources */,
 				FA8CB84F255A7B8800D09B1D /* AdminOrganizationsFactory.swift in Sources */,
