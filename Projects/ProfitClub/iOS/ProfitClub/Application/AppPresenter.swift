@@ -155,8 +155,18 @@ final class AppPresenter {
             return profile
         }
     }
+    private func profile(for member: PCMember) -> MemberProfileModule {
+        if let profile = self.weakMemberProfile {
+            return profile
+        } else {
+            let profile = self.factory.memberProfile(member: member, output: self)
+            self.weakMemberProfile = profile
+            return profile
+        }
+    }
 
     // weak modules
+    private weak var weakMemberProfile: MemberProfileModule?
     private weak var weakSupplierProfile: SupplierProfileModule?
     private weak var weakOrganizationProfile: OrganizationProfileModule?
     private weak var weakMember: MemberModule?
@@ -305,8 +315,8 @@ extension AppPresenter: SupplierModuleOutput {
 
 extension AppPresenter: MemberModuleOutput {
     func member(module: MemberModule, userWantsToOpenProfileOf member: PCMember) {
-        let profile = self.factory.memberProfile(member: member, output: self)
-        profile.open(in: self.main)
+        let memberProfileModule = self.profile(for: member)
+        self.main.push(memberProfileModule.viewController, animated: true)
     }
     
     func memberUserWantsToLogout(module: MemberModule) {

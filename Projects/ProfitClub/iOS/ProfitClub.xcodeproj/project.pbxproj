@@ -64,7 +64,6 @@
 		0E56176725373305005DF4F3 /* OrganizationTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E56176625373305005DF4F3 /* OrganizationTabBarView.swift */; };
 		0E56176B25373349005DF4F3 /* OrganizationTabBarViewBeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E56176A25373349005DF4F3 /* OrganizationTabBarViewBeta.swift */; };
 		0E6B9723254D656500055570 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6B9722254D656500055570 /* Secrets.swift */; };
-		0E6FBA582545ABAF00A2B882 /* ActionsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6FBA572545ABAF00A2B882 /* ActionsRouter.swift */; };
 		0E6FBA5C2545ABEF00A2B882 /* ActionsModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6FBA5B2545ABEF00A2B882 /* ActionsModule.swift */; };
 		0E6FBA5F2545AC3900A2B882 /* ActionsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6FBA5E2545AC3900A2B882 /* ActionsPresenter.swift */; };
 		0E6FBA622545AC7C00A2B882 /* ActionsDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6FBA612545AC7C00A2B882 /* ActionsDependencies.swift */; };
@@ -306,7 +305,6 @@
 		FAE888D52561418B0023C232 /* MemberProfileDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE888D42561418B0023C232 /* MemberProfileDependencies.swift */; };
 		FAE888D72561419D0023C232 /* MemberProfileModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE888D62561419D0023C232 /* MemberProfileModule.swift */; };
 		FAE888D9256141A90023C232 /* MemberProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE888D8256141A90023C232 /* MemberProfilePresenter.swift */; };
-		FAE888DB256141B70023C232 /* MemberProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE888DA256141B70023C232 /* MemberProfileRouter.swift */; };
 		FAE888DD256141C90023C232 /* MemberProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE888DC256141C90023C232 /* MemberProfileView.swift */; };
 		FAE888E0256141DD0023C232 /* MemberProfileViewBeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE888DF256141DD0023C232 /* MemberProfileViewBeta.swift */; };
 		FAE888E2256141E90023C232 /* MemberProfileViewBeta.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAE888E1256141E90023C232 /* MemberProfileViewBeta.storyboard */; };
@@ -370,7 +368,6 @@
 		0E56176625373305005DF4F3 /* OrganizationTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationTabBarView.swift; sourceTree = "<group>"; };
 		0E56176A25373349005DF4F3 /* OrganizationTabBarViewBeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationTabBarViewBeta.swift; sourceTree = "<group>"; };
 		0E6B9722254D656500055570 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
-		0E6FBA572545ABAF00A2B882 /* ActionsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsRouter.swift; sourceTree = "<group>"; };
 		0E6FBA5B2545ABEF00A2B882 /* ActionsModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsModule.swift; sourceTree = "<group>"; };
 		0E6FBA5E2545AC3900A2B882 /* ActionsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsPresenter.swift; sourceTree = "<group>"; };
 		0E6FBA612545AC7C00A2B882 /* ActionsDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionsDependencies.swift; sourceTree = "<group>"; };
@@ -617,7 +614,6 @@
 		FAE888D42561418B0023C232 /* MemberProfileDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberProfileDependencies.swift; sourceTree = "<group>"; };
 		FAE888D62561419D0023C232 /* MemberProfileModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberProfileModule.swift; sourceTree = "<group>"; };
 		FAE888D8256141A90023C232 /* MemberProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberProfilePresenter.swift; sourceTree = "<group>"; };
-		FAE888DA256141B70023C232 /* MemberProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberProfileRouter.swift; sourceTree = "<group>"; };
 		FAE888DC256141C90023C232 /* MemberProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberProfileView.swift; sourceTree = "<group>"; };
 		FAE888DF256141DD0023C232 /* MemberProfileViewBeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberProfileViewBeta.swift; sourceTree = "<group>"; };
 		FAE888E1256141E90023C232 /* MemberProfileViewBeta.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MemberProfileViewBeta.storyboard; sourceTree = "<group>"; };
@@ -948,7 +944,6 @@
 			children = (
 				0E6FBA562545A9F100A2B882 /* Factory */,
 				0E6FBA542545A9E400A2B882 /* Presenter */,
-				0E6FBA552545A9EA00A2B882 /* Router */,
 				0E56172A25372AD6005DF4F3 /* View */,
 			);
 			path = Actions;
@@ -1056,14 +1051,6 @@
 				0E6FBA5E2545AC3900A2B882 /* ActionsPresenter.swift */,
 			);
 			path = Presenter;
-			sourceTree = "<group>";
-		};
-		0E6FBA552545A9EA00A2B882 /* Router */ = {
-			isa = PBXGroup;
-			children = (
-				0E6FBA572545ABAF00A2B882 /* ActionsRouter.swift */,
-			);
-			path = Router;
 			sourceTree = "<group>";
 		};
 		0E6FBA562545A9F100A2B882 /* Factory */ = {
@@ -2738,7 +2725,6 @@
 			children = (
 				FAE888D0256141310023C232 /* Factory */,
 				FAE888CF2561412B0023C232 /* Presenter */,
-				FAE888CE256141260023C232 /* Router */,
 				FAE888CD256141210023C232 /* View */,
 			);
 			path = MemberProfile;
@@ -2750,14 +2736,6 @@
 				FAE888D1256141400023C232 /* MemberProfile */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		FAE888CE256141260023C232 /* Router */ = {
-			isa = PBXGroup;
-			children = (
-				FAE888DA256141B70023C232 /* MemberProfileRouter.swift */,
-			);
-			path = Router;
 			sourceTree = "<group>";
 		};
 		FAE888CF2561412B0023C232 /* Presenter */ = {
@@ -3060,7 +3038,6 @@
 				FA7ACD282563C3170097800D /* OrganizationProfileViewBeta.swift in Sources */,
 				FA21D85E2572BE2B008024F0 /* OrganizationProfileViewAlpha.swift in Sources */,
 				FA50B15025A87A32003D514B /* AdminActionsPresenter.swift in Sources */,
-				FAE888DB256141B70023C232 /* MemberProfileRouter.swift in Sources */,
 				FABB6F06254682FD00B93FB8 /* ApproveCurrentActionView.swift in Sources */,
 				FA394C9925ADCA7C004EAA2B /* AdminCommercialOfferApplicationView.swift in Sources */,
 				FA7ACD2E2563C3B20097800D /* OrganizationProfileModule.swift in Sources */,
@@ -3080,7 +3057,6 @@
 				FA69F9FF2573A77300F519CB /* ActionsContainerViewAlpha.swift in Sources */,
 				FA8CB80A255804F900D09B1D /* MemberDependencies.swift in Sources */,
 				FA50B14E25A87A28003D514B /* AdminActionsModule.swift in Sources */,
-				0E6FBA582545ABAF00A2B882 /* ActionsRouter.swift in Sources */,
 				FA69F9EC2573A65500F519CB /* ApproveCommercialOfferViewAlpha.swift in Sources */,
 				FA21D80225701C34008024F0 /* ReviewViewAlphaAdminCell.swift in Sources */,
 				0E5617632537327C005DF4F3 /* OrganizationDependencies.swift in Sources */,

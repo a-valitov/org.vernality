@@ -27,12 +27,10 @@ final class MemberProfileFactory {
     }
 
     func make(member: PCMember, output: MemberProfileModuleOutput?) -> MemberProfileModule {
-        let router = MemberProfileRouter()
         let presenter = MemberProfilePresenter(member: member,
                                                presenters: self.presenters,
                                                services: self.services)
         presenter.output = output
-        presenter.router = router
         return presenter
     }
 
