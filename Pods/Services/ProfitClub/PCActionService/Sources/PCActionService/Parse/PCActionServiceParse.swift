@@ -114,15 +114,31 @@ public final class PCActionServiceParse: PCActionService {
 
     public func reject(action: PCAction, result: @escaping (Result<PCAction, Error>) -> Void) {
         let parseAction = action.parse
-        parseAction.status = .rejected
-        parseAction.saveInBackground { (success, error) in
-            if let error = error {
-                result(.failure(error))
-            } else {
-                result(.success(parseAction.any))
+        if let actionId = parseAction.id {
+            PFCloud.callFunction(inBackground: "rejectAction",
+                                 withParameters: ["actionId": actionId]) { (response, error) in
+                                    if let error = error {
+                                        result(.failure(error))
+                                    } else {
+                                        result(.success(parseAction.any))
+                                    }
             }
+        } else {
+            result(.failure(PCActionServiceError.actionOrUserIdIsNil))
         }
     }
+    
+//    public func reject(action: PCAction, result: @escaping (Result<PCAction, Error>) -> Void) {
+//        let parseAction = action.parse
+//        parseAction.status = .rejected
+//        parseAction.saveInBackground { (success, error) in
+//            if let error = error {
+//                result(.failure(error))
+//            } else {
+//                result(.success(parseAction.any))
+//            }
+//        }
+//    }
 
     public func fetch(_ actionId: String, result: @escaping (Result<PCAction, Error>) -> Void) {
         let query = PFQuery(className: "Action")
