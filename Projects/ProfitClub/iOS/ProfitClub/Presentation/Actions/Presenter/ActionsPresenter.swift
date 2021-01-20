@@ -22,7 +22,9 @@ import ProfitClubModel
 
 final class ActionsPresenter: ActionsModule {
     weak var output: ActionsModuleOutput?
-    var router: ActionsRouter?
+    var viewController: UIViewController {
+        return self.container
+    }
 
     init(presenters: ActionsPresenters,
          services: ActionsServices) {
@@ -30,20 +32,68 @@ final class ActionsPresenter: ActionsModule {
         self.services = services
     }
 
-    func embed(in tabBarController: UITabBarController, main: MainModule?) {
-        self.router?.main = main
-        self.router?.embed(in: tabBarController, output: self)
-    }
-
     // dependencies
     private let presenters: ActionsPresenters
     private let services: ActionsServices
+
+    // views
+    private var container: UIViewController {
+        if let container = self.weakContainer {
+            return container
+        } else {
+            let container = ActionsContainerViewAlpha()
+            container.output = self
+            self.weakContainer = container
+            return container
+        }
+    }
+    private var currentActions: UIViewController {
+        if let currentActions = self.weakCurrentActions {
+            return currentActions
+        } else {
+            let currentActions = CurrentActionsViewAlpha()
+            currentActions.output = self
+            self.weakCurrentActions = currentActions
+            return currentActions
+        }
+    }
+    private var pastActions: UIViewController {
+        if let pastActions = self.weakPastActions {
+            return pastActions
+        } else {
+            let pastActions = PastActionsViewAlpha()
+            pastActions.output = self
+            self.weakPastActions = pastActions
+            return pastActions
+        }
+    }
+    private func pastAction(action: PCAction) -> UIViewController {
+        if let pastAction = self.weakPastAction {
+            return pastAction
+        } else {
+            let pastAction = PastActionViewAlpha()
+            pastAction.output = self
+            pastAction.organizationName = action.supplier?.name
+            pastAction.pastActionImageUrl = action.imageUrl
+            pastAction.pastActionMessage = action.message
+            pastAction.pastActionDescription = action.descriptionOf
+            pastAction.pastActionStartDate = action.startDate
+            pastAction.pastActionEndDate = action.endDate
+            self.weakPastAction = pastAction
+            return pastAction
+        }
+    }
+
+    private weak var weakContainer: UIViewController?
+    private weak var weakCurrentActions: UIViewController?
+    private weak var weakPastActions: UIViewController?
+    private weak var weakPastAction: UIViewController?
 }
 
 extension ActionsPresenter: ActionsContainerViewOutput {
     func actionsContainerDidLoad(view: ActionsContainerViewInput) {
-        view.current = router?.buildCurrentActions(output: self)
-        view.past = router?.buildPastActions(output: self)
+        view.current = self.currentActions
+        view.past = self.pastActions
     }
 
     func actionsContainer(view: ActionsContainerViewInput, didChangeState state: ActionsContainerState) {
@@ -92,7 +142,8 @@ extension ActionsPresenter: PastActionsViewOutput {
     }
 
     func pastActions(view: PastActionsViewInput, didSelect pastAction: PCAction) {
-        self.router?.openPastAction(action: pastAction, output: self)
+        let viewController = self.pastAction(action: pastAction)
+        view.raise(viewController, animated: true)
     }
 
     func pastActions(view: PastActionsViewInput, userWantsToRefresh sender: Any) {

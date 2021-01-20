@@ -23,7 +23,9 @@ import ProfitClubModel
 
 final class MembersPresenter: MembersModule {
     weak var output: MembersModuleOutput?
-    var router: MembersRouter?
+    var viewController: UIViewController {
+        return self.container
+    }
 
     init(organization: PCOrganization,
         presenters: MembersPresenters,
@@ -32,12 +34,7 @@ final class MembersPresenter: MembersModule {
         self.presenters = presenters
         self.services = services
     }
-
-    func embed(in tabBarController: UITabBarController, main: MainModule?) {
-        self.router?.main = main
-        self.router?.embed(in: tabBarController, output: self)
-    }
-
+    
     private let organization: PCOrganization
 
     // dependencies
@@ -45,13 +42,46 @@ final class MembersPresenter: MembersModule {
     private let services: MembersServices
 
     // submodules
-    private weak var membersOfOrganization: MembersOfOrganizationViewInput?
+    private var container: UIViewController {
+        if let container = self.weakContainer {
+            return container
+        } else {
+            let container = MembersContainerViewAlpha()
+            container.output = self
+            self.weakContainer = container
+            return container
+        }
+    }
+    private var applications: UIViewController {
+        if let applications = self.weakApplications {
+            return applications
+        } else {
+            let applications = ApplicationsViewAlpha()
+            applications.output = self
+            self.weakApplications = applications
+            return applications
+        }
+    }
+    private var members: UIViewController {
+        if let members = self.weakMembers {
+            return members
+        } else {
+            let members = MembersOfOrganizationViewAlpha()
+            members.output = self
+            self.weakMembers = members
+            return members
+        }
+    }
+
+    private weak var weakContainer: UIViewController?
+    private weak var weakApplications: UIViewController?
+    private weak var weakMembers: MembersOfOrganizationViewInput?
 }
 
 extension MembersPresenter: MembersContainerViewOutput {
     func membersContainerDidLoad(view: MembersContainerViewInput) {
-        view.membersOfOrganization = router?.buildMembersOfOrganization(output: self)
-        view.applications = router?.buildApplications(output: self)
+        view.membersOfOrganization = self.members
+        view.applications = self.applications
     }
 
     func membersContainer(view: MembersContainerViewInput, didChangeState state: MembersContainerState) {
@@ -61,12 +91,10 @@ extension MembersPresenter: MembersContainerViewOutput {
 
 extension MembersPresenter: MembersOfOrganizationViewOutput {
     func membersOfOrganizationDidLoad(view: MembersOfOrganizationViewInput) {
-        self.membersOfOrganization = view
         self.reloadMembersOfOrganization()
     }
 
     func membersOfOrganization(view: MembersOfOrganizationViewInput, userWantsToRefresh sender: Any) {
-        self.membersOfOrganization = view
         self.reloadMembersOfOrganization()
     }
 
@@ -130,7 +158,7 @@ extension MembersPresenter {
         self.services.organization.fetchApprovedMembersOfOrganization(organization) { [weak self] (result) in
                 switch result {
                 case .success(let members):
-                    self?.membersOfOrganization?.members = members
+                    self?.weakMembers?.members = members
                 case .failure(let error):
                     self?.presenters.error.present(error)
                 }

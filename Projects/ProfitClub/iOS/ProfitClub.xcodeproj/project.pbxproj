@@ -60,7 +60,6 @@
 		0E561757253731CD005DF4F3 /* OrganizationFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E561756253731CD005DF4F3 /* OrganizationFactory.swift */; };
 		0E56175A253731ED005DF4F3 /* OrganizationModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E561759253731ED005DF4F3 /* OrganizationModule.swift */; };
 		0E56175D2537321C005DF4F3 /* OrganizationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E56175C2537321C005DF4F3 /* OrganizationPresenter.swift */; };
-		0E5617602537324E005DF4F3 /* OrganizationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E56175F2537324E005DF4F3 /* OrganizationRouter.swift */; };
 		0E5617632537327C005DF4F3 /* OrganizationDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E5617622537327C005DF4F3 /* OrganizationDependencies.swift */; };
 		0E56176725373305005DF4F3 /* OrganizationTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E56176625373305005DF4F3 /* OrganizationTabBarView.swift */; };
 		0E56176B25373349005DF4F3 /* OrganizationTabBarViewBeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E56176A25373349005DF4F3 /* OrganizationTabBarViewBeta.swift */; };
@@ -103,7 +102,6 @@
 		FA15B70725473D3A00D29835 /* ActionDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA15B70625473D3A00D29835 /* ActionDependencies.swift */; };
 		FA15B70925473D5A00D29835 /* ActionModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA15B70825473D5A00D29835 /* ActionModule.swift */; };
 		FA15B70B25473D6A00D29835 /* ActionPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA15B70A25473D6A00D29835 /* ActionPresenter.swift */; };
-		FA15B70D25473D7A00D29835 /* ActionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA15B70C25473D7A00D29835 /* ActionRouter.swift */; };
 		FA17095925651F3F00BE460C /* OnboardWelcomeViewAlpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA17095825651F3F00BE460C /* OnboardWelcomeViewAlpha.swift */; };
 		FA17095C25655DF200BE460C /* OnboardSignUpViewAlpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA17095B25655DF200BE460C /* OnboardSignUpViewAlpha.swift */; };
 		FA1C2BEF2550547D008F3994 /* MemberViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1C2BEE2550547D008F3994 /* MemberViewCell.swift */; };
@@ -216,7 +214,6 @@
 		FA6E8BBE254D96FE007B8B4E /* CommercialOffersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6E8BBD254D96FE007B8B4E /* CommercialOffersView.swift */; };
 		FA6E8BC1254D9726007B8B4E /* CommercialOffersViewBeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6E8BC0254D9726007B8B4E /* CommercialOffersViewBeta.swift */; };
 		FA6E8BC3254D9732007B8B4E /* CommercialOffersViewBeta.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA6E8BC2254D9732007B8B4E /* CommercialOffersViewBeta.storyboard */; };
-		FA6E8BC5254D9877007B8B4E /* CommercialOffersRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6E8BC4254D9877007B8B4E /* CommercialOffersRouter.swift */; };
 		FA6E8BC7254D997E007B8B4E /* CommercialOffersModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6E8BC6254D997E007B8B4E /* CommercialOffersModule.swift */; };
 		FA6E8BC9254D99D1007B8B4E /* CommercialOffersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6E8BC8254D99D1007B8B4E /* CommercialOffersPresenter.swift */; };
 		FA6E8BCB254D9B3B007B8B4E /* CommercialOffersDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA6E8BCA254D9B3B007B8B4E /* CommercialOffersDependencies.swift */; };
@@ -291,13 +288,11 @@
 		FAD7048D254E89BB00DE8AD7 /* CommercialOfferDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD7048C254E89BB00DE8AD7 /* CommercialOfferDependencies.swift */; };
 		FAD7048F254E89C400DE8AD7 /* CommercialOfferModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD7048E254E89C400DE8AD7 /* CommercialOfferModule.swift */; };
 		FAD70491254E89D000DE8AD7 /* CommercialOfferPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD70490254E89D000DE8AD7 /* CommercialOfferPresenter.swift */; };
-		FAD70493254E89DA00DE8AD7 /* CommercialOfferRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD70492254E89DA00DE8AD7 /* CommercialOfferRouter.swift */; };
 		FAD70495254F392D00DE8AD7 /* FileCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD70494254F392D00DE8AD7 /* FileCollectionViewCell.swift */; };
 		FAD7049C25500F7600DE8AD7 /* MembersDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD7049B25500F7600DE8AD7 /* MembersDependencies.swift */; };
 		FAD7049E25500F8000DE8AD7 /* MembersFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD7049D25500F8000DE8AD7 /* MembersFactory.swift */; };
 		FAD704A02550103600DE8AD7 /* MembersModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD7049F2550103600DE8AD7 /* MembersModule.swift */; };
 		FAD704A22550104000DE8AD7 /* MembersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD704A12550104000DE8AD7 /* MembersPresenter.swift */; };
-		FAD704A42550104E00DE8AD7 /* MembersRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD704A32550104E00DE8AD7 /* MembersRouter.swift */; };
 		FAD704A92550113100DE8AD7 /* MembersContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD704A82550113100DE8AD7 /* MembersContainerView.swift */; };
 		FAD704AC2550114A00DE8AD7 /* MembersContainerViewBeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD704AB2550114A00DE8AD7 /* MembersContainerViewBeta.swift */; };
 		FAD704AE2550115700DE8AD7 /* MembersContainerViewBeta.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAD704AD2550115700DE8AD7 /* MembersContainerViewBeta.storyboard */; };
@@ -375,7 +370,6 @@
 		0E561756253731CD005DF4F3 /* OrganizationFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationFactory.swift; sourceTree = "<group>"; };
 		0E561759253731ED005DF4F3 /* OrganizationModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationModule.swift; sourceTree = "<group>"; };
 		0E56175C2537321C005DF4F3 /* OrganizationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationPresenter.swift; sourceTree = "<group>"; };
-		0E56175F2537324E005DF4F3 /* OrganizationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationRouter.swift; sourceTree = "<group>"; };
 		0E5617622537327C005DF4F3 /* OrganizationDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationDependencies.swift; sourceTree = "<group>"; };
 		0E56176625373305005DF4F3 /* OrganizationTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationTabBarView.swift; sourceTree = "<group>"; };
 		0E56176A25373349005DF4F3 /* OrganizationTabBarViewBeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationTabBarViewBeta.swift; sourceTree = "<group>"; };
@@ -423,7 +417,6 @@
 		FA15B70625473D3A00D29835 /* ActionDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionDependencies.swift; sourceTree = "<group>"; };
 		FA15B70825473D5A00D29835 /* ActionModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionModule.swift; sourceTree = "<group>"; };
 		FA15B70A25473D6A00D29835 /* ActionPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionPresenter.swift; sourceTree = "<group>"; };
-		FA15B70C25473D7A00D29835 /* ActionRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionRouter.swift; sourceTree = "<group>"; };
 		FA17095825651F3F00BE460C /* OnboardWelcomeViewAlpha.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardWelcomeViewAlpha.swift; sourceTree = "<group>"; };
 		FA17095B25655DF200BE460C /* OnboardSignUpViewAlpha.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardSignUpViewAlpha.swift; sourceTree = "<group>"; };
 		FA1C2BEE2550547D008F3994 /* MemberViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberViewCell.swift; sourceTree = "<group>"; };
@@ -536,7 +529,6 @@
 		FA6E8BBD254D96FE007B8B4E /* CommercialOffersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommercialOffersView.swift; sourceTree = "<group>"; };
 		FA6E8BC0254D9726007B8B4E /* CommercialOffersViewBeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommercialOffersViewBeta.swift; sourceTree = "<group>"; };
 		FA6E8BC2254D9732007B8B4E /* CommercialOffersViewBeta.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CommercialOffersViewBeta.storyboard; sourceTree = "<group>"; };
-		FA6E8BC4254D9877007B8B4E /* CommercialOffersRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommercialOffersRouter.swift; sourceTree = "<group>"; };
 		FA6E8BC6254D997E007B8B4E /* CommercialOffersModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommercialOffersModule.swift; sourceTree = "<group>"; };
 		FA6E8BC8254D99D1007B8B4E /* CommercialOffersPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommercialOffersPresenter.swift; sourceTree = "<group>"; };
 		FA6E8BCA254D9B3B007B8B4E /* CommercialOffersDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommercialOffersDependencies.swift; sourceTree = "<group>"; };
@@ -611,13 +603,11 @@
 		FAD7048C254E89BB00DE8AD7 /* CommercialOfferDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommercialOfferDependencies.swift; sourceTree = "<group>"; };
 		FAD7048E254E89C400DE8AD7 /* CommercialOfferModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommercialOfferModule.swift; sourceTree = "<group>"; };
 		FAD70490254E89D000DE8AD7 /* CommercialOfferPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommercialOfferPresenter.swift; sourceTree = "<group>"; };
-		FAD70492254E89DA00DE8AD7 /* CommercialOfferRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommercialOfferRouter.swift; sourceTree = "<group>"; };
 		FAD70494254F392D00DE8AD7 /* FileCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileCollectionViewCell.swift; sourceTree = "<group>"; };
 		FAD7049B25500F7600DE8AD7 /* MembersDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembersDependencies.swift; sourceTree = "<group>"; };
 		FAD7049D25500F8000DE8AD7 /* MembersFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembersFactory.swift; sourceTree = "<group>"; };
 		FAD7049F2550103600DE8AD7 /* MembersModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembersModule.swift; sourceTree = "<group>"; };
 		FAD704A12550104000DE8AD7 /* MembersPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembersPresenter.swift; sourceTree = "<group>"; };
-		FAD704A32550104E00DE8AD7 /* MembersRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembersRouter.swift; sourceTree = "<group>"; };
 		FAD704A82550113100DE8AD7 /* MembersContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembersContainerView.swift; sourceTree = "<group>"; };
 		FAD704AB2550114A00DE8AD7 /* MembersContainerViewBeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembersContainerViewBeta.swift; sourceTree = "<group>"; };
 		FAD704AD2550115700DE8AD7 /* MembersContainerViewBeta.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MembersContainerViewBeta.storyboard; sourceTree = "<group>"; };
@@ -911,7 +901,6 @@
 			children = (
 				0E561720253729BA005DF4F3 /* Factory */,
 				0E561721253729BF005DF4F3 /* Presenter */,
-				0E561722253729C5005DF4F3 /* Router */,
 				0E561723253729C9005DF4F3 /* View */,
 			);
 			path = Organization;
@@ -933,14 +922,6 @@
 				0E56175C2537321C005DF4F3 /* OrganizationPresenter.swift */,
 			);
 			path = Presenter;
-			sourceTree = "<group>";
-		};
-		0E561722253729C5005DF4F3 /* Router */ = {
-			isa = PBXGroup;
-			children = (
-				0E56175F2537324E005DF4F3 /* OrganizationRouter.swift */,
-			);
-			path = Router;
 			sourceTree = "<group>";
 		};
 		0E561723253729C9005DF4F3 /* View */ = {
@@ -1362,14 +1343,6 @@
 				FA0F4C0F25A17C0A0011484E /* OrganizationApplicationViewAlpha.swift */,
 			);
 			path = Alpha;
-			sourceTree = "<group>";
-		};
-		FA15B70125473C4000D29835 /* Router */ = {
-			isa = PBXGroup;
-			children = (
-				FA15B70C25473D7A00D29835 /* ActionRouter.swift */,
-			);
-			path = Router;
 			sourceTree = "<group>";
 		};
 		FA15B70225473C4900D29835 /* Presenter */ = {
@@ -2160,7 +2133,6 @@
 			children = (
 				FA6E8BBA254D965E007B8B4E /* Factory */,
 				FA6E8BB9254D9655007B8B4E /* Presenter */,
-				FA6E8BB8254D964D007B8B4E /* Router */,
 				FA6E8BB7254D9646007B8B4E /* View */,
 			);
 			path = CommercialOffers;
@@ -2174,14 +2146,6 @@
 				FA6E8BBF254D9716007B8B4E /* Beta */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		FA6E8BB8254D964D007B8B4E /* Router */ = {
-			isa = PBXGroup;
-			children = (
-				FA6E8BC4254D9877007B8B4E /* CommercialOffersRouter.swift */,
-			);
-			path = Router;
 			sourceTree = "<group>";
 		};
 		FA6E8BB9254D9655007B8B4E /* Presenter */ = {
@@ -2621,7 +2585,6 @@
 			children = (
 				FA15B70325473C5200D29835 /* Factory */,
 				FA15B70225473C4900D29835 /* Presenter */,
-				FA15B70125473C4000D29835 /* Router */,
 				FABB6F04254682DC00B93FB8 /* View */,
 			);
 			path = Action;
@@ -2649,7 +2612,6 @@
 			children = (
 				FAD70481254E884E00DE8AD7 /* Factory */,
 				FAD70480254E884800DE8AD7 /* Presenter */,
-				FAD7047F254E884200DE8AD7 /* Router */,
 				FAD7047E254E883D00DE8AD7 /* View */,
 			);
 			path = CommercialOffer;
@@ -2661,14 +2623,6 @@
 				FAD70482254E890000DE8AD7 /* ApproveCommercialOffer */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		FAD7047F254E884200DE8AD7 /* Router */ = {
-			isa = PBXGroup;
-			children = (
-				FAD70492254E89DA00DE8AD7 /* CommercialOfferRouter.swift */,
-			);
-			path = Router;
 			sourceTree = "<group>";
 		};
 		FAD70480254E884800DE8AD7 /* Presenter */ = {
@@ -2713,7 +2667,6 @@
 			children = (
 				FAD7049A25500F5200DE8AD7 /* Factory */,
 				FAD7049925500F4800DE8AD7 /* Presenter */,
-				FAD7049825500F4300DE8AD7 /* Router */,
 				FAD7049725500F3E00DE8AD7 /* View */,
 			);
 			path = Members;
@@ -2727,14 +2680,6 @@
 				FAD704A52550105D00DE8AD7 /* MembersContainer */,
 			);
 			path = View;
-			sourceTree = "<group>";
-		};
-		FAD7049825500F4300DE8AD7 /* Router */ = {
-			isa = PBXGroup;
-			children = (
-				FAD704A32550104E00DE8AD7 /* MembersRouter.swift */,
-			);
-			path = Router;
 			sourceTree = "<group>";
 		};
 		FAD7049925500F4800DE8AD7 /* Presenter */ = {
@@ -3092,14 +3037,11 @@
 				FA394C9025ADCA33004EAA2B /* AdminCommercialOfferModule.swift in Sources */,
 				FA8CB83E255A5C0D00D09B1D /* AdminPresenter.swift in Sources */,
 				FA50B0F225A64DE3003D514B /* AdminCommercialOffersDependencies.swift in Sources */,
-				FA15B70D25473D7A00D29835 /* ActionRouter.swift in Sources */,
 				0E56175D2537321C005DF4F3 /* OrganizationPresenter.swift in Sources */,
 				FA0F4C0025A12D550011484E /* AdminTabBarViewAlpha.swift in Sources */,
 				FA1C2BEF2550547D008F3994 /* MemberViewCell.swift in Sources */,
-				FAD704A42550104E00DE8AD7 /* MembersRouter.swift in Sources */,
 				FA7ACD2C2563C3A70097800D /* OrganizationProfileRouter.swift in Sources */,
 				FA50B16E25A8AE82003D514B /* AdminApprovedActionsView.swift in Sources */,
-				FAD70493254E89DA00DE8AD7 /* CommercialOfferRouter.swift in Sources */,
 				FA69FA022573A78500F519CB /* ApproveCurrentActionViewAlpha.swift in Sources */,
 				FA6E8BBC254D96A2007B8B4E /* CommercialOffersFactory.swift in Sources */,
 				FAD704AC2550114A00DE8AD7 /* MembersContainerViewBeta.swift in Sources */,
@@ -3298,7 +3240,6 @@
 				FA8CB820255814B300D09B1D /* MemberCurrentActionsViewBeta.swift in Sources */,
 				FA0F4C0625A13D200011484E /* AdminOrganizationsApplicationsViewAlpha.swift in Sources */,
 				FA69F9DC2573A52300F519CB /* MembersOfOrganizationViewAlphaCell.swift in Sources */,
-				0E5617602537324E005DF4F3 /* OrganizationRouter.swift in Sources */,
 				FA8CB86E255A87E200D09B1D /* AdminApprovedOrganizationsViewBeta.swift in Sources */,
 				FA21D7FF25701C34008024F0 /* ReviewViewAlphaOrganizationCell.swift in Sources */,
 				FA50B11125A709A3003D514B /* AdminSuppliersModule.swift in Sources */,
@@ -3312,7 +3253,6 @@
 				0E56173925372B88005DF4F3 /* CurrentActionsView.swift in Sources */,
 				FA50B17325A8AE95003D514B /* AdminApprovedActionsViewCell.swift in Sources */,
 				0E506BE424FBB16800ABA211 /* OnboardMemberView.swift in Sources */,
-				FA6E8BC5254D9877007B8B4E /* CommercialOffersRouter.swift in Sources */,
 				FA69F9FB2573A76600F519CB /* CurrentActionsViewAlphaTableViewCell.swift in Sources */,
 				FA50B0EE25A64DA4003D514B /* AdminCommercialOffersPresenter.swift in Sources */,
 				FA21D7C5256BB9D6008024F0 /* OnboardResetPasswordViewAlpha.swift in Sources */,

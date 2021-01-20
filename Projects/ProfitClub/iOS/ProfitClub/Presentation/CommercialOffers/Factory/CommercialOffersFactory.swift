@@ -26,11 +26,9 @@ final class CommercialOffersFactory {
     }
 
     func make(output: CommercialOffersModuleOutput?) -> CommercialOffersModule {
-        let router = CommercialOffersRouter()
         let presenter = CommercialOffersPresenter(presenters: self.presenters,
                                                   services: self.services)
         presenter.output = output
-        presenter.router = router
         return presenter
     }
 

@@ -19,12 +19,12 @@ import Main
 import ProfitClubModel
 
 protocol OrganizationModule: class {
+    var viewController: UIViewController { get }
     var organization: PCOrganization { get set }
-    func open(in main: MainModule?)
 }
 
 protocol OrganizationModuleOutput: class {
-    func organization(module: OrganizationModule, userWantsToOpenProfileOf organization: PCOrganization, inside main: MainModule?)
-    func organization(module: OrganizationModule, userWantsToLogoutInside main: MainModule?)
-    func organization(module: OrganizationModule, userWantsToChangeRole main: MainModule?)
+    func organization(module: OrganizationModule, userWantsToOpenProfileOf organization: PCOrganization)
+    func organizationUserWantsToLogout(module: OrganizationModule)
+    func organizationUserWantsToChangeRole(module: OrganizationModule)
 }

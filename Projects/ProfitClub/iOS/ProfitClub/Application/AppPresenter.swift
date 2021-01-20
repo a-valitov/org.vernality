@@ -62,13 +62,11 @@ final class AppPresenter {
     }
 
     // modules
-
-    private weak var organizationModule: OrganizationModule?
     private weak var supplierModule: SupplierModule?
     private weak var memberModule: MemberModule?
 
     // modules construction
-    var main: MainModule {
+    private var main: MainModule {
         if let main = self.weakMain {
             return main
         } else {
@@ -78,7 +76,7 @@ final class AppPresenter {
         }
     }
 
-    var review: ReviewModule {
+    private var review: ReviewModule {
         if let review = self.weakReview {
             return review
         } else {
@@ -88,7 +86,7 @@ final class AppPresenter {
         }
     }
 
-    var onboard: OnboardModule {
+    private var onboard: OnboardModule {
         if let onboard = self.weakOnboard {
             return onboard
         } else {
@@ -98,7 +96,7 @@ final class AppPresenter {
         }
     }
 
-    var addRole: AddRoleModule {
+    private var addRole: AddRoleModule {
         if let addRole = self.weakAddRole {
             return addRole
         } else {
@@ -107,7 +105,7 @@ final class AppPresenter {
             return addRole
         }
     }
-    var admin: AdminModule {
+    private var admin: AdminModule {
         if let admin = self.weakAdmin {
             return admin
         } else {
@@ -116,8 +114,18 @@ final class AppPresenter {
             return admin
         }
     }
+    private func organization(for organization: PCOrganization) -> OrganizationModule {
+        if let organization = self.weakOrganization {
+            return organization
+        } else {
+            let organization = self.factory.organization(organization, output: self)
+            self.weakOrganization = organization
+            return organization
+        }
+    }
 
     // weak modules
+    private weak var weakOrganization: OrganizationModule?
     private weak var weakAdmin: AdminModule?
     private weak var weakMain: MainModule?
     private weak var weakReview: ReviewModule?
@@ -212,9 +220,8 @@ extension AppPresenter: ReviewModuleOutput {
 
     func review(module: ReviewModule, userWantsToEnter organization: PCOrganization) {
         assert(organization.status == .approved)
-        let organizationModule = self.factory.organization(organization, output: self)
-        organizationModule.open(in: self.main)
-        self.organizationModule = organizationModule
+        let organization = self.organization(for: organization)
+        self.main.push(organization.viewController, animated: true)
     }
 
     func review(module: ReviewModule, userWantsToEnter supplier: PCSupplier) {
@@ -233,17 +240,15 @@ extension AppPresenter: ReviewModuleOutput {
 }
 
 extension AppPresenter: OrganizationModuleOutput {
-    func organization(module: OrganizationModule, userWantsToOpenProfileOf organization: PCOrganization, inside main: MainModule?) {
+    func organization(module: OrganizationModule, userWantsToOpenProfileOf organization: PCOrganization) {
         let profile = self.factory.organizationProfile(organization: organization, output: self)
-        profile.open(in: main)
+        profile.open(in: self.main)
     }
-
-    func organization(module: OrganizationModule, userWantsToLogoutInside main: MainModule?) {
+    func organizationUserWantsToLogout(module: OrganizationModule) {
         self.logout()
     }
-
-    func organization(module: OrganizationModule, userWantsToChangeRole main: MainModule?) {
-        main?.unwindToRoot()
+    func organizationUserWantsToChangeRole(module: OrganizationModule) {
+        self.main.unwindToRoot()
         self.main.push(self.review.viewController, animated: true)
     }
 }
@@ -288,7 +293,7 @@ extension AppPresenter: MemberProfileModuleOutput {
 
 extension AppPresenter: OrganizationProfileModuleOutput {
     func organizationProfile(module: OrganizationProfileModule, didUpdate organization: PCOrganization) {
-        self.organizationModule?.organization = organization
+        self.weakOrganization?.organization = organization
     }
 }
 

@@ -27,12 +27,10 @@ final class MembersFactory {
     }
 
     func make(organization: PCOrganization, output: MembersModuleOutput?) -> MembersModule {
-        let router = MembersRouter()
         let presenter = MembersPresenter(organization: organization,
                                          presenters: self.presenters,
                                          services: self.services)
         presenter.output = output
-        presenter.router = router
         return presenter
     }
 

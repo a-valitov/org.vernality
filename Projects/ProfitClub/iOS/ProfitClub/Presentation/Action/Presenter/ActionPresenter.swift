@@ -22,7 +22,9 @@ import ProfitClubModel
 
 final class ActionPresenter: ActionModule {
     weak var output: ActionModuleOutput?
-    var router: ActionRouter?
+    var viewController: UIViewController {
+        return self.actionView
+    }
     
     init(action: PCAction,
          presenters: ActionPresenters,
@@ -31,17 +33,25 @@ final class ActionPresenter: ActionModule {
         self.presenters = presenters
         self.services = services
     }
-    
-    func open(in main: MainModule?) {
-        self.router?.main = main
-        self.router?.openActionView(output: self)
-    }
 
     private let action: PCAction
 
     // dependencies
     private let presenters: ActionPresenters
     private let services: ActionServices
+
+    // views
+    private var actionView: UIViewController {
+        if let actionView = self.weakActionView {
+            return actionView
+        } else {
+            let actionView = ApproveCurrentActionViewAlpha()
+            actionView.output = self
+            self.weakActionView = actionView
+            return actionView
+        }
+    }
+    private weak var weakActionView: UIViewController?
 }
 
 extension ActionPresenter: ApproveCurrentActionViewOutput {
