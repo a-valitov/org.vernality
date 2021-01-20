@@ -62,7 +62,6 @@ final class AppPresenter {
     }
 
     // modules
-    private weak var supplierModule: SupplierModule?
     private weak var memberModule: MemberModule?
 
     // modules construction
@@ -123,9 +122,19 @@ final class AppPresenter {
             return organization
         }
     }
+    private func supplier(for supplier: PCSupplier) -> SupplierModule {
+        if let supplier = self.weakSupplier {
+            return supplier
+        } else {
+            let supplier = self.factory.supplier(supplier: supplier, output: self)
+            self.weakSupplier = supplier
+            return supplier
+        }
+    }
 
     // weak modules
     private weak var weakOrganization: OrganizationModule?
+    private weak var weakSupplier: SupplierModule?
     private weak var weakAdmin: AdminModule?
     private weak var weakMain: MainModule?
     private weak var weakReview: ReviewModule?
@@ -220,15 +229,14 @@ extension AppPresenter: ReviewModuleOutput {
 
     func review(module: ReviewModule, userWantsToEnter organization: PCOrganization) {
         assert(organization.status == .approved)
-        let organization = self.organization(for: organization)
-        self.main.push(organization.viewController, animated: true)
+        let organizationModule = self.organization(for: organization)
+        self.main.push(organizationModule.viewController, animated: true)
     }
 
     func review(module: ReviewModule, userWantsToEnter supplier: PCSupplier) {
         assert(supplier.status == .approved)
-        let supplierModule = self.factory.supplier(supplier: supplier, output: self)
-        supplierModule.open(in: self.main)
-        self.supplierModule = supplierModule
+        let supplierModule = self.supplier(for: supplier)
+        self.main.push(supplierModule.viewController, animated: true)
     }
 
     func review(module: ReviewModule, userWantsToEnter member: PCMember) {
@@ -254,17 +262,17 @@ extension AppPresenter: OrganizationModuleOutput {
 }
 
 extension AppPresenter: SupplierModuleOutput {
-    func supplier(module: SupplierModule, userWantsToLogoutInside main: MainModule?) {
+    func supplier(module: SupplierModule, userWantsToOpenProfileOf supplier: PCSupplier) {
+        let profile = self.factory.supplierProfile(supplier: supplier, output: self)
+        profile.open(in: self.main)
+    }
+    
+    func supplierUserWantsToLogout(module: SupplierModule) {
         self.logout()
     }
 
-    func supplier(module: SupplierModule, userWantsToOpenProfileOf supplier: PCSupplier, inside main: MainModule?) {
-        let profile = self.factory.supplierProfile(supplier: supplier, output: self)
-        profile.open(in: main)
-    }
-
-    func supplier(module: SupplierModule, userWantsToChangeRole main: MainModule?) {
-        main?.unwindToRoot()
+    func supplierUserWantsToChangeRole(module: SupplierModule) {
+        self.main.unwindToRoot()
         self.main.push(self.review.viewController, animated: true)
     }
 }
@@ -299,7 +307,7 @@ extension AppPresenter: OrganizationProfileModuleOutput {
 
 extension AppPresenter: SupplierProfileModuleOutput {
     func supplierProfile(module: SupplierProfileModule, didUpdate supplier: PCSupplier) {
-        self.supplierModule?.supplier = supplier
+        self.weakSupplier?.supplier = supplier
     }
 }
 

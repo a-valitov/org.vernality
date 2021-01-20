@@ -24,9 +24,10 @@ import ProfitClubModel
 
 final class SupplierPresenter: SupplierModule {
     weak var output: SupplierModuleOutput?
-    var router: SupplierRouter?
-
     var supplier: PCSupplier
+    var viewController: UIViewController {
+        return self.supplierView
+    }
 
     init(supplier: PCSupplier,
          presenters: SupplierPresenters,
@@ -36,23 +37,54 @@ final class SupplierPresenter: SupplierModule {
         self.services = services
     }
 
-    func open(in main: MainModule?) {
-        self.router?.main = main
-        self.router?.openSupplierView(output: self)
-    }
-
     // dependencies
     private let presenters: SupplierPresenters
     private let services: SupplierServices
+
+    // views
+    private var supplierView: UIViewController {
+        if let supplierView = self.weakSupplierView {
+            return supplierView
+        } else {
+            let supplierView = SupplierViewAlpha()
+            supplierView.output = self
+            self.weakSupplierView = supplierView
+            return supplierView
+        }
+    }
+    private var supplierActionsView: UIViewController {
+        if let supplierActionsView = self.weakSupplierActionsView {
+            return supplierActionsView
+        } else {
+            let supplierActionsView = SupplierActionsViewAlpha()
+            supplierActionsView.output = self
+            self.weakSupplierActionsView = supplierActionsView
+            return supplierActionsView
+        }
+    }
+    private var supplierCommercialOfferView: UIViewController {
+        if let supplierCommercialOfferView = self.weakSupplierCommercialOfferView {
+            return supplierCommercialOfferView
+        } else {
+            let supplierCommercialOfferView = SupplierCommercialOfferViewAlpha()
+            supplierCommercialOfferView.output = self
+            self.weakSupplierCommercialOfferView = supplierCommercialOfferView
+            return supplierCommercialOfferView
+        }
+    }
+
+    private weak var weakSupplierView: UIViewController?
+    private weak var weakSupplierActionsView: UIViewController?
+    private weak var weakSupplierCommercialOfferView: UIViewController?
 }
 
 extension SupplierPresenter: SupplierViewOutput {
     func supplierView(view: SupplierViewInput, supplierWantsToCreateAction sender: Any) {
-        self.router?.openSupplierActions(output: self)
+        view.navigationController?.pushViewController(self.supplierActionsView, animated: true)
     }
 
     func supplier(view: SupplierViewInput, wantsToCreateCommercialOffer sender: Any) {
-        self.router?.openSupplierCommercialOffer(output: self)
+        view.navigationController?.pushViewController(self.supplierCommercialOfferView, animated: true)
     }
 
     func supplier(view: SupplierViewInput, tappenOn menuBarButton: Any) {
@@ -104,7 +136,7 @@ extension SupplierPresenter: SupplierActionsOutput {
                 sSelf?.presenters.activity.decrement()
                 switch result {
                 case .success:
-                    sSelf?.router?.pop()
+                    view.navigationController?.popViewController(animated: true)
                 case .failure(let error):
                     sSelf?.presenters.error.present(error)
                 }
@@ -138,7 +170,7 @@ extension SupplierPresenter: SupplierCommercialOfferOutput {
                 sSelf?.presenters.activity.decrement()
                 switch result {
                 case .success:
-                    sSelf?.router?.pop()
+                    view.navigationController?.popViewController(animated: true)
                 case .failure(let error):
                     sSelf?.presenters.error.present(error)
                 }
@@ -155,17 +187,17 @@ extension SupplierPresenter {
     func showMenu() {
         let profile = MenuItem(title: "Профиль", image: #imageLiteral(resourceName: "profile")) { [weak self] in
             guard let sSelf = self else { return }
-            sSelf.output?.supplier(module: sSelf, userWantsToOpenProfileOf: sSelf.supplier, inside: sSelf.router?.main)
+            sSelf.output?.supplier(module: sSelf, userWantsToOpenProfileOf: sSelf.supplier)
         }
         let changeRole = MenuItem(title: "Сменить роль", image: #imageLiteral(resourceName: "refresh")) { [weak self] in
             guard let sSelf = self else { return }
-            sSelf.output?.supplier(module: sSelf, userWantsToChangeRole: sSelf.router?.main)
+            sSelf.output?.supplierUserWantsToChangeRole(module: sSelf)
         }
         let logout = MenuItem(title: "Выйти", image: #imageLiteral(resourceName: "logout")) { [weak self] in
             guard let sSelf = self else { return }
             sSelf.presenters.confirmation.present(title: "Подтвердите выход", message: "Вы уверены что хотите выйти?", actionTitle: "Выйти", withCancelAction: true) { [weak sSelf] in
                 guard let ssSelf = sSelf else { return }
-                ssSelf.output?.supplier(module: ssSelf, userWantsToLogoutInside: ssSelf.router?.main)
+                ssSelf.output?.supplierUserWantsToLogout(module: ssSelf)
             }
         }
         self.presenters.menu.present(items: [profile, changeRole, logout])
