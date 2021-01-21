@@ -78,9 +78,7 @@ final class AddRolePresenter: AddRoleModule {
         if let selectOrganization = self.weakSelectOrganization {
             return selectOrganization
         } else {
-            // TODO: @temur make it alpha
-            let storyboard = UIStoryboard(name: "SelectOrganizationViewBeta", bundle: .main)
-            let selectOrganization = storyboard.instantiateInitialViewController() as! SelectOrganizationViewBeta
+            let selectOrganization = SelectOrganizationViewAlpha()
             selectOrganization.output = self
             self.weakSelectOrganization = selectOrganization
             return selectOrganization
