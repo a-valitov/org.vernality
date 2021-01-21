@@ -1,5 +1,5 @@
 //  Copyright (C) 2021 Startup Studio Vernality
-//  Created by Macbook on 07.01.2021
+//  Created by Rinat Enikeev on 18.01.2021
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -14,22 +14,15 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import Foundation
-import Main
+import UIKit
 import ProfitClubModel
 
-final class AdminSupplierRouter {
-    weak var main: MainModule?
+protocol AddRoleModule: class {
+    var viewController: UIViewController { get }
+}
 
-    @discardableResult
-    func openApplication(output: AdminSupplierApplicationViewOutput?) -> AdminSupplierApplicationViewInput {
-        let applicationView = AdminSupplierApplicationViewAlpha()
-        applicationView.output = output
-        self.main?.raise(applicationView, animated: true)
-        return applicationView
-    }
-
-    func closeApplication(_ view: AdminSupplierApplicationViewInput) {
-        self.main?.unraise(animated: true)
-    }
+protocol AddRoleModuleOutput: class {
+    func addRole(module: AddRoleModule, didAddSupplier supplier: PCSupplier)
+    func addRole(module: AddRoleModule, didAddOrganization organization: PCOrganization)
+    func addRole(module: AddRoleModule, didAddMember member: PCMember)
 }

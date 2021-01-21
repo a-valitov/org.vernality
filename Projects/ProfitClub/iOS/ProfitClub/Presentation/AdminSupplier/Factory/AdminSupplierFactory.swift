@@ -27,12 +27,10 @@ final class AdminSupplierFactory {
     }
 
     func make(supplier: PCSupplier, output: AdminSupplierModuleOutput?) -> AdminSupplierModule {
-        let router = AdminSupplierRouter()
         let presenter = AdminSupplierPresenter(supplier: supplier,
                                                presenters: self.presenters,
                                                services: self.services)
         presenter.output = output
-        presenter.router = router
         return presenter
     }
 

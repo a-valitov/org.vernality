@@ -22,7 +22,9 @@ import ProfitClubModel
 
 final class CommercialOfferPresenter: CommercialOfferModule {
     weak var output: CommercialOfferModuleOutput?
-    var router: CommercialOfferRouter?
+    var viewController: UIViewController {
+        return self.commercialOfferView
+    }
 
     init(commercialOffer: PCCommercialOffer,
          presenters: CommercialOfferPresenters,
@@ -30,11 +32,6 @@ final class CommercialOfferPresenter: CommercialOfferModule {
         self.commercialOffer = commercialOffer
         self.presenters = presenters
         self.services = services
-    }
-
-    func open(in main: MainModule?) {
-        self.router?.main = main
-        self.router?.openCommercialOfferView(output: self)
     }
 
     private let commercialOffer: PCCommercialOffer
@@ -45,6 +42,19 @@ final class CommercialOfferPresenter: CommercialOfferModule {
 
     // state
     private var fileUrls = [Int: URL]()
+
+    // views
+    private var commercialOfferView: UIViewController {
+        if let commercialOfferView = self.weakComercialOfferView {
+            return commercialOfferView
+        } else {
+            let commercialOfferView = ApproveCommercialOfferViewAlpha()
+            commercialOfferView.output = self
+            self.weakComercialOfferView = commercialOfferView
+            return commercialOfferView
+        }
+    }
+    private weak var weakComercialOfferView: UIViewController?
 }
 
 extension CommercialOfferPresenter: ApproveCommercialOfferViewOutput {

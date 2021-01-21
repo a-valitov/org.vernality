@@ -20,9 +20,8 @@ import UIKit
 import ProfitClubModel
 
 protocol MembersModule: class {
-    func embed(in tabBarController: UITabBarController, main: MainModule?)
+    var viewController: UIViewController { get }
 }
 
 protocol MembersModuleOutput: class {
-    
 }

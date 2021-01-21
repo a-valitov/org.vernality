@@ -26,11 +26,9 @@ final class ActionsFactory {
     }
 
     func make(output: ActionsModuleOutput?) -> ActionsModule {
-        let router = ActionsRouter()
         let presenter = ActionsPresenter(presenters: self.presenters,
                                          services: self.services)
         presenter.output = output
-        presenter.router = router
         return presenter
     }
 

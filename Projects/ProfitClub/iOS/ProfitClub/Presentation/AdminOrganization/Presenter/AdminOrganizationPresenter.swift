@@ -23,7 +23,9 @@ import ProfitClubModel
 
 final class AdminOrganizationPresenter: AdminOrganizationModule {
     weak var output: AdminOrganizationModuleOutput?
-    var router: AdminOrganizationRouter?
+    var viewController: UIViewController {
+        return self.adminOrganization
+    }
 
     init(organization: PCOrganization,
          presenters: AdminOrganizationPresenters,
@@ -33,16 +35,25 @@ final class AdminOrganizationPresenter: AdminOrganizationModule {
         self.services = services
     }
 
-    func open(in main: MainModule?) {
-        self.router?.main = main
-        self.router?.openApplication(output: self)
-    }
-
     private let organization: PCOrganization
 
     // dependencies
     private let presenters: AdminOrganizationPresenters
     private let services: AdminOrganizationServices
+
+    // view
+    private var adminOrganization: UIViewController {
+        if let adminOrganization = self.weakAdminOrganization {
+            return adminOrganization
+        } else {
+            let adminOrganization = OrganizationApplicationViewAlpha()
+            adminOrganization.output = self
+            self.weakAdminOrganization = adminOrganization
+            return adminOrganization
+        }
+    }
+
+    private weak var weakAdminOrganization: UIViewController?
 }
 
 extension AdminOrganizationPresenter: OrganizationApplicationViewOutput {
@@ -62,7 +73,6 @@ extension AdminOrganizationPresenter: OrganizationApplicationViewOutput {
                 switch result {
                 case .success(let organization):
                     sSelf.output?.adminOrganization(module: sSelf, didApprove: organization)
-                    sSelf.router?.closeApplication(view)
                 case .failure(let error):
                     sSelf.presenters.error.present(error)
                 }
@@ -78,7 +88,6 @@ extension AdminOrganizationPresenter: OrganizationApplicationViewOutput {
                 switch result {
                 case .success(let organization):
                     sSelf.output?.adminOrganization(module: sSelf, didReject: organization)
-                    sSelf.router?.closeApplication(view)
                 case .failure(let error):
                     sSelf.presenters.error.present(error)
                 }

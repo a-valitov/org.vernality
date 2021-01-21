@@ -21,8 +21,22 @@ import MenuPresenter
 import ConfirmationPresenter
 
 final class ReviewPresenter: ReviewModule {
-    var router: ReviewRouter?
     weak var output: ReviewModuleOutput?
+    var viewController: UIViewController {
+        if let view = self.weakView {
+            return view
+        } else {
+            let user = self.services.userService.user
+            let reviewView = ReviewViewAlpha()
+            reviewView.output = self
+            reviewView.members = user?.members?.map({ $0.any }) ?? []
+            reviewView.organizations = user?.organizations?.map({ $0.any }) ?? []
+            reviewView.suppliers = user?.suppliers?.map({ $0.any }) ?? []
+            reviewView.isAdministrator = user?.roles?.contains(.administrator) ?? false
+            self.weakView = reviewView
+            return reviewView
+        }
+    }
 
     init(presenters: ReviewPresenters,
          services: ReviewServices) {
@@ -30,52 +44,34 @@ final class ReviewPresenter: ReviewModule {
         self.services = services
     }
 
-    func start(in main: MainModule?) {
-        self.router?.main = main
-        self.presenters.activity.increment()
-        self.services.userService.reload { result in
-            self.presenters.activity.decrement()
-            switch result {
-            case .success(let user):
-                self.router?.openReview(user, output: self)
-            case .failure(let error):
-                self.presenters.error.present(error)
-            }
-        }
-    }
-
     private let presenters: ReviewPresenters
     private let services: ReviewServices
+    private weak var weakView: UIViewController?
 }
 
 extension ReviewPresenter: ReviewViewOutput {
+    func reviewViewDidLoad(view: ReviewViewInput) {
+        self.reloadUser(view: view)
+    }
+
     func reviewUserDidTapOnAdmin(view: ReviewViewInput) {
-        self.output?.review(module: self, userWantsToEnterAdminInsideMain: self.router?.main)
+        self.output?.reviewUserWantsToEnterAdmin(module: self)
     }
 
     func review(view: ReviewViewInput, userWantsToRefresh sender: Any) {
-        self.services.userService.reload { [weak self] result in
-            switch result {
-            case .success(let user):
-                view.members = user.members?.map({ $0.any }) ?? []
-                view.organizations = user.organizations?.map({ $0.any }) ?? []
-                view.suppliers = user.suppliers?.map({ $0.any }) ?? []
-            case .failure(let error):
-                self?.presenters.error.present(error)
-            }
-        }
+        self.reloadUser(view: view)
     }
 
     func review(view: ReviewViewInput, tappenOn menuBarButton: Any) {
         let addRole = MenuItem(title: "Добавить роль", image: #imageLiteral(resourceName: "addRoleIcon")) { [weak self] in
             guard let sSelf = self else { return }
-            sSelf.output?.review(module: sSelf, userWantsToAddRoleInside: sSelf.router?.main)
+            sSelf.output?.reviewUserWantsToAddRole(module: sSelf)
         }
         let logout = MenuItem(title: "Выйти", image: #imageLiteral(resourceName: "logout")) { [weak self] in
             guard let sSelf = self else { return }
             sSelf.presenters.confirmation.present(title: "Подтвердите выход", message: "Вы уверены что хотите выйти?", actionTitle: "Выйти", withCancelAction: true) { [weak sSelf] in
                 guard let ssSelf = sSelf else { return }
-                ssSelf.output?.review(module: ssSelf, userWantsToLogoutInside: ssSelf.router?.main)
+                ssSelf.output?.reviewUserWantsToLogout(module: ssSelf)
             }
         }
         self.presenters.menu.present(items: [addRole, logout])
@@ -83,19 +79,33 @@ extension ReviewPresenter: ReviewViewOutput {
 
     func review(view: ReviewViewInput, userTappedOn supplier: PCSupplier) {
         if supplier.status == .approved {
-            self.output?.review(module: self, userWantsToEnter: supplier, inside: self.router?.main)
+            self.output?.review(module: self, userWantsToEnter: supplier)
         }
     }
 
     func review(view: ReviewViewInput, userTappedOn organization: PCOrganization) {
         if organization.status == .approved {
-            self.output?.review(module: self, userWantsToEnter: organization, inside: self.router?.main)
+            self.output?.review(module: self, userWantsToEnter: organization)
         }
     }
 
     func review(view: ReviewViewInput, userTappedOn member: PCMember) {
         if member.status == .approved {
-            self.output?.review(module: self, userWantsToEnter: member, inside: self.router?.main)
+            self.output?.review(module: self, userWantsToEnter: member)
+        }
+    }
+
+    private func reloadUser(view: ReviewViewInput) {
+        self.services.userService.reload { [weak self] result in
+            switch result {
+            case .success(let user):
+                view.isAdministrator = user.roles?.contains(.administrator) ?? false
+                view.members = user.members?.map({ $0.any }) ?? []
+                view.organizations = user.organizations?.map({ $0.any }) ?? []
+                view.suppliers = user.suppliers?.map({ $0.any }) ?? []
+            case .failure(let error):
+                self?.presenters.error.present(error)
+            }
         }
     }
 }

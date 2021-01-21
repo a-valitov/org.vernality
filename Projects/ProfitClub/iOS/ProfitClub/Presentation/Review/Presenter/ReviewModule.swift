@@ -19,14 +19,14 @@ import Main
 import ProfitClubModel
 
 protocol ReviewModule: class {
-    func start(in main: MainModule?)
+    var viewController: UIViewController { get }
 }
 
 protocol ReviewModuleOutput: class {
-    func review(module: ReviewModule, userWantsToLogoutInside main: MainModule?)
-    func review(module: ReviewModule, userWantsToAddRoleInside main: MainModule?)
-    func review(module: ReviewModule, userWantsToEnter organization: PCOrganization, inside main: MainModule?)
-    func review(module: ReviewModule, userWantsToEnter supplier: PCSupplier, inside main: MainModule?)
-    func review(module: ReviewModule, userWantsToEnter member: PCMember, inside main: MainModule?)
-    func review(module: ReviewModule, userWantsToEnterAdminInsideMain main: MainModule?)
+    func reviewUserWantsToLogout(module: ReviewModule)
+    func reviewUserWantsToAddRole(module: ReviewModule)
+    func reviewUserWantsToEnterAdmin(module: ReviewModule)
+    func review(module: ReviewModule, userWantsToEnter organization: PCOrganization)
+    func review(module: ReviewModule, userWantsToEnter supplier: PCSupplier)
+    func review(module: ReviewModule, userWantsToEnter member: PCMember)
 }

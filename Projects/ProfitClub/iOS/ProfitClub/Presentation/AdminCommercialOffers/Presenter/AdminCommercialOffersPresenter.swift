@@ -22,7 +22,9 @@ import ProfitClubModel
 
 final class AdminCommercialOffersPresenter: AdminCommercialOffersModule {
     weak var output: AdminCommercialOffersModuleOutput?
-    var router: AdminCommercialOffersRouter?
+    var viewController: UIViewController {
+        return self.commercialOffersContainer
+    }
 
     init(presenters: AdminCommercialOffersPresenters,
          services: AdminCommercialOffersServices) {
@@ -30,18 +32,13 @@ final class AdminCommercialOffersPresenter: AdminCommercialOffersModule {
         self.services = services
     }
 
-    func embed(in tabBarController: UITabBarController, main: MainModule?) {
-        self.router?.main = main
-        self.router?.embed(in: tabBarController, output: self)
-    }
-
     func onDidApprove(commercialOffer: PCCommercialOffer) {
-        commercialOffersApplicationsView?.hide(commercialOffer: commercialOffer)
+        self.weakCommercialOffersApplications?.hide(commercialOffer: commercialOffer)
         self.reloadApprovedCommercialOffers()
     }
 
     func onDidReject(commercialOffer: PCCommercialOffer) {
-        commercialOffersApplicationsView?.hide(commercialOffer: commercialOffer)
+        self.weakCommercialOffersApplications?.hide(commercialOffer: commercialOffer)
     }
 
     // dependencies
@@ -49,15 +46,47 @@ final class AdminCommercialOffersPresenter: AdminCommercialOffersModule {
     private let services: AdminCommercialOffersServices
 
     //submodules
-    private weak var commercialOffersApplicationsView: AdminCommercialOffersApplicationsViewInput?
-    private weak var approvedCommercialOffers: AdminApprovedCommercialOffersViewInput?
+    private var commercialOffersContainer: UIViewController {
+        if let commercialOffersContainer = self.weakCommercialOffersContainer {
+            return commercialOffersContainer
+        } else {
+            let commercialOffersContainer = AdminCommercialOffersContainerViewAlpha()
+            commercialOffersContainer.output = self
+            self.weakCommercialOffersContainer = commercialOffersContainer
+            return commercialOffersContainer
+        }
+    }
+    private var commercialOffersApplications: AdminCommercialOffersApplicationsViewInput {
+        if let commercialOffersApplications = self.weakCommercialOffersApplications {
+            return commercialOffersApplications
+        } else {
+            let commercialOffersApplications = AdminCommercialOffersApplicationsViewAlpha()
+            commercialOffersApplications.output = self
+            self.weakCommercialOffersApplications = commercialOffersApplications
+            return commercialOffersApplications
+        }
+    }
+    private var approvedCommercialOffers: AdminApprovedCommercialOffersViewInput {
+        if let approvedCommercialOffers = self.weakApprovedCommercialOffers {
+            return approvedCommercialOffers
+        } else {
+            let approvedCommercialOffers = AdminApprovedCommercialOffersViewAlpha()
+            approvedCommercialOffers.output = self
+            self.weakApprovedCommercialOffers = approvedCommercialOffers
+            return approvedCommercialOffers
+        }
+    }
+
+    private weak var weakCommercialOffersContainer: UIViewController?
+    private weak var weakCommercialOffersApplications: AdminCommercialOffersApplicationsViewInput?
+    private weak var weakApprovedCommercialOffers: AdminApprovedCommercialOffersViewInput?
 }
 
 extension AdminCommercialOffersPresenter: AdminCommercialOffersContainerViewOutput {
     func adminCommercialOffersContainerDidLoad(view: AdminCommercialOffersContainerViewInput) {
-        view.applications = router?.buildCommercialOffersApplications(output: self)
-        view.approved = router?.buildApprovedCommercialOffers(output: self)
-        output?.adminCommercialOffersModuleDidLoad(module: self)
+        view.applications = self.commercialOffersApplications
+        view.approved = self.approvedCommercialOffers
+        self.output?.adminCommercialOffersModuleDidLoad(module: self)
     }
 
     func adminCommercialOffersContainer(view: AdminCommercialOffersContainerViewInput, didChangeState state: AdminCommercialOffersContainerState) {
@@ -67,12 +96,10 @@ extension AdminCommercialOffersPresenter: AdminCommercialOffersContainerViewOutp
 
 extension AdminCommercialOffersPresenter: AdminCommercialOffersApplicationsViewOutput {
     func adminCommercialOffersApplicationsDidLoad(view: AdminCommercialOffersApplicationsViewInput) {
-        self.commercialOffersApplicationsView = view
         self.reloadCommercialOffersApplications()
     }
 
     func adminCommercialOffersApplications(view: AdminCommercialOffersApplicationsViewInput, userWantsToRefresh sender: Any) {
-        self.commercialOffersApplicationsView = view
         self.reloadCommercialOffersApplications()
     }
 
@@ -83,12 +110,10 @@ extension AdminCommercialOffersPresenter: AdminCommercialOffersApplicationsViewO
 
 extension AdminCommercialOffersPresenter: AdminApprovedCommercialOffersViewOutput {
     func adminApprovedCommercialOffersDidLoad(view: AdminApprovedCommercialOffersViewInput) {
-        self.approvedCommercialOffers = view
         self.reloadApprovedCommercialOffers()
     }
 
     func adminApprovedCommercialOffers(view: AdminApprovedCommercialOffersViewInput, userWantsToRefresh sender: Any) {
-        self.approvedCommercialOffers = view
         self.reloadApprovedCommercialOffers()
     }
 }
@@ -98,8 +123,8 @@ extension AdminCommercialOffersPresenter {
         self.services.commercialOffers.fetch(.onReview) { [weak self] (result) in
             switch result {
             case .success(let commercialOffers):
-                self?.commercialOffersApplicationsView?.commercialOffers = commercialOffers
-                self?.commercialOffersApplicationsView?.reload()
+                self?.weakCommercialOffersApplications?.commercialOffers = commercialOffers
+                self?.weakCommercialOffersApplications?.reload()
             case .failure(let error):
                 self?.presenters.error.present(error)
             }
@@ -110,7 +135,7 @@ extension AdminCommercialOffersPresenter {
         self.services.commercialOffers.fetch(.approved) { [weak self] (result) in
             switch result {
             case .success(let commercialOffers):
-                self?.approvedCommercialOffers?.commercialOffers = commercialOffers
+                self?.weakApprovedCommercialOffers?.commercialOffers = commercialOffers
             case .failure(let error):
                 self?.presenters.error.present(error)
             }

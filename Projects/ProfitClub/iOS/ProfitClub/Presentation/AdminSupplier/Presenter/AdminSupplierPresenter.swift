@@ -23,7 +23,9 @@ import ProfitClubModel
 
 final class AdminSupplierPresenter: AdminSupplierModule {
     weak var output: AdminSupplierModuleOutput?
-    var router: AdminSupplierRouter?
+    var viewController: UIViewController {
+        return self.adminSupplier
+    }
 
     init(supplier: PCSupplier,
          presenters: AdminSupplierPresenters,
@@ -33,16 +35,24 @@ final class AdminSupplierPresenter: AdminSupplierModule {
         self.services = services
     }
 
-    func open(in main: MainModule?) {
-        self.router?.main = main
-        self.router?.openApplication(output: self)
-    }
-
     private let supplier: PCSupplier
 
     // dependencies
     private let presenters: AdminSupplierPresenters
     private let services: AdminSupplierServices
+
+    // view
+    private var adminSupplier: UIViewController {
+        if let adminSupplier = self.weakAdminSupplier {
+            return adminSupplier
+        } else {
+            let adminSupplier = AdminSupplierApplicationViewAlpha()
+            adminSupplier.output = self
+            self.weakAdminSupplier = adminSupplier
+            return adminSupplier
+        }
+    }
+    private weak var weakAdminSupplier: UIViewController?
 }
 
 extension AdminSupplierPresenter: AdminSupplierApplicationViewOutput {
@@ -62,7 +72,6 @@ extension AdminSupplierPresenter: AdminSupplierApplicationViewOutput {
                 switch result {
                 case .success(let supplier):
                     sSelf.output?.adminSupplier(module: sSelf, didApprove: supplier)
-                    sSelf.router?.closeApplication(view)
                 case .failure(let error):
                     sSelf.presenters.error.present(error)
                 }
@@ -78,7 +87,6 @@ extension AdminSupplierPresenter: AdminSupplierApplicationViewOutput {
                 switch result {
                 case .success(let supplier):
                     sSelf.output?.adminSupplier(module: sSelf, didReject: supplier)
-                    sSelf.router?.closeApplication(view)
                 case .failure(let error):
                     sSelf.presenters.error.present(error)
                 }

@@ -19,7 +19,7 @@ import Main
 import ProfitClubModel
 
 protocol CommercialOffersModule: class {
-    func embed(in tabBarController: UITabBarController, main: MainModule?)
+    var viewController: UIViewController { get }
 }
 
 protocol CommercialOffersModuleOutput: class {

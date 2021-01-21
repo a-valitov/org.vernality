@@ -21,6 +21,7 @@ public protocol MainModule: class {
     var output: MainModuleOutput? { get set }
     var viewController: UIViewController { get }
 
+    func present(_ viewController: UIViewController, animated: Bool)
     func push(_ viewController: UIViewController, animated: Bool)
     func pop()
     func raise(_ viewController: UIViewController, animated: Bool)

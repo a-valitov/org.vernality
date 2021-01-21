@@ -19,7 +19,7 @@ import Main
 import ProfitClubModel
 
 protocol MemberProfileModule: class {
-    func open(in main: MainModule?)
+    var viewController: UIViewController { get }
 }
 
 protocol MemberProfileModuleOutput: class {

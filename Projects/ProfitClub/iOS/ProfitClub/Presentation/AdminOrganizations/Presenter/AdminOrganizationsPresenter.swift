@@ -22,74 +22,114 @@ import ProfitClubModel
 
 final class AdminOrganizationsPresenter: AdminOrganizationsModule {
     weak var output: AdminOrganizationsModuleOutput?
-    var router: AdminOrganizationsRouter?
-
+    var viewController: UIViewController {
+        return self.adminOrganizationsContainer
+    }
+    
     init(presenters: AdminOrganizationsPresenters,
          services: AdminOrganizationsServices) {
         self.presenters = presenters
         self.services = services
     }
 
-    func embed(in tabBarController: UITabBarController, main: MainModule?) {
-        self.router?.main = main
-        self.router?.embed(in: tabBarController, output: self)
-    }
-
     func onDidApprove(organization: PCOrganization) {
-        organizationApplicationsView?.hide(organization: organization)
+        self.weakAdminOrganizationsApplications?.hide(organization: organization)
         self.reloadApprovedOrganizations()
     }
 
     func onDidReject(organization: PCOrganization) {
-        organizationApplicationsView?.hide(organization: organization)
+        self.weakAdminOrganizationsApplications?.hide(organization: organization)
     }
 
     // dependencies
     private let presenters: AdminOrganizationsPresenters
     private let services: AdminOrganizationsServices
 
-    // submodules
-    private weak var organizationApplicationsView: AdminOrganizationsApplicationsViewInput?
-    private weak var approvedOrganizationsView: AdminApprovedOrganizationsViewInput?
+    // views
+    private var adminOrganizationsContainer: UIViewController {
+        if let adminOrganizationsContainer = self.weakAdminOrganizationsContainer {
+            return adminOrganizationsContainer
+        } else {
+            let adminOrganizationsContainer = AdminOrganizationsContainerViewAlpha()
+            adminOrganizationsContainer.output = self
+            self.weakAdminOrganizationsContainer = adminOrganizationsContainer
+            return adminOrganizationsContainer
+        }
+    }
+    private var adminOrganizationsApplications: AdminOrganizationsApplicationsViewInput {
+        if let adminOrganizationsApplications = self.weakAdminOrganizationsApplications {
+            return adminOrganizationsApplications
+        } else {
+            let adminOrganizationsApplications = AdminOrganizationsApplicationsViewAlpha()
+            adminOrganizationsApplications.output = self
+            self.weakAdminOrganizationsApplications = adminOrganizationsApplications
+            return adminOrganizationsApplications
+        }
+    }
+    private var adminApprovedOrganizations: AdminApprovedOrganizationsViewInput {
+        if let adminApprovedOrganizations = self.weakAdminApprovedOrganizations {
+            return adminApprovedOrganizations
+        } else {
+            let adminApprovedOrganizations = AdminApprovedOrganizationsViewAlpha()
+            adminApprovedOrganizations.output = self
+            self.weakAdminApprovedOrganizations = adminApprovedOrganizations
+            return adminApprovedOrganizations
+        }
+    }
+
+    private weak var weakAdminOrganizationsContainer: UIViewController?
+    private weak var weakAdminOrganizationsApplications: AdminOrganizationsApplicationsViewInput?
+    private weak var weakAdminApprovedOrganizations: AdminApprovedOrganizationsViewInput?
 }
 
 extension AdminOrganizationsPresenter: AdminOrganizationsContainerViewOutput {
     func adminOrganizationsContainerDidLoad(view: AdminOrganizationsContainerViewInput) {
-        view.applications = router?.buildOrganizationApplications(output: self)
-        view.approved = router?.buildApprovedOrganizations(output: self)
-        output?.adminOrganizationsModuleDidLoad(module: self)
+        view.applications = self.adminOrganizationsApplications
+        view.approved = self.adminApprovedOrganizations
+        self.output?.adminOrganizationsModuleDidLoad(module: self)
     }
 
-    func adminOrganizationsContainer(view: AdminOrganizationsContainerViewInput, didChangeState state: AdminOrganizationsContainerState) {
+    func adminOrganizationsContainer(
+        view: AdminOrganizationsContainerViewInput,
+        didChangeState state: AdminOrganizationsContainerState
+    ) {
         view.state = state
     }
 
 }
 
 extension AdminOrganizationsPresenter: AdminOrganizationsApplicationsViewOutput {
-    func adminOrganizationsApplicationsViewDidLoad(view: AdminOrganizationsApplicationsViewInput) {
-        self.organizationApplicationsView = view
+    func adminOrganizationsApplicationsViewDidLoad(
+        view: AdminOrganizationsApplicationsViewInput
+    ) {
         self.reloadApplicationsOrganizations()
     }
 
-    func adminOrganizationsApplications(view: AdminOrganizationsApplicationsViewInput, didSelect organization: PCOrganization) {
+    func adminOrganizationsApplications(
+        view: AdminOrganizationsApplicationsViewInput,
+        didSelect organization: PCOrganization
+    ) {
         self.output?.adminOrganizations(module: self, didSelect: organization)
     }
 
-    func adminOrganizationsApplications(view: AdminOrganizationsApplicationsViewInput, userWantsToRefresh sender: Any) {
-        self.organizationApplicationsView = view
+    func adminOrganizationsApplications(
+        view: AdminOrganizationsApplicationsViewInput,
+        userWantsToRefresh sender: Any
+    ) {
         self.reloadApplicationsOrganizations()
     }
 }
 
 extension AdminOrganizationsPresenter: AdminApprovedOrganizationsViewOutput {
-    func adminApprovedOrganizationsDidLoad(view: AdminApprovedOrganizationsViewInput) {
-        self.approvedOrganizationsView = view
+    func adminApprovedOrganizationsDidLoad(
+        view: AdminApprovedOrganizationsViewInput
+    ) {
         self.reloadApprovedOrganizations()
     }
 
-    func adminApprovedOrganizations(view: AdminApprovedOrganizationsViewInput, userWantsToRefresh sender: Any) {
-        self.approvedOrganizationsView = view
+    func adminApprovedOrganizations(
+        view: AdminApprovedOrganizationsViewInput, userWantsToRefresh sender: Any
+    ) {
         self.reloadApprovedOrganizations()
     }
 }
@@ -99,7 +139,7 @@ extension AdminOrganizationsPresenter {
         self.services.organization.fetch(.approved) { [weak self] (result) in
             switch result {
             case .success(let organizations):
-                self?.approvedOrganizationsView?.organizations = organizations
+                self?.weakAdminApprovedOrganizations?.organizations = organizations
             case .failure(let error):
                 self?.presenters.error.present(error)
             }
@@ -110,8 +150,8 @@ extension AdminOrganizationsPresenter {
         self.services.organization.fetch(.onReview) { [weak self] (result) in
             switch result {
             case .success(let organizations):
-                self?.organizationApplicationsView?.organizations = organizations
-                self?.organizationApplicationsView?.reload()
+                self?.weakAdminOrganizationsApplications?.organizations = organizations
+                self?.weakAdminOrganizationsApplications?.reload()
             case .failure(let error):
                 self?.presenters.error.present(error)
             }

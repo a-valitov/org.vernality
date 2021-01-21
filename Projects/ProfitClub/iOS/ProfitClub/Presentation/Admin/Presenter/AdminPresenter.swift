@@ -24,39 +24,66 @@ import ProfitClubModel
 
 final class AdminPresenter: AdminModule {
     weak var output: AdminModuleOutput?
-    var router: AdminRouter?
-
+    var viewController: UIViewController {
+        return self.admin
+    }
+    
     init(presenters: AdminPresenters,
-         services: AdminServices) {
+         services: AdminServices,
+         factories: AdminFactories) {
         self.presenters = presenters
         self.services = services
+        self.factories = factories
     }
 
-    func open(in main: MainModule?) {
-        self.router?.main = main
-        self.router?.openAdminTabBar(output: self)
+    // views
+    private var admin: UIViewController {
+        if let admin = self.weakAdmin {
+            return admin
+        } else {
+            let admin = AdminTabBarViewAlpha()
+            admin.output = self
+            let adminActions = self.factories.adminActions.make(output: self)
+            let adminCommercialOffers = self.factories.adminCommercialOffers.make(output: self)
+            let adminOrganizations = self.factories.adminOrganizations.make(output: self)
+            let adminSuppliers = self.factories.adminSuppliers.make(output: self)
+            admin.viewControllers = [adminActions.viewController,
+                                     adminCommercialOffers.viewController,
+                                     adminOrganizations.viewController,
+                                     adminSuppliers.viewController]
+            self.weakAdmin = admin
+            self.adminActions = adminActions
+            self.adminCommercialOffers = adminCommercialOffers
+            self.adminOrganizations = adminOrganizations
+            self.adminSuppliers = adminSuppliers
+            return admin
+        }
     }
+    private weak var weakAdmin: UIViewController?
 
     // dependencies
     private let presenters: AdminPresenters
     private let services: AdminServices
-    private weak var adminOrganizationsModule: AdminOrganizationsModule?
-    private weak var adminSuppliersModule: AdminSuppliersModule?
-    private weak var adminActionsModule: AdminActionsModule?
-    private weak var adminCommercialOffersModule: AdminCommercialOffersModule?
+    private let factories: AdminFactories
+
+    // modules
+    private weak var adminOrganizations: AdminOrganizationsModule?
+    private weak var adminSuppliers: AdminSuppliersModule?
+    private weak var adminActions: AdminActionsModule?
+    private weak var adminCommercialOffers: AdminCommercialOffersModule?
 }
 
 extension AdminPresenter: AdminTabBarViewOutput {
     func adminTabBar(view: AdminTabBarViewInput, tappenOn menuBarButton: Any) {
         let changeRole = MenuItem(title: "Сменить роль", image: #imageLiteral(resourceName: "refresh")) { [weak self] in
             guard let sSelf = self else { return }
-            sSelf.output?.admin(module: sSelf, userWantsToChangeRole: sSelf.router?.main)
+            sSelf.output?.adminUserWantsToChangeRole(module: sSelf)
         }
         let logout = MenuItem(title: "Выйти", image: #imageLiteral(resourceName: "logout")) { [weak self] in
             guard let sSelf = self else { return }
             sSelf.presenters.confirmation.present(title: "Подтвердите выход", message: "Вы уверены что хотите выйти?", actionTitle: "Выйти", withCancelAction: true) { [weak sSelf] in
                 guard let ssSelf = sSelf else { return }
-                ssSelf.output?.admin(module: ssSelf, userWantsToLogoutInside: ssSelf.router?.main)
+                ssSelf.output?.adminUserWantsToLogout(module: ssSelf)
             }
         }
         self.presenters.menu.present(items: [changeRole, logout])
@@ -65,83 +92,93 @@ extension AdminPresenter: AdminTabBarViewOutput {
 
 extension AdminPresenter: AdminOrganizationsModuleOutput {
     func adminOrganizationsModuleDidLoad(module: AdminOrganizationsModule) {
-        self.adminOrganizationsModule = module
+        // do nothing
     }
 
     func adminOrganizations(module: AdminOrganizationsModule, didSelect organization: PCOrganization) {
-        self.router?.open(organization: organization, output: self)
+        let adminOrganization = self.factories.adminOrganization.make(organization: organization, output: self)
+        self.weakAdmin?.raise(adminOrganization.viewController, animated: true)
     }
 }
 
 extension AdminPresenter: AdminOrganizationModuleOutput {
     func adminOrganization(module: AdminOrganizationModule, didApprove organization: PCOrganization) {
-        self.adminOrganizationsModule?.onDidApprove(organization: organization)
+        module.viewController.unraise(animated: true)
+        self.adminOrganizations?.onDidApprove(organization: organization)
     }
 
     func adminOrganization(module: AdminOrganizationModule, didReject organization: PCOrganization) {
-        self.adminOrganizationsModule?.onDidReject(organization: organization)
+        module.viewController.unraise(animated: true)
+        self.adminOrganizations?.onDidReject(organization: organization)
     }
 }
 
 extension AdminPresenter: AdminCommercialOffersModuleOutput {
     func adminCommercialOffersModuleDidLoad(module: AdminCommercialOffersModule) {
-        self.adminCommercialOffersModule = module
+        // do nothing
     }
 
     func adminCommercialOffers(module: AdminCommercialOffersModule, didSelect commercialOffer: PCCommercialOffer) {
-        self.router?.open(commercialOffer: commercialOffer, output: self)
+        let commercialOffer = self.factories.adminCommercialOffer.make(commercialOffer: commercialOffer, output: self)
+        self.weakAdmin?.raise(commercialOffer.viewController, animated: true)
     }
 
 }
 
 extension AdminPresenter: AdminCommercialOfferModuleOutput {
     func adminCommercialOffer(module: AdminCommercialOfferModule, didApprove commercialOffer: PCCommercialOffer) {
-        self.adminCommercialOffersModule?.onDidApprove(commercialOffer: commercialOffer)
+        module.viewController.unraise(animated: true)
+        self.adminCommercialOffers?.onDidApprove(commercialOffer: commercialOffer)
     }
 
     func adminCommercialOffer(module: AdminCommercialOfferModule, didReject commercialOffer: PCCommercialOffer) {
-        self.adminCommercialOffersModule?.onDidReject(commercialOffer: commercialOffer)
+        module.viewController.unraise(animated: true)
+        self.adminCommercialOffers?.onDidReject(commercialOffer: commercialOffer)
     }
-
-
 }
 
 extension AdminPresenter: AdminSuppliersModuleOutput {
     func adminSuppliersModuleDidLoad(module: AdminSuppliersModule) {
-        self.adminSuppliersModule = module
+        // do nothing
     }
 
     func adminSuppliers(module: AdminSuppliersModule, didSelect supplier: PCSupplier) {
-        self.router?.open(supplier: supplier, output: self)
+        let adminSupplier = self.factories.adminSupplier.make(supplier: supplier, output: self)
+        self.weakAdmin?.raise(adminSupplier.viewController, animated: true)
     }
 }
 
 extension AdminPresenter: AdminSupplierModuleOutput {
     func adminSupplier(module: AdminSupplierModule, didApprove supplier: PCSupplier) {
-        self.adminSuppliersModule?.onDidApprove(supplier: supplier)
+        self.adminSuppliers?.onDidApprove(supplier: supplier)
+        module.viewController.unraise(animated: true)
     }
 
     func adminSupplier(module: AdminSupplierModule, didReject supplier: PCSupplier) {
-        self.adminSuppliersModule?.onDidReject(supplier: supplier)
+        self.adminSuppliers?.onDidReject(supplier: supplier)
+        module.viewController.unraise(animated: true)
     }
 }
 
 extension AdminPresenter: AdminActionsModuleOutput {
     func adminActionsModuleDidLoad(module: AdminActionsModule) {
-        self.adminActionsModule = module
+        // do nothing
     }
 
     func adminActions(module: AdminActionsModule, didSelect action: PCAction) {
-        self.router?.open(action: action, output: self)
+        let adminAction = self.factories.adminAction.make(action: action, output: self)
+        self.weakAdmin?.raise(adminAction.viewController, animated: true)
     }
 }
 
 extension AdminPresenter: AdminActionModuleOutput {
     func adminAction(module: AdminActionModule, didApprove action: PCAction) {
-        self.adminActionsModule?.onDidApprove(action: action)
+        self.adminActions?.onDidApprove(action: action)
+        module.viewController.unraise(animated: true)
     }
 
     func adminAction(module: AdminActionModule, didReject action: PCAction) {
-        self.adminActionsModule?.onDidReject(action: action)
+        self.adminActions?.onDidReject(action: action)
+        module.viewController.unraise(animated: true)
     }
 }

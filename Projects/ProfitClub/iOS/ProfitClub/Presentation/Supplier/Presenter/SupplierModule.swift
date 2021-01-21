@@ -20,11 +20,11 @@ import ProfitClubModel
 
 protocol SupplierModule: class {
     var supplier: PCSupplier { get set }
-    func open(in main: MainModule?)
+    var viewController: UIViewController { get }
 }
 
 protocol SupplierModuleOutput: class {
-    func supplier(module: SupplierModule, userWantsToOpenProfileOf supplier: PCSupplier, inside main: MainModule?)
-    func supplier(module: SupplierModule, userWantsToLogoutInside main: MainModule?)
-    func supplier(module: SupplierModule, userWantsToChangeRole main: MainModule?)
+    func supplier(module: SupplierModule, userWantsToOpenProfileOf supplier: PCSupplier)
+    func supplierUserWantsToLogout(module: SupplierModule)
+    func supplierUserWantsToChangeRole(module: SupplierModule)
 }

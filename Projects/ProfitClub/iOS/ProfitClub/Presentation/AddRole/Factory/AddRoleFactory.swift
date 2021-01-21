@@ -1,5 +1,5 @@
 //  Copyright (C) 2021 Startup Studio Vernality
-//  Created by Macbook on 08.01.2021
+//  Created by Rinat Enikeev on 18.01.2021
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -15,21 +15,23 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import Foundation
-import Main
-import ProfitClubModel
+import ErrorPresenter
+import ActivityPresenter
 
-final class AdminActionRouter {
-    weak var main: MainModule?
-
-    @discardableResult
-    func openApplication(output: AdminActionApplicationViewOutput?) -> AdminActionApplicationViewInput {
-        let applicationView = AdminActionApplicationViewAlpha()
-        applicationView.output = output
-        self.main?.raise(applicationView, animated: true)
-        return applicationView
+final class AddRoleFactory {
+    init(presenters: AddRolePresenters,
+         services: AddRoleServices) {
+        self.presenters = presenters
+        self.services = services
     }
 
-    func closeApplication(_ view: AdminActionApplicationViewInput) {
-        self.main?.unraise(animated: true)
+    func make(output: AddRoleModuleOutput?) -> AddRoleModule {
+        let presenter = AddRolePresenter(presenters: self.presenters,
+                                         services: self.services)
+        presenter.output = output
+        return presenter
     }
+
+    private let services: AddRoleServices
+    private let presenters: AddRolePresenters
 }

@@ -20,9 +20,8 @@ import UIKit
 import ProfitClubModel
 
 protocol ActionModule: class {
-    func open(in main: MainModule?)
+    var viewController: UIViewController { get }
 }
 
 protocol ActionModuleOutput: class {
-
 }

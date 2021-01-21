@@ -18,15 +18,17 @@ import UIKit
 import ProfitClubModel
 
 protocol ReviewViewInput: UIViewController {
+    var isAdministrator: Bool { get set }
     var members: [AnyPCMember] { get set }
     var organizations: [AnyPCOrganization] { get set }
     var suppliers: [AnyPCSupplier] { get set }
 }
 
 protocol ReviewViewOutput {
+    func reviewViewDidLoad(view: ReviewViewInput)
+    func reviewUserDidTapOnAdmin(view: ReviewViewInput)
     func review(view: ReviewViewInput, tappenOn menuBarButton: Any)
     func review(view: ReviewViewInput, userWantsToRefresh sender: Any)
-    func reviewUserDidTapOnAdmin(view: ReviewViewInput)
     func review(view: ReviewViewInput, userTappedOn supplier: PCSupplier)
     func review(view: ReviewViewInput, userTappedOn organization: PCOrganization)
     func review(view: ReviewViewInput, userTappedOn member: PCMember)

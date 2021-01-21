@@ -28,11 +28,10 @@ final class AdminFactory {
     }
 
     func make(output: AdminModuleOutput?) -> AdminModule {
-        let router = AdminRouter(factories: self.factories)
         let presenter = AdminPresenter(presenters: self.presenters,
-                                       services: self.services)
+                                       services: self.services,
+                                       factories: self.factories)
         presenter.output = output
-        presenter.router = router
         return presenter
     }
 

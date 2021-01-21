@@ -21,7 +21,9 @@ import ProfitClubModel
 
 final class MemberProfilePresenter: MemberProfileModule {
     weak var output: MemberProfileModuleOutput?
-    var router: MemberProfileRouter?
+    var viewController: UIViewController {
+        return self.view
+    }
 
     init(member: PCMember,
          presenters: MemberProfilePresenters,
@@ -30,19 +32,31 @@ final class MemberProfilePresenter: MemberProfileModule {
         self.presenters = presenters
         self.services = services
     }
-
-    func open(in main: MainModule?) {
-        self.router?.main = main
-        self.view = self.router?.openMemberProfile(member: self.member, output: self)
-    }
-
+    
     // dependencies
     private let presenters: MemberProfilePresenters
     private let services: MemberProfileServices
 
     // state
     private var member: PCMember
-    private weak var view: MemberProfileViewInput?
+
+    // view
+    private var view: UIViewController {
+        if let view = self.weakView {
+            return view
+        } else {
+            let view = MemberProfileViewAlpha()
+            view.output = self
+            view.organizationName = member.organization?.name
+            view.memberFirstName = member.firstName
+            view.memberLastName = member.lastName
+            view.userEmail = member.owner?.username
+            view.memberImageUrl = member.imageUrl
+            self.weakView = view
+            return view
+        }
+    }
+    private weak var weakView: MemberProfileViewInput?
 }
 
 extension MemberProfilePresenter: MemberProfileViewOutput {
@@ -54,7 +68,7 @@ extension MemberProfilePresenter: MemberProfileViewOutput {
             switch result {
             case .success(let member):
                 sSelf.member = member
-                sSelf.view?.memberImageUrl = member.imageUrl
+                sSelf.weakView?.memberImageUrl = member.imageUrl
                 sSelf.output?.memberProfile(module: sSelf, didUpdate: member)
             case .failure(let error):
                 sSelf.presenters.error.present(error)

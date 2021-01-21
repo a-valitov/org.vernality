@@ -22,7 +22,9 @@ import ProfitClubModel
 
 final class AdminActionsPresenter: AdminActionsModule {
     weak var output: AdminActionsModuleOutput?
-    var router: AdminActionsRouter?
+    var viewController: UIViewController {
+        return self.adminActionsContainer
+    }
 
     init(presenters: AdminActionsPresenters,
          services: AdminActionsServices) {
@@ -30,18 +32,13 @@ final class AdminActionsPresenter: AdminActionsModule {
         self.services = services
     }
 
-    func embed(in tabBarController: UITabBarController, main: MainModule?) {
-        self.router?.main = main
-        self.router?.embed(in: tabBarController, output: self)
-    }
-
     func onDidApprove(action: PCAction) {
-        actionsApplicationsView?.hide(action: action)
+        self.weakAdminActionsApplications?.hide(action: action)
         self.reloadApprovedActions()
     }
 
     func onDidReject(action: PCAction) {
-        actionsApplicationsView?.hide(action: action)
+        self.weakAdminActionsApplications?.hide(action: action)
     }
 
     // dependencies
@@ -49,15 +46,46 @@ final class AdminActionsPresenter: AdminActionsModule {
     private let services: AdminActionsServices
 
     // submodule
-    private weak var actionsApplicationsView: AdminActionsApplicationsViewInput?
-    private weak var approvedActionsView: AdminApprovedActionsViewInput?
+    private var adminActionsContainer: UIViewController {
+        if let adminActionsContainer = self.weakAdminActionsContainer {
+            return adminActionsContainer
+        } else {
+            let adminActionsContainer = AdminActionsContainerViewAlpha()
+            adminActionsContainer.output = self
+            self.weakAdminActionsContainer = adminActionsContainer
+            return adminActionsContainer
+        }
+    }
+    private var adminActionsApplications: AdminActionsApplicationsViewInput {
+        if let adminActionsApplications = self.weakAdminActionsApplications {
+            return adminActionsApplications
+        } else {
+            let adminActionsApplications = AdminActionsApplicationsViewAlpha()
+            adminActionsApplications.output = self
+            self.weakAdminActionsApplications = adminActionsApplications
+            return adminActionsApplications
+        }
+    }
+    private var adminApprovedActions: AdminApprovedActionsViewInput {
+        if let adminApprovedActions = self.weakAdminApprovedActions {
+            return adminApprovedActions
+        } else {
+            let adminApprovedActions = AdminApprovedActionsViewAlpha()
+            adminApprovedActions.output = self
+            self.weakAdminApprovedActions = adminApprovedActions
+            return adminApprovedActions
+        }
+    }
+    private weak var weakAdminActionsContainer: AdminActionsContainerViewInput?
+    private weak var weakAdminActionsApplications: AdminActionsApplicationsViewInput?
+    private weak var weakAdminApprovedActions: AdminApprovedActionsViewInput?
 }
 
 extension AdminActionsPresenter: AdminActionsContainerViewOutput {
     func adminActionsContainerDidLoad(view: AdminActionsContainerViewInput) {
-        view.applications = router?.buildActionsApplications(output: self)
-        view.approved = router?.buildApprovedActions(output: self)
-        output?.adminActionsModuleDidLoad(module: self)
+        view.applications = self.adminActionsApplications
+        view.approved = self.adminApprovedActions
+        self.output?.adminActionsModuleDidLoad(module: self)
     }
 
     func adminActionsContainer(view: AdminActionsContainerViewInput, didChangeState state: AdminActionsContainerState) {
@@ -67,12 +95,10 @@ extension AdminActionsPresenter: AdminActionsContainerViewOutput {
 
 extension AdminActionsPresenter: AdminActionsApplicationsViewOutput {
     func adminActionsApplicationsDidLoad(view: AdminActionsApplicationsViewInput) {
-        self.actionsApplicationsView = view
         self.reloadActionsApplications()
     }
 
     func adminActionsApplications(view: AdminActionsApplicationsViewInput, userWantsToRefresh sender: Any) {
-        self.actionsApplicationsView = view
         self.reloadActionsApplications()
     }
 
@@ -83,12 +109,10 @@ extension AdminActionsPresenter: AdminActionsApplicationsViewOutput {
 
 extension AdminActionsPresenter: AdminApprovedActionsViewOutput {
     func adminApprovedActionsDidLoad(view: AdminApprovedActionsViewInput) {
-        self.approvedActionsView = view
         self.reloadApprovedActions()
     }
 
     func adminApprovedActions(view: AdminApprovedActionsViewInput, userWantsToRefresh sender: Any) {
-        self.approvedActionsView = view
         self.reloadApprovedActions()
     }
 }
@@ -98,8 +122,8 @@ extension AdminActionsPresenter {
         self.services.action.fetch(.onReview) { [weak self] (result) in
             switch result {
             case .success(let actions):
-                self?.actionsApplicationsView?.actions = actions
-                self?.actionsApplicationsView?.reload()
+                self?.weakAdminActionsApplications?.actions = actions
+                self?.weakAdminActionsApplications?.reload()
             case .failure(let error):
                 self?.presenters.error.present(error)
             }
@@ -110,7 +134,7 @@ extension AdminActionsPresenter {
         self.services.action.fetch(.approved) { [weak self] (result) in
             switch result {
             case .success(let actions):
-                self?.approvedActionsView?.actions = actions
+                self?.weakAdminApprovedActions?.actions = actions
             case .failure(let error):
                 self?.presenters.error.present(error)
             }

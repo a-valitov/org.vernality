@@ -57,6 +57,8 @@ final class ReviewViewAlpha: UITableViewController {
         tableView.register(ReviewViewAlphaSupplierCell.self, forCellReuseIdentifier: ReviewViewAlphaSupplierCell.reuseIdentifier)
         tableView.register(ReviewViewAlphaMemberCell.self, forCellReuseIdentifier: ReviewViewAlphaMemberCell.reuseIdentifier)
         tableView.register(ReviewViewAlphaAdminCell.self, forCellReuseIdentifier: ReviewViewAlphaAdminCell.reuseIdentifier)
+
+        self.output?.reviewViewDidLoad(view: self)
     }
 
     private enum Section: Int {

@@ -19,13 +19,10 @@ import Main
 import ProfitClubModel
 
 protocol OnboardModule: class {
-    func start(in main: MainModule?)
-    func onboard(in main: MainModule?)
+    var viewController: UIViewController { get }
 }
 
 protocol OnboardModuleOutput: class {
-    func onboard(module: OnboardModule, didLogin user: PCUser, inside main: MainModule?)
-    func onboard(module: OnboardModule, didAddSupplier supplier: PCSupplier, inside main: MainModule?)
-    func onboard(module: OnboardModule, didAddOrganization organization: PCOrganization, inside main: MainModule?)
-    func onboard(module: OnboardModule, didAddMember member: PCMember, inside main: MainModule?)
+    func onboard(module: OnboardModule, didLogin user: PCUser)
+    func onboard(module: OnboardModule, didRegister user: PCUser)
 }

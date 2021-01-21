@@ -22,7 +22,9 @@ import ProfitClubModel
 
 final class AdminSuppliersPresenter: AdminSuppliersModule {
     weak var output: AdminSuppliersModuleOutput?
-    var router: AdminSuppliersRouter?
+    var viewController: UIViewController {
+        return self.suppliersContainer
+    }
 
     init(presenters: AdminSuppliersPresenters,
          services: AdminSuppliersServices) {
@@ -30,18 +32,13 @@ final class AdminSuppliersPresenter: AdminSuppliersModule {
         self.services = services
     }
 
-    func embed(in tabBarController: UITabBarController, main: MainModule?) {
-        self.router?.main = main
-        self.router?.embed(in: tabBarController, output: self)
-    }
-
     func onDidApprove(supplier: PCSupplier) {
-        suppliersApplicationsView?.hide(supplier: supplier)
+        self.weakSuppliersApplications?.hide(supplier: supplier)
         self.reloadApprovedSuppliers()
     }
 
     func onDidReject(supplier: PCSupplier) {
-        suppliersApplicationsView?.hide(supplier: supplier)
+        self.weakSuppliersApplications?.hide(supplier: supplier)
     }
 
     // dependencies
@@ -49,15 +46,47 @@ final class AdminSuppliersPresenter: AdminSuppliersModule {
     private let services: AdminSuppliersServices
 
     // submodules
-    private weak var suppliersApplicationsView: AdminSuppliersApplicationsViewInput?
-    private weak var approvedSuppliersView: AdminApprovedSuppliersViewInput?
+    private var suppliersContainer: UIViewController {
+        if let suppliersContainer = self.weakSuppliersContainer {
+            return suppliersContainer
+        } else {
+            let suppliersContainer = AdminSuppliersContainerViewAlpha()
+            suppliersContainer.output = self
+            self.weakSuppliersContainer = suppliersContainer
+            return suppliersContainer
+        }
+    }
+    private var suppliersApplications: AdminSuppliersApplicationsViewInput {
+        if let suppliersApplications = self.weakSuppliersApplications {
+            return suppliersApplications
+        } else {
+            let suppliersApplications = AdminSuppliersApplicationsViewAlpha()
+            suppliersApplications.output = self
+            self.weakSuppliersApplications = suppliersApplications
+            return suppliersApplications
+        }
+    }
+    private var approvedSuppliers: AdminApprovedSuppliersViewInput {
+        if let approvedSuppliers = self.weakApprovedSuppliers {
+            return approvedSuppliers
+        } else {
+            let approvedSuppliers = AdminApprovedSuppliersViewAlpha()
+            approvedSuppliers.output = self
+            self.weakApprovedSuppliers = approvedSuppliers
+            return approvedSuppliers
+        }
+    }
+
+    private weak var weakSuppliersContainer: UIViewController?
+    private weak var weakSuppliersApplications: AdminSuppliersApplicationsViewInput?
+    private weak var weakApprovedSuppliers: AdminApprovedSuppliersViewInput?
 }
 
 extension AdminSuppliersPresenter: AdminSuppliersContainerViewOutput {
     func adminSuppliersContainerDidLoad(view: AdminSuppliersContainerViewInput) {
-        view.applications = router?.buildSuppliersApplications(output: self)
-        view.approved = router?.buildApprovedSuppliers(output: self)
-        output?.adminSuppliersModuleDidLoad(module: self)
+        view.applications = self.suppliersApplications
+        view.approved = self.approvedSuppliers
+        self.output?.adminSuppliersModuleDidLoad(module: self)
     }
 
     func adminSuppliersContainer(view: AdminSuppliersContainerViewInput, didChangeState state: AdminSuppliersContainerState) {
@@ -67,12 +96,10 @@ extension AdminSuppliersPresenter: AdminSuppliersContainerViewOutput {
 
 extension AdminSuppliersPresenter: AdminSuppliersApplicationsViewOutput {
     func adminSuppliersApplicationsViewDidLoad(view: AdminSuppliersApplicationsViewInput) {
-        self.suppliersApplicationsView = view
         self.reloadSuppliersApplications()
     }
 
     func adminSuppliersApplications(view: AdminSuppliersApplicationsViewInput, userWantsToRefresh sender: Any) {
-        self.suppliersApplicationsView = view
         self.reloadSuppliersApplications()
     }
 
@@ -83,12 +110,10 @@ extension AdminSuppliersPresenter: AdminSuppliersApplicationsViewOutput {
 
 extension AdminSuppliersPresenter: AdminApprovedSuppliersViewOutput {
     func adminApprovedSuppliersDidLoad(view: AdminApprovedSuppliersViewInput) {
-        self.approvedSuppliersView = view
         self.reloadApprovedSuppliers()
     }
 
     func adminApprovedSuppliers(view: AdminApprovedSuppliersViewInput, userWantsToRefresh sender: Any) {
-        self.approvedSuppliersView = view
         self.reloadApprovedSuppliers()
     }
 }
@@ -98,8 +123,8 @@ extension AdminSuppliersPresenter {
         self.services.supplier.fetch(.onReview) { [weak self] (result) in
             switch result {
             case .success(let suppliers):
-                self?.suppliersApplicationsView?.suppliers = suppliers
-                self?.suppliersApplicationsView?.reload()
+                self?.weakSuppliersApplications?.suppliers = suppliers
+                self?.weakSuppliersApplications?.reload()
             case .failure(let error):
                 self?.presenters.error.present(error)
             }
@@ -110,7 +135,7 @@ extension AdminSuppliersPresenter {
         self.services.supplier.fetch(.approved) { [weak self] (result) in
             switch result {
             case .success(let suppliers):
-                self?.approvedSuppliersView?.suppliers = suppliers
+                self?.weakApprovedSuppliers?.suppliers = suppliers
             case .failure(let error):
                 self?.presenters.error.present(error)
             }

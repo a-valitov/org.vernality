@@ -22,7 +22,9 @@ import ProfitClubModel
 
 final class CommercialOffersPresenter: CommercialOffersModule {
     weak var output: CommercialOffersModuleOutput?
-    var router: CommercialOffersRouter?
+    var viewController: UIViewController {
+        return self.commercialOffers
+    }
 
     init(presenters: CommercialOffersPresenters,
          services: CommercialOffersServices) {
@@ -30,14 +32,22 @@ final class CommercialOffersPresenter: CommercialOffersModule {
         self.services = services
     }
 
-    func embed(in tabBarController: UITabBarController, main: MainModule?) {
-        self.router?.main = main
-        self.router?.embed(in: tabBarController, output: self)
-    }
-
     // dependencies
     private let presenters: CommercialOffersPresenters
     private let services: CommercialOffersServices
+
+    // views
+    private var commercialOffers: UIViewController {
+        if let commercialOffers = self.weakCommercialOffers {
+            return commercialOffers
+        } else {
+            let commercialOffers = CommercialOffersViewAlpha()
+            commercialOffers.output = self
+            self.weakCommercialOffers = commercialOffers
+            return commercialOffers
+        }
+    }
+    private weak var weakCommercialOffers: UIViewController?
 }
 
 extension CommercialOffersPresenter: CommercialOffersViewOutput {

@@ -27,12 +27,10 @@ final class AdminActionFactory {
     }
 
     func make(action: PCAction, output: AdminActionModuleOutput?) -> AdminActionModule {
-        let router = AdminActionRouter()
         let presenter = AdminActionPresenter(action: action,
                                             presenters: self.presenters,
                                             services: self.services)
         presenter.output = output
-        presenter.router = router
         return presenter
     }
 

@@ -24,42 +24,84 @@ import ProfitClubModel
 
 final class OrganizationPresenter: OrganizationModule {
     weak var output: OrganizationModuleOutput?
-    var router: OrganizationRouter?
     var organization: PCOrganization
+    var viewController: UIViewController {
+        return self.tabBar
+    }
     
     init(organization: PCOrganization,
          presenters: OrganizationPresenters,
-         services: OrganizationServices) {
+         services: OrganizationServices,
+         factories: OrganizationFactories) {
         self.organization = organization
         self.presenters = presenters
         self.services = services
-    }
-
-    func open(in main: MainModule?) {
-        self.router?.main = main
-        self.router?.openOrganizationTabBar(organization: organization, output: self)
+        self.factories = factories
     }
 
     // dependencies
     private let presenters: OrganizationPresenters
     private let services: OrganizationServices
+    private let factories: OrganizationFactories
+
+    // views
+    private var tabBar: UIViewController {
+        if let tabBar = self.weakTabBar {
+            return tabBar
+        } else {
+            let tabBar = OrganizationTabBarViewAlpha()
+            tabBar.output = self
+            let actions = self.factories.actions.make(output: self)
+            let members = self.factories.members.make(organization: self.organization, output: self)
+            let commericalOffers = self.factories.commercialOffers.make(output: self)
+            tabBar.viewControllers = [actions.viewController,
+                                      members.viewController,
+                                      commericalOffers.viewController]
+            self.weakTabBar = tabBar
+            return tabBar
+        }
+    }
+
+    private weak var weakTabBar: UIViewController?
+
+    // modules
+    func action(_ action: PCAction, output: ActionModuleOutput?) -> ActionModule {
+        if let actionModule = self.weakActionModule {
+            return actionModule
+        } else {
+            let actionModule = self.factories.action.make(action: action, output: output)
+            self.weakActionModule = actionModule
+            return actionModule
+        }
+    }
+    private func commercialOffer(_ commercialOffer: PCCommercialOffer, output: CommercialOfferModuleOutput) -> CommercialOfferModule {
+        if let commercialOfferModule = self.weakCommercialOfferModule {
+            return commercialOfferModule
+        } else {
+            let commercialOfferModule = self.factories.commercialOffer.make(commercialOffer: commercialOffer, output: output)
+            self.weakCommercialOfferModule = commercialOfferModule
+            return commercialOfferModule
+        }
+    }
+    private weak var weakActionModule: ActionModule?
+    private weak var weakCommercialOfferModule: CommercialOfferModule?
 }
 
 extension OrganizationPresenter: OrganizationTabBarViewOutput {
     func organizationTabBar(view: OrganizationTabBarViewInput, tappenOn menuBarButton: Any) {
         let profile = MenuItem(title: "Профиль", image: #imageLiteral(resourceName: "profile")) { [weak self] in
             guard let sSelf = self else { return }
-            sSelf.output?.organization(module: sSelf, userWantsToOpenProfileOf: sSelf.organization, inside: sSelf.router?.main)
+            sSelf.output?.organization(module: sSelf, userWantsToOpenProfileOf: sSelf.organization)
         }
         let changeRole = MenuItem(title: "Сменить роль", image: #imageLiteral(resourceName: "refresh")) { [weak self] in
             guard let sSelf = self else { return }
-            sSelf.output?.organization(module: sSelf, userWantsToChangeRole: sSelf.router?.main)
+            sSelf.output?.organizationUserWantsToChangeRole(module: sSelf)
         }
         let logout = MenuItem(title: "Выйти", image: #imageLiteral(resourceName: "logout")) { [weak self] in
             guard let sSelf = self else { return }
             sSelf.presenters.confirmation.present(title: "Подтвердите выход", message: "Вы уверены что хотите выйти?", actionTitle: "Выйти", withCancelAction: true) { [weak sSelf] in
                 guard let ssSelf = sSelf else { return }
-                ssSelf.output?.organization(module: ssSelf, userWantsToLogoutInside: ssSelf.router?.main)
+                ssSelf.output?.organizationUserWantsToLogout(module: ssSelf)
             }
         }
         self.presenters.menu.present(items: [profile, changeRole, logout])
@@ -68,7 +110,8 @@ extension OrganizationPresenter: OrganizationTabBarViewOutput {
 
 extension OrganizationPresenter: ActionsModuleOutput {
     func actions(module: ActionsModule, didSelect action: PCAction) {
-        self.router?.open(action: action, output: self)
+        let actionModule = self.action(action, output: self)
+        module.viewController.raise(actionModule.viewController, animated: true)
     }
 }
 
@@ -78,7 +121,8 @@ extension OrganizationPresenter: ActionModuleOutput {
 
 extension OrganizationPresenter: CommercialOffersModuleOutput {
     func commercialOffers(module: CommercialOffersModule, didSelect commercialOffer: PCCommercialOffer) {
-        self.router?.open(commercialOffer: commercialOffer, output: self)
+        let commercialOfferModule = self.commercialOffer(commercialOffer, output: self)
+        module.viewController.raise(commercialOfferModule.viewController, animated: true)
     }
 }
 
