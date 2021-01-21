@@ -11,11 +11,9 @@ ONTOLOGY_PATH = PODS_PATH + '/Ontology'
 target 'ProfitClub' do
   pod 'Nantes'
   pod 'Kingfisher'
+  pod 'FittedSheets', '~> 2.2.3'
   pod 'Firebase/Analytics'
   pod 'Firebase/Crashlytics'
-
-  # modules
-  pod 'Main', :path => MODULES_PATH + '/Main/Main.podspec'
 
   # ontology
   pod 'ProfitClubModel', :path => ONTOLOGY_PATH + '/ProfitClubModel/ProfitClubModel.podspec'
