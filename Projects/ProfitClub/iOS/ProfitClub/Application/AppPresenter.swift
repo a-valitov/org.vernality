@@ -16,7 +16,6 @@
 
 import Foundation
 import UIKit
-import Main
 import PCAuthentication
 import ProfitClubModel
 import PCUserService
@@ -79,16 +78,6 @@ final class AppPresenter {
     }
 
     // modules construction
-    private var main: MainModule {
-        if let main = self.weakMain {
-            return main
-        } else {
-            let main = self.factory.main(output: self)
-            self.weakMain = main
-            return main
-        }
-    }
-
     private var review: ReviewModule {
         if let review = self.weakReview {
             return review
@@ -190,7 +179,6 @@ final class AppPresenter {
     private weak var weakOrganization: OrganizationModule?
     private weak var weakSupplier: SupplierModule?
     private weak var weakAdmin: AdminModule?
-    private weak var weakMain: MainModule?
     private weak var weakReview: ReviewModule?
     private weak var weakOnboard: OnboardModule?
     private weak var weakAddRole: AddRoleModule?
@@ -221,7 +209,7 @@ extension AppPresenter {
             switch result {
             case .success(let action):
                 let adminAction = sSelf.factory.adminAction(action: action, output: sSelf)
-                sSelf.main.raise(adminAction.viewController, animated: true)
+                sSelf.navigationController.raise(adminAction.viewController, animated: true)
             case .failure(let error):
                 sSelf.errorPresenter.present(error)
             }
@@ -261,21 +249,11 @@ extension AppPresenter: AddRoleModuleOutput {
 
 extension AppPresenter: AdminActionModuleOutput {
     func adminAction(module: AdminActionModule, didApprove action: PCAction) {
-        self.main.unraise(animated: true)
+        self.navigationController.unraise(animated: true)
     }
 
     func adminAction(module: AdminActionModule, didReject action: PCAction) {
-        self.main.unraise(animated: true)
-    }
-}
-
-extension AppPresenter: MainModuleOutput {
-    func mainDidLoad(module: MainModule) {
-        if self.isLoggedIn {
-            self.navigationController.pushViewController(self.review.viewController, animated: true)
-        } else {
-            self.navigationController.pushViewController(self.onboard.viewController, animated: true)
-        }
+        self.navigationController.unraise(animated: true)
     }
 }
 
