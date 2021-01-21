@@ -27,6 +27,7 @@ public extension PCUser {
         result.members = self.members
         result.organizations = self.organizations
         result.suppliers = self.suppliers
+        result.roles = self.roles
         return result
     }
 }

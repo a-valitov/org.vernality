@@ -34,8 +34,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UNUserNotificationCenter.current().delegate = self
         self.registerForPushNotifications()
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        let presenter = AppPresenter(factory: AppFactory())
-        presenter.present(in: self.window)
+        let appPresenter = AppPresenter(factory: AppFactory())
+        appPresenter.present(in: self.window)
+        self.appPresenter = appPresenter
         return true
     }
 
@@ -53,10 +54,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         PFPush.handle(userInfo)
     }
 
+    private weak var appPresenter: AppPresenter?
+
     private func registerForPushNotifications() {
       UNUserNotificationCenter.current()
         .requestAuthorization(options: [.alert, .sound, .badge]) { [weak self] granted, _ in
-            print("Permission granted: \(granted)")
             guard granted else { return }
             self?.getNotificationSettings()
         }
@@ -76,10 +78,15 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                     willPresent notification: UNNotification,
                                     withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        let userInfo = notification.request.content.userInfo
-        print(userInfo) // the payload that is attached to the push notification
-        // you can customize the notification presentation options. Below code will show notification banner as well as play a sound. If you want to add a badge too, add .badge in the array.
         completionHandler([.alert, .sound, .badge])
+    }
+
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        let userInfo = response.notification.request.content.userInfo
+        if let push = AppPush.parse(from: userInfo) {
+            self.appPresenter?.handle(push: push)
+        }
+        completionHandler()
     }
 }
 

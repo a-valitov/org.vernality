@@ -32,7 +32,9 @@ final class AppPresenter {
         UINavigationBar.appearance().tintColor = .white
         UINavigationBar.appearance().isTranslucent = true
         UINavigationBar.appearance().barStyle = .black
-        window?.rootViewController = self.factory.main(output: self)
+        let mainModule = self.factory.main(output: self)
+        self.mainModule = mainModule
+        window?.rootViewController = mainModule.viewController
         window?.makeKeyAndVisible()
     }
 
@@ -57,10 +59,73 @@ final class AppPresenter {
         return self.userService.user != nil
     }
 
+    private var isAdministrator: Bool {
+        return self.userService.user?.roles?.contains(.administrator) ?? false
+    }
+
     // modules
+    private weak var mainModule: MainModule?
     private weak var organizationModule: OrganizationModule?
     private weak var supplierModule: SupplierModule?
     private weak var memberModule: MemberModule?
+}
+
+// MARK: - Push Notifications handling
+extension AppPresenter {
+    func handle(push: AppPush) {
+        guard self.isAdministrator else { return }
+        switch push {
+        case .actionCreated(let actionId):
+            self.openAdminAction(actionId: actionId)
+        case .commercialOfferCreated(let commercialOfferId):
+            self.openAdminCommercialOffer(commercialOfferId: commercialOfferId)
+        case .organizationCreated(let organizationId):
+            self.openAdminOrganization(organizationId: organizationId)
+        case .supplierCreated(let supplierId):
+            self.openAdminSupplier(supplierId: supplierId)
+        case .memberCreated(let memberId):
+            self.openAdminMember(memberId: memberId)
+        }
+    }
+
+    private func openAdminAction(actionId: String) {
+        let actionService = self.factory.actionService()
+        actionService.fetch(actionId) { [weak self] result in
+            switch result {
+            case .success(let action):
+                let adminAction = self?.factory.adminAction(action: action, output: self)
+                adminAction?.open(in: self?.mainModule)
+            case .failure(let error):
+                self?.errorPresenter.present(error)
+            }
+        }
+    }
+    
+    private func openAdminCommercialOffer(commercialOfferId: String) {
+        print(commercialOfferId)
+    }
+    
+    private func openAdminOrganization(organizationId: String) {
+        print(organizationId)
+    }
+    
+    private func openAdminSupplier(supplierId: String) {
+        print(supplierId)
+    }
+    
+    private func openAdminMember(memberId: String) {
+        print(memberId)
+    }
+}
+
+extension AppPresenter: AdminActionModuleOutput {
+    func adminAction(module: AdminActionModule, didApprove action: PCAction) {
+        self.mainModule?.unraise(animated: true)
+    }
+
+    func adminAction(module: AdminActionModule, didReject action: PCAction) {
+        self.mainModule?.unraise(animated: true)
+    }
 }
 
 extension AppPresenter: MainModuleOutput {

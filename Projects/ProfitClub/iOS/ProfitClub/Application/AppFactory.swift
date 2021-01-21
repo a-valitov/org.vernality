@@ -74,9 +74,9 @@ final class AppFactory {
 
 // MARK: - ViewContollers
 extension AppFactory {
-    func main(output: MainModuleOutput?) -> UIViewController {
-        let main = self.mainFactory.make(output: output)
-        return main.view
+    func main(output: MainModuleOutput?) -> MainModule {
+        let module = self.mainFactory.make(output: output)
+        return module
     }
     
     func onboard(output: OnboardModuleOutput?) -> OnboardModule {
@@ -121,6 +121,11 @@ extension AppFactory {
 
     func supplierProfile(supplier: PCSupplier, output: SupplierProfileModuleOutput?) -> SupplierProfileModule {
         let module = self.supplierProfileFactory.make(supplier: supplier, output: output)
+        return module
+    }
+
+    func adminAction(action: PCAction, output: AdminActionModuleOutput?) -> AdminActionModule {
+        let module = self.adminActionFactory.make(action: action, output: output)
         return module
     }
 }
