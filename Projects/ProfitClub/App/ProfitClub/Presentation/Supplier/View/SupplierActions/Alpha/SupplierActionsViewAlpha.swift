@@ -48,6 +48,9 @@ final class SupplierActionsViewAlpha: UIViewController {
         }
     }
 
+    private var cameraIcon: UIImage?
+    private var photoIcon: UIImage?
+
     private lazy var stackView: UIStackView = {
         let stack = UIStackView()
         stack.distribution = .fill
@@ -111,7 +114,6 @@ final class SupplierActionsViewAlpha: UIViewController {
 
     private lazy var addPhotoButton: UIButton = {
         let button = UIButton()
-        button.setImage(#imageLiteral(resourceName: "add"), for: .normal)
         button.backgroundColor = .clear
         button.setTitle("Добавить фото", for: .normal)
         button.setTitleColor(#colorLiteral(red: 0.09803921569, green: 0.09411764706, blue: 0.09411764706, alpha: 1), for: .normal)
@@ -222,6 +224,12 @@ final class SupplierActionsViewAlpha: UIViewController {
 
         addPadding(to: messageTextField)
         addPadding(to: linkTextField)
+
+        #if SWIFT_PACKAGE
+        addPhotoButton.setImage(UIImage(named: "add", in: Bundle.module, compatibleWith: nil), for: .normal)
+        #else
+        addPhotoButton.setImage(UIImage(named: "add", in: Bundle(for: Self.self), compatibleWith: nil), for: .normal)
+        #endif
     }
 
     private func addPadding(to textField: UITextField) {
@@ -235,8 +243,17 @@ final class SupplierActionsViewAlpha: UIViewController {
     }
 
     @objc private func addPhotoTouchUpInside(_ sender: Any) {
-        let cameraIcon = #imageLiteral(resourceName: "camera")
-        let photoIcon = #imageLiteral(resourceName: "photo")
+        #if SWIFT_PACKAGE
+        cameraIcon = UIImage(named: "camera", in: Bundle.module, compatibleWith: nil)
+        #else
+        cameraIcon = UIImage(named: "camera", in: Bundle(for: Self.self), compatibleWith: nil)
+        #endif
+
+        #if SWIFT_PACKAGE
+        photoIcon = UIImage(named: "photo", in: Bundle.module, compatibleWith: nil)
+        #else
+        photoIcon = UIImage(named: "photo", in: Bundle(for: Self.self), compatibleWith: nil)
+        #endif
 
         let actionSheet = UIAlertController(title: nil,
                                             message: nil,

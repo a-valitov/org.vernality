@@ -38,6 +38,9 @@ final class SupplierCommercialOfferViewAlpha: UIViewController {
     var attachments: [Data] = []
     var attachmentNames: [String] = []
 
+    private var cameraIcon: UIImage?
+    private var photoIcon: UIImage?
+
     private lazy var fileCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -63,7 +66,6 @@ final class SupplierCommercialOfferViewAlpha: UIViewController {
 
     private lazy var addPhotoButton: UIButton = {
         let button = UIButton()
-        button.setImage(#imageLiteral(resourceName: "add"), for: .normal)
         button.backgroundColor = .clear
         button.setTitle("Добавить фото", for: .normal)
         button.setTitleColor(#colorLiteral(red: 0.09803921569, green: 0.09411764706, blue: 0.09411764706, alpha: 1), for: .normal)
@@ -105,7 +107,6 @@ final class SupplierCommercialOfferViewAlpha: UIViewController {
 
     private lazy var attachmentFileButton: UIButton = {
         let button = UIButton()
-        button.setImage(#imageLiteral(resourceName: "attach"), for: .normal)
         button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 10.0, bottom: 0, right: 0)
         button.addTarget(self, action: #selector(SupplierCommercialOfferViewAlpha.attachFileTouchUpInside(_:)), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -146,11 +147,32 @@ final class SupplierCommercialOfferViewAlpha: UIViewController {
         view.backgroundColor = .white
 
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "barItem"), style: .plain, target: self, action: #selector(menuBarButtonItemAction))
+
+        #if SWIFT_PACKAGE
+        addPhotoButton.setImage(UIImage(named: "add", in: Bundle.module, compatibleWith: nil), for: .normal)
+        #else
+        addPhotoButton.setImage(UIImage(named: "add", in: Bundle(for: Self.self), compatibleWith: nil), for: .normal)
+        #endif
+
+        #if SWIFT_PACKAGE
+        attachmentFileButton.setImage(UIImage(named: "attach", in: Bundle.module, compatibleWith: nil), for: .normal)
+        #else
+        attachmentFileButton.setImage(UIImage(named: "attach", in: Bundle(for: Self.self), compatibleWith: nil), for: .normal)
+        #endif
     }
 
     @objc private func addPhotoTouchUpInside(_ sender: Any) {
-        let cameraIcon = #imageLiteral(resourceName: "camera")
-        let photoIcon = #imageLiteral(resourceName: "photo")
+        #if SWIFT_PACKAGE
+        cameraIcon = UIImage(named: "camera", in: Bundle.module, compatibleWith: nil)
+        #else
+        cameraIcon = UIImage(named: "camera", in: Bundle(for: Self.self), compatibleWith: nil)
+        #endif
+
+        #if SWIFT_PACKAGE
+        photoIcon = UIImage(named: "photo", in: Bundle.module, compatibleWith: nil)
+        #else
+        photoIcon = UIImage(named: "photo", in: Bundle(for: Self.self), compatibleWith: nil)
+        #endif
 
         let actionSheet = UIAlertController(title: nil,
                                             message: nil,

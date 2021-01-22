@@ -27,6 +27,9 @@ final class OrganizationProfileViewBeta: UIViewController {
     var email: String? { didSet { self.updateUIEmail() } }
     var organizationImage: UIImage?
 
+    var cameraIcon: UIImage?
+    var photoIcon: UIImage?
+
     @IBOutlet weak var organizationImageView: UIImageView!
     @IBOutlet weak var organizationNameLabel: UILabel!
     @IBOutlet weak var organizationINNLabel: UILabel!
@@ -51,8 +54,17 @@ final class OrganizationProfileViewBeta: UIViewController {
     }
 
     @IBAction func addPhotoButtonTouchUpInside() {
-        let cameraIcon = #imageLiteral(resourceName: "camera")
-        let photoIcon = #imageLiteral(resourceName: "photo")
+        #if SWIFT_PACKAGE
+        cameraIcon = UIImage(named: "camera", in: Bundle.module, compatibleWith: nil)
+        #else
+        cameraIcon = UIImage(named: "camera", in: Bundle(for: Self.self), compatibleWith: nil)
+        #endif
+
+        #if SWIFT_PACKAGE
+        photoIcon = UIImage(named: "photo", in: Bundle.module, compatibleWith: nil)
+        #else
+        photoIcon = UIImage(named: "photo", in: Bundle(for: Self.self), compatibleWith: nil)
+        #endif
 
         let actionSheet = UIAlertController(title: nil,
                                             message: nil,

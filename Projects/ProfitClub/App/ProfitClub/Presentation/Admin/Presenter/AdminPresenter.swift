@@ -71,15 +71,29 @@ final class AdminPresenter: AdminModule {
     private weak var adminSuppliers: AdminSuppliersModule?
     private weak var adminActions: AdminActionsModule?
     private weak var adminCommercialOffers: AdminCommercialOffersModule?
+
+    private var changeRoleImage: UIImage?
+    private var logoutImage: UIImage?
 }
 
 extension AdminPresenter: AdminTabBarViewOutput {
     func adminTabBar(view: AdminTabBarViewInput, tappenOn menuBarButton: Any) {
-        let changeRole = MenuItem(title: "Сменить роль", image: #imageLiteral(resourceName: "refresh")) { [weak self] in
+        #if SWIFT_PACKAGE
+        changeRoleImage = UIImage(named: "refresh", in: Bundle.module, compatibleWith: nil)
+        #else
+        changeRoleImage = UIImage(named: "refresh", in: Bundle(for: Self.self), compatibleWith: nil)
+        #endif
+
+        #if SWIFT_PACKAGE
+        logoutImage = UIImage(named: "logout", in: Bundle.module, compatibleWith: nil)
+        #else
+        logoutImage = UIImage(named: "logout", in: Bundle(for: Self.self), compatibleWith: nil)
+        #endif
+        let changeRole = MenuItem(title: "Сменить роль", image: changeRoleImage) { [weak self] in
             guard let sSelf = self else { return }
             sSelf.output?.adminUserWantsToChangeRole(module: sSelf)
         }
-        let logout = MenuItem(title: "Выйти", image: #imageLiteral(resourceName: "logout")) { [weak self] in
+        let logout = MenuItem(title: "Выйти", image: logoutImage) { [weak self] in
             guard let sSelf = self else { return }
             sSelf.presenters.confirmation.present(title: "Подтвердите выход", message: "Вы уверены что хотите выйти?", actionTitle: "Выйти", withCancelAction: true) { [weak sSelf] in
                 guard let ssSelf = sSelf else { return }

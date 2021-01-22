@@ -47,6 +47,9 @@ final class ReviewPresenter: ReviewModule {
     private let presenters: ReviewPresenters
     private let services: ReviewServices
     private weak var weakView: UIViewController?
+
+    private var addRoleImage: UIImage?
+    private var logoutImage: UIImage?
 }
 
 extension ReviewPresenter: ReviewViewOutput {
@@ -63,11 +66,22 @@ extension ReviewPresenter: ReviewViewOutput {
     }
 
     func review(view: ReviewViewInput, tappenOn menuBarButton: Any) {
-        let addRole = MenuItem(title: "Добавить роль", image: #imageLiteral(resourceName: "addRoleIcon")) { [weak self] in
+        #if SWIFT_PACKAGE
+        addRoleImage = UIImage(named: "addRoleIcon", in: Bundle.module, compatibleWith: nil)
+        #else
+        addRoleImage = UIImage(named: "addRoleIcon", in: Bundle(for: Self.self), compatibleWith: nil)
+        #endif
+
+        #if SWIFT_PACKAGE
+        logoutImage = UIImage(named: "logout", in: Bundle.module, compatibleWith: nil)
+        #else
+        logoutImage = UIImage(named: "logout", in: Bundle(for: Self.self), compatibleWith: nil)
+        #endif
+        let addRole = MenuItem(title: "Добавить роль", image: addRoleImage) { [weak self] in
             guard let sSelf = self else { return }
             sSelf.output?.reviewUserWantsToAddRole(module: sSelf)
         }
-        let logout = MenuItem(title: "Выйти", image: #imageLiteral(resourceName: "logout")) { [weak self] in
+        let logout = MenuItem(title: "Выйти", image: logoutImage) { [weak self] in
             guard let sSelf = self else { return }
             sSelf.presenters.confirmation.present(title: "Подтвердите выход", message: "Вы уверены что хотите выйти?", actionTitle: "Выйти", withCancelAction: true) { [weak sSelf] in
                 guard let ssSelf = sSelf else { return }

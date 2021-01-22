@@ -79,7 +79,6 @@ final class OnboardResetPasswordViewAlpha: UIViewController {
     private lazy var backgroundImageView: UIImageView = {
         let backgroundImage = UIImageView()
         backgroundImage.contentMode = .scaleAspectFill
-        backgroundImage.image = #imageLiteral(resourceName: "onboard-welcome-bg")
         backgroundImage.translatesAutoresizingMaskIntoConstraints = false
         return backgroundImage
     }()
@@ -100,6 +99,12 @@ final class OnboardResetPasswordViewAlpha: UIViewController {
         style()
 
         emailTextField.delegate = self
+
+        #if SWIFT_PACKAGE
+        backgroundImageView.image = UIImage(named: "onboard-welcome-bg", in: Bundle.module, compatibleWith: nil)
+        #else
+        backgroundImageView.image = UIImage(named: "onboard-welcome-bg", in: Bundle(for: Self.self), compatibleWith: nil)
+        #endif
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

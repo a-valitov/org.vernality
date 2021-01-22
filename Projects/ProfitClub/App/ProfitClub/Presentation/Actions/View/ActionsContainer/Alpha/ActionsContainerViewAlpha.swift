@@ -43,6 +43,9 @@ final class ActionsContainerViewAlpha: UIViewController {
         }
     }
 
+    var tabBarImage: UIImage?
+    var tabBarSelectedImage: UIImage?
+
     private lazy var segmentedControlContainerView: UIView = {
         let containerView = UIView()
         containerView.backgroundColor = .white
@@ -106,7 +109,18 @@ final class ActionsContainerViewAlpha: UIViewController {
     }
 
     private func setup() {
-        self.tabBarItem = UITabBarItem(title: "Акции", image: #imageLiteral(resourceName: "selectedActionItem"), selectedImage: #imageLiteral(resourceName: "actionItem"))
+        #if SWIFT_PACKAGE
+        tabBarImage = UIImage(named: "selectedActionItem", in: Bundle.module, compatibleWith: nil)
+        #else
+        tabBarImage = UIImage(named: "selectedActionItem", in: Bundle(for: Self.self), compatibleWith: nil)
+        #endif
+        #if SWIFT_PACKAGE
+        tabBarSelectedImage = UIImage(named: "actionItem", in: Bundle.module, compatibleWith: nil)
+        #else
+        tabBarSelectedImage = UIImage(named: "actionItem", in: Bundle(for: Self.self), compatibleWith: nil)
+        #endif
+
+        self.tabBarItem = UITabBarItem(title: "Акции", image: tabBarImage, selectedImage: tabBarSelectedImage)
         self.tabBarController?.selectedIndex = 0
 
         segmentedControl.setBackgroundImage(imageWithColor(color: .clear), for: .normal, barMetrics: .default)

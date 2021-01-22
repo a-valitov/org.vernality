@@ -85,19 +85,41 @@ final class OrganizationPresenter: OrganizationModule {
     }
     private weak var weakActionModule: ActionModule?
     private weak var weakCommercialOfferModule: CommercialOfferModule?
+
+    private var profileImage: UIImage?
+    private var changeRoleImage: UIImage?
+    private var logoutImage: UIImage?
 }
 
 extension OrganizationPresenter: OrganizationTabBarViewOutput {
     func organizationTabBar(view: OrganizationTabBarViewInput, tappenOn menuBarButton: Any) {
-        let profile = MenuItem(title: "Профиль", image: #imageLiteral(resourceName: "profile")) { [weak self] in
+        #if SWIFT_PACKAGE
+        changeRoleImage = UIImage(named: "refresh", in: Bundle.module, compatibleWith: nil)
+        #else
+        changeRoleImage = UIImage(named: "refresh", in: Bundle(for: Self.self), compatibleWith: nil)
+        #endif
+
+        #if SWIFT_PACKAGE
+        logoutImage = UIImage(named: "logout", in: Bundle.module, compatibleWith: nil)
+        #else
+        logoutImage = UIImage(named: "logout", in: Bundle(for: Self.self), compatibleWith: nil)
+        #endif
+
+        #if SWIFT_PACKAGE
+        profileImage = UIImage(named: "profile", in: Bundle.module, compatibleWith: nil)
+        #else
+        profileImage = UIImage(named: "profile", in: Bundle(for: Self.self), compatibleWith: nil)
+        #endif
+
+        let profile = MenuItem(title: "Профиль", image: profileImage) { [weak self] in
             guard let sSelf = self else { return }
             sSelf.output?.organization(module: sSelf, userWantsToOpenProfileOf: sSelf.organization)
         }
-        let changeRole = MenuItem(title: "Сменить роль", image: #imageLiteral(resourceName: "refresh")) { [weak self] in
+        let changeRole = MenuItem(title: "Сменить роль", image: changeRoleImage) { [weak self] in
             guard let sSelf = self else { return }
             sSelf.output?.organizationUserWantsToChangeRole(module: sSelf)
         }
-        let logout = MenuItem(title: "Выйти", image: #imageLiteral(resourceName: "logout")) { [weak self] in
+        let logout = MenuItem(title: "Выйти", image: logoutImage) { [weak self] in
             guard let sSelf = self else { return }
             sSelf.presenters.confirmation.present(title: "Подтвердите выход", message: "Вы уверены что хотите выйти?", actionTitle: "Выйти", withCancelAction: true) { [weak sSelf] in
                 guard let ssSelf = sSelf else { return }

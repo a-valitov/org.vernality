@@ -51,7 +51,11 @@ final class OnboardOrganizationViewBeta: UIViewController {
     }
     var image: UIImage? {
         if self.isViewLoaded {
-            return #imageLiteral(resourceName: "profileImage")
+            #if SWIFT_PACKAGE
+            return UIImage(named: "profileImage", in: Bundle.module, compatibleWith: nil)
+            #else
+             return UIImage(named: "profileImage", in: Bundle(for: Self.self), compatibleWith: nil)
+            #endif
         } else {
             return nil
         }

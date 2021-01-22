@@ -26,6 +26,9 @@ final class SupplierProfileViewBeta: UIViewController {
     var supplierImageUrl: URL? { didSet { self.updateUIImage() } }
     var email: String? { didSet { self.updateUIEmail() } }
 
+    var cameraIcon: UIImage?
+    var photoIcon: UIImage?
+
     @IBOutlet weak var supplierImageView: UIImageView!
     @IBOutlet weak var supplierNameLabel: UILabel!
     @IBOutlet weak var suplierINNLabel: UILabel!
@@ -49,8 +52,17 @@ final class SupplierProfileViewBeta: UIViewController {
     }
 
     @IBAction func addPhotoButtonTouchUpInside() {
-        let cameraIcon = #imageLiteral(resourceName: "camera")
-        let photoIcon = #imageLiteral(resourceName: "photo")
+        #if SWIFT_PACKAGE
+        cameraIcon = UIImage(named: "camera", in: Bundle.module, compatibleWith: nil)
+        #else
+        cameraIcon = UIImage(named: "camera", in: Bundle(for: Self.self), compatibleWith: nil)
+        #endif
+
+        #if SWIFT_PACKAGE
+        photoIcon = UIImage(named: "photo", in: Bundle.module, compatibleWith: nil)
+        #else
+        photoIcon = UIImage(named: "photo", in: Bundle(for: Self.self), compatibleWith: nil)
+        #endif
 
         let actionSheet = UIAlertController(title: nil,
                                             message: nil,

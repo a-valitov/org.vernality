@@ -30,7 +30,6 @@ final class SupplierCommercialOfferViewAlphaFileCell: UICollectionViewCell {
 
     private lazy var fileImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = #imageLiteral(resourceName: "pdf")
         imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
@@ -38,6 +37,11 @@ final class SupplierCommercialOfferViewAlphaFileCell: UICollectionViewCell {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+        #if SWIFT_PACKAGE
+        fileImageView.image = UIImage(named: "pdf", in: Bundle.module, compatibleWith: nil)
+        #else
+        fileImageView.image = UIImage(named: "pdf", in: Bundle(for: Self.self), compatibleWith: nil)
+        #endif
         layout()
     }
 

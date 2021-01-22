@@ -61,7 +61,6 @@ final class AdminSupplierApplicationViewAlpha: UIViewController {
     private lazy var supplierImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
-        imageView.image = #imageLiteral(resourceName: "Mask Group")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.setContentHuggingPriority(.defaultLow, for: .vertical)
         imageView.setContentCompressionResistancePriority(.defaultLow, for: .vertical)
@@ -157,7 +156,6 @@ final class AdminSupplierApplicationViewAlpha: UIViewController {
 
     private lazy var cancelButton: UIButton = {
         let button = UIButton()
-        button.setImage(#imageLiteral(resourceName: "X"), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -177,6 +175,12 @@ final class AdminSupplierApplicationViewAlpha: UIViewController {
         setup()
         view.backgroundColor = .white
         self.output?.adminSupplierApplicationDidLoad(view: self)
+
+        #if SWIFT_PACKAGE
+        cancelButton.setImage(UIImage(named: "X", in: Bundle.module, compatibleWith: nil), for: .normal)
+        #else
+        cancelButton.setImage(UIImage(named: "X", in: Bundle(for: Self.self), compatibleWith: nil), for: .normal)
+        #endif
     }
 
     override func viewWillLayoutSubviews() {

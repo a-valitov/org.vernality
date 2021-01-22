@@ -97,7 +97,6 @@ final class PastActionViewAlpha: UIViewController {
     private lazy var cancelButton: UIButton = {
         let button = UIButton()
         button.addTarget(self, action: #selector(PastActionViewAlpha.cancelButtonTouchUpInside), for: .touchUpInside)
-        button.setImage(#imageLiteral(resourceName: "X"), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -126,6 +125,13 @@ final class PastActionViewAlpha: UIViewController {
         view.backgroundColor = .white
         self.updateUI()
         self.layout()
+
+        #if SWIFT_PACKAGE
+        cancelButton.setImage(UIImage(named: "X", in: Bundle.module, compatibleWith: nil), for: .normal)
+        #else
+        cancelButton.setImage(UIImage(named: "X", in: Bundle(for: Self.self), compatibleWith: nil), for: .normal)
+        #endif
+
     }
 
     override func viewWillLayoutSubviews() {

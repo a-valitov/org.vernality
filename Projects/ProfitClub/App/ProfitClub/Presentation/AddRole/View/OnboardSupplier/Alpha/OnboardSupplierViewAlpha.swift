@@ -53,7 +53,11 @@ final class OnboardSupplierViewAlpha: UIViewController {
     }
     var image: UIImage? {
         if self.isViewLoaded {
-            return #imageLiteral(resourceName: "profileImage")
+            #if SWIFT_PACKAGE
+            return UIImage(named: "profileImage", in: Bundle.module, compatibleWith: nil)
+            #else
+             return UIImage(named: "profileImage", in: Bundle(for: Self.self), compatibleWith: nil)
+            #endif
         } else {
             return nil
         }
@@ -151,8 +155,6 @@ final class OnboardSupplierViewAlpha: UIViewController {
 
     private lazy var checkbox: UIButton = {
         let button = UIButton()
-        button.setImage(#imageLiteral(resourceName: "checkmark"), for: .normal)
-        button.setImage(#imageLiteral(resourceName: "checkmark-selected"), for: .selected)
         button.addTarget(self, action: #selector(OnboardSupplierViewAlpha.checkboxTouchUpInside(_:)), for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -236,6 +238,18 @@ final class OnboardSupplierViewAlpha: UIViewController {
         backgroundImageView.image = UIImage(named: "onboard-welcome-bg", in: Bundle.module, compatibleWith: nil)
         #else
         backgroundImageView.image = UIImage(named: "onboard-welcome-bg", in: Bundle(for: Self.self), compatibleWith: nil)
+        #endif
+
+        #if SWIFT_PACKAGE
+        checkbox.setImage(UIImage(named: "checkmark", in: Bundle.module, compatibleWith: nil), for: .normal)
+        #else
+        checkbox.setImage(UIImage(named: "checkmark", in: Bundle(for: Self.self), compatibleWith: nil), for: .normal)
+        #endif
+
+        #if SWIFT_PACKAGE
+        checkbox.setImage(UIImage(named: "checkmark-selected", in: Bundle.module, compatibleWith: nil), for: .selected)
+        #else
+        checkbox.setImage(UIImage(named: "checkmark-selected", in: Bundle(for: Self.self), compatibleWith: nil), for: .selected)
         #endif
     }
 

@@ -42,6 +42,9 @@ final class MembersContainerViewAlpha: UIViewController {
         }
     }
 
+    var tabBarImage: UIImage?
+    var tabBarSelectedImage: UIImage?
+
     private lazy var segmentedControlContainerView: UIView = {
         let containerView = UIView()
         containerView.backgroundColor = .white
@@ -94,7 +97,17 @@ final class MembersContainerViewAlpha: UIViewController {
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        self.tabBarItem = UITabBarItem(title: "Участники", image: #imageLiteral(resourceName: "selectedMembersItem"), selectedImage: #imageLiteral(resourceName: "MembersItem"))
+        #if SWIFT_PACKAGE
+        tabBarImage = UIImage(named: "selectedMembersItem", in: Bundle.module, compatibleWith: nil)
+        #else
+        tabBarImage = UIImage(named: "selectedMembersItem", in: Bundle(for: Self.self), compatibleWith: nil)
+        #endif
+        #if SWIFT_PACKAGE
+        tabBarSelectedImage = UIImage(named: "MembersItem", in: Bundle.module, compatibleWith: nil)
+        #else
+        tabBarSelectedImage = UIImage(named: "MembersItem", in: Bundle(for: Self.self), compatibleWith: nil)
+        #endif
+        self.tabBarItem = UITabBarItem(title: "Участники", image: tabBarImage, selectedImage: tabBarSelectedImage)
     }
 
     @available(*, unavailable)
