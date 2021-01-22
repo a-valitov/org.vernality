@@ -15,65 +15,56 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import Foundation
+import UIKit
 
-public protocol PCOrganization {
+public protocol PCMember {
     var id: String? { get }
-    var name: String? { get }
-    var inn: String? { get }
-    var contact: String? { get }
-    var phone: String? { get }
+    var firstName: String? { get }
+    var lastName: String? { get }
     var owner: PCUser? { get }
     var image: UIImage? { get }
     var imageUrl: URL? { get }
-    var status: PCOrganizationStatus? { get }
+    var organization: PCOrganization? { get }
+    var status: PCMemberStatus? { get }
 }
 
-public enum PCOrganizationStatus: String {
+public enum PCMemberStatus: String {
     case onReview
     case approved
     case rejected
     case excluded
 }
 
-public extension PCOrganization {
-    var any: AnyPCOrganization {
-        return AnyPCOrganization(object: self)
+public extension PCMember {
+    var any: AnyPCMember {
+        return AnyPCMember(object: self)
     }
 }
 
-public struct PCOrganizationStruct: PCOrganization {
+public struct PCMemberStruct: PCMember {
     public var id: String?
-    public var name: String?
-    public var inn: String?
-    public var contact: String?
-    public var phone: String?
+    public var firstName: String?
+    public var lastName: String?
     public var owner: PCUser?
     public var image: UIImage?
     public var imageUrl: URL?
-    public var status: PCOrganizationStatus?
+    public var organization: PCOrganization?
+    public var status: PCMemberStatus?
 
     public init() {}
 }
 
-public struct AnyPCOrganization: PCOrganization, Equatable, Hashable {
+public struct AnyPCMember: PCMember, Equatable, Hashable {
     public var id: String? {
         return self.object.id
     }
-
-    public var name: String? {
-        return self.object.name
+    
+    public var firstName: String? {
+        return self.object.firstName
     }
 
-    public var inn: String? {
-        return self.object.inn
-    }
-
-    public var contact: String? {
-        return self.object.contact
-    }
-
-    public var phone: String? {
-        return self.object.phone
+    public var lastName: String? {
+        return self.object.lastName
     }
 
     public var owner: PCUser? {
@@ -88,15 +79,19 @@ public struct AnyPCOrganization: PCOrganization, Equatable, Hashable {
         return self.object.imageUrl
     }
 
-    public var status: PCOrganizationStatus? {
+    public var organization: PCOrganization? {
+        return self.object.organization
+    }
+
+    public var status: PCMemberStatus? {
         return self.object.status
     }
 
-    public init(object: PCOrganization) {
+    public init(object: PCMember) {
         self.object = object
     }
 
-    public static func == (lhs: AnyPCOrganization, rhs: AnyPCOrganization) -> Bool {
+    public static func == (lhs: AnyPCMember, rhs: AnyPCMember) -> Bool {
         return lhs.id == rhs.id
     }
 
@@ -104,5 +99,6 @@ public struct AnyPCOrganization: PCOrganization, Equatable, Hashable {
         hasher.combine(self.id)
     }
 
-    private let object: PCOrganization
+    private let object: PCMember
 }
+

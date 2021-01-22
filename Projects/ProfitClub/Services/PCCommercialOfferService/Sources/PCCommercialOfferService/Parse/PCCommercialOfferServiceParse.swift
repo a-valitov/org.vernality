@@ -16,7 +16,6 @@
 
 import Foundation
 import PCModel
-import PCModelParse
 import Parse
 
 public final class PCCommercialOfferServiceParse: PCCommercialOfferService {

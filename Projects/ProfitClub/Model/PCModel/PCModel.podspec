@@ -12,7 +12,16 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '11.0'
   s.swift_version    = '5.0'
 
-  s.ios.source_files = 'Sources/**/*.{h,m,swift}', 'Sources/*.{h,m,swift}'
+  s.default_subspecs = 'Contract'
+
+  s.subspec 'Contract' do |ss|
+    ss.source_files = 'Sources/PCModel/**/*.{h,m,swift}', 'Sources/PCModel/*.{h,m,swift}'
+  end
+
+  s.subspec 'Parse' do |ss|
+    ss.source_files = 'Sources/PCModelParse/**/*.{h,m,swift}', 'Sources/PCModelParse/*.{h,m,swift}'
+    ss.dependency 'Parse'
+  end
 
   s.test_spec 'Tests' do |test_spec|
     test_spec.source_files = 'Tests/**/*.{swift}', 'Tests/*.{swift}'

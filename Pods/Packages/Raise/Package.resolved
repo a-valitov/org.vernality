@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "FittedSheets",
+        "repositoryURL": "https://github.com/gordontucker/FittedSheets",
+        "state": {
+          "branch": null,
+          "revision": "a96e472357afe5490533b9b31cf48a5c3163e0fd",
+          "version": "2.3.1"
+        }
+      }
+    ]
+  },
+  "version": 1
+}

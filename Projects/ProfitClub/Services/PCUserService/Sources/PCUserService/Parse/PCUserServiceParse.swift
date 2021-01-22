@@ -18,7 +18,6 @@ import Foundation
 import PCAuthentication
 import PCModel
 import Parse
-import PCModelParse
 
 public final class PCUserServiceParse: PCUserService {
     public var user: AnyPCUser? {

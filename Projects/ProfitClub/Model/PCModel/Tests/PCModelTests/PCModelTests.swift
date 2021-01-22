@@ -1,12 +1,12 @@
 import XCTest
-@testable import ProfitClubModel
+@testable import PCModel
 
-final class ProfitClubModelTests: XCTestCase {
+final class PCModelTests: XCTestCase {
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct
         // results.
-        XCTAssertEqual(ProfitClubModel().text, "Hello, World!")
+        XCTAssertEqual(PCModel().text, "Hello, World!")
     }
 
     static var allTests = [

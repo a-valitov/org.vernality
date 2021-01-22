@@ -1,7 +1,7 @@
 import XCTest
 
-import ProfitClubModelTests
+import PCModelTests
 
 var tests = [XCTestCaseEntry]()
-tests += ProfitClubModelTests.allTests()
+tests += PCModelTests.allTests()
 XCTMain(tests)

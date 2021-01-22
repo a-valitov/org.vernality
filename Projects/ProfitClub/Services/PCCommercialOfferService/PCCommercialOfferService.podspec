@@ -18,9 +18,8 @@ Pod::Spec.new do |s|
     test_spec.source_files = 'Tests/**/*.{swift}', 'Tests/*.{swift}'
   end
 
-  s.dependency 'PCModel'
-  s.dependency 'PCModelParse'
   s.dependency 'PCAuthentication'
+  s.dependency 'PCModel/Parse'
   s.dependency 'Parse'
 end
 

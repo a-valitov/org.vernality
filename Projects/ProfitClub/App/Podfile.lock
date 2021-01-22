@@ -87,21 +87,23 @@ PODS:
   - PCActionService (0.0.1):
     - Parse
     - PCAuthentication
-    - PCModel
-    - PCModelParse
+    - PCModel/Parse
   - PCAuthentication (0.0.1):
-    - Parse
+    - PCAuthentication/Contract (= 0.0.1)
+  - PCAuthentication/Contract (0.0.1):
     - PCModel
-    - PCModelParse
+  - PCAuthentication/Parse (0.0.1):
+    - Parse
+    - PCModel/Parse
   - PCCommercialOfferService (0.0.1):
     - Parse
     - PCAuthentication
-    - PCModel
-    - PCModelParse
-  - PCModel (0.0.1)
-  - PCModelParse (0.0.1):
+    - PCModel/Parse
+  - PCModel (0.0.1):
+    - PCModel/Contract (= 0.0.1)
+  - PCModel/Contract (0.0.1)
+  - PCModel/Parse (0.0.1):
     - Parse
-    - PCModel
   - PCOnboard (0.0.1):
     - ActivityPresenter
     - ConfirmationPresenter
@@ -120,13 +122,11 @@ PODS:
   - PCOrganizationService (0.0.1):
     - Parse
     - PCAuthentication
-    - PCModel
-    - PCModelParse
+    - PCModel/Parse
   - PCSupplierService (0.0.1):
     - Parse
     - PCAuthentication
-    - PCModel
-    - PCModelParse
+    - PCModel/Parse
   - PCUserService (0.0.1):
     - Parse
     - PCAuthentication
@@ -149,10 +149,9 @@ DEPENDENCIES:
   - MenuPresenter (from `../../../Pods/Packages/MenuPresenter/MenuPresenter.podspec`)
   - Nantes
   - PCActionService (from `../Services/PCActionService/PCActionService.podspec`)
-  - PCAuthentication (from `../Services/PCAuthentication/PCAuthentication.podspec`)
+  - PCAuthentication/Parse (from `../Services/PCAuthentication/PCAuthentication.podspec`)
   - PCCommercialOfferService (from `../Services/PCCommercialOfferService/PCCommercialOfferService.podspec`)
-  - PCModel (from `../Model/PCModel/PCModel.podspec`)
-  - PCModelParse (from `../Model/Parse/PCModelParse/PCModelParse.podspec`)
+  - PCModel/Parse (from `../Model/PCModel/PCModel.podspec`)
   - PCOnboard (from `../Presentation/PCOnboard/PCOnboard.podspec`)
   - PCOrganizationService (from `../Services/PCOrganizationService/PCOrganizationService.podspec`)
   - PCSupplierService (from `../Services/PCSupplierService/PCSupplierService.podspec`)
@@ -195,8 +194,6 @@ EXTERNAL SOURCES:
     :path: "../Services/PCCommercialOfferService/PCCommercialOfferService.podspec"
   PCModel:
     :path: "../Model/PCModel/PCModel.podspec"
-  PCModelParse:
-    :path: "../Model/Parse/PCModelParse/PCModelParse.podspec"
   PCOnboard:
     :path: "../Presentation/PCOnboard/PCOnboard.podspec"
   PCOrganizationService:
@@ -228,18 +225,17 @@ SPEC CHECKSUMS:
   nanopb: 1bf24dd71191072e120b83dd02d08f3da0d65e53
   Nantes: 0396442578e32242223fed46050dea1850236184
   Parse: e40fdb9c7d665823b7fe9865949cac9a53eb2ce7
-  PCActionService: 65dc21b3665ba9c7da81090c38faf2d963c1c056
-  PCAuthentication: fc8a6b7c609fe5073ab2fecafb5ba18f35c4f166
-  PCCommercialOfferService: cfa94232ba140374e3b3f4cf17298dbbb3b851da
-  PCModel: 55956193877ce76a453e774c3a4134b4d8df1b66
-  PCModelParse: 390140969bb8e13a9989cf16938a7fa947f89474
+  PCActionService: 2ec6ae69a564f94077c95ed604ae5525e374e550
+  PCAuthentication: 56a2583b78930551f1b9aa5b85de35e25d3ab9ec
+  PCCommercialOfferService: 07469ba8d01877d41cd6cbdf51659c723e50d14f
+  PCModel: f1a5156863a4758a54329a35721fb7d363683021
   PCOnboard: b670338120255bbcb0eff27e9c43a942e652c986
-  PCOrganizationService: f91950769dab3837f74ddeebf55cb3ac0ef87854
-  PCSupplierService: 2724fccfa653dc1ef2ad119fd2f25f1e22a4384a
+  PCOrganizationService: e2a419fa283997b14e96d25559941b0e362217e3
+  PCSupplierService: cb791574989857faefc0a9491b70d9208c3e853c
   PCUserService: 67723678bed0402566ce736cdb9ff08411be746f
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   Raise: e40c0ad29b47647c0a0eab8bb754ba9f3905f06c
 
-PODFILE CHECKSUM: a69499077b5f41db012885bab77b752b41c99a2d
+PODFILE CHECKSUM: 5725e02a8e9aaa99f7ee8d764d76a90321ed898e
 
 COCOAPODS: 1.10.0

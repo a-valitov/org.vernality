@@ -17,7 +17,6 @@
 import Foundation
 import Parse
 import PCModel
-import PCModelParse
 
 final class PCAuthenticationParse: PCAuthentication {
     var user: AnyPCUser? {

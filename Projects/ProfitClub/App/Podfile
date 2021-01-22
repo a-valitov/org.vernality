@@ -13,8 +13,7 @@ target 'ProfitClub' do
   pod 'Firebase/Crashlytics'
 
   # ontology
-  pod 'PCModel', :path => '../Model/PCModel/PCModel.podspec'
-  pod 'PCModelParse', :path => '../Model/Parse/PCModelParse/PCModelParse.podspec'
+  pod 'PCModel/Parse', :path => '../Model/PCModel/PCModel.podspec'
   
   # packages
   pod 'ErrorPresenter', :path => PACKAGES_PATH + '/ErrorPresenter/ErrorPresenter.podspec'
@@ -24,7 +23,7 @@ target 'ProfitClub' do
   pod 'Raise', :path => PACKAGES_PATH + '/Raise/Raise.podspec'
   
   # services
-  pod 'PCAuthentication', :path => '../Services/PCAuthentication/PCAuthentication.podspec'
+  pod 'PCAuthentication/Parse', :path => '../Services/PCAuthentication/PCAuthentication.podspec'
   pod 'PCUserService', :path => '../Services/PCUserService/PCUserService.podspec'
   pod 'PCOrganizationService', :path => '../Services/PCOrganizationService/PCOrganizationService.podspec'
   pod 'PCActionService', :path => '../Services/PCActionService/PCActionService.podspec'

@@ -16,8 +16,9 @@
 
 import Foundation
 
-enum PCAuthenticationError: Error {
+public enum PCAuthenticationError: Error {
     case bothResultAndErrorAreNil
     case userIsStillNilAfterRegistration
     case organizationOrUserIdIsNil
+    case failedToLogin
 }
