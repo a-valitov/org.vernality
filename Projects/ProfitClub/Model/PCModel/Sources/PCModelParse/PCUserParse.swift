@@ -16,7 +16,6 @@
 
 import Foundation
 import Parse
-import PCModel
 
 public extension PCUser {
     var parse: PCUserParse {

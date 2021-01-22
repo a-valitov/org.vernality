@@ -18,7 +18,7 @@ import Foundation
 import PCModel
 import PCAuthentication
 
-final class PCAuthenticationParse: PCAuthentication {
+final class PCAuthenticationStub: PCAuthentication {
     var user: AnyPCUser? = PCUserStruct().any
 
     func login(username: String, password: String, result: @escaping ((Result<AnyPCUser, Error>) -> Void)) {

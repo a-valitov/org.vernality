@@ -15,10 +15,32 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import Foundation
+import PCAuthentication
+#if canImport(PCAuthenticationStub)
+import PCAuthenticationStub
+#endif
 import ErrorPresenter
 import ActivityPresenter
+import ConfirmationPresenter
 
 public final class OnboardFactory {
+    #if canImport(PCAuthenticationStub)
+    public init() {
+        let errorPresenter = ErrorPresenterAlertFactory().make()
+        let activityPresenter = ActivityPresenterCircleFactory().make()
+        let confirmationPresenter = ConfirmationPresenterAlertFactory().make()
+
+        self.presenters = OnboardPresenters(
+            error: errorPresenter,
+            activity: activityPresenter,
+            confirmation: confirmationPresenter
+        )
+        let authentication = PCAuthenticationStubFactory().make()
+        self.services = OnboardServices(
+            authentication: authentication
+        )
+    }
+    #endif
     public init(presenters: OnboardPresenters,
          services: OnboardServices) {
         self.presenters = presenters

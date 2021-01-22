@@ -16,7 +16,6 @@
 
 import Foundation
 import Parse
-import PCModel
 
 public extension PFObject {
     var pcSupplier: PCSupplier {

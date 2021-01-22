@@ -55,7 +55,12 @@ final class OnboardWelcomeViewAlpha: UIViewController {
     }
 
     private func setup() {
-        backgroundImage.image = #imageLiteral(resourceName: "onboard-welcome-bg")
+        #if SWIFT_PACKAGE
+        backgroundImage.image = UIImage(named: "onboard-welcome-bg", in: Bundle.module, compatibleWith: nil)
+        #else
+        backgroundImage.image = UIImage(named: "onboard-welcome-bg", in: Bundle(for: Self.self), compatibleWith: nil)
+        #endif
+
         signInButton.addTarget(self, action: #selector(OnboardWelcomeViewAlpha.signInButtonTouchUpInside(_:)), for: .touchUpInside)
         signUpButton.addTarget(self, action: #selector(OnboardWelcomeViewAlpha.signUpButtonTouchUpInside(_:)), for: .touchUpInside)
     }

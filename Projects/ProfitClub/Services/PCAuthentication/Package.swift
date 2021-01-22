@@ -22,7 +22,7 @@ let package = Package(
             dependencies: ["PCModel"]),
         .target(
             name: "PCAuthenticationStub",
-            dependencies: ["PCModel"]),
+            dependencies: ["PCModel", "PCAuthentication"]),
         .testTarget(
             name: "PCAuthenticationTests",
             dependencies: ["PCAuthentication"]),

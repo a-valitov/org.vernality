@@ -24,6 +24,7 @@ let package = Package(
         .target(
             name: "PCOnboard",
             dependencies: [
+                .product(name: "PCAuthenticationStub", package: "PCAuthentication"),
                 "PCAuthentication",
                 "ErrorPresenter",
                 "ConfirmationPresenter",

@@ -16,6 +16,8 @@ Pod::Spec.new do |s|
 
   s.subspec 'Sources' do |ss|
     ss.source_files = 'Sources/**/*.{h,m,swift}', 'Sources/*.{h,m,swift}'
+    s.resources = 'Sources/PCOnboard/Assets/PCOnboard.xcassets'
+
     s.dependency 'PCModel'
     s.dependency 'PCAuthentication'
     s.dependency 'ErrorPresenter'
