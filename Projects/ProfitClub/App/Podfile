@@ -1,0 +1,45 @@
+platform :ios, '11.0'
+use_frameworks!
+install! 'cocoapods', :disable_input_output_paths => true
+
+PODS_PATH = '../../../Pods'
+PACKAGES_PATH = PODS_PATH + '/Packages'
+
+target 'ProfitClub' do
+  pod 'Nantes'
+  pod 'Kingfisher'
+  pod 'FittedSheets', '~> 2.2.3'
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Crashlytics'
+
+  # ontology
+  pod 'PCModel', :path => '../Model/PCModel/PCModel.podspec'
+  pod 'PCModelParse', :path => '../Model/Parse/PCModelParse/PCModelParse.podspec'
+  
+  # packages
+  pod 'ErrorPresenter', :path => PACKAGES_PATH + '/ErrorPresenter/ErrorPresenter.podspec'
+  pod 'ActivityPresenter', :path => PACKAGES_PATH + '/ActivityPresenter/ActivityPresenter.podspec'
+  pod 'ConfirmationPresenter', :path => PACKAGES_PATH + '/ConfirmationPresenter/ConfirmationPresenter.podspec'
+  pod 'MenuPresenter', :path => PACKAGES_PATH + '/MenuPresenter/MenuPresenter.podspec'
+  
+  # services
+  pod 'PCAuthentication', :path => '../Services/PCAuthentication/PCAuthentication.podspec'
+  pod 'PCUserService', :path => '../Services/PCUserService/PCUserService.podspec'
+  pod 'PCOrganizationService', :path => '../Services/PCOrganizationService/PCOrganizationService.podspec'
+  pod 'PCActionService', :path => '../Services/PCActionService/PCActionService.podspec'
+  pod 'PCCommercialOfferService', :path => '../Services/PCCommercialOfferService/PCCommercialOfferService.podspec'
+  pod 'PCSupplierService', :path => '../Services/PCSupplierService/PCSupplierService.podspec'
+end
+
+# Exclude all Package.swift from pods targets
+post_install do |installer|
+  puts("Excluding Package.swift from targets")
+  installer.pods_project.targets.each do |target|
+
+    target.build_configurations.each do |config|
+      if config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'].to_f < 9.0
+        config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '9.0'
+      end
+    end
+  end
+end
