@@ -1,0 +1,241 @@
+PODS:
+  - ActivityPresenter (0.0.1)
+  - Bolts/Tasks (1.9.1)
+  - ConfirmationPresenter (0.0.1)
+  - ErrorPresenter (0.0.1)
+  - Firebase/Analytics (7.3.0):
+    - Firebase/Core
+  - Firebase/Core (7.3.0):
+    - Firebase/CoreOnly
+    - FirebaseAnalytics (= 7.3.0)
+  - Firebase/CoreOnly (7.3.0):
+    - FirebaseCore (= 7.3.0)
+  - Firebase/Crashlytics (7.3.0):
+    - Firebase/CoreOnly
+    - FirebaseCrashlytics (~> 7.3.0)
+  - FirebaseAnalytics (7.3.0):
+    - FirebaseCore (~> 7.0)
+    - FirebaseInstallations (~> 7.0)
+    - GoogleAppMeasurement (= 7.3.0)
+    - GoogleUtilities/AppDelegateSwizzler (~> 7.0)
+    - GoogleUtilities/MethodSwizzler (~> 7.0)
+    - GoogleUtilities/Network (~> 7.0)
+    - "GoogleUtilities/NSData+zlib (~> 7.0)"
+    - nanopb (~> 2.30906.0)
+  - FirebaseCore (7.3.0):
+    - FirebaseCoreDiagnostics (~> 7.0)
+    - GoogleUtilities/Environment (~> 7.0)
+    - GoogleUtilities/Logger (~> 7.0)
+  - FirebaseCoreDiagnostics (7.3.0):
+    - GoogleDataTransport (~> 8.0)
+    - GoogleUtilities/Environment (~> 7.0)
+    - GoogleUtilities/Logger (~> 7.0)
+    - nanopb (~> 2.30906.0)
+  - FirebaseCrashlytics (7.3.0):
+    - FirebaseCore (~> 7.0)
+    - FirebaseInstallations (~> 7.0)
+    - GoogleDataTransport (~> 8.0)
+    - nanopb (~> 2.30906.0)
+    - PromisesObjC (~> 1.2)
+  - FirebaseInstallations (7.3.0):
+    - FirebaseCore (~> 7.0)
+    - GoogleUtilities/Environment (~> 7.0)
+    - GoogleUtilities/UserDefaults (~> 7.0)
+    - PromisesObjC (~> 1.2)
+  - FittedSheets (2.2.3)
+  - GoogleAppMeasurement (7.3.0):
+    - GoogleUtilities/AppDelegateSwizzler (~> 7.0)
+    - GoogleUtilities/MethodSwizzler (~> 7.0)
+    - GoogleUtilities/Network (~> 7.0)
+    - "GoogleUtilities/NSData+zlib (~> 7.0)"
+    - nanopb (~> 2.30906.0)
+  - GoogleDataTransport (8.1.0):
+    - nanopb (~> 2.30906.0)
+  - GoogleUtilities/AppDelegateSwizzler (7.1.1):
+    - GoogleUtilities/Environment
+    - GoogleUtilities/Logger
+    - GoogleUtilities/Network
+  - GoogleUtilities/Environment (7.1.1):
+    - PromisesObjC (~> 1.2)
+  - GoogleUtilities/Logger (7.1.1):
+    - GoogleUtilities/Environment
+  - GoogleUtilities/MethodSwizzler (7.1.1):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/Network (7.1.1):
+    - GoogleUtilities/Logger
+    - "GoogleUtilities/NSData+zlib"
+    - GoogleUtilities/Reachability
+  - "GoogleUtilities/NSData+zlib (7.1.1)"
+  - GoogleUtilities/Reachability (7.1.1):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/UserDefaults (7.1.1):
+    - GoogleUtilities/Logger
+  - Kingfisher (5.15.8):
+    - Kingfisher/Core (= 5.15.8)
+  - Kingfisher/Core (5.15.8)
+  - MenuPresenter (0.0.1)
+  - nanopb (2.30906.0):
+    - nanopb/decode (= 2.30906.0)
+    - nanopb/encode (= 2.30906.0)
+  - nanopb/decode (2.30906.0)
+  - nanopb/encode (2.30906.0)
+  - Nantes (0.1.2)
+  - Parse (1.19.1):
+    - Parse/Core (= 1.19.1)
+  - Parse/Core (1.19.1):
+    - Bolts/Tasks (= 1.9.1)
+  - PCActionService (0.0.1):
+    - Parse
+    - PCAuthentication
+    - PCModel/Parse
+  - PCAuthentication (0.0.1):
+    - PCAuthentication/Contract (= 0.0.1)
+  - PCAuthentication/Contract (0.0.1):
+    - PCModel
+  - PCAuthentication/Parse (0.0.1):
+    - Parse
+    - PCModel/Parse
+  - PCCommercialOfferService (0.0.1):
+    - Parse
+    - PCAuthentication
+    - PCModel/Parse
+  - PCModel (0.0.1):
+    - PCModel/Contract (= 0.0.1)
+  - PCModel/Contract (0.0.1)
+  - PCModel/Parse (0.0.1):
+    - Parse
+  - PCOnboard (0.0.1):
+    - ActivityPresenter
+    - ConfirmationPresenter
+    - ErrorPresenter
+    - PCAuthentication
+    - PCModel
+    - PCOnboard/Sources (= 0.0.1)
+    - Raise
+  - PCOnboard/Sources (0.0.1):
+    - ActivityPresenter
+    - ConfirmationPresenter
+    - ErrorPresenter
+    - PCAuthentication
+    - PCModel
+    - Raise
+  - PCOrganizationService (0.0.1):
+    - Parse
+    - PCAuthentication
+    - PCModel/Parse
+  - PCSupplierService (0.0.1):
+    - Parse
+    - PCAuthentication
+    - PCModel/Parse
+  - PCUserService (0.0.1):
+    - Parse
+    - PCAuthentication
+    - PCModel
+  - PromisesObjC (1.2.12)
+  - Raise (0.0.1):
+    - FittedSheets
+    - Raise/Sources (= 0.0.1)
+  - Raise/Sources (0.0.1):
+    - FittedSheets
+
+DEPENDENCIES:
+  - ActivityPresenter (from `../../../Pods/Packages/ActivityPresenter/ActivityPresenter.podspec`)
+  - ConfirmationPresenter (from `../../../Pods/Packages/ConfirmationPresenter/ConfirmationPresenter.podspec`)
+  - ErrorPresenter (from `../../../Pods/Packages/ErrorPresenter/ErrorPresenter.podspec`)
+  - Firebase/Analytics
+  - Firebase/Crashlytics
+  - FittedSheets (~> 2.2.3)
+  - Kingfisher
+  - MenuPresenter (from `../../../Pods/Packages/MenuPresenter/MenuPresenter.podspec`)
+  - Nantes
+  - PCActionService (from `../Services/PCActionService/PCActionService.podspec`)
+  - PCAuthentication/Parse (from `../Services/PCAuthentication/PCAuthentication.podspec`)
+  - PCCommercialOfferService (from `../Services/PCCommercialOfferService/PCCommercialOfferService.podspec`)
+  - PCModel/Parse (from `../Model/PCModel/PCModel.podspec`)
+  - PCOnboard (from `../Presentation/PCOnboard/PCOnboard.podspec`)
+  - PCOrganizationService (from `../Services/PCOrganizationService/PCOrganizationService.podspec`)
+  - PCSupplierService (from `../Services/PCSupplierService/PCSupplierService.podspec`)
+  - PCUserService (from `../Services/PCUserService/PCUserService.podspec`)
+  - Raise (from `../../../Pods/Packages/Raise/Raise.podspec`)
+
+SPEC REPOS:
+  trunk:
+    - Bolts
+    - Firebase
+    - FirebaseAnalytics
+    - FirebaseCore
+    - FirebaseCoreDiagnostics
+    - FirebaseCrashlytics
+    - FirebaseInstallations
+    - FittedSheets
+    - GoogleAppMeasurement
+    - GoogleDataTransport
+    - GoogleUtilities
+    - Kingfisher
+    - nanopb
+    - Nantes
+    - Parse
+    - PromisesObjC
+
+EXTERNAL SOURCES:
+  ActivityPresenter:
+    :path: "../../../Pods/Packages/ActivityPresenter/ActivityPresenter.podspec"
+  ConfirmationPresenter:
+    :path: "../../../Pods/Packages/ConfirmationPresenter/ConfirmationPresenter.podspec"
+  ErrorPresenter:
+    :path: "../../../Pods/Packages/ErrorPresenter/ErrorPresenter.podspec"
+  MenuPresenter:
+    :path: "../../../Pods/Packages/MenuPresenter/MenuPresenter.podspec"
+  PCActionService:
+    :path: "../Services/PCActionService/PCActionService.podspec"
+  PCAuthentication:
+    :path: "../Services/PCAuthentication/PCAuthentication.podspec"
+  PCCommercialOfferService:
+    :path: "../Services/PCCommercialOfferService/PCCommercialOfferService.podspec"
+  PCModel:
+    :path: "../Model/PCModel/PCModel.podspec"
+  PCOnboard:
+    :path: "../Presentation/PCOnboard/PCOnboard.podspec"
+  PCOrganizationService:
+    :path: "../Services/PCOrganizationService/PCOrganizationService.podspec"
+  PCSupplierService:
+    :path: "../Services/PCSupplierService/PCSupplierService.podspec"
+  PCUserService:
+    :path: "../Services/PCUserService/PCUserService.podspec"
+  Raise:
+    :path: "../../../Pods/Packages/Raise/Raise.podspec"
+
+SPEC CHECKSUMS:
+  ActivityPresenter: cd15f43e0696b5a13c1c78407cffe34c71d1de09
+  Bolts: 8c1e8aab2f603387b8b9924f57d1d64f43d3ffdc
+  ConfirmationPresenter: 99fa0e9252aae3adf92063ac9e3b8517e75bd72e
+  ErrorPresenter: e9b77c9bc1a80af18a3d261e839d9b59a7bf75bf
+  Firebase: 26223c695fe322633274198cb19dca8cb7e54416
+  FirebaseAnalytics: 2580c2d62535ae7b644143d48941fcc239ea897a
+  FirebaseCore: 4d3c72622ce0e2106aaa07bb4b2935ba2c370972
+  FirebaseCoreDiagnostics: d50e11039e5984d92c8a512be2395f13df747350
+  FirebaseCrashlytics: d31325312c92e2cb2f0386d589b9aa44e303d99b
+  FirebaseInstallations: 971df89b48ae5ee4cc2bf6935f3857a525d28550
+  FittedSheets: 5533375af9ed713977b8e6d88b74c90e8f5df041
+  GoogleAppMeasurement: 8d3c0aeede16ab7764144b5a4ca8e1d4323841b7
+  GoogleDataTransport: 116c84c4bdeb76be2a7a46de51244368f9794eab
+  GoogleUtilities: 3dc4ff0d5e4840e2fa8eef0889620e8c33d4218c
+  Kingfisher: a3c03d702433fa6cfedabb2bddbe076fb8f2e902
+  MenuPresenter: df2c3f2fa89829bb210d3ba25ac058315ec34332
+  nanopb: 1bf24dd71191072e120b83dd02d08f3da0d65e53
+  Nantes: 0396442578e32242223fed46050dea1850236184
+  Parse: e40fdb9c7d665823b7fe9865949cac9a53eb2ce7
+  PCActionService: 2ec6ae69a564f94077c95ed604ae5525e374e550
+  PCAuthentication: 56a2583b78930551f1b9aa5b85de35e25d3ab9ec
+  PCCommercialOfferService: 07469ba8d01877d41cd6cbdf51659c723e50d14f
+  PCModel: f1a5156863a4758a54329a35721fb7d363683021
+  PCOnboard: 77918d55ec8b1312ae428299527dfe1ceb83f190
+  PCOrganizationService: e2a419fa283997b14e96d25559941b0e362217e3
+  PCSupplierService: cb791574989857faefc0a9491b70d9208c3e853c
+  PCUserService: 67723678bed0402566ce736cdb9ff08411be746f
+  PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
+  Raise: e40c0ad29b47647c0a0eab8bb754ba9f3905f06c
+
+PODFILE CHECKSUM: 5725e02a8e9aaa99f7ee8d764d76a90321ed898e
+
+COCOAPODS: 1.10.0
