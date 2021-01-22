@@ -62,7 +62,6 @@ final class OnboardSupplierViewAlpha: UIViewController {
     private lazy var backgroundImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
-        imageView.image = #imageLiteral(resourceName: "onboard-welcome-bg")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -232,6 +231,12 @@ final class OnboardSupplierViewAlpha: UIViewController {
         addPadding(to: supplierINNTextField)
         addPadding(to: supplierContactTextField)
         addPadding(to: supplierPhoneNumberTextField)
+
+        #if SWIFT_PACKAGE
+        backgroundImageView.image = UIImage(named: "onboard-welcome-bg", in: Bundle.module, compatibleWith: nil)
+        #else
+        backgroundImageView.image = UIImage(named: "onboard-welcome-bg", in: Bundle(for: Self.self), compatibleWith: nil)
+        #endif
     }
 
     private func addPadding(to textField: UITextField) {

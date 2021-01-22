@@ -26,7 +26,6 @@ final class SelectRoleViewAlpha: UIViewController {
     private lazy var backgroundImageView: UIImageView = {
         let backgroundImage = UIImageView()
         backgroundImage.contentMode = .scaleAspectFill
-        backgroundImage.image = #imageLiteral(resourceName: "onboard-welcome-bg")
         backgroundImage.translatesAutoresizingMaskIntoConstraints = false
         return backgroundImage
     }()
@@ -216,6 +215,12 @@ final class SelectRoleViewAlpha: UIViewController {
         checkboxes.append(supplierCheckbox)
         checkboxes.append(organizationCheckbox)
         checkboxes.append(memberCheckbox)
+
+        #if SWIFT_PACKAGE
+        backgroundImageView.image = UIImage(named: "onboard-welcome-bg", in: Bundle.module, compatibleWith: nil)
+        #else
+        backgroundImageView.image = UIImage(named: "onboard-welcome-bg", in: Bundle(for: Self.self), compatibleWith: nil)
+        #endif
     }
 
     private func setup() {

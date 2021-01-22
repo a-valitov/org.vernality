@@ -57,7 +57,6 @@ final class OnboardOrganizationViewAlpha: UIViewController {
     private lazy var backgroundImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
-        imageView.image = #imageLiteral(resourceName: "onboard-welcome-bg")
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -201,6 +200,12 @@ final class OnboardOrganizationViewAlpha: UIViewController {
         organizationINNTextField.delegate = self
         organizationContactTextField.delegate = self
         organizationPhoneNumberTextField.delegate = self
+
+        #if SWIFT_PACKAGE
+        backgroundImageView.image = UIImage(named: "onboard-welcome-bg", in: Bundle.module, compatibleWith: nil)
+        #else
+        backgroundImageView.image = UIImage(named: "onboard-welcome-bg", in: Bundle(for: Self.self), compatibleWith: nil)
+        #endif
     }
 
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
