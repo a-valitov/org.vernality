@@ -16,7 +16,6 @@
 
 import Foundation
 import UIKit
-import Main
 import PCAuthentication
 import ProfitClubModel
 import PCUserService
@@ -32,11 +31,28 @@ final class AppPresenter {
         UINavigationBar.appearance().tintColor = .white
         UINavigationBar.appearance().isTranslucent = true
         UINavigationBar.appearance().barStyle = .black
-        window?.rootViewController = self.main.viewController
+        window?.rootViewController = self.navigationController
         window?.makeKeyAndVisible()
     }
 
     private let factory: AppFactory
+
+    private var navigationController: UINavigationController {
+        if let navigationController = self.weakNavigationController {
+            return navigationController
+        } else {
+            let rootViewController: UIViewController
+            if self.isLoggedIn {
+                rootViewController = self.review.viewController
+            } else {
+                rootViewController = self.onboard.viewController
+            }
+            let navigationController = UINavigationController(rootViewController: rootViewController)
+            self.weakNavigationController = navigationController
+            return navigationController
+        }
+    }
+    private weak var weakNavigationController: UINavigationController?
 
     // services
     private lazy var userService: PCUserService = {
@@ -62,16 +78,6 @@ final class AppPresenter {
     }
 
     // modules construction
-    private var main: MainModule {
-        if let main = self.weakMain {
-            return main
-        } else {
-            let main = self.factory.main(output: self)
-            self.weakMain = main
-            return main
-        }
-    }
-
     private var review: ReviewModule {
         if let review = self.weakReview {
             return review
@@ -173,7 +179,6 @@ final class AppPresenter {
     private weak var weakOrganization: OrganizationModule?
     private weak var weakSupplier: SupplierModule?
     private weak var weakAdmin: AdminModule?
-    private weak var weakMain: MainModule?
     private weak var weakReview: ReviewModule?
     private weak var weakOnboard: OnboardModule?
     private weak var weakAddRole: AddRoleModule?
@@ -204,7 +209,7 @@ extension AppPresenter {
             switch result {
             case .success(let action):
                 let adminAction = sSelf.factory.adminAction(action: action, output: sSelf)
-                sSelf.main.raise(adminAction.viewController, animated: true)
+                sSelf.navigationController.raise(adminAction.viewController, animated: true)
             case .failure(let error):
                 sSelf.errorPresenter.present(error)
             }
@@ -230,48 +235,35 @@ extension AppPresenter {
 
 extension AppPresenter: AddRoleModuleOutput {
     func addRole(module: AddRoleModule, didAddSupplier supplier: PCSupplier) {
-        self.main.unwindToRoot()
-        self.main.push(self.review.viewController, animated: true)
+        self.navigationController.popToRootViewController(animated: true)
     }
 
     func addRole(module: AddRoleModule, didAddOrganization organization: PCOrganization) {
-        self.main.unwindToRoot()
-        self.main.push(self.review.viewController, animated: true)
+        self.navigationController.popToRootViewController(animated: true)
     }
 
     func addRole(module: AddRoleModule, didAddMember member: PCMember) {
-        self.main.unwindToRoot()
-        self.main.push(self.review.viewController, animated: true)
+        self.navigationController.popToRootViewController(animated: true)
     }
 }
 
 extension AppPresenter: AdminActionModuleOutput {
     func adminAction(module: AdminActionModule, didApprove action: PCAction) {
-        self.main.unraise(animated: true)
+        self.navigationController.unraise(animated: true)
     }
 
     func adminAction(module: AdminActionModule, didReject action: PCAction) {
-        self.main.unraise(animated: true)
-    }
-}
-
-extension AppPresenter: MainModuleOutput {
-    func mainDidLoad(module: MainModule) {
-        if self.isLoggedIn {
-            self.main.push(self.review.viewController, animated: true)
-        } else {
-            self.main.push(self.onboard.viewController, animated: true)
-        }
+        self.navigationController.unraise(animated: true)
     }
 }
 
 extension AppPresenter: OnboardModuleOutput {
     func onboard(module: OnboardModule, didLogin user: PCUser) {
-        self.main.push(self.review.viewController, animated: true)
+        self.navigationController.setViewControllers([self.review.viewController], animated: true)
     }
 
     func onboard(module: OnboardModule, didRegister user: PCUser) {
-        self.main.push(self.addRole.viewController, animated: true)
+        self.navigationController.setViewControllers([self.review.viewController], animated: true)
     }
 }
 
@@ -281,50 +273,49 @@ extension AppPresenter: ReviewModuleOutput {
     }
 
     func reviewUserWantsToAddRole(module: ReviewModule) {
-        self.main.push(self.addRole.viewController, animated: true)
+        self.navigationController.pushViewController(self.addRole.viewController, animated: true)
     }
 
     func reviewUserWantsToEnterAdmin(module: ReviewModule) {
-        self.main.push(self.admin.viewController, animated: true)
+        self.navigationController.pushViewController(self.admin.viewController, animated: true)
     }
 
     func review(module: ReviewModule, userWantsToEnter organization: PCOrganization) {
         assert(organization.status == .approved)
         let organizationModule = self.organization(for: organization)
-        self.main.push(organizationModule.viewController, animated: true)
+        self.navigationController.pushViewController(organizationModule.viewController, animated: true)
     }
 
     func review(module: ReviewModule, userWantsToEnter supplier: PCSupplier) {
         assert(supplier.status == .approved)
         let supplierModule = self.supplier(for: supplier)
-        self.main.push(supplierModule.viewController, animated: true)
+        self.navigationController.pushViewController(supplierModule.viewController, animated: true)
     }
 
     func review(module: ReviewModule, userWantsToEnter member: PCMember) {
         assert(member.status == .approved)
         let memberModule = self.member(for: member)
-        self.main.push(memberModule.viewController, animated: true)
+        self.navigationController.pushViewController(memberModule.viewController, animated: true)
     }
 }
 
 extension AppPresenter: OrganizationModuleOutput {
     func organization(module: OrganizationModule, userWantsToOpenProfileOf organization: PCOrganization) {
         let organizationProfileModule = self.profile(for: organization)
-        self.main.push(organizationProfileModule.viewController, animated: true)
+        self.navigationController.pushViewController(organizationProfileModule.viewController, animated: true)
     }
     func organizationUserWantsToLogout(module: OrganizationModule) {
         self.logout()
     }
     func organizationUserWantsToChangeRole(module: OrganizationModule) {
-        self.main.unwindToRoot()
-        self.main.push(self.review.viewController, animated: true)
+        self.navigationController.popToViewController(self.review.viewController, animated: true)
     }
 }
 
 extension AppPresenter: SupplierModuleOutput {
     func supplier(module: SupplierModule, userWantsToOpenProfileOf supplier: PCSupplier) {
         let supplierProfileModule = self.profile(for: supplier)
-        self.main.push(supplierProfileModule.viewController, animated: true)
+        self.navigationController.pushViewController(supplierProfileModule.viewController, animated: true)
     }
     
     func supplierUserWantsToLogout(module: SupplierModule) {
@@ -332,15 +323,14 @@ extension AppPresenter: SupplierModuleOutput {
     }
 
     func supplierUserWantsToChangeRole(module: SupplierModule) {
-        self.main.unwindToRoot()
-        self.main.push(self.review.viewController, animated: true)
+        self.navigationController.popToViewController(self.review.viewController, animated: true)
     }
 }
 
 extension AppPresenter: MemberModuleOutput {
     func member(module: MemberModule, userWantsToOpenProfileOf member: PCMember) {
         let memberProfileModule = self.profile(for: member)
-        self.main.push(memberProfileModule.viewController, animated: true)
+        self.navigationController.pushViewController(memberProfileModule.viewController, animated: true)
     }
     
     func memberUserWantsToLogout(module: MemberModule) {
@@ -348,8 +338,7 @@ extension AppPresenter: MemberModuleOutput {
     }
 
     func memberUserWantsToChangeRole(module: MemberModule) {
-        self.main.unwindToRoot()
-        self.main.push(self.review.viewController, animated: true)
+        self.navigationController.popToViewController(self.review.viewController, animated: true)
     }
 }
 
@@ -377,8 +366,7 @@ extension AppPresenter: AdminModuleOutput {
     }
 
     func adminUserWantsToChangeRole(module: AdminModule) {
-        self.main.unwindToRoot()
-        self.main.push(self.review.viewController, animated: true)
+        self.navigationController.popToViewController(self.review.viewController, animated: true)
     }
 }
 
@@ -391,8 +379,7 @@ extension AppPresenter {
             case .failure(let error):
                 sSelf.errorPresenter.present(error)
             case .success:
-                sSelf.main.unwindToRoot()
-                sSelf.main.push(sSelf.onboard.viewController, animated: true)
+                sSelf.navigationController.setViewControllers([sSelf.onboard.viewController], animated: true)
             }
         }
     }

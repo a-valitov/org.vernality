@@ -57,7 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         PFPush.handle(userInfo)
     }
 
-    private weak var appPresenter: AppPresenter?
+    private var appPresenter: AppPresenter?
 
     private func registerForPushNotifications() {
       UNUserNotificationCenter.current()

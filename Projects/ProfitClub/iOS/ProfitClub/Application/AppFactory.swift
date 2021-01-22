@@ -17,7 +17,6 @@
 
 import Foundation
 import UIKit
-import Main
 import ActivityPresenter
 import ErrorPresenter
 import PCAuthentication
@@ -74,11 +73,6 @@ final class AppFactory {
 
 // MARK: - ViewContollers
 extension AppFactory {
-    func main(output: MainModuleOutput?) -> MainModule {
-        let module = self.mainFactory.make(output: output)
-        return module
-    }
-    
     func onboard(output: OnboardModuleOutput?) -> OnboardModule {
         let module = self.onboardFactory.make(output: output)
         return module
@@ -137,10 +131,6 @@ extension AppFactory {
 
 // MARK: - Factories
 private extension AppFactory {
-    var mainFactory: MainModuleFactory {
-        return MainModuleFactoryMVC()
-    }
-    
     var onboardFactory: OnboardFactory {
         return OnboardFactory(presenters: OnboardPresenters(error: self.errorPresenter(),
                                                             activity: self.activityPresenter(), confirmation: self.confirmationPresenter()),

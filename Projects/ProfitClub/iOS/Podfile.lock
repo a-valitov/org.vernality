@@ -73,8 +73,6 @@ PODS:
   - Kingfisher (5.15.8):
     - Kingfisher/Core (= 5.15.8)
   - Kingfisher/Core (5.15.8)
-  - Main (0.0.1):
-    - FittedSheets (~> 2.2.3)
   - MenuPresenter (0.0.1)
   - nanopb (2.30906.0):
     - nanopb/decode (= 2.30906.0)
@@ -126,8 +124,8 @@ DEPENDENCIES:
   - ErrorPresenter (from `../../../Pods/Packages/ErrorPresenter/ErrorPresenter.podspec`)
   - Firebase/Analytics
   - Firebase/Crashlytics
+  - FittedSheets (~> 2.2.3)
   - Kingfisher
-  - Main (from `../../../Pods/Modules/Main/Main.podspec`)
   - MenuPresenter (from `../../../Pods/Packages/MenuPresenter/MenuPresenter.podspec`)
   - Nantes
   - PCActionService (from `../../../Pods/Services/ProfitClub/PCActionService/PCActionService.podspec`)
@@ -165,8 +163,6 @@ EXTERNAL SOURCES:
     :path: "../../../Pods/Packages/ConfirmationPresenter/ConfirmationPresenter.podspec"
   ErrorPresenter:
     :path: "../../../Pods/Packages/ErrorPresenter/ErrorPresenter.podspec"
-  Main:
-    :path: "../../../Pods/Modules/Main/Main.podspec"
   MenuPresenter:
     :path: "../../../Pods/Packages/MenuPresenter/MenuPresenter.podspec"
   PCActionService:
@@ -202,7 +198,6 @@ SPEC CHECKSUMS:
   GoogleDataTransport: 116c84c4bdeb76be2a7a46de51244368f9794eab
   GoogleUtilities: 3dc4ff0d5e4840e2fa8eef0889620e8c33d4218c
   Kingfisher: a3c03d702433fa6cfedabb2bddbe076fb8f2e902
-  Main: 132589845be9a89dc460367d0bc2a28e86557b3b
   MenuPresenter: df2c3f2fa89829bb210d3ba25ac058315ec34332
   nanopb: 1bf24dd71191072e120b83dd02d08f3da0d65e53
   Nantes: 0396442578e32242223fed46050dea1850236184
@@ -217,6 +212,6 @@ SPEC CHECKSUMS:
   ProfitClubParse: b4b8d11a56f8b4fa9651cb38d54cbec342e9f23d
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
 
-PODFILE CHECKSUM: 49e6f583d824f966e14c15a31242d0a4c6436b8a
+PODFILE CHECKSUM: 8d73f2b1d2bab518c4035363f6ded1a96ab4fa4a
 
 COCOAPODS: 1.10.0
