@@ -15,14 +15,10 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import Foundation
-import UIKit
-import PCModel
 
-protocol OnboardModule: class {
-    var viewController: UIViewController { get }
-}
-
-protocol OnboardModuleOutput: class {
-    func onboard(module: OnboardModule, didLogin user: PCUser)
-    func onboard(module: OnboardModule, didRegister user: PCUser)
+enum OnboardError: Error {
+    case emailIsEmpty
+    case passwordIsEmpty
+    case passwordNotMatchConfirmation
+    case usernameIsEmpty
 }

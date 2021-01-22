@@ -1,5 +1,5 @@
-//  Copyright (C) 2020 Startup Studio Vernality
-//  Created by Rinat Enikeev on 8/26/20
+//  Copyright (C) 2021 Startup Studio Vernality
+//  Created by Rinat Enikeev on 22.01.2021
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -15,23 +15,19 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import Foundation
-import ErrorPresenter
-import ActivityPresenter
 
-final class OnboardFactory {
-    init(presenters: OnboardPresenters,
-         services: OnboardServices) {
-        self.presenters = presenters
-        self.services = services
-    }
-
-    func make(output: OnboardModuleOutput?) -> OnboardModule {
-        let presenter = OnboardPresenter(presenters: self.presenters,
-                                         services: self.services)
-        presenter.output = output
-        return presenter
-    }
-
-    private let services: OnboardServices
-    private let presenters: OnboardPresenters
+enum AddRoleError: Error {
+    case firstNameIsEmpty
+    case lastNameIsEmpty
+    case memberImageIsNil
+    case supplierNameIsEmpty
+    case supplierInnIsEmpty
+    case supplierContactIsEmpty
+    case supplierPhoneIsEmpty
+    case supplierImageIsNil
+    case organizationNameIsEmpty
+    case organizationInnIsEmpty
+    case organizationContactIsEmpty
+    case organizationPhoneIsEmpty
+    case organizationImageIsNil
 }

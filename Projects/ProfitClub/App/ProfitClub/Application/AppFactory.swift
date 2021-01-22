@@ -28,6 +28,7 @@ import PCCommercialOfferService
 import ConfirmationPresenter
 import PCSupplierService
 import MenuPresenter
+import PCOnboard
 
 final class AppFactory {
     lazy var authentication: PCAuthentication = {
@@ -132,10 +133,15 @@ extension AppFactory {
 // MARK: - Factories
 private extension AppFactory {
     var onboardFactory: OnboardFactory {
-        return OnboardFactory(presenters: OnboardPresenters(error: self.errorPresenter(),
-                                                            activity: self.activityPresenter(), confirmation: self.confirmationPresenter()),
-                              services: OnboardServices(authentication: self.authentication,
-                                                        organization: self.organizationService()))
+        return OnboardFactory(
+            presenters: OnboardPresenters(
+                error: self.errorPresenter(),
+                activity: self.activityPresenter(),
+                confirmation: self.confirmationPresenter()),
+            services: OnboardServices(
+                authentication: self.authentication
+            )
+        )
     }
     
     var reviewFactory: ReviewFactory {

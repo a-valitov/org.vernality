@@ -129,23 +129,23 @@ extension AddRolePresenter: SelectRoleViewOutput {
 extension AddRolePresenter: OnboardSupplierViewOutput {
     func onboardSupplier(view: OnboardSupplierViewInput, didFinish sender: Any) {
         guard let name = view.name, name.isEmpty == false else {
-            self.presenters.error.present(OnboardError.supplierNameIsEmpty)
+            self.presenters.error.present(AddRoleError.supplierNameIsEmpty)
             return
         }
         guard let inn = view.inn, inn.isEmpty == false else {
-            self.presenters.error.present(OnboardError.supplierInnIsEmpty)
+            self.presenters.error.present(AddRoleError.supplierInnIsEmpty)
             return
         }
         guard let contact = view.contact, contact.isEmpty == false else {
-            self.presenters.error.present(OnboardError.supplierContactIsEmpty)
+            self.presenters.error.present(AddRoleError.supplierContactIsEmpty)
             return
         }
         guard let phone = view.phone, phone.isEmpty == false else {
-            self.presenters.error.present(OnboardError.supplierPhoneIsEmpty)
+            self.presenters.error.present(AddRoleError.supplierPhoneIsEmpty)
             return
         }
         guard let image = view.image else {
-            self.presenters.error.present(OnboardError.supplierImageIsNil)
+            self.presenters.error.present(AddRoleError.supplierImageIsNil)
             return
         }
         self.supplierName = name
@@ -160,23 +160,23 @@ extension AddRolePresenter: OnboardSupplierViewOutput {
 extension AddRolePresenter: OnboardOrganizationViewOutput {
     func onboardOrganizationDidFinish(view: OnboardOrganizationViewInput) {
         guard let name = view.name, name.isEmpty == false else {
-            self.presenters.error.present(OnboardError.organizationNameIsEmpty)
+            self.presenters.error.present(AddRoleError.organizationNameIsEmpty)
             return
         }
         guard let inn = view.inn, inn.isEmpty == false else {
-            self.presenters.error.present(OnboardError.organizationInnIsEmpty)
+            self.presenters.error.present(AddRoleError.organizationInnIsEmpty)
             return
         }
         guard let contact = view.contact, contact.isEmpty == false else {
-            self.presenters.error.present(OnboardError.organizationContactIsEmpty)
+            self.presenters.error.present(AddRoleError.organizationContactIsEmpty)
             return
         }
         guard let phone = view.phone, phone.isEmpty == false else {
-            self.presenters.error.present(OnboardError.organizationPhoneIsEmpty)
+            self.presenters.error.present(AddRoleError.organizationPhoneIsEmpty)
             return
         }
         guard let image = view.image else {
-            self.presenters.error.present(OnboardError.organizationImageIsNil)
+            self.presenters.error.present(AddRoleError.organizationImageIsNil)
             return
         }
         self.organizationName = name
@@ -191,15 +191,15 @@ extension AddRolePresenter: OnboardOrganizationViewOutput {
 extension AddRolePresenter: OnboardMemberViewOutput {
     func onboardMemberDidFinish(view: OnboardMemberViewInput) {
         guard let firstName = view.firstName, firstName.isEmpty == false else {
-            self.presenters.error.present(OnboardError.firstNameIsEmpty)
+            self.presenters.error.present(AddRoleError.firstNameIsEmpty)
             return
         }
         guard let lastName = view.lastName, lastName.isEmpty == false else {
-            self.presenters.error.present(OnboardError.lastNameIsEmpty)
+            self.presenters.error.present(AddRoleError.lastNameIsEmpty)
             return
         }
         guard let image = view.image else {
-            self.presenters.error.present(OnboardError.memberImageIsNil)
+            self.presenters.error.present(AddRoleError.memberImageIsNil)
             return
         }
         self.firstName = firstName
@@ -245,23 +245,23 @@ extension AddRolePresenter: SelectOrganizationViewOutput {
 extension AddRolePresenter {
     private func createSupplier() -> PCSupplierStruct? {
         guard let name = self.supplierName, name.isEmpty == false else {
-            self.presenters.error.present(OnboardError.supplierNameIsEmpty)
+            self.presenters.error.present(AddRoleError.supplierNameIsEmpty)
             return nil
         }
         guard let inn = self.supplierInn, inn.isEmpty == false else {
-            self.presenters.error.present(OnboardError.supplierInnIsEmpty)
+            self.presenters.error.present(AddRoleError.supplierInnIsEmpty)
             return nil
         }
         guard let contact = self.supplierContact, contact.isEmpty == false else {
-            self.presenters.error.present(OnboardError.supplierContactIsEmpty)
+            self.presenters.error.present(AddRoleError.supplierContactIsEmpty)
             return nil
         }
         guard let phone = self.supplierPhone, phone.isEmpty == false else {
-            self.presenters.error.present(OnboardError.supplierPhoneIsEmpty)
+            self.presenters.error.present(AddRoleError.supplierPhoneIsEmpty)
             return nil
         }
         guard let image = self.supplierImage else {
-            self.presenters.error.present(OnboardError.supplierImageIsNil)
+            self.presenters.error.present(AddRoleError.supplierImageIsNil)
             return nil
         }
         var supplier = PCSupplierStruct()
@@ -276,15 +276,15 @@ extension AddRolePresenter {
 
     private func createMember() -> PCMemberStruct? {
         guard let firstName = self.firstName, firstName.isEmpty == false else {
-            self.presenters.error.present(OnboardError.firstNameIsEmpty)
+            self.presenters.error.present(AddRoleError.firstNameIsEmpty)
             return nil
         }
         guard let lastName = self.lastName, lastName.isEmpty == false else {
-            self.presenters.error.present(OnboardError.lastNameIsEmpty)
+            self.presenters.error.present(AddRoleError.lastNameIsEmpty)
             return nil
         }
         guard let image = self.memberImage else {
-            self.presenters.error.present(OnboardError.memberImageIsNil)
+            self.presenters.error.present(AddRoleError.memberImageIsNil)
             return nil
         }
         var member = PCMemberStruct()
@@ -297,23 +297,23 @@ extension AddRolePresenter {
 
     private func createOrganization() -> PCOrganizationStruct? {
         guard let name = self.organizationName, name.isEmpty == false else {
-            self.presenters.error.present(OnboardError.organizationNameIsEmpty)
+            self.presenters.error.present(AddRoleError.organizationNameIsEmpty)
             return nil
         }
         guard let inn = self.organizationInn, inn.isEmpty == false else {
-            self.presenters.error.present(OnboardError.organizationInnIsEmpty)
+            self.presenters.error.present(AddRoleError.organizationInnIsEmpty)
             return nil
         }
         guard let contact = self.organizationContact, contact.isEmpty == false else {
-            self.presenters.error.present(OnboardError.organizationContactIsEmpty)
+            self.presenters.error.present(AddRoleError.organizationContactIsEmpty)
             return nil
         }
         guard let phone = self.organizationPhone, phone.isEmpty == false else {
-            self.presenters.error.present(OnboardError.organizationPhoneIsEmpty)
+            self.presenters.error.present(AddRoleError.organizationPhoneIsEmpty)
             return nil
         }
         guard let image = self.organizationImage else {
-            self.presenters.error.present(OnboardError.organizationImageIsNil)
+            self.presenters.error.present(AddRoleError.organizationImageIsNil)
             return nil
         }
         var organization = PCOrganizationStruct()

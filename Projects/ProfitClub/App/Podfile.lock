@@ -102,6 +102,21 @@ PODS:
   - PCModelParse (0.0.1):
     - Parse
     - PCModel
+  - PCOnboard (0.0.1):
+    - ActivityPresenter
+    - ConfirmationPresenter
+    - ErrorPresenter
+    - PCAuthentication
+    - PCModel
+    - PCOnboard/Sources (= 0.0.1)
+    - Raise
+  - PCOnboard/Sources (0.0.1):
+    - ActivityPresenter
+    - ConfirmationPresenter
+    - ErrorPresenter
+    - PCAuthentication
+    - PCModel
+    - Raise
   - PCOrganizationService (0.0.1):
     - Parse
     - PCAuthentication
@@ -117,6 +132,11 @@ PODS:
     - PCAuthentication
     - PCModel
   - PromisesObjC (1.2.12)
+  - Raise (0.0.1):
+    - FittedSheets
+    - Raise/Sources (= 0.0.1)
+  - Raise/Sources (0.0.1):
+    - FittedSheets
 
 DEPENDENCIES:
   - ActivityPresenter (from `../../../Pods/Packages/ActivityPresenter/ActivityPresenter.podspec`)
@@ -133,9 +153,11 @@ DEPENDENCIES:
   - PCCommercialOfferService (from `../Services/PCCommercialOfferService/PCCommercialOfferService.podspec`)
   - PCModel (from `../Model/PCModel/PCModel.podspec`)
   - PCModelParse (from `../Model/Parse/PCModelParse/PCModelParse.podspec`)
+  - PCOnboard (from `../Presentation/PCOnboard/PCOnboard.podspec`)
   - PCOrganizationService (from `../Services/PCOrganizationService/PCOrganizationService.podspec`)
   - PCSupplierService (from `../Services/PCSupplierService/PCSupplierService.podspec`)
   - PCUserService (from `../Services/PCUserService/PCUserService.podspec`)
+  - Raise (from `../../../Pods/Packages/Raise/Raise.podspec`)
 
 SPEC REPOS:
   trunk:
@@ -175,12 +197,16 @@ EXTERNAL SOURCES:
     :path: "../Model/PCModel/PCModel.podspec"
   PCModelParse:
     :path: "../Model/Parse/PCModelParse/PCModelParse.podspec"
+  PCOnboard:
+    :path: "../Presentation/PCOnboard/PCOnboard.podspec"
   PCOrganizationService:
     :path: "../Services/PCOrganizationService/PCOrganizationService.podspec"
   PCSupplierService:
     :path: "../Services/PCSupplierService/PCSupplierService.podspec"
   PCUserService:
     :path: "../Services/PCUserService/PCUserService.podspec"
+  Raise:
+    :path: "../../../Pods/Packages/Raise/Raise.podspec"
 
 SPEC CHECKSUMS:
   ActivityPresenter: cd15f43e0696b5a13c1c78407cffe34c71d1de09
@@ -207,11 +233,13 @@ SPEC CHECKSUMS:
   PCCommercialOfferService: cfa94232ba140374e3b3f4cf17298dbbb3b851da
   PCModel: 55956193877ce76a453e774c3a4134b4d8df1b66
   PCModelParse: 390140969bb8e13a9989cf16938a7fa947f89474
+  PCOnboard: b670338120255bbcb0eff27e9c43a942e652c986
   PCOrganizationService: f91950769dab3837f74ddeebf55cb3ac0ef87854
   PCSupplierService: 2724fccfa653dc1ef2ad119fd2f25f1e22a4384a
   PCUserService: 67723678bed0402566ce736cdb9ff08411be746f
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
+  Raise: e40c0ad29b47647c0a0eab8bb754ba9f3905f06c
 
-PODFILE CHECKSUM: 0e610d241b8311a1ce4c97c9b10c39371a110829
+PODFILE CHECKSUM: a69499077b5f41db012885bab77b752b41c99a2d
 
 COCOAPODS: 1.10.0

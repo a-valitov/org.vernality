@@ -15,19 +15,14 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import Foundation
-import PCAuthentication
-import PCOrganizationService
-import ErrorPresenter
-import ConfirmationPresenter
-import ActivityPresenter
+import UIKit
+import PCModel
 
-struct OnboardPresenters {
-    let error: ErrorPresenter
-    let activity: ActivityPresenter
-    let confirmation: ConfirmationPresenter
+public protocol OnboardModule: class {
+    var viewController: UIViewController { get }
 }
 
-struct OnboardServices {
-    let authentication: PCAuthentication
-    let organization: PCOrganizationService
+public protocol OnboardModuleOutput: class {
+    func onboard(module: OnboardModule, didLogin user: PCUser)
+    func onboard(module: OnboardModule, didRegister user: PCUser)
 }

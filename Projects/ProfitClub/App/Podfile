@@ -21,6 +21,7 @@ target 'ProfitClub' do
   pod 'ActivityPresenter', :path => PACKAGES_PATH + '/ActivityPresenter/ActivityPresenter.podspec'
   pod 'ConfirmationPresenter', :path => PACKAGES_PATH + '/ConfirmationPresenter/ConfirmationPresenter.podspec'
   pod 'MenuPresenter', :path => PACKAGES_PATH + '/MenuPresenter/MenuPresenter.podspec'
+  pod 'Raise', :path => PACKAGES_PATH + '/Raise/Raise.podspec'
   
   # services
   pod 'PCAuthentication', :path => '../Services/PCAuthentication/PCAuthentication.podspec'
@@ -29,6 +30,10 @@ target 'ProfitClub' do
   pod 'PCActionService', :path => '../Services/PCActionService/PCActionService.podspec'
   pod 'PCCommercialOfferService', :path => '../Services/PCCommercialOfferService/PCCommercialOfferService.podspec'
   pod 'PCSupplierService', :path => '../Services/PCSupplierService/PCSupplierService.podspec'
+
+  # presentation
+  pod 'PCOnboard', :path => '../Presentation/PCOnboard/PCOnboard.podspec'
+
 end
 
 # Exclude all Package.swift from pods targets

@@ -15,23 +15,29 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import Foundation
+import PCAuthentication
+import ErrorPresenter
+import ConfirmationPresenter
+import ActivityPresenter
 
-enum OnboardError: Error {
-    case emailIsEmpty
-    case passwordIsEmpty
-    case passwordNotMatchConfirmation
-    case usernameIsEmpty
-    case firstNameIsEmpty
-    case lastNameIsEmpty
-    case memberImageIsNil
-    case supplierNameIsEmpty
-    case supplierInnIsEmpty
-    case supplierContactIsEmpty
-    case supplierPhoneIsEmpty
-    case supplierImageIsNil
-    case organizationNameIsEmpty
-    case organizationInnIsEmpty
-    case organizationContactIsEmpty
-    case organizationPhoneIsEmpty
-    case organizationImageIsNil
+public struct OnboardPresenters {
+    let error: ErrorPresenter
+    let activity: ActivityPresenter
+    let confirmation: ConfirmationPresenter
+
+    public init(error: ErrorPresenter,
+                activity: ActivityPresenter,
+                confirmation: ConfirmationPresenter) {
+        self.error = error
+        self.activity = activity
+        self.confirmation = confirmation
+    }
+}
+
+public struct OnboardServices {
+    let authentication: PCAuthentication
+
+    public init(authentication: PCAuthentication) {
+        self.authentication = authentication
+    }
 }
