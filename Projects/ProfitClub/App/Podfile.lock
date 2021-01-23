@@ -105,13 +105,7 @@ PODS:
   - PCModel/Parse (0.0.1):
     - Parse
   - PCOnboard (0.0.1):
-    - ActivityPresenter
-    - ConfirmationPresenter
-    - ErrorPresenter
-    - PCAuthentication
-    - PCModel
     - PCOnboard/Sources (= 0.0.1)
-    - Raise
   - PCOnboard/Sources (0.0.1):
     - ActivityPresenter
     - ConfirmationPresenter
@@ -229,7 +223,7 @@ SPEC CHECKSUMS:
   PCAuthentication: 56a2583b78930551f1b9aa5b85de35e25d3ab9ec
   PCCommercialOfferService: 07469ba8d01877d41cd6cbdf51659c723e50d14f
   PCModel: f1a5156863a4758a54329a35721fb7d363683021
-  PCOnboard: 77918d55ec8b1312ae428299527dfe1ceb83f190
+  PCOnboard: 95692aad391d951a10ca9d74a3cdd2f2097a3fa6
   PCOrganizationService: e2a419fa283997b14e96d25559941b0e362217e3
   PCSupplierService: cb791574989857faefc0a9491b70d9208c3e853c
   PCUserService: 67723678bed0402566ce736cdb9ff08411be746f
