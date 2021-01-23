@@ -8,20 +8,7 @@
 import SwiftUI
 import PCOnboard
 
-struct ContentView: View {
-    var body: some View {
-        Text("Hello, world!")
-            .padding()
-    }
-}
-
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
-
-struct OnboardView: UIViewControllerRepresentable {
+struct ContentView: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> UIViewController {
         return OnboardFactory().make(output: nil).viewController
     }
