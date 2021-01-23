@@ -49,6 +49,8 @@ final class ReviewViewAlpha: UITableViewController {
         }
     }
 
+    private var rightBarButtonImage: UIImage?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
@@ -88,7 +90,13 @@ final class ReviewViewAlpha: UITableViewController {
         label.font = UIFont(name: "PlayfairDisplay-Bold", size: 25)
         self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(customView: label)
 
-        let button = UIBarButtonItem(image: #imageLiteral(resourceName: "barItem"), style: .plain, target: self, action: #selector(ReviewViewAlpha.rightBarButtonTouchUpInside(_:)))
+        #if SWIFT_PACKAGE
+        rightBarButtonImage = UIImage(named: "barItem", in: Bundle.module, compatibleWith: nil)
+        #else
+        rightBarButtonImage = UIImage(named: "barItem", in: Bundle(for: Self.self), compatibleWith: nil)
+        #endif
+
+        let button = UIBarButtonItem(image: rightBarButtonImage, style: .plain, target: self, action: #selector(ReviewViewAlpha.rightBarButtonTouchUpInside(_:)))
         self.navigationItem.rightBarButtonItem  = button
     }
 

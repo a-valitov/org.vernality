@@ -27,6 +27,9 @@ final class OrganizationProfileViewAlpha: UIViewController {
     var organizationImageUrl: URL? { didSet { self.updateUIImage() } }
     var email: String? { didSet { self.updateUIEmail() } }
 
+    var cameraIcon: UIImage?
+    var photoIcon: UIImage?
+
     private lazy var organizationImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
@@ -37,7 +40,6 @@ final class OrganizationProfileViewAlpha: UIViewController {
 
     private lazy var addPhotoButton: UIButton = {
         let button = UIButton()
-        button.setImage(#imageLiteral(resourceName: "addFoto"), for: .normal)
         button.backgroundColor = #colorLiteral(red: 0.9294117647, green: 0.9294117647, blue: 0.9294117647, alpha: 1)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -195,6 +197,12 @@ final class OrganizationProfileViewAlpha: UIViewController {
         editProfileButton.titleLabel?.attributedText = NSAttributedString(string: "Редактировать аккаунт", attributes: [.underlineStyle: NSUnderlineStyle.thick.rawValue])
         view.backgroundColor = .white
         navigationItem.title = "Профиль"
+
+        #if SWIFT_PACKAGE
+        addPhotoButton.setImage(UIImage(named: "addFoto", in: Bundle.module, compatibleWith: nil), for: .normal)
+        #else
+        addPhotoButton.setImage(UIImage(named: "addFoto", in: Bundle(for: Self.self), compatibleWith: nil), for: .normal)
+        #endif
     }
 
     override func viewWillLayoutSubviews() {
@@ -204,8 +212,17 @@ final class OrganizationProfileViewAlpha: UIViewController {
     }
 
     @objc private func addPhotoButtonTouchUpInside() {
-        let cameraIcon = #imageLiteral(resourceName: "camera")
-        let photoIcon = #imageLiteral(resourceName: "photo")
+        #if SWIFT_PACKAGE
+        cameraIcon = UIImage(named: "camera", in: Bundle.module, compatibleWith: nil)
+        #else
+        cameraIcon = UIImage(named: "camera", in: Bundle(for: Self.self), compatibleWith: nil)
+        #endif
+
+        #if SWIFT_PACKAGE
+        photoIcon = UIImage(named: "photo", in: Bundle.module, compatibleWith: nil)
+        #else
+        photoIcon = UIImage(named: "photo", in: Bundle(for: Self.self), compatibleWith: nil)
+        #endif
 
         let actionSheet = UIAlertController(title: nil,
                                             message: nil,

@@ -26,7 +26,6 @@ final class SelectRoleViewAlpha: UIViewController {
     private lazy var backgroundImageView: UIImageView = {
         let backgroundImage = UIImageView()
         backgroundImage.contentMode = .scaleAspectFill
-        backgroundImage.image = #imageLiteral(resourceName: "onboard-welcome-bg")
         backgroundImage.translatesAutoresizingMaskIntoConstraints = false
         return backgroundImage
     }()
@@ -62,8 +61,6 @@ final class SelectRoleViewAlpha: UIViewController {
 
     private lazy var supplierCheckbox: UIButton = {
         let checkbox = UIButton()
-        checkbox.setImage(#imageLiteral(resourceName: "checkmark"), for: .normal)
-        checkbox.setImage(#imageLiteral(resourceName: "checkmark-selected"), for: .selected)
         checkbox.translatesAutoresizingMaskIntoConstraints = false
         return checkbox
     }()
@@ -103,8 +100,6 @@ final class SelectRoleViewAlpha: UIViewController {
 
     private lazy var organizationCheckbox: UIButton = {
         let checkbox = UIButton()
-        checkbox.setImage(#imageLiteral(resourceName: "checkmark"), for: .normal)
-        checkbox.setImage(#imageLiteral(resourceName: "checkmark-selected"), for: .selected)
         checkbox.translatesAutoresizingMaskIntoConstraints = false
         return checkbox
     }()
@@ -137,8 +132,6 @@ final class SelectRoleViewAlpha: UIViewController {
 
     private lazy var memberCheckbox: UIButton = {
         let checkbox = UIButton()
-        checkbox.setImage(#imageLiteral(resourceName: "checkmark"), for: .normal)
-        checkbox.setImage(#imageLiteral(resourceName: "checkmark-selected"), for: .selected)
         checkbox.translatesAutoresizingMaskIntoConstraints = false
         return checkbox
     }()
@@ -216,6 +209,48 @@ final class SelectRoleViewAlpha: UIViewController {
         checkboxes.append(supplierCheckbox)
         checkboxes.append(organizationCheckbox)
         checkboxes.append(memberCheckbox)
+
+        #if SWIFT_PACKAGE
+        backgroundImageView.image = UIImage(named: "onboard-welcome-bg", in: Bundle.module, compatibleWith: nil)
+        #else
+        backgroundImageView.image = UIImage(named: "onboard-welcome-bg", in: Bundle(for: Self.self), compatibleWith: nil)
+        #endif
+
+        #if SWIFT_PACKAGE
+        supplierCheckbox.setImage(UIImage(named: "checkmark", in: Bundle.module, compatibleWith: nil), for: .normal)
+        #else
+        supplierCheckbox.setImage(UIImage(named: "checkmark", in: Bundle(for: Self.self), compatibleWith: nil), for: .normal)
+        #endif
+
+        #if SWIFT_PACKAGE
+        supplierCheckbox.setImage(UIImage(named: "checkmark-selected", in: Bundle.module, compatibleWith: nil), for: .selected)
+        #else
+        supplierCheckbox.setImage(UIImage(named: "checkmark-selected", in: Bundle(for: Self.self), compatibleWith: nil), for: .selected)
+        #endif
+
+        #if SWIFT_PACKAGE
+        organizationCheckbox.setImage(UIImage(named: "checkmark", in: Bundle.module, compatibleWith: nil), for: .normal)
+        #else
+        organizationCheckbox.setImage(UIImage(named: "checkmark", in: Bundle(for: Self.self), compatibleWith: nil), for: .normal)
+        #endif
+
+        #if SWIFT_PACKAGE
+        organizationCheckbox.setImage(UIImage(named: "checkmark-selected", in: Bundle.module, compatibleWith: nil), for: .selected)
+        #else
+        organizationCheckbox.setImage(UIImage(named: "checkmark-selected", in: Bundle(for: Self.self), compatibleWith: nil), for: .selected)
+        #endif
+
+        #if SWIFT_PACKAGE
+        memberCheckbox.setImage(UIImage(named: "checkmark", in: Bundle.module, compatibleWith: nil), for: .normal)
+        #else
+        memberCheckbox.setImage(UIImage(named: "checkmark", in: Bundle(for: Self.self), compatibleWith: nil), for: .normal)
+        #endif
+
+        #if SWIFT_PACKAGE
+        memberCheckbox.setImage(UIImage(named: "checkmark-selected", in: Bundle.module, compatibleWith: nil), for: .selected)
+        #else
+        memberCheckbox.setImage(UIImage(named: "checkmark-selected", in: Bundle(for: Self.self), compatibleWith: nil), for: .selected)
+        #endif
     }
 
     private func setup() {

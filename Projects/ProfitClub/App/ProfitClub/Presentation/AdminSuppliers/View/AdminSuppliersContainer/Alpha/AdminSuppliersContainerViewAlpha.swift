@@ -42,6 +42,9 @@ final class AdminSuppliersContainerViewAlpha: UIViewController {
         }
     }
 
+    var tabBarImage: UIImage?
+    var tabBarSelectedImage: UIImage?
+
     private lazy var segmentedControlContainerView: UIView = {
         let containerView = UIView()
         containerView.backgroundColor = .white
@@ -94,7 +97,17 @@ final class AdminSuppliersContainerViewAlpha: UIViewController {
 
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        self.tabBarItem = UITabBarItem(title: "Поставщики", image: #imageLiteral(resourceName: "supplier"), selectedImage: #imageLiteral(resourceName: "selectedSupplier"))
+        #if SWIFT_PACKAGE
+        tabBarImage = UIImage(named: "supplier", in: Bundle.module, compatibleWith: nil)
+        #else
+        tabBarImage = UIImage(named: "supplier", in: Bundle(for: Self.self), compatibleWith: nil)
+        #endif
+        #if SWIFT_PACKAGE
+        tabBarSelectedImage = UIImage(named: "selectedSupplier", in: Bundle.module, compatibleWith: nil)
+        #else
+        tabBarSelectedImage = UIImage(named: "selectedSupplier", in: Bundle(for: Self.self), compatibleWith: nil)
+        #endif
+        self.tabBarItem = UITabBarItem(title: "Поставщики", image: tabBarImage, selectedImage: tabBarSelectedImage)
     }
 
     @available(*, unavailable)

@@ -90,7 +90,6 @@ final class MemberCurrentActionViewAlpha: UIViewController {
         let button = UIButton()
         button.addTarget(self, action: #selector(MemberCurrentActionViewAlpha.actionLinkTouchUpInside(_:)), for: .touchUpInside)
         button.setTitle("Ссылка", for: .normal)
-        button.setImage(#imageLiteral(resourceName: "Icon"), for: .normal)
         button.setTitleColor(#colorLiteral(red: 0.2352941176, green: 0.2352941176, blue: 0.262745098, alpha: 0.6040507277), for: .normal)
         button.titleLabel?.font = UIFont(name: "Montserrat-Medium", size: 12.0)
         button.imageEdgeInsets = UIEdgeInsets(top: 0, left: 65.0, bottom: 0, right: 0)
@@ -101,7 +100,6 @@ final class MemberCurrentActionViewAlpha: UIViewController {
     private lazy var cancelButton: UIButton = {
         let button = UIButton()
         button.addTarget(self, action: #selector(MemberCurrentActionViewAlpha.cancelTouchUpInside), for: .touchUpInside)
-        button.setImage(#imageLiteral(resourceName: "X"), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -131,6 +129,18 @@ final class MemberCurrentActionViewAlpha: UIViewController {
         self.output?.memberCurrentActionDidLoad(view: self)
         self.updateUI()
         self.layout()
+
+        #if SWIFT_PACKAGE
+        actionLinkButton.setImage(UIImage(named: "Icon", in: Bundle.module, compatibleWith: nil), for: .normal)
+        #else
+        actionLinkButton.setImage(UIImage(named: "Icon", in: Bundle(for: Self.self), compatibleWith: nil), for: .normal)
+        #endif
+
+        #if SWIFT_PACKAGE
+        cancelButton.setImage(UIImage(named: "X", in: Bundle.module, compatibleWith: nil), for: .normal)
+        #else
+        cancelButton.setImage(UIImage(named: "X", in: Bundle(for: Self.self), compatibleWith: nil), for: .normal)
+        #endif
     }
 
     override func viewWillLayoutSubviews() {

@@ -43,6 +43,9 @@ final class OnboardSignUpViewAlpha: UIViewController {
 
     var isOnclick = true
 
+    private var showPasswordImage: UIImage?
+    private var hidePasswordImage: UIImage?
+
     init() {
         super.init(nibName: nil, bundle: nil)
     }
@@ -172,9 +175,21 @@ final class OnboardSignUpViewAlpha: UIViewController {
         self.passwordTextField.isSecureTextEntry = true
         self.passwordConfirmationTextField.isSecureTextEntry = true
 
+        #if SWIFT_PACKAGE
+        showPasswordImage = UIImage(named: "showPassword", in: Bundle.module, compatibleWith: nil)
+        #else
+        showPasswordImage = UIImage(named: "showPassword", in: Bundle(for: Self.self), compatibleWith: nil)
+        #endif
+
+        #if SWIFT_PACKAGE
+        hidePasswordImage = UIImage(named: "hidePassword", in: Bundle.module, compatibleWith: nil)
+        #else
+        hidePasswordImage = UIImage(named: "hidePassword", in: Bundle(for: Self.self), compatibleWith: nil)
+        #endif
+
         self.showHidePasswordButton.addTarget(self, action: #selector(OnboardSignUpViewAlpha.toggleShowHide(button:)), for: .touchUpInside)
-        self.showHidePasswordButton.setImage(#imageLiteral(resourceName: "showPassword").withRenderingMode(.alwaysTemplate), for: .normal)
-        self.showHidePasswordButton.setImage(#imageLiteral(resourceName: "hidePassword").withRenderingMode(.alwaysTemplate), for: .selected)
+        self.showHidePasswordButton.setImage(showPasswordImage?.withRenderingMode(.alwaysTemplate), for: .normal)
+        self.showHidePasswordButton.setImage(hidePasswordImage?.withRenderingMode(.alwaysTemplate), for: .selected)
         self.showHidePasswordButton.tintColor = #colorLiteral(red: 0.1588078997, green: 0.1588078997, blue: 0.1588078997, alpha: 1)
     }
 

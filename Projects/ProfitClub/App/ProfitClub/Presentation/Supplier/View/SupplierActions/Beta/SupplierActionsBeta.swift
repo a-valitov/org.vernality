@@ -49,6 +49,10 @@ final class SupplierActionsBeta: UIViewController {
             return nil
         }
     }
+
+    private var cameraIcon: UIImage?
+    private var photoIcon: UIImage?
+
     var startDate: Date?
     var endDate: Date?
     
@@ -70,8 +74,17 @@ final class SupplierActionsBeta: UIViewController {
 
     @IBAction func addActionImageViewTouchUpInside(_ sender: UIButton) {
 
-        let cameraIcon = #imageLiteral(resourceName: "camera")
-        let photoIcon = #imageLiteral(resourceName: "photo")
+        #if SWIFT_PACKAGE
+        cameraIcon = UIImage(named: "camera", in: Bundle.module, compatibleWith: nil)
+        #else
+        cameraIcon = UIImage(named: "camera", in: Bundle(for: Self.self), compatibleWith: nil)
+        #endif
+
+        #if SWIFT_PACKAGE
+        photoIcon = UIImage(named: "photo", in: Bundle.module, compatibleWith: nil)
+        #else
+        photoIcon = UIImage(named: "photo", in: Bundle(for: Self.self), compatibleWith: nil)
+        #endif
 
         let actionSheet = UIAlertController(title: nil,
                                             message: nil,

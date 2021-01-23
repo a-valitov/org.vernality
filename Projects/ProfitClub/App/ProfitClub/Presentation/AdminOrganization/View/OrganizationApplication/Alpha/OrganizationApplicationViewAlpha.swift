@@ -156,7 +156,6 @@ final class OrganizationApplicationViewAlpha: UIViewController {
 
     private lazy var cancelButton: UIButton = {
         let button = UIButton()
-        button.setImage(#imageLiteral(resourceName: "X"), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
@@ -176,6 +175,12 @@ final class OrganizationApplicationViewAlpha: UIViewController {
         setup()
         view.backgroundColor = .white
         self.output?.organizationApplicationDidLoad(view: self)
+
+        #if SWIFT_PACKAGE
+        cancelButton.setImage(UIImage(named: "X", in: Bundle.module, compatibleWith: nil), for: .normal)
+        #else
+        cancelButton.setImage(UIImage(named: "X", in: Bundle(for: Self.self), compatibleWith: nil), for: .normal)
+        #endif
     }
 
     override func viewWillLayoutSubviews() {
