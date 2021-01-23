@@ -29,6 +29,7 @@ import ConfirmationPresenter
 import PCSupplierService
 import MenuPresenter
 import PCOnboard
+import PCReview
 
 final class AppFactory {
     lazy var authentication: PCAuthentication = {

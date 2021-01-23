@@ -24,7 +24,7 @@ target 'ProfitClub' do
   
   # services
   pod 'PCAuthentication/Parse', :path => '../Services/PCAuthentication/PCAuthentication.podspec'
-  pod 'PCUserService', :path => '../Services/PCUserService/PCUserService.podspec'
+  pod 'PCUserService/Parse', :path => '../Services/PCUserService/PCUserService.podspec'
   pod 'PCOrganizationService', :path => '../Services/PCOrganizationService/PCOrganizationService.podspec'
   pod 'PCActionService', :path => '../Services/PCActionService/PCActionService.podspec'
   pod 'PCCommercialOfferService', :path => '../Services/PCCommercialOfferService/PCCommercialOfferService.podspec'

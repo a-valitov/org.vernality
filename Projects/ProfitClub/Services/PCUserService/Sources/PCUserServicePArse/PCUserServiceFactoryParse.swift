@@ -15,7 +15,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import Foundation
-import PCUserService
+import PCAuthentication
 
 public final class PCUserServiceFactoryParse: PCUserServiceFactory {
     public init(authentication: PCAuthentication) {

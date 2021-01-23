@@ -26,8 +26,24 @@ public struct ReviewPresenters {
     let activity: ActivityPresenter
     let confirmation: ConfirmationPresenter
     let menu: MenuPresenter
+
+    public init(
+        error: ErrorPresenter,
+        activity: ActivityPresenter,
+        confirmation: ConfirmationPresenter,
+        menu: MenuPresenter
+    ) {
+        self.error = error
+        self.activity = activity
+        self.confirmation = confirmation
+        self.menu = menu
+    }
 }
 
 public struct ReviewServices {
     let userService: PCUserService
+
+    public init(userService: PCUserService) {
+        self.userService = userService
+    }
 }

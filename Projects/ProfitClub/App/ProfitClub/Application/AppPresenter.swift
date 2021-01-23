@@ -22,6 +22,7 @@ import PCUserService
 import ErrorPresenter
 import ActivityPresenter
 import PCOnboard
+import PCReview
 
 final class AppPresenter {
     init(factory: AppFactory) {

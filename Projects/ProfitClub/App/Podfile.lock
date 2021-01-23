@@ -131,9 +131,13 @@ PODS:
     - PCAuthentication
     - PCModel/Parse
   - PCUserService (0.0.1):
+    - PCUserService/Contract (= 0.0.1)
+  - PCUserService/Contract (0.0.1):
+    - PCModel
+  - PCUserService/Parse (0.0.1):
     - Parse
     - PCAuthentication
-    - PCModel
+    - PCModel/Parse
   - PromisesObjC (1.2.12)
   - Raise (0.0.1):
     - FittedSheets
@@ -159,7 +163,7 @@ DEPENDENCIES:
   - PCOrganizationService (from `../Services/PCOrganizationService/PCOrganizationService.podspec`)
   - PCReview (from `../Presentation/PCReview/PCReview.podspec`)
   - PCSupplierService (from `../Services/PCSupplierService/PCSupplierService.podspec`)
-  - PCUserService (from `../Services/PCUserService/PCUserService.podspec`)
+  - PCUserService/Parse (from `../Services/PCUserService/PCUserService.podspec`)
   - Raise (from `../../../Pods/Packages/Raise/Raise.podspec`)
 
 SPEC REPOS:
@@ -232,17 +236,17 @@ SPEC CHECKSUMS:
   Nantes: 0396442578e32242223fed46050dea1850236184
   Parse: e40fdb9c7d665823b7fe9865949cac9a53eb2ce7
   PCActionService: 2ec6ae69a564f94077c95ed604ae5525e374e550
-  PCAuthentication: 56a2583b78930551f1b9aa5b85de35e25d3ab9ec
+  PCAuthentication: 1e616a3aa723a80b29041266678068195d9f23eb
   PCCommercialOfferService: 07469ba8d01877d41cd6cbdf51659c723e50d14f
   PCModel: f1a5156863a4758a54329a35721fb7d363683021
   PCOnboard: 95692aad391d951a10ca9d74a3cdd2f2097a3fa6
   PCOrganizationService: e2a419fa283997b14e96d25559941b0e362217e3
   PCReview: 47dbed4a4b7d3507a9bf7f4779bc484788274881
   PCSupplierService: cb791574989857faefc0a9491b70d9208c3e853c
-  PCUserService: 67723678bed0402566ce736cdb9ff08411be746f
+  PCUserService: ecb15786b42a3a4b40e31b50ed64c5474d9de87e
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   Raise: e40c0ad29b47647c0a0eab8bb754ba9f3905f06c
 
-PODFILE CHECKSUM: 3a6e0c2156a7184ee81b180644d85e5762ad1d02
+PODFILE CHECKSUM: 30253dd531ed2553f0489d3ac74402bf82af6191
 
 COCOAPODS: 1.10.0

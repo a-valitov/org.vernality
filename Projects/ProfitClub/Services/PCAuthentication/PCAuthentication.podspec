@@ -26,7 +26,7 @@ Pod::Spec.new do |s|
   end
 
   s.subspec 'Stub' do |ss|
-    ss.source_files = 'Sources/Stub/**/*.{h,m,swift}', 'Sources/Stub/*.{h,m,swift}'
+    ss.source_files = 'Sources/PCAuthenticationStub/**/*.{h,m,swift}', 'Sources/PCAuthenticationStub/*.{h,m,swift}'
     ss.dependency 'PCModel'
   end
 
