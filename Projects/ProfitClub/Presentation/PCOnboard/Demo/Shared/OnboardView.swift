@@ -43,9 +43,3 @@ struct OnboardView: UIViewControllerRepresentable {
         print(context)
     }
 }
-
-class Coordinator {
-    func makeCoordinator() -> Coordinator {
-        Coordinator()
-    }
-}

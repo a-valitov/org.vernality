@@ -23,10 +23,12 @@ struct DemoApp: App {
             NavigationView {
                 VStack {
                     OnboardView(user: $user, appState: $appState)
-                    NavigationLink(
-                        destination: ReviewView(),
-                        tag: .loggedIn,
-                        selection: $appState) { EmptyView() }
+                    if let user = self.user {
+                        NavigationLink(
+                            destination: ReviewView().environmentObject(user),
+                            tag: .loggedIn,
+                            selection: $appState) { EmptyView() }
+                    }
                     NavigationLink(
                         destination: AddRoleView(),
                         tag: .registered,
