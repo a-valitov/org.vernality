@@ -1,7 +1,7 @@
 import XCTest
-@testable import PCUserService
+@testable import PCReview
 
-final class PCUserServiceTests: XCTestCase {
+final class PCReviewTests: XCTestCase {
     func testExample() {
     }
 

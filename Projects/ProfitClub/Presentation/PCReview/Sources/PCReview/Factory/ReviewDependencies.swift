@@ -15,23 +15,19 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import Foundation
+import PCUserService
 import ErrorPresenter
 import ActivityPresenter
+import ConfirmationPresenter
+import MenuPresenter
 
-final class ReviewFactory {
-    init(presenters: ReviewPresenters,
-         services: ReviewServices) {
-        self.presenters = presenters
-        self.services = services
-    }
+public struct ReviewPresenters {
+    let error: ErrorPresenter
+    let activity: ActivityPresenter
+    let confirmation: ConfirmationPresenter
+    let menu: MenuPresenter
+}
 
-    func make(output: ReviewModuleOutput?) -> ReviewModule {
-        let presenter = ReviewPresenter(presenters: self.presenters,
-                                         services: self.services)
-        presenter.output = output
-        return presenter
-    }
-
-    private let services: ReviewServices
-    private let presenters: ReviewPresenters
+public struct ReviewServices {
+    let userService: PCUserService
 }

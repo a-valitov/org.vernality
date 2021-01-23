@@ -117,6 +117,15 @@ PODS:
     - Parse
     - PCAuthentication
     - PCModel/Parse
+  - PCReview (0.0.1):
+    - PCReview/Sources (= 0.0.1)
+  - PCReview/Sources (0.0.1):
+    - ActivityPresenter
+    - ConfirmationPresenter
+    - ErrorPresenter
+    - MenuPresenter
+    - PCModel
+    - PCUserService
   - PCSupplierService (0.0.1):
     - Parse
     - PCAuthentication
@@ -148,6 +157,7 @@ DEPENDENCIES:
   - PCModel/Parse (from `../Model/PCModel/PCModel.podspec`)
   - PCOnboard (from `../Presentation/PCOnboard/PCOnboard.podspec`)
   - PCOrganizationService (from `../Services/PCOrganizationService/PCOrganizationService.podspec`)
+  - PCReview (from `../Presentation/PCReview/PCReview.podspec`)
   - PCSupplierService (from `../Services/PCSupplierService/PCSupplierService.podspec`)
   - PCUserService (from `../Services/PCUserService/PCUserService.podspec`)
   - Raise (from `../../../Pods/Packages/Raise/Raise.podspec`)
@@ -192,6 +202,8 @@ EXTERNAL SOURCES:
     :path: "../Presentation/PCOnboard/PCOnboard.podspec"
   PCOrganizationService:
     :path: "../Services/PCOrganizationService/PCOrganizationService.podspec"
+  PCReview:
+    :path: "../Presentation/PCReview/PCReview.podspec"
   PCSupplierService:
     :path: "../Services/PCSupplierService/PCSupplierService.podspec"
   PCUserService:
@@ -225,11 +237,12 @@ SPEC CHECKSUMS:
   PCModel: f1a5156863a4758a54329a35721fb7d363683021
   PCOnboard: 95692aad391d951a10ca9d74a3cdd2f2097a3fa6
   PCOrganizationService: e2a419fa283997b14e96d25559941b0e362217e3
+  PCReview: 47dbed4a4b7d3507a9bf7f4779bc484788274881
   PCSupplierService: cb791574989857faefc0a9491b70d9208c3e853c
   PCUserService: 67723678bed0402566ce736cdb9ff08411be746f
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   Raise: e40c0ad29b47647c0a0eab8bb754ba9f3905f06c
 
-PODFILE CHECKSUM: 5725e02a8e9aaa99f7ee8d764d76a90321ed898e
+PODFILE CHECKSUM: 3a6e0c2156a7184ee81b180644d85e5762ad1d02
 
 COCOAPODS: 1.10.0

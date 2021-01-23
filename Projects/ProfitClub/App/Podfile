@@ -32,6 +32,7 @@ target 'ProfitClub' do
 
   # presentation
   pod 'PCOnboard', :path => '../Presentation/PCOnboard/PCOnboard.podspec'
+  pod 'PCReview', :path => '../Presentation/PCReview/PCReview.podspec'
 
 end
 

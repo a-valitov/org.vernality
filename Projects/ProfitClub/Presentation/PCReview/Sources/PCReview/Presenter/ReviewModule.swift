@@ -15,10 +15,18 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import Foundation
+import UIKit
+import PCModel
 
-public enum PCUserServiceError: Error {
-    case userIsNil
-    case userIsNotPFUser
-    case bothResultAndErrorAreNil
-    case failedToGetImagePNGRepresentation
+public protocol ReviewModule: class {
+    var viewController: UIViewController { get }
+}
+
+public protocol ReviewModuleOutput: class {
+    func reviewUserWantsToLogout(module: ReviewModule)
+    func reviewUserWantsToAddRole(module: ReviewModule)
+    func reviewUserWantsToEnterAdmin(module: ReviewModule)
+    func review(module: ReviewModule, userWantsToEnter organization: PCOrganization)
+    func review(module: ReviewModule, userWantsToEnter supplier: PCSupplier)
+    func review(module: ReviewModule, userWantsToEnter member: PCMember)
 }

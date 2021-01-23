@@ -15,6 +15,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import Foundation
+import UIKit
 import PCModel
 
 public protocol PCUserService {
@@ -25,4 +26,8 @@ public protocol PCUserService {
     func reload(result: @escaping (Result<AnyPCUser, Error>) -> Void)
 
     func editProfile(member: PCMember, image: UIImage, result: @escaping (Result<PCMember, Error>) -> Void)
+}
+
+public protocol PCUserServiceFactory {
+    func make() -> PCUserService
 }

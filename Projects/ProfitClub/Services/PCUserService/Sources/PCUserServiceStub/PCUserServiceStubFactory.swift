@@ -16,18 +16,16 @@
 
 import Foundation
 import PCUserService
-import ErrorPresenter
-import ActivityPresenter
-import ConfirmationPresenter
-import MenuPresenter
+import PCAuthenticationStub
 
-struct ReviewPresenters {
-    let error: ErrorPresenter
-    let activity: ActivityPresenter
-    let confirmation: ConfirmationPresenter
-    let menu: MenuPresenter
-}
+public final class PCUserServiceStubFactory: PCUserServiceFactory {
+    public init() {
+    }
 
-struct ReviewServices {
-    let userService: PCUserService
+    public func make() -> PCUserService {
+        let authentication = PCAuthenticationStubFactory().make()
+        return PCUserServiceStub(
+            authentication: authentication
+        )
+    }
 }
