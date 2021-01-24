@@ -15,18 +15,18 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import Foundation
-import PCUserPersistence
+import PCModel
 
 public final class PCUserServiceParseFactory: PCUserServiceFactory {
-    public init(userPersistence: PCUserPersistence) {
-        self.userPersistence = userPersistence
+    public init(user: PCUser) {
+        self.user = user
     }
 
     public func make() -> PCUserService {
         return PCUserServiceParse(
-            userPersistence: self.userPersistence
+            user: self.user
         )
     }
 
-    private let userPersistence: PCUserPersistence
+    private let user: PCUser
 }

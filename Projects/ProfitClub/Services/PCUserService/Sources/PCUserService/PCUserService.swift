@@ -19,7 +19,7 @@ import UIKit
 import PCModel
 
 public protocol PCUserService {
-    var user: AnyPCUser? { get }
+    var user: PCUser { get }
 
     func isOnReview() -> Bool
     func logout(result: @escaping (Result<Bool, Error>) -> Void)

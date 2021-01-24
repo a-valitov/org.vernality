@@ -19,6 +19,7 @@ import ErrorPresenter
 import ActivityPresenter
 import ConfirmationPresenter
 import MenuPresenter
+import PCUserService
 
 struct AdminPresenters {
     let error: ErrorPresenter
@@ -28,7 +29,7 @@ struct AdminPresenters {
 }
 
 struct AdminServices {
-
+    let userService: PCUserService
 }
 
 struct AdminFactories {

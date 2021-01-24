@@ -37,9 +37,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UNUserNotificationCenter.current().delegate = self
         self.registerForPushNotifications()
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        let appPresenter = AppRouter(factory: AppFactory())
-        appPresenter.present(in: self.window)
-        self.appPresenter = appPresenter
+
+        UINavigationBar.appearance().tintColor = .white
+        UINavigationBar.appearance().isTranslucent = true
+        UINavigationBar.appearance().barStyle = .black
+        
+        let appRouter = AppRouter(factory: AppFactory())
+        self.window?.rootViewController = appRouter.viewController
+        self.window?.makeKeyAndVisible()
+        self.appRouter = appRouter
         return true
     }
 
@@ -57,7 +63,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         PFPush.handle(userInfo)
     }
 
-    private var appPresenter: AppRouter?
+    private var appRouter: AppRouter?
 
     private func registerForPushNotifications() {
       UNUserNotificationCenter.current()
@@ -87,7 +93,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
         let userInfo = response.notification.request.content.userInfo
         if let push = AppPush.parse(from: userInfo) {
-            self.appPresenter?.handle(push: push)
+            self.appRouter?.handle(push: push)
         }
         completionHandler()
     }

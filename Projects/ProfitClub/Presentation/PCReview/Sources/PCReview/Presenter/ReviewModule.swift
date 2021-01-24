@@ -23,7 +23,7 @@ public protocol ReviewModule: class {
 }
 
 public protocol ReviewModuleOutput: class {
-    func reviewUserWantsToLogout(module: ReviewModule)
+    func reviewUserDidLogout(module: ReviewModule)
     func reviewUserWantsToAddRole(module: ReviewModule)
     func reviewUserWantsToEnterAdmin(module: ReviewModule)
     func review(module: ReviewModule, userWantsToEnter organization: PCOrganization)

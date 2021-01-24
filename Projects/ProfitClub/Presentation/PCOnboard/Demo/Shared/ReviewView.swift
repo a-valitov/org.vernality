@@ -49,7 +49,7 @@ struct ReviewView: UIViewControllerRepresentable {
     }
 
     func makeUIViewController(context: UIViewControllerRepresentableContext<ReviewView>) -> UIViewController {
-        return ReviewFactory().make(output: context.coordinator).viewController
+        return ReviewFactory(user: self.user.any).make(output: context.coordinator).viewController
     }
 
     func updateUIViewController(_ uiViewController: UIViewController, context: UIViewControllerRepresentableContext<ReviewView>) {

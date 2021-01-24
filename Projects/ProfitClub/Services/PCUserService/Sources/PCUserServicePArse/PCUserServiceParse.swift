@@ -15,43 +15,37 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import Foundation
-import PCUserPersistence
 import PCModel
 import Parse
 
 final class PCUserServiceParse: PCUserService {
-    var user: AnyPCUser? {
-        return self.userPersistence.user
-    }
+    var user: PCUser
     
-    init(userPersistence: PCUserPersistence) {
-        self.userPersistence = userPersistence
+    init(user: PCUser) {
+        self.user = user
     }
 
     func isOnReview() -> Bool {
-        let isOnMemberReview = (self.user?.members?.contains(where: { $0.status == .onReview })) ?? false
-        let isOnOrganizationReview = (self.user?.organizations?.contains(where: { $0.status == .onReview })) ?? false
-        let isOnSupplierReview = (self.user?.suppliers?.contains(where: { $0.status == .onReview })) ?? false
+        let isOnMemberReview = (self.user.members?.contains(where: { $0.status == .onReview })) ?? false
+        let isOnOrganizationReview = (self.user.organizations?.contains(where: { $0.status == .onReview })) ?? false
+        let isOnSupplierReview = (self.user.suppliers?.contains(where: { $0.status == .onReview })) ?? false
         return isOnMemberReview || isOnOrganizationReview || isOnSupplierReview
 
     }
 
     func logout(result: @escaping (Result<Bool, Error>) -> Void) {
-        PFUser.logOutInBackground { [weak self] error in
+        PFUser.logOutInBackground { error in
             if let error = error {
                 result(.failure(error))
             } else {
-                self?.userPersistence.user = nil
+//                self?.userPersistence.user = nil
                 result(.success(true))
             }
         }
     }
 
     func reload(result: @escaping (Result<AnyPCUser, Error>) -> Void) {
-        guard let parseUser = self.user?.parse else {
-            result(.failure(PCUserServiceError.userIsNil))
-            return
-        }
+        let parseUser = self.user.parse
         var finalError: Error?
         var finalUser: PCUserParse?
         let group = DispatchGroup()
@@ -111,11 +105,11 @@ final class PCUserServiceParse: PCUserService {
             group.leave()
         }
 
-        group.notify(queue: .main) { [weak self] in
+        group.notify(queue: .main) {
             if let error = finalError {
                 result(.failure(error))
             } else if let user = finalUser {
-                self?.userPersistence.user = user.any
+//                self?.userPersistence.user = user.any
                 result(.success(user.any))
             } else {
                 result(.failure(PCUserServiceError.userIsNil))
@@ -199,6 +193,4 @@ final class PCUserServiceParse: PCUserService {
             }
         }
     }
-
-    private var userPersistence: PCUserPersistence
 }

@@ -22,6 +22,6 @@ protocol AdminModule: class {
 }
 
 protocol AdminModuleOutput: class {
-    func adminUserWantsToLogout(module: AdminModule)
+    func adminUserDidLogout(module: AdminModule)
     func adminUserWantsToChangeRole(module: AdminModule)
 }

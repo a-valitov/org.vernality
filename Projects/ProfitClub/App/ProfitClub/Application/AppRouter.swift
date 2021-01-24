@@ -26,16 +26,12 @@ import PCReview
 import PCUserPersistence
 
 final class AppRouter {
-    init(factory: AppFactory) {
-        self.factory = factory
+    var viewController: UIViewController {
+        return self.navigationController
     }
 
-    func present(in window: UIWindow?) {
-        UINavigationBar.appearance().tintColor = .white
-        UINavigationBar.appearance().isTranslucent = true
-        UINavigationBar.appearance().barStyle = .black
-        window?.rootViewController = self.navigationController
-        window?.makeKeyAndVisible()
+    init(factory: AppFactory) {
+        self.factory = factory
     }
 
     private let factory: AppFactory
@@ -45,8 +41,8 @@ final class AppRouter {
             return navigationController
         } else {
             let rootViewController: UIViewController
-            if self.isLoggedIn {
-                rootViewController = self.review.viewController
+            if let user = self.userPersistence.user {
+                rootViewController = self.reviewRouter(user: user).viewController
             } else {
                 rootViewController = self.onboard.viewController
             }
@@ -56,11 +52,6 @@ final class AppRouter {
         }
     }
     private weak var weakNavigationController: UINavigationController?
-
-    // services
-    private lazy var userService: PCUserService = {
-        return self.factory.userService
-    }()
 
     // persistence
     private lazy var userPersistence: PCUserPersistence = {
@@ -77,25 +68,11 @@ final class AppRouter {
     }()
 
     // helpers
-    private var isLoggedIn: Bool {
-        return self.userService.user != nil
-    }
-
     private var isAdministrator: Bool {
-        return self.userService.user?.roles?.contains(.administrator) ?? false
+        return self.userPersistence.user?.roles?.contains(.administrator) ?? false
     }
 
     // modules construction
-    private var review: ReviewModule {
-        if let review = self.weakReview {
-            return review
-        } else {
-            let review = self.factory.review(output: self)
-            self.weakReview = review
-            return review
-        }
-    }
-
     private var onboard: OnboardModule {
         if let onboard = self.weakOnboard {
             return onboard
@@ -113,15 +90,6 @@ final class AppRouter {
             let addRole = self.factory.addRole(output: self)
             self.weakAddRole = addRole
             return addRole
-        }
-    }
-    private var admin: AdminModule {
-        if let admin = self.weakAdmin {
-            return admin
-        } else {
-            let admin = self.factory.admin(output: self)
-            self.weakAdmin = admin
-            return admin
         }
     }
     private func organization(for organization: PCOrganization) -> OrganizationModule {
@@ -179,6 +147,19 @@ final class AppRouter {
         }
     }
 
+    // routers
+    private func reviewRouter(user: PCUser) -> ReviewRouter {
+        if let reviewRouter = self.strongReviewRouter {
+            return reviewRouter
+        } else {
+            let reviewRouter = ReviewRouter(user: user)
+            reviewRouter.delegate = self
+            self.strongReviewRouter = reviewRouter
+            return reviewRouter
+        }
+    }
+    private var strongReviewRouter: ReviewRouter?
+
     // weak modules
     private weak var weakMemberProfile: MemberProfileModule?
     private weak var weakSupplierProfile: SupplierProfileModule?
@@ -186,8 +167,6 @@ final class AppRouter {
     private weak var weakMember: MemberModule?
     private weak var weakOrganization: OrganizationModule?
     private weak var weakSupplier: SupplierModule?
-    private weak var weakAdmin: AdminModule?
-    private weak var weakReview: ReviewModule?
     private weak var weakOnboard: OnboardModule?
     private weak var weakAddRole: AddRoleModule?
 }
@@ -216,8 +195,9 @@ extension AppRouter {
             guard let sSelf = self else { return }
             switch result {
             case .success(let action):
-                let adminAction = sSelf.factory.adminAction(action: action, output: sSelf)
-                sSelf.navigationController.raise(adminAction.viewController, animated: true)
+//                let adminAction = sSelf.factory.adminAction(action: action, output: sSelf)
+//                sSelf.navigationController.raise(adminAction.viewController, animated: true)
+            break // TODO: @rinatenikeev
             case .failure(let error):
                 sSelf.errorPresenter.present(error)
             }
@@ -238,6 +218,15 @@ extension AppRouter {
     
     private func openAdminMember(memberId: String) {
         print(memberId)
+    }
+}
+
+extension AppRouter: ReviewRouterDelegate {
+    func reviewUserDidLogout(router: ReviewRouter) {
+        self.navigationController.setViewControllers(
+            [self.onboard.viewController],
+            animated: true
+        )
     }
 }
 
@@ -267,43 +256,17 @@ extension AppRouter: AdminActionModuleOutput {
 
 extension AppRouter: OnboardModuleOutput {
     func onboard(module: OnboardModule, didLogin user: PCUser) {
-        self.navigationController.setViewControllers([self.review.viewController], animated: true)
+        self.navigationController.setViewControllers(
+            [self.reviewRouter(user: user).viewController],
+            animated: true
+        )
     }
 
     func onboard(module: OnboardModule, didRegister user: PCUser) {
-        self.navigationController.setViewControllers([self.review.viewController], animated: true)
-    }
-}
-
-extension AppRouter: ReviewModuleOutput {
-    func reviewUserWantsToLogout(module: ReviewModule) {
-        self.logout()
-    }
-
-    func reviewUserWantsToAddRole(module: ReviewModule) {
-        self.navigationController.pushViewController(self.addRole.viewController, animated: true)
-    }
-
-    func reviewUserWantsToEnterAdmin(module: ReviewModule) {
-        self.navigationController.pushViewController(self.admin.viewController, animated: true)
-    }
-
-    func review(module: ReviewModule, userWantsToEnter organization: PCOrganization) {
-        assert(organization.status == .approved)
-        let organizationModule = self.organization(for: organization)
-        self.navigationController.pushViewController(organizationModule.viewController, animated: true)
-    }
-
-    func review(module: ReviewModule, userWantsToEnter supplier: PCSupplier) {
-        assert(supplier.status == .approved)
-        let supplierModule = self.supplier(for: supplier)
-        self.navigationController.pushViewController(supplierModule.viewController, animated: true)
-    }
-
-    func review(module: ReviewModule, userWantsToEnter member: PCMember) {
-        assert(member.status == .approved)
-        let memberModule = self.member(for: member)
-        self.navigationController.pushViewController(memberModule.viewController, animated: true)
+        self.navigationController.setViewControllers(
+            [self.reviewRouter(user: user).viewController],
+            animated: true
+        )
     }
 }
 
@@ -316,7 +279,14 @@ extension AppRouter: OrganizationModuleOutput {
         self.logout()
     }
     func organizationUserWantsToChangeRole(module: OrganizationModule) {
-        self.navigationController.popToViewController(self.review.viewController, animated: true)
+        if let reviewViewController = self.strongReviewRouter?.viewController {
+            self.navigationController.popToViewController(
+                reviewViewController,
+                animated: true
+            )
+        } else {
+            assertionFailure("Unable to unwind to Review module")
+        }
     }
 }
 
@@ -331,7 +301,14 @@ extension AppRouter: SupplierModuleOutput {
     }
 
     func supplierUserWantsToChangeRole(module: SupplierModule) {
-        self.navigationController.popToViewController(self.review.viewController, animated: true)
+        if let reviewViewController = self.strongReviewRouter?.viewController {
+            self.navigationController.popToViewController(
+                reviewViewController,
+                animated: true
+            )
+        } else {
+            assertionFailure("Unable to unwind to Review module")
+        }
     }
 }
 
@@ -346,7 +323,14 @@ extension AppRouter: MemberModuleOutput {
     }
 
     func memberUserWantsToChangeRole(module: MemberModule) {
-        self.navigationController.popToViewController(self.review.viewController, animated: true)
+        if let reviewViewController = self.strongReviewRouter?.viewController {
+            self.navigationController.popToViewController(
+                reviewViewController,
+                animated: true
+            )
+        } else {
+            assertionFailure("Unable to unwind to Review module")
+        }
     }
 }
 
@@ -369,26 +353,33 @@ extension AppRouter: SupplierProfileModuleOutput {
 }
 
 extension AppRouter: AdminModuleOutput {
-    func adminUserWantsToLogout(module: AdminModule) {
+    func adminUserDidLogout(module: AdminModule) {
         self.logout()
     }
 
     func adminUserWantsToChangeRole(module: AdminModule) {
-        self.navigationController.popToViewController(self.review.viewController, animated: true)
+        if let reviewViewController = self.strongReviewRouter?.viewController {
+            self.navigationController.popToViewController(
+                reviewViewController,
+                animated: true
+            )
+        } else {
+            assertionFailure("Unable to unwind to Review module")
+        }
     }
 }
 
 // MARK: - Private
 extension AppRouter {
     private func logout() {
-        self.userService.logout { [weak self] result in
-            guard let sSelf = self else { return }
-            switch result {
-            case .failure(let error):
-                sSelf.errorPresenter.present(error)
-            case .success:
-                sSelf.navigationController.setViewControllers([sSelf.onboard.viewController], animated: true)
-            }
-        }
+//        self.userService.logout { [weak self] result in
+//            guard let sSelf = self else { return }
+//            switch result {
+//            case .failure(let error):
+//                sSelf.errorPresenter.present(error)
+//            case .success:
+//                sSelf.navigationController.setViewControllers([sSelf.onboard.viewController], animated: true)
+//            }
+//        }
     }
 }
