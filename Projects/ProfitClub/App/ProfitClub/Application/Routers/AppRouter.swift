@@ -83,24 +83,6 @@ final class AppRouter {
             return onboard
         }
     }
-    private func supplier(for supplier: PCSupplier) -> SupplierModule {
-        if let supplier = self.weakSupplier {
-            return supplier
-        } else {
-            let supplier = self.factory.supplier(supplier: supplier, output: self)
-            self.weakSupplier = supplier
-            return supplier
-        }
-    }
-    private func member(for member: PCMember) -> MemberModule {
-        if let member = self.weakMember {
-            return member
-        } else {
-            let member = self.factory.member(member: member, output: self)
-            self.weakMember = member
-            return member
-        }
-    }
     private func profile(for organization: PCOrganization) -> OrganizationProfileModule {
         if let profile = self.weakOrganizationProfile {
             return profile
@@ -146,8 +128,6 @@ final class AppRouter {
     private weak var weakMemberProfile: MemberProfileModule?
     private weak var weakSupplierProfile: SupplierProfileModule?
     private weak var weakOrganizationProfile: OrganizationProfileModule?
-    private weak var weakMember: MemberModule?
-    private weak var weakSupplier: SupplierModule?
     private weak var weakOnboard: OnboardModule?
 }
 
@@ -249,7 +229,7 @@ extension AppRouter: SupplierModuleOutput {
         self.navigationController.pushViewController(supplierProfileModule.viewController, animated: true)
     }
     
-    func supplierUserWantsToLogout(module: SupplierModule) {
+    func supplierUserDidLogout(module: SupplierModule) {
         self.logout()
     }
 
@@ -271,7 +251,7 @@ extension AppRouter: MemberModuleOutput {
         self.navigationController.pushViewController(memberProfileModule.viewController, animated: true)
     }
     
-    func memberUserWantsToLogout(module: MemberModule) {
+    func memberUserDidLogout(module: MemberModule) {
         self.logout()
     }
 
@@ -289,7 +269,7 @@ extension AppRouter: MemberModuleOutput {
 
 extension AppRouter: MemberProfileModuleOutput {
     func memberProfile(module: MemberProfileModule, didUpdate member: PCMember) {
-        self.weakMember?.member = member
+//        self.weakMember?.member = member
     }
 }
 
@@ -301,7 +281,7 @@ extension AppRouter: OrganizationProfileModuleOutput {
 
 extension AppRouter: SupplierProfileModuleOutput {
     func supplierProfile(module: SupplierProfileModule, didUpdate supplier: PCSupplier) {
-        self.weakSupplier?.supplier = supplier
+//        self.weakSupplier?.supplier = supplier
     }
 }
 

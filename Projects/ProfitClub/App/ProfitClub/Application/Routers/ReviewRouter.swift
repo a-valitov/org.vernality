@@ -98,9 +98,60 @@ final class ReviewRouter {
     }
     private var strongOrganizationRouter: OrganizationRouter?
 
+
+    private func supplierRouter(user: PCUser, supplier: PCSupplier) -> SupplierRouter {
+        if let supplierRouter = self.strongSupplierRouter {
+            return supplierRouter
+        } else {
+            let supplierRouter = SupplierRouter(user: user, supplier: supplier)
+            supplierRouter.delegate = self
+            self.strongSupplierRouter = supplierRouter
+            return supplierRouter
+        }
+    }
+    private var strongSupplierRouter: SupplierRouter?
+
+    private func memberRouter(user: PCUser, member: PCMember) -> MemberRouter {
+        if let memberRouter = self.strongMemberRouter {
+            return memberRouter
+        } else {
+            let memberRouter = MemberRouter(user: user, member: member)
+            memberRouter.delegate = self
+            self.strongMemberRouter = memberRouter
+            return memberRouter
+        }
+    }
+    private var strongMemberRouter: MemberRouter?
+
     // state
     private let user: PCUser
     private weak var weakNavigationController: UINavigationController?
+}
+
+extension ReviewRouter: MemberRouterDelegate {
+    func memberUserDidLogout(router: MemberRouter) {
+        self.delegate?.reviewUserDidLogout(router: self)
+    }
+
+    func memberUserWantsToChangeRole(router: MemberRouter) {
+        self.navigationController.popToViewController(
+            self.viewController,
+            animated: true
+        )
+    }
+}
+
+extension ReviewRouter: SupplierRouterDelegate {
+    func supplierUserDidLogout(router: SupplierRouter) {
+        self.delegate?.reviewUserDidLogout(router: self)
+    }
+
+    func supplierUserWantsToChangeRole(router: SupplierRouter) {
+        self.navigationController.popToViewController(
+            self.viewController,
+            animated: true
+        )
+    }
 }
 
 extension ReviewRouter: OrganizationRouterDelegate {
@@ -202,14 +253,24 @@ extension ReviewRouter: ReviewModuleOutput {
     }
 
     func review(module: ReviewModule, userWantsToEnter supplier: PCSupplier) {
-//        assert(supplier.status == .approved)
-//        let supplierModule = self.supplier(for: supplier)
-//        self.navigationController.pushViewController(supplierModule.viewController, animated: true)
+        assert(supplier.status == .approved)
+        self.navigationController.pushViewController(
+            self.supplierRouter(
+                user: self.user,
+                supplier: supplier
+            ).viewController,
+            animated: true
+        )
     }
 
     func review(module: ReviewModule, userWantsToEnter member: PCMember) {
-//        assert(member.status == .approved)
-//        let memberModule = self.member(for: member)
-//        self.navigationController.pushViewController(memberModule.viewController, animated: true)
+        assert(member.status == .approved)
+        self.navigationController.pushViewController(
+            self.memberRouter(
+                user: self.user,
+                member: member
+            ).viewController,
+            animated: true
+        )
     }
 }

@@ -25,6 +25,6 @@ protocol SupplierModule: class {
 
 protocol SupplierModuleOutput: class {
     func supplier(module: SupplierModule, userWantsToOpenProfileOf supplier: PCSupplier)
-    func supplierUserWantsToLogout(module: SupplierModule)
+    func supplierUserDidLogout(module: SupplierModule)
     func supplierUserWantsToChangeRole(module: SupplierModule)
 }
