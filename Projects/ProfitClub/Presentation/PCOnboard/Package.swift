@@ -5,13 +5,14 @@ import PackageDescription
 
 let package = Package(
     name: "PCOnboard",
-    platforms: [.iOS("11.0")],
+    platforms: [.iOS(.v11)],
     products: [
         .library(
             name: "PCOnboard",
             targets: ["PCOnboard"]),
     ],
     dependencies: [
+        .package(path: "../../Model/PCModel"),
         .package(path: "../../Services/PCAuthentication"),
         .package(path: "../../../../Pods/Packages/ErrorPresenter"),
         .package(path: "../../../../Pods/Packages/ConfirmationPresenter"),
@@ -25,6 +26,7 @@ let package = Package(
             name: "PCOnboard",
             dependencies: [
                 .product(name: "PCAuthenticationStub", package: "PCAuthentication"),
+                "PCModel",
                 "PCAuthentication",
                 "ErrorPresenter",
                 "ConfirmationPresenter",

@@ -25,6 +25,6 @@ protocol OrganizationModule: class {
 
 protocol OrganizationModuleOutput: class {
     func organization(module: OrganizationModule, userWantsToOpenProfileOf organization: PCOrganization)
-    func organizationUserWantsToLogout(module: OrganizationModule)
+    func organizationUserDidLogout(module: OrganizationModule)
     func organizationUserWantsToChangeRole(module: OrganizationModule)
 }

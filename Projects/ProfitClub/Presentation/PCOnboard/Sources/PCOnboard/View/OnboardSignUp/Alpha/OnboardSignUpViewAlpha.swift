@@ -176,15 +176,15 @@ final class OnboardSignUpViewAlpha: UIViewController {
         self.passwordConfirmationTextField.isSecureTextEntry = true
 
         #if SWIFT_PACKAGE
-        showPasswordImage = UIImage(named: "showPassword", in: Bundle.module, compatibleWith: nil)
+        self.showPasswordImage = UIImage(named: "showPassword", in: Bundle.module, compatibleWith: nil)
         #else
-        showPasswordImage = UIImage(named: "showPassword", in: Bundle(for: Self.self), compatibleWith: nil)
+        self.showPasswordImage = UIImage(named: "showPassword", in: Bundle(for: Self.self), compatibleWith: nil)
         #endif
 
         #if SWIFT_PACKAGE
-        hidePasswordImage = UIImage(named: "hidePassword", in: Bundle.module, compatibleWith: nil)
+        self.hidePasswordImage = UIImage(named: "hidePassword", in: Bundle.module, compatibleWith: nil)
         #else
-        hidePasswordImage = UIImage(named: "hidePassword", in: Bundle(for: Self.self), compatibleWith: nil)
+        self.hidePasswordImage = UIImage(named: "hidePassword", in: Bundle(for: Self.self), compatibleWith: nil)
         #endif
 
         self.showHidePasswordButton.addTarget(self, action: #selector(OnboardSignUpViewAlpha.toggleShowHide(button:)), for: .touchUpInside)

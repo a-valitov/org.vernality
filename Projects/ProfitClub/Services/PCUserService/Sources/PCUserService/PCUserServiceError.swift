@@ -16,9 +16,10 @@
 
 import Foundation
 
-enum PCUserServiceError: Error {
+public enum PCUserServiceError: Error {
     case userIsNil
     case userIsNotPFUser
     case bothResultAndErrorAreNil
     case failedToGetImagePNGRepresentation
+    case organizationOrUserIdIsNil
 }

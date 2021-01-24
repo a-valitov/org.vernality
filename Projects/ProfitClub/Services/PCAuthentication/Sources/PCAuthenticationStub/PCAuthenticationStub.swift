@@ -19,7 +19,21 @@ import PCModel
 import PCAuthentication
 
 final class PCAuthenticationStub: PCAuthentication {
-    var user: AnyPCUser? = PCUserStruct().any
+    lazy var user: AnyPCUser? = {
+        var user = PCUserStruct()
+        user.id = "stubUserId"
+        user.email = "stub@stub.com"
+        user.roles = [.administrator]
+        user.username = user.email
+        var member = PCMemberStruct()
+        member.id = "stubMemberId"
+        member.firstName = "StubFirstName"
+        member.lastName = "StabLastName"
+        member.owner = user
+        member.status = .onReview
+        user.members = [member]
+        return user.any
+    }()
 
     func login(username: String, password: String, result: @escaping ((Result<AnyPCUser, Error>) -> Void)) {
         if let anyUser = self.user?.any {
