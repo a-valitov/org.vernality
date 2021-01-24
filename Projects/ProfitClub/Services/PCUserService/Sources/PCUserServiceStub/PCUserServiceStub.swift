@@ -17,22 +17,19 @@
 import Foundation
 import UIKit
 import PCUserService
-import PCUserPersistence
 import PCModel
 
 final class PCUserServiceStub: PCUserService {
-    var user: AnyPCUser? {
-        return self.userPersistence.user
-    }
+    var user: PCUser
 
-    init(userPersistence: PCUserPersistence) {
-        self.userPersistence = userPersistence
+    init(user: PCUser) {
+        self.user = user
     }
 
     func isOnReview() -> Bool {
-        let isOnMemberReview = (self.user?.members?.contains(where: { $0.status == .onReview })) ?? false
-        let isOnOrganizationReview = (self.user?.organizations?.contains(where: { $0.status == .onReview })) ?? false
-        let isOnSupplierReview = (self.user?.suppliers?.contains(where: { $0.status == .onReview })) ?? false
+        let isOnMemberReview = (self.user.members?.contains(where: { $0.status == .onReview })) ?? false
+        let isOnOrganizationReview = (self.user.organizations?.contains(where: { $0.status == .onReview })) ?? false
+        let isOnSupplierReview = (self.user.suppliers?.contains(where: { $0.status == .onReview })) ?? false
         return isOnMemberReview || isOnOrganizationReview || isOnSupplierReview
 
     }
@@ -42,11 +39,7 @@ final class PCUserServiceStub: PCUserService {
     }
 
     func reload(result: @escaping (Result<AnyPCUser, Error>) -> Void) {
-        if let user = self.user {
-            result(.success(user))
-        } else {
-            result(.failure(PCUserServiceError.userIsNil))
-        }
+        result(.success(self.user.any))
     }
 
     func editProfile(member: PCMember, image: UIImage, result: @escaping (Result<PCMember, Error>) -> Void) {
@@ -67,6 +60,4 @@ final class PCUserServiceStub: PCUserService {
 //        self.user?.organizations?.append(organization)
         result(.success(organization))
     }
-
-    private var userPersistence: PCUserPersistence
 }

@@ -13,8 +13,8 @@ struct ReviewView: UIViewControllerRepresentable {
     @EnvironmentObject var user: PCUserSU
 
     class Coordinator: NSObject, UINavigationControllerDelegate, ReviewModuleOutput {
-        func reviewUserWantsToLogout(module: ReviewModule) {
-
+        func reviewUserDidLogout(module: ReviewModule) {
+            
         }
 
         func reviewUserWantsToAddRole(module: ReviewModule) {

@@ -39,7 +39,7 @@ public final class ReviewFactory {
             menu: menuPresenter
         )
         
-        let userService = PCUserServiceStubFactory().make()
+        let userService = PCUserServiceStubFactory(user: user).make()
         self.services = ReviewServices(
             userService: userService
         )

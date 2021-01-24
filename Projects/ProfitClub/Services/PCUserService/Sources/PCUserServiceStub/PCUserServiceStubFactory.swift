@@ -16,16 +16,18 @@
 
 import Foundation
 import PCUserService
-import PCUserPersistenceStub
+import PCModel
 
 public final class PCUserServiceStubFactory: PCUserServiceFactory {
-    public init() {
+    public init(user: PCUser) {
+        self.user = user
     }
 
     public func make() -> PCUserService {
-        let userPersistence = PCUserPersistenceStubFactory().make()
         return PCUserServiceStub(
-            userPersistence: userPersistence
+            user: self.user
         )
     }
+
+    private let user: PCUser
 }
