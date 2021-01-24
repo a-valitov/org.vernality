@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0E4B00A025BD86810091ECB6 /* PCAddRole in Frameworks */ = {isa = PBXBuildFile; productRef = 0E4B009F25BD86810091ECB6 /* PCAddRole */; };
 		0E64F49225BAA47900138653 /* DemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E64F47F25BAA47800138653 /* DemoApp.swift */; };
 		0E64F49325BAA47900138653 /* DemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E64F47F25BAA47800138653 /* DemoApp.swift */; };
 		0E64F49625BAA47900138653 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0E64F48125BAA47900138653 /* Assets.xcassets */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0E4B009C25BD865B0091ECB6 /* PCAddRole */ = {isa = PBXFileReference; lastKnownFileType = folder; name = PCAddRole; path = ../../PCAddRole; sourceTree = "<group>"; };
 		0E64F47F25BAA47800138653 /* DemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoApp.swift; sourceTree = "<group>"; };
 		0E64F48125BAA47900138653 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0E64F48625BAA47900138653 /* Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -45,6 +47,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E64F4A825BAA52600138653 /* PCOnboard in Frameworks */,
+				0E4B00A025BD86810091ECB6 /* PCAddRole in Frameworks */,
 				0EDB949425BCA54C00F0C158 /* PCReview in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -62,6 +65,7 @@
 		0E64F47925BAA47800138653 = {
 			isa = PBXGroup;
 			children = (
+				0E4B009C25BD865B0091ECB6 /* PCAddRole */,
 				0EDB949025BCA53D00F0C158 /* PCReview */,
 				0E64F4A225BAA48100138653 /* PCOnboard */,
 				0E64F47E25BAA47800138653 /* Shared */,
@@ -137,6 +141,7 @@
 			packageProductDependencies = (
 				0E64F4A725BAA52600138653 /* PCOnboard */,
 				0EDB949325BCA54C00F0C158 /* PCReview */,
+				0E4B009F25BD86810091ECB6 /* PCAddRole */,
 			);
 			productName = "Demo (iOS)";
 			productReference = 0E64F48625BAA47900138653 /* Demo.app */;
@@ -479,6 +484,10 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		0E4B009F25BD86810091ECB6 /* PCAddRole */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = PCAddRole;
+		};
 		0E64F4A725BAA52600138653 /* PCOnboard */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = PCOnboard;

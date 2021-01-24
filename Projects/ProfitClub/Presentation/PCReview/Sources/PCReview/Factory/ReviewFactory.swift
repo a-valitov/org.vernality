@@ -19,13 +19,14 @@ import ErrorPresenter
 import ActivityPresenter
 import ConfirmationPresenter
 import MenuPresenter
+import PCModel
 #if canImport(PCUserServiceStub)
 import PCUserServiceStub
 #endif
 
 public final class ReviewFactory {
     #if canImport(PCUserServiceStub)
-    public init() {
+    public init(user: PCUser) {
         let errorPresenter = ErrorPresenterAlertFactory().make()
         let activityPresenter = ActivityPresenterCircleFactory().make()
         let confirmationPresenter = ConfirmationPresenterAlertFactory().make()
@@ -38,7 +39,7 @@ public final class ReviewFactory {
             menu: menuPresenter
         )
         
-        let userService = PCUserServiceStubFactory().make()
+        let userService = PCUserServiceStubFactory(user: user).make()
         self.services = ReviewServices(
             userService: userService
         )
@@ -46,7 +47,7 @@ public final class ReviewFactory {
     #endif
 
     public init(presenters: ReviewPresenters,
-         services: ReviewServices) {
+                services: ReviewServices) {
         self.presenters = presenters
         self.services = services
     }

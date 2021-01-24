@@ -16,16 +16,18 @@
 
 import Foundation
 import PCUserService
-import PCAuthenticationStub
+import PCModel
 
 public final class PCUserServiceStubFactory: PCUserServiceFactory {
-    public init() {
+    public init(user: PCUser) {
+        self.user = user
     }
 
     public func make() -> PCUserService {
-        let authentication = PCAuthenticationStubFactory().make()
         return PCUserServiceStub(
-            authentication: authentication
+            user: self.user
         )
     }
+
+    private let user: PCUser
 }

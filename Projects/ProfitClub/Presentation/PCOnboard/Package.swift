@@ -5,7 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "PCOnboard",
-    platforms: [.iOS("11.0")],
+    platforms: [.iOS(.v11)],
     products: [
         .library(
             name: "PCOnboard",

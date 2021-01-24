@@ -30,14 +30,19 @@ import PCSupplierService
 import MenuPresenter
 import PCOnboard
 import PCReview
+import PCUserPersistence
 
 final class AppFactory {
     lazy var authentication: PCAuthentication = {
         return PCAuthenticationParseFactory().make()
     }()
-    
+
     lazy var userService: PCUserService = {
-        return PCUserServiceParse(authentication: self.authentication)
+        return PCUserServiceParseFactory(user: PCUserStruct()).make()
+    }()
+
+    lazy var userPersistence: PCUserPersistence = {
+        return PCUserPersistenceParseFactory().make()
     }()
     
     func activityPresenter() -> ActivityPresenter {
@@ -57,7 +62,7 @@ final class AppFactory {
     }
     
     func organizationService() -> PCOrganizationService {
-        return PCOrganizationServiceParse()
+        return PCOrganizationServiceParseFactory().make(organization: PCOrganizationStruct())
     }
 
     func supplierService() -> PCSupplierService {
@@ -79,17 +84,7 @@ extension AppFactory {
         let module = self.onboardFactory.make(output: output)
         return module
     }
-    
-    func review(output: ReviewModuleOutput?) -> ReviewModule {
-        let module = self.reviewFactory.make(output: output)
-        return module
-    }
-    
-    func organization(_ organization: PCOrganization, output: OrganizationModuleOutput?) -> OrganizationModule {
-        let module = self.organizationFactory.make(organization: organization, output: output)
-        return module
-    }
-    
+
     func supplier(supplier: PCSupplier, output: SupplierModuleOutput?) -> SupplierModule {
         let module = self.supplierFactory.make(supplier: supplier, output: output)
         return module
@@ -97,11 +92,6 @@ extension AppFactory {
 
     func member(member: PCMember, output: MemberModuleOutput?) -> MemberModule {
         let module = self.memberFactory.make(member: member, output: output)
-        return module
-    }
-
-    func admin(output: AdminModuleOutput?) -> AdminModule {
-        let module = self.adminFactory.make(output: output)
         return module
     }
 
@@ -119,20 +109,10 @@ extension AppFactory {
         let module = self.supplierProfileFactory.make(supplier: supplier, output: output)
         return module
     }
-
-    func adminAction(action: PCAction, output: AdminActionModuleOutput?) -> AdminActionModule {
-        let module = self.adminActionFactory.make(action: action, output: output)
-        return module
-    }
-
-    func addRole(output: AddRoleModuleOutput?) -> AddRoleModule {
-        let module = self.addRoleFactory.make(output: output)
-        return module
-    }
 }
 
 // MARK: - Factories
-private extension AppFactory {
+extension AppFactory {
     var onboardFactory: OnboardFactory {
         return OnboardFactory(
             presenters: OnboardPresenters(
@@ -145,18 +125,6 @@ private extension AppFactory {
         )
     }
     
-    var reviewFactory: ReviewFactory {
-        return ReviewFactory(presenters: ReviewPresenters(error: self.errorPresenter(),
-                                                          activity: self.activityPresenter(), confirmation: self.confirmationPresenter(), menu: self.menuPresenter()),
-                             services: ReviewServices(userService: self.userService))
-    }
-    
-    var organizationFactory: OrganizationFactory {
-        return OrganizationFactory(presenters: OrganizationPresenters(error: self.errorPresenter(), activity: self.activityPresenter(), confirmation: self.confirmationPresenter(), menu: self.menuPresenter()),
-                                   services: OrganizationServices(authentication: self.authentication, organization: self.organizationService()),
-                                   factories: OrganizationFactories(actions: self.actionsFactory, action: self.actionFactory, commercialOffers: self.commercialOffersFactory, commercialOffer: self.commercialOfferFactory, members: self.membersFactory))
-    }
-    
     var supplierFactory: SupplierFactory {
         return SupplierFactory(presenters: SupplierPresenters(error: self.errorPresenter(), activity: self.activityPresenter(), confirmation: self.confirmationPresenter(), menu: self.menuPresenter()),
                                services: SupplierServices(authentication: self.authentication, action: self.actionService(), commercialOffer: self.commercialOfferService()))
@@ -164,42 +132,6 @@ private extension AppFactory {
 
     var memberFactory: MemberFactory {
         return MemberFactory(presenters: MemberPresenters(error: self.errorPresenter(), activity: self.activityPresenter(), confirmation: self.confirmationPresenter(), menu: self.menuPresenter()), services: MemberServices(action: self.actionService()))
-    }
-
-    var adminFactory: AdminFactory {
-        return AdminFactory(presenters: AdminPresenters(error: self.errorPresenter(), activity: self.activityPresenter(), confirmation: self.confirmationPresenter(), menu: self.menuPresenter()), services: AdminServices(), factories: AdminFactories(adminOrganizations: self.adminOrganizationsFactory, adminOrganization: self.adminOrganizationFactory, adminCommercialOffers: self.adminCommercialOffersFactory, adminCommercialOffer: self.adminCommercialOfferFactory, adminSuppliers: self.adminSuppliersFactory, adminSupplier: self.adminSupplierFactory, adminActions: self.adminActionsFactory, adminAction: self.adminActionFactory))
-    }
-
-    var adminOrganizationsFactory: AdminOrganizationsFactory {
-        return AdminOrganizationsFactory(presenters: AdminOrganizationsPresenters(error: self.errorPresenter(), activity: self.activityPresenter()), services: AdminOrganizationsServices(organization: self.organizationService()))
-    }
-
-    var adminOrganizationFactory: AdminOrganizationFactory {
-        return AdminOrganizationFactory(presenters: AdminOrganizationPresenters(error: self.errorPresenter(), activity: self.activityPresenter(), confirmation: self.confirmationPresenter()), services: AdminOrganizationServices(organization: self.organizationService()))
-    }
-
-    var adminSuppliersFactory: AdminSuppliersFactory {
-        return AdminSuppliersFactory(presenters: AdminSuppliersPresenters(error: self.errorPresenter(), activity: self.activityPresenter()), services: AdminSuppliersServices(supplier: self.supplierService()))
-    }
-
-    var adminSupplierFactory: AdminSupplierFactory {
-        return AdminSupplierFactory(presenters: AdminSupplierPresenters(error: self.errorPresenter(), activity: self.activityPresenter(), confirmation: self.confirmationPresenter()), services: AdminSupplierServices(supplier: self.supplierService()))
-    }
-
-    var adminActionsFactory: AdminActionsFactory {
-        return AdminActionsFactory(presenters: AdminActionsPresenters(error: self.errorPresenter(), activity: self.activityPresenter()), services: AdminActionsServices(action: self.actionService()))
-    }
-
-    var adminActionFactory: AdminActionFactory {
-        return AdminActionFactory(presenters: AdminActionPresenters(error: self.errorPresenter(), activity: self.activityPresenter(), confirmation: self.confirmationPresenter()), services: AdminActionServices(action: self.actionService()))
-    }
-
-    var adminCommercialOffersFactory: AdminCommercialOffersFactory {
-        return AdminCommercialOffersFactory(presenters: AdminCommercialOffersPresenters(error: self.errorPresenter(), activity: self.activityPresenter()), services: AdminCommercialOffersServices(commercialOffers: self.commercialOfferService()))
-    }
-
-    var adminCommercialOfferFactory: AdminCommercialOfferFactory {
-        return AdminCommercialOfferFactory(presenters: AdminCommercialOfferPresenters(error: self.errorPresenter(), activity: self.activityPresenter(), confirmation: self.confirmationPresenter()), services: AdminCommercialOfferServices(commercialOffer: self.commercialOfferService()))
     }
 
     var actionsFactory: ActionsFactory {
@@ -234,9 +166,5 @@ private extension AppFactory {
 
     var supplierProfileFactory: SupplierProfileFactory {
         return SupplierProfileFactory(presenters: SupplierProfilePresenters(error: self.errorPresenter(), activity: self.activityPresenter()), services: SupplierProfileServices(supplier: self.supplierService()))
-    }
-
-    var addRoleFactory: AddRoleFactory {
-        return AddRoleFactory(presenters: AddRolePresenters(error: self.errorPresenter(), activity: self.activityPresenter(), confirmation: self.confirmationPresenter()), services: AddRoleServices(authentication: self.authentication, organization: self.organizationService()))
     }
 }

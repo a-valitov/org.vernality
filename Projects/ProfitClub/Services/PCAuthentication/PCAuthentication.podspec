@@ -21,6 +21,7 @@ Pod::Spec.new do |s|
 
   s.subspec 'Parse' do |ss|
     ss.source_files = 'Sources/PCAuthenticationParse/**/*.{h,m,swift}', 'Sources/PCAuthenticationParse/*.{h,m,swift}'
+    ss.dependency 'PCAuthentication/Contract'
     ss.dependency 'PCModel/Parse'
     ss.dependency 'Parse'
   end

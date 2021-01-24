@@ -33,14 +33,15 @@ target 'ProfitClub' do
   # presentation
   pod 'PCOnboard', :path => '../Presentation/PCOnboard/PCOnboard.podspec'
   pod 'PCReview', :path => '../Presentation/PCReview/PCReview.podspec'
+  pod 'PCAddRole', :path => '../Presentation/PCAddRole/PCAddRole.podspec'
+  pod 'PCAdmin', :path => '../Presentation/PCAdmin/PCAdmin.podspec'
 
+  # persistence
+  pod 'PCUserPersistence/Parse', :path => '../Persistence/PCUserPersistence/PCUserPersistence.podspec'
 end
 
-# Exclude all Package.swift from pods targets
 post_install do |installer|
-  puts("Excluding Package.swift from targets")
   installer.pods_project.targets.each do |target|
-
     target.build_configurations.each do |config|
       if config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'].to_f < 9.0
         config.build_settings['IPHONEOS_DEPLOYMENT_TARGET'] = '9.0'

@@ -15,43 +15,49 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import Foundation
-import PCAuthentication
 import PCModel
 import Parse
 
-public final class PCUserServiceParse: PCUserService {
-    public var user: AnyPCUser? {
-        return self.authentication.user
-    }
+final class PCUserServiceParse: PCUserService {
+    var user: PCUser
     
-    public init(authentication: PCAuthentication) {
-        self.authentication = authentication
+    init(user: PCUser) {
+        self.user = user
     }
 
-    public func isOnReview() -> Bool {
-        let isOnMemberReview = (self.user?.members?.contains(where: { $0.status == .onReview })) ?? false
-        let isOnOrganizationReview = (self.user?.organizations?.contains(where: { $0.status == .onReview })) ?? false
-        let isOnSupplierReview = (self.user?.suppliers?.contains(where: { $0.status == .onReview })) ?? false
+    func isOnReview() -> Bool {
+        let isOnMemberReview = (self.user.members?.contains(where: { $0.status == .onReview })) ?? false
+        let isOnOrganizationReview = (self.user.organizations?.contains(where: { $0.status == .onReview })) ?? false
+        let isOnSupplierReview = (self.user.suppliers?.contains(where: { $0.status == .onReview })) ?? false
         return isOnMemberReview || isOnOrganizationReview || isOnSupplierReview
 
     }
 
-    public func logout(result: @escaping (Result<Bool, Error>) -> Void) {
-        PFUser.logOutInBackground { [weak self] error in
+    func logout(result: @escaping (Result<Bool, Error>) -> Void) {
+        PFUser.logOutInBackground { error in
             if let error = error {
                 result(.failure(error))
             } else {
-                self?.authentication.user = nil
+//                self?.userPersistence.user = nil
                 result(.success(true))
             }
         }
     }
-
-    public func reload(result: @escaping (Result<AnyPCUser, Error>) -> Void) {
-        guard let parseUser = self.user?.parse else {
-            result(.failure(PCUserServiceError.userIsNil))
-            return
+    
+    func fetch(_ status: PCOrganizationStatus, result: @escaping (Result<[AnyPCOrganization], Error>) -> Void) {
+        let query = PFQuery(className: "Organization")
+        query.whereKey("statusString", equalTo: status.rawValue)
+        query.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
+            if let error = error {
+                result(.failure(error))
+            } else if let objects = objects {
+                result(.success(objects.map({ $0.pcOrganization.any })))
+            }
         }
+    }
+
+    func reload(result: @escaping (Result<AnyPCUser, Error>) -> Void) {
+        let parseUser = self.user.parse
         var finalError: Error?
         var finalUser: PCUserParse?
         let group = DispatchGroup()
@@ -111,11 +117,11 @@ public final class PCUserServiceParse: PCUserService {
             group.leave()
         }
 
-        group.notify(queue: .main) { [weak self] in
+        group.notify(queue: .main) {
             if let error = finalError {
                 result(.failure(error))
             } else if let user = finalUser {
-                self?.authentication.user = user.any
+//                self?.userPersistence.user = user.any
                 result(.success(user.any))
             } else {
                 result(.failure(PCUserServiceError.userIsNil))
@@ -123,7 +129,7 @@ public final class PCUserServiceParse: PCUserService {
         }
     }
 
-    public func editProfile(member: PCMember, image: UIImage, result: @escaping (Result<PCMember, Error>) -> Void) {
+    func editProfile(member: PCMember, image: UIImage, result: @escaping (Result<PCMember, Error>) -> Void) {
         guard let imageData = image.pngData() else {
             result(.failure(PCUserServiceError.failedToGetImagePNGRepresentation))
             return
@@ -140,5 +146,63 @@ public final class PCUserServiceParse: PCUserService {
         }
     }
 
-    private var authentication: PCAuthentication
+    func add(supplier: PCSupplier, result: @escaping ((Result<PCSupplier, Error>) -> Void)) {
+        let parseSupplier = supplier.parse
+        if let image = supplier.image, let imageData = image.pngData() {
+            let imageFile = PFFileObject(name: "image.png", data: imageData)
+            parseSupplier.imageFile = imageFile
+        }
+        parseSupplier.saveInBackground { (succeeded, error) in
+            if let error = error {
+                result(.failure(error))
+            } else {
+                result(.success(supplier))
+            }
+
+        }
+    }
+
+    func add(member: PCMember, in organization: PCOrganization, result: @escaping ((Result<PCMember, Error>) -> Void)) {
+        let parseMember = member.parse
+        let parseOrganization = organization.parse
+        if let image = member.image, let imageData = image.pngData() {
+            let imageFile = PFFileObject(name: "image.png", data: imageData)
+            parseMember.imageFile = imageFile
+        }
+        parseMember.saveInBackground { (succeeded, error)  in
+            if let error = error {
+                result(.failure(error))
+            } else {
+                if let organizationId = parseOrganization.id, let memberId = parseMember.id {
+                    PFCloud.callFunction(inBackground: "applyAsAMemberToOrganization",
+                                         withParameters: ["organizationId": organizationId,
+                                                          "memberId": memberId]) {
+                        (response, error) in
+                        if let error = error {
+                            result(.failure(error))
+                        } else {
+                            result(.success(member))
+                        }
+                    }
+                } else {
+                    result(.failure(PCUserServiceError.organizationOrUserIdIsNil))
+                }
+            }
+        }
+    }
+
+    func add(organization: PCOrganization, result: @escaping ((Result<PCOrganization, Error>) -> Void)) {
+        let parseOrganization = organization.parse
+        if let image = organization.image, let imageData = image.pngData() {
+            let imageFile = PFFileObject(name: "image.png", data: imageData)
+            parseOrganization.imageFile = imageFile
+        }
+        parseOrganization.saveInBackground { (succeeded, error) in
+            if let error = error {
+                result(.failure(error))
+            } else {
+                result(.success(organization))
+            }
+        }
+    }
 }

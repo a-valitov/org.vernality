@@ -21,4 +21,5 @@ public enum PCUserServiceError: Error {
     case userIsNotPFUser
     case bothResultAndErrorAreNil
     case failedToGetImagePNGRepresentation
+    case organizationOrUserIdIsNil
 }

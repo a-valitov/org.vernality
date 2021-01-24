@@ -15,12 +15,13 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import Foundation
+import UIKit
 import PCModel
 
 public protocol PCOrganizationService {
+    var organization: PCOrganization { get }
     func reload(_ organization: PCOrganization?,
                 result: @escaping (Result<PCOrganization, Error>) -> Void)
-    func fetch(_ status: PCOrganizationStatus, result: @escaping (Result<[AnyPCOrganization], Error>) -> Void)
     func fetchApprovedApplications(_ organization: PCOrganization?, result: @escaping (Result<[AnyPCMember], Error>) -> Void)
     func fetchApprovedMembersOfOrganization(_ organization: PCOrganization?, result: @escaping (Result<[AnyPCMember], Error>) -> Void)
 
@@ -31,4 +32,8 @@ public protocol PCOrganizationService {
     func reject(organization: PCOrganization, result: @escaping (Result<PCOrganization, Error>) -> Void)
 
     func editProfile(organization: PCOrganization, image: UIImage, result: @escaping (Result<PCOrganization, Error>) -> Void)
+}
+
+public protocol PCOrganizationServiceFactory {
+    func make(organization: PCOrganization) -> PCOrganizationService
 }

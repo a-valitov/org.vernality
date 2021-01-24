@@ -13,8 +13,8 @@ struct ReviewView: UIViewControllerRepresentable {
     @EnvironmentObject var user: PCUserSU
 
     class Coordinator: NSObject, UINavigationControllerDelegate, ReviewModuleOutput {
-        func reviewUserWantsToLogout(module: ReviewModule) {
-
+        func reviewUserDidLogout(module: ReviewModule) {
+            
         }
 
         func reviewUserWantsToAddRole(module: ReviewModule) {
@@ -49,7 +49,7 @@ struct ReviewView: UIViewControllerRepresentable {
     }
 
     func makeUIViewController(context: UIViewControllerRepresentableContext<ReviewView>) -> UIViewController {
-        return ReviewFactory().make(output: context.coordinator).viewController
+        return ReviewFactory(user: self.user.any).make(output: context.coordinator).viewController
     }
 
     func updateUIViewController(_ uiViewController: UIViewController, context: UIViewControllerRepresentableContext<ReviewView>) {
