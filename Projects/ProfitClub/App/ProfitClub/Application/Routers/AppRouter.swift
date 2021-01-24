@@ -82,16 +82,6 @@ final class AppRouter {
             return onboard
         }
     }
-
-    private func organization(for organization: PCOrganization) -> OrganizationModule {
-        if let organization = self.weakOrganization {
-            return organization
-        } else {
-            let organization = self.factory.organization(organization, output: self)
-            self.weakOrganization = organization
-            return organization
-        }
-    }
     private func supplier(for supplier: PCSupplier) -> SupplierModule {
         if let supplier = self.weakSupplier {
             return supplier
@@ -156,7 +146,6 @@ final class AppRouter {
     private weak var weakSupplierProfile: SupplierProfileModule?
     private weak var weakOrganizationProfile: OrganizationProfileModule?
     private weak var weakMember: MemberModule?
-    private weak var weakOrganization: OrganizationModule?
     private weak var weakSupplier: SupplierModule?
     private weak var weakOnboard: OnboardModule?
 }
@@ -241,7 +230,7 @@ extension AppRouter: OrganizationModuleOutput {
         let organizationProfileModule = self.profile(for: organization)
         self.navigationController.pushViewController(organizationProfileModule.viewController, animated: true)
     }
-    func organizationUserWantsToLogout(module: OrganizationModule) {
+    func organizationUserDidLogout(module: OrganizationModule) {
         self.logout()
     }
     func organizationUserWantsToChangeRole(module: OrganizationModule) {
@@ -308,7 +297,7 @@ extension AppRouter: MemberProfileModuleOutput {
 
 extension AppRouter: OrganizationProfileModuleOutput {
     func organizationProfile(module: OrganizationProfileModule, didUpdate organization: PCOrganization) {
-        self.weakOrganization?.organization = organization
+//        self.weakOrganization?.organization = organization
     }
 }
 

@@ -82,9 +82,34 @@ final class ReviewRouter {
     }
     private var strongAddRoleRouter: AddRoleRouter?
 
+    private func organizationRouter(user: PCUser, organization: PCOrganization) -> OrganizationRouter {
+        if let organizationRouter = self.strongOrganizationRouter {
+            return organizationRouter
+        } else {
+            let organizationRouter = OrganizationRouter(user: user, organization: organization)
+            organizationRouter.delegate = self
+            self.strongOrganizationRouter = organizationRouter
+            return organizationRouter
+        }
+    }
+    private var strongOrganizationRouter: OrganizationRouter?
+
     // state
     private let user: PCUser
     private weak var weakNavigationController: UINavigationController?
+}
+
+extension ReviewRouter: OrganizationRouterDelegate {
+    func organizationUserDidLogout(router: OrganizationRouter) {
+        self.delegate?.reviewUserDidLogout(router: self)
+    }
+
+    func organizationUserWantsToChangeRole(router: OrganizationRouter) {
+        self.navigationController.popToViewController(
+            self.viewController,
+            animated: true
+        )
+    }
 }
 
 extension ReviewRouter: AdminRouterDelegate {
@@ -162,9 +187,14 @@ extension ReviewRouter: ReviewModuleOutput {
     }
 
     func review(module: ReviewModule, userWantsToEnter organization: PCOrganization) {
-//        assert(organization.status == .approved)
-//        let organizationModule = self.organization(for: organization)
-//        self.navigationController.pushViewController(organizationModule.viewController, animated: true)
+        assert(organization.status == .approved)
+        self.navigationController.pushViewController(
+            self.organizationRouter(
+                user: self.user,
+                organization: organization
+            ).viewController,
+            animated: true
+        )
     }
 
     func review(module: ReviewModule, userWantsToEnter supplier: PCSupplier) {

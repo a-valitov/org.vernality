@@ -67,6 +67,7 @@
 		0EDB95CF25BD65A100F0C158 /* AdminRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDB95CE25BD65A100F0C158 /* AdminRouter.swift */; };
 		0EDB95D325BD6A1B00F0C158 /* Router+Factory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDB95D225BD6A1B00F0C158 /* Router+Factory.swift */; };
 		0EDB95D725BD6B4D00F0C158 /* AddRoleRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDB95D625BD6B4D00F0C158 /* AddRoleRouter.swift */; };
+		0EDB95DA25BD715A00F0C158 /* OrganizationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDB95D925BD715A00F0C158 /* OrganizationRouter.swift */; };
 		BAC5B692AE8ABE81C3298271 /* Pods_ProfitClub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D881FD37132A41374982A032 /* Pods_ProfitClub.framework */; };
 		FA0955EC254C364F00FFF835 /* SupplierCommercialOffer.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0955EB254C364F00FFF835 /* SupplierCommercialOffer.swift */; };
 		FA0955EF254C369300FFF835 /* SupplierCommercialOfferBeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA0955EE254C369300FFF835 /* SupplierCommercialOfferBeta.swift */; };
@@ -344,6 +345,7 @@
 		0EDB95CE25BD65A100F0C158 /* AdminRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminRouter.swift; sourceTree = "<group>"; };
 		0EDB95D225BD6A1B00F0C158 /* Router+Factory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Router+Factory.swift"; sourceTree = "<group>"; };
 		0EDB95D625BD6B4D00F0C158 /* AddRoleRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddRoleRouter.swift; sourceTree = "<group>"; };
+		0EDB95D925BD715A00F0C158 /* OrganizationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationRouter.swift; sourceTree = "<group>"; };
 		17770C4311DB6F99F7CDDD46 /* Pods-ProfitClub.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProfitClub.release.xcconfig"; path = "Target Support Files/Pods-ProfitClub/Pods-ProfitClub.release.xcconfig"; sourceTree = "<group>"; };
 		64F87290C9FD04EC19DEE33B /* Pods-ProfitClub.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProfitClub.debug.xcconfig"; path = "Target Support Files/Pods-ProfitClub/Pods-ProfitClub.debug.xcconfig"; sourceTree = "<group>"; };
 		D881FD37132A41374982A032 /* Pods_ProfitClub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProfitClub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1046,6 +1048,7 @@
 				0E90496D24F390070061A605 /* AppRouter.swift */,
 				0EDB95CA25BD4D5000F0C158 /* ReviewRouter.swift */,
 				0EDB95D625BD6B4D00F0C158 /* AddRoleRouter.swift */,
+				0EDB95D925BD715A00F0C158 /* OrganizationRouter.swift */,
 			);
 			path = Routers;
 			sourceTree = "<group>";
@@ -2877,6 +2880,7 @@
 				FA50B16C25A8AD42003D514B /* AdminActionsApplicationsViewAlphaCell.swift in Sources */,
 				FA50B0F025A64DBF003D514B /* AdminCommercialOffersModule.swift in Sources */,
 				0EA11EC824F2B88F00133485 /* AppDelegate.swift in Sources */,
+				0EDB95DA25BD715A00F0C158 /* OrganizationRouter.swift in Sources */,
 				FA50B17E25A8B21B003D514B /* AdminActionApplicationViewAlpha.swift in Sources */,
 				0EDB95CF25BD65A100F0C158 /* AdminRouter.swift in Sources */,
 				0E56173C25372BC5005DF4F3 /* CurrentActionsViewBeta.swift in Sources */,

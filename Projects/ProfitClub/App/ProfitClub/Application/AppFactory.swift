@@ -85,11 +85,6 @@ extension AppFactory {
         return module
     }
 
-    func organization(_ organization: PCOrganization, output: OrganizationModuleOutput?) -> OrganizationModule {
-        let module = self.organizationFactory.make(organization: organization, output: output)
-        return module
-    }
-    
     func supplier(supplier: PCSupplier, output: SupplierModuleOutput?) -> SupplierModule {
         let module = self.supplierFactory.make(supplier: supplier, output: output)
         return module
@@ -128,12 +123,6 @@ extension AppFactory {
                 authentication: self.authentication
             )
         )
-    }
-    
-    var organizationFactory: OrganizationFactory {
-        return OrganizationFactory(presenters: OrganizationPresenters(error: self.errorPresenter(), activity: self.activityPresenter(), confirmation: self.confirmationPresenter(), menu: self.menuPresenter()),
-                                   services: OrganizationServices(authentication: self.authentication, organization: self.organizationService()),
-                                   factories: OrganizationFactories(actions: self.actionsFactory, action: self.actionFactory, commercialOffers: self.commercialOffersFactory, commercialOffer: self.commercialOfferFactory, members: self.membersFactory))
     }
     
     var supplierFactory: SupplierFactory {
