@@ -53,6 +53,7 @@ final class AddRoleRouter {
             return addRole
         } else {
             let addRole = self.addRoleFactory(user: self.user).make(output: self)
+            addRole.router = self
             self.weakAddRole = addRole
             return addRole
         }

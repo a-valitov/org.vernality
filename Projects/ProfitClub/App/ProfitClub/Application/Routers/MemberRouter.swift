@@ -56,6 +56,7 @@ final class MemberRouter {
                 user: self.user,
                 member: self.member
             ).make(member: self.member, output: self)
+            memberModule.router = self
             self.weakMemberModule = memberModule
             return memberModule
         }

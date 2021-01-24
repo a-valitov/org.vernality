@@ -25,6 +25,7 @@ import Raise
 
 final class OrganizationPresenter: OrganizationModule {
     weak var output: OrganizationModuleOutput?
+    var router: AnyObject?
     var organization: PCOrganization
     var viewController: UIViewController {
         return self.tabBar

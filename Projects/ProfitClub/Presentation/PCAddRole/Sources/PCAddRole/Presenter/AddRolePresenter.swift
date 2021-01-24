@@ -19,6 +19,7 @@ import PCModel
 
 final class AddRolePresenter: AddRoleModule {
     weak var output: AddRoleModuleOutput?
+    var router: AnyObject?
     var viewController: UIViewController {
         return self.selectRole
     }

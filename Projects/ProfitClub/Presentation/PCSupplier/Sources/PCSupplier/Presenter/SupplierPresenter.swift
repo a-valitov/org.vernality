@@ -24,6 +24,7 @@ import PCModel
 
 final class SupplierPresenter: SupplierModule {
     weak var output: SupplierModuleOutput?
+    var router: AnyObject?
     var supplier: PCSupplier
     var viewController: UIViewController {
         return self.supplierView

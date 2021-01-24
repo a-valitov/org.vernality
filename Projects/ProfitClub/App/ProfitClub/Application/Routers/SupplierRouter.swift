@@ -56,6 +56,7 @@ final class SupplierRouter {
                 user: self.user,
                 supplier: self.supplier
             ).make(supplier: self.supplier, output: self)
+            supplierModule.router = self
             self.weakSupplierModule = supplierModule
             return supplierModule
         }

@@ -20,6 +20,7 @@ import PCModel
 
 public protocol AdminModule: class {
     var viewController: UIViewController { get }
+    var router: AnyObject? { get set }
 
     func open(action: PCAction)
 }

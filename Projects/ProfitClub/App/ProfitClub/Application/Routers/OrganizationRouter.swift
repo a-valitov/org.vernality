@@ -56,6 +56,7 @@ final class OrganizationRouter {
                 user: self.user,
                 organization: self.organization
             ).make(organization: self.organization, output: self)
+            organizationModule.router = self
             self.weakOrganizationModule = organizationModule
             return organizationModule
         }

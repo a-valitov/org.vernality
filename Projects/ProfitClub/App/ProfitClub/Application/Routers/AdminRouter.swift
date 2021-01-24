@@ -56,6 +56,7 @@ final class AdminRouter {
             return admin
         } else {
             let admin = self.adminFactory(user: self.user).make(output: self)
+            admin.router = self
             self.weakAdmin = admin
             return admin
         }

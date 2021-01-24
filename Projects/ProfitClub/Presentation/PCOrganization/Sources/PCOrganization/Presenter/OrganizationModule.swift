@@ -20,6 +20,8 @@ import PCModel
 
 public protocol OrganizationModule: class {
     var viewController: UIViewController { get }
+    var router: AnyObject? { get set }
+    
     var organization: PCOrganization { get set }
 }
 

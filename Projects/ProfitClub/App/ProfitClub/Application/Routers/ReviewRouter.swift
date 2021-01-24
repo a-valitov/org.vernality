@@ -46,7 +46,7 @@ final class ReviewRouter {
     }
 
     func route(to action: PCAction) {
-        self.strongAdminRouter?.route(to: action)
+        self.weakAdminRouter?.route(to: action)
     }
 
     // modules
@@ -64,65 +64,64 @@ final class ReviewRouter {
 
     // routers
     private func adminRouter(user: PCUser) -> AdminRouter {
-        if let adminRouter = self.strongAdminRouter {
+        if let adminRouter = self.weakAdminRouter {
             return adminRouter
         } else {
             let adminRouter = AdminRouter(user: user)
             adminRouter.delegate = self
-            self.strongAdminRouter = adminRouter
+            self.weakAdminRouter = adminRouter
             return adminRouter
         }
     }
-    private var strongAdminRouter: AdminRouter?
+    private weak var weakAdminRouter: AdminRouter?
 
     private func addRoleRouter(user: PCUser) -> AddRoleRouter {
-        if let addRoleRouter = self.strongAddRoleRouter {
+        if let addRoleRouter = self.weakAddRoleRouter {
             return addRoleRouter
         } else {
             let addRoleRouter = AddRoleRouter(user: user)
             addRoleRouter.delegate = self
-            self.strongAddRoleRouter = addRoleRouter
+            self.weakAddRoleRouter = addRoleRouter
             return addRoleRouter
         }
     }
-    private var strongAddRoleRouter: AddRoleRouter?
+    private weak var weakAddRoleRouter: AddRoleRouter?
 
     private func organizationRouter(user: PCUser, organization: PCOrganization) -> OrganizationRouter {
-        if let organizationRouter = self.strongOrganizationRouter {
+        if let organizationRouter = self.weakOrganizationRouter {
             return organizationRouter
         } else {
             let organizationRouter = OrganizationRouter(user: user, organization: organization)
             organizationRouter.delegate = self
-            self.strongOrganizationRouter = organizationRouter
+            self.weakOrganizationRouter = organizationRouter
             return organizationRouter
         }
     }
-    private var strongOrganizationRouter: OrganizationRouter?
-
+    private weak var weakOrganizationRouter: OrganizationRouter?
 
     private func supplierRouter(user: PCUser, supplier: PCSupplier) -> SupplierRouter {
-        if let supplierRouter = self.strongSupplierRouter {
+        if let supplierRouter = self.weakSupplierRouter {
             return supplierRouter
         } else {
             let supplierRouter = SupplierRouter(user: user, supplier: supplier)
             supplierRouter.delegate = self
-            self.strongSupplierRouter = supplierRouter
+            self.weakSupplierRouter = supplierRouter
             return supplierRouter
         }
     }
-    private var strongSupplierRouter: SupplierRouter?
+    private weak var weakSupplierRouter: SupplierRouter?
 
     private func memberRouter(user: PCUser, member: PCMember) -> MemberRouter {
-        if let memberRouter = self.strongMemberRouter {
+        if let memberRouter = self.weakMemberRouter {
             return memberRouter
         } else {
             let memberRouter = MemberRouter(user: user, member: member)
             memberRouter.delegate = self
-            self.strongMemberRouter = memberRouter
+            self.weakMemberRouter = memberRouter
             return memberRouter
         }
     }
-    private var strongMemberRouter: MemberRouter?
+    private weak var weakMemberRouter: MemberRouter?
 
     // state
     private let user: PCUser

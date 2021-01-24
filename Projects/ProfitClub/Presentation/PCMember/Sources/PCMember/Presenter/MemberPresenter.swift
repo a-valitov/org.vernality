@@ -24,6 +24,7 @@ import Raise
 
 final class MemberPresenter: MemberModule {
     weak var output: MemberModuleOutput?
+    var router: AnyObject?
     var viewController: UIViewController {
         return self.memberCurrentActionsView
     }
