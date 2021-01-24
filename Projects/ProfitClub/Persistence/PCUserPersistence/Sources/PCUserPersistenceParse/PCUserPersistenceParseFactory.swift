@@ -1,5 +1,5 @@
 //  Copyright (C) 2020 Startup Studio Vernality
-//  Created by Rinat Enikeev on 8/30/20
+//  Created by Rinat Enikeev on 8/26/20
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -15,18 +15,11 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import Foundation
-import PCAuthentication
 
-public final class PCUserServiceFactoryParse: PCUserServiceFactory {
-    public init(authentication: PCAuthentication) {
-        self.authentication = authentication
+public final class PCUserPersistenceParseFactory: PCUserPersistenceFactory {
+    public init() {}
+
+    public func make() -> PCUserPersistence {
+        return PCUserPersistenceParse()
     }
-
-    public func make() -> PCUserService {
-        return PCUserServiceParse(
-            authentication: self.authentication
-        )
-    }
-
-    private let authentication: PCAuthentication
 }

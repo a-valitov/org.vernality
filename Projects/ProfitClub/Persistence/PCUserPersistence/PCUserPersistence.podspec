@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
-  s.name             = 'PCAuthentication'
+  s.name             = 'PCUserPersistence'
   s.version          = '0.0.1'
-  s.summary          = 'ProfitClub authentication.'
+  s.summary          = 'ProfitClub user persistence.'
   s.homepage         = 'https://vernality.org'
   s.author           = { 'Rinat Enikeev' => 'rinat.enikeev@gmail.com' }
   s.license          = { :type => 'GPL', :file => '../../LICENSE' }
@@ -15,19 +15,19 @@ Pod::Spec.new do |s|
   s.default_subspecs = 'Contract'
 
   s.subspec 'Contract' do |ss|
-    ss.source_files = 'Sources/PCAuthentication/**/*.{h,m,swift}', 'Sources/PCAuthentication/*.{h,m,swift}'
+    ss.source_files = 'Sources/PCUserPersistence/**/*.{h,m,swift}', 'Sources/PCUserPersistence/*.{h,m,swift}'
     ss.dependency 'PCModel'
   end
 
   s.subspec 'Parse' do |ss|
-    ss.source_files = 'Sources/PCAuthenticationParse/**/*.{h,m,swift}', 'Sources/PCAuthenticationParse/*.{h,m,swift}'
-    ss.dependency 'PCAuthentication/Contract'
+    ss.source_files = 'Sources/PCUserPersistenceParse/**/*.{h,m,swift}', 'Sources/PCUserPersistenceParse/*.{h,m,swift}'
+    ss.dependency 'PCUserPersistence/Contract'
     ss.dependency 'PCModel/Parse'
     ss.dependency 'Parse'
   end
 
   s.subspec 'Stub' do |ss|
-    ss.source_files = 'Sources/PCAuthenticationStub/**/*.{h,m,swift}', 'Sources/PCAuthenticationStub/*.{h,m,swift}'
+    ss.source_files = 'Sources/PCUserPersistenceStub/**/*.{h,m,swift}', 'Sources/PCUserPersistenceStub/*.{h,m,swift}'
     ss.dependency 'PCModel'
   end
 
@@ -36,4 +36,5 @@ Pod::Spec.new do |s|
   end
 
 end
+
 

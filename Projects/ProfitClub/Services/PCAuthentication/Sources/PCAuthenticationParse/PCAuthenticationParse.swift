@@ -19,32 +19,11 @@ import Parse
 import PCModel
 
 final class PCAuthenticationParse: PCAuthentication {
-    var user: AnyPCUser? {
-        get {
-            if let parseUser = self.parseUser {
-                return parseUser.any
-            } else {
-                self.parseUser = PFUser.current()?.pcUser
-                return self.parseUser?.any
-            }
-        }
-        set {
-            if let parseUser = newValue?.parse {
-                self.parseUser = parseUser
-            } else {
-                self.parseUser = nil
-            }
-        }
-    }
-
-    private var parseUser: PCUserParse?
-
     func login(username: String, password: String, result: @escaping ((Result<AnyPCUser, Error>) -> Void)) {
-        PFUser.logInWithUsername(inBackground: username, password: password) { [weak self] (user, error) in
+        PFUser.logInWithUsername(inBackground: username, password: password) { (user, error) in
             if let error = error {
                 result(.failure(error))
             } else if let user = user, let anyUser = user.pcUser?.any {
-                self?.user = anyUser
                 PFInstallation.current()?.setObject(user, forKey: "user")
                 PFInstallation.current()?.saveEventually()
                 result(.success(anyUser))
@@ -60,66 +39,6 @@ final class PCAuthenticationParse: PCAuthentication {
                 result(.failure(error))
             } else {
                 result(.success(succeeded))
-            }
-        }
-    }
-
-    func add(supplier: PCSupplier, result: @escaping ((Result<PCSupplier, Error>) -> Void)) {
-        let parseSupplier = supplier.parse
-        if let image = supplier.image, let imageData = image.pngData() {
-            let imageFile = PFFileObject(name: "image.png", data: imageData)
-            parseSupplier.imageFile = imageFile
-        }
-        parseSupplier.saveInBackground { (succeeded, error) in
-            if let error = error {
-                result(.failure(error))
-            } else {
-                result(.success(supplier))
-            }
-
-        }
-    }
-
-    func add(member: PCMember, in organization: PCOrganization, result: @escaping ((Result<PCMember, Error>) -> Void)) {
-        let parseMember = member.parse
-        let parseOrganization = organization.parse
-        if let image = member.image, let imageData = image.pngData() {
-            let imageFile = PFFileObject(name: "image.png", data: imageData)
-            parseMember.imageFile = imageFile
-        }
-        parseMember.saveInBackground { (succeeded, error)  in
-            if let error = error {
-                result(.failure(error))
-            } else {
-                if let organizationId = parseOrganization.id, let memberId = parseMember.id {
-                    PFCloud.callFunction(inBackground: "applyAsAMemberToOrganization",
-                                         withParameters: ["organizationId": organizationId,
-                                                          "memberId": memberId]) {
-                        (response, error) in
-                        if let error = error {
-                            result(.failure(error))
-                        } else {
-                            result(.success(member))
-                        }
-                    }
-                } else {
-                    result(.failure(PCAuthenticationError.organizationOrUserIdIsNil))
-                }
-            }
-        }
-    }
-
-    func add(organization: PCOrganization, result: @escaping ((Result<PCOrganization, Error>) -> Void)) {
-        let parseOrganization = organization.parse
-        if let image = organization.image, let imageData = image.pngData() {
-            let imageFile = PFFileObject(name: "image.png", data: imageData)
-            parseOrganization.imageFile = imageFile
-        }
-        parseOrganization.saveInBackground { (succeeded, error) in
-            if let error = error {
-                result(.failure(error))
-            } else {
-                result(.success(organization))
             }
         }
     }

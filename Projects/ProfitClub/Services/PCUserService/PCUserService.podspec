@@ -21,14 +21,14 @@ Pod::Spec.new do |s|
 
   s.subspec 'Parse' do |ss|
     ss.source_files = 'Sources/PCUserServiceParse/**/*.{h,m,swift}', 'Sources/PCUserServiceParse/*.{h,m,swift}'
-    ss.dependency 'PCAuthentication'
+    ss.dependency 'PCUserPersistence'
     ss.dependency 'PCModel/Parse'
     ss.dependency 'Parse'
   end
 
   s.subspec 'Stub' do |ss|
     ss.source_files = 'Sources/PCUserServiceStub/**/*.{h,m,swift}', 'Sources/PCUserServiceStub/*.{h,m,swift}'
-    ss.dependency 'PCAuthenticationStub'
+    ss.dependency 'PCUserPersistenceStub'
     ss.dependency 'PCModel'
   end
 

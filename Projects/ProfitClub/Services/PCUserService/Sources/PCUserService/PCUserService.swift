@@ -25,7 +25,17 @@ public protocol PCUserService {
     func logout(result: @escaping (Result<Bool, Error>) -> Void)
     func reload(result: @escaping (Result<AnyPCUser, Error>) -> Void)
 
-    func editProfile(member: PCMember, image: UIImage, result: @escaping (Result<PCMember, Error>) -> Void)
+    func add(member: PCMember,
+             in organization: PCOrganization,
+             result: @escaping ((Result<PCMember, Error>) -> Void))
+    func add(supplier: PCSupplier,
+             result: @escaping ((Result<PCSupplier, Error>) -> Void))
+    func add(organization: PCOrganization,
+             result: @escaping ((Result<PCOrganization, Error>) -> Void))
+
+    func editProfile(member: PCMember,
+                     image: UIImage,
+                     result: @escaping (Result<PCMember, Error>) -> Void)
 }
 
 public protocol PCUserServiceFactory {

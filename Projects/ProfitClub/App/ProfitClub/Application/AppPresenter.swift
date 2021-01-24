@@ -23,6 +23,7 @@ import ErrorPresenter
 import ActivityPresenter
 import PCOnboard
 import PCReview
+import PCUserPersistence
 
 final class AppPresenter {
     init(factory: AppFactory) {
@@ -59,6 +60,11 @@ final class AppPresenter {
     // services
     private lazy var userService: PCUserService = {
         return self.factory.userService
+    }()
+
+    // persistence
+    private lazy var userPersistence: PCUserPersistence = {
+        return self.factory.userPersistence
     }()
 
     // presenters

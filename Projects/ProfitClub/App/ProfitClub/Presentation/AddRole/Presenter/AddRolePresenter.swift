@@ -331,7 +331,7 @@ extension AddRolePresenter {
             return
         }
         self.presenters.activity.increment()
-        self.services.authentication.add(member: member, in: organization) { [weak self] (result) in
+        self.services.user.add(member: member, in: organization) { [weak self] (result) in
             guard let sSelf = self else { return }
             sSelf.presenters.activity.decrement()
             switch result {
@@ -356,7 +356,7 @@ extension AddRolePresenter {
             return
         }
         self.presenters.activity.increment()
-        self.services.authentication.add(organization: organization) { [weak self] (result) in
+        self.services.user.add(organization: organization) { [weak self] (result) in
             guard let sSelf = self else { return }
             sSelf.presenters.activity.decrement()
             switch result {
@@ -381,7 +381,7 @@ extension AddRolePresenter {
             return
         }
         self.presenters.activity.increment()
-        self.services.authentication.add(supplier: supplier) { [weak self] result in
+        self.services.user.add(supplier: supplier) { [weak self] result in
             guard let sSelf = self else { return }
             sSelf.presenters.activity.decrement()
             switch result {

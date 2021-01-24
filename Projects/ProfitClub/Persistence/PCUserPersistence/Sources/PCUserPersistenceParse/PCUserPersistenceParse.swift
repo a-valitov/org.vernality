@@ -1,5 +1,5 @@
-//  Copyright (C) 2021 Startup Studio Vernality
-//  Created by Rinat Enikeev on 18.01.2021
+//  Copyright (C) 2020 Startup Studio Vernality
+//  Created by Rinat Enikeev on 8/26/20
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -15,19 +15,27 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import Foundation
-import PCUserService
-import PCOrganizationService
-import ErrorPresenter
-import ConfirmationPresenter
-import ActivityPresenter
+import Parse
+import PCModel
 
-struct AddRolePresenters {
-    let error: ErrorPresenter
-    let activity: ActivityPresenter
-    let confirmation: ConfirmationPresenter
-}
+final class PCUserPersistenceParse: PCUserPersistence {
+    var user: AnyPCUser? {
+        get {
+            if let parseUser = self.parseUser {
+                return parseUser.any
+            } else {
+                self.parseUser = PFUser.current()?.pcUser
+                return self.parseUser?.any
+            }
+        }
+        set {
+            if let parseUser = newValue?.parse {
+                self.parseUser = parseUser
+            } else {
+                self.parseUser = nil
+            }
+        }
+    }
 
-struct AddRoleServices {
-    let user: PCUserService
-    let organization: PCOrganizationService
+    private var parseUser: PCUserParse?
 }

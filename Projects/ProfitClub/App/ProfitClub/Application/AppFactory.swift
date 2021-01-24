@@ -30,6 +30,7 @@ import PCSupplierService
 import MenuPresenter
 import PCOnboard
 import PCReview
+import PCUserPersistence
 
 final class AppFactory {
     lazy var authentication: PCAuthentication = {
@@ -37,7 +38,11 @@ final class AppFactory {
     }()
     
     lazy var userService: PCUserService = {
-        return PCUserServiceParse(authentication: self.authentication)
+        return PCUserServiceParseFactory(userPersistence: self.userPersistence).make()
+    }()
+
+    lazy var userPersistence: PCUserPersistence = {
+        return PCUserPersistenceParseFactory().make()
     }()
     
     func activityPresenter() -> ActivityPresenter {
@@ -237,6 +242,16 @@ private extension AppFactory {
     }
 
     var addRoleFactory: AddRoleFactory {
-        return AddRoleFactory(presenters: AddRolePresenters(error: self.errorPresenter(), activity: self.activityPresenter(), confirmation: self.confirmationPresenter()), services: AddRoleServices(authentication: self.authentication, organization: self.organizationService()))
+        return AddRoleFactory(
+            presenters: AddRolePresenters(
+                error: self.errorPresenter(),
+                activity: self.activityPresenter(),
+                confirmation: self.confirmationPresenter()
+            ),
+            services: AddRoleServices(
+                user: self.userService,
+                organization: self.organizationService()
+            )
+        )
     }
 }
