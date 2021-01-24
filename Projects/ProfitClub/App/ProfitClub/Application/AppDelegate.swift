@@ -18,6 +18,7 @@ import UIKit
 import Parse
 import UserNotifications
 import Firebase
+import PCUserPersistence
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -41,8 +42,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().tintColor = .white
         UINavigationBar.appearance().isTranslucent = true
         UINavigationBar.appearance().barStyle = .black
-        
-        let appRouter = AppRouter(factory: AppFactory())
+
+        let userPersistence = PCUserPersistenceParseFactory().make()
+        let appRouter = AppRouter(userPersistence: userPersistence)
         self.window?.rootViewController = appRouter.viewController
         self.window?.makeKeyAndVisible()
         self.appRouter = appRouter

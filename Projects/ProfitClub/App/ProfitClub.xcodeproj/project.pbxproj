@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0E06F95D25B49D5100E975F6 /* AppPush.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E06F95C25B49D5100E975F6 /* AppPush.swift */; };
-		0E06F96625B541B700E975F6 /* UIViewController+Raise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E06F96525B541B700E975F6 /* UIViewController+Raise.swift */; };
 		0E1B51AA25BD9EB4002A9C5A /* SupplierRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1B51A925BD9EB4002A9C5A /* SupplierRouter.swift */; };
 		0E1B51AD25BDA1A2002A9C5A /* MemberRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1B51AC25BDA1A2002A9C5A /* MemberRouter.swift */; };
 		0E1B52C425BDC26E002A9C5A /* OnboardRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1B52C325BDC26E002A9C5A /* OnboardRouter.swift */; };
@@ -21,7 +20,6 @@
 		0E72644525A4A643006306B1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0E72644425A4A643006306B1 /* GoogleService-Info.plist */; };
 		0E772A8D2504D39000D677E6 /* PlayfairDisplay-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0E772A8C2504D39000D677E6 /* PlayfairDisplay-Bold.ttf */; };
 		0E90496E24F390070061A605 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E90496D24F390070061A605 /* AppRouter.swift */; };
-		0E90497124F390270061A605 /* AppFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E90497024F390270061A605 /* AppFactory.swift */; };
 		0EA11EC824F2B88F00133485 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EA11EC724F2B88F00133485 /* AppDelegate.swift */; };
 		0EA11ED124F2B89300133485 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0EA11ED024F2B89300133485 /* Assets.xcassets */; };
 		0EA11ED424F2B89300133485 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0EA11ED224F2B89300133485 /* LaunchScreen.storyboard */; };
@@ -40,7 +38,6 @@
 
 /* Begin PBXFileReference section */
 		0E06F95C25B49D5100E975F6 /* AppPush.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPush.swift; sourceTree = "<group>"; };
-		0E06F96525B541B700E975F6 /* UIViewController+Raise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Raise.swift"; sourceTree = "<group>"; };
 		0E1B51A925BD9EB4002A9C5A /* SupplierRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplierRouter.swift; sourceTree = "<group>"; };
 		0E1B51AC25BDA1A2002A9C5A /* MemberRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberRouter.swift; sourceTree = "<group>"; };
 		0E1B52C325BDC26E002A9C5A /* OnboardRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardRouter.swift; sourceTree = "<group>"; };
@@ -54,7 +51,6 @@
 		0E772A8C2504D39000D677E6 /* PlayfairDisplay-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlayfairDisplay-Bold.ttf"; sourceTree = "<group>"; };
 		0E772A8E2505174D00D677E6 /* ProfitClub.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ProfitClub.entitlements; sourceTree = "<group>"; };
 		0E90496D24F390070061A605 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
-		0E90497024F390270061A605 /* AppFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFactory.swift; sourceTree = "<group>"; };
 		0EA11EC424F2B88F00133485 /* Profit Club.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Profit Club.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		0EA11EC724F2B88F00133485 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0EA11ED024F2B89300133485 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -87,14 +83,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0E06F96425B541A300E975F6 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				0E06F96525B541B700E975F6 /* UIViewController+Raise.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
 		0E506C3F24FC9F5700ABA211 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -150,7 +138,6 @@
 			children = (
 				0E772A8E2505174D00D677E6 /* ProfitClub.entitlements */,
 				0EA11EDB24F2B94400133485 /* Application */,
-				0E06F96425B541A300E975F6 /* Extensions */,
 				0EA11EDC24F2B94900133485 /* Resources */,
 				0E6B9721254D655400055570 /* Secrets */,
 			);
@@ -164,7 +151,6 @@
 				0EA11EC724F2B88F00133485 /* AppDelegate.swift */,
 				0E90496D24F390070061A605 /* AppRouter.swift */,
 				0E06F95C25B49D5100E975F6 /* AppPush.swift */,
-				0E90497024F390270061A605 /* AppFactory.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -376,13 +362,11 @@
 				0E06F95D25B49D5100E975F6 /* AppPush.swift in Sources */,
 				0E90496E24F390070061A605 /* AppRouter.swift in Sources */,
 				0E1B52C925BDCCED002A9C5A /* SupplierProfileRouter.swift in Sources */,
-				0E90497124F390270061A605 /* AppFactory.swift in Sources */,
 				0E1B531D25BDE0DE002A9C5A /* OrganizationProfileRouter.swift in Sources */,
 				0E1B51AD25BDA1A2002A9C5A /* MemberRouter.swift in Sources */,
 				0EDB95D325BD6A1B00F0C158 /* Router+Factory.swift in Sources */,
 				0E1B51AA25BD9EB4002A9C5A /* SupplierRouter.swift in Sources */,
 				0E1B534A25BDE37B002A9C5A /* MemberProfileRouter.swift in Sources */,
-				0E06F96625B541B700E975F6 /* UIViewController+Raise.swift in Sources */,
 				0E6B9723254D656500055570 /* Secrets.swift in Sources */,
 				0EA11EC824F2B88F00133485 /* AppDelegate.swift in Sources */,
 				0EDB95DA25BD715A00F0C158 /* OrganizationRouter.swift in Sources */,

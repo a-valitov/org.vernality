@@ -16,27 +16,20 @@
 
 import Foundation
 import UIKit
-import PCAuthentication
-import PCModel
-import PCUserService
-import ErrorPresenter
-import ActivityPresenter
-import PCOnboard
-import PCReview
 import PCUserPersistence
-import PCAdmin
+import PCActionService
+import ErrorPresenter
+import PCModel
 
 final class AppRouter {
     var viewController: UIViewController {
         return self.navigationController
     }
 
-    init(factory: AppFactory) {
-        self.factory = factory
+    init(userPersistence: PCUserPersistence) {
+        self.userPersistence = userPersistence
     }
-
-    private let factory: AppFactory
-
+    
     private var navigationController: UINavigationController {
         if let navigationController = self.weakNavigationController {
             return navigationController
@@ -55,18 +48,7 @@ final class AppRouter {
     private weak var weakNavigationController: UINavigationController?
 
     // persistence
-    private lazy var userPersistence: PCUserPersistence = {
-        return self.factory.userPersistence
-    }()
-
-    // presenters
-    private lazy var errorPresenter: ErrorPresenter = {
-        return self.factory.errorPresenter()
-    }()
-
-    private lazy var activityPresenter: ActivityPresenter = {
-        return self.factory.activityPresenter()
-    }()
+    private let userPersistence: PCUserPersistence
 
     // routers
     private func reviewRouter(user: PCUser) -> ReviewRouter {
@@ -112,14 +94,14 @@ extension AppRouter {
     }
 
     private func openAdminAction(actionId: String) {
-        let actionService = self.factory.actionService()
+        let actionService = self.actionService()
         actionService.fetch(actionId) { [weak self] result in
             guard let sSelf = self else { return }
             switch result {
             case .success(let action):
                 self?.weakReviewRouter?.route(to: action)
             case .failure(let error):
-                sSelf.errorPresenter.present(error)
+                sSelf.errorPresenter().present(error)
             }
         }
     }
@@ -163,5 +145,14 @@ extension AppRouter: ReviewRouterDelegate {
             [self.onboardRouter().viewController],
             animated: true
         )
+    }
+}
+
+extension AppRouter {
+    private func errorPresenter() -> ErrorPresenter {
+        return ErrorPresenterAlertFactory().make()
+    }
+    private func actionService() -> PCActionService {
+        return PCActionServiceParse()
     }
 }
