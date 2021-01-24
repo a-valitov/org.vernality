@@ -48,6 +48,7 @@ final class OnboardRouter {
             return onboard
         } else {
             let onboard = self.onboardFactory().make(output: self)
+            onboard.router = self
             self.weakOnboard = onboard
             return onboard
         }

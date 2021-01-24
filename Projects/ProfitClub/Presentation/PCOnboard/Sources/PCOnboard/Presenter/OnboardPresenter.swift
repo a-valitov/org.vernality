@@ -24,6 +24,7 @@ import Raise
 
 final class OnboardPresenter: OnboardModule {
     weak var output: OnboardModuleOutput?
+    var router: AnyObject?
     var viewController: UIViewController {
         return self.welcome
     }

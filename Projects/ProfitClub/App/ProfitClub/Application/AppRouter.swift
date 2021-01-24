@@ -99,28 +99,28 @@ final class AppRouter {
 
     // routers
     private func reviewRouter(user: PCUser) -> ReviewRouter {
-        if let reviewRouter = self.strongReviewRouter {
+        if let reviewRouter = self.weakReviewRouter {
             return reviewRouter
         } else {
             let reviewRouter = ReviewRouter(user: user)
             reviewRouter.delegate = self
-            self.strongReviewRouter = reviewRouter
+            self.weakReviewRouter = reviewRouter
             return reviewRouter
         }
     }
-    private var strongReviewRouter: ReviewRouter?
+    private weak var weakReviewRouter: ReviewRouter?
 
     private func onboardRouter() -> OnboardRouter {
-        if let onboardRouter = self.strongOnboardRouter {
+        if let onboardRouter = self.weakOnboardRouter {
             return onboardRouter
         } else {
             let onboardRouter = OnboardRouter()
             onboardRouter.delegate = self
-            self.strongOnboardRouter = onboardRouter
+            self.weakOnboardRouter = onboardRouter
             return onboardRouter
         }
     }
-    private var strongOnboardRouter: OnboardRouter?
+    private weak var weakOnboardRouter: OnboardRouter?
 
     // weak modules
     private weak var weakMemberProfile: MemberProfileModule?
@@ -151,7 +151,7 @@ extension AppRouter {
             guard let sSelf = self else { return }
             switch result {
             case .success(let action):
-                self?.strongReviewRouter?.route(to: action)
+                self?.weakReviewRouter?.route(to: action)
             case .failure(let error):
                 sSelf.errorPresenter.present(error)
             }

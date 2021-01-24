@@ -215,6 +215,7 @@
 			children = (
 				0EDB95D525BD6B1700F0C158 /* Routers */,
 				0EA11EC724F2B88F00133485 /* AppDelegate.swift */,
+				0E90496D24F390070061A605 /* AppRouter.swift */,
 				0E06F95C25B49D5100E975F6 /* AppPush.swift */,
 				0E90497024F390270061A605 /* AppFactory.swift */,
 			);
@@ -252,7 +253,6 @@
 			isa = PBXGroup;
 			children = (
 				0EDB95D225BD6A1B00F0C158 /* Router+Factory.swift */,
-				0E90496D24F390070061A605 /* AppRouter.swift */,
 				0EDB95CE25BD65A100F0C158 /* AdminRouter.swift */,
 				0EDB95CA25BD4D5000F0C158 /* ReviewRouter.swift */,
 				0EDB95D625BD6B4D00F0C158 /* AddRoleRouter.swift */,

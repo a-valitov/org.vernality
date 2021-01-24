@@ -22,6 +22,7 @@ import ConfirmationPresenter
 
 final class ReviewPresenter: ReviewModule {
     weak var output: ReviewModuleOutput?
+    var router: AnyObject?
     var viewController: UIViewController {
         if let view = self.weakView {
             return view

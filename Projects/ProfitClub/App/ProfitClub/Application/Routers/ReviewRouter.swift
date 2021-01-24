@@ -55,6 +55,7 @@ final class ReviewRouter {
             return review
         } else {
             let review = self.reviewFactory(user: self.user).make(output: self)
+            review.router = self
             self.weakReview = review
             return review
         }
