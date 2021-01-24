@@ -126,7 +126,16 @@ extension MemberPresenter: MemberCurrentActionsViewOutput {
             guard let sSelf = self else { return }
             sSelf.presenters.confirmation.present(title: "Подтвердите выход", message: "Вы уверены что хотите выйти?", actionTitle: "Выйти", withCancelAction: true) { [weak sSelf] in
                 guard let ssSelf = sSelf else { return }
-                ssSelf.output?.memberUserWantsToLogout(module: ssSelf)
+                ssSelf.services.user.logout { [weak ssSelf] result in
+                    guard let sssSelf = ssSelf else { return }
+                    switch result {
+                    case .success:
+                        sssSelf.output?.memberUserDidLogout(module: sssSelf)
+                    case .failure(let error):
+                        sssSelf.presenters.error.present(error)
+                    }
+                }
+
             }
         }
         self.presenters.menu.present(items: [profile, changeRole, logout])

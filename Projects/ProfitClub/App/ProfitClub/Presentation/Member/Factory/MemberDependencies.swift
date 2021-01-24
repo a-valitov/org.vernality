@@ -21,6 +21,7 @@ import ActivityPresenter
 import ConfirmationPresenter
 import ErrorPresenter
 import MenuPresenter
+import PCUserService
 
 struct MemberPresenters {
     let error: ErrorPresenter
@@ -30,5 +31,6 @@ struct MemberPresenters {
 }
 
 struct MemberServices {
+    let user: PCUserService
     let action: PCActionService
 }

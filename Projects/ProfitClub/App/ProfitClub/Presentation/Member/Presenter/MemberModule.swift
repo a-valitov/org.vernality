@@ -25,6 +25,6 @@ protocol MemberModule: class {
 
 protocol MemberModuleOutput: class {
     func member(module: MemberModule, userWantsToOpenProfileOf member: PCMember)
-    func memberUserWantsToLogout(module: MemberModule)
+    func memberUserDidLogout(module: MemberModule)
     func memberUserWantsToChangeRole(module: MemberModule)
 }

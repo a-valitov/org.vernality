@@ -85,11 +85,6 @@ extension AppFactory {
         return module
     }
 
-    func member(member: PCMember, output: MemberModuleOutput?) -> MemberModule {
-        let module = self.memberFactory.make(member: member, output: output)
-        return module
-    }
-
     func memberProfile(member: PCMember, output: MemberProfileModuleOutput?) -> MemberProfileModule {
         let module = self.memberProfileFactory.make(member: member, output: output)
         return module
@@ -118,10 +113,6 @@ extension AppFactory {
                 authentication: self.authentication
             )
         )
-    }
-
-    var memberFactory: MemberFactory {
-        return MemberFactory(presenters: MemberPresenters(error: self.errorPresenter(), activity: self.activityPresenter(), confirmation: self.confirmationPresenter(), menu: self.menuPresenter()), services: MemberServices(action: self.actionService()))
     }
 
     var actionsFactory: ActionsFactory {

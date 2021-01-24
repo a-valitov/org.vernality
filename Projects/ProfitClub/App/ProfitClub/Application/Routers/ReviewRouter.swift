@@ -111,9 +111,34 @@ final class ReviewRouter {
     }
     private var strongSupplierRouter: SupplierRouter?
 
+    private func memberRouter(user: PCUser, member: PCMember) -> MemberRouter {
+        if let memberRouter = self.strongMemberRouter {
+            return memberRouter
+        } else {
+            let memberRouter = MemberRouter(user: user, member: member)
+            memberRouter.delegate = self
+            self.strongMemberRouter = memberRouter
+            return memberRouter
+        }
+    }
+    private var strongMemberRouter: MemberRouter?
+
     // state
     private let user: PCUser
     private weak var weakNavigationController: UINavigationController?
+}
+
+extension ReviewRouter: MemberRouterDelegate {
+    func memberUserDidLogout(router: MemberRouter) {
+        self.delegate?.reviewUserDidLogout(router: self)
+    }
+
+    func memberUserWantsToChangeRole(router: MemberRouter) {
+        self.navigationController.popToViewController(
+            self.viewController,
+            animated: true
+        )
+    }
 }
 
 extension ReviewRouter: SupplierRouterDelegate {
@@ -239,8 +264,13 @@ extension ReviewRouter: ReviewModuleOutput {
     }
 
     func review(module: ReviewModule, userWantsToEnter member: PCMember) {
-//        assert(member.status == .approved)
-//        let memberModule = self.member(for: member)
-//        self.navigationController.pushViewController(memberModule.viewController, animated: true)
+        assert(member.status == .approved)
+        self.navigationController.pushViewController(
+            self.memberRouter(
+                user: self.user,
+                member: member
+            ).viewController,
+            animated: true
+        )
     }
 }
