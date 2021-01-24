@@ -98,9 +98,35 @@ final class ReviewRouter {
     }
     private var strongOrganizationRouter: OrganizationRouter?
 
+
+    private func supplierRouter(user: PCUser, supplier: PCSupplier) -> SupplierRouter {
+        if let supplierRouter = self.strongSupplierRouter {
+            return supplierRouter
+        } else {
+            let supplierRouter = SupplierRouter(user: user, supplier: supplier)
+            supplierRouter.delegate = self
+            self.strongSupplierRouter = supplierRouter
+            return supplierRouter
+        }
+    }
+    private var strongSupplierRouter: SupplierRouter?
+
     // state
     private let user: PCUser
     private weak var weakNavigationController: UINavigationController?
+}
+
+extension ReviewRouter: SupplierRouterDelegate {
+    func supplierUserDidLogout(router: SupplierRouter) {
+        self.delegate?.reviewUserDidLogout(router: self)
+    }
+
+    func supplierUserWantsToChangeRole(router: SupplierRouter) {
+        self.navigationController.popToViewController(
+            self.viewController,
+            animated: true
+        )
+    }
 }
 
 extension ReviewRouter: OrganizationRouterDelegate {
@@ -202,9 +228,14 @@ extension ReviewRouter: ReviewModuleOutput {
     }
 
     func review(module: ReviewModule, userWantsToEnter supplier: PCSupplier) {
-//        assert(supplier.status == .approved)
-//        let supplierModule = self.supplier(for: supplier)
-//        self.navigationController.pushViewController(supplierModule.viewController, animated: true)
+        assert(supplier.status == .approved)
+        self.navigationController.pushViewController(
+            self.supplierRouter(
+                user: self.user,
+                supplier: supplier
+            ).viewController,
+            animated: true
+        )
     }
 
     func review(module: ReviewModule, userWantsToEnter member: PCMember) {

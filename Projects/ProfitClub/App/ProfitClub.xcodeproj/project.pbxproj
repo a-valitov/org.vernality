@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		0E06F95D25B49D5100E975F6 /* AppPush.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E06F95C25B49D5100E975F6 /* AppPush.swift */; };
 		0E06F96625B541B700E975F6 /* UIViewController+Raise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E06F96525B541B700E975F6 /* UIViewController+Raise.swift */; };
+		0E1B51AA25BD9EB4002A9C5A /* SupplierRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1B51A925BD9EB4002A9C5A /* SupplierRouter.swift */; };
 		0E506C4124FC9F6600ABA211 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0E506C4024FC9F6500ABA211 /* Montserrat-Regular.ttf */; };
 		0E506C4324FC9FCB00ABA211 /* PlayfairDisplay-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0E506C4224FC9FCA00ABA211 /* PlayfairDisplay-VariableFont_wght.ttf */; };
 		0E56172725372A25005DF4F3 /* OrganizationTabBarViewBeta.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0E56172625372A25005DF4F3 /* OrganizationTabBarViewBeta.storyboard */; };
@@ -169,6 +170,7 @@
 /* Begin PBXFileReference section */
 		0E06F95C25B49D5100E975F6 /* AppPush.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPush.swift; sourceTree = "<group>"; };
 		0E06F96525B541B700E975F6 /* UIViewController+Raise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Raise.swift"; sourceTree = "<group>"; };
+		0E1B51A925BD9EB4002A9C5A /* SupplierRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplierRouter.swift; sourceTree = "<group>"; };
 		0E506C4024FC9F6500ABA211 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
 		0E506C4224FC9FCA00ABA211 /* PlayfairDisplay-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlayfairDisplay-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		0E56172625372A25005DF4F3 /* OrganizationTabBarViewBeta.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = OrganizationTabBarViewBeta.storyboard; sourceTree = "<group>"; };
@@ -648,6 +650,7 @@
 				0EDB95CA25BD4D5000F0C158 /* ReviewRouter.swift */,
 				0EDB95D625BD6B4D00F0C158 /* AddRoleRouter.swift */,
 				0EDB95D925BD715A00F0C158 /* OrganizationRouter.swift */,
+				0E1B51A925BD9EB4002A9C5A /* SupplierRouter.swift */,
 			);
 			path = Routers;
 			sourceTree = "<group>";
@@ -1653,6 +1656,7 @@
 				FAE888E0256141DD0023C232 /* MemberProfileViewBeta.swift in Sources */,
 				FA69F9FC2573A76600F519CB /* CurrentActionsViewAlpha.swift in Sources */,
 				0EDB95D325BD6A1B00F0C158 /* Router+Factory.swift in Sources */,
+				0E1B51AA25BD9EB4002A9C5A /* SupplierRouter.swift in Sources */,
 				FAD704B3255013FD00DE8AD7 /* MembersOfOrganizationViewBeta.swift in Sources */,
 				FA8CB82825583E0800D09B1D /* MemberCurrentActionView.swift in Sources */,
 				FA21D8612572C67B008024F0 /* SupplierProfileViewAlpha.swift in Sources */,

@@ -15,13 +15,13 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import Foundation
-import PCAuthentication
 import PCActionService
 import ErrorPresenter
 import ActivityPresenter
 import ConfirmationPresenter
 import MenuPresenter
 import PCCommercialOfferService
+import PCUserService
 
 struct SupplierPresenters {
     let error: ErrorPresenter
@@ -31,7 +31,7 @@ struct SupplierPresenters {
 }
 
 struct SupplierServices {
-    let authentication: PCAuthentication
+    let user: PCUserService
     let action: PCActionService
     let commercialOffer: PCCommercialOfferService
 }

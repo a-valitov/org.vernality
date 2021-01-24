@@ -83,15 +83,6 @@ final class AppRouter {
             return onboard
         }
     }
-    private func supplier(for supplier: PCSupplier) -> SupplierModule {
-        if let supplier = self.weakSupplier {
-            return supplier
-        } else {
-            let supplier = self.factory.supplier(supplier: supplier, output: self)
-            self.weakSupplier = supplier
-            return supplier
-        }
-    }
     private func member(for member: PCMember) -> MemberModule {
         if let member = self.weakMember {
             return member
@@ -147,7 +138,6 @@ final class AppRouter {
     private weak var weakSupplierProfile: SupplierProfileModule?
     private weak var weakOrganizationProfile: OrganizationProfileModule?
     private weak var weakMember: MemberModule?
-    private weak var weakSupplier: SupplierModule?
     private weak var weakOnboard: OnboardModule?
 }
 
@@ -249,7 +239,7 @@ extension AppRouter: SupplierModuleOutput {
         self.navigationController.pushViewController(supplierProfileModule.viewController, animated: true)
     }
     
-    func supplierUserWantsToLogout(module: SupplierModule) {
+    func supplierUserDidLogout(module: SupplierModule) {
         self.logout()
     }
 
@@ -301,7 +291,7 @@ extension AppRouter: OrganizationProfileModuleOutput {
 
 extension AppRouter: SupplierProfileModuleOutput {
     func supplierProfile(module: SupplierProfileModule, didUpdate supplier: PCSupplier) {
-        self.weakSupplier?.supplier = supplier
+//        self.weakSupplier?.supplier = supplier
     }
 }
 
