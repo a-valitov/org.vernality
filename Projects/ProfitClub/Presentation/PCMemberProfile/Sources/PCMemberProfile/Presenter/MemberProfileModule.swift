@@ -15,15 +15,14 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import Foundation
-import ActivityPresenter
-import ErrorPresenter
-import PCUserService
+import UIKit
+import PCModel
 
-struct MemberProfilePresenters {
-    let error: ErrorPresenter
-    let activity: ActivityPresenter
+public protocol MemberProfileModule: class {
+    var viewController: UIViewController { get }
+    var router: AnyObject? { get set }
 }
 
-struct MemberProfileServices {
-    let user: PCUserService
+public protocol MemberProfileModuleOutput: class {
+    func memberProfile(module: MemberProfileModule, didUpdate member: PCMember)
 }

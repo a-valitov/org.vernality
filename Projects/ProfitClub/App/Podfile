@@ -40,6 +40,7 @@ target 'ProfitClub' do
   pod 'PCOrganization', :path => '../Presentation/PCOrganization/PCOrganization.podspec'
   pod 'PCSupplierProfile', :path => '../Presentation/PCSupplierProfile/PCSupplierProfile.podspec'
   pod 'PCOrganizationProfile', :path => '../Presentation/PCOrganizationProfile/PCOrganizationProfile.podspec'
+  pod 'PCMemberProfile', :path => '../Presentation/PCMemberProfile/PCMemberProfile.podspec'
 
   # persistence
   pod 'PCUserPersistence/Parse', :path => '../Persistence/PCUserPersistence/PCUserPersistence.podspec'

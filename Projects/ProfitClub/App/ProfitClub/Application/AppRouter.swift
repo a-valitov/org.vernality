@@ -68,16 +68,6 @@ final class AppRouter {
         return self.factory.activityPresenter()
     }()
 
-    private func profile(for member: PCMember) -> MemberProfileModule {
-        if let profile = self.weakMemberProfile {
-            return profile
-        } else {
-            let profile = self.factory.memberProfile(member: member, output: self)
-            self.weakMemberProfile = profile
-            return profile
-        }
-    }
-
     // routers
     private func reviewRouter(user: PCUser) -> ReviewRouter {
         if let reviewRouter = self.weakReviewRouter {
@@ -102,9 +92,6 @@ final class AppRouter {
         }
     }
     private weak var weakOnboardRouter: OnboardRouter?
-
-    // weak modules
-    private weak var weakMemberProfile: MemberProfileModule?
 }
 
 // MARK: - Push Notifications handling
@@ -176,11 +163,5 @@ extension AppRouter: ReviewRouterDelegate {
             [self.onboardRouter().viewController],
             animated: true
         )
-    }
-}
-
-extension AppRouter: MemberProfileModuleOutput {
-    func memberProfile(module: MemberProfileModule, didUpdate member: PCMember) {
-//        self.weakMember?.member = member
     }
 }

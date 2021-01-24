@@ -32,18 +32,10 @@
 		0EDB95DA25BD715A00F0C158 /* OrganizationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0EDB95D925BD715A00F0C158 /* OrganizationRouter.swift */; };
 		BAC5B692AE8ABE81C3298271 /* Pods_ProfitClub.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D881FD37132A41374982A032 /* Pods_ProfitClub.framework */; };
 		FA0955F3254C427700FFF835 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA0955F2254C427700FFF835 /* Roboto-Medium.ttf */; };
-		FA21D85B25729CDD008024F0 /* MemberProfileViewAlpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA21D85A25729CDD008024F0 /* MemberProfileViewAlpha.swift */; };
 		FA56639C253F4F1400D19D4E /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA56639B253F4F0200D19D4E /* Roboto-Regular.ttf */; };
 		FABB6F002544902A00B93FB8 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FABB6EFF2544902A00B93FB8 /* Montserrat-Medium.ttf */; };
 		FABB6F0D2546860700B93FB8 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FABB6F0C2546860700B93FB8 /* Montserrat-Bold.ttf */; };
 		FAE888C1256005450023C232 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FAE888C0256005450023C232 /* Montserrat-SemiBold.ttf */; };
-		FAE888D3256141710023C232 /* MemberProfileFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE888D2256141710023C232 /* MemberProfileFactory.swift */; };
-		FAE888D52561418B0023C232 /* MemberProfileDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE888D42561418B0023C232 /* MemberProfileDependencies.swift */; };
-		FAE888D72561419D0023C232 /* MemberProfileModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE888D62561419D0023C232 /* MemberProfileModule.swift */; };
-		FAE888D9256141A90023C232 /* MemberProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE888D8256141A90023C232 /* MemberProfilePresenter.swift */; };
-		FAE888DD256141C90023C232 /* MemberProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE888DC256141C90023C232 /* MemberProfileView.swift */; };
-		FAE888E0256141DD0023C232 /* MemberProfileViewBeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAE888DF256141DD0023C232 /* MemberProfileViewBeta.swift */; };
-		FAE888E2256141E90023C232 /* MemberProfileViewBeta.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAE888E1256141E90023C232 /* MemberProfileViewBeta.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,18 +69,10 @@
 		64F87290C9FD04EC19DEE33B /* Pods-ProfitClub.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProfitClub.debug.xcconfig"; path = "Target Support Files/Pods-ProfitClub/Pods-ProfitClub.debug.xcconfig"; sourceTree = "<group>"; };
 		D881FD37132A41374982A032 /* Pods_ProfitClub.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ProfitClub.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA0955F2254C427700FFF835 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
-		FA21D85A25729CDD008024F0 /* MemberProfileViewAlpha.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberProfileViewAlpha.swift; sourceTree = "<group>"; };
 		FA56639B253F4F0200D19D4E /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		FABB6EFF2544902A00B93FB8 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
 		FABB6F0C2546860700B93FB8 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
 		FAE888C0256005450023C232 /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
-		FAE888D2256141710023C232 /* MemberProfileFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberProfileFactory.swift; sourceTree = "<group>"; };
-		FAE888D42561418B0023C232 /* MemberProfileDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberProfileDependencies.swift; sourceTree = "<group>"; };
-		FAE888D62561419D0023C232 /* MemberProfileModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberProfileModule.swift; sourceTree = "<group>"; };
-		FAE888D8256141A90023C232 /* MemberProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberProfilePresenter.swift; sourceTree = "<group>"; };
-		FAE888DC256141C90023C232 /* MemberProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberProfileView.swift; sourceTree = "<group>"; };
-		FAE888DF256141DD0023C232 /* MemberProfileViewBeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberProfileViewBeta.swift; sourceTree = "<group>"; };
-		FAE888E1256141E90023C232 /* MemberProfileViewBeta.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = MemberProfileViewBeta.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,14 +127,6 @@
 			path = Plists;
 			sourceTree = "<group>";
 		};
-		0E90498424F60C740061A605 /* Presentation */ = {
-			isa = PBXGroup;
-			children = (
-				FAE888CC256141040023C232 /* MemberProfile */,
-			);
-			path = Presentation;
-			sourceTree = "<group>";
-		};
 		0EA11EBB24F2B88F00133485 = {
 			isa = PBXGroup;
 			children = (
@@ -175,7 +151,6 @@
 				0E772A8E2505174D00D677E6 /* ProfitClub.entitlements */,
 				0EA11EDB24F2B94400133485 /* Application */,
 				0E06F96425B541A300E975F6 /* Extensions */,
-				0E90498424F60C740061A605 /* Presentation */,
 				0EA11EDC24F2B94900133485 /* Resources */,
 				0E6B9721254D655400055570 /* Secrets */,
 			);
@@ -256,69 +231,6 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		FA21D85925729CCD008024F0 /* Alpha */ = {
-			isa = PBXGroup;
-			children = (
-				FA21D85A25729CDD008024F0 /* MemberProfileViewAlpha.swift */,
-			);
-			path = Alpha;
-			sourceTree = "<group>";
-		};
-		FAE888CC256141040023C232 /* MemberProfile */ = {
-			isa = PBXGroup;
-			children = (
-				FAE888D0256141310023C232 /* Factory */,
-				FAE888CF2561412B0023C232 /* Presenter */,
-				FAE888CD256141210023C232 /* View */,
-			);
-			path = MemberProfile;
-			sourceTree = "<group>";
-		};
-		FAE888CD256141210023C232 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				FAE888D1256141400023C232 /* MemberProfile */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		FAE888CF2561412B0023C232 /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
-				FAE888D62561419D0023C232 /* MemberProfileModule.swift */,
-				FAE888D8256141A90023C232 /* MemberProfilePresenter.swift */,
-			);
-			path = Presenter;
-			sourceTree = "<group>";
-		};
-		FAE888D0256141310023C232 /* Factory */ = {
-			isa = PBXGroup;
-			children = (
-				FAE888D2256141710023C232 /* MemberProfileFactory.swift */,
-				FAE888D42561418B0023C232 /* MemberProfileDependencies.swift */,
-			);
-			path = Factory;
-			sourceTree = "<group>";
-		};
-		FAE888D1256141400023C232 /* MemberProfile */ = {
-			isa = PBXGroup;
-			children = (
-				FAE888DC256141C90023C232 /* MemberProfileView.swift */,
-				FA21D85925729CCD008024F0 /* Alpha */,
-				FAE888DE256141CE0023C232 /* Beta */,
-			);
-			path = MemberProfile;
-			sourceTree = "<group>";
-		};
-		FAE888DE256141CE0023C232 /* Beta */ = {
-			isa = PBXGroup;
-			children = (
-				FAE888DF256141DD0023C232 /* MemberProfileViewBeta.swift */,
-				FAE888E1256141E90023C232 /* MemberProfileViewBeta.storyboard */,
-			);
-			path = Beta;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -387,7 +299,6 @@
 				0E506C4324FC9FCB00ABA211 /* PlayfairDisplay-VariableFont_wght.ttf in Resources */,
 				FAE888C1256005450023C232 /* Montserrat-SemiBold.ttf in Resources */,
 				0EA11ED424F2B89300133485 /* LaunchScreen.storyboard in Resources */,
-				FAE888E2256141E90023C232 /* MemberProfileViewBeta.storyboard in Resources */,
 				0E772A8D2504D39000D677E6 /* PlayfairDisplay-Bold.ttf in Resources */,
 				FABB6F0D2546860700B93FB8 /* Montserrat-Bold.ttf in Resources */,
 				0EA11ED124F2B89300133485 /* Assets.xcassets in Resources */,
@@ -461,29 +372,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				0E1B52C425BDC26E002A9C5A /* OnboardRouter.swift in Sources */,
-				FAE888D52561418B0023C232 /* MemberProfileDependencies.swift in Sources */,
 				0EDB95D725BD6B4D00F0C158 /* AddRoleRouter.swift in Sources */,
 				0E06F95D25B49D5100E975F6 /* AppPush.swift in Sources */,
 				0E90496E24F390070061A605 /* AppRouter.swift in Sources */,
-				FAE888D3256141710023C232 /* MemberProfileFactory.swift in Sources */,
 				0E1B52C925BDCCED002A9C5A /* SupplierProfileRouter.swift in Sources */,
 				0E90497124F390270061A605 /* AppFactory.swift in Sources */,
-				FAE888D9256141A90023C232 /* MemberProfilePresenter.swift in Sources */,
 				0E1B531D25BDE0DE002A9C5A /* OrganizationProfileRouter.swift in Sources */,
-				FAE888E0256141DD0023C232 /* MemberProfileViewBeta.swift in Sources */,
 				0E1B51AD25BDA1A2002A9C5A /* MemberRouter.swift in Sources */,
 				0EDB95D325BD6A1B00F0C158 /* Router+Factory.swift in Sources */,
 				0E1B51AA25BD9EB4002A9C5A /* SupplierRouter.swift in Sources */,
 				0E1B534A25BDE37B002A9C5A /* MemberProfileRouter.swift in Sources */,
 				0E06F96625B541B700E975F6 /* UIViewController+Raise.swift in Sources */,
-				FAE888DD256141C90023C232 /* MemberProfileView.swift in Sources */,
 				0E6B9723254D656500055570 /* Secrets.swift in Sources */,
-				FAE888D72561419D0023C232 /* MemberProfileModule.swift in Sources */,
 				0EA11EC824F2B88F00133485 /* AppDelegate.swift in Sources */,
 				0EDB95DA25BD715A00F0C158 /* OrganizationRouter.swift in Sources */,
 				0EDB95CF25BD65A100F0C158 /* AdminRouter.swift in Sources */,
 				0EDB95CB25BD4D5000F0C158 /* ReviewRouter.swift in Sources */,
-				FA21D85B25729CDD008024F0 /* MemberProfileViewAlpha.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -17,6 +17,7 @@
 import Foundation
 import UIKit
 import PCModel
+import PCMemberProfile
 
 protocol MemberProfileRouterDelegate: class {
     func memberProfile(router: MemberProfileRouter, didUpdate member: PCMember)

@@ -77,18 +77,3 @@ final class AppFactory {
         return PCCommercialOfferServiceParse()
     }
 }
-
-// MARK: - ViewContollers
-extension AppFactory {
-    func memberProfile(member: PCMember, output: MemberProfileModuleOutput?) -> MemberProfileModule {
-        let module = self.memberProfileFactory.make(member: member, output: output)
-        return module
-    }
-}
-
-// MARK: - Factories
-extension AppFactory {
-    var memberProfileFactory: MemberProfileFactory {
-        return MemberProfileFactory(presenters: MemberProfilePresenters(error: self.errorPresenter(), activity: self.activityPresenter()), services: MemberProfileServices(user: self.userService))
-    }
-}
