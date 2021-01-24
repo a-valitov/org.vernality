@@ -1,5 +1,5 @@
 //  Copyright (C) 2020 Startup Studio Vernality
-//  Created by Rinat Enikeev on 10/14/20
+//  Created by Macbook on 02.11.2020
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -18,13 +18,9 @@ import Foundation
 import UIKit
 import PCModel
 
-protocol OrganizationModule: class {
+public protocol MembersModule: class {
     var viewController: UIViewController { get }
-    var organization: PCOrganization { get set }
 }
 
-protocol OrganizationModuleOutput: class {
-    func organization(module: OrganizationModule, userWantsToOpenProfileOf organization: PCOrganization)
-    func organizationUserDidLogout(module: OrganizationModule)
-    func organizationUserWantsToChangeRole(module: OrganizationModule)
+public protocol MembersModuleOutput: class {
 }

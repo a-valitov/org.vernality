@@ -178,20 +178,19 @@ public struct AdminFactories {
         return MenuPresenterActionSheetFactory().make()
     }
 
-    func userService(user: PCUser) -> PCUserService {
+    private func userService(user: PCUser) -> PCUserService {
         return PCUserServiceParseFactory(user: user).make()
     }
 
-    func supplierService() -> PCSupplierService {
+    private func supplierService() -> PCSupplierService {
         return PCSupplierServiceParse()
     }
 
-    func actionService() -> PCActionService {
+    private func actionService() -> PCActionService {
         return PCActionServiceParse()
     }
 
-    func commercialOfferService() -> PCCommercialOfferService {
+    private func commercialOfferService() -> PCCommercialOfferService {
         return PCCommercialOfferServiceParse()
     }
-
 }

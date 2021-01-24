@@ -15,29 +15,16 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import Foundation
-import PCUserService
-import PCOrganizationService
-import ErrorPresenter
-import ActivityPresenter
-import ConfirmationPresenter
-import MenuPresenter
+import UIKit
+import PCModel
 
-struct OrganizationPresenters {
-    let error: ErrorPresenter
-    let activity: ActivityPresenter
-    let confirmation: ConfirmationPresenter
-    let menu: MenuPresenter
+public protocol OrganizationModule: class {
+    var viewController: UIViewController { get }
+    var organization: PCOrganization { get set }
 }
 
-struct OrganizationServices {
-    let userService: PCUserService
-    let organization: PCOrganizationService
-}
-
-struct OrganizationFactories {
-    let actions: ActionsFactory
-    let action: ActionFactory
-    let commercialOffers: CommercialOffersFactory
-    let commercialOffer: CommercialOfferFactory
-    let members: MembersFactory
+public protocol OrganizationModuleOutput: class {
+    func organization(module: OrganizationModule, userWantsToOpenProfileOf organization: PCOrganization)
+    func organizationUserDidLogout(module: OrganizationModule)
+    func organizationUserWantsToChangeRole(module: OrganizationModule)
 }

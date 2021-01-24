@@ -221,6 +221,65 @@ PODS:
     - PCAuthentication
     - PCModel
     - Raise
+  - PCOrganization (0.0.1):
+    - PCOrganization/PCOrganization (= 0.0.1)
+  - PCOrganization/PCOrganization (0.0.1):
+    - ActivityPresenter
+    - ConfirmationPresenter
+    - ErrorPresenter
+    - MenuPresenter
+    - PCModel
+    - PCOrganization/PCOrganizationAction
+    - PCOrganization/PCOrganizationActions
+    - PCOrganization/PCOrganizationCommercialOffer
+    - PCOrganization/PCOrganizationCommercialOffers
+    - PCOrganization/PCOrganizationMembers
+    - PCOrganizationService
+    - PCUserService
+    - Raise
+  - PCOrganization/PCOrganizationAction (0.0.1):
+    - ActivityPresenter
+    - ConfirmationPresenter
+    - ErrorPresenter
+    - MenuPresenter
+    - PCActionService
+    - PCModel
+    - PCOrganizationService
+    - PCUserService
+  - PCOrganization/PCOrganizationActions (0.0.1):
+    - ActivityPresenter
+    - ConfirmationPresenter
+    - ErrorPresenter
+    - MenuPresenter
+    - PCModel
+    - PCOrganizationService
+    - PCUserService
+  - PCOrganization/PCOrganizationCommercialOffer (0.0.1):
+    - ActivityPresenter
+    - ConfirmationPresenter
+    - ErrorPresenter
+    - MenuPresenter
+    - PCCommercialOfferService
+    - PCModel
+    - PCOrganizationService
+    - PCUserService
+  - PCOrganization/PCOrganizationCommercialOffers (0.0.1):
+    - ActivityPresenter
+    - ConfirmationPresenter
+    - ErrorPresenter
+    - MenuPresenter
+    - PCModel
+    - PCOrganizationService
+    - PCUserService
+  - PCOrganization/PCOrganizationMembers (0.0.1):
+    - ActivityPresenter
+    - ConfirmationPresenter
+    - ErrorPresenter
+    - Kingfisher
+    - MenuPresenter
+    - PCModel
+    - PCOrganizationService
+    - PCUserService
   - PCOrganizationService (0.0.1):
     - Parse
     - PCAuthentication
@@ -290,6 +349,7 @@ DEPENDENCIES:
   - PCMember (from `../Presentation/PCMember/PCMember.podspec`)
   - PCModel/Parse (from `../Model/PCModel/PCModel.podspec`)
   - PCOnboard (from `../Presentation/PCOnboard/PCOnboard.podspec`)
+  - PCOrganization (from `../Presentation/PCOrganization/PCOrganization.podspec`)
   - PCOrganizationService (from `../Services/PCOrganizationService/PCOrganizationService.podspec`)
   - PCReview (from `../Presentation/PCReview/PCReview.podspec`)
   - PCSupplier (from `../Presentation/PCSupplier/PCSupplier.podspec`)
@@ -342,6 +402,8 @@ EXTERNAL SOURCES:
     :path: "../Model/PCModel/PCModel.podspec"
   PCOnboard:
     :path: "../Presentation/PCOnboard/PCOnboard.podspec"
+  PCOrganization:
+    :path: "../Presentation/PCOrganization/PCOrganization.podspec"
   PCOrganizationService:
     :path: "../Services/PCOrganizationService/PCOrganizationService.podspec"
   PCReview:
@@ -385,6 +447,7 @@ SPEC CHECKSUMS:
   PCMember: 91696ae39b689d7a85c47d3392f99ba8bc5814cb
   PCModel: f1a5156863a4758a54329a35721fb7d363683021
   PCOnboard: 95692aad391d951a10ca9d74a3cdd2f2097a3fa6
+  PCOrganization: 916aa0da7f34a6fb40ca7addf9e16ca98aad5a6f
   PCOrganizationService: e2a419fa283997b14e96d25559941b0e362217e3
   PCReview: 47dbed4a4b7d3507a9bf7f4779bc484788274881
   PCSupplier: ec144bc13ebbf7591de53e44850725a0112e6429
@@ -394,6 +457,6 @@ SPEC CHECKSUMS:
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   Raise: e40c0ad29b47647c0a0eab8bb754ba9f3905f06c
 
-PODFILE CHECKSUM: 8177355bb44497cacf8034b2b0ddd082d9b98443
+PODFILE CHECKSUM: 7da4b1aa932e6301214332ed7305593115977e84
 
 COCOAPODS: 1.10.0

@@ -80,11 +80,6 @@ final class AppFactory {
 
 // MARK: - ViewContollers
 extension AppFactory {
-    func onboard(output: OnboardModuleOutput?) -> OnboardModule {
-        let module = self.onboardFactory.make(output: output)
-        return module
-    }
-
     func memberProfile(member: PCMember, output: MemberProfileModuleOutput?) -> MemberProfileModule {
         let module = self.memberProfileFactory.make(member: member, output: output)
         return module
@@ -103,40 +98,6 @@ extension AppFactory {
 
 // MARK: - Factories
 extension AppFactory {
-    var onboardFactory: OnboardFactory {
-        return OnboardFactory(
-            presenters: OnboardPresenters(
-                error: self.errorPresenter(),
-                activity: self.activityPresenter(),
-                confirmation: self.confirmationPresenter()),
-            services: OnboardServices(
-                authentication: self.authentication
-            )
-        )
-    }
-
-    var actionsFactory: ActionsFactory {
-        return ActionsFactory(presenters: ActionsPresenters(error: self.errorPresenter(), activity: self.activityPresenter()),
-                              services: ActionsServices(action: self.actionService()))
-    }
-
-    var actionFactory: ActionFactory {
-        return ActionFactory(presenters: ActionPresenters(error: self.errorPresenter(), activity: self.activityPresenter()),
-                             services: ActionServices(action: self.actionService()))
-    }
-
-    var commercialOffersFactory: CommercialOffersFactory {
-        return CommercialOffersFactory(presenters: CommercialOffersPresenters(error: self.errorPresenter(), activity: self.activityPresenter()), services: CommercialOffersServices(commercialOffer: self.commercialOfferService()))
-    }
-
-    var commercialOfferFactory: CommercialOfferFactory {
-        return CommercialOfferFactory(presenters: CommercialOfferPresenters(error: self.errorPresenter(), activity: self.activityPresenter()), services: CommercialOfferServices(commercialOffer: self.commercialOfferService()))
-    }
-
-    var membersFactory: MembersFactory {
-        return MembersFactory(presenters: MembersPresenters(error: self.errorPresenter(), activity: self.activityPresenter(), confirmation: self.confirmationPresenter()), services: MembersServices(organization: self.organizationService()))
-    }
-
     var memberProfileFactory: MemberProfileFactory {
         return MemberProfileFactory(presenters: MemberProfilePresenters(error: self.errorPresenter(), activity: self.activityPresenter()), services: MemberProfileServices(member: self.userService))
     }

@@ -15,12 +15,32 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import Foundation
-import UIKit
-import PCModel
+import PCAuthentication
+import ErrorPresenter
+import ActivityPresenter
+import ConfirmationPresenter
+import PCOrganizationService
 
-protocol MembersModule: class {
-    var viewController: UIViewController { get }
+public struct MembersPresenters {
+    let error: ErrorPresenter
+    let activity: ActivityPresenter
+    let confirmation: ConfirmationPresenter
+
+    public init(
+        error: ErrorPresenter,
+        activity: ActivityPresenter,
+        confirmation: ConfirmationPresenter
+    ) {
+        self.error = error
+        self.activity = activity
+        self.confirmation = confirmation
+    }
 }
 
-protocol MembersModuleOutput: class {
+public struct MembersServices {
+    let organization: PCOrganizationService
+
+    public init(organization: PCOrganizationService) {
+        self.organization = organization
+    }
 }

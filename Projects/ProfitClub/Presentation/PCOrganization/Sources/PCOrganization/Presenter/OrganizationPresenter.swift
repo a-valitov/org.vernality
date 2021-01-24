@@ -21,6 +21,7 @@ import ActivityPresenter
 import ConfirmationPresenter
 import MenuPresenter
 import PCModel
+import Raise
 
 final class OrganizationPresenter: OrganizationModule {
     weak var output: OrganizationModuleOutput?
@@ -52,7 +53,9 @@ final class OrganizationPresenter: OrganizationModule {
             let tabBar = OrganizationTabBarViewAlpha()
             tabBar.output = self
             let actions = self.factories.actions.make(output: self)
-            let members = self.factories.members.make(organization: self.organization, output: self)
+            let members = self.factories
+                .members(organizationService: self.services.organization)
+                .make(organization: self.organization, output: self)
             let commericalOffers = self.factories.commercialOffers.make(output: self)
             tabBar.viewControllers = [actions.viewController,
                                       members.viewController,

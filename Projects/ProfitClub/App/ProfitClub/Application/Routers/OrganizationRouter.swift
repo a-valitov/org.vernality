@@ -17,6 +17,7 @@
 import Foundation
 import UIKit
 import PCModel
+import PCOrganization
 
 protocol OrganizationRouterDelegate: class {
     func organizationUserDidLogout(router: OrganizationRouter)
@@ -96,13 +97,7 @@ extension OrganizationRouter: Router {
                 userService: self.userService(user: user),
                 organization: self.organizationService(organization: organization)
             ),
-            factories: OrganizationFactories(
-                actions: self.actionsFactory(),
-                action: self.actionFactory(),
-                commercialOffers: self.commercialOffersFactory(),
-                commercialOffer: self.commercialOfferFactory(),
-                members: self.membersFactory(organization: organization)
-            )
+            factories: OrganizationFactories()
         )
     }
 

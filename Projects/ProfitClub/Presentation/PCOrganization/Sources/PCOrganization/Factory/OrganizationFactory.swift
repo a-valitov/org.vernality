@@ -1,5 +1,5 @@
 //  Copyright (C) 2020 Startup Studio Vernality
-//  Created by Macbook on 02.11.2020
+//  Created by Rinat Enikeev on 10/14/20
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -19,21 +19,25 @@ import ErrorPresenter
 import ActivityPresenter
 import PCModel
 
-final class MembersFactory {
-    init(presenters: MembersPresenters,
-         services: MembersServices) {
+public final class OrganizationFactory {
+    public init(presenters: OrganizationPresenters,
+         services: OrganizationServices,
+         factories: OrganizationFactories) {
         self.presenters = presenters
         self.services = services
+        self.factories = factories
     }
 
-    func make(organization: PCOrganization, output: MembersModuleOutput?) -> MembersModule {
-        let presenter = MembersPresenter(organization: organization,
-                                         presenters: self.presenters,
-                                         services: self.services)
+    public func make(organization: PCOrganization, output: OrganizationModuleOutput?) -> OrganizationModule {
+        let presenter = OrganizationPresenter(organization: organization,
+                                              presenters: self.presenters,
+                                              services: self.services,
+                                              factories: self.factories)
         presenter.output = output
         return presenter
     }
 
-    private let services: MembersServices
-    private let presenters: MembersPresenters
+    private let services: OrganizationServices
+    private let presenters: OrganizationPresenters
+    private let factories: OrganizationFactories
 }
