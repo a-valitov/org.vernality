@@ -25,6 +25,7 @@ import Raise
 
 final class AdminPresenter: AdminModule {
     weak var output: AdminModuleOutput?
+    var router: AnyObject?
     var viewController: UIViewController {
         return self.admin
     }

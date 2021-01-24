@@ -17,6 +17,7 @@
 import Foundation
 import UIKit
 import PCModel
+import PCMember
 
 protocol MemberRouterDelegate: class {
     func memberUserDidLogout(router: MemberRouter)
@@ -55,22 +56,48 @@ final class MemberRouter {
                 user: self.user,
                 member: self.member
             ).make(member: self.member, output: self)
+            memberModule.router = self
             self.weakMemberModule = memberModule
             return memberModule
         }
     }
     private weak var weakMemberModule: MemberModule?
 
+    private func memberProfileRouter(member: PCMember) -> MemberProfileRouter {
+        if let memberProfileRouter = self.weakMemberProfileRouter {
+            return memberProfileRouter
+        } else {
+            let memberProfileRouter = MemberProfileRouter(
+                user: self.user,
+                member: member
+            )
+            memberProfileRouter.delegate = self
+            self.weakMemberProfileRouter = memberProfileRouter
+            return memberProfileRouter
+        }
+    }
+    private weak var weakMemberProfileRouter: MemberProfileRouter?
+
     private let user: PCUser
     private let member: PCMember
     private weak var weakNavigationController: UINavigationController?
 }
 
+// MARK: - MemberProfileRouterDelegate
+extension MemberRouter: MemberProfileRouterDelegate {
+    func memberProfile(router: MemberProfileRouter, didUpdate member: PCMember) {
+        self.weakMemberModule?.member = member
+    }
+}
+
 // MARK: - ModuleOutput
 extension MemberRouter: MemberModuleOutput {
     func member(module: MemberModule,
-                  userWantsToOpenProfileOf member: PCMember) {
-
+                userWantsToOpenProfileOf member: PCMember) {
+        self.navigationController.pushViewController(
+            self.memberProfileRouter(member: member).viewController,
+            animated: true
+        )
     }
     
     func memberUserDidLogout(module: MemberModule) {

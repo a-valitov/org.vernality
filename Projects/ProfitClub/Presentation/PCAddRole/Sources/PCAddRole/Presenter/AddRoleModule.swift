@@ -19,6 +19,7 @@ import PCModel
 
 public protocol AddRoleModule: class {
     var viewController: UIViewController { get }
+    var router: AnyObject? { get set }
 }
 
 public protocol AddRoleModuleOutput: class {

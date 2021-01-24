@@ -20,6 +20,7 @@ import PCModel
 
 public protocol OnboardModule: class {
     var viewController: UIViewController { get }
+    var router: AnyObject? { get set } 
 }
 
 public protocol OnboardModuleOutput: class {

@@ -17,6 +17,7 @@
 import Foundation
 import UIKit
 import PCModel
+import PCOrganization
 
 protocol OrganizationRouterDelegate: class {
     func organizationUserDidLogout(router: OrganizationRouter)
@@ -55,22 +56,49 @@ final class OrganizationRouter {
                 user: self.user,
                 organization: self.organization
             ).make(organization: self.organization, output: self)
+            organizationModule.router = self
             self.weakOrganizationModule = organizationModule
             return organizationModule
         }
     }
     private weak var weakOrganizationModule: OrganizationModule?
 
+    private func organizationProfileRouter(organization: PCOrganization) -> OrganizationProfileRouter {
+        if let organizationProfileRouter = self.weakOrganizationProfileRouter {
+            return organizationProfileRouter
+        } else {
+            let organizationProfileRouter = OrganizationProfileRouter(
+                user: self.user,
+                organization: organization
+            )
+            organizationProfileRouter.delegate = self
+            self.weakOrganizationProfileRouter = organizationProfileRouter
+            return organizationProfileRouter
+        }
+    }
+    private weak var weakOrganizationProfileRouter: OrganizationProfileRouter?
+
     private let user: PCUser
     private let organization: PCOrganization
     private weak var weakNavigationController: UINavigationController?
+}
+
+// MARK: - OrganizationProfileRouterDelegate
+extension OrganizationRouter: OrganizationProfileRouterDelegate {
+    func organizationProfile(router: OrganizationProfileRouter,
+                             didUpdate organization: PCOrganization) {
+        self.weakOrganizationModule?.organization = organization
+    }
 }
 
 // MARK: - ModuleOutput
 extension OrganizationRouter: OrganizationModuleOutput {
     func organization(module: OrganizationModule,
                       userWantsToOpenProfileOf organization: PCOrganization) {
-
+        self.navigationController.pushViewController(
+            self.organizationProfileRouter(organization: organization).viewController,
+            animated: true
+        )
     }
 
     func organizationUserDidLogout(module: OrganizationModule) {
@@ -96,13 +124,7 @@ extension OrganizationRouter: Router {
                 userService: self.userService(user: user),
                 organization: self.organizationService(organization: organization)
             ),
-            factories: OrganizationFactories(
-                actions: self.actionsFactory(),
-                action: self.actionFactory(),
-                commercialOffers: self.commercialOffersFactory(),
-                commercialOffer: self.commercialOfferFactory(),
-                members: self.membersFactory(organization: organization)
-            )
+            factories: OrganizationFactories()
         )
     }
 

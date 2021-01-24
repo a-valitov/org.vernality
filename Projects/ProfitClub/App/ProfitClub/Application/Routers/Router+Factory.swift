@@ -25,6 +25,8 @@ import PCSupplierService
 import PCActionService
 import PCCommercialOfferService
 import PCModel
+import PCOrganization
+import PCAuthentication
 
 protocol Router {
 }
@@ -36,6 +38,10 @@ extension Router {
     }
 
     // services
+    func authenticationService() -> PCAuthentication {
+        return PCAuthenticationParseFactory().make()
+    }
+    
     func organizationService(organization: PCOrganization) -> PCOrganizationService {
         return self.organizationService.make(organization: organization)
     }
@@ -71,66 +77,5 @@ extension Router {
 
     func menuPresenter() -> MenuPresenter {
         return MenuPresenterActionSheetFactory().make()
-    }
-
-    func membersFactory(organization: PCOrganization) -> MembersFactory {
-        return MembersFactory(
-            presenters: MembersPresenters(
-                error: self.errorPresenter(),
-                activity: self.activityPresenter(),
-                confirmation: self.confirmationPresenter()
-            ),
-            services: MembersServices(
-                organization: self.organizationService(organization: organization)
-            )
-        )
-    }
-
-    func commercialOffersFactory() -> CommercialOffersFactory {
-        return CommercialOffersFactory(
-            presenters: CommercialOffersPresenters(
-                error: self.errorPresenter(),
-                activity: self.activityPresenter()
-            ),
-            services: CommercialOffersServices(
-                commercialOffer: self.commercialOfferService()
-            )
-        )
-    }
-
-    func commercialOfferFactory() -> CommercialOfferFactory {
-        return CommercialOfferFactory(
-            presenters: CommercialOfferPresenters(
-                error: self.errorPresenter(),
-                activity: self.activityPresenter()
-            ),
-            services: CommercialOfferServices(
-                commercialOffer: self.commercialOfferService()
-            )
-        )
-    }
-
-    func actionsFactory() -> ActionsFactory {
-        return ActionsFactory(
-            presenters: ActionsPresenters(
-                error: self.errorPresenter(),
-                activity: self.activityPresenter()
-            ),
-            services: ActionsServices(
-                action: self.actionService()
-            )
-        )
-    }
-
-    func actionFactory() -> ActionFactory {
-        return ActionFactory(
-            presenters: ActionPresenters(
-                error: self.errorPresenter(),
-                activity: self.activityPresenter()
-            ),
-            services: ActionServices(
-                action: self.actionService()
-            )
-        )
     }
 }
