@@ -63,16 +63,42 @@ final class OrganizationRouter {
     }
     private weak var weakOrganizationModule: OrganizationModule?
 
+    private func organizationProfileRouter(organization: PCOrganization) -> OrganizationProfileRouter {
+        if let organizationProfileRouter = self.weakOrganizationProfileRouter {
+            return organizationProfileRouter
+        } else {
+            let organizationProfileRouter = OrganizationProfileRouter(
+                user: self.user,
+                organization: organization
+            )
+            organizationProfileRouter.delegate = self
+            self.weakOrganizationProfileRouter = organizationProfileRouter
+            return organizationProfileRouter
+        }
+    }
+    private weak var weakOrganizationProfileRouter: OrganizationProfileRouter?
+
     private let user: PCUser
     private let organization: PCOrganization
     private weak var weakNavigationController: UINavigationController?
+}
+
+// MARK: - OrganizationProfileRouterDelegate
+extension OrganizationRouter: OrganizationProfileRouterDelegate {
+    func organizationProfile(router: OrganizationProfileRouter,
+                             didUpdate organization: PCOrganization) {
+        self.weakOrganizationModule?.organization = organization
+    }
 }
 
 // MARK: - ModuleOutput
 extension OrganizationRouter: OrganizationModuleOutput {
     func organization(module: OrganizationModule,
                       userWantsToOpenProfileOf organization: PCOrganization) {
-
+        self.navigationController.pushViewController(
+            self.organizationProfileRouter(organization: organization).viewController,
+            animated: true
+        )
     }
 
     func organizationUserDidLogout(module: OrganizationModule) {

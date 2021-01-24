@@ -13,6 +13,7 @@
 		0E1B51AD25BDA1A2002A9C5A /* MemberRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1B51AC25BDA1A2002A9C5A /* MemberRouter.swift */; };
 		0E1B52C425BDC26E002A9C5A /* OnboardRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1B52C325BDC26E002A9C5A /* OnboardRouter.swift */; };
 		0E1B52C925BDCCED002A9C5A /* SupplierProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1B52C825BDCCED002A9C5A /* SupplierProfileRouter.swift */; };
+		0E1B531D25BDE0DE002A9C5A /* OrganizationProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E1B531C25BDE0DE002A9C5A /* OrganizationProfileRouter.swift */; };
 		0E506C4124FC9F6600ABA211 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0E506C4024FC9F6500ABA211 /* Montserrat-Regular.ttf */; };
 		0E506C4324FC9FCB00ABA211 /* PlayfairDisplay-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0E506C4224FC9FCA00ABA211 /* PlayfairDisplay-VariableFont_wght.ttf */; };
 		0E6B9723254D656500055570 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6B9722254D656500055570 /* Secrets.swift */; };
@@ -59,6 +60,7 @@
 		0E1B51AC25BDA1A2002A9C5A /* MemberRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberRouter.swift; sourceTree = "<group>"; };
 		0E1B52C325BDC26E002A9C5A /* OnboardRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardRouter.swift; sourceTree = "<group>"; };
 		0E1B52C825BDCCED002A9C5A /* SupplierProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplierProfileRouter.swift; sourceTree = "<group>"; };
+		0E1B531C25BDE0DE002A9C5A /* OrganizationProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationProfileRouter.swift; sourceTree = "<group>"; };
 		0E506C4024FC9F6500ABA211 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
 		0E506C4224FC9FCA00ABA211 /* PlayfairDisplay-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlayfairDisplay-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		0E6B9722254D656500055570 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
@@ -246,6 +248,7 @@
 				0EDB95CA25BD4D5000F0C158 /* ReviewRouter.swift */,
 				0E1B51A925BD9EB4002A9C5A /* SupplierRouter.swift */,
 				0E1B52C825BDCCED002A9C5A /* SupplierProfileRouter.swift */,
+				0E1B531C25BDE0DE002A9C5A /* OrganizationProfileRouter.swift */,
 			);
 			path = Routers;
 			sourceTree = "<group>";
@@ -542,6 +545,7 @@
 				0E90497124F390270061A605 /* AppFactory.swift in Sources */,
 				FA7ACD252563C2FA0097800D /* OrganizationProfileView.swift in Sources */,
 				FAE888D9256141A90023C232 /* MemberProfilePresenter.swift in Sources */,
+				0E1B531D25BDE0DE002A9C5A /* OrganizationProfileRouter.swift in Sources */,
 				FAE888E0256141DD0023C232 /* MemberProfileViewBeta.swift in Sources */,
 				0E1B51AD25BDA1A2002A9C5A /* MemberRouter.swift in Sources */,
 				0EDB95D325BD6A1B00F0C158 /* Router+Factory.swift in Sources */,
