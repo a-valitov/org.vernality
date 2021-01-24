@@ -26,6 +26,7 @@ Pod::Spec.new do |s|
     ss.dependency 'ErrorPresenter'
     ss.dependency 'ConfirmationPresenter'
     ss.dependency 'ActivityPresenter'
+    ss.dependency 'PCFontProvider'
 
     ss.dependency 'PCAdmin/PCAdminAction'
     ss.dependency 'PCAdmin/PCAdminActions'
