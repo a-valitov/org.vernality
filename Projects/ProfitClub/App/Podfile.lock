@@ -304,6 +304,14 @@ PODS:
     - PCCommercialOfferService
     - PCModel
     - PCUserService
+  - PCSupplierProfile (0.0.1):
+    - PCSupplierProfile/Sources (= 0.0.1)
+  - PCSupplierProfile/Sources (0.0.1):
+    - ActivityPresenter
+    - ErrorPresenter
+    - Kingfisher
+    - PCModel
+    - PCSupplierService
   - PCSupplierService (0.0.1):
     - Parse
     - PCAuthentication
@@ -353,6 +361,7 @@ DEPENDENCIES:
   - PCOrganizationService (from `../Services/PCOrganizationService/PCOrganizationService.podspec`)
   - PCReview (from `../Presentation/PCReview/PCReview.podspec`)
   - PCSupplier (from `../Presentation/PCSupplier/PCSupplier.podspec`)
+  - PCSupplierProfile (from `../Presentation/PCSupplierProfile/PCSupplierProfile.podspec`)
   - PCSupplierService (from `../Services/PCSupplierService/PCSupplierService.podspec`)
   - PCUserPersistence/Parse (from `../Persistence/PCUserPersistence/PCUserPersistence.podspec`)
   - PCUserService/Parse (from `../Services/PCUserService/PCUserService.podspec`)
@@ -410,6 +419,8 @@ EXTERNAL SOURCES:
     :path: "../Presentation/PCReview/PCReview.podspec"
   PCSupplier:
     :path: "../Presentation/PCSupplier/PCSupplier.podspec"
+  PCSupplierProfile:
+    :path: "../Presentation/PCSupplierProfile/PCSupplierProfile.podspec"
   PCSupplierService:
     :path: "../Services/PCSupplierService/PCSupplierService.podspec"
   PCUserPersistence:
@@ -451,12 +462,13 @@ SPEC CHECKSUMS:
   PCOrganizationService: e2a419fa283997b14e96d25559941b0e362217e3
   PCReview: 47dbed4a4b7d3507a9bf7f4779bc484788274881
   PCSupplier: ec144bc13ebbf7591de53e44850725a0112e6429
+  PCSupplierProfile: a31fe7288ae1f6f9bc4c687875d3cc10f730a90c
   PCSupplierService: cb791574989857faefc0a9491b70d9208c3e853c
   PCUserPersistence: c48ed3f4296c25c235eeed6794353f49c9d9abab
   PCUserService: 1f0024bb8dd7eb61533c5df2e7e4048887b9b445
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   Raise: e40c0ad29b47647c0a0eab8bb754ba9f3905f06c
 
-PODFILE CHECKSUM: 7da4b1aa932e6301214332ed7305593115977e84
+PODFILE CHECKSUM: e6f78c809e8613a14542a7eb11bacffc6bf6a48f
 
 COCOAPODS: 1.10.0

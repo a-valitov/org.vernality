@@ -17,6 +17,7 @@
 import Foundation
 import UIKit
 import PCModel
+import PCSupplierProfile
 
 protocol SupplierProfileRouterDelegate: class {
     func supplierProfile(router: SupplierProfileRouter, didUpdate supplier: PCSupplier)

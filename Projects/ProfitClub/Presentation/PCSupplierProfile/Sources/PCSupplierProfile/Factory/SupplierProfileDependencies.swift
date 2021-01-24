@@ -19,11 +19,25 @@ import ErrorPresenter
 import ActivityPresenter
 import PCSupplierService
 
-struct SupplierProfilePresenters {
+public struct SupplierProfilePresenters {
     let error: ErrorPresenter
     let activity: ActivityPresenter
+
+    public init(
+        error: ErrorPresenter,
+        activity: ActivityPresenter
+    ) {
+        self.error = error
+        self.activity = activity
+    }
 }
 
-struct SupplierProfileServices {
+public struct SupplierProfileServices {
     let supplier: PCSupplierService
+
+    public init(
+        supplier: PCSupplierService
+    ) {
+        self.supplier = supplier
+    }
 }

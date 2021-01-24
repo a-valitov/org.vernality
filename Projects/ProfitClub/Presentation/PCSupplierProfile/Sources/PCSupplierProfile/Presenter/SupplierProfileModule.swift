@@ -17,11 +17,11 @@
 import Foundation
 import PCModel
 
-protocol SupplierProfileModule: class {
+public protocol SupplierProfileModule: class {
     var viewController: UIViewController { get }
     var router: AnyObject? { get set }
 }
 
-protocol SupplierProfileModuleOutput: class {
+public protocol SupplierProfileModuleOutput: class {
     func supplierProfile(module: SupplierProfileModule, didUpdate supplier: PCSupplier)
 }

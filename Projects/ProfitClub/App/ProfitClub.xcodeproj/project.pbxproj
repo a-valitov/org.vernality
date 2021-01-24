@@ -32,7 +32,6 @@
 		FA0955F3254C427700FFF835 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA0955F2254C427700FFF835 /* Roboto-Medium.ttf */; };
 		FA21D85B25729CDD008024F0 /* MemberProfileViewAlpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA21D85A25729CDD008024F0 /* MemberProfileViewAlpha.swift */; };
 		FA21D85E2572BE2B008024F0 /* OrganizationProfileViewAlpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA21D85D2572BE2B008024F0 /* OrganizationProfileViewAlpha.swift */; };
-		FA21D8612572C67B008024F0 /* SupplierProfileViewAlpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA21D8602572C67B008024F0 /* SupplierProfileViewAlpha.swift */; };
 		FA56639C253F4F1400D19D4E /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA56639B253F4F0200D19D4E /* Roboto-Regular.ttf */; };
 		FA7ACD252563C2FA0097800D /* OrganizationProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7ACD242563C2FA0097800D /* OrganizationProfileView.swift */; };
 		FA7ACD282563C3170097800D /* OrganizationProfileViewBeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7ACD272563C3170097800D /* OrganizationProfileViewBeta.swift */; };
@@ -41,13 +40,6 @@
 		FA7ACD302563C3BA0097800D /* OrganizationProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7ACD2F2563C3BA0097800D /* OrganizationProfilePresenter.swift */; };
 		FA7ACD322563C3C40097800D /* OrganizationProfileFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7ACD312563C3C40097800D /* OrganizationProfileFactory.swift */; };
 		FA7ACD342563C3CE0097800D /* OrganizationProfileDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7ACD332563C3CE0097800D /* OrganizationProfileDependencies.swift */; };
-		FA7ACD3B2563E6CC0097800D /* SupplierProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7ACD3A2563E6CC0097800D /* SupplierProfileView.swift */; };
-		FA7ACD3E2563E6DC0097800D /* SupplierProfileVeiwBeta.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7ACD3D2563E6DC0097800D /* SupplierProfileVeiwBeta.swift */; };
-		FA7ACD402563E7290097800D /* SupplierProfileViewBeta.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA7ACD3F2563E7290097800D /* SupplierProfileViewBeta.storyboard */; };
-		FA7ACD442563E7A90097800D /* SupplierProfileModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7ACD432563E7A90097800D /* SupplierProfileModule.swift */; };
-		FA7ACD462563E7B30097800D /* SupplierProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7ACD452563E7B20097800D /* SupplierProfilePresenter.swift */; };
-		FA7ACD482563E7BC0097800D /* SupplierProfileFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7ACD472563E7BC0097800D /* SupplierProfileFactory.swift */; };
-		FA7ACD4A2563E7CA0097800D /* SupplierProfileDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA7ACD492563E7CA0097800D /* SupplierProfileDependencies.swift */; };
 		FABB6F002544902A00B93FB8 /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FABB6EFF2544902A00B93FB8 /* Montserrat-Medium.ttf */; };
 		FABB6F0D2546860700B93FB8 /* Montserrat-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FABB6F0C2546860700B93FB8 /* Montserrat-Bold.ttf */; };
 		FAE888C1256005450023C232 /* Montserrat-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FAE888C0256005450023C232 /* Montserrat-SemiBold.ttf */; };
@@ -91,7 +83,6 @@
 		FA0955F2254C427700FFF835 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		FA21D85A25729CDD008024F0 /* MemberProfileViewAlpha.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberProfileViewAlpha.swift; sourceTree = "<group>"; };
 		FA21D85D2572BE2B008024F0 /* OrganizationProfileViewAlpha.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationProfileViewAlpha.swift; sourceTree = "<group>"; };
-		FA21D8602572C67B008024F0 /* SupplierProfileViewAlpha.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplierProfileViewAlpha.swift; sourceTree = "<group>"; };
 		FA56639B253F4F0200D19D4E /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		FA7ACD242563C2FA0097800D /* OrganizationProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationProfileView.swift; sourceTree = "<group>"; };
 		FA7ACD272563C3170097800D /* OrganizationProfileViewBeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationProfileViewBeta.swift; sourceTree = "<group>"; };
@@ -100,13 +91,6 @@
 		FA7ACD2F2563C3BA0097800D /* OrganizationProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationProfilePresenter.swift; sourceTree = "<group>"; };
 		FA7ACD312563C3C40097800D /* OrganizationProfileFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationProfileFactory.swift; sourceTree = "<group>"; };
 		FA7ACD332563C3CE0097800D /* OrganizationProfileDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrganizationProfileDependencies.swift; sourceTree = "<group>"; };
-		FA7ACD3A2563E6CC0097800D /* SupplierProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplierProfileView.swift; sourceTree = "<group>"; };
-		FA7ACD3D2563E6DC0097800D /* SupplierProfileVeiwBeta.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplierProfileVeiwBeta.swift; sourceTree = "<group>"; };
-		FA7ACD3F2563E7290097800D /* SupplierProfileViewBeta.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SupplierProfileViewBeta.storyboard; sourceTree = "<group>"; };
-		FA7ACD432563E7A90097800D /* SupplierProfileModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplierProfileModule.swift; sourceTree = "<group>"; };
-		FA7ACD452563E7B20097800D /* SupplierProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplierProfilePresenter.swift; sourceTree = "<group>"; };
-		FA7ACD472563E7BC0097800D /* SupplierProfileFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplierProfileFactory.swift; sourceTree = "<group>"; };
-		FA7ACD492563E7CA0097800D /* SupplierProfileDependencies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SupplierProfileDependencies.swift; sourceTree = "<group>"; };
 		FABB6EFF2544902A00B93FB8 /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
 		FABB6F0C2546860700B93FB8 /* Montserrat-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold.ttf"; sourceTree = "<group>"; };
 		FAE888C0256005450023C232 /* Montserrat-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.ttf"; sourceTree = "<group>"; };
@@ -174,7 +158,6 @@
 		0E90498424F60C740061A605 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				FA7ACD352563E6040097800D /* SupplierProfile */,
 				FA7ACD1F25632D400097800D /* OrganizationProfile */,
 				FAE888CC256141040023C232 /* MemberProfile */,
 			);
@@ -300,14 +283,6 @@
 			path = Alpha;
 			sourceTree = "<group>";
 		};
-		FA21D85F2572C668008024F0 /* Alpha */ = {
-			isa = PBXGroup;
-			children = (
-				FA21D8602572C67B008024F0 /* SupplierProfileViewAlpha.swift */,
-			);
-			path = Alpha;
-			sourceTree = "<group>";
-		};
 		FA7ACD1F25632D400097800D /* OrganizationProfile */ = {
 			isa = PBXGroup;
 			children = (
@@ -351,53 +326,6 @@
 			children = (
 				FA7ACD272563C3170097800D /* OrganizationProfileViewBeta.swift */,
 				FA7ACD292563C31F0097800D /* OrganizationProfileViewBeta.storyboard */,
-			);
-			path = Beta;
-			sourceTree = "<group>";
-		};
-		FA7ACD352563E6040097800D /* SupplierProfile */ = {
-			isa = PBXGroup;
-			children = (
-				FA7ACD392563E6AE0097800D /* Factory */,
-				FA7ACD382563E6A80097800D /* Presenter */,
-				FA7ACD362563E69F0097800D /* View */,
-			);
-			path = SupplierProfile;
-			sourceTree = "<group>";
-		};
-		FA7ACD362563E69F0097800D /* View */ = {
-			isa = PBXGroup;
-			children = (
-				FA7ACD3A2563E6CC0097800D /* SupplierProfileView.swift */,
-				FA21D85F2572C668008024F0 /* Alpha */,
-				FA7ACD3C2563E6D00097800D /* Beta */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		FA7ACD382563E6A80097800D /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
-				FA7ACD432563E7A90097800D /* SupplierProfileModule.swift */,
-				FA7ACD452563E7B20097800D /* SupplierProfilePresenter.swift */,
-			);
-			path = Presenter;
-			sourceTree = "<group>";
-		};
-		FA7ACD392563E6AE0097800D /* Factory */ = {
-			isa = PBXGroup;
-			children = (
-				FA7ACD472563E7BC0097800D /* SupplierProfileFactory.swift */,
-				FA7ACD492563E7CA0097800D /* SupplierProfileDependencies.swift */,
-			);
-			path = Factory;
-			sourceTree = "<group>";
-		};
-		FA7ACD3C2563E6D00097800D /* Beta */ = {
-			isa = PBXGroup;
-			children = (
-				FA7ACD3D2563E6DC0097800D /* SupplierProfileVeiwBeta.swift */,
-				FA7ACD3F2563E7290097800D /* SupplierProfileViewBeta.storyboard */,
 			);
 			path = Beta;
 			sourceTree = "<group>";
@@ -525,7 +453,6 @@
 				0E506C4324FC9FCB00ABA211 /* PlayfairDisplay-VariableFont_wght.ttf in Resources */,
 				FAE888C1256005450023C232 /* Montserrat-SemiBold.ttf in Resources */,
 				0EA11ED424F2B89300133485 /* LaunchScreen.storyboard in Resources */,
-				FA7ACD402563E7290097800D /* SupplierProfileViewBeta.storyboard in Resources */,
 				FAE888E2256141E90023C232 /* MemberProfileViewBeta.storyboard in Resources */,
 				FA7ACD2A2563C31F0097800D /* OrganizationProfileViewBeta.storyboard in Resources */,
 				0E772A8D2504D39000D677E6 /* PlayfairDisplay-Bold.ttf in Resources */,
@@ -600,7 +527,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA7ACD4A2563E7CA0097800D /* SupplierProfileDependencies.swift in Sources */,
 				FA7ACD322563C3C40097800D /* OrganizationProfileFactory.swift in Sources */,
 				FA7ACD302563C3BA0097800D /* OrganizationProfilePresenter.swift in Sources */,
 				0E1B52C425BDC26E002A9C5A /* OnboardRouter.swift in Sources */,
@@ -613,27 +539,21 @@
 				FA21D85E2572BE2B008024F0 /* OrganizationProfileViewAlpha.swift in Sources */,
 				FA7ACD2E2563C3B20097800D /* OrganizationProfileModule.swift in Sources */,
 				0E1B52C925BDCCED002A9C5A /* SupplierProfileRouter.swift in Sources */,
-				FA7ACD462563E7B30097800D /* SupplierProfilePresenter.swift in Sources */,
 				0E90497124F390270061A605 /* AppFactory.swift in Sources */,
 				FA7ACD252563C2FA0097800D /* OrganizationProfileView.swift in Sources */,
-				FA7ACD482563E7BC0097800D /* SupplierProfileFactory.swift in Sources */,
 				FAE888D9256141A90023C232 /* MemberProfilePresenter.swift in Sources */,
 				FAE888E0256141DD0023C232 /* MemberProfileViewBeta.swift in Sources */,
 				0E1B51AD25BDA1A2002A9C5A /* MemberRouter.swift in Sources */,
 				0EDB95D325BD6A1B00F0C158 /* Router+Factory.swift in Sources */,
 				0E1B51AA25BD9EB4002A9C5A /* SupplierRouter.swift in Sources */,
-				FA21D8612572C67B008024F0 /* SupplierProfileViewAlpha.swift in Sources */,
-				FA7ACD3B2563E6CC0097800D /* SupplierProfileView.swift in Sources */,
 				0E06F96625B541B700E975F6 /* UIViewController+Raise.swift in Sources */,
 				FAE888DD256141C90023C232 /* MemberProfileView.swift in Sources */,
-				FA7ACD3E2563E6DC0097800D /* SupplierProfileVeiwBeta.swift in Sources */,
 				0E6B9723254D656500055570 /* Secrets.swift in Sources */,
 				FAE888D72561419D0023C232 /* MemberProfileModule.swift in Sources */,
 				FA7ACD342563C3CE0097800D /* OrganizationProfileDependencies.swift in Sources */,
 				0EA11EC824F2B88F00133485 /* AppDelegate.swift in Sources */,
 				0EDB95DA25BD715A00F0C158 /* OrganizationRouter.swift in Sources */,
 				0EDB95CF25BD65A100F0C158 /* AdminRouter.swift in Sources */,
-				FA7ACD442563E7A90097800D /* SupplierProfileModule.swift in Sources */,
 				0EDB95CB25BD4D5000F0C158 /* ReviewRouter.swift in Sources */,
 				FA21D85B25729CDD008024F0 /* MemberProfileViewAlpha.swift in Sources */,
 			);

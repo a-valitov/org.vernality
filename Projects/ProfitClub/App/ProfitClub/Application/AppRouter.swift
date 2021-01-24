@@ -78,15 +78,6 @@ final class AppRouter {
             return profile
         }
     }
-    private func profile(for supplier: PCSupplier) -> SupplierProfileModule {
-        if let profile = self.weakSupplierProfile {
-            return profile
-        } else {
-            let profile = self.factory.supplierProfile(supplier: supplier, output: self)
-            self.weakSupplierProfile = profile
-            return profile
-        }
-    }
     private func profile(for member: PCMember) -> MemberProfileModule {
         if let profile = self.weakMemberProfile {
             return profile
@@ -124,7 +115,6 @@ final class AppRouter {
 
     // weak modules
     private weak var weakMemberProfile: MemberProfileModule?
-    private weak var weakSupplierProfile: SupplierProfileModule?
     private weak var weakOrganizationProfile: OrganizationProfileModule?
 }
 
@@ -209,11 +199,5 @@ extension AppRouter: MemberProfileModuleOutput {
 extension AppRouter: OrganizationProfileModuleOutput {
     func organizationProfile(module: OrganizationProfileModule, didUpdate organization: PCOrganization) {
 //        self.weakOrganization?.organization = organization
-    }
-}
-
-extension AppRouter: SupplierProfileModuleOutput {
-    func supplierProfile(module: SupplierProfileModule, didUpdate supplier: PCSupplier) {
-//        self.weakSupplier?.supplier = supplier
     }
 }
