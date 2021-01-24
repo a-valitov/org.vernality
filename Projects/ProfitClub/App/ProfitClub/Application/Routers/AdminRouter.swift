@@ -105,7 +105,7 @@ extension AdminRouter: Router {
                 activity: self.activityPresenter()
             ),
             services: AdminOrganizationsServices(
-                organization: self.organizationService()
+                user: self.userService(user: self.user)
             )
         )
     }
@@ -117,9 +117,7 @@ extension AdminRouter: Router {
                 activity: self.activityPresenter(),
                 confirmation: self.confirmationPresenter()
             ),
-            services: AdminOrganizationServices(
-                organization: self.organizationService()
-            )
+            services: AdminOrganizationServices()
         )
     }
 

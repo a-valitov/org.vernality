@@ -88,6 +88,15 @@ PODS:
     - Parse
     - PCAuthentication
     - PCModel/Parse
+  - PCAddRole (0.0.1):
+    - PCAddRole/Sources (= 0.0.1)
+  - PCAddRole/Sources (0.0.1):
+    - ActivityPresenter
+    - ConfirmationPresenter
+    - ErrorPresenter
+    - PCModel
+    - PCOrganizationService
+    - PCUserService
   - PCAuthentication (0.0.1):
     - PCAuthentication/Contract (= 0.0.1)
   - PCAuthentication/Contract (0.0.1):
@@ -165,6 +174,7 @@ DEPENDENCIES:
   - MenuPresenter (from `../../../Pods/Packages/MenuPresenter/MenuPresenter.podspec`)
   - Nantes
   - PCActionService (from `../Services/PCActionService/PCActionService.podspec`)
+  - PCAddRole (from `../Presentation/PCAddRole/PCAddRole.podspec`)
   - PCAuthentication/Parse (from `../Services/PCAuthentication/PCAuthentication.podspec`)
   - PCCommercialOfferService (from `../Services/PCCommercialOfferService/PCCommercialOfferService.podspec`)
   - PCModel/Parse (from `../Model/PCModel/PCModel.podspec`)
@@ -206,6 +216,8 @@ EXTERNAL SOURCES:
     :path: "../../../Pods/Packages/MenuPresenter/MenuPresenter.podspec"
   PCActionService:
     :path: "../Services/PCActionService/PCActionService.podspec"
+  PCAddRole:
+    :path: "../Presentation/PCAddRole/PCAddRole.podspec"
   PCAuthentication:
     :path: "../Services/PCAuthentication/PCAuthentication.podspec"
   PCCommercialOfferService:
@@ -248,6 +260,7 @@ SPEC CHECKSUMS:
   Nantes: 0396442578e32242223fed46050dea1850236184
   Parse: e40fdb9c7d665823b7fe9865949cac9a53eb2ce7
   PCActionService: 2ec6ae69a564f94077c95ed604ae5525e374e550
+  PCAddRole: 5c4fa0aae9b9338eb0001edad2f4fca916448091
   PCAuthentication: 0df0033383cb957df518dc9eb1694e2ffc2f44df
   PCCommercialOfferService: 07469ba8d01877d41cd6cbdf51659c723e50d14f
   PCModel: f1a5156863a4758a54329a35721fb7d363683021
@@ -260,6 +273,6 @@ SPEC CHECKSUMS:
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   Raise: e40c0ad29b47647c0a0eab8bb754ba9f3905f06c
 
-PODFILE CHECKSUM: 58e3f518482d94b102b3a8b129fdf4d2a0b97d85
+PODFILE CHECKSUM: b5729ecd0bcb27a084391eff6804716ec9c8b7f4
 
 COCOAPODS: 1.10.0

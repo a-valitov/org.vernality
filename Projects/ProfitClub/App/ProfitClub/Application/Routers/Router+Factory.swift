@@ -31,8 +31,8 @@ protocol Router {
 
 extension Router {
     // services
-    func organizationService() -> PCOrganizationService {
-        return PCOrganizationServiceParse()
+    func organizationService(organization: PCOrganization) -> PCOrganizationService {
+        return PCOrganizationServiceParseFactory(organization: organization).make()
     }
 
     func userService(user: PCUser) -> PCUserService {
@@ -68,7 +68,7 @@ extension Router {
         return MenuPresenterActionSheetFactory().make()
     }
 
-    func membersFactory() -> MembersFactory {
+    func membersFactory(organization: PCOrganization) -> MembersFactory {
         return MembersFactory(
             presenters: MembersPresenters(
                 error: self.errorPresenter(),
@@ -76,7 +76,7 @@ extension Router {
                 confirmation: self.confirmationPresenter()
             ),
             services: MembersServices(
-                organization: self.organizationService()
+                organization: self.organizationService(organization: organization)
             )
         )
     }

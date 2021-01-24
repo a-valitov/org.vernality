@@ -62,7 +62,7 @@ final class AppFactory {
     }
     
     func organizationService() -> PCOrganizationService {
-        return PCOrganizationServiceParse()
+        return PCOrganizationServiceParseFactory(organization: PCOrganizationStruct()).make()
     }
 
     func supplierService() -> PCSupplierService {
@@ -166,19 +166,5 @@ extension AppFactory {
 
     var supplierProfileFactory: SupplierProfileFactory {
         return SupplierProfileFactory(presenters: SupplierProfilePresenters(error: self.errorPresenter(), activity: self.activityPresenter()), services: SupplierProfileServices(supplier: self.supplierService()))
-    }
-
-    var addRoleFactory: AddRoleFactory {
-        return AddRoleFactory(
-            presenters: AddRolePresenters(
-                error: self.errorPresenter(),
-                activity: self.activityPresenter(),
-                confirmation: self.confirmationPresenter()
-            ),
-            services: AddRoleServices(
-                user: self.userService,
-                organization: self.organizationService()
-            )
-        )
     }
 }

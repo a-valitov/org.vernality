@@ -135,7 +135,7 @@ extension AdminOrganizationsPresenter: AdminApprovedOrganizationsViewOutput {
 
 extension AdminOrganizationsPresenter {
     private func reloadApprovedOrganizations() {
-        self.services.organization.fetch(.approved) { [weak self] (result) in
+        self.services.user.fetch(.approved) { [weak self] (result) in
             switch result {
             case .success(let organizations):
                 self?.weakAdminApprovedOrganizations?.organizations = organizations
@@ -146,7 +146,7 @@ extension AdminOrganizationsPresenter {
     }
 
     private func reloadApplicationsOrganizations() {
-        self.services.organization.fetch(.onReview) { [weak self] (result) in
+        self.services.user.fetch(.onReview) { [weak self] (result) in
             switch result {
             case .success(let organizations):
                 self?.weakAdminOrganizationsApplications?.organizations = organizations

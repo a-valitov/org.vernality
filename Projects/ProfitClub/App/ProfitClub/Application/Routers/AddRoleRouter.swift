@@ -17,6 +17,7 @@
 import Foundation
 import UIKit
 import PCModel
+import PCAddRole
 
 protocol AddRoleRouterDelegate: class {
     func addRole(router: AddRoleRouter, didAdd organization: PCOrganization)
@@ -87,8 +88,7 @@ extension AddRoleRouter: Router {
                 confirmation: self.confirmationPresenter()
             ),
             services: AddRoleServices(
-                user: self.userService(user: user),
-                organization: self.organizationService()
+                user: self.userService(user: user)
             )
         )
     }

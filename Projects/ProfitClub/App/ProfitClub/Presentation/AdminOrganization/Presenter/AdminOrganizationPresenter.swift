@@ -67,30 +67,30 @@ extension AdminOrganizationPresenter: OrganizationApplicationViewOutput {
     func organizationApplication(view: OrganizationApplicationViewInput, userWantsToApprove sender: Any) {
         self.presenters.confirmation.present(title: "Одобрить заявку?", message: "Одобрить заявку на создание организации \(view.organizationName ?? "")", actionTitle: "Одобрить", withCancelAction: true) { [weak self] in
             guard let organization = self?.organization else { return }
-            self?.services.organization.approve(organization: organization) { [weak self] (result) in
-                guard let sSelf = self else { return }
-                switch result {
-                case .success(let organization):
-                    sSelf.output?.adminOrganization(module: sSelf, didApprove: organization)
-                case .failure(let error):
-                    sSelf.presenters.error.present(error)
-                }
-            }
+//            self?.services.organization.approve(organization: organization) { [weak self] (result) in
+//                guard let sSelf = self else { return }
+//                switch result {
+//                case .success(let organization):
+//                    sSelf.output?.adminOrganization(module: sSelf, didApprove: organization)
+//                case .failure(let error):
+//                    sSelf.presenters.error.present(error)
+//                }
+//            }
         }
     }
 
     func organizationApplication(view: OrganizationApplicationViewInput, userWantsToReject sender: Any) {
         self.presenters.confirmation.present(title: "Отклонить заявку?", message: "Отклонить заявку на создание организации \(view.organizationName ?? "")", actionTitle: "Отклонить", withCancelAction: true) { [weak self] in
             guard let organization = self?.organization else { return }
-            self?.services.organization.reject(organization: organization) { [weak self] (result) in
-                guard let sSelf = self else { return }
-                switch result {
-                case .success(let organization):
-                    sSelf.output?.adminOrganization(module: sSelf, didReject: organization)
-                case .failure(let error):
-                    sSelf.presenters.error.present(error)
-                }
-            }
+//            self?.services.organization.reject(organization: organization) { [weak self] (result) in
+//                guard let sSelf = self else { return }
+//                switch result {
+//                case .success(let organization):
+//                    sSelf.output?.adminOrganization(module: sSelf, didReject: organization)
+//                case .failure(let error):
+//                    sSelf.presenters.error.present(error)
+//                }
+//            }
         }
     }
 }

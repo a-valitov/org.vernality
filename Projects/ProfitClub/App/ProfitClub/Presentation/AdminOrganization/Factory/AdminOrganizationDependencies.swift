@@ -27,5 +27,5 @@ struct AdminOrganizationPresenters {
 }
 
 struct AdminOrganizationServices {
-    let organization: PCOrganizationService
+    
 }

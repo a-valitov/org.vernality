@@ -94,14 +94,14 @@ extension OrganizationRouter: Router {
             ),
             services: OrganizationServices(
                 userService: self.userService(user: user),
-                organization: self.organizationService()
+                organization: self.organizationService(organization: organization)
             ),
             factories: OrganizationFactories(
                 actions: self.actionsFactory(),
                 action: self.actionFactory(),
                 commercialOffers: self.commercialOffersFactory(),
                 commercialOffer: self.commercialOfferFactory(),
-                members: self.membersFactory()
+                members: self.membersFactory(organization: organization)
             )
         )
     }
