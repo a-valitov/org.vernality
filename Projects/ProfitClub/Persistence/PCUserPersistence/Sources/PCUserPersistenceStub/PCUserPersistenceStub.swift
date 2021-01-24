@@ -16,50 +16,8 @@
 
 import Foundation
 import PCModel
-import PCAuthentication
+import PCUserPersistence
 
-final class PCAuthenticationStub: PCAuthentication {
-    lazy var user: AnyPCUser? = {
-        var user = PCUserStruct()
-        user.id = "stubUserId"
-        user.email = "stub@stub.com"
-        user.roles = [.administrator]
-        user.username = user.email
-        var member = PCMemberStruct()
-        member.id = "stubMemberId"
-        member.firstName = "StubFirstName"
-        member.lastName = "StabLastName"
-        member.owner = user
-        member.status = .onReview
-        user.members = [member]
-        return user.any
-    }()
-
-    func login(username: String, password: String, result: @escaping ((Result<AnyPCUser, Error>) -> Void)) {
-        if let anyUser = self.user?.any {
-            result(.success(anyUser))
-        } else {
-            result(.failure(PCAuthenticationError.failedToLogin))
-        }
-    }
-
-    func resetPassword(email: String, result: @escaping ((Result<Bool, Error>) -> Void)) {
-        result(.success(true))
-    }
-
-    func add(supplier: PCSupplier, result: @escaping ((Result<PCSupplier, Error>) -> Void)) {
-        result(.success(supplier))
-    }
-
-    func add(member: PCMember, in organization: PCOrganization, result: @escaping ((Result<PCMember, Error>) -> Void)) {
-        result(.success(member))
-    }
-
-    func add(organization: PCOrganization, result: @escaping ((Result<PCOrganization, Error>) -> Void)) {
-        result(.success(organization))
-    }
-
-    func register(user: PCUser, password: String, result: @escaping ((Result<AnyPCUser, Error>) -> Void)) {
-        result(.success(user.any))
-    }
+final class PCUserPersistenceStub: PCUserPersistence {
+    var user: AnyPCUser?
 }

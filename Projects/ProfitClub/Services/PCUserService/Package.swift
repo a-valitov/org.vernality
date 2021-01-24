@@ -5,6 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "PCUserService",
+    platforms: [.iOS(.v11)],
     products: [
         .library(
             name: "PCUserService",
@@ -15,7 +16,7 @@ let package = Package(
     ],
     dependencies: [
         .package(path: "../../Model/PCModel"),
-        .package(path: "../../Services/PCAuthentication"),
+        .package(path: "../../Persistence/PCUserPersistence"),
     ],
     targets: [
         .target(
@@ -26,7 +27,7 @@ let package = Package(
             dependencies: [
                 "PCModel",
                 "PCUserService",
-                .product(name: "PCAuthenticationStub", package: "PCAuthentication"),
+                .product(name: "PCUserPersistenceStub", package: "PCUserPersistence"),
             ]
         ),
         .testTarget(

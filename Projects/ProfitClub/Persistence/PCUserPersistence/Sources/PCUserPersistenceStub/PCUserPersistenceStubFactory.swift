@@ -15,12 +15,12 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import Foundation
-import PCAuthentication
+import PCUserPersistence
 
-public final class PCAuthenticationStubFactory: PCAuthenticationFactory {
+public final class PCUserPersistenceStubFactory: PCUserPersistenceFactory {
     public init() {}
 
-    public func make() -> PCAuthentication {
-        return PCAuthenticationStub()
+    public func make() -> PCUserPersistence {
+        return PCUserPersistenceStub()
     }
 }
