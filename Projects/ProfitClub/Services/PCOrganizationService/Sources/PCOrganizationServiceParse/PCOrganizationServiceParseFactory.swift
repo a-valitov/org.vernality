@@ -6,3 +6,15 @@
 //
 
 import Foundation
+import PCModel
+
+public final class PCOrganizationServiceParseFactory: PCOrganizationServiceFactory {
+    public init() {
+    }
+
+    public func make(organization: PCOrganization) -> PCOrganizationService {
+        return PCOrganizationServiceParse(
+            organization: organization
+        )
+    }
+}

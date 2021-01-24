@@ -62,7 +62,7 @@ final class AppFactory {
     }
     
     func organizationService() -> PCOrganizationService {
-        return PCOrganizationServiceParseFactory(organization: PCOrganizationStruct()).make()
+        return PCOrganizationServiceParseFactory().make(organization: PCOrganizationStruct())
     }
 
     func supplierService() -> PCSupplierService {

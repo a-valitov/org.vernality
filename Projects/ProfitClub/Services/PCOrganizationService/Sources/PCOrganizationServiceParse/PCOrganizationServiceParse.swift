@@ -18,10 +18,14 @@ import Foundation
 import PCModel
 import Parse
 
-public final class PCOrganizationServiceParse: PCOrganizationService {
-    public init() {}
+ final class PCOrganizationServiceParse: PCOrganizationService {
+    let organization: PCOrganization
     
-    public func reload(_ organization: PCOrganization?,
+     init(organization: PCOrganization) {
+        self.organization = organization
+    }
+    
+     func reload(_ organization: PCOrganization?,
                 result: @escaping (Result<PCOrganization, Error>) -> Void) {
         guard let organization = organization else {
             result(.failure(PCOrganizationServiceError.inputIsNil))
@@ -38,19 +42,7 @@ public final class PCOrganizationServiceParse: PCOrganizationService {
         }
     }
 
-    public func fetch(_ status: PCOrganizationStatus, result: @escaping (Result<[AnyPCOrganization], Error>) -> Void) {
-        let query = PFQuery(className: "Organization")
-        query.whereKey("statusString", equalTo: status.rawValue)
-        query.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
-            if let error = error {
-                result(.failure(error))
-            } else if let objects = objects {
-                result(.success(objects.map({ $0.pcOrganization.any })))
-            }
-        }
-    }
-
-    public func approve(organization: PCOrganization, result: @escaping (Result<PCOrganization, Error>) -> Void) {
+     func approve(organization: PCOrganization, result: @escaping (Result<PCOrganization, Error>) -> Void) {
         let parseOrganization = organization.parse
         parseOrganization.status = .approved
         parseOrganization.saveInBackground { (success, error) in
@@ -62,7 +54,7 @@ public final class PCOrganizationServiceParse: PCOrganizationService {
         }
     }
 
-    public func reject(organization: PCOrganization, result: @escaping (Result<PCOrganization, Error>) -> Void) {
+     func reject(organization: PCOrganization, result: @escaping (Result<PCOrganization, Error>) -> Void) {
         let parseOrganization = organization.parse
         parseOrganization.status = .rejected
         parseOrganization.saveInBackground { (success, error) in
@@ -74,7 +66,7 @@ public final class PCOrganizationServiceParse: PCOrganizationService {
         }
     }
 
-    public func approve(member: PCMember, result: @escaping (Result<PCMember, Error>) -> Void) {
+     func approve(member: PCMember, result: @escaping (Result<PCMember, Error>) -> Void) {
         let parseMember = member.parse
         parseMember.status = .approved
         parseMember.saveInBackground { (success, error) in
@@ -86,7 +78,7 @@ public final class PCOrganizationServiceParse: PCOrganizationService {
         }
     }
 
-    public func reject(member: PCMember, result: @escaping (Result<PCMember, Error>) -> Void) {
+     func reject(member: PCMember, result: @escaping (Result<PCMember, Error>) -> Void) {
         let parseMember = member.parse
         parseMember.status = .rejected
         parseMember.saveInBackground { (success, error) in
@@ -98,7 +90,7 @@ public final class PCOrganizationServiceParse: PCOrganizationService {
         }
     }
 
-    public func editProfile(organization: PCOrganization, image: UIImage, result: @escaping (Result<PCOrganization, Error>) -> Void) {
+     func editProfile(organization: PCOrganization, image: UIImage, result: @escaping (Result<PCOrganization, Error>) -> Void) {
         guard let imageData = image.pngData() else {
             result(.failure(PCOrganizationServiceError.failedToGetImagePNGRepresentation))
             return
@@ -115,7 +107,7 @@ public final class PCOrganizationServiceParse: PCOrganizationService {
         }
     }
 
-    public func fetchApprovedApplications(_ organization: PCOrganization?, result: @escaping (Result<[AnyPCMember], Error>) -> Void) {
+     func fetchApprovedApplications(_ organization: PCOrganization?, result: @escaping (Result<[AnyPCMember], Error>) -> Void) {
         guard let organization = organization else {
             result(.failure(PCOrganizationServiceError.inputIsNil))
             return
@@ -132,7 +124,7 @@ public final class PCOrganizationServiceParse: PCOrganizationService {
         }
     }
 
-    public func fetchApprovedMembersOfOrganization(_ organization: PCOrganization?, result: @escaping (Result<[AnyPCMember], Error>) -> Void) {
+     func fetchApprovedMembersOfOrganization(_ organization: PCOrganization?, result: @escaping (Result<[AnyPCMember], Error>) -> Void) {
         guard let organization = organization else {
             result(.failure(PCOrganizationServiceError.inputIsNil))
             return

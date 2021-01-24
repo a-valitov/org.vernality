@@ -20,6 +20,7 @@ import ActivityPresenter
 import ConfirmationPresenter
 import MenuPresenter
 import PCUserService
+import PCOrganizationService
 
 struct AdminPresenters {
     let error: ErrorPresenter
@@ -33,6 +34,7 @@ struct AdminServices {
 }
 
 struct AdminFactories {
+    let organizationService: PCOrganizationServiceFactory
     let adminOrganizations: AdminOrganizationsFactory
     let adminOrganization: AdminOrganizationFactory
     let adminCommercialOffers: AdminCommercialOffersFactory

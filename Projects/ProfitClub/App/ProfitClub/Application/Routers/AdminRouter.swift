@@ -86,6 +86,7 @@ extension AdminRouter: Router {
                 userService: self.userService(user: user)
             ),
             factories: AdminFactories(
+                organizationService: self.organizationService,
                 adminOrganizations: self.adminOrganizationsFactory,
                 adminOrganization: self.adminOrganizationFactory,
                 adminCommercialOffers: self.adminCommercialOffersFactory,
@@ -116,8 +117,7 @@ extension AdminRouter: Router {
                 error: self.errorPresenter(),
                 activity: self.activityPresenter(),
                 confirmation: self.confirmationPresenter()
-            ),
-            services: AdminOrganizationServices()
+            )
         )
     }
 

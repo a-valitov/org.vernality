@@ -122,7 +122,10 @@ extension AdminPresenter: AdminOrganizationsModuleOutput {
     }
 
     func adminOrganizations(module: AdminOrganizationsModule, didSelect organization: PCOrganization) {
-        let adminOrganization = self.factories.adminOrganization.make(organization: organization, output: self)
+        let adminOrganization = self.factories.adminOrganization.make(
+            organizationService: self.factories.organizationService.make(organization: organization),
+            output: self
+        )
         self.weakAdmin?.raise(adminOrganization.viewController, animated: true)
     }
 }

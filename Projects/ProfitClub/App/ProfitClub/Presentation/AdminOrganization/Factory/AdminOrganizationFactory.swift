@@ -18,22 +18,23 @@ import Foundation
 import ErrorPresenter
 import ActivityPresenter
 import PCModel
+import PCOrganizationService
 
 final class AdminOrganizationFactory {
-    init(presenters: AdminOrganizationPresenters,
-         services: AdminOrganizationServices) {
+    init(presenters: AdminOrganizationPresenters) {
         self.presenters = presenters
-        self.services = services
     }
 
-    func make(organization: PCOrganization, output: AdminOrganizationModuleOutput?) -> AdminOrganizationModule {
-        let presenter = AdminOrganizationPresenter(organization: organization,
-                                                   presenters: self.presenters,
-                                                   services: self.services)
+    func make(organizationService: PCOrganizationService,
+              output: AdminOrganizationModuleOutput?) -> AdminOrganizationModule {
+        let presenter = AdminOrganizationPresenter(
+            organization: organizationService.organization,
+            presenters: self.presenters,
+            services: AdminOrganizationServices(organization: organizationService)
+        )
         presenter.output = output
         return presenter
     }
 
     private let presenters: AdminOrganizationPresenters
-    private let services: AdminOrganizationServices
 }

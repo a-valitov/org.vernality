@@ -33,6 +33,8 @@ public protocol PCUserService {
     func add(organization: PCOrganization,
              result: @escaping ((Result<PCOrganization, Error>) -> Void))
 
+    func fetch(_ status: PCOrganizationStatus, result: @escaping (Result<[AnyPCOrganization], Error>) -> Void)
+
     func editProfile(member: PCMember,
                      image: UIImage,
                      result: @escaping (Result<PCMember, Error>) -> Void)

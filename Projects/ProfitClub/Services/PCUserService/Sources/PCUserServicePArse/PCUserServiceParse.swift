@@ -43,6 +43,18 @@ final class PCUserServiceParse: PCUserService {
             }
         }
     }
+    
+    func fetch(_ status: PCOrganizationStatus, result: @escaping (Result<[AnyPCOrganization], Error>) -> Void) {
+        let query = PFQuery(className: "Organization")
+        query.whereKey("statusString", equalTo: status.rawValue)
+        query.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
+            if let error = error {
+                result(.failure(error))
+            } else if let objects = objects {
+                result(.success(objects.map({ $0.pcOrganization.any })))
+            }
+        }
+    }
 
     func reload(result: @escaping (Result<AnyPCUser, Error>) -> Void) {
         let parseUser = self.user.parse

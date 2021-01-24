@@ -30,9 +30,14 @@ protocol Router {
 }
 
 extension Router {
+    // factories
+    var organizationService: PCOrganizationServiceFactory {
+        return PCOrganizationServiceParseFactory()
+    }
+
     // services
     func organizationService(organization: PCOrganization) -> PCOrganizationService {
-        return PCOrganizationServiceParseFactory(organization: organization).make()
+        return self.organizationService.make(organization: organization)
     }
 
     func userService(user: PCUser) -> PCUserService {

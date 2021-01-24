@@ -28,11 +28,12 @@ struct DemoApp: App {
                             destination: ReviewView().environmentObject(user),
                             tag: .loggedIn,
                             selection: $appState) { EmptyView() }
+                        NavigationLink(
+                            destination: AddRoleView().environmentObject(user),
+                            tag: .registered,
+                            selection: $appState) { EmptyView() }
                     }
-                    NavigationLink(
-                        destination: AddRoleView(),
-                        tag: .registered,
-                        selection: $appState) { EmptyView() }
+
                 }
             }
         }

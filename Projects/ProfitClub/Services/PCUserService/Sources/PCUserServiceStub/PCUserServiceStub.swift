@@ -38,6 +38,10 @@ final class PCUserServiceStub: PCUserService {
         result(.success(true))
     }
 
+    func fetch(_ status: PCOrganizationStatus, result: @escaping (Result<[AnyPCOrganization], Error>) -> Void) {
+        result(.success([]))
+    }
+
     func reload(result: @escaping (Result<AnyPCUser, Error>) -> Void) {
         result(.success(self.user.any))
     }
