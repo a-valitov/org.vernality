@@ -195,6 +195,18 @@ PODS:
     - Parse
     - PCAuthentication
     - PCModel/Parse
+  - PCMember (0.0.1):
+    - PCMember/Sources (= 0.0.1)
+  - PCMember/Sources (0.0.1):
+    - ActivityPresenter
+    - ConfirmationPresenter
+    - ErrorPresenter
+    - Kingfisher
+    - MenuPresenter
+    - PCActionService
+    - PCModel
+    - PCUserService
+    - Raise
   - PCModel (0.0.1):
     - PCModel/Contract (= 0.0.1)
   - PCModel/Contract (0.0.1)
@@ -275,6 +287,7 @@ DEPENDENCIES:
   - PCAdmin (from `../Presentation/PCAdmin/PCAdmin.podspec`)
   - PCAuthentication/Parse (from `../Services/PCAuthentication/PCAuthentication.podspec`)
   - PCCommercialOfferService (from `../Services/PCCommercialOfferService/PCCommercialOfferService.podspec`)
+  - PCMember (from `../Presentation/PCMember/PCMember.podspec`)
   - PCModel/Parse (from `../Model/PCModel/PCModel.podspec`)
   - PCOnboard (from `../Presentation/PCOnboard/PCOnboard.podspec`)
   - PCOrganizationService (from `../Services/PCOrganizationService/PCOrganizationService.podspec`)
@@ -323,6 +336,8 @@ EXTERNAL SOURCES:
     :path: "../Services/PCAuthentication/PCAuthentication.podspec"
   PCCommercialOfferService:
     :path: "../Services/PCCommercialOfferService/PCCommercialOfferService.podspec"
+  PCMember:
+    :path: "../Presentation/PCMember/PCMember.podspec"
   PCModel:
     :path: "../Model/PCModel/PCModel.podspec"
   PCOnboard:
@@ -367,6 +382,7 @@ SPEC CHECKSUMS:
   PCAdmin: 8c6a9ded6a924513a650c276d76ae3a4285192b8
   PCAuthentication: 0df0033383cb957df518dc9eb1694e2ffc2f44df
   PCCommercialOfferService: 07469ba8d01877d41cd6cbdf51659c723e50d14f
+  PCMember: 91696ae39b689d7a85c47d3392f99ba8bc5814cb
   PCModel: f1a5156863a4758a54329a35721fb7d363683021
   PCOnboard: 95692aad391d951a10ca9d74a3cdd2f2097a3fa6
   PCOrganizationService: e2a419fa283997b14e96d25559941b0e362217e3
@@ -378,6 +394,6 @@ SPEC CHECKSUMS:
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   Raise: e40c0ad29b47647c0a0eab8bb754ba9f3905f06c
 
-PODFILE CHECKSUM: 9278c41e8c700102764daf568c46d321115351fc
+PODFILE CHECKSUM: 8177355bb44497cacf8034b2b0ddd082d9b98443
 
 COCOAPODS: 1.10.0

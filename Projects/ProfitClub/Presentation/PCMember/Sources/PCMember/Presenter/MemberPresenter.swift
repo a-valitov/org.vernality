@@ -20,6 +20,7 @@ import ActivityPresenter
 import ConfirmationPresenter
 import MenuPresenter
 import PCModel
+import Raise
 
 final class MemberPresenter: MemberModule {
     weak var output: MemberModuleOutput?

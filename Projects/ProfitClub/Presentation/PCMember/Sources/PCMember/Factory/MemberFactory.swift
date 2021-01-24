@@ -15,16 +15,25 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import Foundation
-import UIKit
+import ErrorPresenter
+import ActivityPresenter
 import PCModel
 
-protocol MemberModule: class {
-    var member: PCMember { get set }
-    var viewController: UIViewController { get }
-}
+public final class MemberFactory {
+    public init(presenters: MemberPresenters,
+         services: MemberServices) {
+        self.presenters = presenters
+        self.services = services
+    }
 
-protocol MemberModuleOutput: class {
-    func member(module: MemberModule, userWantsToOpenProfileOf member: PCMember)
-    func memberUserDidLogout(module: MemberModule)
-    func memberUserWantsToChangeRole(module: MemberModule)
+    public func make(member: PCMember, output: MemberModuleOutput?) -> MemberModule {
+        let presenter = MemberPresenter(member: member,
+                                        presenters: self.presenters,
+                                        services: self.services)
+        presenter.output = output
+        return presenter
+    }
+
+    private let services: MemberServices
+    private let presenters: MemberPresenters
 }

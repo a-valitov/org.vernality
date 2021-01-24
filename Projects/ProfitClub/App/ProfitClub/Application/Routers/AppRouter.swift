@@ -223,28 +223,6 @@ extension AppRouter: OrganizationModuleOutput {
     }
 }
 
-extension AppRouter: MemberModuleOutput {
-    func member(module: MemberModule, userWantsToOpenProfileOf member: PCMember) {
-        let memberProfileModule = self.profile(for: member)
-        self.navigationController.pushViewController(memberProfileModule.viewController, animated: true)
-    }
-    
-    func memberUserDidLogout(module: MemberModule) {
-        self.logout()
-    }
-
-    func memberUserWantsToChangeRole(module: MemberModule) {
-        if let reviewViewController = self.strongReviewRouter?.viewController {
-            self.navigationController.popToViewController(
-                reviewViewController,
-                animated: true
-            )
-        } else {
-            assertionFailure("Unable to unwind to Review module")
-        }
-    }
-}
-
 extension AppRouter: MemberProfileModuleOutput {
     func memberProfile(module: MemberProfileModule, didUpdate member: PCMember) {
 //        self.weakMember?.member = member

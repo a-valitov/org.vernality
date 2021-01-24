@@ -17,6 +17,7 @@
 import Foundation
 import UIKit
 import PCModel
+import PCMember
 
 protocol MemberRouterDelegate: class {
     func memberUserDidLogout(router: MemberRouter)
