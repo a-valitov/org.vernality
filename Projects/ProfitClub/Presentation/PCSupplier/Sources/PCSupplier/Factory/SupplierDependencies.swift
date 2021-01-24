@@ -23,15 +23,37 @@ import MenuPresenter
 import PCCommercialOfferService
 import PCUserService
 
-struct SupplierPresenters {
+public struct SupplierPresenters {
     let error: ErrorPresenter
     let activity: ActivityPresenter
     let confirmation: ConfirmationPresenter
     let menu: MenuPresenter
+
+    public init(
+        error: ErrorPresenter,
+        activity: ActivityPresenter,
+        confirmation: ConfirmationPresenter,
+        menu: MenuPresenter
+    ) {
+        self.error = error
+        self.activity = activity
+        self.confirmation = confirmation
+        self.menu = menu
+    }
 }
 
-struct SupplierServices {
+public struct SupplierServices {
     let user: PCUserService
     let action: PCActionService
     let commercialOffer: PCCommercialOfferService
+
+    public init(
+        user: PCUserService,
+        action: PCActionService,
+        commercialOffer: PCCommercialOfferService
+    ) {
+        self.user = user
+        self.action = action
+        self.commercialOffer = commercialOffer
+    }
 }

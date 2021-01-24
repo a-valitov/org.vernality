@@ -15,16 +15,25 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import Foundation
-import UIKit
+import ErrorPresenter
+import ActivityPresenter
 import PCModel
 
-protocol SupplierModule: class {
-    var supplier: PCSupplier { get set }
-    var viewController: UIViewController { get }
-}
-
-protocol SupplierModuleOutput: class {
-    func supplier(module: SupplierModule, userWantsToOpenProfileOf supplier: PCSupplier)
-    func supplierUserDidLogout(module: SupplierModule)
-    func supplierUserWantsToChangeRole(module: SupplierModule)
+public final class SupplierFactory {
+    public init(presenters: SupplierPresenters,
+         services: SupplierServices) {
+        self.presenters = presenters
+        self.services = services
+    }
+    
+    public func make(supplier: PCSupplier, output: SupplierModuleOutput?) -> SupplierModule {
+        let presenter = SupplierPresenter(supplier: supplier,
+                                          presenters: self.presenters,
+                                          services: self.services)
+        presenter.output = output
+        return presenter
+    }
+    
+    private let services: SupplierServices
+    private let presenters: SupplierPresenters
 }

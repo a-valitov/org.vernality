@@ -17,6 +17,7 @@
 import Foundation
 import UIKit
 import PCModel
+import PCSupplier
 
 protocol SupplierRouterDelegate: class {
     func supplierUserDidLogout(router: SupplierRouter)

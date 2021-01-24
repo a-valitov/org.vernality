@@ -1,5 +1,5 @@
 //  Copyright (C) 2020 Startup Studio Vernality
-//  Created by Macbook on 01.11.2020
+//  Created by Macbook on 20.10.2020
 //
 //  This program is free software: you can redistribute it and/or modify
 //  it under the terms of the GNU General Public License as published by
@@ -14,9 +14,17 @@
 //  You should have received a copy of the GNU General Public License
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import Foundation
 import UIKit
+import PCModel
 
-class FileCollectionViewCell: UICollectionViewCell {
-    
-    @IBOutlet weak var fileNameLabel: UILabel!
+public protocol SupplierModule: class {
+    var supplier: PCSupplier { get set }
+    var viewController: UIViewController { get }
+}
+
+public protocol SupplierModuleOutput: class {
+    func supplier(module: SupplierModule, userWantsToOpenProfileOf supplier: PCSupplier)
+    func supplierUserDidLogout(module: SupplierModule)
+    func supplierUserWantsToChangeRole(module: SupplierModule)
 }

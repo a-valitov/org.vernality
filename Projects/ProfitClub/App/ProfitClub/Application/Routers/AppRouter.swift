@@ -223,28 +223,6 @@ extension AppRouter: OrganizationModuleOutput {
     }
 }
 
-extension AppRouter: SupplierModuleOutput {
-    func supplier(module: SupplierModule, userWantsToOpenProfileOf supplier: PCSupplier) {
-        let supplierProfileModule = self.profile(for: supplier)
-        self.navigationController.pushViewController(supplierProfileModule.viewController, animated: true)
-    }
-    
-    func supplierUserDidLogout(module: SupplierModule) {
-        self.logout()
-    }
-
-    func supplierUserWantsToChangeRole(module: SupplierModule) {
-        if let reviewViewController = self.strongReviewRouter?.viewController {
-            self.navigationController.popToViewController(
-                reviewViewController,
-                animated: true
-            )
-        } else {
-            assertionFailure("Unable to unwind to Review module")
-        }
-    }
-}
-
 extension AppRouter: MemberModuleOutput {
     func member(module: MemberModule, userWantsToOpenProfileOf member: PCMember) {
         let memberProfileModule = self.profile(for: member)

@@ -35,6 +35,7 @@ target 'ProfitClub' do
   pod 'PCReview', :path => '../Presentation/PCReview/PCReview.podspec'
   pod 'PCAddRole', :path => '../Presentation/PCAddRole/PCAddRole.podspec'
   pod 'PCAdmin', :path => '../Presentation/PCAdmin/PCAdmin.podspec'
+  pod 'PCSupplier', :path => '../Presentation/PCSupplier/PCSupplier.podspec'
 
   # persistence
   pod 'PCUserPersistence/Parse', :path => '../Persistence/PCUserPersistence/PCUserPersistence.podspec'
