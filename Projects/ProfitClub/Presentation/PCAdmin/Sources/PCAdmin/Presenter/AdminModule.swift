@@ -16,9 +16,12 @@
 
 import Foundation
 import UIKit
+import PCModel
 
 public protocol AdminModule: class {
     var viewController: UIViewController { get }
+
+    func open(action: PCAction)
 }
 
 public protocol AdminModuleOutput: class {

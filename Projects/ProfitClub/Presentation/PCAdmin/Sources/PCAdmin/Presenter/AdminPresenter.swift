@@ -37,8 +37,17 @@ final class AdminPresenter: AdminModule {
         self.factories = factories
     }
 
+    func open(action: PCAction) {
+        self.weakAdmin?.unraise(animated: true, completion: { [weak self] in
+            guard let sSelf = self else { return }
+            sSelf.weakAdmin?.selectedIndex = 0
+            let adminAction = sSelf.factories.adminAction.make(action: action, output: sSelf)
+            sSelf.weakAdmin?.raise(adminAction.viewController, animated: true)
+        })
+    }
+
     // views
-    private var admin: UIViewController {
+    private var admin: UITabBarController {
         if let admin = self.weakAdmin {
             return admin
         } else {
@@ -60,7 +69,7 @@ final class AdminPresenter: AdminModule {
             return admin
         }
     }
-    private weak var weakAdmin: UIViewController?
+    private weak var weakAdmin: UITabBarController?
 
     // dependencies
     private let presenters: AdminPresenters

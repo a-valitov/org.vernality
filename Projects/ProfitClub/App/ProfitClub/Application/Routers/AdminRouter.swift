@@ -47,6 +47,10 @@ final class AdminRouter {
         self.user = user
     }
 
+    func route(to action: PCAction) {
+        self.weakAdmin?.open(action: action)
+    }
+
     private var admin: AdminModule {
         if let admin = self.weakAdmin {
             return admin

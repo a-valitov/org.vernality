@@ -45,6 +45,10 @@ final class ReviewRouter {
         self.user = user
     }
 
+    func route(to action: PCAction) {
+        self.strongAdminRouter?.route(to: action)
+    }
+
     // modules
     private var review: ReviewModule {
         if let review = self.weakReview {

@@ -154,7 +154,6 @@ final class AppRouter {
 // MARK: - Push Notifications handling
 extension AppRouter {
     func handle(push: AppPush) {
-        guard self.isAdministrator else { return }
         switch push {
         case .actionCreated(let actionId):
             self.openAdminAction(actionId: actionId)
@@ -175,9 +174,7 @@ extension AppRouter {
             guard let sSelf = self else { return }
             switch result {
             case .success(let action):
-//                let adminAction = sSelf.factory.adminAction(action: action, output: sSelf)
-//                sSelf.navigationController.raise(adminAction.viewController, animated: true)
-            break // TODO: @rinatenikeev
+                self?.strongReviewRouter?.route(to: action)
             case .failure(let error):
                 sSelf.errorPresenter.present(error)
             }
