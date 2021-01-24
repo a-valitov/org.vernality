@@ -20,6 +20,7 @@ import PCModel
 
 final class SupplierProfilePresenter: SupplierProfileModule {
     weak var output: SupplierProfileModuleOutput?
+    var router: AnyObject?
     var viewController: UIViewController {
         return self.view
     }

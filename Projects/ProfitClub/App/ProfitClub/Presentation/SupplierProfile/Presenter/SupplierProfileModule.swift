@@ -19,6 +19,7 @@ import PCModel
 
 protocol SupplierProfileModule: class {
     var viewController: UIViewController { get }
+    var router: AnyObject? { get set }
 }
 
 protocol SupplierProfileModuleOutput: class {

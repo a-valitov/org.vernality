@@ -63,16 +63,41 @@ final class SupplierRouter {
     }
     private weak var weakSupplierModule: SupplierModule?
 
+    private func supplierProfileRouter(supplier: PCSupplier) -> SupplierProfileRouter {
+        if let supplierProfileRouter = self.weakSupplierProfileRouter {
+            return supplierProfileRouter
+        } else {
+            let supplierProfileRouter = SupplierProfileRouter(
+                user: self.user,
+                supplier: supplier
+            )
+            supplierProfileRouter.delegate = self
+            self.weakSupplierProfileRouter = supplierProfileRouter
+            return supplierProfileRouter
+        }
+    }
+    private weak var weakSupplierProfileRouter: SupplierProfileRouter?
+
     private let user: PCUser
     private let supplier: PCSupplier
     private weak var weakNavigationController: UINavigationController?
+}
+
+// MARK: - SupplierProfileRouterDelegate
+extension SupplierRouter: SupplierProfileRouterDelegate {
+    func supplierProfile(router: SupplierProfileRouter, didUpdate supplier: PCSupplier) {
+        self.weakSupplierModule?.supplier = supplier
+    }
 }
 
 // MARK: - ModuleOutput
 extension SupplierRouter: SupplierModuleOutput {
     func supplier(module: SupplierModule,
                   userWantsToOpenProfileOf supplier: PCSupplier) {
-
+        self.navigationController.pushViewController(
+            self.supplierProfileRouter(supplier: supplier).viewController,
+            animated: true
+        )
     }
 
     func supplierUserDidLogout(module: SupplierModule) {

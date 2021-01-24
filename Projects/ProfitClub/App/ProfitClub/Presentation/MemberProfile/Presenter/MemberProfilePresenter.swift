@@ -21,6 +21,7 @@ import PCModel
 
 final class MemberProfilePresenter: MemberProfileModule {
     weak var output: MemberProfileModuleOutput?
+    var router: AnyObject?
     var viewController: UIViewController {
         return self.view
     }

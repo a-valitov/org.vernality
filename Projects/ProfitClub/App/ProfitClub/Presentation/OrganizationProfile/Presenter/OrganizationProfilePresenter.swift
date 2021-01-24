@@ -20,6 +20,7 @@ import PCModel
 
 final class OrganizationProfilePresenter: OrganizationProfileModule {
     weak var output: OrganizationProfileModuleOutput?
+    var router: AnyObject?
     var viewController: UIViewController {
         return self.view
     }

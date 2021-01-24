@@ -20,6 +20,7 @@ import PCModel
 
 protocol MemberProfileModule: class {
     var viewController: UIViewController { get }
+    var router: AnyObject? { get set }
 }
 
 protocol MemberProfileModuleOutput: class {
