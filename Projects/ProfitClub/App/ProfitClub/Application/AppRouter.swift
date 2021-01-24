@@ -25,7 +25,7 @@ import PCOnboard
 import PCReview
 import PCUserPersistence
 
-final class AppPresenter {
+final class AppRouter {
     init(factory: AppFactory) {
         self.factory = factory
     }
@@ -193,7 +193,7 @@ final class AppPresenter {
 }
 
 // MARK: - Push Notifications handling
-extension AppPresenter {
+extension AppRouter {
     func handle(push: AppPush) {
         guard self.isAdministrator else { return }
         switch push {
@@ -241,7 +241,7 @@ extension AppPresenter {
     }
 }
 
-extension AppPresenter: AddRoleModuleOutput {
+extension AppRouter: AddRoleModuleOutput {
     func addRole(module: AddRoleModule, didAddSupplier supplier: PCSupplier) {
         self.navigationController.popToRootViewController(animated: true)
     }
@@ -255,7 +255,7 @@ extension AppPresenter: AddRoleModuleOutput {
     }
 }
 
-extension AppPresenter: AdminActionModuleOutput {
+extension AppRouter: AdminActionModuleOutput {
     func adminAction(module: AdminActionModule, didApprove action: PCAction) {
         self.navigationController.unraise(animated: true)
     }
@@ -265,7 +265,7 @@ extension AppPresenter: AdminActionModuleOutput {
     }
 }
 
-extension AppPresenter: OnboardModuleOutput {
+extension AppRouter: OnboardModuleOutput {
     func onboard(module: OnboardModule, didLogin user: PCUser) {
         self.navigationController.setViewControllers([self.review.viewController], animated: true)
     }
@@ -275,7 +275,7 @@ extension AppPresenter: OnboardModuleOutput {
     }
 }
 
-extension AppPresenter: ReviewModuleOutput {
+extension AppRouter: ReviewModuleOutput {
     func reviewUserWantsToLogout(module: ReviewModule) {
         self.logout()
     }
@@ -307,7 +307,7 @@ extension AppPresenter: ReviewModuleOutput {
     }
 }
 
-extension AppPresenter: OrganizationModuleOutput {
+extension AppRouter: OrganizationModuleOutput {
     func organization(module: OrganizationModule, userWantsToOpenProfileOf organization: PCOrganization) {
         let organizationProfileModule = self.profile(for: organization)
         self.navigationController.pushViewController(organizationProfileModule.viewController, animated: true)
@@ -320,7 +320,7 @@ extension AppPresenter: OrganizationModuleOutput {
     }
 }
 
-extension AppPresenter: SupplierModuleOutput {
+extension AppRouter: SupplierModuleOutput {
     func supplier(module: SupplierModule, userWantsToOpenProfileOf supplier: PCSupplier) {
         let supplierProfileModule = self.profile(for: supplier)
         self.navigationController.pushViewController(supplierProfileModule.viewController, animated: true)
@@ -335,7 +335,7 @@ extension AppPresenter: SupplierModuleOutput {
     }
 }
 
-extension AppPresenter: MemberModuleOutput {
+extension AppRouter: MemberModuleOutput {
     func member(module: MemberModule, userWantsToOpenProfileOf member: PCMember) {
         let memberProfileModule = self.profile(for: member)
         self.navigationController.pushViewController(memberProfileModule.viewController, animated: true)
@@ -350,25 +350,25 @@ extension AppPresenter: MemberModuleOutput {
     }
 }
 
-extension AppPresenter: MemberProfileModuleOutput {
+extension AppRouter: MemberProfileModuleOutput {
     func memberProfile(module: MemberProfileModule, didUpdate member: PCMember) {
         self.weakMember?.member = member
     }
 }
 
-extension AppPresenter: OrganizationProfileModuleOutput {
+extension AppRouter: OrganizationProfileModuleOutput {
     func organizationProfile(module: OrganizationProfileModule, didUpdate organization: PCOrganization) {
         self.weakOrganization?.organization = organization
     }
 }
 
-extension AppPresenter: SupplierProfileModuleOutput {
+extension AppRouter: SupplierProfileModuleOutput {
     func supplierProfile(module: SupplierProfileModule, didUpdate supplier: PCSupplier) {
         self.weakSupplier?.supplier = supplier
     }
 }
 
-extension AppPresenter: AdminModuleOutput {
+extension AppRouter: AdminModuleOutput {
     func adminUserWantsToLogout(module: AdminModule) {
         self.logout()
     }
@@ -379,7 +379,7 @@ extension AppPresenter: AdminModuleOutput {
 }
 
 // MARK: - Private
-extension AppPresenter {
+extension AppRouter {
     private func logout() {
         self.userService.logout { [weak self] result in
             guard let sSelf = self else { return }

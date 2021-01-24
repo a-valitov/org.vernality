@@ -37,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UNUserNotificationCenter.current().delegate = self
         self.registerForPushNotifications()
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        let appPresenter = AppPresenter(factory: AppFactory())
+        let appPresenter = AppRouter(factory: AppFactory())
         appPresenter.present(in: self.window)
         self.appPresenter = appPresenter
         return true
@@ -57,7 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         PFPush.handle(userInfo)
     }
 
-    private var appPresenter: AppPresenter?
+    private var appPresenter: AppRouter?
 
     private func registerForPushNotifications() {
       UNUserNotificationCenter.current()

@@ -54,7 +54,7 @@
 		0E6FBA652545AC9B00A2B882 /* ActionsFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E6FBA642545AC9B00A2B882 /* ActionsFactory.swift */; };
 		0E72644525A4A643006306B1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0E72644425A4A643006306B1 /* GoogleService-Info.plist */; };
 		0E772A8D2504D39000D677E6 /* PlayfairDisplay-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0E772A8C2504D39000D677E6 /* PlayfairDisplay-Bold.ttf */; };
-		0E90496E24F390070061A605 /* AppPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E90496D24F390070061A605 /* AppPresenter.swift */; };
+		0E90496E24F390070061A605 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E90496D24F390070061A605 /* AppRouter.swift */; };
 		0E90497124F390270061A605 /* AppFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E90497024F390270061A605 /* AppFactory.swift */; };
 		0E90498724F60C980061A605 /* SelectRoleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E90498624F60C980061A605 /* SelectRoleView.swift */; };
 		0E90498A24F60D250061A605 /* SelectRoleViewAlpha.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0E90498924F60D250061A605 /* SelectRoleViewAlpha.swift */; };
@@ -325,7 +325,7 @@
 		0E72644425A4A643006306B1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		0E772A8C2504D39000D677E6 /* PlayfairDisplay-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PlayfairDisplay-Bold.ttf"; sourceTree = "<group>"; };
 		0E772A8E2505174D00D677E6 /* ProfitClub.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ProfitClub.entitlements; sourceTree = "<group>"; };
-		0E90496D24F390070061A605 /* AppPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPresenter.swift; sourceTree = "<group>"; };
+		0E90496D24F390070061A605 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		0E90497024F390270061A605 /* AppFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFactory.swift; sourceTree = "<group>"; };
 		0E90498624F60C980061A605 /* SelectRoleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRoleView.swift; sourceTree = "<group>"; };
 		0E90498924F60D250061A605 /* SelectRoleViewAlpha.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectRoleViewAlpha.swift; sourceTree = "<group>"; };
@@ -996,7 +996,7 @@
 			isa = PBXGroup;
 			children = (
 				0EA11EC724F2B88F00133485 /* AppDelegate.swift */,
-				0E90496D24F390070061A605 /* AppPresenter.swift */,
+				0E90496D24F390070061A605 /* AppRouter.swift */,
 				0E06F95C25B49D5100E975F6 /* AppPush.swift */,
 				0E90497024F390270061A605 /* AppFactory.swift */,
 			);
@@ -2726,7 +2726,7 @@
 				FA8CB898255ADA6400D09B1D /* AdminOrganizationPresenter.swift in Sources */,
 				FAD704A02550103600DE8AD7 /* MembersModule.swift in Sources */,
 				0E56174025372BF3005DF4F3 /* ActionsContainerViewBeta.swift in Sources */,
-				0E90496E24F390070061A605 /* AppPresenter.swift in Sources */,
+				0E90496E24F390070061A605 /* AppRouter.swift in Sources */,
 				FA50B12B25A71D98003D514B /* AdminApprovedSuppliersViewAlpha.swift in Sources */,
 				FA0F4BFD25A104B20011484E /* AdminApprovedOrganizationsViewBetaTableViewCell.swift in Sources */,
 				FA69F9EF2573A73700F519CB /* OrganizationTabBarViewAlpha.swift in Sources */,
