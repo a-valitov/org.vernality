@@ -19,12 +19,14 @@ import Parse
 import UserNotifications
 import Firebase
 import PCUserPersistence
+import PCFontProvider
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        PCFontProvider.loadFonts()
         let parseConfig = ParseClientConfiguration {
             $0.applicationId = Secrets.parseApplicationId
             $0.clientKey = Secrets.parseClientKey

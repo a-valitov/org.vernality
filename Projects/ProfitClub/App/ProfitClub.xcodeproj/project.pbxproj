@@ -189,13 +189,13 @@
 				0EDB95D625BD6B4D00F0C158 /* AddRoleRouter.swift */,
 				0EDB95CE25BD65A100F0C158 /* AdminRouter.swift */,
 				0E1B51AC25BDA1A2002A9C5A /* MemberRouter.swift */,
+				0E1B534925BDE37B002A9C5A /* MemberProfileRouter.swift */,
 				0E1B52C325BDC26E002A9C5A /* OnboardRouter.swift */,
+				0E1B531C25BDE0DE002A9C5A /* OrganizationProfileRouter.swift */,
 				0EDB95D925BD715A00F0C158 /* OrganizationRouter.swift */,
 				0EDB95CA25BD4D5000F0C158 /* ReviewRouter.swift */,
 				0E1B51A925BD9EB4002A9C5A /* SupplierRouter.swift */,
 				0E1B52C825BDCCED002A9C5A /* SupplierProfileRouter.swift */,
-				0E1B531C25BDE0DE002A9C5A /* OrganizationProfileRouter.swift */,
-				0E1B534925BDE37B002A9C5A /* MemberProfileRouter.swift */,
 			);
 			path = Routers;
 			sourceTree = "<group>";

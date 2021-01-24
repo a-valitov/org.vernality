@@ -111,6 +111,7 @@ PODS:
     - PCAdmin/PCAdminOrganizations
     - PCAdmin/PCAdminSupplier
     - PCAdmin/PCAdminSuppliers
+    - PCFontProvider
     - PCModel
     - PCOrganizationService
     - PCUserService
@@ -195,6 +196,7 @@ PODS:
     - Parse
     - PCAuthentication
     - PCModel/Parse
+  - PCFontProvider (0.0.1)
   - PCMember (0.0.1):
     - PCMember/Sources (= 0.0.1)
   - PCMember/Sources (0.0.1):
@@ -370,6 +372,7 @@ DEPENDENCIES:
   - PCAdmin (from `../Presentation/PCAdmin/PCAdmin.podspec`)
   - PCAuthentication/Parse (from `../Services/PCAuthentication/PCAuthentication.podspec`)
   - PCCommercialOfferService (from `../Services/PCCommercialOfferService/PCCommercialOfferService.podspec`)
+  - PCFontProvider (from `../Util/PCFontProvider/PCFontProvider.podspec`)
   - PCMember (from `../Presentation/PCMember/PCMember.podspec`)
   - PCMemberProfile (from `../Presentation/PCMemberProfile/PCMemberProfile.podspec`)
   - PCModel/Parse (from `../Model/PCModel/PCModel.podspec`)
@@ -423,6 +426,8 @@ EXTERNAL SOURCES:
     :path: "../Services/PCAuthentication/PCAuthentication.podspec"
   PCCommercialOfferService:
     :path: "../Services/PCCommercialOfferService/PCCommercialOfferService.podspec"
+  PCFontProvider:
+    :path: "../Util/PCFontProvider/PCFontProvider.podspec"
   PCMember:
     :path: "../Presentation/PCMember/PCMember.podspec"
   PCMemberProfile:
@@ -474,9 +479,10 @@ SPEC CHECKSUMS:
   Parse: e40fdb9c7d665823b7fe9865949cac9a53eb2ce7
   PCActionService: 2ec6ae69a564f94077c95ed604ae5525e374e550
   PCAddRole: 8c88b2782bf5b53ec90f52c2c6e1051f6caa3db5
-  PCAdmin: 8c6a9ded6a924513a650c276d76ae3a4285192b8
+  PCAdmin: e2588064e15c76c111b0e8b683acb28faa25b206
   PCAuthentication: 0df0033383cb957df518dc9eb1694e2ffc2f44df
   PCCommercialOfferService: 07469ba8d01877d41cd6cbdf51659c723e50d14f
+  PCFontProvider: 424cd745bcf880d5218ada4972fc5e67a1aa03be
   PCMember: 91696ae39b689d7a85c47d3392f99ba8bc5814cb
   PCMemberProfile: d4b1d53e758e3c5b7e74e343c3abbc6ce6507fbe
   PCModel: f1a5156863a4758a54329a35721fb7d363683021
@@ -493,6 +499,6 @@ SPEC CHECKSUMS:
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   Raise: e40c0ad29b47647c0a0eab8bb754ba9f3905f06c
 
-PODFILE CHECKSUM: 7e361d188e412cfc2fc2c71b3e2fb2f84ccc9cd3
+PODFILE CHECKSUM: 3c5ad9ed38f0be8732e4e0aec5269d183f668388
 
 COCOAPODS: 1.10.0

@@ -44,6 +44,10 @@ target 'ProfitClub' do
 
   # persistence
   pod 'PCUserPersistence/Parse', :path => '../Persistence/PCUserPersistence/PCUserPersistence.podspec'
+
+  # util
+  pod 'PCFontProvider', :path => '../Util/PCFontProvider/PCFontProvider.podspec'
+  
 end
 
 post_install do |installer|
