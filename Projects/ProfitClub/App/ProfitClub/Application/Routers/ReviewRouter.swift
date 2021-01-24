@@ -105,21 +105,21 @@ extension ReviewRouter: AddRoleRouterDelegate {
     func addRole(router: AddRoleRouter, didAdd organization: PCOrganization) {
         self.navigationController.popToViewController(
             self.viewController,
-            animated: false
+            animated: true
         )
     }
 
     func addRole(router: AddRoleRouter, didAdd supplier: PCSupplier) {
         self.navigationController.popToViewController(
             self.viewController,
-            animated: false
+            animated: true
         )
     }
 
     func addRole(router: AddRoleRouter, didAdd member: PCMember) {
         self.navigationController.popToViewController(
             self.viewController,
-            animated: false
+            animated: true
         )
     }
 }
