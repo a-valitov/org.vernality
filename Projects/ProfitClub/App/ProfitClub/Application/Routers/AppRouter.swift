@@ -83,15 +83,6 @@ final class AppRouter {
         }
     }
 
-    private var addRole: AddRoleModule {
-        if let addRole = self.weakAddRole {
-            return addRole
-        } else {
-            let addRole = self.factory.addRole(output: self)
-            self.weakAddRole = addRole
-            return addRole
-        }
-    }
     private func organization(for organization: PCOrganization) -> OrganizationModule {
         if let organization = self.weakOrganization {
             return organization
@@ -168,7 +159,6 @@ final class AppRouter {
     private weak var weakOrganization: OrganizationModule?
     private weak var weakSupplier: SupplierModule?
     private weak var weakOnboard: OnboardModule?
-    private weak var weakAddRole: AddRoleModule?
 }
 
 // MARK: - Push Notifications handling
@@ -227,30 +217,6 @@ extension AppRouter: ReviewRouterDelegate {
             [self.onboard.viewController],
             animated: true
         )
-    }
-}
-
-extension AppRouter: AddRoleModuleOutput {
-    func addRole(module: AddRoleModule, didAddSupplier supplier: PCSupplier) {
-        self.navigationController.popToRootViewController(animated: true)
-    }
-
-    func addRole(module: AddRoleModule, didAddOrganization organization: PCOrganization) {
-        self.navigationController.popToRootViewController(animated: true)
-    }
-
-    func addRole(module: AddRoleModule, didAddMember member: PCMember) {
-        self.navigationController.popToRootViewController(animated: true)
-    }
-}
-
-extension AppRouter: AdminActionModuleOutput {
-    func adminAction(module: AdminActionModule, didApprove action: PCAction) {
-        self.navigationController.unraise(animated: true)
-    }
-
-    func adminAction(module: AdminActionModule, didReject action: PCAction) {
-        self.navigationController.unraise(animated: true)
     }
 }
 

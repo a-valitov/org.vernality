@@ -114,11 +114,6 @@ extension AppFactory {
         let module = self.supplierProfileFactory.make(supplier: supplier, output: output)
         return module
     }
-
-    func addRole(output: AddRoleModuleOutput?) -> AddRoleModule {
-        let module = self.addRoleFactory.make(output: output)
-        return module
-    }
 }
 
 // MARK: - Factories

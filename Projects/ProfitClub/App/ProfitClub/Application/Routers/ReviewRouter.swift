@@ -70,6 +70,18 @@ final class ReviewRouter {
     }
     private var strongAdminRouter: AdminRouter?
 
+    private func addRoleRouter(user: PCUser) -> AddRoleRouter {
+        if let addRoleRouter = self.strongAddRoleRouter {
+            return addRoleRouter
+        } else {
+            let addRoleRouter = AddRoleRouter(user: user)
+            addRoleRouter.delegate = self
+            self.strongAddRoleRouter = addRoleRouter
+            return addRoleRouter
+        }
+    }
+    private var strongAddRoleRouter: AddRoleRouter?
+
     // state
     private let user: PCUser
     private weak var weakNavigationController: UINavigationController?
@@ -84,6 +96,30 @@ extension ReviewRouter: AdminRouterDelegate {
         self.navigationController.popToViewController(
             self.viewController,
             animated: true
+        )
+    }
+}
+
+// MARK: - AddRoleRouterDelegate
+extension ReviewRouter: AddRoleRouterDelegate {
+    func addRole(router: AddRoleRouter, didAdd organization: PCOrganization) {
+        self.navigationController.popToViewController(
+            self.viewController,
+            animated: false
+        )
+    }
+
+    func addRole(router: AddRoleRouter, didAdd supplier: PCSupplier) {
+        self.navigationController.popToViewController(
+            self.viewController,
+            animated: false
+        )
+    }
+
+    func addRole(router: AddRoleRouter, didAdd member: PCMember) {
+        self.navigationController.popToViewController(
+            self.viewController,
+            animated: false
         )
     }
 }
@@ -112,7 +148,10 @@ extension ReviewRouter: ReviewModuleOutput {
     }
 
     func reviewUserWantsToAddRole(module: ReviewModule) {
-//        self.navigationController.pushViewController(self.addRole.viewController, animated: true)
+        self.navigationController.pushViewController(
+            self.addRoleRouter(user: self.user).viewController,
+            animated: true
+        )
     }
 
     func reviewUserWantsToEnterAdmin(module: ReviewModule) {
