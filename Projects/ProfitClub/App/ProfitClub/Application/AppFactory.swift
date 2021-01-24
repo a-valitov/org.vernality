@@ -89,6 +89,6 @@ extension AppFactory {
 // MARK: - Factories
 extension AppFactory {
     var memberProfileFactory: MemberProfileFactory {
-        return MemberProfileFactory(presenters: MemberProfilePresenters(error: self.errorPresenter(), activity: self.activityPresenter()), services: MemberProfileServices(member: self.userService))
+        return MemberProfileFactory(presenters: MemberProfilePresenters(error: self.errorPresenter(), activity: self.activityPresenter()), services: MemberProfileServices(user: self.userService))
     }
 }

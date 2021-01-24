@@ -25,5 +25,5 @@ struct MemberProfilePresenters {
 }
 
 struct MemberProfileServices {
-    let member: PCUserService
+    let user: PCUserService
 }

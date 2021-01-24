@@ -63,7 +63,7 @@ final class MemberProfilePresenter: MemberProfileModule {
 extension MemberProfilePresenter: MemberProfileViewOutput {
     func memberProfile(view: MemberProfileViewInput, userDidChangeImage image: UIImage) {
         self.presenters.activity.increment()
-        self.services.member.editProfile(member: member, image: image) { [weak self] (result) in
+        self.services.user.editProfile(member: member, image: image) { [weak self] (result) in
             guard let sSelf = self else { return }
             sSelf.presenters.activity.decrement()
             switch result {
