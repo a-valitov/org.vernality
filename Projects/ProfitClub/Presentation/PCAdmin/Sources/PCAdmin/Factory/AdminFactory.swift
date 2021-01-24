@@ -17,30 +17,25 @@
 import Foundation
 import ErrorPresenter
 import ActivityPresenter
-import ConfirmationPresenter
-import MenuPresenter
-import PCUserService
-import PCOrganizationService
 
-struct AdminPresenters {
-    let error: ErrorPresenter
-    let activity: ActivityPresenter
-    let confirmation: ConfirmationPresenter
-    let menu: MenuPresenter
-}
+public final class AdminFactory {
+    public init(presenters: AdminPresenters,
+                services: AdminServices,
+                factories: AdminFactories) {
+        self.presenters = presenters
+        self.services = services
+        self.factories = factories
+    }
 
-struct AdminServices {
-    let userService: PCUserService
-}
+    public func make(output: AdminModuleOutput?) -> AdminModule {
+        let presenter = AdminPresenter(presenters: self.presenters,
+                                       services: self.services,
+                                       factories: self.factories)
+        presenter.output = output
+        return presenter
+    }
 
-struct AdminFactories {
-    let organizationService: PCOrganizationServiceFactory
-    let adminOrganizations: AdminOrganizationsFactory
-    let adminOrganization: AdminOrganizationFactory
-    let adminCommercialOffers: AdminCommercialOffersFactory
-    let adminCommercialOffer: AdminCommercialOfferFactory
-    let adminSuppliers: AdminSuppliersFactory
-    let adminSupplier: AdminSupplierFactory
-    let adminActions: AdminActionsFactory
-    let adminAction: AdminActionFactory
+    private let presenters: AdminPresenters
+    private let services: AdminServices
+    private let factories: AdminFactories
 }

@@ -17,11 +17,11 @@
 import Foundation
 import UIKit
 
-protocol AdminModule: class {
+public protocol AdminModule: class {
     var viewController: UIViewController { get }
 }
 
-protocol AdminModuleOutput: class {
+public protocol AdminModuleOutput: class {
     func adminUserDidLogout(module: AdminModule)
     func adminUserWantsToChangeRole(module: AdminModule)
 }

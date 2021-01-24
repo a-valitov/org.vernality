@@ -24,6 +24,7 @@ import ActivityPresenter
 import PCOnboard
 import PCReview
 import PCUserPersistence
+import PCAdmin
 
 final class AppRouter {
     var viewController: UIViewController {

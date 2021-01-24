@@ -17,6 +17,7 @@
 import Foundation
 import UIKit
 import PCModel
+import PCAdmin
 
 protocol AdminRouterDelegate: class {
     func adminUserDidLogout(router: AdminRouter)
@@ -86,112 +87,8 @@ extension AdminRouter: Router {
                 userService: self.userService(user: user)
             ),
             factories: AdminFactories(
-                organizationService: self.organizationService,
-                adminOrganizations: self.adminOrganizationsFactory,
-                adminOrganization: self.adminOrganizationFactory,
-                adminCommercialOffers: self.adminCommercialOffersFactory,
-                adminCommercialOffer: self.adminCommercialOfferFactory,
-                adminSuppliers: self.adminSuppliersFactory,
-                adminSupplier: self.adminSupplierFactory,
-                adminActions: self.adminActionsFactory,
-                adminAction: self.adminActionFactory
-            )
-        )
-    }
-
-    private var adminOrganizationsFactory: AdminOrganizationsFactory {
-        return AdminOrganizationsFactory(
-            presenters: AdminOrganizationsPresenters(
-                error: self.errorPresenter(),
-                activity: self.activityPresenter()
-            ),
-            services: AdminOrganizationsServices(
-                user: self.userService(user: self.user)
-            )
-        )
-    }
-
-    private var adminOrganizationFactory: AdminOrganizationFactory {
-        return AdminOrganizationFactory(
-            presenters: AdminOrganizationPresenters(
-                error: self.errorPresenter(),
-                activity: self.activityPresenter(),
-                confirmation: self.confirmationPresenter()
-            )
-        )
-    }
-
-    private var adminSuppliersFactory: AdminSuppliersFactory {
-        return AdminSuppliersFactory(
-            presenters: AdminSuppliersPresenters(
-                error: self.errorPresenter(),
-                activity: self.activityPresenter()
-            ),
-            services: AdminSuppliersServices(
-                supplier: self.supplierService()
-            )
-        )
-    }
-
-    private var adminSupplierFactory: AdminSupplierFactory {
-        return AdminSupplierFactory(
-            presenters: AdminSupplierPresenters(
-                error: self.errorPresenter(),
-                activity: self.activityPresenter(),
-                confirmation: self.confirmationPresenter()
-            ),
-            services: AdminSupplierServices(
-                supplier: self.supplierService()
-            )
-        )
-    }
-
-    private var adminActionsFactory: AdminActionsFactory {
-        return AdminActionsFactory(
-            presenters: AdminActionsPresenters(
-                error: self.errorPresenter(),
-                activity: self.activityPresenter()
-            ),
-            services: AdminActionsServices(
-                action: self.actionService()
-            )
-        )
-    }
-
-    private var adminActionFactory: AdminActionFactory {
-        return AdminActionFactory(
-            presenters: AdminActionPresenters(
-                error: self.errorPresenter(),
-                activity: self.activityPresenter(),
-                confirmation: self.confirmationPresenter()
-            ),
-            services: AdminActionServices(
-                action: self.actionService()
-            )
-        )
-    }
-
-    private var adminCommercialOffersFactory: AdminCommercialOffersFactory {
-        return AdminCommercialOffersFactory(
-            presenters: AdminCommercialOffersPresenters(
-                error: self.errorPresenter(),
-                activity: self.activityPresenter()
-            ),
-            services: AdminCommercialOffersServices(
-                commercialOffers: self.commercialOfferService()
-            )
-        )
-    }
-
-    private var adminCommercialOfferFactory: AdminCommercialOfferFactory {
-        return AdminCommercialOfferFactory(
-            presenters: AdminCommercialOfferPresenters(
-                error: self.errorPresenter(),
-                activity: self.activityPresenter(),
-                confirmation: self.confirmationPresenter()
-            ),
-            services: AdminCommercialOfferServices(
-                commercialOffer: self.commercialOfferService()
+                user: user,
+                organizationService: self.organizationService
             )
         )
     }

@@ -141,7 +141,7 @@ final class AdminCommercialOfferApplicationViewAlpha: UIViewController {
         view.backgroundColor = .white
         self.output?.adminCommercialOfferApplicationDidLoad(view: self)
 
-        fileCollectionView.register(SupplierCommercialOfferViewAlphaFileCell.self, forCellWithReuseIdentifier: SupplierCommercialOfferViewAlphaFileCell.reuseIdentifier)
+        fileCollectionView.register(AdminCommercialOfferViewAlphaFileCell.self, forCellWithReuseIdentifier: AdminCommercialOfferViewAlphaFileCell.reuseIdentifier)
         fileCollectionView.delegate = self
         fileCollectionView.dataSource = self
 
@@ -227,7 +227,7 @@ extension AdminCommercialOfferApplicationViewAlpha: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SupplierCommercialOfferViewAlphaFileCell.reuseIdentifier, for: indexPath) as! SupplierCommercialOfferViewAlphaFileCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AdminCommercialOfferViewAlphaFileCell.reuseIdentifier, for: indexPath) as! AdminCommercialOfferViewAlphaFileCell
 
         cell.fileNameLabel.text = self.attachmentNames[indexPath.row]
 

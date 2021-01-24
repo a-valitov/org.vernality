@@ -95,6 +95,92 @@ PODS:
     - ConfirmationPresenter
     - ErrorPresenter
     - PCModel
+    - PCUserService
+  - PCAdmin (0.0.1):
+    - PCAdmin/PCAdmin (= 0.0.1)
+  - PCAdmin/PCAdmin (0.0.1):
+    - ActivityPresenter
+    - ConfirmationPresenter
+    - ErrorPresenter
+    - MenuPresenter
+    - PCAdmin/PCAdminAction
+    - PCAdmin/PCAdminActions
+    - PCAdmin/PCAdminCommercialOffer
+    - PCAdmin/PCAdminCommercialOffers
+    - PCAdmin/PCAdminOrganization
+    - PCAdmin/PCAdminOrganizations
+    - PCAdmin/PCAdminSupplier
+    - PCAdmin/PCAdminSuppliers
+    - PCModel
+    - PCOrganizationService
+    - PCUserService
+    - Raise
+  - PCAdmin/PCAdminAction (0.0.1):
+    - ActivityPresenter
+    - ConfirmationPresenter
+    - ErrorPresenter
+    - MenuPresenter
+    - PCActionService
+    - PCModel
+    - PCOrganizationService
+    - PCUserService
+  - PCAdmin/PCAdminActions (0.0.1):
+    - ActivityPresenter
+    - ConfirmationPresenter
+    - ErrorPresenter
+    - MenuPresenter
+    - PCModel
+    - PCOrganizationService
+    - PCUserService
+  - PCAdmin/PCAdminCommercialOffer (0.0.1):
+    - ActivityPresenter
+    - ConfirmationPresenter
+    - ErrorPresenter
+    - MenuPresenter
+    - PCCommercialOfferService
+    - PCModel
+    - PCOrganizationService
+    - PCUserService
+  - PCAdmin/PCAdminCommercialOffers (0.0.1):
+    - ActivityPresenter
+    - ConfirmationPresenter
+    - ErrorPresenter
+    - MenuPresenter
+    - PCModel
+    - PCOrganizationService
+    - PCUserService
+  - PCAdmin/PCAdminOrganization (0.0.1):
+    - ActivityPresenter
+    - ConfirmationPresenter
+    - ErrorPresenter
+    - MenuPresenter
+    - PCModel
+    - PCOrganizationService
+    - PCUserService
+  - PCAdmin/PCAdminOrganizations (0.0.1):
+    - ActivityPresenter
+    - ConfirmationPresenter
+    - ErrorPresenter
+    - Kingfisher
+    - MenuPresenter
+    - PCModel
+    - PCOrganizationService
+    - PCUserService
+  - PCAdmin/PCAdminSupplier (0.0.1):
+    - ActivityPresenter
+    - ConfirmationPresenter
+    - ErrorPresenter
+    - MenuPresenter
+    - PCModel
+    - PCOrganizationService
+    - PCSupplierService
+    - PCUserService
+  - PCAdmin/PCAdminSuppliers (0.0.1):
+    - ActivityPresenter
+    - ConfirmationPresenter
+    - ErrorPresenter
+    - MenuPresenter
+    - PCModel
     - PCOrganizationService
     - PCUserService
   - PCAuthentication (0.0.1):
@@ -175,6 +261,7 @@ DEPENDENCIES:
   - Nantes
   - PCActionService (from `../Services/PCActionService/PCActionService.podspec`)
   - PCAddRole (from `../Presentation/PCAddRole/PCAddRole.podspec`)
+  - PCAdmin (from `../Presentation/PCAdmin/PCAdmin.podspec`)
   - PCAuthentication/Parse (from `../Services/PCAuthentication/PCAuthentication.podspec`)
   - PCCommercialOfferService (from `../Services/PCCommercialOfferService/PCCommercialOfferService.podspec`)
   - PCModel/Parse (from `../Model/PCModel/PCModel.podspec`)
@@ -218,6 +305,8 @@ EXTERNAL SOURCES:
     :path: "../Services/PCActionService/PCActionService.podspec"
   PCAddRole:
     :path: "../Presentation/PCAddRole/PCAddRole.podspec"
+  PCAdmin:
+    :path: "../Presentation/PCAdmin/PCAdmin.podspec"
   PCAuthentication:
     :path: "../Services/PCAuthentication/PCAuthentication.podspec"
   PCCommercialOfferService:
@@ -260,7 +349,8 @@ SPEC CHECKSUMS:
   Nantes: 0396442578e32242223fed46050dea1850236184
   Parse: e40fdb9c7d665823b7fe9865949cac9a53eb2ce7
   PCActionService: 2ec6ae69a564f94077c95ed604ae5525e374e550
-  PCAddRole: 5c4fa0aae9b9338eb0001edad2f4fca916448091
+  PCAddRole: 8c88b2782bf5b53ec90f52c2c6e1051f6caa3db5
+  PCAdmin: 8c6a9ded6a924513a650c276d76ae3a4285192b8
   PCAuthentication: 0df0033383cb957df518dc9eb1694e2ffc2f44df
   PCCommercialOfferService: 07469ba8d01877d41cd6cbdf51659c723e50d14f
   PCModel: f1a5156863a4758a54329a35721fb7d363683021
@@ -273,6 +363,6 @@ SPEC CHECKSUMS:
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   Raise: e40c0ad29b47647c0a0eab8bb754ba9f3905f06c
 
-PODFILE CHECKSUM: b5729ecd0bcb27a084391eff6804716ec9c8b7f4
+PODFILE CHECKSUM: 4e895e72ba9d02ea193a51629106a02812c76d0e
 
 COCOAPODS: 1.10.0

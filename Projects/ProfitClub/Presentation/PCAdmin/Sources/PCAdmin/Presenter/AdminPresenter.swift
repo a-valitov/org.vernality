@@ -21,6 +21,7 @@ import ActivityPresenter
 import ConfirmationPresenter
 import MenuPresenter
 import PCModel
+import Raise
 
 final class AdminPresenter: AdminModule {
     weak var output: AdminModuleOutput?
