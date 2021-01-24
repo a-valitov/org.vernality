@@ -15,13 +15,27 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import Foundation
-import PCModel
+import ActivityPresenter
+import ErrorPresenter
+import PCOrganizationService
 
-protocol OrganizationProfileModule: class {
-    var viewController: UIViewController { get }
-    var router: AnyObject? { get set }
+public struct OrganizationProfilePresenters {
+    let error: ErrorPresenter
+    let activity: ActivityPresenter
+
+    public init(
+        error: ErrorPresenter,
+        activity: ActivityPresenter
+    ) {
+        self.error = error
+        self.activity = activity
+    }
 }
 
-protocol OrganizationProfileModuleOutput: class {
-    func organizationProfile(module: OrganizationProfileModule, didUpdate organization: PCOrganization)
+public struct OrganizationProfileServices {
+    let organization: PCOrganizationService
+
+    public init(organization: PCOrganizationService) {
+        self.organization = organization
+    }
 }

@@ -84,20 +84,11 @@ extension AppFactory {
         let module = self.memberProfileFactory.make(member: member, output: output)
         return module
     }
-
-    func organizationProfile(organization: PCOrganization, output: OrganizationProfileModuleOutput?) -> OrganizationProfileModule {
-        let module = self.organizationProfileFactory.make(organization: organization, output: output)
-        return module
-    }
 }
 
 // MARK: - Factories
 extension AppFactory {
     var memberProfileFactory: MemberProfileFactory {
         return MemberProfileFactory(presenters: MemberProfilePresenters(error: self.errorPresenter(), activity: self.activityPresenter()), services: MemberProfileServices(member: self.userService))
-    }
-
-    var organizationProfileFactory: OrganizationProfileFactory {
-        return OrganizationProfileFactory(presenters: OrganizationProfilePresenters(error: self.errorPresenter(), activity: self.activityPresenter()), services: OrganizationProfileServices(organization: self.organizationService()))
     }
 }

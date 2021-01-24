@@ -17,6 +17,7 @@
 import Foundation
 import UIKit
 import PCModel
+import PCOrganizationProfile
 
 protocol OrganizationProfileRouterDelegate: class {
     func organizationProfile(router: OrganizationProfileRouter, didUpdate organization: PCOrganization)

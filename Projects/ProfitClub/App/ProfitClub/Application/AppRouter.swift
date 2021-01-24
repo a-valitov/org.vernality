@@ -68,16 +68,6 @@ final class AppRouter {
         return self.factory.activityPresenter()
     }()
 
-    // modules construction
-    private func profile(for organization: PCOrganization) -> OrganizationProfileModule {
-        if let profile = self.weakOrganizationProfile {
-            return profile
-        } else {
-            let profile = self.factory.organizationProfile(organization: organization, output: self)
-            self.weakOrganizationProfile = profile
-            return profile
-        }
-    }
     private func profile(for member: PCMember) -> MemberProfileModule {
         if let profile = self.weakMemberProfile {
             return profile
@@ -115,7 +105,6 @@ final class AppRouter {
 
     // weak modules
     private weak var weakMemberProfile: MemberProfileModule?
-    private weak var weakOrganizationProfile: OrganizationProfileModule?
 }
 
 // MARK: - Push Notifications handling
@@ -193,11 +182,5 @@ extension AppRouter: ReviewRouterDelegate {
 extension AppRouter: MemberProfileModuleOutput {
     func memberProfile(module: MemberProfileModule, didUpdate member: PCMember) {
 //        self.weakMember?.member = member
-    }
-}
-
-extension AppRouter: OrganizationProfileModuleOutput {
-    func organizationProfile(module: OrganizationProfileModule, didUpdate organization: PCOrganization) {
-//        self.weakOrganization?.organization = organization
     }
 }
