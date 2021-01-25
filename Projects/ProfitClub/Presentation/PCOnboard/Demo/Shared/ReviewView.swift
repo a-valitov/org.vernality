@@ -11,6 +11,7 @@ import PCModel
 
 struct ReviewView: UIViewControllerRepresentable {
     @EnvironmentObject var user: PCUserSU
+    @Binding var appState: AppState?
 
     class Coordinator: NSObject, UINavigationControllerDelegate, ReviewModuleOutput {
         func reviewUserDidLogout(module: ReviewModule) {
@@ -22,7 +23,7 @@ struct ReviewView: UIViewControllerRepresentable {
         }
 
         func reviewUserWantsToEnterAdmin(module: ReviewModule) {
-
+            self.parent.appState = .admin
         }
 
         func review(module: ReviewModule, userWantsToEnter organization: PCOrganization) {

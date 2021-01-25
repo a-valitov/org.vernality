@@ -17,11 +17,11 @@
 import UIKit
 import PCModel
 
-protocol AdminCommercialOfferModule: class {
+public protocol AdminCommercialOfferModule: class {
     var viewController: UIViewController { get }
 }
 
-protocol AdminCommercialOfferModuleOutput: class {
+public protocol AdminCommercialOfferModuleOutput: class {
     func adminCommercialOffer(module: AdminCommercialOfferModule, didApprove commercialOffer: PCCommercialOffer)
     func adminCommercialOffer(module: AdminCommercialOfferModule, didReject commercialOffer: PCCommercialOffer)
 }

@@ -28,3 +28,7 @@ public protocol PCActionService {
 
     func fetch(_ actionId: String, result: @escaping (Result<PCAction, Error>) -> Void)
 }
+
+public protocol PCActionServiceFactory {
+    func make() -> PCActionService
+}

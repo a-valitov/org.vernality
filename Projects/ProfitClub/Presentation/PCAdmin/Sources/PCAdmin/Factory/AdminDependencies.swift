@@ -25,6 +25,42 @@ import PCModel
 import PCSupplierService
 import PCActionService
 import PCCommercialOfferService
+#if canImport(PCAdminAction)
+import PCAdminAction
+#endif
+#if canImport(PCAdminActions)
+import PCAdminActions
+#endif
+#if canImport(PCAdminCommercialOffer)
+import PCAdminCommercialOffer
+#endif
+#if canImport(PCAdminCommercialOffers)
+import PCAdminCommercialOffers
+#endif
+#if canImport(PCAdminOrganization)
+import PCAdminOrganization
+#endif
+#if canImport(PCAdminOrganizations)
+import PCAdminOrganizations
+#endif
+#if canImport(PCAdminSupplier)
+import PCAdminSupplier
+#endif
+#if canImport(PCAdminSuppliers)
+import PCAdminSuppliers
+#endif
+#if canImport(PCUserServiceStub)
+import PCUserServiceStub
+#endif
+#if canImport(PCSupplierServiceStub)
+import PCSupplierServiceStub
+#endif
+#if canImport(PCActionServiceStub)
+import PCActionServiceStub
+#endif
+#if canImport(PCCommercialOfferServiceStub)
+import PCCommercialOfferServiceStub
+#endif
 
 public struct AdminPresenters {
     let error: ErrorPresenter
@@ -179,18 +215,35 @@ public struct AdminFactories {
     }
 
     private func userService(user: PCUser) -> PCUserService {
+        #if canImport(PCUserServiceStub)
+        return PCUserServiceStubFactory(user: user).make()
+        #else
         return PCUserServiceParseFactory(user: user).make()
+        #endif
+
     }
 
     private func supplierService() -> PCSupplierService {
-        return PCSupplierServiceParse()
+        #if canImport(PCSupplierServiceStub)
+        return PCSupplierServiceStubFactory().make()
+        #else
+        return PCSupplierServiceParseFactory().make()
+        #endif
     }
 
     private func actionService() -> PCActionService {
-        return PCActionServiceParse()
+        #if canImport(PCActionServiceStub)
+        return PCActionServiceStubFactory().make()
+        #else
+        return PCActionServiceParseFactory().make()
+        #endif
     }
 
     private func commercialOfferService() -> PCCommercialOfferService {
-        return PCCommercialOfferServiceParse()
+        #if canImport(PCCommercialOfferServiceStub)
+        return PCCommercialOfferServiceStubFactory().make()
+        #else
+        return PCCommercialOfferServiceParseFactory().make()
+        #endif
     }
 }

@@ -18,13 +18,13 @@ import Foundation
 import UIKit
 import PCModel
 
-protocol AdminOrganizationsModule: class {
+public protocol AdminOrganizationsModule: class {
     var viewController: UIViewController { get }
     func onDidApprove(organization: PCOrganization)
     func onDidReject(organization: PCOrganization)
 }
 
-protocol AdminOrganizationsModuleOutput: class {
+public protocol AdminOrganizationsModuleOutput: class {
     func adminOrganizationsModuleDidLoad(module: AdminOrganizationsModule)
     func adminOrganizations(module: AdminOrganizationsModule, didSelect organization: PCOrganization)
 }

@@ -17,13 +17,13 @@
 import UIKit
 import PCModel
 
-protocol AdminSuppliersModule: class {
+public protocol AdminSuppliersModule: class {
     var viewController: UIViewController { get }
     func onDidApprove(supplier: PCSupplier)
     func onDidReject(supplier: PCSupplier)
 }
 
-protocol AdminSuppliersModuleOutput: class {
+public protocol AdminSuppliersModuleOutput: class {
     func adminSuppliersModuleDidLoad(module: AdminSuppliersModule)
     func adminSuppliers(module: AdminSuppliersModule, didSelect supplier: PCSupplier)
 }

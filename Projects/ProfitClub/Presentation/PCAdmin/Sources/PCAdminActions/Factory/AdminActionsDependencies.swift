@@ -19,11 +19,23 @@ import ErrorPresenter
 import ActivityPresenter
 import PCActionService
 
-struct AdminActionsPresenters {
+public struct AdminActionsPresenters {
     let error: ErrorPresenter
     let activity: ActivityPresenter
+
+    public init(
+        error: ErrorPresenter,
+        activity: ActivityPresenter
+    ) {
+        self.error = error
+        self.activity = activity
+    }
 }
 
-struct AdminActionsServices {
+public struct AdminActionsServices {
     let action: PCActionService
+
+    public init(action: PCActionService) {
+        self.action = action
+    }
 }

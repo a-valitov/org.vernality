@@ -17,13 +17,13 @@
 import UIKit
 import PCModel
 
-protocol AdminCommercialOffersModule: class {
+public protocol AdminCommercialOffersModule: class {
     var viewController: UIViewController { get }
     func onDidApprove(commercialOffer: PCCommercialOffer)
     func onDidReject(commercialOffer: PCCommercialOffer)
 }
 
-protocol AdminCommercialOffersModuleOutput: class {
+public protocol AdminCommercialOffersModuleOutput: class {
     func adminCommercialOffersModuleDidLoad(module: AdminCommercialOffersModule)
     func adminCommercialOffers(module: AdminCommercialOffersModule, didSelect commercialOffer: PCCommercialOffer)
 }

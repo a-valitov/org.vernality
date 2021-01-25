@@ -16,6 +16,7 @@
 
 import UIKit
 import PCModel
+import Kingfisher
 
 final class AdminApprovedActionsViewAlpha: UITableViewController {
     var output: AdminApprovedActionsViewOutput?

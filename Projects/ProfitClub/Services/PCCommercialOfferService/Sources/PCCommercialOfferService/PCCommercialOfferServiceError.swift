@@ -16,6 +16,6 @@
 
 import Foundation
 
-enum PCCommercialOfferServiceError: Error {
+public enum PCCommercialOfferServiceError: Error {
     case failedToGetFileObject
 }

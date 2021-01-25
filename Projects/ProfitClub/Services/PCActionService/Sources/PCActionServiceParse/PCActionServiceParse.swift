@@ -18,10 +18,10 @@ import Foundation
 import PCModel
 import Parse
 
-public final class PCActionServiceParse: PCActionService {
-    public init() {}
+final class PCActionServiceParse: PCActionService {
+    init() {}
 
-    public func add(action: PCAction, result: @escaping (Result<PCAction, Error>) -> Void) {
+    func add(action: PCAction, result: @escaping (Result<PCAction, Error>) -> Void) {
         let parseAction = action.parse
         let currentUser = PFUser.current()
         if let currentUser = currentUser {
@@ -51,7 +51,7 @@ public final class PCActionServiceParse: PCActionService {
         }
     }
 
-    public func fetchApprovedCurrentActions(result: @escaping (Result<[AnyPCAction], Error>) -> Void) {
+    func fetchApprovedCurrentActions(result: @escaping (Result<[AnyPCAction], Error>) -> Void) {
         let query = PFQuery(className: "Action")
         query.order(byDescending: "createdAt")
         query.includeKey("supplier")
@@ -66,7 +66,7 @@ public final class PCActionServiceParse: PCActionService {
         }
     }
 
-    public func fetchApprovedPastActions(result: @escaping (Result<[AnyPCAction], Error>) -> Void) {
+    func fetchApprovedPastActions(result: @escaping (Result<[AnyPCAction], Error>) -> Void) {
         let query = PFQuery(className: "Action")
         query.order(byDescending: "createdAt")
         query.includeKey("supplier")
@@ -81,7 +81,7 @@ public final class PCActionServiceParse: PCActionService {
         }
     }
 
-    public func fetch(_ status: PCActionStatus, result: @escaping (Result<[AnyPCAction], Error>) -> Void) {
+    func fetch(_ status: PCActionStatus, result: @escaping (Result<[AnyPCAction], Error>) -> Void) {
         let query = PFQuery(className: "Action")
         query.includeKey("supplier")
         query.whereKey("statusString", equalTo: status.rawValue)
@@ -94,7 +94,7 @@ public final class PCActionServiceParse: PCActionService {
         }
     }
 
-    public func approve(action: PCAction, result: @escaping (Result<PCAction, Error>) -> Void) {
+    func approve(action: PCAction, result: @escaping (Result<PCAction, Error>) -> Void) {
         let parseAction = action.parse
         if let actionId = parseAction.id {
             PFCloud.callFunction(inBackground: "approveAction",
@@ -111,7 +111,7 @@ public final class PCActionServiceParse: PCActionService {
     }
 
 
-    public func reject(action: PCAction, result: @escaping (Result<PCAction, Error>) -> Void) {
+    func reject(action: PCAction, result: @escaping (Result<PCAction, Error>) -> Void) {
         let parseAction = action.parse
         if let actionId = parseAction.id {
             PFCloud.callFunction(inBackground: "rejectAction",
@@ -127,7 +127,7 @@ public final class PCActionServiceParse: PCActionService {
         }
     }
     
-//    public func reject(action: PCAction, result: @escaping (Result<PCAction, Error>) -> Void) {
+//    func reject(action: PCAction, result: @escaping (Result<PCAction, Error>) -> Void) {
 //        let parseAction = action.parse
 //        parseAction.status = .rejected
 //        parseAction.saveInBackground { (success, error) in
@@ -139,7 +139,7 @@ public final class PCActionServiceParse: PCActionService {
 //        }
 //    }
 
-    public func fetch(_ actionId: String, result: @escaping (Result<PCAction, Error>) -> Void) {
+    func fetch(_ actionId: String, result: @escaping (Result<PCAction, Error>) -> Void) {
         let query = PFQuery(className: "Action")
         query.includeKey("supplier")
         query.getObjectInBackground(withId: actionId) { (object, error) in

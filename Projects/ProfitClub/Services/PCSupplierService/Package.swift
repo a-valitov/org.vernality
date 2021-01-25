@@ -5,22 +5,31 @@ import PackageDescription
 
 let package = Package(
     name: "PCSupplierService",
+    platforms: [.iOS(.v11)],
     products: [
-        // Products define the executables and libraries produced by a package, and make them visible to other packages.
         .library(
             name: "PCSupplierService",
             targets: ["PCSupplierService"]),
+        .library(
+            name: "PCSupplierServiceStub",
+            targets: ["PCSupplierServiceStub"]),
     ],
     dependencies: [
-        // Dependencies declare other packages that this package depends on.
-        // .package(url: /* package url */, from: "1.0.0"),
+        .package(path: "../../Model/PCModel"),
     ],
     targets: [
-        // Targets are the basic building blocks of a package. A target can define a module or a test suite.
-        // Targets can depend on other targets in this package, and on products in packages which this package depends on.
         .target(
             name: "PCSupplierService",
-            dependencies: []),
+            dependencies: [
+                "PCModel"
+            ]),
+        .target(
+            name: "PCSupplierServiceStub",
+            dependencies: [
+                "PCModel",
+                "PCSupplierService",
+            ]
+        ),
         .testTarget(
             name: "PCSupplierServiceTests",
             dependencies: ["PCSupplierService"]),

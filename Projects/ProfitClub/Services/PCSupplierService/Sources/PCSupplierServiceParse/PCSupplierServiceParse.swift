@@ -18,10 +18,10 @@ import Foundation
 import PCModel
 import Parse
 
-public final class PCSupplierServiceParse: PCSupplierService {
-    public init() {}
+final class PCSupplierServiceParse: PCSupplierService {
+    init() {}
 
-    public func fetch(_ status: PCSupplierStatus, result: @escaping (Result<[AnyPCSupplier], Error>) -> Void) {
+    func fetch(_ status: PCSupplierStatus, result: @escaping (Result<[AnyPCSupplier], Error>) -> Void) {
         let query = PFQuery(className: "Supplier")
         query.whereKey("statusString", equalTo: status.rawValue)
         query.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
@@ -33,7 +33,7 @@ public final class PCSupplierServiceParse: PCSupplierService {
         }
     }
 
-    public func approve(supplier: PCSupplier, result: @escaping (Result<PCSupplier, Error>) -> Void) {
+    func approve(supplier: PCSupplier, result: @escaping (Result<PCSupplier, Error>) -> Void) {
         let parseSupplier = supplier.parse
         parseSupplier.status = .approved
         parseSupplier.saveInBackground { (success, error) in
@@ -45,7 +45,7 @@ public final class PCSupplierServiceParse: PCSupplierService {
         }
     }
 
-    public func reject(supplier: PCSupplier, result: @escaping (Result<PCSupplier, Error>) -> Void) {
+    func reject(supplier: PCSupplier, result: @escaping (Result<PCSupplier, Error>) -> Void) {
         let parseSupplier = supplier.parse
         parseSupplier.status = .rejected
         parseSupplier.saveInBackground { (success, error) in
@@ -57,7 +57,7 @@ public final class PCSupplierServiceParse: PCSupplierService {
         }
     }
 
-    public func editProfile(supplier: PCSupplier, image: UIImage, result: @escaping (Result<PCSupplier, Error>) -> Void) {
+    func editProfile(supplier: PCSupplier, image: UIImage, result: @escaping (Result<PCSupplier, Error>) -> Void) {
         guard let imageData = image.pngData() else {
             result(.failure(PCSupplierServiceError.failedToGetImagePNGRepresentation))
             return

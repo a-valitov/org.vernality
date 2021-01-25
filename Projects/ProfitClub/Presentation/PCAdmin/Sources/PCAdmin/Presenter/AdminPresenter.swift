@@ -22,6 +22,30 @@ import ConfirmationPresenter
 import MenuPresenter
 import PCModel
 import Raise
+#if canImport(PCAdminAction)
+import PCAdminAction
+#endif
+#if canImport(PCAdminActions)
+import PCAdminActions
+#endif
+#if canImport(PCAdminCommercialOffer)
+import PCAdminCommercialOffer
+#endif
+#if canImport(PCAdminCommercialOffers)
+import PCAdminCommercialOffers
+#endif
+#if canImport(PCAdminOrganization)
+import PCAdminOrganization
+#endif
+#if canImport(PCAdminOrganizations)
+import PCAdminOrganizations
+#endif
+#if canImport(PCAdminSupplier)
+import PCAdminSupplier
+#endif
+#if canImport(PCAdminSuppliers)
+import PCAdminSuppliers
+#endif
 
 final class AdminPresenter: AdminModule {
     weak var output: AdminModuleOutput?

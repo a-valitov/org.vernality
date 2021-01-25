@@ -20,12 +20,12 @@ import ActivityPresenter
 import PCModel
 import PCOrganizationService
 
-final class AdminOrganizationFactory {
-    init(presenters: AdminOrganizationPresenters) {
+public final class AdminOrganizationFactory {
+    public init(presenters: AdminOrganizationPresenters) {
         self.presenters = presenters
     }
 
-    func make(organizationService: PCOrganizationService,
+    public func make(organizationService: PCOrganizationService,
               output: AdminOrganizationModuleOutput?) -> AdminOrganizationModule {
         let presenter = AdminOrganizationPresenter(
             organization: organizationService.organization,

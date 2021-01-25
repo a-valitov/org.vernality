@@ -16,7 +16,7 @@
 
 import Foundation
 
-enum PCOrganizationServiceError: Error {
+public enum PCOrganizationServiceError: Error {
     case bothResultAndErrorAreNil
     case inputIsNil
     case failedToGetImagePNGRepresentation

@@ -18,10 +18,10 @@ import Foundation
 import PCModel
 import Parse
 
-public final class PCCommercialOfferServiceParse: PCCommercialOfferService {
-    public init() {}
+final class PCCommercialOfferServiceParse: PCCommercialOfferService {
+    init() {}
 
-    public func add(offer: PCCommercialOffer, result: @escaping (Result<PCCommercialOffer, Error>) -> Void) {
+    func add(offer: PCCommercialOffer, result: @escaping (Result<PCCommercialOffer, Error>) -> Void) {
         let parseOffer = offer.parse
         let currentUser = PFUser.current()
         if let currentUser = currentUser {
@@ -59,7 +59,7 @@ public final class PCCommercialOfferServiceParse: PCCommercialOfferService {
         }
     }
 
-    public func loadAttachment(at index: Int, for offer: PCCommercialOffer, result: @escaping (Result<URL, Error>) -> Void) {
+    func loadAttachment(at index: Int, for offer: PCCommercialOffer, result: @escaping (Result<URL, Error>) -> Void) {
         offer.parse.fetchInBackground { (object, error) in
             if let error = error {
                 result(.failure(error))
@@ -77,7 +77,7 @@ public final class PCCommercialOfferServiceParse: PCCommercialOfferService {
         }
     }
 
-    public func fetchApproved(result: @escaping (Result<[AnyPCCommercialOffer], Error>) -> Void) {
+    func fetchApproved(result: @escaping (Result<[AnyPCCommercialOffer], Error>) -> Void) {
         let query = PFQuery(className: "CommercialOffer")
         query.order(byDescending: "createdAt")
         query.includeKey("supplier")
@@ -90,7 +90,7 @@ public final class PCCommercialOfferServiceParse: PCCommercialOfferService {
         }
     }
 
-    public func fetch(_ status: PCCommercialOfferStatus, result: @escaping (Result<[AnyPCCommercialOffer], Error>) -> Void) {
+    func fetch(_ status: PCCommercialOfferStatus, result: @escaping (Result<[AnyPCCommercialOffer], Error>) -> Void) {
         let query = PFQuery(className: "CommercialOffer")
         query.includeKey("supplier")
         query.whereKey("statusString", equalTo: status.rawValue)
@@ -103,7 +103,7 @@ public final class PCCommercialOfferServiceParse: PCCommercialOfferService {
         }
     }
 
-    public func approve(commercialOffer: PCCommercialOffer, result: @escaping (Result<PCCommercialOffer, Error>) -> Void) {
+    func approve(commercialOffer: PCCommercialOffer, result: @escaping (Result<PCCommercialOffer, Error>) -> Void) {
         let parseCommercialOffer = commercialOffer.parse
         parseCommercialOffer.status = .approved
         parseCommercialOffer.saveInBackground { (success, error) in
@@ -115,7 +115,7 @@ public final class PCCommercialOfferServiceParse: PCCommercialOfferService {
         }
     }
 
-    public func reject(commercialOffer: PCCommercialOffer, result: @escaping (Result<PCCommercialOffer, Error>) -> Void) {
+    func reject(commercialOffer: PCCommercialOffer, result: @escaping (Result<PCCommercialOffer, Error>) -> Void) {
         let parseCommercialOffer = commercialOffer.parse
         parseCommercialOffer.status = .rejected
         parseCommercialOffer.saveInBackground { (success, error) in

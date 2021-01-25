@@ -15,6 +15,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import Foundation
+import UIKit
 import ErrorPresenter
 import ActivityPresenter
 import PCModel

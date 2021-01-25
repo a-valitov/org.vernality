@@ -17,8 +17,42 @@
 import Foundation
 import ErrorPresenter
 import ActivityPresenter
+import ConfirmationPresenter
+import MenuPresenter
+import PCModel
+#if canImport(PCAuthenticationStub)
+import PCUserServiceStub
+#endif
+#if canImport(PCOrganizationServiceStub)
+import PCOrganizationServiceStub
+#endif
 
 public final class AdminFactory {
+    #if canImport(PCUserServiceStub)
+    public init(user: PCUser) {
+        let errorPresenter = ErrorPresenterAlertFactory().make()
+        let activityPresenter = ActivityPresenterCircleFactory().make()
+        let confirmationPresenter = ConfirmationPresenterAlertFactory().make()
+        let menuPresenter = MenuPresenterActionSheetFactory().make()
+
+        self.presenters = AdminPresenters(
+            error: errorPresenter,
+            activity: activityPresenter,
+            confirmation: confirmationPresenter,
+            menu: menuPresenter
+        )
+        let userService = PCUserServiceStubFactory(user: user).make()
+        self.services = AdminServices(
+            userService: userService
+        )
+        let organizationFactory = PCOrganizationServiceStubFactory()
+        self.factories = AdminFactories(
+            user: user,
+            organizationService: organizationFactory
+        )
+    }
+    #endif
+
     public init(presenters: AdminPresenters,
                 services: AdminServices,
                 factories: AdminFactories) {

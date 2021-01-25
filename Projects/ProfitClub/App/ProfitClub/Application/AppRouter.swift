@@ -153,6 +153,6 @@ extension AppRouter {
         return ErrorPresenterAlertFactory().make()
     }
     private func actionService() -> PCActionService {
-        return PCActionServiceParse()
+        return PCActionServiceParseFactory().make()
     }
 }

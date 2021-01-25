@@ -16,6 +16,7 @@
 
 import Foundation
 import PCModel
+import UIKit
 
 public protocol PCSupplierService {
     func fetch(_ status: PCSupplierStatus, result: @escaping (Result<[AnyPCSupplier], Error>) -> Void)
@@ -24,5 +25,9 @@ public protocol PCSupplierService {
     func reject(supplier: PCSupplier, result: @escaping (Result<PCSupplier, Error>) -> Void)
 
     func editProfile(supplier: PCSupplier, image: UIImage, result: @escaping (Result<PCSupplier, Error>) -> Void)
+}
+
+public protocol PCSupplierServiceFactory {
+    func make() -> PCSupplierService
 }
 
