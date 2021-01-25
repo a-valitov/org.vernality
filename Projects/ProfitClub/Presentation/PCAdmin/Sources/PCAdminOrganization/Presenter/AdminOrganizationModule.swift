@@ -17,11 +17,11 @@
 import UIKit
 import PCModel
 
-protocol AdminOrganizationModule: class {
+public protocol AdminOrganizationModule: class {
     var viewController: UIViewController { get }
 }
 
-protocol AdminOrganizationModuleOutput: class {
+public protocol AdminOrganizationModuleOutput: class {
     func adminOrganization(module: AdminOrganizationModule, didApprove organization: PCOrganization)
     func adminOrganization(module: AdminOrganizationModule, didReject organization: PCOrganization)
 }

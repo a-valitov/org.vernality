@@ -17,11 +17,11 @@
 import UIKit
 import PCModel
 
-protocol AdminSupplierModule: class {
+public protocol AdminSupplierModule: class {
     var viewController: UIViewController { get }
 }
 
-protocol AdminSupplierModuleOutput: class {
+public protocol AdminSupplierModuleOutput: class {
     func adminSupplier(module: AdminSupplierModule, didApprove supplier: PCSupplier)
     func adminSupplier(module: AdminSupplierModule, didReject supplier: PCSupplier)
 }

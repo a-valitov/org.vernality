@@ -25,3 +25,7 @@ public protocol PCCommercialOfferService {
     func approve(commercialOffer: PCCommercialOffer, result: @escaping (Result<PCCommercialOffer, Error>) -> Void)
     func reject(commercialOffer: PCCommercialOffer, result: @escaping (Result<PCCommercialOffer, Error>) -> Void)
 }
+
+public protocol PCCommercialOfferServiceFactory {
+    func make() -> PCCommercialOfferService
+}

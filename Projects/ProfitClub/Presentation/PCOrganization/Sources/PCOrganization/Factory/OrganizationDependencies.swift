@@ -138,10 +138,10 @@ public struct OrganizationFactories {
     }
 
     private func actionService() -> PCActionService {
-        return PCActionServiceParse()
+        return PCActionServiceParseFactory().make()
     }
 
     private func commercialOfferService() -> PCCommercialOfferService {
-        return PCCommercialOfferServiceParse()
+        return PCCommercialOfferServiceParseFactory().make()
     }
 }

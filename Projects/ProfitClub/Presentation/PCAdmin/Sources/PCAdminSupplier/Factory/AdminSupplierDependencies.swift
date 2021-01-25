@@ -20,12 +20,26 @@ import ConfirmationPresenter
 import ActivityPresenter
 import PCSupplierService
 
-struct AdminSupplierPresenters {
+public struct AdminSupplierPresenters {
     let error: ErrorPresenter
     let activity: ActivityPresenter
     let confirmation: ConfirmationPresenter
+
+    public init(
+        error: ErrorPresenter,
+        activity: ActivityPresenter,
+        confirmation: ConfirmationPresenter
+    ) {
+        self.error = error
+        self.activity = activity
+        self.confirmation = confirmation
+    }
 }
 
-struct AdminSupplierServices {
+public struct AdminSupplierServices {
     let supplier: PCSupplierService
+
+    public init(supplier: PCSupplierService) {
+        self.supplier = supplier
+    }
 }

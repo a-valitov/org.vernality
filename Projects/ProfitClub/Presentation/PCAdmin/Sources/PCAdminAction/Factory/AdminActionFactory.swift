@@ -19,14 +19,14 @@ import ErrorPresenter
 import ActivityPresenter
 import PCModel
 
-final class AdminActionFactory {
-    init(presenters: AdminActionPresenters,
+public final class AdminActionFactory {
+    public init(presenters: AdminActionPresenters,
          services: AdminActionServices) {
         self.presenters = presenters
         self.services = services
     }
 
-    func make(action: PCAction, output: AdminActionModuleOutput?) -> AdminActionModule {
+    public func make(action: PCAction, output: AdminActionModuleOutput?) -> AdminActionModule {
         let presenter = AdminActionPresenter(action: action,
                                             presenters: self.presenters,
                                             services: self.services)

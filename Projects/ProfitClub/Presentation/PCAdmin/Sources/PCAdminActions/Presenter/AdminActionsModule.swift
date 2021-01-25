@@ -17,14 +17,14 @@
 import UIKit
 import PCModel
 
-protocol AdminActionsModule: class {
+public protocol AdminActionsModule: class {
     var viewController: UIViewController { get }
     
     func onDidApprove(action: PCAction)
     func onDidReject(action: PCAction)
 }
 
-protocol AdminActionsModuleOutput: class {
+public protocol AdminActionsModuleOutput: class {
     func adminActionsModuleDidLoad(module: AdminActionsModule)
     func adminActions(module: AdminActionsModule, didSelect action: PCAction)
 }

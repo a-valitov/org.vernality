@@ -27,7 +27,6 @@ let package = Package(
             dependencies: [
                 "PCModel",
                 "PCUserService",
-                .product(name: "PCUserPersistenceStub", package: "PCUserPersistence"),
             ]
         ),
         .testTarget(

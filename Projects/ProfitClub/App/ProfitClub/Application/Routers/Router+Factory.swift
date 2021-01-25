@@ -51,15 +51,15 @@ extension Router {
     }
 
     func supplierService() -> PCSupplierService {
-        return PCSupplierServiceParse()
+        return PCSupplierServiceParseFactory().make()
     }
 
     func actionService() -> PCActionService {
-        return PCActionServiceParse()
+        return PCActionServiceParseFactory().make()
     }
 
     func commercialOfferService() -> PCCommercialOfferService {
-        return PCCommercialOfferServiceParse()
+        return PCCommercialOfferServiceParseFactory().make()
     }
 
     // presenters

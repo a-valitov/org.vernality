@@ -7,6 +7,7 @@
 
 import Foundation
 import PCModel
+import PCOrganizationService
 
 public final class PCOrganizationServiceStubFactory: PCOrganizationServiceFactory {
     public init() {
