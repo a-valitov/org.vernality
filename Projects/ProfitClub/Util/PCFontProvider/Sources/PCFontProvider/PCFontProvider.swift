@@ -1,4 +1,5 @@
 import CoreText
+import UIKit
 
 public class PCFontProvider: NSObject {
     public enum Style: CaseIterable {
@@ -36,6 +37,14 @@ public class PCFontProvider: NSObject {
     }()
 
     private static func loadFont(withName fontName: String) {
+        #if SWIFT_PACKAGE
+        guard let fontURL = Bundle.module.url(forResource: fontName, withExtension: "ttf"),
+               let fontData = try? Data(contentsOf: fontURL) as CFData,
+               let provider = CGDataProvider(data: fontData),
+               let font = CGFont(provider) else {
+                return
+            }
+        #else
         guard
             let bundleURL = Bundle(for: self).resourceURL?.appendingPathComponent("PCFontProvider.bundle"),
             let bundle = Bundle(url: bundleURL),
@@ -45,6 +54,8 @@ public class PCFontProvider: NSObject {
             let font = CGFont(provider) else {
                 return
             }
+        #endif
+
         CTFontManagerRegisterGraphicsFont(font, nil)
     }
 }

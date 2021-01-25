@@ -19,12 +19,12 @@ import ErrorPresenter
 import ActivityPresenter
 import ConfirmationPresenter
 import PCModel
-#if canImport(PCAuthenticationStub)
+#if canImport(PCUserServiceStub)
 import PCUserServiceStub
 #endif
 
 public final class AddRoleFactory {
-    #if canImport(PCAuthenticationStub)
+    #if canImport(PCUserServiceStub)
     public init(user: PCUser) {
         let errorPresenter = ErrorPresenterAlertFactory().make()
         let activityPresenter = ActivityPresenterCircleFactory().make()
