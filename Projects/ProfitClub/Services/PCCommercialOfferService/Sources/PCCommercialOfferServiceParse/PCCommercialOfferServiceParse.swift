@@ -105,25 +105,43 @@ final class PCCommercialOfferServiceParse: PCCommercialOfferService {
 
     func approve(commercialOffer: PCCommercialOffer, result: @escaping (Result<PCCommercialOffer, Error>) -> Void) {
         let parseCommercialOffer = commercialOffer.parse
-        parseCommercialOffer.status = .approved
-        parseCommercialOffer.saveInBackground { (success, error) in
-            if let error = error {
-                result(.failure(error))
-            } else {
-                result(.success(parseCommercialOffer.any))
+        
+        if let commercialOfferId = parseCommercialOffer.id {
+            PFCloud.callFunction(inBackground: "approveCommercialOffer",
+                                 withParameters: ["commercialOfferId": commercialOfferId]) { (response, error) in
+                                    if let error = error {
+                                        result(.failure(error))
+                                    } else {
+                                        result(.success(parseCommercialOffer.any))
+                                    }
             }
+        } else {
+            result(.failure(PCCommercialOfferServiceError.commercialOfferOrUserIdIsNil))
         }
+//        parseCommercialOffer.status = .approved
+//        parseCommercialOffer.saveInBackground { (success, error) in
+//            if let error = error {
+//                result(.failure(error))
+//            } else {
+//                result(.success(parseCommercialOffer.any))
+//            }
+//        }
     }
 
     func reject(commercialOffer: PCCommercialOffer, result: @escaping (Result<PCCommercialOffer, Error>) -> Void) {
         let parseCommercialOffer = commercialOffer.parse
-        parseCommercialOffer.status = .rejected
-        parseCommercialOffer.saveInBackground { (success, error) in
-            if let error = error {
-                result(.failure(error))
-            } else {
-                result(.success(parseCommercialOffer.any))
+
+        if let commercialOfferId = parseCommercialOffer.id {
+            PFCloud.callFunction(inBackground: "rejectCommercialOffer",
+                                 withParameters: ["commercialOfferId": commercialOfferId]) { (response, error) in
+                                    if let error = error {
+                                        result(.failure(error))
+                                    } else {
+                                        result(.success(parseCommercialOffer.any))
+                                    }
             }
+        } else {
+            result(.failure(PCCommercialOfferServiceError.commercialOfferOrUserIdIsNil))
         }
     }
 }
