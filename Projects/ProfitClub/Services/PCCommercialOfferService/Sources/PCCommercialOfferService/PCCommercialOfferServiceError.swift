@@ -18,4 +18,5 @@ import Foundation
 
 public enum PCCommercialOfferServiceError: Error {
     case failedToGetFileObject
+    case commercialOfferOrUserIdIsNil
 }

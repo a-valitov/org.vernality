@@ -60,7 +60,7 @@ final class AdminCommercialOffersApplicationsViewAlpha: UITableViewController {
         let commercialOffer = self.commercialOffers[indexPath.row]
         cell.commercialOfferMessageLabel.text = commercialOffer.message
         cell.commercialOfferImageView.kf.setImage(with: commercialOffer.imageUrl)
-        cell.supplierNameLabel.text = commercialOffer.supplier?.contact
+        cell.supplierNameLabel.text = commercialOffer.supplier?.name
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd.MM.yyyy"
         cell.commercialOfferCreatedDateLabel.text = "\(dateFormatter.string(from: commercialOffer.createdAt ?? Date()))"
