@@ -103,6 +103,7 @@ final class SupplierActionsViewAlpha: UIViewController {
         textField.borderStyle = .none
         textField.autocorrectionType = .no
         textField.spellCheckingType = .no
+        textField.autocapitalizationType = .none
         textField.returnKeyType = .next
         textField.font = UIFont(name: "Montserrat-Regular", size: 12.0)
         textField.textColor = #colorLiteral(red: 0.09803921569, green: 0.09411764706, blue: 0.09411764706, alpha: 1)
