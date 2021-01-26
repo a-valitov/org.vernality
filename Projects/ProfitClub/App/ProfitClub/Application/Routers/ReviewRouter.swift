@@ -49,21 +49,29 @@ final class ReviewRouter {
         if let adminRouter = self.weakAdminRouter {
             adminRouter.route(to: action)
         } else  {
-            self.navigationController.popToViewController(
-                self.review.viewController,
-                animated: false
-            )
-            DispatchQueue.main.async { [weak self] in
-                guard let sSelf = self else { return }
-                let adminRouter = sSelf.adminRouter(user: sSelf.user)
-                sSelf.navigationController.pushViewController(
-                    adminRouter.viewController,
-                    animated: false
-                )
-                DispatchQueue.main.async {
-                    adminRouter.route(to: action)
+            CATransaction.begin()
+            CATransaction.setCompletionBlock {
+                DispatchQueue.main.async { [weak self] in
+                    guard let sSelf = self else { return }
+                    let adminRouter = sSelf.adminRouter(user: sSelf.user)
+                    CATransaction.begin()
+                    CATransaction.setCompletionBlock {
+                        DispatchQueue.main.async {
+                            adminRouter.route(to: action)
+                        }
+                    }
+                    sSelf.navigationController.pushViewController(
+                        adminRouter.viewController,
+                        animated: true
+                    )
+                    CATransaction.commit()
                 }
             }
+            self.navigationController.popToViewController(
+                self.review.viewController,
+                animated: true
+            )
+            CATransaction.commit()
         }
     }
 
