@@ -18,6 +18,7 @@ import Foundation
 import UIKit
 import PCUserPersistence
 import PCActionService
+import PCCommercialOfferService
 import ErrorPresenter
 import PCModel
 
@@ -107,7 +108,16 @@ extension AppRouter {
     }
     
     private func openAdminCommercialOffer(commercialOfferId: String) {
-        print(commercialOfferId)
+        let commercialOfferService = self.commercialOfferService()
+        commercialOfferService.fetch(commercialOfferId) { [weak self] result in
+            guard let sSelf = self else { return }
+            switch result {
+            case .success(let commercialOffer):
+                self?.weakReviewRouter?.route(to: commercialOffer)
+            case .failure(let error):
+                sSelf.errorPresenter().present(error)
+            }
+        }
     }
     
     private func openAdminOrganization(organizationId: String) {
@@ -154,5 +164,8 @@ extension AppRouter {
     }
     private func actionService() -> PCActionService {
         return PCActionServiceParseFactory().make()
+    }
+    private func commercialOfferService() -> PCCommercialOfferService {
+        return PCCommercialOfferServiceParseFactory().make()
     }
 }

@@ -51,6 +51,10 @@ final class AdminRouter {
         self.weakAdmin?.open(action: action)
     }
 
+    func route(to commercialOffer: PCCommercialOffer) {
+        self.weakAdmin?.open(commercialOffer: commercialOffer)
+    }
+
     private var admin: AdminModule {
         if let admin = self.weakAdmin {
             return admin

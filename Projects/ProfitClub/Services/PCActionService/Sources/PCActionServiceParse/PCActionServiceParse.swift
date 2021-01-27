@@ -126,18 +126,6 @@ final class PCActionServiceParse: PCActionService {
             result(.failure(PCActionServiceError.actionOrUserIdIsNil))
         }
     }
-    
-//    func reject(action: PCAction, result: @escaping (Result<PCAction, Error>) -> Void) {
-//        let parseAction = action.parse
-//        parseAction.status = .rejected
-//        parseAction.saveInBackground { (success, error) in
-//            if let error = error {
-//                result(.failure(error))
-//            } else {
-//                result(.success(parseAction.any))
-//            }
-//        }
-//    }
 
     func fetch(_ actionId: String, result: @escaping (Result<PCAction, Error>) -> Void) {
         let query = PFQuery(className: "Action")

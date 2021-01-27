@@ -44,4 +44,8 @@ final class PCCommercialOfferServiceStub: PCCommercialOfferService {
     func reject(commercialOffer: PCCommercialOffer, result: @escaping (Result<PCCommercialOffer, Error>) -> Void) {
         result(.success(commercialOffer))
     }
+
+    func fetch(_ commercialOfferId: String, result: @escaping (Result<PCCommercialOffer, Error>) -> Void) {
+        result(.success(PCCommercialOfferStruct()))
+    }
 }

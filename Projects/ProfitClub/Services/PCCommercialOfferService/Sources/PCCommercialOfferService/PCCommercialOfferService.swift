@@ -24,6 +24,7 @@ public protocol PCCommercialOfferService {
     func fetch(_ status: PCCommercialOfferStatus, result: @escaping (Result<[AnyPCCommercialOffer], Error>) -> Void)
     func approve(commercialOffer: PCCommercialOffer, result: @escaping (Result<PCCommercialOffer, Error>) -> Void)
     func reject(commercialOffer: PCCommercialOffer, result: @escaping (Result<PCCommercialOffer, Error>) -> Void)
+    func fetch(_ commercialOfferId: String, result: @escaping (Result<PCCommercialOffer, Error>) -> Void)
 }
 
 public protocol PCCommercialOfferServiceFactory {

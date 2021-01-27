@@ -71,6 +71,15 @@ final class AdminPresenter: AdminModule {
         })
     }
 
+    func open(commercialOffer: PCCommercialOffer) {
+        self.weakAdmin?.unraise(animated: true, completion: { [weak self] in
+            guard let sSelf = self else { return }
+            sSelf.weakAdmin?.selectedIndex = 1
+            let adminCommercialOffer = sSelf.factories.adminCommercialOffer.make(commercialOffer: commercialOffer, output: sSelf)
+            sSelf.weakAdmin?.raise(adminCommercialOffer.viewController, animated: true)
+        })
+    }
+
     // views
     private var admin: UITabBarController {
         if let admin = self.weakAdmin {
