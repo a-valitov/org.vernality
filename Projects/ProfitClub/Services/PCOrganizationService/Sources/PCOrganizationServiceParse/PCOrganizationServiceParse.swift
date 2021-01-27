@@ -68,25 +68,36 @@ import Parse
 
      func approve(member: PCMember, result: @escaping (Result<PCMember, Error>) -> Void) {
         let parseMember = member.parse
-        parseMember.status = .approved
-        parseMember.saveInBackground { (success, error) in
-            if let error = error {
-                result(.failure(error))
-            } else {
-                result(.success(parseMember.any))
+        
+        if let memberId = member.id {
+            PFCloud.callFunction(inBackground: "approveMember",
+                                 withParameters: ["memberId": memberId]) { (response, error) in
+                                    if let error = error {
+                                        result(.failure(error))
+                                    } else {
+                                        result(.success(parseMember.any))
+                                    }
             }
+        } else {
+            result(.failure(PCOrganizationServiceError.memberOrUserIdIsNil))
         }
     }
 
+
      func reject(member: PCMember, result: @escaping (Result<PCMember, Error>) -> Void) {
         let parseMember = member.parse
-        parseMember.status = .rejected
-        parseMember.saveInBackground { (success, error) in
-            if let error = error {
-                result(.failure(error))
-            } else {
-                result(.success(parseMember.any))
+        
+        if let memberId = member.id {
+            PFCloud.callFunction(inBackground: "rejectMember",
+                                 withParameters: ["memberId": memberId]) { (response, error) in
+                                    if let error = error {
+                                        result(.failure(error))
+                                    } else {
+                                        result(.success(parseMember.any))
+                                    }
             }
+        } else {
+            result(.failure(PCOrganizationServiceError.memberOrUserIdIsNil))
         }
     }
 

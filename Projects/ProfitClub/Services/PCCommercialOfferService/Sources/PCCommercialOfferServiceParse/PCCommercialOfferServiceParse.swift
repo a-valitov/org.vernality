@@ -118,14 +118,6 @@ final class PCCommercialOfferServiceParse: PCCommercialOfferService {
         } else {
             result(.failure(PCCommercialOfferServiceError.commercialOfferOrUserIdIsNil))
         }
-//        parseCommercialOffer.status = .approved
-//        parseCommercialOffer.saveInBackground { (success, error) in
-//            if let error = error {
-//                result(.failure(error))
-//            } else {
-//                result(.success(parseCommercialOffer.any))
-//            }
-//        }
     }
 
     func reject(commercialOffer: PCCommercialOffer, result: @escaping (Result<PCCommercialOffer, Error>) -> Void) {
