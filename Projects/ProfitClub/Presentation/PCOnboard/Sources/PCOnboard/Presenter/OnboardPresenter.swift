@@ -169,7 +169,7 @@ extension OnboardPresenter: OnboardSignUpViewOutput {
             self.services.authentication.register(user: user, password: password) { [weak self] (result) in
                 guard let sSelf = self else { return }
                 switch result {
-                case .success:
+                case .success(let user):
                     view.unraise(animated: true) { [weak sSelf] in
                         guard let ssSelf = sSelf else { return }
                         ssSelf.presenters.confirmation.present(

@@ -265,6 +265,10 @@ final class OnboardOrganizationViewAlpha: UIViewController {
                                                                              attributes:[.foregroundColor: placeholderColor])
         self.organizationContactTextField.attributedPlaceholder = NSAttributedString(string: "ФИО",
                                                                                  attributes:[.foregroundColor: placeholderColor])
+
+        self.organizationNameTextField.autocapitalizationType = .words
+        self.organizationContactTextField.autocapitalizationType = .words
+
         self.organizationNameTextField.tintColor = textColor
         self.organizationPhoneNumberTextField.tintColor = textColor
         self.organizationINNTextField.tintColor = textColor

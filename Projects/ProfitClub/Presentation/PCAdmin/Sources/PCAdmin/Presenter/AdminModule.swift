@@ -23,6 +23,7 @@ public protocol AdminModule: class {
     var router: AnyObject? { get set }
 
     func open(action: PCAction)
+    func open(commercialOffer: PCCommercialOffer)
 }
 
 public protocol AdminModuleOutput: class {

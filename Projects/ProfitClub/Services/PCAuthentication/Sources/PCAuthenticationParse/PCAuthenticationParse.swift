@@ -55,7 +55,7 @@ final class PCAuthenticationParse: PCAuthentication {
                 PFACL.setDefault(defaultACL, withAccessForCurrentUser: true)
                 PFInstallation.current()?.setObject(parseUser, forKey: "user")
                 PFInstallation.current()?.saveEventually()
-                result(.success(user.any))
+                result(.success(parseUser.any))
             }
         }
     }

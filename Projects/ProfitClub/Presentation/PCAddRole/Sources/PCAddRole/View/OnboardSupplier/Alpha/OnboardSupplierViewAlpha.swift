@@ -270,6 +270,10 @@ final class OnboardSupplierViewAlpha: UIViewController {
                                                                              attributes:[.foregroundColor: placeholderColor])
         self.supplierContactTextField.attributedPlaceholder = NSAttributedString(string: "ФИО",
                                                                                  attributes:[.foregroundColor: placeholderColor])
+
+        self.supplierNameTextField.autocapitalizationType = .words
+        self.supplierContactTextField.autocapitalizationType = .words
+
         self.supplierNameTextField.tintColor = textColor
         self.supplierPhoneNumberTextField.tintColor = textColor
         self.supplierINNTextField.tintColor = textColor

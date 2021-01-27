@@ -45,34 +45,50 @@ final class ReviewRouter {
         self.user = user
     }
 
+    func route(to commercialOffer: PCCommercialOffer) {
+        if let adminRouter = self.weakAdminRouter {
+            adminRouter.route(to: commercialOffer)
+        } else  {
+            self.navigateToAdmin { adminRouter in
+                adminRouter.route(to: commercialOffer)
+            }
+        }
+    }
+
     func route(to action: PCAction) {
         if let adminRouter = self.weakAdminRouter {
             adminRouter.route(to: action)
         } else  {
-            CATransaction.begin()
-            CATransaction.setCompletionBlock {
-                DispatchQueue.main.async { [weak self] in
-                    guard let sSelf = self else { return }
-                    let adminRouter = sSelf.adminRouter(user: sSelf.user)
-                    CATransaction.begin()
-                    CATransaction.setCompletionBlock {
-                        DispatchQueue.main.async {
-                            adminRouter.route(to: action)
-                        }
-                    }
-                    sSelf.navigationController.pushViewController(
-                        adminRouter.viewController,
-                        animated: true
-                    )
-                    CATransaction.commit()
-                }
+            self.navigateToAdmin { adminRouter in
+                adminRouter.route(to: action)
             }
-            self.navigationController.popToViewController(
-                self.review.viewController,
-                animated: true
-            )
-            CATransaction.commit()
         }
+    }
+
+    private func navigateToAdmin(completion: @escaping (AdminRouter) -> Void) {
+        CATransaction.begin()
+        CATransaction.setCompletionBlock {
+            DispatchQueue.main.async { [weak self] in
+                guard let sSelf = self else { return }
+                CATransaction.begin()
+                let adminRouter = sSelf.adminRouter(user: sSelf.user)
+                CATransaction.setCompletionBlock {
+                    DispatchQueue.main.async {
+                        completion(adminRouter)
+                    }
+                }
+                sSelf.navigationController.pushViewController(
+                    adminRouter.viewController,
+                    animated: true
+                )
+                CATransaction.commit()
+            }
+        }
+        self.navigationController.popToViewController(
+            self.review.viewController,
+            animated: true
+        )
+        CATransaction.commit()
     }
 
     // modules

@@ -118,14 +118,6 @@ final class PCCommercialOfferServiceParse: PCCommercialOfferService {
         } else {
             result(.failure(PCCommercialOfferServiceError.commercialOfferOrUserIdIsNil))
         }
-//        parseCommercialOffer.status = .approved
-//        parseCommercialOffer.saveInBackground { (success, error) in
-//            if let error = error {
-//                result(.failure(error))
-//            } else {
-//                result(.success(parseCommercialOffer.any))
-//            }
-//        }
     }
 
     func reject(commercialOffer: PCCommercialOffer, result: @escaping (Result<PCCommercialOffer, Error>) -> Void) {
@@ -142,6 +134,18 @@ final class PCCommercialOfferServiceParse: PCCommercialOfferService {
             }
         } else {
             result(.failure(PCCommercialOfferServiceError.commercialOfferOrUserIdIsNil))
+        }
+    }
+
+    func fetch(_ commercialOfferId: String, result: @escaping (Result<PCCommercialOffer, Error>) -> Void) {
+        let query = PFQuery(className: "CommercialOffer")
+        query.includeKey("supplier")
+        query.getObjectInBackground(withId: commercialOfferId) { (object, error) in
+            if let error = error {
+                result(.failure(error))
+            } else if let object = object {
+                result(.success(object.pcCommercialOffer))
+            }
         }
     }
 }
