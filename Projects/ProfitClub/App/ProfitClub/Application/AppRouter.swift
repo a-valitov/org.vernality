@@ -20,6 +20,7 @@ import PCUserPersistence
 import PCActionService
 import PCCommercialOfferService
 import ErrorPresenter
+import ConfirmationPresenter
 import PCModel
 
 final class AppRouter {
@@ -95,27 +96,31 @@ extension AppRouter {
     }
 
     private func openAdminAction(actionId: String) {
-        let actionService = self.actionService()
-        actionService.fetch(actionId) { [weak self] result in
-            guard let sSelf = self else { return }
-            switch result {
-            case .success(let action):
-                self?.weakReviewRouter?.route(to: action)
-            case .failure(let error):
-                sSelf.errorPresenter().present(error)
+        self.confirm(message: "Открыть экран акции?") { [weak self] in
+            let actionService = self?.actionService()
+            actionService?.fetch(actionId) { [weak self] result in
+                guard let sSelf = self else { return }
+                switch result {
+                case .success(let action):
+                    self?.weakReviewRouter?.route(to: action)
+                case .failure(let error):
+                    sSelf.errorPresenter().present(error)
+                }
             }
         }
     }
     
     private func openAdminCommercialOffer(commercialOfferId: String) {
-        let commercialOfferService = self.commercialOfferService()
-        commercialOfferService.fetch(commercialOfferId) { [weak self] result in
-            guard let sSelf = self else { return }
-            switch result {
-            case .success(let commercialOffer):
-                self?.weakReviewRouter?.route(to: commercialOffer)
-            case .failure(let error):
-                sSelf.errorPresenter().present(error)
+        self.confirm(message: "Открыть экран коммерческого предложения?") { [weak self] in
+            let commercialOfferService = self?.commercialOfferService()
+            commercialOfferService?.fetch(commercialOfferId) { [weak self] result in
+                guard let sSelf = self else { return }
+                switch result {
+                case .success(let commercialOffer):
+                    self?.weakReviewRouter?.route(to: commercialOffer)
+                case .failure(let error):
+                    sSelf.errorPresenter().present(error)
+                }
             }
         }
     }
@@ -130,6 +135,17 @@ extension AppRouter {
     
     private func openAdminMember(memberId: String) {
         print(memberId)
+    }
+
+    private func confirm(message: String, completion: @escaping () -> Void) {
+        let confirmationPresenter = self.confirmationPresenter()
+        confirmationPresenter.present(
+            title: "Подтверждение",
+            message: message,
+            actionTitle: "Открыть",
+            withCancelAction: true,
+            completion: completion
+        )
     }
 }
 
@@ -161,6 +177,9 @@ extension AppRouter: ReviewRouterDelegate {
 extension AppRouter {
     private func errorPresenter() -> ErrorPresenter {
         return ErrorPresenterAlertFactory().make()
+    }
+    private func confirmationPresenter() -> ConfirmationPresenter {
+        return ConfirmationPresenterAlertFactory().make()
     }
     private func actionService() -> PCActionService {
         return PCActionServiceParseFactory().make()
