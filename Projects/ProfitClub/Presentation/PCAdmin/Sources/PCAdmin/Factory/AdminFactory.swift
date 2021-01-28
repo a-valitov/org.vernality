@@ -20,7 +20,7 @@ import ActivityPresenter
 import ConfirmationPresenter
 import MenuPresenter
 import PCModel
-#if canImport(PCAuthenticationStub)
+#if canImport(PCUserServiceStub)
 import PCUserServiceStub
 #endif
 #if canImport(PCOrganizationServiceStub)
