@@ -20,4 +20,5 @@ public enum PCOrganizationServiceError: Error {
     case bothResultAndErrorAreNil
     case inputIsNil
     case failedToGetImagePNGRepresentation
+    case memberOrUserIdIsNil
 }
