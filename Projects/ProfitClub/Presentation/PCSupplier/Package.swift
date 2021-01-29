@@ -5,22 +5,34 @@ import PackageDescription
 
 let package = Package(
     name: "PCSupplier",
+    platforms: [.iOS(.v11)],
     products: [
-        // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
             name: "PCSupplier",
             targets: ["PCSupplier"]),
     ],
     dependencies: [
-        // Dependencies declare other packages that this package depends on.
-        // .package(url: /* package url */, from: "1.0.0"),
+        .package(path: "../../../../Pods/Packages/ErrorPresenter"),
+        .package(path: "../../../../Pods/Packages/MenuPresenter"),
+        .package(path: "../../../../Pods/Packages/ConfirmationPresenter"),
+        .package(path: "../../../../Pods/Packages/ActivityPresenter"),
+        .package(path: "../../Services/PCUserService"),
+        .package(path: "../../Services/PCActionService"),
+        .package(path: "../../Services/PCCommercialOfferService"),
     ],
     targets: [
-        // Targets are the basic building blocks of a package. A target can define a module or a test suite.
-        // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "PCSupplier",
-            dependencies: []),
+            dependencies: [
+                .product(name: "PCUserServiceStub", package: "PCUserService"),
+                .product(name: "PCActionServiceStub", package: "PCActionService"),
+                .product(name: "PCCommercialOfferServiceStub", package: "PCCommercialOfferService"),
+                "ErrorPresenter",
+                "ConfirmationPresenter",
+                "ActivityPresenter",
+                "MenuPresenter",
+
+            ]),
         .testTarget(
             name: "PCSupplierTests",
             dependencies: ["PCSupplier"]),
