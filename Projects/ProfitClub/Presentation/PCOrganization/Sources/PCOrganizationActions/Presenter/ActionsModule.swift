@@ -18,10 +18,10 @@ import Foundation
 import UIKit
 import PCModel
 
-protocol ActionsModule: class {
+public protocol ActionsModule: class {
     var viewController: UIViewController { get }
 }
 
-protocol ActionsModuleOutput: class {
+public protocol ActionsModuleOutput: class {
     func actions(module: ActionsModule, didSelect action: PCAction)
 }

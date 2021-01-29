@@ -18,14 +18,14 @@ import Foundation
 import ErrorPresenter
 import ActivityPresenter
 
-final class CommercialOffersFactory {
-    init(presenters: CommercialOffersPresenters,
+public final class CommercialOffersFactory {
+    public init(presenters: CommercialOffersPresenters,
          services: CommercialOffersServices) {
         self.presenters = presenters
         self.services = services
     }
 
-    func make(output: CommercialOffersModuleOutput?) -> CommercialOffersModule {
+    public func make(output: CommercialOffersModuleOutput?) -> CommercialOffersModule {
         let presenter = CommercialOffersPresenter(presenters: self.presenters,
                                                   services: self.services)
         presenter.output = output

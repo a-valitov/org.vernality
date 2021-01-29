@@ -22,6 +22,21 @@ import ConfirmationPresenter
 import MenuPresenter
 import PCModel
 import Raise
+#if canImport(PCOrganizationAction)
+import PCOrganizationAction
+#endif
+#if canImport(PCOrganizationActions)
+import PCOrganizationActions
+#endif
+#if canImport(PCOrganizationCommercialOffer)
+import PCOrganizationCommercialOffer
+#endif
+#if canImport(PCOrganizationCommercialOffers)
+import PCOrganizationCommercialOffers
+#endif
+#if canImport(PCOrganizationMembers)
+import PCOrganizationMembers
+#endif
 
 final class OrganizationPresenter: OrganizationModule {
     weak var output: OrganizationModuleOutput?

@@ -15,16 +15,27 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import Foundation
-import PCAuthentication
 import PCActionService
 import ErrorPresenter
 import ActivityPresenter
 
-struct ActionsPresenters {
+public struct ActionsPresenters {
     let error: ErrorPresenter
     let activity: ActivityPresenter
+
+    public init(
+        error: ErrorPresenter,
+        activity: ActivityPresenter
+    ) {
+        self.error = error
+        self.activity = activity
+    }
 }
 
-struct ActionsServices {
+public struct ActionsServices {
     let action: PCActionService
+
+    public init(action: PCActionService) {
+        self.action = action
+    }
 }

@@ -24,6 +24,27 @@ import MenuPresenter
 import PCCommercialOfferService
 import PCActionService
 import PCModel
+#if canImport(PCActionServiceStub)
+import PCActionServiceStub
+#endif
+#if canImport(PCCommercialOfferServiceStub)
+import PCCommercialOfferServiceStub
+#endif
+#if canImport(PCOrganizationAction)
+import PCOrganizationAction
+#endif
+#if canImport(PCOrganizationActions)
+import PCOrganizationActions
+#endif
+#if canImport(PCOrganizationCommercialOffer)
+import PCOrganizationCommercialOffer
+#endif
+#if canImport(PCOrganizationCommercialOffers)
+import PCOrganizationCommercialOffers
+#endif
+#if canImport(PCOrganizationMembers)
+import PCOrganizationMembers
+#endif
 
 public struct OrganizationPresenters {
     let error: ErrorPresenter
@@ -138,10 +159,18 @@ public struct OrganizationFactories {
     }
 
     private func actionService() -> PCActionService {
+        #if canImport(PCActionServiceStub)
+        return PCActionServiceStubFactory().make()
+        #else
         return PCActionServiceParseFactory().make()
+        #endif
     }
 
     private func commercialOfferService() -> PCCommercialOfferService {
+        #if canImport(PCCommercialOfferServiceStub)
+        return PCCommercialOfferServiceStubFactory().make()
+        #else
         return PCCommercialOfferServiceParseFactory().make()
+        #endif
     }
 }
