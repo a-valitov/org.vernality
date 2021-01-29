@@ -5,22 +5,27 @@ import PackageDescription
 
 let package = Package(
     name: "PCOrganizationProfile",
+    platforms: [.iOS(.v11)],
     products: [
-        // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
             name: "PCOrganizationProfile",
             targets: ["PCOrganizationProfile"]),
     ],
     dependencies: [
-        // Dependencies declare other packages that this package depends on.
-        // .package(url: /* package url */, from: "1.0.0"),
+        .package(path: "../../../../Pods/Packages/ErrorPresenter"),
+        .package(path: "../../../../Pods/Packages/ActivityPresenter"),
+        .package(path: "../../Services/PCOrganizationService"),
+        .package(url: "https://github.com/onevcat/Kingfisher.git", from: "6.0.1"),
     ],
     targets: [
-        // Targets are the basic building blocks of a package. A target can define a module or a test suite.
-        // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "PCOrganizationProfile",
-            dependencies: []),
+            dependencies: [
+                "ActivityPresenter",
+                "ErrorPresenter",
+                "Kingfisher",
+                .product(name: "PCOrganizationServiceStub", package: "PCOrganizationService"),
+            ]),
         .testTarget(
             name: "PCOrganizationProfileTests",
             dependencies: ["PCOrganizationProfile"]),

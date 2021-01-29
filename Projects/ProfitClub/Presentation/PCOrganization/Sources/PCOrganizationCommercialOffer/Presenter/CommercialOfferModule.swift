@@ -17,10 +17,10 @@
 import UIKit
 import PCModel
 
-protocol CommercialOfferModule: class {
+public protocol CommercialOfferModule: class {
     var viewController: UIViewController { get }
 }
 
-protocol CommercialOfferModuleOutput: class {
+public protocol CommercialOfferModuleOutput: class {
     
 }

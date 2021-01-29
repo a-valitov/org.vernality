@@ -18,9 +18,9 @@ import Foundation
 import UIKit
 import PCModel
 
-protocol ActionModule: class {
+public protocol ActionModule: class {
     var viewController: UIViewController { get }
 }
 
-protocol ActionModuleOutput: class {
+public protocol ActionModuleOutput: class {
 }

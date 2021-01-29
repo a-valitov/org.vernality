@@ -2,15 +2,6 @@
   "object": {
     "pins": [
       {
-        "package": "FittedSheets",
-        "repositoryURL": "https://github.com/gordontucker/FittedSheets",
-        "state": {
-          "branch": null,
-          "revision": "c2bd4937d88585ab89a0156abbf42b7356478238",
-          "version": "2.2.3"
-        }
-      },
-      {
         "package": "Kingfisher",
         "repositoryURL": "https://github.com/onevcat/Kingfisher.git",
         "state": {

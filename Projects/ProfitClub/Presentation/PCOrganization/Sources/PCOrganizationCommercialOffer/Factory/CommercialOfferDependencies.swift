@@ -15,16 +15,27 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import Foundation
-import PCAuthentication
 import PCCommercialOfferService
 import ErrorPresenter
 import ActivityPresenter
 
-struct CommercialOfferPresenters {
+public struct CommercialOfferPresenters {
     let error: ErrorPresenter
     let activity: ActivityPresenter
+
+    public init(
+        error: ErrorPresenter,
+        activity: ActivityPresenter
+    ) {
+        self.error = error
+        self.activity = activity
+    }
 }
 
-struct CommercialOfferServices {
+public struct CommercialOfferServices {
     let commercialOffer: PCCommercialOfferService
+    
+    public init(commercialOffer: PCCommercialOfferService) {
+        self.commercialOffer = commercialOffer
+    }
 }

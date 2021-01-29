@@ -12,7 +12,7 @@ let package = Package(
             targets: ["Raise"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/gordontucker/FittedSheets", from: "2.2.3"),
+        .package(url: "https://github.com/gordontucker/FittedSheets", .exact("2.2.3")),
     ],
     targets: [
         .target(
