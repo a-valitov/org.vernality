@@ -50,8 +50,7 @@ public extension PFObject {
 
 public extension PCCommercialOffer {
     var parse: PCCommercialOfferParse {
-        let result = PCCommercialOfferParse()
-        result.objectId = self.id
+        let result = PCCommercialOfferParse(withoutDataWithObjectId: self.id)
         result.message = self.message
         result.image = self.image
         result.attachments = self.attachments

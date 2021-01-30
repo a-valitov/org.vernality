@@ -276,6 +276,7 @@ extension AppRouter: ReviewRouterDelegate {
 extension AppRouter {
     private func onLogout() {
         self.userPersistence.lastUsedRole = nil
+        self.userPersistence.user = nil
         self.navigationController.setViewControllers(
             [self.onboardRouter().viewController],
             animated: true

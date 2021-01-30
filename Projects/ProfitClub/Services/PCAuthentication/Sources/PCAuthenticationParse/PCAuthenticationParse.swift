@@ -26,6 +26,7 @@ final class PCAuthenticationParse: PCAuthentication {
             } else if let user = user, let anyUser = user.pcUser?.any {
                 PFInstallation.current()?.setObject(user, forKey: "user")
                 PFInstallation.current()?.saveEventually()
+                PFUser.current()?.saveEventually()
                 result(.success(anyUser))
             } else {
                 result(.failure(PCAuthenticationError.bothResultAndErrorAreNil))
@@ -55,6 +56,7 @@ final class PCAuthenticationParse: PCAuthentication {
                 PFACL.setDefault(defaultACL, withAccessForCurrentUser: true)
                 PFInstallation.current()?.setObject(parseUser, forKey: "user")
                 PFInstallation.current()?.saveEventually()
+                PFUser.current()?.saveEventually()
                 result(.success(parseUser.any))
             }
         }

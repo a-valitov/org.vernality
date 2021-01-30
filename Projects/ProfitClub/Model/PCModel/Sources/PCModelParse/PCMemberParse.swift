@@ -54,8 +54,7 @@ public extension PFObject {
 
 public extension PCMember {
     var parse: PCMemberParse {
-        let result = PCMemberParse()
-        result.objectId = self.id
+        let result = PCMemberParse(withoutDataWithObjectId: self.id)
         result.firstName = self.firstName
         result.lastName = self.lastName
         result.image = self.image
