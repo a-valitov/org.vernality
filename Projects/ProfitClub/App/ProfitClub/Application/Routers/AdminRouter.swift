@@ -67,7 +67,7 @@ final class AdminRouter {
     }
     private weak var weakAdmin: AdminModule?
 
-    private let user: PCUser
+    let user: PCUser
     private weak var weakNavigationController: UINavigationController?
 }
 

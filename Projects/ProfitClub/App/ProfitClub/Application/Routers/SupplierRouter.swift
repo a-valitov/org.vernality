@@ -78,7 +78,7 @@ final class SupplierRouter {
     }
     private weak var weakSupplierProfileRouter: SupplierProfileRouter?
 
-    private let user: PCUser
+    let user: PCUser
     private let supplier: PCSupplier
     private weak var weakNavigationController: UINavigationController?
 }

@@ -16,8 +16,16 @@
 
 import PCModel
 
+public enum PersistentRole {
+    case administrator
+    case member(PCMember)
+    case organization(PCOrganization)
+    case supplier(PCSupplier)
+}
+
 public protocol PCUserPersistence {
     var user: AnyPCUser? { get set }
+    var lastUsedRole: PersistentRole? { get set }
 }
 
 public protocol PCUserPersistenceFactory {

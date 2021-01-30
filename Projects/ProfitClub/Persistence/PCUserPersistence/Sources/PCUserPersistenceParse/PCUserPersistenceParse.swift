@@ -37,5 +37,66 @@ final class PCUserPersistenceParse: PCUserPersistence {
         }
     }
 
+    var lastUsedRole: PersistentRole? {
+        get {
+            if let value = self.prefs.string(forKey: self.lastUsedRoleKey) {
+                if value == "administrator" {
+                    return .administrator
+                } else if value.starts(with: "m") {
+                    let id = String(value.dropFirst())
+                    let query = PCMemberParse.query()
+                    query?.fromLocalDatastore()
+                    if let organization = try? query?.getObjectWithId(id) as? PCMemberParse {
+                        return .member(organization)
+                    } else {
+                        return nil
+                    }
+
+                } else if value.starts(with: "o") {
+                    let id = String(value.dropFirst())
+                    let query = PCOrganizationParse.query()
+                    query?.fromLocalDatastore()
+                    if let organization = try? query?.getObjectWithId(id) as? PCOrganizationParse {
+                        return .organization(organization)
+                    } else {
+                        return nil
+                    }
+                } else if value.starts(with: "s") {
+                    let id = String(value.dropFirst())
+                    let query = PCSupplierParse.query()
+                    query?.fromLocalDatastore()
+                    if let organization = try? query?.getObjectWithId(id) as? PCSupplierParse {
+                        return .supplier(organization)
+                    } else {
+                        return nil
+                    }
+                } else {
+                    return nil
+                }
+            } else {
+                return nil
+            }
+        }
+        set {
+            switch newValue {
+            case .administrator:
+                self.prefs.setValue("administrator", forKey: self.lastUsedRoleKey)
+            case .member(let member):
+                self.prefs.setValue("m" + (member.id ?? ""), forKey: self.lastUsedRoleKey)
+                member.parse.pinInBackground()
+            case .organization(let organization):
+                self.prefs.setValue("o" + (organization.id ?? ""), forKey: self.lastUsedRoleKey)
+                organization.parse.pinInBackground()
+            case .supplier(let supplier):
+                self.prefs.setValue("s" + (supplier.id ?? ""), forKey: self.lastUsedRoleKey)
+                supplier.parse.pinInBackground()
+            case .none:
+                self.prefs.setValue(nil, forKey: self.lastUsedRoleKey)
+            }
+        }
+    }
+
     private var parseUser: PCUserParse?
+    private let prefs = UserDefaults.standard
+    private let lastUsedRoleKey = "PCUserPersistenceParse.lastUsedRoleKey"
 }

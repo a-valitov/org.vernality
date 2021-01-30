@@ -78,7 +78,7 @@ final class MemberRouter {
     }
     private weak var weakMemberProfileRouter: MemberProfileRouter?
 
-    private let user: PCUser
+    let user: PCUser
     private let member: PCMember
     private weak var weakNavigationController: UINavigationController?
 }

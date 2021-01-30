@@ -31,6 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             $0.applicationId = Secrets.parseApplicationId
             $0.clientKey = Secrets.parseClientKey
             $0.server = Secrets.parseServer
+            $0.isLocalDatastoreEnabled = true
         }
         Parse.initialize(with: parseConfig)
         #if DEBUG
