@@ -16,6 +16,7 @@
 
 import UIKit
 import Kingfisher
+import BundleUtils
 
 final class AdminActionApplicationViewAlpha: UIViewController {
     var output: AdminActionApplicationViewOutput?
@@ -162,13 +163,13 @@ final class AdminActionApplicationViewAlpha: UIViewController {
         #if SWIFT_PACKAGE
         actionLinkButton.setImage(UIImage(named: "Icon", in: Bundle.module, compatibleWith: nil), for: .normal)
         #else
-        actionLinkButton.setImage(UIImage(named: "Icon", in: Bundle(for: Self.self), compatibleWith: nil), for: .normal)
+        actionLinkButton.setImage(UIImage(named: "Icon", in: Bundle.pod(Self.self), compatibleWith: nil), for: .normal)
         #endif
 
         #if SWIFT_PACKAGE
-        cancelButton.setImage(UIImage(named: "X", in: Bundle.module, compatibleWith: nil), for: .normal)
+        cancelButton.setImage(UIImage(named: "close_action", in: Bundle.module, compatibleWith: nil), for: .normal)
         #else
-        cancelButton.setImage(UIImage(named: "X", in: Bundle(for: Self.self), compatibleWith: nil), for: .normal)
+        cancelButton.setImage(UIImage(named: "close_action", in: Bundle.pod(Self.self), compatibleWith: nil), for: .normal)
         #endif
     }
 

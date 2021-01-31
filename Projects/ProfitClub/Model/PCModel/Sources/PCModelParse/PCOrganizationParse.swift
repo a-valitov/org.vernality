@@ -28,11 +28,13 @@ public extension PFObject {
         if let statusString = self["statusString"] as? String {
             result.status = PCOrganizationStatus(rawValue: statusString)
         }
-        if let owner = self["owner"] as? PFObject, owner.isDataAvailable {
+
+        if let organizationParse = self as? PCOrganizationParse, let owner = organizationParse.owner {
+            result.owner = owner
+        } else if let owner = self["owner"] as? PFObject, owner.isDataAvailable {
             result.owner = owner.pcUser?.any
-        } else if let organizationParse = self as? PCOrganizationParse {
-            result.owner = organizationParse.owner
         }
+
         if let fileObject = self["imageFile"] as? PFFileObject,
             let urlString = fileObject.url,
             let imageUrl = URL(string: urlString) {

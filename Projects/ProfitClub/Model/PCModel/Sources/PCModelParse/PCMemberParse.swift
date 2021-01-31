@@ -27,16 +27,16 @@ public extension PFObject {
             result.status = PCMemberStatus(rawValue: statusString)
         }
 
-        if let owner = self["owner"] as? PFObject, owner.isDataAvailable {
+        if let memberParse = self as? PCMemberParse, let owner = memberParse.owner {
+            result.owner = owner
+        } else if let owner = self["owner"] as? PFObject, owner.isDataAvailable {
             result.owner = owner.pcUser?.any
-        } else if let memberParse = self as? PCMemberParse {
-            result.owner = memberParse.owner
         }
 
-        if let organization = self["organization"] as? PFObject, organization.isDataAvailable {
+        if let memberParse = self as? PCMemberParse, let organization = memberParse.organization {
+            result.organization = organization
+        } else if let organization = self["organization"] as? PFObject, organization.isDataAvailable {
             result.organization = organization.pcOrganization.any
-        } else if let memberParse = self as? PCMemberParse {
-            result.organization = memberParse.organization
         }
 
         if let fileObject = self["imageFile"] as? PFFileObject,

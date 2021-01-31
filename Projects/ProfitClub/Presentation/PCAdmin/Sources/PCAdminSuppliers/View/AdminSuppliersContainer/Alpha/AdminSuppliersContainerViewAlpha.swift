@@ -15,6 +15,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import UIKit
+import BundleUtils
 
 final class AdminSuppliersContainerViewAlpha: UIViewController {
     var output: AdminSuppliersContainerViewOutput?
@@ -100,12 +101,12 @@ final class AdminSuppliersContainerViewAlpha: UIViewController {
         #if SWIFT_PACKAGE
         tabBarImage = UIImage(named: "supplier", in: Bundle.module, compatibleWith: nil)
         #else
-        tabBarImage = UIImage(named: "supplier", in: Bundle(for: Self.self), compatibleWith: nil)
+        tabBarImage = UIImage(named: "supplier", in: Bundle.pod(Self.self), compatibleWith: nil)
         #endif
         #if SWIFT_PACKAGE
         tabBarSelectedImage = UIImage(named: "selectedSupplier", in: Bundle.module, compatibleWith: nil)
         #else
-        tabBarSelectedImage = UIImage(named: "selectedSupplier", in: Bundle(for: Self.self), compatibleWith: nil)
+        tabBarSelectedImage = UIImage(named: "selectedSupplier", in: Bundle.pod(Self.self), compatibleWith: nil)
         #endif
         self.tabBarItem = UITabBarItem(title: "Поставщики", image: tabBarImage, selectedImage: tabBarSelectedImage)
     }

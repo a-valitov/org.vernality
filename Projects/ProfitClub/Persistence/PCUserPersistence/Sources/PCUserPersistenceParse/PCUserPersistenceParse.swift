@@ -44,18 +44,16 @@ final class PCUserPersistenceParse: PCUserPersistence {
                     return .administrator
                 } else if value.starts(with: "m") {
                     let id = String(value.dropFirst())
-                    let query = PCMemberParse.query()
-                    query?.fromLocalDatastore()
-                    if let organization = try? query?.getObjectWithId(id) as? PCMemberParse {
-                        return .member(organization)
+                    let query = PCMemberParse.query()?.fromPin()
+                    if let member = try? query?.getObjectWithId(id) as? PCMemberParse {
+                        return .member(member)
                     } else {
                         return nil
                     }
 
                 } else if value.starts(with: "o") {
                     let id = String(value.dropFirst())
-                    let query = PCOrganizationParse.query()
-                    query?.fromLocalDatastore()
+                    let query = PCOrganizationParse.query()?.fromPin()
                     if let organization = try? query?.getObjectWithId(id) as? PCOrganizationParse {
                         return .organization(organization)
                     } else {
@@ -63,10 +61,9 @@ final class PCUserPersistenceParse: PCUserPersistence {
                     }
                 } else if value.starts(with: "s") {
                     let id = String(value.dropFirst())
-                    let query = PCSupplierParse.query()
-                    query?.fromLocalDatastore()
-                    if let organization = try? query?.getObjectWithId(id) as? PCSupplierParse {
-                        return .supplier(organization)
+                    let query = PCSupplierParse.query()?.fromPin()
+                    if let supplier = try? query?.getObjectWithId(id) as? PCSupplierParse {
+                        return .supplier(supplier)
                     } else {
                         return nil
                     }

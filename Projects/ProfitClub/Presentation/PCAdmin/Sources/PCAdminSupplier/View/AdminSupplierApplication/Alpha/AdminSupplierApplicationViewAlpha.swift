@@ -16,6 +16,7 @@
 
 import UIKit
 import Kingfisher
+import BundleUtils
 
 final class AdminSupplierApplicationViewAlpha: UIViewController {
     var output: AdminSupplierApplicationViewOutput?
@@ -177,9 +178,9 @@ final class AdminSupplierApplicationViewAlpha: UIViewController {
         self.output?.adminSupplierApplicationDidLoad(view: self)
 
         #if SWIFT_PACKAGE
-        cancelButton.setImage(UIImage(named: "X", in: Bundle.module, compatibleWith: nil), for: .normal)
+        cancelButton.setImage(UIImage(named: "close_supplier", in: Bundle.module, compatibleWith: nil), for: .normal)
         #else
-        cancelButton.setImage(UIImage(named: "X", in: Bundle(for: Self.self), compatibleWith: nil), for: .normal)
+        cancelButton.setImage(UIImage(named: "close_supplier", in: Bundle.pod(Self.self), compatibleWith: nil), for: .normal)
         #endif
     }
 

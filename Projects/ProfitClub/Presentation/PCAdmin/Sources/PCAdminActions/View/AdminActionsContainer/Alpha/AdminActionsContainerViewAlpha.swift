@@ -15,6 +15,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import UIKit
+import BundleUtils
 
 final class AdminActionsContainerViewAlpha: UIViewController {
     var output: AdminActionsContainerViewOutput?
@@ -100,12 +101,12 @@ final class AdminActionsContainerViewAlpha: UIViewController {
         #if SWIFT_PACKAGE
         tabBarImage = UIImage(named: "selectedActionItem", in: Bundle.module, compatibleWith: nil)
         #else
-        tabBarImage = UIImage(named: "selectedActionItem", in: Bundle(for: Self.self), compatibleWith: nil)
+        tabBarImage = UIImage(named: "selectedActionItem", in: Bundle.pod(Self.self), compatibleWith: nil)
         #endif
         #if SWIFT_PACKAGE
         tabBarSelectedImage = UIImage(named: "actionItem", in: Bundle.module, compatibleWith: nil)
         #else
-        tabBarSelectedImage = UIImage(named: "actionItem", in: Bundle(for: Self.self), compatibleWith: nil)
+        tabBarSelectedImage = UIImage(named: "actionItem", in: Bundle.pod(Self.self), compatibleWith: nil)
         #endif
         self.tabBarItem = UITabBarItem(title: "Акции", image: tabBarImage, selectedImage: tabBarSelectedImage)
     }

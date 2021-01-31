@@ -29,10 +29,10 @@ public extension PFObject {
             result.status = PCSupplierStatus(rawValue: statusString)
         }
 
-        if let owner = self["owner"] as? PFObject, owner.isDataAvailable {
+        if let supplierParse = self as? PCSupplierParse, let owner = supplierParse.owner {
+            result.owner = owner
+        } else if let owner = self["owner"] as? PFObject, owner.isDataAvailable {
             result.owner = owner.pcUser?.any
-        } else if let supplierParse = self as? PCSupplierParse {
-            result.owner = supplierParse.owner
         }
 
         if let fileObject = self["imageFile"] as? PFFileObject,

@@ -16,8 +16,11 @@ Pod::Spec.new do |s|
 
   s.subspec 'PCAdmin' do |ss|
     ss.source_files = 'Sources/PCAdmin/**/*.{h,m,swift}', 'Sources/PCAdmin/*.{h,m,swift}'
-    ss.resources = 'Sources/PCAdmin/Assets/PCAdmin.xcassets'
+    ss.resource_bundles = {
+        'PCAdmin' => ['Sources/**/Assets/*.xcassets']
+    }
 
+    ss.dependency 'BundleUtils'
     ss.dependency 'Raise'
     ss.dependency 'PCModel'
     ss.dependency 'PCUserService'
@@ -40,8 +43,8 @@ Pod::Spec.new do |s|
 
   s.subspec 'PCAdminAction' do |ss|
     ss.source_files = 'Sources/PCAdminAction/**/*.{h,m,swift}', 'Sources/PCAdminAction/*.{h,m,swift}'
-    ss.resources = 'Sources/PCAdminAction/Assets/PCAdminAction.xcassets'
 
+    ss.dependency 'BundleUtils'
     ss.dependency 'PCModel'
     ss.dependency 'PCActionService'
     ss.dependency 'PCUserService'
@@ -54,8 +57,8 @@ Pod::Spec.new do |s|
 
   s.subspec 'PCAdminActions' do |ss|
     ss.source_files = 'Sources/PCAdminActions/**/*.{h,m,swift}', 'Sources/PCAdminActions/*.{h,m,swift}'
-    ss.resources = 'Sources/PCAdminActions/Assets/PCAdminActions.xcassets'
 
+    ss.dependency 'BundleUtils'
     ss.dependency 'PCModel'
     ss.dependency 'PCUserService'
     ss.dependency 'PCOrganizationService'
@@ -67,8 +70,8 @@ Pod::Spec.new do |s|
 
   s.subspec 'PCAdminCommercialOffer' do |ss|
     ss.source_files = 'Sources/PCAdminCommercialOffer/**/*.{h,m,swift}', 'Sources/PCAdminCommercialOffer/*.{h,m,swift}'
-    ss.resources = 'Sources/PCAdminCommercialOffer/Assets/PCAdminCommercialOffer.xcassets'
 
+    ss.dependency 'BundleUtils'
     ss.dependency 'PCModel'
     ss.dependency 'PCUserService'
     ss.dependency 'PCOrganizationService'
@@ -81,8 +84,8 @@ Pod::Spec.new do |s|
 
   s.subspec 'PCAdminCommercialOffers' do |ss|
     ss.source_files = 'Sources/PCAdminCommercialOffers/**/*.{h,m,swift}', 'Sources/PCAdminCommercialOffers/*.{h,m,swift}'
-    ss.resources = 'Sources/PCAdminCommercialOffers/Assets/PCAdminCommercialOffers.xcassets'
 
+    ss.dependency 'BundleUtils'
     ss.dependency 'PCModel'
     ss.dependency 'PCUserService'
     ss.dependency 'PCOrganizationService'
@@ -94,8 +97,8 @@ Pod::Spec.new do |s|
 
   s.subspec 'PCAdminOrganization' do |ss|
     ss.source_files = 'Sources/PCAdminOrganization/**/*.{h,m,swift}', 'Sources/PCAdminOrganization/*.{h,m,swift}'
-    ss.resources = 'Sources/PCAdminOrganization/Assets/PCAdminOrganization.xcassets'
 
+    ss.dependency 'BundleUtils'
     ss.dependency 'PCModel'
     ss.dependency 'PCUserService'
     ss.dependency 'PCOrganizationService'
@@ -107,10 +110,9 @@ Pod::Spec.new do |s|
 
   s.subspec 'PCAdminOrganizations' do |ss|
     ss.source_files = 'Sources/PCAdminOrganizations/**/*.{h,m,swift}', 'Sources/PCAdminOrganizations/*.{h,m,swift}'
-    ss.resources = 'Sources/PCAdminOrganizations/Assets/PCAdminOrganizations.xcassets'
 
+    ss.dependency 'BundleUtils'
     ss.dependency 'Kingfisher'
-
     ss.dependency 'PCModel'
     ss.dependency 'PCUserService'
     ss.dependency 'PCOrganizationService'
@@ -122,8 +124,8 @@ Pod::Spec.new do |s|
 
   s.subspec 'PCAdminSupplier' do |ss|
     ss.source_files = 'Sources/PCAdminSupplier/**/*.{h,m,swift}', 'Sources/PCAdminSupplier/*.{h,m,swift}'
-    ss.resources = 'Sources/PCAdminSupplier/Assets/PCAdminSupplier.xcassets'
 
+    ss.dependency 'BundleUtils'
     ss.dependency 'PCModel'
     ss.dependency 'PCSupplierService'
     ss.dependency 'PCUserService'
@@ -136,8 +138,8 @@ Pod::Spec.new do |s|
 
   s.subspec 'PCAdminSuppliers' do |ss|
     ss.source_files = 'Sources/PCAdminSuppliers/**/*.{h,m,swift}', 'Sources/PCAdminSuppliers/*.{h,m,swift}'
-    ss.resources = 'Sources/PCAdminSuppliers/Assets/PCAdminSuppliers.xcassets'
 
+    ss.dependency 'BundleUtils'
     ss.dependency 'PCModel'
     ss.dependency 'PCUserService'
     ss.dependency 'PCOrganizationService'

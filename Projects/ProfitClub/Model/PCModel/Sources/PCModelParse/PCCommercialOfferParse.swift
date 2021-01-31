@@ -41,7 +41,9 @@ public extension PFObject {
         if let statusString = self["statusString"] as? String {
             result.status = PCCommercialOfferStatus(rawValue: statusString)
         }
-        if let supplier = self["supplier"] as? PFObject {
+        if let commercialOfferParse = self as? PCCommercialOfferParse, let supplier = commercialOfferParse.supplier {
+            result.supplier = supplier
+        } else if let supplier = self["supplier"] as? PFObject, supplier.isDataAvailable {
             result.supplier = supplier.pcSupplier.any
         }
         return result

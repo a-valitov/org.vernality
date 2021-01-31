@@ -21,6 +21,7 @@ import ConfirmationPresenter
 import MenuPresenter
 import PCModel
 import Raise
+import BundleUtils
 
 final class MemberPresenter: MemberModule {
     weak var output: MemberModuleOutput?
@@ -101,19 +102,19 @@ extension MemberPresenter: MemberCurrentActionsViewOutput {
         #if SWIFT_PACKAGE
         changeRoleImage = UIImage(named: "refresh", in: Bundle.module, compatibleWith: nil)
         #else
-        changeRoleImage = UIImage(named: "refresh", in: Bundle(for: Self.self), compatibleWith: nil)
+        changeRoleImage = UIImage(named: "refresh", in: Bundle.pod(Self.self), compatibleWith: nil)
         #endif
 
         #if SWIFT_PACKAGE
         logoutImage = UIImage(named: "logout", in: Bundle.module, compatibleWith: nil)
         #else
-        logoutImage = UIImage(named: "logout", in: Bundle(for: Self.self), compatibleWith: nil)
+        logoutImage = UIImage(named: "logout", in: Bundle.pod(Self.self), compatibleWith: nil)
         #endif
 
         #if SWIFT_PACKAGE
         profileImage = UIImage(named: "profile", in: Bundle.module, compatibleWith: nil)
         #else
-        profileImage = UIImage(named: "profile", in: Bundle(for: Self.self), compatibleWith: nil)
+        profileImage = UIImage(named: "profile", in: Bundle.pod(Self.self), compatibleWith: nil)
         #endif
 
         let profile = MenuItem(title: "Профиль", image: profileImage) { [weak self] in

@@ -17,6 +17,7 @@
 import UIKit
 import Kingfisher
 import QuickLook
+import BundleUtils
 
 final class AdminCommercialOfferApplicationViewAlpha: UIViewController {
     var output: AdminCommercialOfferApplicationViewOutput?
@@ -149,9 +150,9 @@ final class AdminCommercialOfferApplicationViewAlpha: UIViewController {
         self.setup()
 
         #if SWIFT_PACKAGE
-        cancelButton.setImage(UIImage(named: "X", in: Bundle.module, compatibleWith: nil), for: .normal)
+        cancelButton.setImage(UIImage(named: "close_commercial_offer", in: Bundle.module, compatibleWith: nil), for: .normal)
         #else
-        cancelButton.setImage(UIImage(named: "X", in: Bundle(for: Self.self), compatibleWith: nil), for: .normal)
+        cancelButton.setImage(UIImage(named: "close_commercial_offer", in: Bundle.pod(Self.self), compatibleWith: nil), for: .normal)
         #endif
     }
 

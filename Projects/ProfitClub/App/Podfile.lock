@@ -1,6 +1,7 @@
 PODS:
   - ActivityPresenter (0.0.1)
   - Bolts/Tasks (1.9.1)
+  - BundleUtils (0.0.1)
   - ConfirmationPresenter (0.0.1)
   - ErrorPresenter (0.0.1)
   - Firebase/Analytics (7.3.0):
@@ -100,6 +101,7 @@ PODS:
     - PCAdmin/PCAdmin (= 0.0.1)
   - PCAdmin/PCAdmin (0.0.1):
     - ActivityPresenter
+    - BundleUtils
     - ConfirmationPresenter
     - ErrorPresenter
     - MenuPresenter
@@ -118,6 +120,7 @@ PODS:
     - Raise
   - PCAdmin/PCAdminAction (0.0.1):
     - ActivityPresenter
+    - BundleUtils
     - ConfirmationPresenter
     - ErrorPresenter
     - MenuPresenter
@@ -127,6 +130,7 @@ PODS:
     - PCUserService
   - PCAdmin/PCAdminActions (0.0.1):
     - ActivityPresenter
+    - BundleUtils
     - ConfirmationPresenter
     - ErrorPresenter
     - MenuPresenter
@@ -135,6 +139,7 @@ PODS:
     - PCUserService
   - PCAdmin/PCAdminCommercialOffer (0.0.1):
     - ActivityPresenter
+    - BundleUtils
     - ConfirmationPresenter
     - ErrorPresenter
     - MenuPresenter
@@ -144,6 +149,7 @@ PODS:
     - PCUserService
   - PCAdmin/PCAdminCommercialOffers (0.0.1):
     - ActivityPresenter
+    - BundleUtils
     - ConfirmationPresenter
     - ErrorPresenter
     - MenuPresenter
@@ -152,6 +158,7 @@ PODS:
     - PCUserService
   - PCAdmin/PCAdminOrganization (0.0.1):
     - ActivityPresenter
+    - BundleUtils
     - ConfirmationPresenter
     - ErrorPresenter
     - MenuPresenter
@@ -160,6 +167,7 @@ PODS:
     - PCUserService
   - PCAdmin/PCAdminOrganizations (0.0.1):
     - ActivityPresenter
+    - BundleUtils
     - ConfirmationPresenter
     - ErrorPresenter
     - Kingfisher
@@ -169,6 +177,7 @@ PODS:
     - PCUserService
   - PCAdmin/PCAdminSupplier (0.0.1):
     - ActivityPresenter
+    - BundleUtils
     - ConfirmationPresenter
     - ErrorPresenter
     - MenuPresenter
@@ -178,6 +187,7 @@ PODS:
     - PCUserService
   - PCAdmin/PCAdminSuppliers (0.0.1):
     - ActivityPresenter
+    - BundleUtils
     - ConfirmationPresenter
     - ErrorPresenter
     - MenuPresenter
@@ -201,6 +211,7 @@ PODS:
     - PCMember/Sources (= 0.0.1)
   - PCMember/Sources (0.0.1):
     - ActivityPresenter
+    - BundleUtils
     - ConfirmationPresenter
     - ErrorPresenter
     - Kingfisher
@@ -359,6 +370,7 @@ PODS:
 
 DEPENDENCIES:
   - ActivityPresenter (from `../../../Pods/Packages/ActivityPresenter/ActivityPresenter.podspec`)
+  - BundleUtils (from `../../../Pods/Utils/BundleUtils/BundleUtils.podspec`)
   - ConfirmationPresenter (from `../../../Pods/Packages/ConfirmationPresenter/ConfirmationPresenter.podspec`)
   - ErrorPresenter (from `../../../Pods/Packages/ErrorPresenter/ErrorPresenter.podspec`)
   - Firebase/Analytics
@@ -410,6 +422,8 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   ActivityPresenter:
     :path: "../../../Pods/Packages/ActivityPresenter/ActivityPresenter.podspec"
+  BundleUtils:
+    :path: "../../../Pods/Utils/BundleUtils/BundleUtils.podspec"
   ConfirmationPresenter:
     :path: "../../../Pods/Packages/ConfirmationPresenter/ConfirmationPresenter.podspec"
   ErrorPresenter:
@@ -460,6 +474,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   ActivityPresenter: cd15f43e0696b5a13c1c78407cffe34c71d1de09
   Bolts: 8c1e8aab2f603387b8b9924f57d1d64f43d3ffdc
+  BundleUtils: 941c0c115ca2f423ea21562b20a236e4703da6bf
   ConfirmationPresenter: 99fa0e9252aae3adf92063ac9e3b8517e75bd72e
   ErrorPresenter: e9b77c9bc1a80af18a3d261e839d9b59a7bf75bf
   Firebase: 26223c695fe322633274198cb19dca8cb7e54416
@@ -479,11 +494,11 @@ SPEC CHECKSUMS:
   Parse: e40fdb9c7d665823b7fe9865949cac9a53eb2ce7
   PCActionService: 2ec6ae69a564f94077c95ed604ae5525e374e550
   PCAddRole: 8c88b2782bf5b53ec90f52c2c6e1051f6caa3db5
-  PCAdmin: e2588064e15c76c111b0e8b683acb28faa25b206
+  PCAdmin: a608450df85bfcfadfdb660189b9bcaaaf29f6c2
   PCAuthentication: 0df0033383cb957df518dc9eb1694e2ffc2f44df
   PCCommercialOfferService: 07469ba8d01877d41cd6cbdf51659c723e50d14f
   PCFontProvider: 424cd745bcf880d5218ada4972fc5e67a1aa03be
-  PCMember: 91696ae39b689d7a85c47d3392f99ba8bc5814cb
+  PCMember: 1dff11c9fea7c733cc2997fd16b36f365759eb39
   PCMemberProfile: d4b1d53e758e3c5b7e74e343c3abbc6ce6507fbe
   PCModel: f1a5156863a4758a54329a35721fb7d363683021
   PCOnboard: 95692aad391d951a10ca9d74a3cdd2f2097a3fa6
@@ -499,6 +514,6 @@ SPEC CHECKSUMS:
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
   Raise: e40c0ad29b47647c0a0eab8bb754ba9f3905f06c
 
-PODFILE CHECKSUM: 3c5ad9ed38f0be8732e4e0aec5269d183f668388
+PODFILE CHECKSUM: cc568bcd67c3ee2f09fe44a546b005604ac53c9a
 
 COCOAPODS: 1.10.0

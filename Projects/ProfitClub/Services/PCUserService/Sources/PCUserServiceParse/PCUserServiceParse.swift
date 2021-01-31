@@ -87,6 +87,7 @@ final class PCUserServiceParse: PCUserService {
                         if let error = error {
                             finalError = error
                         } else {
+                            pfMembers?.forEach({ $0.pinInBackground() })
                             pfUser.members = pfMembers?.map({ $0.pcMember })
                         }
                         group.leave()
@@ -96,6 +97,7 @@ final class PCUserServiceParse: PCUserService {
                         if let error = error {
                             finalError = error
                         } else {
+                            pfOrganizations?.forEach({ $0.pinInBackground() })
                             pfUser.organizations = pfOrganizations?.map({ $0.pcOrganization })
                         }
                         group.leave()
@@ -105,6 +107,7 @@ final class PCUserServiceParse: PCUserService {
                         if let error = error {
                             finalError = error
                         } else {
+                            pfSuppliers?.forEach({ $0.pinInBackground() })
                             pfUser.suppliers = pfSuppliers?.map({ $0.pcSupplier })
                         }
                         group.leave()

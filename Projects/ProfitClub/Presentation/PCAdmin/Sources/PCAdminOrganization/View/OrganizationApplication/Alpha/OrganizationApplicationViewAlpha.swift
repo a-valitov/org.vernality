@@ -16,6 +16,7 @@
 
 import UIKit
 import Kingfisher
+import BundleUtils
 
 final class OrganizationApplicationViewAlpha: UIViewController {
     var output: OrganizationApplicationViewOutput?
@@ -177,9 +178,9 @@ final class OrganizationApplicationViewAlpha: UIViewController {
         self.output?.organizationApplicationDidLoad(view: self)
 
         #if SWIFT_PACKAGE
-        cancelButton.setImage(UIImage(named: "X", in: Bundle.module, compatibleWith: nil), for: .normal)
+        cancelButton.setImage(UIImage(named: "close_organization", in: Bundle.module, compatibleWith: nil), for: .normal)
         #else
-        cancelButton.setImage(UIImage(named: "X", in: Bundle(for: Self.self), compatibleWith: nil), for: .normal)
+        cancelButton.setImage(UIImage(named: "close_organization", in: Bundle.pod(Self.self), compatibleWith: nil), for: .normal)
         #endif
     }
 
