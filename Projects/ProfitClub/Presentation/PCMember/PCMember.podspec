@@ -16,8 +16,11 @@ Pod::Spec.new do |s|
 
   s.subspec 'Sources' do |ss|
     ss.source_files = 'Sources/**/*.{h,m,swift}', 'Sources/*.{h,m,swift}'
-    ss.resources = 'Sources/PCMember/Assets/PCMember.xcassets'
+    ss.resource_bundles = {
+        'PCMember' => ['Sources/**/Assets/*.xcassets']
+    }
 
+    ss.dependency 'BundleUtils'
     ss.dependency 'PCModel'
     ss.dependency 'PCUserService'
     ss.dependency 'ErrorPresenter'

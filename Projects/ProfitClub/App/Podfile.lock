@@ -211,6 +211,7 @@ PODS:
     - PCMember/Sources (= 0.0.1)
   - PCMember/Sources (0.0.1):
     - ActivityPresenter
+    - BundleUtils
     - ConfirmationPresenter
     - ErrorPresenter
     - Kingfisher
@@ -497,7 +498,7 @@ SPEC CHECKSUMS:
   PCAuthentication: 0df0033383cb957df518dc9eb1694e2ffc2f44df
   PCCommercialOfferService: 07469ba8d01877d41cd6cbdf51659c723e50d14f
   PCFontProvider: 424cd745bcf880d5218ada4972fc5e67a1aa03be
-  PCMember: 91696ae39b689d7a85c47d3392f99ba8bc5814cb
+  PCMember: 1dff11c9fea7c733cc2997fd16b36f365759eb39
   PCMemberProfile: d4b1d53e758e3c5b7e74e343c3abbc6ce6507fbe
   PCModel: f1a5156863a4758a54329a35721fb7d363683021
   PCOnboard: 95692aad391d951a10ca9d74a3cdd2f2097a3fa6
