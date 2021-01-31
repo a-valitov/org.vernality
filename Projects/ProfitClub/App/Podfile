@@ -4,6 +4,7 @@ install! 'cocoapods', :disable_input_output_paths => true
 
 PODS_PATH = '../../../Pods'
 PACKAGES_PATH = PODS_PATH + '/Packages'
+UTILS_PATH = PODS_PATH + '/Utils'
 
 target 'ProfitClub' do
   pod 'Nantes'
@@ -47,7 +48,8 @@ target 'ProfitClub' do
 
   # util
   pod 'PCFontProvider', :path => '../Util/PCFontProvider/PCFontProvider.podspec'
-  
+  pod 'BundleUtils', :path => UTILS_PATH + '/BundleUtils/BundleUtils.podspec'
+
 end
 
 post_install do |installer|

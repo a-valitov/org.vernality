@@ -40,7 +40,7 @@ final class AdminCommercialOfferViewAlphaFileCell: UICollectionViewCell {
         #if SWIFT_PACKAGE
         fileImageView.image = UIImage(named: "pdf", in: Bundle.module, compatibleWith: nil)
         #else
-        fileImageView.image = UIImage(named: "pdf", in: Bundle(for: Self.self), compatibleWith: nil)
+        fileImageView.image = UIImage(named: "pdf", in: Bundle.pod(Self.self), compatibleWith: nil)
         #endif
         layout()
     }

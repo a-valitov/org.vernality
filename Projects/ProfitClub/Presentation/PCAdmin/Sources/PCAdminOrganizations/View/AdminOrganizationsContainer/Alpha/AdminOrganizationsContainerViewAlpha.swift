@@ -100,12 +100,12 @@ final class AdminOrganizationsContainerViewAlpha: UIViewController {
         #if SWIFT_PACKAGE
         tabBarImage = UIImage(named: "organizationsItem", in: Bundle.module, compatibleWith: nil)
         #else
-        tabBarImage = UIImage(named: "organizationsItem", in: Bundle(for: Self.self), compatibleWith: nil)
+        tabBarImage = UIImage(named: "organizationsItem", in: Bundle.pod(Self.self), compatibleWith: nil)
         #endif
         #if SWIFT_PACKAGE
         tabBarSelectedImage = UIImage(named: "selectedOrganizationsItem", in: Bundle.module, compatibleWith: nil)
         #else
-        tabBarSelectedImage = UIImage(named: "selectedOrganizationsItem", in: Bundle(for: Self.self), compatibleWith: nil)
+        tabBarSelectedImage = UIImage(named: "selectedOrganizationsItem", in: Bundle.pod(Self.self), compatibleWith: nil)
         #endif
         self.tabBarItem = UITabBarItem(title: "Организации", image: tabBarImage, selectedImage: tabBarSelectedImage)
     }
