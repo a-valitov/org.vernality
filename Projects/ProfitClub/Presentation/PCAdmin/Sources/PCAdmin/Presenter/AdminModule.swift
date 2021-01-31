@@ -24,6 +24,7 @@ public protocol AdminModule: class {
 
     func open(action: PCAction)
     func open(commercialOffer: PCCommercialOffer)
+    func open(supplier: PCSupplier)
 }
 
 public protocol AdminModuleOutput: class {

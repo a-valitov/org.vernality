@@ -19,6 +19,7 @@ import UIKit
 import PCUserPersistence
 import PCActionService
 import PCCommercialOfferService
+import PCSupplierService
 import ErrorPresenter
 import ConfirmationPresenter
 import PCModel
@@ -231,7 +232,18 @@ extension AppRouter {
     }
     
     private func openAdminSupplier(supplierId: String) {
-        print(supplierId)
+        self.confirm(message: "Открыть экран поставщика?") { [weak self] in
+            let supplierService = self?.supplierService()
+            supplierService?.fetch(supplierId, result: { [weak self] result in
+                guard let sSelf = self else { return }
+                switch result {
+                case .success(let supplier):
+                    self?.weakReviewRouter?.route(to: supplier)
+                case .failure(let error):
+                    sSelf.errorPresenter().present(error)
+                }
+            })
+        }
     }
     
     private func openAdminMember(memberId: String) {
@@ -303,5 +315,8 @@ extension AppRouter {
     }
     private func commercialOfferService() -> PCCommercialOfferService {
         return PCCommercialOfferServiceParseFactory().make()
+    }
+    private func supplierService() -> PCSupplierService {
+        return PCSupplierServiceParseFactory().make()
     }
 }

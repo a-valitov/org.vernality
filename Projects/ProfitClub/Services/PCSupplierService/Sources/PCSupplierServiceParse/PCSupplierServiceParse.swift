@@ -73,4 +73,15 @@ final class PCSupplierServiceParse: PCSupplierService {
             }
         }
     }
+
+    func fetch(_ supplierId: String, result: @escaping (Result<PCSupplier, Error>) -> Void) {
+        let query = PFQuery(className: "Supplier")
+        query.getObjectInBackground(withId: supplierId) { (object, error) in
+            if let error = error {
+                result(.failure(error))
+            } else if let object = object {
+                result(.success(object.pcSupplier))
+            }
+        }
+    }
 }
