@@ -16,6 +16,7 @@
 
 import UIKit
 import Kingfisher
+import BundleUtils
 
 final class AdminSupplierApplicationViewAlpha: UIViewController {
     var output: AdminSupplierApplicationViewOutput?

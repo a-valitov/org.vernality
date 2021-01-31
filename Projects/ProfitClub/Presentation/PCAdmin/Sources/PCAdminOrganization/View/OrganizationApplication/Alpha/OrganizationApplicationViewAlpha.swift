@@ -16,6 +16,7 @@
 
 import UIKit
 import Kingfisher
+import BundleUtils
 
 final class OrganizationApplicationViewAlpha: UIViewController {
     var output: OrganizationApplicationViewOutput?

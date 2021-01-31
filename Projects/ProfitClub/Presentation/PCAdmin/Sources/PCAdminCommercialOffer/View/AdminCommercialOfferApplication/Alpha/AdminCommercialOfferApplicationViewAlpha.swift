@@ -17,6 +17,7 @@
 import UIKit
 import Kingfisher
 import QuickLook
+import BundleUtils
 
 final class AdminCommercialOfferApplicationViewAlpha: UIViewController {
     var output: AdminCommercialOfferApplicationViewOutput?

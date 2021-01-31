@@ -15,6 +15,7 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import UIKit
+import BundleUtils
 
 final class AdminOrganizationsContainerViewAlpha: UIViewController {
     var output: AdminOrganizationsContainerViewOutput?

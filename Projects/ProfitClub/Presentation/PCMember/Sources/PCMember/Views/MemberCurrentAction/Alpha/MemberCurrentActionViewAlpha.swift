@@ -137,9 +137,9 @@ final class MemberCurrentActionViewAlpha: UIViewController {
         #endif
 
         #if SWIFT_PACKAGE
-        cancelButton.setImage(UIImage(named: "X", in: Bundle.module, compatibleWith: nil), for: .normal)
+        cancelButton.setImage(UIImage(named: "close_member", in: Bundle.module, compatibleWith: nil), for: .normal)
         #else
-        cancelButton.setImage(UIImage(named: "X", in: Bundle(for: Self.self), compatibleWith: nil), for: .normal)
+        cancelButton.setImage(UIImage(named: "close_member", in: Bundle(for: Self.self), compatibleWith: nil), for: .normal)
         #endif
     }
 
