@@ -47,8 +47,7 @@ public extension PFObject {
 
 public extension PCOrganization {
     var parse: PCOrganizationParse {
-        let result = PCOrganizationParse()
-        result.objectId = self.id
+        let result = PCOrganizationParse(withoutDataWithObjectId: self.id)
         result.name = self.name
         result.inn = self.inn
         result.contact = self.contact

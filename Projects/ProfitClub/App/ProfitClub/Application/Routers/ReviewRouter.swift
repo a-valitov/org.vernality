@@ -17,6 +17,7 @@
 import Foundation
 import PCModel
 import PCReview
+import PCUserPersistence
 
 protocol ReviewRouterDelegate: class {
     func reviewUserDidLogout(router: ReviewRouter)
@@ -41,8 +42,9 @@ final class ReviewRouter {
     }
     weak var delegate: ReviewRouterDelegate?
 
-    init(user: PCUser) {
+    init(user: PCUser, userPersistence: PCUserPersistence) {
         self.user = user
+        self.userPersistence = userPersistence
     }
 
     func route(to commercialOffer: PCCommercialOffer) {
@@ -167,6 +169,7 @@ final class ReviewRouter {
 
     // state
     private let user: PCUser
+    private var userPersistence: PCUserPersistence
     private weak var weakNavigationController: UINavigationController?
 }
 
@@ -277,6 +280,7 @@ extension ReviewRouter: ReviewModuleOutput {
     }
 
     func reviewUserWantsToEnterAdmin(module: ReviewModule) {
+        self.userPersistence.lastUsedRole = .administrator
         self.navigationController.pushViewController(
             self.adminRouter(user: self.user).viewController,
             animated: true
@@ -285,6 +289,7 @@ extension ReviewRouter: ReviewModuleOutput {
 
     func review(module: ReviewModule, userWantsToEnter organization: PCOrganization) {
         assert(organization.status == .approved)
+        self.userPersistence.lastUsedRole = .organization(organization)
         self.navigationController.pushViewController(
             self.organizationRouter(
                 user: self.user,
@@ -296,6 +301,7 @@ extension ReviewRouter: ReviewModuleOutput {
 
     func review(module: ReviewModule, userWantsToEnter supplier: PCSupplier) {
         assert(supplier.status == .approved)
+        self.userPersistence.lastUsedRole = .supplier(supplier)
         self.navigationController.pushViewController(
             self.supplierRouter(
                 user: self.user,
@@ -307,6 +313,7 @@ extension ReviewRouter: ReviewModuleOutput {
 
     func review(module: ReviewModule, userWantsToEnter member: PCMember) {
         assert(member.status == .approved)
+        self.userPersistence.lastUsedRole = .member(member)
         self.navigationController.pushViewController(
             self.memberRouter(
                 user: self.user,

@@ -38,7 +38,20 @@ final class AppRouter {
         } else {
             let rootViewController: UIViewController
             if let user = self.userPersistence.user {
-                rootViewController = self.reviewRouter(user: user).viewController
+                if let lastUsedRole = self.userPersistence.lastUsedRole {
+                    switch lastUsedRole {
+                    case .administrator:
+                        rootViewController = self.adminRouter(user: user).viewController
+                    case .member(let member):
+                        rootViewController = self.memberRouter(user: user, member: member).viewController
+                    case .organization(let organization):
+                        rootViewController = self.organizationRouter(user: user, organization: organization).viewController
+                    case .supplier(let supplier):
+                        rootViewController = self.supplierRouter(user: user, supplier: supplier).viewController
+                    }
+                } else {
+                    rootViewController = self.reviewRouter(user: user).viewController
+                }
             } else {
                 rootViewController = self.onboardRouter().viewController
             }
@@ -50,14 +63,14 @@ final class AppRouter {
     private weak var weakNavigationController: UINavigationController?
 
     // persistence
-    private let userPersistence: PCUserPersistence
+    private var userPersistence: PCUserPersistence
 
     // routers
     private func reviewRouter(user: PCUser) -> ReviewRouter {
         if let reviewRouter = self.weakReviewRouter {
             return reviewRouter
         } else {
-            let reviewRouter = ReviewRouter(user: user)
+            let reviewRouter = ReviewRouter(user: user, userPersistence: self.userPersistence)
             reviewRouter.delegate = self
             self.weakReviewRouter = reviewRouter
             return reviewRouter
@@ -76,6 +89,94 @@ final class AppRouter {
         }
     }
     private weak var weakOnboardRouter: OnboardRouter?
+
+    private func adminRouter(user: PCUser) -> AdminRouter {
+        if let adminRouter = self.weakAdminRouter {
+            return adminRouter
+        } else {
+            let adminRouter = AdminRouter(user: user)
+            adminRouter.delegate = self
+            self.weakAdminRouter = adminRouter
+            return adminRouter
+        }
+    }
+    private weak var weakAdminRouter: AdminRouter?
+
+    func organizationRouter(user: PCUser, organization: PCOrganization) -> OrganizationRouter {
+        if let organizationRouter = self.weakOrganizationRouter {
+            return organizationRouter
+        } else {
+            let organizationRouter = OrganizationRouter(user: user, organization: organization)
+            organizationRouter.delegate = self
+            self.weakOrganizationRouter = organizationRouter
+            return organizationRouter
+        }
+    }
+    private weak var weakOrganizationRouter: OrganizationRouter?
+
+    func supplierRouter(user: PCUser, supplier: PCSupplier) -> SupplierRouter {
+        if let supplierRouter = self.weakSupplierRouter {
+            return supplierRouter
+        } else {
+            let supplierRouter = SupplierRouter(user: user, supplier: supplier)
+            supplierRouter.delegate = self
+            self.weakSupplierRouter = supplierRouter
+            return supplierRouter
+        }
+    }
+    private weak var weakSupplierRouter: SupplierRouter?
+
+    func memberRouter(user: PCUser, member: PCMember) -> MemberRouter {
+        if let memberRouter = self.weakMemberRouter {
+            return memberRouter
+        } else {
+            let memberRouter = MemberRouter(user: user, member: member)
+            memberRouter.delegate = self
+            self.weakMemberRouter = memberRouter
+            return memberRouter
+        }
+    }
+    private weak var weakMemberRouter: MemberRouter?
+}
+
+extension AppRouter: MemberRouterDelegate {
+    func memberUserDidLogout(router: MemberRouter) {
+        self.onLogout()
+    }
+
+    func memberUserWantsToChangeRole(router: MemberRouter) {
+        self.onChangeRole(user: router.user)
+    }
+}
+
+extension AppRouter: SupplierRouterDelegate {
+    func supplierUserDidLogout(router: SupplierRouter) {
+        self.onLogout()
+    }
+
+    func supplierUserWantsToChangeRole(router: SupplierRouter) {
+        self.onChangeRole(user: router.user)
+    }
+}
+
+extension AppRouter: OrganizationRouterDelegate {
+    func organizationUserDidLogout(router: OrganizationRouter) {
+        self.onLogout()
+    }
+
+    func organizationUserWantsToChangeRole(router: OrganizationRouter) {
+        self.onChangeRole(user: router.user)
+    }
+}
+
+extension AppRouter: AdminRouterDelegate {
+    func adminUserDidLogout(router: AdminRouter) {
+        self.onLogout()
+    }
+
+    func adminUserWantsToChangeRole(router: AdminRouter) {
+        self.onChangeRole(user: router.user)
+    }
 }
 
 // MARK: - Push Notifications handling
@@ -167,13 +268,29 @@ extension AppRouter: OnboardRouterDelegate {
 
 extension AppRouter: ReviewRouterDelegate {
     func reviewUserDidLogout(router: ReviewRouter) {
+        self.onLogout()
+    }
+}
+
+
+extension AppRouter {
+    private func onLogout() {
+        self.userPersistence.lastUsedRole = nil
+        self.userPersistence.user = nil
         self.navigationController.setViewControllers(
             [self.onboardRouter().viewController],
             animated: true
         )
     }
-}
 
+    private func onChangeRole(user: PCUser) {
+        self.userPersistence.lastUsedRole = nil
+        self.navigationController.setViewControllers(
+            [self.reviewRouter(user: user).viewController],
+            animated: true
+        )
+    }
+}
 extension AppRouter {
     private func errorPresenter() -> ErrorPresenter {
         return ErrorPresenterAlertFactory().make()

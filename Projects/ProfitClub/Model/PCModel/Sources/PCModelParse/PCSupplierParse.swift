@@ -50,8 +50,7 @@ public extension PFObject {
 
 public extension PCSupplier {
     var parse: PCSupplierParse {
-        let result = PCSupplierParse()
-        result.objectId = self.id
+        let result = PCSupplierParse(withoutDataWithObjectId: self.id)
         result.name = self.name
         result.inn = self.inn
         result.contact = self.contact

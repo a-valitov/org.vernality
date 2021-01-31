@@ -19,8 +19,7 @@ import Parse
 
 public extension PCUser {
     var parse: PCUserParse {
-        let result = PCUserParse()
-        result.objectId = self.id
+        let result = PCUserParse(withoutDataWithObjectId: self.id)
         result.username = self.username
         result.email = self.email
         result.members = self.members
@@ -33,14 +32,7 @@ public extension PCUser {
 
 public extension PFObject {
     var pcUser: PCUserParse? {
-        guard let pfUser = self as? PFUser else {
-            return nil
-        }
-        let result = PCUserParse()
-        result.objectId = pfUser.objectId
-        result.username = pfUser.username
-        result.email = pfUser.email
-        return result
+        return self as? PCUserParse
     }
 }
 

@@ -43,8 +43,7 @@ public extension PFObject {
 
 public extension PCAction {
     var parse: PCActionParse {
-        let result = PCActionParse()
-        result.objectId = self.id
+        let result = PCActionParse(withoutDataWithObjectId: self.id)
         result.message = self.message
         result.descriptionOf = self.descriptionOf
         result.link = self.link

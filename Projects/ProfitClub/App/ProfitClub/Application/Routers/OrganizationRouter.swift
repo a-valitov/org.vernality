@@ -78,7 +78,7 @@ final class OrganizationRouter {
     }
     private weak var weakOrganizationProfileRouter: OrganizationProfileRouter?
 
-    private let user: PCUser
+    let user: PCUser
     private let organization: PCOrganization
     private weak var weakNavigationController: UINavigationController?
 }
