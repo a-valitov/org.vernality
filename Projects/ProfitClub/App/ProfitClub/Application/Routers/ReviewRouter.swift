@@ -67,6 +67,16 @@ final class ReviewRouter {
         }
     }
 
+    func route(to supplier: PCSupplier) {
+        if let adminRouter = self.weakAdminRouter {
+            adminRouter.route(to: supplier)
+        } else {
+            self.navigateToAdmin { adminRouter in
+                adminRouter.route(to: supplier)
+            }
+        }
+    }
+
     private func navigateToAdmin(completion: @escaping (AdminRouter) -> Void) {
         CATransaction.begin()
         CATransaction.setCompletionBlock {

@@ -20,6 +20,10 @@ import PCModel
 import PCSupplierService
 
 final class PCSupplierServiceStub: PCSupplierService {
+    func fetch(_ supplierId: String, result: @escaping (Result<PCSupplier, Error>) -> Void) {
+        result(.success(PCSupplierStruct()))
+    }
+
     init() {}
 
     func fetch(_ status: PCSupplierStatus, result: @escaping (Result<[AnyPCSupplier], Error>) -> Void) {

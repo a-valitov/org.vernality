@@ -25,6 +25,8 @@ public protocol PCSupplierService {
     func reject(supplier: PCSupplier, result: @escaping (Result<PCSupplier, Error>) -> Void)
 
     func editProfile(supplier: PCSupplier, image: UIImage, result: @escaping (Result<PCSupplier, Error>) -> Void)
+
+    func fetch(_ supplierId: String, result: @escaping (Result<PCSupplier, Error>) -> Void)
 }
 
 public protocol PCSupplierServiceFactory {
