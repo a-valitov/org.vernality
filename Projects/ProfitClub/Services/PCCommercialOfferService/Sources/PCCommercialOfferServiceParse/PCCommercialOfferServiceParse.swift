@@ -81,6 +81,7 @@ final class PCCommercialOfferServiceParse: PCCommercialOfferService {
         let query = PFQuery(className: "CommercialOffer")
         query.order(byDescending: "createdAt")
         query.includeKey("supplier")
+        query.whereKey("statusString", contains: "approved")
         query.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
             if let error = error {
                 result(.failure(error))
@@ -92,6 +93,7 @@ final class PCCommercialOfferServiceParse: PCCommercialOfferService {
 
     func fetch(_ status: PCCommercialOfferStatus, result: @escaping (Result<[AnyPCCommercialOffer], Error>) -> Void) {
         let query = PFQuery(className: "CommercialOffer")
+        query.order(byDescending: "createdAt")
         query.includeKey("supplier")
         query.whereKey("statusString", equalTo: status.rawValue)
         query.findObjectsInBackground { (objects: [PFObject]?, error: Error?) in
