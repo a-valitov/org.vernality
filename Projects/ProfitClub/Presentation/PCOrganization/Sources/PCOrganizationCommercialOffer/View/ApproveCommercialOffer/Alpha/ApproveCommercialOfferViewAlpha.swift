@@ -17,6 +17,7 @@
 import UIKit
 import Kingfisher
 import QuickLook
+import BundleUtils
 
 final class ApproveCommercialOfferViewAlpha: UIViewController {
     var output: ApproveCommercialOfferViewOutput?
@@ -150,7 +151,7 @@ final class ApproveCommercialOfferViewAlpha: UIViewController {
         #if SWIFT_PACKAGE
         cancelButton.setImage(UIImage(named: "X", in: Bundle.module, compatibleWith: nil), for: .normal)
         #else
-        cancelButton.setImage(UIImage(named: "X", in: Bundle(for: Self.self), compatibleWith: nil), for: .normal)
+        cancelButton.setImage(UIImage(named: "X", in: Bundle.pod(Self.self), compatibleWith: nil), for: .normal)
         #endif
     }
 
