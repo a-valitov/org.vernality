@@ -100,12 +100,12 @@ final class MembersContainerViewAlpha: UIViewController {
         #if SWIFT_PACKAGE
         tabBarImage = UIImage(named: "selectedMembersItem", in: Bundle.module, compatibleWith: nil)
         #else
-        tabBarImage = UIImage(named: "selectedMembersItem", in: Bundle(for: Self.self), compatibleWith: nil)
+        tabBarImage = UIImage(named: "selectedMembersItem", in: Bundle.pod(Self.self), compatibleWith: nil)
         #endif
         #if SWIFT_PACKAGE
         tabBarSelectedImage = UIImage(named: "MembersItem", in: Bundle.module, compatibleWith: nil)
         #else
-        tabBarSelectedImage = UIImage(named: "MembersItem", in: Bundle(for: Self.self), compatibleWith: nil)
+        tabBarSelectedImage = UIImage(named: "MembersItem", in: Bundle.pod(Self.self), compatibleWith: nil)
         #endif
         self.tabBarItem = UITabBarItem(title: "Участники", image: tabBarImage, selectedImage: tabBarSelectedImage)
     }

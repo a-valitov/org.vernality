@@ -16,7 +16,9 @@ Pod::Spec.new do |s|
 
   s.subspec 'PCOrganization' do |ss|
     ss.source_files = 'Sources/PCOrganization/**/*.{h,m,swift}', 'Sources/PCOrganization/*.{h,m,swift}'
-    ss.resources = 'Sources/PCOrganization/Assets/PCOrganization.xcassets'
+    ss.resource_bundles = {
+            'PCOrganization' => ['Sources/**/Assets/*.xcassets']
+        }
 
     ss.dependency 'Raise'
     ss.dependency 'PCModel'
@@ -36,8 +38,8 @@ Pod::Spec.new do |s|
 
   s.subspec 'PCOrganizationAction' do |ss|
     ss.source_files = 'Sources/PCOrganizationAction/**/*.{h,m,swift}', 'Sources/PCOrganizationAction/*.{h,m,swift}'
-    ss.resources = 'Sources/PCOrganizationAction/Assets/PCOrganizationAction.xcassets'
 
+    ss.dependency 'BundleUtils'
     ss.dependency 'PCModel'
     ss.dependency 'PCActionService'
     ss.dependency 'PCUserService'
@@ -50,8 +52,8 @@ Pod::Spec.new do |s|
 
   s.subspec 'PCOrganizationActions' do |ss|
     ss.source_files = 'Sources/PCOrganizationActions/**/*.{h,m,swift}', 'Sources/PCOrganizationActions/*.{h,m,swift}'
-    ss.resources = 'Sources/PCOrganizationActions/Assets/PCOrganizationActions.xcassets'
 
+    ss.dependency 'BundleUtils'
     ss.dependency 'PCModel'
     ss.dependency 'PCUserService'
     ss.dependency 'PCOrganizationService'
@@ -63,8 +65,8 @@ Pod::Spec.new do |s|
 
   s.subspec 'PCOrganizationCommercialOffer' do |ss|
     ss.source_files = 'Sources/PCOrganizationCommercialOffer/**/*.{h,m,swift}', 'Sources/PCOrganizationCommercialOffer/*.{h,m,swift}'
-    ss.resources = 'Sources/PCOrganizationCommercialOffer/Assets/PCOrganizationCommercialOffer.xcassets'
 
+    ss.dependency 'BundleUtils'
     ss.dependency 'PCModel'
     ss.dependency 'PCUserService'
     ss.dependency 'PCOrganizationService'
@@ -77,8 +79,8 @@ Pod::Spec.new do |s|
 
   s.subspec 'PCOrganizationCommercialOffers' do |ss|
     ss.source_files = 'Sources/PCOrganizationCommercialOffers/**/*.{h,m,swift}', 'Sources/PCOrganizationCommercialOffers/*.{h,m,swift}'
-    ss.resources = 'Sources/PCOrganizationCommercialOffers/Assets/PCOrganizationCommercialOffers.xcassets'
 
+    ss.dependency 'BundleUtils'
     ss.dependency 'PCModel'
     ss.dependency 'PCUserService'
     ss.dependency 'PCOrganizationService'
@@ -90,8 +92,8 @@ Pod::Spec.new do |s|
 
   s.subspec 'PCOrganizationMembers' do |ss|
     ss.source_files = 'Sources/PCOrganizationMembers/**/*.{h,m,swift}', 'Sources/PCOrganizationMembers/*.{h,m,swift}'
-    ss.resources = 'Sources/PCOrganizationMembers/Assets/PCOrganizationMembers.xcassets'
 
+    ss.dependency 'BundleUtils'
     ss.dependency 'PCModel'
     ss.dependency 'Kingfisher'
     ss.dependency 'PCUserService'

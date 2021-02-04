@@ -52,7 +52,7 @@ final class CommercialOffersPresenter: CommercialOffersModule {
 
 extension CommercialOffersPresenter: CommercialOffersViewOutput {
     func commercialOffersDidLoad(view: CommercialOffersViewInput) {
-        self.services.commercialOffer.fetchApproved { [weak self] (result) in
+        self.services.commercialOffer.fetch(.approved) { [weak self] result in
             switch result {
             case .success(let commercialOffers):
                 view.commercialOffers = commercialOffers
@@ -67,7 +67,7 @@ extension CommercialOffersPresenter: CommercialOffersViewOutput {
     }
 
     func commercialOffers(view: CommercialOffersViewInput, userWantsToRefresh sender: Any) {
-        self.services.commercialOffer.fetchApproved { [weak self] (result) in
+        self.services.commercialOffer.fetch(.approved) { [weak self] (result) in
             switch result {
             case .success(let commercialOffers):
                 view.commercialOffers = commercialOffers

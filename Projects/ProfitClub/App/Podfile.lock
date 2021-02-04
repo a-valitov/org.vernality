@@ -260,6 +260,7 @@ PODS:
     - Raise
   - PCOrganization/PCOrganizationAction (0.0.1):
     - ActivityPresenter
+    - BundleUtils
     - ConfirmationPresenter
     - ErrorPresenter
     - MenuPresenter
@@ -269,6 +270,7 @@ PODS:
     - PCUserService
   - PCOrganization/PCOrganizationActions (0.0.1):
     - ActivityPresenter
+    - BundleUtils
     - ConfirmationPresenter
     - ErrorPresenter
     - MenuPresenter
@@ -277,6 +279,7 @@ PODS:
     - PCUserService
   - PCOrganization/PCOrganizationCommercialOffer (0.0.1):
     - ActivityPresenter
+    - BundleUtils
     - ConfirmationPresenter
     - ErrorPresenter
     - MenuPresenter
@@ -286,6 +289,7 @@ PODS:
     - PCUserService
   - PCOrganization/PCOrganizationCommercialOffers (0.0.1):
     - ActivityPresenter
+    - BundleUtils
     - ConfirmationPresenter
     - ErrorPresenter
     - MenuPresenter
@@ -294,6 +298,7 @@ PODS:
     - PCUserService
   - PCOrganization/PCOrganizationMembers (0.0.1):
     - ActivityPresenter
+    - BundleUtils
     - ConfirmationPresenter
     - ErrorPresenter
     - Kingfisher
@@ -502,7 +507,7 @@ SPEC CHECKSUMS:
   PCMemberProfile: d4b1d53e758e3c5b7e74e343c3abbc6ce6507fbe
   PCModel: f1a5156863a4758a54329a35721fb7d363683021
   PCOnboard: 95692aad391d951a10ca9d74a3cdd2f2097a3fa6
-  PCOrganization: 916aa0da7f34a6fb40ca7addf9e16ca98aad5a6f
+  PCOrganization: 0c5e80a2c9d5d1560251ffd81a6e4874cd74c696
   PCOrganizationProfile: 5de1cdab8fbf4188ad157d9fdef55a5e5ed0182b
   PCOrganizationService: e2a419fa283997b14e96d25559941b0e362217e3
   PCReview: 47dbed4a4b7d3507a9bf7f4779bc484788274881

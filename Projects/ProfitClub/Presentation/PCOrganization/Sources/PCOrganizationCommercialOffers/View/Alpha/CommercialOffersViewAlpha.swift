@@ -17,6 +17,7 @@
 import UIKit
 import PCModel
 import Kingfisher
+import BundleUtils
 
 final class CommercialOffersViewAlpha: UITableViewController {
     var output: CommercialOffersViewOutput?
@@ -40,12 +41,12 @@ final class CommercialOffersViewAlpha: UITableViewController {
         #if SWIFT_PACKAGE
         tabBarImage = UIImage(named: "selectedCommercialOfferItem", in: Bundle.module, compatibleWith: nil)
         #else
-        tabBarImage = UIImage(named: "selectedCommercialOfferItem", in: Bundle(for: Self.self), compatibleWith: nil)
+        tabBarImage = UIImage(named: "selectedCommercialOfferItem", in: Bundle.pod(Self.self), compatibleWith: nil)
         #endif
         #if SWIFT_PACKAGE
         tabBarSelectedImage = UIImage(named: "commercialOfferItem", in: Bundle.module, compatibleWith: nil)
         #else
-        tabBarSelectedImage = UIImage(named: "commercialOfferItem", in: Bundle(for: Self.self), compatibleWith: nil)
+        tabBarSelectedImage = UIImage(named: "commercialOfferItem", in: Bundle.pod(Self.self), compatibleWith: nil)
         #endif
         self.tabBarItem = UITabBarItem(title: "Поставки", image: tabBarImage, selectedImage: tabBarSelectedImage)
     }
@@ -89,7 +90,7 @@ final class CommercialOffersViewAlpha: UITableViewController {
         let commercialOffer = commercialOffers[indexPath.row]
         cell.commercialOfferMessageLabel.text = commercialOffer.message
         cell.commercialOfferImageView.kf.setImage(with: commercialOffer.imageUrl)
-        cell.supplierNameLabel.text = commercialOffer.supplier?.contact
+        cell.supplierNameLabel.text = commercialOffer.supplier?.name
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd.MM.yyyy"
         cell.commercialOfferCreatedDateLabel.text = "\(dateFormatter.string(from: commercialOffer.createdAt ?? Date()))"
