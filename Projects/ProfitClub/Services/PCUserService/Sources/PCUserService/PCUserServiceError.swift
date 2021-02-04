@@ -23,3 +23,12 @@ public enum PCUserServiceError: Error {
     case failedToGetImagePNGRepresentation
     case organizationOrUserIdIsNil
 }
+
+extension PCUserServiceError: LocalizedError {
+    public var errorDescription: String? {
+        //switch self {
+        //case .userIsNil:
+            return "Пользователь не найден"
+        //}
+    }
+}
