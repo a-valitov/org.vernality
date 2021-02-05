@@ -106,7 +106,7 @@ final class PCActionServiceParse: PCActionService {
                                     }
             }
         } else {
-            result(.failure(PCActionServiceError.actionOrUserIdIsNil))
+            result(.failure(PCActionServiceError.actionIdIsNil))
         }
     }
 
@@ -123,7 +123,7 @@ final class PCActionServiceParse: PCActionService {
                                     }
             }
         } else {
-            result(.failure(PCActionServiceError.actionOrUserIdIsNil))
+            result(.failure(PCActionServiceError.actionIdIsNil))
         }
     }
 

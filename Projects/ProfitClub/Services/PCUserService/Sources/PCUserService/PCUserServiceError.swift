@@ -26,9 +26,17 @@ public enum PCUserServiceError: Error {
 
 extension PCUserServiceError: LocalizedError {
     public var errorDescription: String? {
-        //switch self {
-        //case .userIsNil:
+        switch self {
+        case .userIsNil:
             return "Пользователь не найден"
-        //}
+        case .userIsNotPFUser:
+            return "Пользователь не является членом Profit Club"
+        case .bothResultAndErrorAreNil:
+            return "Неопределённая ошибка: пользователь не найден"
+        case .failedToGetImagePNGRepresentation:
+            return "Не удалось преобразовать изображение в формат PNG"
+        case .organizationOrUserIdIsNil:
+            return "Организация или пользователь с такими id не найдены"
+        }
     }
 }

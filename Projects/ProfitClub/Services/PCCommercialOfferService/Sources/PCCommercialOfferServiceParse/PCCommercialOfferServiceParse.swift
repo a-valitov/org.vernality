@@ -118,7 +118,7 @@ final class PCCommercialOfferServiceParse: PCCommercialOfferService {
                                     }
             }
         } else {
-            result(.failure(PCCommercialOfferServiceError.commercialOfferOrUserIdIsNil))
+            result(.failure(PCCommercialOfferServiceError.commercialOfferIdIsNil))
         }
     }
 
@@ -135,7 +135,7 @@ final class PCCommercialOfferServiceParse: PCCommercialOfferService {
                                     }
             }
         } else {
-            result(.failure(PCCommercialOfferServiceError.commercialOfferOrUserIdIsNil))
+            result(.failure(PCCommercialOfferServiceError.commercialOfferIdIsNil))
         }
     }
 

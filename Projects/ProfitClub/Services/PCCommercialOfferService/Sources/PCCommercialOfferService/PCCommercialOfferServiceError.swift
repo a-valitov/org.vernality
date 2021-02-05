@@ -18,5 +18,16 @@ import Foundation
 
 public enum PCCommercialOfferServiceError: Error {
     case failedToGetFileObject
-    case commercialOfferOrUserIdIsNil
+    case commercialOfferIdIsNil
+}
+
+extension PCCommercialOfferServiceError: LocalizedError {
+    public var errorDescription: String? {
+        switch self {
+        case .failedToGetFileObject:
+            return "Не удалось прикрепить файл"
+        case .commercialOfferIdIsNil:
+            return "Коммерческое предложение не найдено"
+        }
+    }
 }
