@@ -42,27 +42,36 @@ import Parse
         }
     }
 
-     func approve(organization: PCOrganization, result: @escaping (Result<PCOrganization, Error>) -> Void) {
+    
+    func approve(organization: PCOrganization, result: @escaping (Result<PCOrganization, Error>) -> Void) {
         let parseOrganization = organization.parse
-        parseOrganization.status = .approved
-        parseOrganization.saveInBackground { (success, error) in
-            if let error = error {
-                result(.failure(error))
-            } else {
-                result(.success(parseOrganization.any))
+        if let organizationId = parseOrganization.id {
+            PFCloud.callFunction(inBackground: "approveOrganization",
+                                 withParameters: ["organizationId": organizationId]) { (response, error) in
+                                    if let error = error {
+                                        result(.failure(error))
+                                    } else {
+                                        result(.success(parseOrganization.any))
+                                    }
             }
+        } else {
+            result(.failure(PCOrganizationServiceError.organizationIdIsNil))
         }
     }
 
-     func reject(organization: PCOrganization, result: @escaping (Result<PCOrganization, Error>) -> Void) {
+    func reject(organization: PCOrganization, result: @escaping (Result<PCOrganization, Error>) -> Void) {
         let parseOrganization = organization.parse
-        parseOrganization.status = .rejected
-        parseOrganization.saveInBackground { (success, error) in
-            if let error = error {
-                result(.failure(error))
-            } else {
-                result(.success(parseOrganization.any))
+        if let organizationId = parseOrganization.id {
+            PFCloud.callFunction(inBackground: "rejectOrganization",
+                                 withParameters: ["organizationId": organizationId]) { (response, error) in
+                                    if let error = error {
+                                        result(.failure(error))
+                                    } else {
+                                        result(.success(parseOrganization.any))
+                                    }
             }
+        } else {
+            result(.failure(PCOrganizationServiceError.organizationIdIsNil))
         }
     }
 

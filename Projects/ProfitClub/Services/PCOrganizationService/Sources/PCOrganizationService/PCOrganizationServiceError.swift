@@ -21,4 +21,7 @@ public enum PCOrganizationServiceError: Error {
     case inputIsNil
     case failedToGetImagePNGRepresentation
     case memberOrUserIdIsNil
+    case organizationIdIsNil
 }
+
+//TODO: Error messages
