@@ -31,3 +31,37 @@ enum AddRoleError: Error {
     case organizationPhoneIsEmpty
     case organizationImageIsNil
 }
+
+extension AddRoleError: LocalizedError {
+    public var errorDescription: String? {
+        switch self {
+        case .firstNameIsEmpty:
+            return "Введите имя"
+        case .lastNameIsEmpty:
+            return "Введите фамилию"
+        case .memberImageIsNil:
+            return "Добавьте фото"
+        case .supplierNameIsEmpty:
+            return "Введите название компании"
+        case .supplierInnIsEmpty:
+            return "Введите ИНН"
+        case .supplierContactIsEmpty:
+            return "Введите ФИО контактного лица"
+        case .supplierPhoneIsEmpty:
+            return "Введите номер телефона"
+        case .supplierImageIsNil:
+            return "Добавьте изображение"
+        case .organizationNameIsEmpty:
+            return "Введите название компании"
+        case .organizationInnIsEmpty:
+            return "Введите ИНН"
+        case .organizationContactIsEmpty:
+            return "Введите ФИО контактного лица"
+        case .organizationPhoneIsEmpty:
+            return "Введите номер телефона"
+        case .organizationImageIsNil:
+            return "Добавьте изображение"
+        }
+        
+    }
+}

@@ -23,4 +23,37 @@ enum SupplierError: Error {
     case actionImageIsNil
     case actionStartDateIsEmpty
     case actionEndDateIsEmpty
+    case actionEndDateIsInPast
+    case actionEndDateIsEarlierThanStartDate
+    
+    case commercialOfferMessageIsEmpty
+    case commercialOfferImageIsNil
+}
+
+extension SupplierError: LocalizedError {
+    public var errorDescription: String? {
+        switch self {
+        case .actionMessageIsEmpty:
+            return "Введите название"
+        case .actionDescriptionOfIsEmpty:
+            return "Введите описание"
+        case .actionLinkIsEmpty:
+            return "Введите ссылку"
+        case .actionImageIsNil:
+            return "Добавьте изображение"
+        case .actionStartDateIsEmpty:
+            return "Введите дату начала акции"
+        case .actionEndDateIsEmpty:
+            return "Введите дату конца акции"
+        case .actionEndDateIsInPast:
+            return "Нельзя создать уже прошедшую акцию"
+        case .actionEndDateIsEarlierThanStartDate:
+            return "Конец акции не может быть раньше, чем её начало"
+            
+        case .commercialOfferMessageIsEmpty:
+            return "Введите сообщение"
+        case .commercialOfferImageIsNil:
+            return "Добавьте изображение"
+        }
+    }
 }

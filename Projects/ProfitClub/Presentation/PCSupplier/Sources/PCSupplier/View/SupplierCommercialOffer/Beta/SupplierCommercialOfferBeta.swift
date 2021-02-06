@@ -124,7 +124,7 @@ final class SupplierCommercialOfferBeta: UIViewController {
 
 extension SupplierCommercialOfferBeta: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if textView.text == "Введите сообщение" {
+        if textView.text == "Введите название предложения" {
             textView.text = ""
             textView.textColor = .black
         }
@@ -132,7 +132,7 @@ extension SupplierCommercialOfferBeta: UITextViewDelegate {
 
     func textViewDidEndEditing(_ textView: UITextView) {
         if textView.text.isEmpty {
-            textView.text = "Введите сообщение"
+            textView.text = "Введите название предложения"
             textView.textColor = #colorLiteral(red: 0.1298349798, green: 0.1296681762, blue: 0.1242521927, alpha: 0.5)
         }
     }

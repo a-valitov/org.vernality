@@ -199,6 +199,9 @@ final class PCUserServiceParse: PCUserService {
         if let image = organization.image, let imageData = image.pngData() {
             let imageFile = PFFileObject(name: "image.png", data: imageData)
             parseOrganization.imageFile = imageFile
+        } else {
+            result(.failure(PCUserServiceError.failedToGetImagePNGRepresentation))
+            return 
         }
         parseOrganization.saveInBackground { (succeeded, error) in
             if let error = error {

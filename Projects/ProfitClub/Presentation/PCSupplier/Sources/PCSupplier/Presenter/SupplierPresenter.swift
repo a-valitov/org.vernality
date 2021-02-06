@@ -123,6 +123,14 @@ extension SupplierPresenter: SupplierActionsOutput {
             self.presenters.error.present(SupplierError.actionEndDateIsEmpty)
             return
         }
+        if (endDate < Date()) {
+            self.presenters.error.present(SupplierError.actionEndDateIsInPast)
+            return
+        }
+        if (endDate < startDate) {
+            self.presenters.error.present(SupplierError.actionEndDateIsEarlierThanStartDate)
+            return
+        }
 
         var action = PCActionStruct()
         action.message = message
@@ -134,7 +142,7 @@ extension SupplierPresenter: SupplierActionsOutput {
         action.status = .onReview
         action.supplier = self.supplier
 
-        self.presenters.confirmation.present(title: "Отправить в обработку?", message: "Перед публикацией акции, её должен проверить аминистратор", actionTitle: "Отправить", withCancelAction: true) { [weak self] in
+        self.presenters.confirmation.present(title: "Отправить в обработку?", message: "Перед публикацией акцию должен проверить аминистратор", actionTitle: "Отправить", withCancelAction: true) { [weak self] in
             guard let sSelf = self else { return }
             sSelf.presenters.activity.increment()
             sSelf.services.action.add(action: action) { [weak sSelf] result in
@@ -157,18 +165,23 @@ extension SupplierPresenter: SupplierActionsOutput {
 extension SupplierPresenter: SupplierCommercialOfferOutput {
     func supplierCommercialOfferDidFinish(view: SupplierCommercialOfferInput) {
         guard let message = view.message, !message.isEmpty, message != "Введите сообщение" else {
-            self.presenters.error.present(SupplierError.actionMessageIsEmpty)
+            self.presenters.error.present(SupplierError.commercialOfferMessageIsEmpty)
             return
         }
+        guard let image = view.image else {
+            self.presenters.error.present(SupplierError.commercialOfferImageIsNil)
+            return
+        }
+        
         var offer = PCCommercialOfferStruct()
         offer.message = message
-        offer.image = view.image
+        offer.image = image
         offer.supplier = self.supplier
         offer.attachments = view.attachments
         offer.attachmentNames = view.attachmentNames
         offer.status = .onReview
 
-        self.presenters.confirmation.present(title: "Отправить в обработку?", message: "Перед публикацией комерческого предложения, его должен проверить аминистратор", actionTitle: "Отправить", withCancelAction: true) { [weak self] in
+        self.presenters.confirmation.present(title: "Отправить в обработку?", message: "Перед публикацией коммерческое предложение должен проверить администратор", actionTitle: "Отправить", withCancelAction: true) { [weak self] in
             guard let sSelf = self else { return }
             sSelf.presenters.activity.increment()
             sSelf.services.commercialOffer.add(offer: offer) { [weak sSelf] result in
@@ -220,7 +233,7 @@ extension SupplierPresenter {
             guard let sSelf = self else { return }
             sSelf.presenters.confirmation.present(
                 title: "Подтвердите выход",
-                message: "Вы уверены что хотите выйти?",
+                message: "Вы уверены, что хотите выйти?",
                 actionTitle: "Выйти", withCancelAction: true) { [weak sSelf] in
                 guard let ssSelf = sSelf else { return }
                 ssSelf.services.user.logout { [weak ssSelf] result in

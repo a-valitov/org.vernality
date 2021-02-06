@@ -122,7 +122,7 @@ final class SupplierActionsBeta: UIViewController {
 
         let textColor = UIColor(red: 0.098, green: 0.094, blue: 0.094, alpha: 1)
         let placeholderColor = textColor.withAlphaComponent(0.5)
-        self.messageTextField.attributedPlaceholder = NSAttributedString(string: "Введите сообщение",
+        self.messageTextField.attributedPlaceholder = NSAttributedString(string: "Введите название акции",
                                                                          attributes:[.foregroundColor: placeholderColor])
         self.descriptionTextField.attributedPlaceholder = NSAttributedString(string: "Введите описание акции",
                                                                              attributes:[.foregroundColor: placeholderColor])

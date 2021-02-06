@@ -23,9 +23,9 @@ class ErrorPresenterAlert: ErrorPresenter {
     }
 
     private func presentAlert(error: Error) {
-        var title: String? = "Error"
+        var title: String? = "Ошибка"
         if let localizedError = error as? LocalizedError {
-            title = localizedError.failureReason ?? "Error"
+            title = localizedError.failureReason ?? "Ошибка"
         }
         let alert = UIAlertController(title: title, message: error.localizedDescription, preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)

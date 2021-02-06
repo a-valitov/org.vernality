@@ -339,7 +339,7 @@ extension AddRolePresenter {
             case .success:
                 sSelf.presenters.confirmation.present(
                     title: "Ваши данные отправлены в обработку",
-                    message: "Дождитесь пока администратор одобрит вашу заявку на вступление в клуб",
+                    message: "Дождитесь, пока работодатель одобрит вашу заявку на вступление в клуб",
                     actionTitle: "Спасибо",
                     withCancelAction: false
                 ) { [weak sSelf] in
@@ -364,7 +364,7 @@ extension AddRolePresenter {
             case .success:
                 sSelf.presenters.confirmation.present(
                     title: "Ваши данные отправлены в обработку",
-                    message: "Дождитесь пока администратор одобрит вашу заявку на вступление в клуб",
+                    message: "Дождитесь, пока администратор одобрит вашу заявку на вступление в клуб",
                     actionTitle: "Спасибо",
                     withCancelAction: false
                 ) { [weak sSelf] in
@@ -389,7 +389,7 @@ extension AddRolePresenter {
             case .success:
                 sSelf.presenters.confirmation.present(
                     title: "Ваши данные отправлены в обработку",
-                    message: "Дождитесь пока администратор одобрит вашу заявку на вступление в клуб",
+                    message: "Дождитесь, пока администратор одобрит вашу заявку на вступление в клуб",
                     actionTitle: "Спасибо",
                     withCancelAction: false
                 ) { [weak sSelf] in

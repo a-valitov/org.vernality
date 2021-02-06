@@ -19,5 +19,18 @@ import Foundation
 enum PCActionServiceError: Error {
     case bothResultAndErrorAreNil
     case inputIsNil
-    case actionOrUserIdIsNil
+    case actionIdIsNil
+}
+
+extension PCActionServiceError: LocalizedError {
+    public var errorDescription: String? {
+        switch self {
+        case .bothResultAndErrorAreNil:
+            return "Неопределённая ошибка: акция не найдена"
+        case .inputIsNil:
+            return "Input is Nil"
+        case .actionIdIsNil:
+            return "Акция не найдена"
+        }
+    }
 }
