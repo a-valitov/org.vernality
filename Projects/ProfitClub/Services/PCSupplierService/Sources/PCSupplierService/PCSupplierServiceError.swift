@@ -18,6 +18,7 @@ import Foundation
 
 enum PCSupplierServiceError: Error {
     case failedToGetImagePNGRepresentation
+    case supplierIdIsNil
 }
 
 extension PCSupplierServiceError: LocalizedError {
@@ -25,6 +26,8 @@ extension PCSupplierServiceError: LocalizedError {
         switch self {
         case .failedToGetImagePNGRepresentation:
             return "Не удалось получить PNG данные из изображения"
+        case .supplierIdIsNil:
+            return "Поставщик не найден"
         }
     }
 }
