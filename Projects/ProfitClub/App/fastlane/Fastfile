@@ -1,58 +1,70 @@
+fastlane_require 'plist'
+fastlane_require 'fileutils'
+
 default_platform(:ios)
 
-before_all do
-  sh("rm", "-rf", "org.vernality.profitclub.keystore")
-  sh("git", "clone", "git@github.com:vernality/org.vernality.profitclub.keystore.git")
-  ENV["GSP_PATH"] = "./fastlane/org.vernality.profitclub.keystore/GoogleService-Info.plist"
-  ENV["GOOGLE_APP_ID"] = get_info_plist_value(path: ENV["GSP_PATH"], key: "GOOGLE_APP_ID")
-  ENV["FIREBASE_REFRESH_TOKEN"] = get_info_plist_value(path: "./fastlane/org.vernality.profitclub.keystore/CI.plist", key: "FIREBASE_REFRESH_TOKEN")
-end
-
-def remove_artifacts
-  clean_build_artifacts()
-  sh("rm", "-rf", "org.vernality.profitclub.keystore")
-end
-
 platform :ios do
-  desc """
-  Upload to Firebase AppDistribution
+    SRC_ROOT = File.expand_path("#{ENV['PWD']}")
+    PATH_TO_INFO_PLIST = "#{SRC_ROOT}/ProfitClub/Resources/Plists/Info.plist"
 
-  fastlane alpha
-  """
-  lane :alpha do |options|
-    match(type: "adhoc", app_identifier: "org.vernality.profitclub", readonly: true)
-    build_app(
-      scheme: "ProfitClub",
-      export_xcargs: "-allowProvisioningUpdates",
-      configuration: "Release",
-      output_directory: "./Build",
-      export_options: {
-        method: "ad-hoc",
-        provisioningProfiles: {
-          "org.vernality.profitclub" => "match AdHoc org.vernality.profitclub"
-        }
-      }
-    )
-    firebase_app_distribution(
-      app: ENV["GOOGLE_APP_ID"],
-      firebase_cli_token: ENV["FIREBASE_REFRESH_TOKEN"],
-      release_notes: "Alpha build",
-      ipa_path: "./Build/Profit Club.ipa",
-      groups: "ios-alpha"
-    )
-    upload_symbols_to_crashlytics(
-      dsym_path: "./Build/Profit Club.app.dSYM.zip",
-      gsp_path: ENV["GSP_PATH"]
-    )
-    skip_docs
-  end
+    before_all do
+      sh("rm", "-rf", "org.vernality.profitclub.keystore")
+      sh("git", "clone", "git@github.com:vernality/org.vernality.profitclub.keystore.git")
+      ENV["GSP_PATH"] = "./fastlane/org.vernality.profitclub.keystore/GoogleService-Info.plist"
+      ENV["GOOGLE_APP_ID"] = get_info_plist_value(path: ENV["GSP_PATH"], key: "GOOGLE_APP_ID")
+      ENV["FIREBASE_REFRESH_TOKEN"] = get_info_plist_value(path: "./fastlane/org.vernality.profitclub.keystore/CI.plist", key: "FIREBASE_REFRESH_TOKEN")
+    end
 
-  error do |lane, exception|
-    remove_artifacts()
-  end
+    def remove_artifacts
+      clean_build_artifacts()
+      sh("rm", "-rf", "org.vernality.profitclub.keystore")
+    end
 
-end
+    platform :ios do
+      desc """
+      Upload to Firebase AppDistribution
 
-after_all do
-  remove_artifacts()
+      fastlane alpha
+      """
+      lane :alpha do |options|
+        BUILD_NUMBER = options[:build_number]
+        UI.crash!('build_number parameter is required') unless BUILD_NUMBER
+        set_info_plist_value(path: PATH_TO_INFO_PLIST, key: 'CFBundleVersion', value: BUILD_NUMBER)
+
+        match(type: "adhoc", app_identifier: "org.vernality.profitclub", readonly: true)
+        build_app(
+          scheme: "ProfitClub",
+          export_xcargs: "-allowProvisioningUpdates",
+          configuration: "Release",
+          output_directory: "./Build",
+          export_options: {
+            method: "ad-hoc",
+            provisioningProfiles: {
+              "org.vernality.profitclub" => "match AdHoc org.vernality.profitclub"
+            }
+          }
+        )
+        firebase_app_distribution(
+          app: ENV["GOOGLE_APP_ID"],
+          firebase_cli_token: ENV["FIREBASE_REFRESH_TOKEN"],
+          release_notes: "Alpha build",
+          ipa_path: "./Build/Profit Club.ipa",
+          groups: "ios-alpha"
+        )
+        upload_symbols_to_crashlytics(
+          dsym_path: "./Build/Profit Club.app.dSYM.zip",
+          gsp_path: ENV["GSP_PATH"]
+        )
+        skip_docs
+      end
+
+      error do |lane, exception|
+        remove_artifacts()
+      end
+
+    end
+
+    after_all do
+      remove_artifacts()
+    end
 end
