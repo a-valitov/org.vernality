@@ -14,22 +14,12 @@ def remove_artifacts
 end
 
 platform :ios do
-  desc "Register devices"
-  lane :reg do
-    register_devices(devices: {
-      "Temur 6S" => "58fa3c81bd6bc7f04ef850c2e18ce211b8dede88"
-    })
-    match(type: "development", force_for_new_devices: true)
-    match(type: "adhoc", force_for_new_devices: true)
-  end
-
   desc """
   Upload to Firebase AppDistribution
 
   fastlane alpha
   """
   lane :alpha do |options|
-    increment_build_number()
     match(type: "adhoc", app_identifier: "org.vernality.profitclub", readonly: true)
     build_app(
       scheme: "ProfitClub",
