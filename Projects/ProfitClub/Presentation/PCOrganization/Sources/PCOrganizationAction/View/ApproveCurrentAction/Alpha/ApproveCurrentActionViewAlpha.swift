@@ -166,9 +166,9 @@ final class ApproveCurrentActionViewAlpha: UIViewController {
         #endif
 
         #if SWIFT_PACKAGE
-        cancelButton.setImage(UIImage(named: "X", in: Bundle.module, compatibleWith: nil), for: .normal)
+        cancelButton.setImage(UIImage(named: "close_action", in: Bundle.module, compatibleWith: nil), for: .normal)
         #else
-        cancelButton.setImage(UIImage(named: "X", in: Bundle.pod(Self.self), compatibleWith: nil), for: .normal)
+        cancelButton.setImage(UIImage(named: "close_action", in: Bundle.pod(Self.self), compatibleWith: nil), for: .normal)
         #endif
 
     }
