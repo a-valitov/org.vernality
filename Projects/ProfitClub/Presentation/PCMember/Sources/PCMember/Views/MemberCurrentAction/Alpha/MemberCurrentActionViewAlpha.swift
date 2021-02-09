@@ -149,9 +149,16 @@ final class MemberCurrentActionViewAlpha: UIViewController {
         self.actionImageView.layer.masksToBounds = true
     }
 
-    @objc private func actionLinkTouchUpInside(_ sender: UIButton) {
-        if let url = URL(string: actionLink!) {
-            UIApplication.shared.open(url)
+    @objc private func actionLinkTouchUpInside(_ sender: Any) {
+        guard let actionUrl = actionLink else { return }
+        if actionUrl.hasPrefix("https://") || actionUrl.hasPrefix("http://") {
+            if let url = URL(string: actionUrl) {
+                UIApplication.shared.open(url)
+            }
+        } else {
+            if let url = URL(string: "http://" + actionUrl) {
+                UIApplication.shared.open(url)
+            }
         }
     }
 
