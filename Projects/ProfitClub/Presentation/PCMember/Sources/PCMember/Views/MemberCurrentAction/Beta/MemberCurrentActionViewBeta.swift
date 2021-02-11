@@ -58,8 +58,15 @@ final class MemberCurrentActionViewBeta: UIViewController {
     @IBOutlet weak var actionStartAndEndDate: UILabel!
     
     @IBAction func actionLinkTouchUpInside(_ sender: UIButton) {
-        if let url = URL(string: actionLink!) {
-            UIApplication.shared.open(url)
+        guard let actionUrl = actionLink else { return }
+        if actionUrl.hasPrefix("https://") || actionUrl.hasPrefix("http://") {
+            if let url = URL(string: actionUrl) {
+                UIApplication.shared.open(url)
+            }
+        } else {
+            if let url = URL(string: "http://" + actionUrl) {
+                UIApplication.shared.open(url)
+            }
         }
     }
     @IBAction func cancelTouchUpInside() {

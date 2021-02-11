@@ -200,8 +200,15 @@ extension AdminActionApplicationViewAlpha {
 
     @objc
     private func actionLinkTouchUpInside(_ sender: Any) {
-        if let url = URL(string: self.actionLink!) {
-            UIApplication.shared.open(url)
+        guard let actionUrl = actionLink else { return }
+        if actionUrl.hasPrefix("https://") || actionUrl.hasPrefix("http://") {
+            if let url = URL(string: actionUrl) {
+                UIApplication.shared.open(url)
+            }
+        } else {
+            if let url = URL(string: "http://" + actionUrl) {
+                UIApplication.shared.open(url)
+            }
         }
     }
 }
